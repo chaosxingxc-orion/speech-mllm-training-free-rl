@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Environments
+.venv/
+venv/
+.env
+
+# ML / RL artifacts (live in WSL ext4, never in git)
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+
+# Audio / datasets
+*.wav
+*.mp3
+*.flac
+data/
+datasets/
+checkpoints/
+
+# Experiment tracking / outputs
+mlruns/
+outputs/
+runs/
+logs/
+wandb/
+.hydra/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/

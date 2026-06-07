@@ -1,0 +1,18 @@
+defaults:
+  - model: qwen2_audio
+  - dataset: librispeech
+  - rl: grpo
+  - experiment: baseline
+  - _self_
+
+work_name: speech-mllm-training-free-rl
+seed: 42
+
+paths:
+  data_dir: ${oc.env:SPEECHRL_DATA_DIR,~/speechrl-data/datasets}
+  ckpt_dir: ${oc.env:SPEECHRL_CKPT_DIR,~/speechrl-data/checkpoints}
+  mlflow_dir: ${oc.env:SPEECHRL_MLFLOW_DIR,~/speechrl-data/mlruns}
+
+tracking:
+  backend: mlflow
+  experiment: ${work_name}

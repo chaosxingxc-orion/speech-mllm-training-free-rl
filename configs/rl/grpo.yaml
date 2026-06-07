@@ -1,0 +1,7 @@
+algo: grpo
+learning_rate: 1.0e-6
+kl_coef: 0.001
+group_size: 8
+rollout_batch_size: 64
+max_prompt_len: 512
+max_response_len: 256

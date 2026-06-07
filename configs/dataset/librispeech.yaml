@@ -1,0 +1,4 @@
+name: librispeech
+hf_id: openslr/librispeech_asr
+split: train.clean.100
+task: asr

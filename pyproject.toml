@@ -1,0 +1,33 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "speech-mllm-training-free-rl"
+version = "0.1.0"
+description = "Training-Free RL for Speech Multimodal LLMs"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "speechrl-common",
+    "hydra-core>=1.3",
+    "omegaconf>=2.3",
+    "mlflow",
+    "transformers",
+    "datasets",
+    "librosa",
+    "soundfile",
+    "jiwer",
+    # torch (cu128) and verl come from the WSL2 env setup (Phase 2/4), NOT from PyPI
+    # here, so the correct CUDA index is used. See ../../docs/setup.md.
+]
+
+[tool.uv.sources]
+speechrl-common = { path = "../../common", editable = true }
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/training_free_rl"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
