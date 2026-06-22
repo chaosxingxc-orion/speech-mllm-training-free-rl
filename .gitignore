@@ -10,6 +10,7 @@ __pycache__/
 .venv/
 venv/
 .env
+model_env/
 
 # ML / RL artifacts (live in WSL ext4, never in git)
 *.pt
