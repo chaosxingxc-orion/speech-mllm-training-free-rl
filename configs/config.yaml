@@ -9,9 +9,9 @@ work_name: speech-mllm-training-free-rl
 seed: 42
 
 paths:
-  data_dir: ${oc.env:SPEECHRL_DATA_DIR,~/speechrl-data/datasets}
-  ckpt_dir: ${oc.env:SPEECHRL_CKPT_DIR,~/speechrl-data/checkpoints}
-  mlflow_dir: ${oc.env:SPEECHRL_MLFLOW_DIR,~/speechrl-data/mlruns}
+  data_dir: ${oc.env:SPEECHRL_DATA_DIR,${oc.env:HOME}/speechrl-data/datasets}
+  ckpt_dir: ${oc.env:SPEECHRL_CKPT_DIR,${oc.env:HOME}/speechrl-data/checkpoints}
+  mlflow_dir: ${oc.env:SPEECHRL_MLFLOW_DIR,${oc.env:HOME}/speechrl-data/mlruns}
 
 tracking:
   backend: mlflow

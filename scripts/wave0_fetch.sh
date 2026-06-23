@@ -563,6 +563,7 @@ models() {
   m_moss
   m_nemotron
   m_minicpm_gguf
+  m_omni_embed_nemotron
 }
 
 # ---------- C. datasets -> $DSETS ----------
