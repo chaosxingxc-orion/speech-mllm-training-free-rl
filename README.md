@@ -32,7 +32,7 @@ bash scripts/eval.sh                           # evaluate
 
 - `src/training_free_rl/main.py` — Hydra entrypoint (fill in the RL loop)
 - `configs/` — Hydra configs: `model/`, `dataset/`, `rl/`, `experiment/`
-- `scripts/` — `train.sh`, `eval.sh`, plus `wave0_fetch.sh` (the asset download engine the umbrella's `scripts/data/` drives)
+- `scripts/` — `train.sh`, `eval.sh`, `check_assets.sh`, `check_env.sh` (asset downloading is unified in the umbrella's `scripts/data/fetch-data.sh`, driven by `docs/datasets.lock.json`; the old `wave0_fetch.sh` engine was retired)
 - depends on `speechrl_common` for audio I/O, reward functions, MLflow tracking, prompts
 
 ## Status & roadmap
@@ -46,5 +46,6 @@ strategies, grow datasets & benchmarks, and harden evaluation. Track progress on
 ## 中文
 
 免梯度、奖励引导的推理时 RL（best-of-N、奖励引导解码、重排序）。**本工作是系列里最成熟、可作参考范式的
-工作，仍在持续完善与扩展**，并维护资产下载引擎 `scripts/wave0_fetch.sh`。环境与命令见上（详见
+工作，仍在持续完善与扩展**。（资产下载已统一到 umbrella 的 `scripts/data/fetch-data.sh`，由
+`docs/datasets.lock.json` 驱动；原 `wave0_fetch.sh` 引擎已退役。）环境与命令见上（详见
 `../../docs/setup.md`）。进度看伞仓 Wiki 的 Per-Work-Status。
