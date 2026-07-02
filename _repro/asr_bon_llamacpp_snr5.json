@@ -2374,5 +2374,5 @@
     }
   ],
   "elapsed_s": 922.2,
-  "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data BON_UTTS=24 BON_POOL=8 BON_SNR=5 python scripts/repro_asr_best_of_n_llamacpp.py (with llama-server resident)"
+  "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data BON_UTTS=96 BON_POOL=8 BON_SNR=5 python scripts/repro_asr_best_of_n_llamacpp.py (with llama-server resident)"
 }
