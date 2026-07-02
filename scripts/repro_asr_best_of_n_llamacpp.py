@@ -76,29 +76,31 @@ def agg(rows, key):
 
 def main():
     t0 = time.time()
-    utts = load_utts(DATA, "other", N_UTTS, SEED, SNR)
-    print(f"server={BASE} utts={len(utts)} pool={POOL} temp={TEMP} snr={SNR} Ns={Ns}", flush=True)
+    # BON_SEEDS: multiple generation seeds pooled into ONE paired bootstrap, so the CI reflects both
+    # per-utterance AND pool-generation variance (each seed = an independent utt-sample + generation draw).
+    seeds = [int(x) for x in os.environ.get("BON_SEEDS", str(SEED)).split(",")]
+    print(f"server={BASE} seeds={seeds} utts/seed={N_UTTS} pool={POOL} temp={TEMP} snr={SNR} Ns={Ns}", flush=True)
     rows = []
-    for k, u in enumerate(utts):
-        try:
-            greedy = gen(u["audio_path"], True, SEED)
-            pool = [gen(u["audio_path"], False, SEED + 1 + i) for i in range(POOL)]
-        except Exception as e:
-            print(f"[{k+1}] SKIP ({type(e).__name__}: {str(e)[:120]})", flush=True); continue
-        rec = {"id": u["id"], "ref": u["ref"], "greedy": greedy,
-               "greedy_wer": wer(u["ref"], greedy), "pool": pool}
-        for N in Ns:
-            cand = pool[:N]
-            bo = best_of_n(cand, lambda c: -wer(u["ref"], c))     # oracle (headroom)
-            mb = mbr(cand, lambda ci, cj: -wer(cj, ci))            # MBR consensus (deployable)
-            rec[f"oracle_wer_{N}"] = wer(u["ref"], bo["best"])
-            rec[f"mbr_wer_{N}"] = wer(u["ref"], mb["best"])
-        rows.append(rec)
-        print(f"[{k+1}/{len(utts)}] greedy={rec['greedy_wer']:.3f} "
-              f"mbr@{Ns[-1]}={rec[f'mbr_wer_{Ns[-1]}']:.3f} "
-              f"oracle@{Ns[-1]}={rec[f'oracle_wer_{Ns[-1]}']:.3f}", flush=True)
+    for s in seeds:
+        utts = load_utts(DATA, "other", N_UTTS, s, SNR)
+        for k, u in enumerate(utts):
+            try:
+                greedy = gen(u["audio_path"], True, s)
+                pool = [gen(u["audio_path"], False, s + 1 + i) for i in range(POOL)]
+            except Exception as e:
+                print(f"  seed {s} [{k+1}] SKIP ({type(e).__name__}: {str(e)[:100]})", flush=True); continue
+            rec = {"gen_seed": s, "id": u["id"], "ref": u["ref"], "greedy": greedy,
+                   "greedy_wer": wer(u["ref"], greedy), "pool": pool}
+            for N in Ns:
+                cand = pool[:N]
+                rec[f"oracle_wer_{N}"] = wer(u["ref"], best_of_n(cand, lambda c: -wer(u["ref"], c))["best"])  # oracle headroom
+                rec[f"mbr_wer_{N}"] = wer(u["ref"], mbr(cand, lambda ci, cj: -wer(cj, ci))["best"])            # MBR (deployable)
+            rows.append(rec)
+        print(f"  seed {s}: cumulative rows={len(rows)}", flush=True)
 
-    summary = {"n_utts": len(rows), "pool": POOL, "temp": TEMP, "snr_db": SNR, "seed": SEED, "Ns": Ns,
+    summary = {"n_utts": len(rows), "gen_seeds": seeds, "n_gen_seeds": len(seeds), "utts_per_seed": N_UTTS,
+               "pool": POOL, "temp": TEMP, "snr_db": SNR, "Ns": Ns,
+               "note": "rows pooled across generation seeds; the paired bootstrap CI reflects per-utterance AND pool-generation variance",
                "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28; audio EXPERIMENTAL)",
                "greedy_wer": round(float(np.mean([r["greedy_wer"] for r in rows])), 4)}
     for N in Ns:
@@ -111,9 +113,10 @@ def main():
         f"(reduction {summary[f'mbr_red_{nmax}']:+.3f}, 95% CI {summary[f'mbr_ci_{nmax}']}, "
         f"{'SIG' if summary[f'mbr_sig_{nmax}'] else 'n.s.'}); oracle headroom WER "
         f"{summary[f'oracle_wer_{nmax}']:.3f} (reduction {summary[f'oracle_red_{nmax}']:+.3f}). "
-        f"Reward-driven selection over model-sampled candidates on a single frozen model.")
+        f"Reward-driven selection over model-sampled candidates on a frozen model; CI pooled across "
+        f"{len(seeds)} generation seeds (utterance + pool-generation variance).")
     out = {"summary": summary, "per_utt": rows, "elapsed_s": round(time.time() - t0, 1),
-           "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data BON_UTTS=96 BON_POOL=8 BON_SNR=5 "
+           "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data BON_SEEDS=42,7,123 BON_UTTS=48 BON_POOL=8 BON_SNR=5 "
                         "python scripts/repro_asr_best_of_n_llamacpp.py (with llama-server resident)"}
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w") as f:
