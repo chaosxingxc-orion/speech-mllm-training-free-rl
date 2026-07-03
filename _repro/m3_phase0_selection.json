@@ -1,0 +1,471 @@
+{
+  "summary": {
+    "lane": "M3",
+    "phase": 0,
+    "n_candidate_pairs": 26,
+    "n_utts": 36,
+    "n_entities": 13,
+    "n_chapters": 9,
+    "selection_rule": {
+      "rarity": "librispeech-train960 count <= 5",
+      "k_min_recurrence": 3,
+      "chapter_exclusive": true,
+      "min_len": 4,
+      "dev_spent_excluded": 144,
+      "max_utts_per_pair": 3,
+      "deterministic": "no RNG"
+    },
+    "condition": "clean",
+    "prereg": "wiki/2026-07-03-agentic-tfrl-step1-preregistration.md @ b19bff2 \u00a75 M3"
+  },
+  "candidate_pairs": [
+    {
+      "train_freq": 0,
+      "chapter": "2609-169640",
+      "entity": "PROA",
+      "n_in_chapter": 3
+    },
+    {
+      "train_freq": 0,
+      "chapter": "2609-169640",
+      "entity": "PROAS",
+      "n_in_chapter": 3
+    },
+    {
+      "train_freq": 0,
+      "chapter": "3528-168669",
+      "entity": "FAUVENT",
+      "n_in_chapter": 10
+    },
+    {
+      "train_freq": 0,
+      "chapter": "3538-142836",
+      "entity": "CONFECTIONARY",
+      "n_in_chapter": 3
+    },
+    {
+      "train_freq": 0,
+      "chapter": "3538-163622",
+      "entity": "CINDERLAD",
+      "n_in_chapter": 7
+    },
+    {
+      "train_freq": 0,
+      "chapter": "3764-168671",
+      "entity": "MESTIENNE",
+      "n_in_chapter": 5
+    },
+    {
+      "train_freq": 0,
+      "chapter": "4198-61336",
+      "entity": "PILESER",
+      "n_in_chapter": 4
+    },
+    {
+      "train_freq": 0,
+      "chapter": "4198-61336",
+      "entity": "SHARDURIS",
+      "n_in_chapter": 3
+    },
+    {
+      "train_freq": 0,
+      "chapter": "4198-61336",
+      "entity": "TIGLATH",
+      "n_in_chapter": 4
+    },
+    {
+      "train_freq": 0,
+      "chapter": "5484-24317",
+      "entity": "ALTHEA",
+      "n_in_chapter": 3
+    },
+    {
+      "train_freq": 0,
+      "chapter": "5484-24317",
+      "entity": "ARSINOE",
+      "n_in_chapter": 4
+    },
+    {
+      "train_freq": 0,
+      "chapter": "5484-24318",
+      "entity": "MYRTILUS",
+      "n_in_chapter": 3
+    },
+    {
+      "train_freq": 0,
+      "chapter": "5484-24318",
+      "entity": "PHILIPPUS",
+      "n_in_chapter": 3
+    },
+    {
+      "train_freq": 0,
+      "chapter": "6128-63244",
+      "entity": "FARRINDER",
+      "n_in_chapter": 4
+    },
+    {
+      "train_freq": 0,
+      "chapter": "7105-2330",
+      "entity": "PLATTERBAFF",
+      "n_in_chapter": 3
+    },
+    {
+      "train_freq": 0,
+      "chapter": "7105-2340",
+      "entity": "PIGEONCOTE",
+      "n_in_chapter": 5
+    },
+    {
+      "train_freq": 0,
+      "chapter": "8131-117016",
+      "entity": "MURDOCH",
+      "n_in_chapter": 8
+    },
+    {
+      "train_freq": 1,
+      "chapter": "3538-163624",
+      "entity": "REGIN",
+      "n_in_chapter": 3
+    },
+    {
+      "train_freq": 1,
+      "chapter": "8280-266249",
+      "entity": "LILBURN",
+      "n_in_chapter": 3
+    },
+    {
+      "train_freq": 2,
+      "chapter": "3997-182399",
+      "entity": "MISTAH",
+      "n_in_chapter": 3
+    },
+    {
+      "train_freq": 2,
+      "chapter": "7105-2330",
+      "entity": "ORGANISER",
+      "n_in_chapter": 5
+    },
+    {
+      "train_freq": 2,
+      "chapter": "8131-117016",
+      "entity": "WAYNE",
+      "n_in_chapter": 3
+    },
+    {
+      "train_freq": 3,
+      "chapter": "3538-163622",
+      "entity": "FOALS",
+      "n_in_chapter": 4
+    },
+    {
+      "train_freq": 3,
+      "chapter": "367-130732",
+      "entity": "CRAWFISH",
+      "n_in_chapter": 6
+    },
+    {
+      "train_freq": 3,
+      "chapter": "8461-281231",
+      "entity": "ULRICA",
+      "n_in_chapter": 3
+    },
+    {
+      "train_freq": 4,
+      "chapter": "8188-269290",
+      "entity": "EILEEN",
+      "n_in_chapter": 3
+    }
+  ],
+  "selected": [
+    {
+      "id": "2609-169640-0000",
+      "entity": "PROAS",
+      "train_freq": 0,
+      "chapter": "2609-169640",
+      "recurrence": 3,
+      "ref": "PROAS IN THAT QUARTER WERE USUALLY DISTRUSTED BY SHIPS IT IS TRUE BUT THE SEA IS FULL OF THEM AND FAR MORE ARE INNOCENT THAN ARE GUILTY OF ANY ACTS OF VIOLENCE"
+    },
+    {
+      "id": "2609-169640-0010",
+      "entity": "PROAS",
+      "train_freq": 0,
+      "chapter": "2609-169640",
+      "recurrence": 3,
+      "ref": "I SOON SAW BOTH PROAS AND GLAD ENOUGH WAS I TO PERCEIVE THAT THEY HAD NOT APPROACHED MATERIALLY NEARER"
+    },
+    {
+      "id": "2609-169640-0013",
+      "entity": "PROAS",
+      "train_freq": 0,
+      "chapter": "2609-169640",
+      "recurrence": 3,
+      "ref": "THE PROAS DID NOT ALTER THEIR COURSE BUT NEARED US FAST"
+    },
+    {
+      "id": "2609-169640-0021",
+      "entity": "PROA",
+      "train_freq": 0,
+      "chapter": "2609-169640",
+      "recurrence": 3,
+      "ref": "ON OUR SIDE WE GAVE THE GENTLEMEN THE FOUR SIXES TWO AT THE NEAREST AND TWO AT THE STERN MOST PROA WHICH WAS STILL NEAR A CABLE'S LENGTH DISTANT"
+    },
+    {
+      "id": "2609-169640-0023",
+      "entity": "PROA",
+      "train_freq": 0,
+      "chapter": "2609-169640",
+      "recurrence": 3,
+      "ref": "I DOUBT IF WE TOUCHED A MAN IN THE NEAREST PROA"
+    },
+    {
+      "id": "2609-169640-0024",
+      "entity": "PROA",
+      "train_freq": 0,
+      "chapter": "2609-169640",
+      "recurrence": 3,
+      "ref": "IN THIS STATE THE SHIP PASSED AHEAD ALL HER CANVAS BEING FULL LEAVING THE PROA MOTIONLESS IN HER WAKE"
+    },
+    {
+      "id": "3528-168669-0002",
+      "entity": "FAUVENT",
+      "train_freq": 0,
+      "chapter": "3528-168669",
+      "recurrence": 10,
+      "ref": "FATHER FAUVENT"
+    },
+    {
+      "id": "3528-168669-0019",
+      "entity": "FAUVENT",
+      "train_freq": 0,
+      "chapter": "3528-168669",
+      "recurrence": 10,
+      "ref": "FAUVENT WE HAVE CONFIDENCE IN YOU"
+    },
+    {
+      "id": "3528-168669-0024",
+      "entity": "FAUVENT",
+      "train_freq": 0,
+      "chapter": "3528-168669",
+      "recurrence": 10,
+      "ref": "FATHER FAUVENT REVEREND MOTHER"
+    },
+    {
+      "id": "3538-142836-0000",
+      "entity": "CONFECTIONARY",
+      "train_freq": 0,
+      "chapter": "3538-142836",
+      "recurrence": 3,
+      "ref": "GENERAL OBSERVATIONS ON PRESERVES CONFECTIONARY ICES AND DESSERT DISHES"
+    },
+    {
+      "id": "3538-142836-0018",
+      "entity": "CONFECTIONARY",
+      "train_freq": 0,
+      "chapter": "3538-142836",
+      "recurrence": 3,
+      "ref": "CONFECTIONARY FIFTEEN O EIGHT"
+    },
+    {
+      "id": "3538-142836-0019",
+      "entity": "CONFECTIONARY",
+      "train_freq": 0,
+      "chapter": "3538-142836",
+      "recurrence": 3,
+      "ref": "IN SPEAKING OF CONFECTIONARY IT SHOULD BE REMARKED THAT ALL THE VARIOUS PREPARATIONS ABOVE NAMED COME STRICTLY SPEAKING UNDER THAT HEAD FOR THE VARIOUS FRUITS FLOWERS HERBS ROOTS AND JUICES WHICH WHEN BOILED WITH SUGAR WERE FORMERLY EMPLOYED IN PHARMACY AS WELL AS FOR SWEETMEATS WERE CALLED CONFECTIONS FROM THE LATIN WORD CONFICERE TO MAKE UP BUT THE TERM CONFECTIONARY EMBRACES A VERY LARGE CLASS INDEED OF SWEET FOOD MANY KINDS OF WHICH SHOULD NOT BE ATTEMPTED IN THE ORDINARY CUISINE"
+    },
+    {
+      "id": "3538-163622-0010",
+      "entity": "CINDERLAD",
+      "train_freq": 0,
+      "chapter": "3538-163622",
+      "recurrence": 7,
+      "ref": "ON THE THIRD DAY CINDERLAD WANTED TO SET OUT"
+    },
+    {
+      "id": "3538-163622-0011",
+      "entity": "CINDERLAD",
+      "train_freq": 0,
+      "chapter": "3538-163622",
+      "recurrence": 7,
+      "ref": "THE TWO BROTHERS LAUGHED AT HIM AND HIS FATHER AND MOTHER BEGGED HIM NOT TO GO BUT ALL TO NO PURPOSE AND CINDERLAD SET OUT ON HIS WAY"
+    },
+    {
+      "id": "3538-163622-0013",
+      "entity": "CINDERLAD",
+      "train_freq": 0,
+      "chapter": "3538-163622",
+      "recurrence": 7,
+      "ref": "I WOULD MUCH RATHER HAVE THE PRINCESS SAID CINDERLAD"
+    },
+    {
+      "id": "3764-168671-0018",
+      "entity": "MESTIENNE",
+      "train_freq": 0,
+      "chapter": "3764-168671",
+      "recurrence": 5,
+      "ref": "HE PLAYED WITH FATHER MESTIENNE"
+    },
+    {
+      "id": "3764-168671-0025",
+      "entity": "MESTIENNE",
+      "train_freq": 0,
+      "chapter": "3764-168671",
+      "recurrence": 5,
+      "ref": "FATHER MESTIENNE IS THE GRAVE DIGGER HE WAS"
+    },
+    {
+      "id": "3764-168671-0029",
+      "entity": "MESTIENNE",
+      "train_freq": 0,
+      "chapter": "3764-168671",
+      "recurrence": 5,
+      "ref": "BUT HE PERSISTED FEEBLY FATHER MESTIENNE IS THE GRAVE DIGGER"
+    },
+    {
+      "id": "4198-61336-0002",
+      "entity": "SHARDURIS",
+      "train_freq": 0,
+      "chapter": "4198-61336",
+      "recurrence": 3,
+      "ref": "WELL MIGHT SHARDURIS EXCLAIM IN THE WORDS OF THE PROPHET WHERE IS THE KING OF ARPAD"
+    },
+    {
+      "id": "4198-61336-0003",
+      "entity": "PILESER",
+      "train_freq": 0,
+      "chapter": "4198-61336",
+      "recurrence": 4,
+      "ref": "TIGLATH PILESER HOWEVER CROSSED THE EUPHRATES AND MOVING NORTHWARD DELIVERED AN UNEXPECTED ATTACK ON THE URARTIAN ARMY IN QUMMUKH"
+    },
+    {
+      "id": "4198-61336-0005",
+      "entity": "SHARDURIS",
+      "train_freq": 0,
+      "chapter": "4198-61336",
+      "recurrence": 3,
+      "ref": "AN ATTEMPT WAS MADE TO CAPTURE KING SHARDURIS WHO LEAPT FROM HIS CHARIOT AND MADE HASTY ESCAPE ON HORSEBACK HOTLY PURSUED IN THE GATHERING DARKNESS BY AN ASSYRIAN CONTINGENT OF CAVALRY"
+    },
+    {
+      "id": "4198-61336-0007",
+      "entity": "SHARDURIS",
+      "train_freq": 0,
+      "chapter": "4198-61336",
+      "recurrence": 3,
+      "ref": "THE SHIFTY MATI ILU EITHER CHERISHED THE HOPE THAT SHARDURIS WOULD RECOVER STRENGTH AND AGAIN INVADE NORTH SYRIA OR THAT HE MIGHT HIMSELF ESTABLISH AN EMPIRE IN THAT REGION"
+    },
+    {
+      "id": "4198-61336-0020",
+      "entity": "PILESER",
+      "train_freq": 0,
+      "chapter": "4198-61336",
+      "recurrence": 4,
+      "ref": "IN THE FOLLOWING YEAR TIGLATH PILESER RETURNED TO SYRIA"
+    },
+    {
+      "id": "5484-24317-0011",
+      "entity": "ALTHEA",
+      "train_freq": 0,
+      "chapter": "5484-24317",
+      "recurrence": 3,
+      "ref": "THE PLACE BY HERMON'S SIDE WHICH ALTHEA HAD CHOSEN FOR HERSELF WOULD THEN BE GIVEN UP TO ARSINOE"
+    },
+    {
+      "id": "5484-24317-0020",
+      "entity": "ARSINOE",
+      "train_freq": 0,
+      "chapter": "5484-24317",
+      "recurrence": 4,
+      "ref": "YOUR UNCLE TOO HAS OFTEN WITH PRAISEWORTHY GENEROSITY HELPED ARSINOE IN MANY AN EMBARRASSMENT"
+    },
+    {
+      "id": "5484-24317-0024",
+      "entity": "ARSINOE",
+      "train_freq": 0,
+      "chapter": "5484-24317",
+      "recurrence": 4,
+      "ref": "HE WINKED AT HER AND MADE A SIGNIFICANT GESTURE AS HE SPOKE AND THEN INFORMED THE BLIND ARTIST HOW GRACIOUSLY ARSINOE HAD REMEMBERED HIM WHEN SHE HEARD OF THE REMEDY BY WHOSE AID MANY A WONDERFUL CURE OF BLIND EYES HAD BEEN MADE IN RHODES"
+    },
+    {
+      "id": "5484-24317-0025",
+      "entity": "ALTHEA",
+      "train_freq": 0,
+      "chapter": "5484-24317",
+      "recurrence": 3,
+      "ref": "THE ROYAL LADY HAD INQUIRED ABOUT HIM AND HIS SUFFERINGS WITH ALMOST SISTERLY INTEREST AND ALTHEA EAGERLY CONFIRMED THE STATEMENT"
+    },
+    {
+      "id": "5484-24317-0030",
+      "entity": "ALTHEA",
+      "train_freq": 0,
+      "chapter": "5484-24317",
+      "recurrence": 3,
+      "ref": "ONLY EVEN THOUGH LOVE HAS WHOLLY DISAPPEARED SHE STILL CLAIMS CONSIDERATION AND ALTHEA DID NOT WISH TO LOSE HERMON'S REGARD"
+    },
+    {
+      "id": "5484-24318-0008",
+      "entity": "MYRTILUS",
+      "train_freq": 0,
+      "chapter": "5484-24318",
+      "recurrence": 3,
+      "ref": "BUT IF HE WERE DESTINED TO MEET HIS MYRTILUS AND HIS MOTHER IN THE WORLD BEYOND THE GRAVE WHAT HAD HE NOT TO TELL THEM HOW SURE HE WAS OF FINDING A JOYFUL RECEPTION THERE FROM BOTH"
+    },
+    {
+      "id": "5484-24318-0013",
+      "entity": "PHILIPPUS",
+      "train_freq": 0,
+      "chapter": "5484-24318",
+      "recurrence": 3,
+      "ref": "LASTLY WITH EARNEST WARMTH SHE BESOUGHT HIM BEFORE TAKING THE PRISONERS AWAY TO PERMIT HER TO SPEAK TO THE COMMANDING GENERAL PHILIPPUS HER FATHER'S GUEST WHO SHE WAS CERTAIN WAS IN THE PALACE"
+    },
+    {
+      "id": "5484-24318-0016",
+      "entity": "PHILIPPUS",
+      "train_freq": 0,
+      "chapter": "5484-24318",
+      "recurrence": 3,
+      "ref": "DAPHNE AGAIN PLEADED FOR THE LIBERATION OF THE PRISONERS BUT PHILIPPUS SILENCED HER WITH THE GRAVE EXCLAMATION THE ORDER OF THE KING"
+    },
+    {
+      "id": "5484-24318-0023",
+      "entity": "MYRTILUS",
+      "train_freq": 0,
+      "chapter": "5484-24318",
+      "recurrence": 3,
+      "ref": "THEN DAPHNE RAISED HER FACE TO HIS ASKING SO THE DEMETER IS THE WORK OF MYRTILUS"
+    },
+    {
+      "id": "5484-24318-0029",
+      "entity": "PHILIPPUS",
+      "train_freq": 0,
+      "chapter": "5484-24318",
+      "recurrence": 3,
+      "ref": "HIS HEART CONTRACTED PAINFULLY AND HIS SOLICITUDE ABOUT HIS UNCLE'S FATE INCREASED WHEN PHILIPPUS INFORMED HIM THAT THE CONSPIRATORS HAD BEEN ARRESTED AT THE BANQUET AND HEADED BY AMYNTAS THE RHODIAN CHRYSIPPUS AND PROCLUS HAD PERISHED BY THE EXECUTIONER'S SWORD AT SUNRISE"
+    },
+    {
+      "id": "5484-24318-0037",
+      "entity": "MYRTILUS",
+      "train_freq": 0,
+      "chapter": "5484-24318",
+      "recurrence": 3,
+      "ref": "HONOUR TO MYRTILUS AND HIS ART BUT HE TRUSTED THIS NOBLE FESTAL ASSEMBLAGE WOULD PARDON THE UNINTENTIONAL DECEPTION AND AID HIS PRAYER FOR RECOVERY"
+    },
+    {
+      "id": "6128-63244-0006",
+      "entity": "FARRINDER",
+      "train_freq": 0,
+      "chapter": "6128-63244",
+      "recurrence": 4,
+      "ref": "SHE KNEW HER PLACE IN THE BOSTON HIERARCHY AND IT WAS NOT WHAT MISSUS FARRINDER SUPPOSED SO THAT THERE WAS A WANT OF PERSPECTIVE IN TALKING TO HER AS IF SHE HAD BEEN A REPRESENTATIVE OF THE ARISTOCRACY"
+    },
+    {
+      "id": "6128-63244-0010",
+      "entity": "FARRINDER",
+      "train_freq": 0,
+      "chapter": "6128-63244",
+      "recurrence": 4,
+      "ref": "OLIVE CHANCELLOR WONDERED HOW MISSUS FARRINDER WOULD TREAT THAT BRANCH OF THE QUESTION"
+    }
+  ],
+  "elapsed_s": 5.3,
+  "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/m3_phase0_select_entities.py"
+}
