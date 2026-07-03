@@ -1,0 +1,141 @@
+{
+  "summary": {
+    "A1_headroom_positions": {
+      "computed": 49,
+      "target": 49,
+      "match": true,
+      "interpretation_notes": "rows with oracle_wer_8 < mbr_wer_8 - 1e-12 (strict, epsilon-guarded)"
+    },
+    "A2_headroom_same_speaker_raretok_support": {
+      "computed": "0/49",
+      "target": "0/49",
+      "match": true,
+      "interpretation_notes": "primary reading (constructor's): rare tokens of the ORACLE-BEST candidate (argmin WER, ties lowest index) vs the union of rare tokens over all pool candidates of the same speaker's OTHER rows (label-free). Alternate reading (ANY pool candidate shares a rare token): 1/49 \u2014 logged for sensitivity, not the memo's number."
+    },
+    "A3_speaker_icc1_greedy_wer": {
+      "computed": 0.0656,
+      "target": "~0.066",
+      "match": true,
+      "interpretation_notes": "one-way ANOVA ICC(1) = (MSB-MSW)/(MSB+(n0-1)MSW), n0 (k0) correction for unequal group sizes; 31 speakers, 144 rows; F = 1.323"
+    },
+    "A4_per_gen_seed_oracle_reduction": {
+      "computed": {
+        "7": 0.048,
+        "42": 0.0506,
+        "123": 0.027
+      },
+      "target": {
+        "42": 0.0506,
+        "7": 0.048,
+        "123": 0.027
+      },
+      "match": true,
+      "interpretation_notes": "mean(greedy_wer - oracle_wer_8) over the 48 rows of each generation seed; seed mapping: 42 -> +0.0506, 7 -> +0.0480, 123 -> +0.0270"
+    },
+    "A5_headroom_concentration_minority_oracle_best": {
+      "computed": 0.9184,
+      "target": "~0.92",
+      "match": true,
+      "interpretation_notes": "readings tried (oracle-best = argmin WER ties-lowest-index; duplicate = exact string match after strip): (1) fraction of headroom ROWS whose oracle-best appears <=2 times among the 8 -> 45/49 = 0.9184 \u2014 LANDS on ~92%; (2) prose-literal headroom-MASS fraction on those rows -> 0.9382 (93.8%, does not land); (3) mass on <=2-of-8 minority vs the majority candidate -> 0.6995 (does not land). The memo's ~92% is the ROW fraction; the mass-weighted number is 0.938."
+    },
+    "B1_entity_in_pool": {
+      "computed": "79/144",
+      "target": "79/144",
+      "match": true,
+      "interpretation_notes": "pool = one 8-sample seed block (4 per utt -> 144). Primary/landing reading = constructor's EXACT normalized-token match (possessive-strip, no plural tolerance). Artifact `contains` semantics (plural-tolerant) gives 81/144 \u2014 logged for sensitivity."
+    },
+    "B2_mbr_waste": {
+      "computed": "26/144",
+      "target": "26/144",
+      "match": true,
+      "interpretation_notes": "in-pool AND MBR pick (argmax mbr_utils, ties lowest index) lacks the entity; exact matching. `contains` semantics gives 24/144."
+    },
+    "B3_actionable": {
+      "computed": "17/144",
+      "target": "17/144",
+      "match": true,
+      "interpretation_notes": "in-pool AND MBR-missed AND entity in LOO memory (consensus-2 harvest over the OTHER utterances of the SAME ENTITY, all 4 seed blocks each \u2014 the dossier's LOO reading as implemented by the constructor). `contains` gives 15/144."
+    },
+    "B4_mode_at_truth": {
+      "computed": "6/13",
+      "target": "6/13",
+      "match": true,
+      "interpretation_notes": "per entity: Counter of rare tokens over ALL 32x n_utts samples (per-sample presence via raretok); truth is top-1 <=> most frequent rare surface form == true form. Top-3 rate (dossier: 11/13): 10/13."
+    },
+    "B5_v1_lambda_flip_census": {
+      "computed": {
+        "n_actionable_pools": 17,
+        "median_min_lambda": 60.47,
+        "min": 4.42,
+        "max": 111.88,
+        "argmax_flips_at_lambda_le_0.8": 10,
+        "wer_affecting_flips_at_lambda_le_0.8": 0,
+        "max_abs_wer_delta_at_lambda_le_0.8": 0.0
+      },
+      "target": {
+        "median_min_lambda": 60.5,
+        "range": [
+          4.4,
+          112
+        ],
+        "flips_at_lambda_le_0.8": 0
+      },
+      "match": true,
+      "interpretation_notes": "min lambda to flip = (z[mbr_pick] - z[best_entity_candidate]) * len(norm_tokens(best_entity_candidate)) \u2014 the lambda at which V1's length-normalized bonus (unit overlap advantage) closes the z-gap; computed on the actionable pools (B3). Flip check: V1 argmax vs MBR argmax over all 144 pools x lambda in {0.05,0.1,0.2,0.4,0.8}, LOO consensus-2 memory. REQUALIFIED: the memo's 'zero flips at lambda <= 0.8' holds as measured by the constructor (WER delta exactly 0.0 at every lambda; zero WER-affecting flips) but is literally false as an argmax-flip count: 10 flips occur (2 pools x 5 lambdas, all at EXACTLY tied z between distinct same-utility strings, all WER-neutral tie-break artifacts). Match asserted on the requalified reading."
+    },
+    "B6_v4_loo_arm": {
+      "computed": {
+        "wer_delta_vs_mbr": 0.00611,
+        "ci95_cluster_by_utt": [
+          -0.00194,
+          0.01598
+        ],
+        "entity_recall_mbr": 0.3681,
+        "entity_recall_v4": 0.4375,
+        "shuffled_delta": -0.00039,
+        "flips": 18,
+        "shuffled_flips": 2
+      },
+      "target": {
+        "wer_delta_vs_mbr": 0.00611,
+        "ci95": [
+          -0.00194,
+          0.01598
+        ],
+        "entity_recall": "0.368 -> 0.4375",
+        "shuffled_delta": -0.00039
+      },
+      "match": true,
+      "interpretation_notes": "flip rule: flip only if some candidate has STRICTLY greater |raretok & memory|; among max-overlap candidates take max z (ties lowest index). LOO memory = consensus-2 over same-entity other utts; shuffled = entity derangement (sorted entities, i -> i+1 mod 13). Cluster bootstrap by utterance, 10k draws, random.Random(42)."
+    },
+    "B7_v4_streaming_arm": {
+      "computed": {
+        "wer_delta_vs_mbr": 0.00321,
+        "ci95_cluster_by_utt": [
+          -0.00399,
+          0.01225
+        ],
+        "shuffled_delta": 0.0,
+        "flips": 8,
+        "shuffled_flips": 0
+      },
+      "target": {
+        "wer_delta_vs_mbr": 0.00321,
+        "ci95": [
+          -0.00399,
+          0.01225
+        ],
+        "shuffled_delta": 0.0
+      },
+      "match": true,
+      "interpretation_notes": "session = chapter, reading order (sort by chapter then utt index); seed block k is replica k of the session; memory strictly from PRIOR utterances (consensus-2 per pool, unioned); shuffled = chapter derangement with position-matched donor snapshots (donor snapshot INCLUDES its own position, as in the constructor's implementation)."
+    }
+  },
+  "n_match": "12/12",
+  "sources": {
+    "c1": "_repro/asr_bon_llamacpp_snr5.json",
+    "m3": "_repro/m3_phase0_zero_support.json"
+  },
+  "elapsed_s": 0.8,
+  "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/m5_memo_censuses.py (CPU-only; recomputes every M5 memo census from the two committed dev artifacts; deterministic)"
+}
