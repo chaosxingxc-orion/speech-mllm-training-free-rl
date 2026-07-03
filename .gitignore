@@ -38,3 +38,6 @@ wandb/
 .DS_Store
 .vscode/
 .idea/
+
+# Claude Code personal project settings (not shared)
+.claude/settings.local.json
