@@ -1,0 +1,1562 @@
+{
+  "summary": {
+    "problem": "CP-3 (c) realization \u2014 modern label-free selectors on MMAU-mini pools (frozen Qwen3-Omni-30B)",
+    "stage": "1-directional",
+    "grade": "[directional | n=150 | single-touch | not significance-bearing]",
+    "n_utts": 150,
+    "n_skipped": 0,
+    "budget": 8,
+    "temp": 0.7,
+    "dataset": "mmau-mini test_mini (SAME n=150 slice as E3)",
+    "slice_seed": 20260704,
+    "greedy": 0.6333,
+    "oracle": 0.7733,
+    "oracle_headroom": 0.14,
+    "selectors": {
+      "majority": {
+        "acc": 0.6267,
+        "realized_over_greedy": -0.0066,
+        "rho": -0.0471,
+        "ci_vs_majority": [
+          0.0,
+          0.0
+        ]
+      },
+      "self_certainty": {
+        "acc": 0.6333,
+        "realized_over_greedy": 0.0,
+        "rho": 0.0,
+        "ci_vs_majority": [
+          0.0,
+          0.02
+        ]
+      },
+      "conf_weighted_vote": {
+        "acc": 0.6267,
+        "realized_over_greedy": -0.0066,
+        "rho": -0.0471,
+        "ci_vs_majority": [
+          0.0,
+          0.0
+        ]
+      },
+      "judge": {
+        "acc": 0.6533,
+        "realized_over_greedy": 0.02,
+        "rho": 0.1429,
+        "ci_vs_majority": [
+          -0.0133,
+          0.0667
+        ]
+      }
+    },
+    "best_selector": "judge",
+    "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28; audio EXPERIMENTAL)",
+    "prereg": "module docstring, committed before generation (git history is the anchor)",
+    "verdict": "greedy 0.633, oracle 0.773 (headroom +0.1400). Best label-free selector = judge acc 0.653, \u03c1=0.1429 (vs majority CI [-0.0133, 0.0667]). self-certainty \u03c1=0.0, conf-vote \u03c1=-0.0471, judge \u03c1=0.1429. (c)-realization stays ~0: no label-free selector significantly beats majority \u2014 the +0.133 headroom is not deployably realizable."
+  },
+  "per_utt": [
+    {
+      "task": "sound",
+      "gt": 0,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "sound",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 2,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 0,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "speech",
+      "gt": 1,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 1,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 1,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 3,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "music",
+      "gt": 0,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 0,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "sound",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 2,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 0,
+      "self_certainty": 1,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 0,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "sound",
+      "gt": 2,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "speech",
+      "gt": 1,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 2,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 0,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 0,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "speech",
+      "gt": 3,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 1,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 3,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 1,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 2,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 0,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "sound",
+      "gt": 1,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 2,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 2,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 2,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "sound",
+      "gt": 1,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 3,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 0,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "speech",
+      "gt": 1,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 1,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "sound",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 2,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 3,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "speech",
+      "gt": 2,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 1,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 1,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "sound",
+      "gt": 2,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 2,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "speech",
+      "gt": 2,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 1,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "sound",
+      "gt": 3,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "sound",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 3,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 1,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "sound",
+      "gt": 2,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 1,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 3,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "music",
+      "gt": 1,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 3,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 1,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "speech",
+      "gt": 1,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 2,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 1,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 3,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 0,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 1,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 0,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 2,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 1,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 2,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 0,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 2,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 3,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "music",
+      "gt": 0,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 2,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 2,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 2,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 1,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 3,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 2,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "music",
+      "gt": 2,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 2,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 1,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 3,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 1,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "speech",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 0,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 2,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 0,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 1,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "music",
+      "gt": 2,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 0,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 0,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "music",
+      "gt": 2,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "speech",
+      "gt": 2,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 1,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "speech",
+      "gt": 1,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 0,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "sound",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 2,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 3,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 0,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "music",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 1,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "speech",
+      "gt": 1,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 1,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 1,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 2,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 2,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 1,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 0,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 1,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "music",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 1,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 2,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 0,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "music",
+      "gt": 0,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "sound",
+      "gt": 0,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 1,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 0,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 3,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 3,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 0
+    },
+    {
+      "task": "music",
+      "gt": 1,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 3,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "music",
+      "gt": 1,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "speech",
+      "gt": 1,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 0,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 1,
+      "oracle": 0
+    },
+    {
+      "task": "music",
+      "gt": 2,
+      "greedy": 1,
+      "majority": 1,
+      "self_certainty": 1,
+      "conf_weighted_vote": 1,
+      "judge": 1,
+      "oracle": 1
+    },
+    {
+      "task": "sound",
+      "gt": 0,
+      "greedy": 0,
+      "majority": 0,
+      "self_certainty": 0,
+      "conf_weighted_vote": 0,
+      "judge": 0,
+      "oracle": 1
+    }
+  ],
+  "elapsed_s": 2056.5,
+  "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/cp3_selector_realization_mmau.py (llama-server resident)"
+}
