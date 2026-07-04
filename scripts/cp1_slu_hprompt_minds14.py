@@ -1,6 +1,6 @@
 """CP-1 SLU arm — quantify H_prompt − H_fix for intent classification on frozen Qwen3-Omni-30B (GPU).
 
-MINI-PREREG (committed before generation; Stage-2 dev measurement of K2-selected problem CP-1, SLU arm):
+MINI-PREREG (committed before generation; Stage-1 directional worth-investment check on K2-selected problem CP-1, SLU arm):
   Question: on the schema-rich intent-classification surface, how much oracle headroom does INSTRUCTION
   diversity add beyond SAMPLING diversity at matched budget — i.e. H_prompt − H_fix on MInDS-14 intent?
   Directly measures the survey's central quantity on the family the Stage-1 probe weakly favored and
@@ -20,7 +20,7 @@ MINI-PREREG (committed before generation; Stage-2 dev measurement of K2-selected
     - H_fix = oracle_fix − greedy ; H_prompt = oracle_prompt − greedy ; **H_prompt − H_fix** (the target);
     - Delta_BM (matched-budget) = oracle_prompt − oracle_fix ; b2-share = oracle_prompt − oracle_random ;
     - paired cluster-bootstrap 95% CIs (descriptive) on per-utt (correct_prompt − correct_fix) etc.
-  Grade: [directional | n=150 | single-touch | not significance-bearing]. Stage-2 confirmatory = full
+  Grade: [directional | n=150 | single-touch | not significance-bearing]. Stage-2 (only if this directional check warrants investment) = full
   563 + multilingual + label-sensitivity control on a fresh touch.
   Budget: 150 x (1 + 8 + 8 + 8) = 3,750 short-output generations, ~45-75 min GPU.
 
@@ -190,7 +190,7 @@ def main():
     greedy, ofix, opr, ornd = m("greedy_correct"), m("oracle_fix"), m("oracle_prompt"), m("oracle_random")
     summary = {
         "problem": "CP-1 SLU arm — H_prompt - H_fix on MInDS-14 en-US intent (frozen Qwen3-Omni-30B)",
-        "stage": "2-dev", "grade": "[directional | n=%d | single-touch | not significance-bearing]" % len(rows),
+        "stage": "1-directional", "grade": "[directional | n=%d | single-touch | not significance-bearing]" % len(rows),
         "n_utts": len(rows), "n_skipped": len(skipped), "budget_per_arm": BUDGET, "temp": TEMP,
         "dataset": "minds14/en-US (14 balanced banking intents)", "slice_seed": SLICE_SEED,
         "acc": {"greedy": greedy, "majority": m("majority_correct"),
