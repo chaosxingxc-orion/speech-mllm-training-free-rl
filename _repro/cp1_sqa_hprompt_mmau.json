@@ -1,0 +1,1544 @@
+{
+  "summary": {
+    "problem": "CP-1 SQA arm \u2014 H_prompt - H_fix on MMAU-mini audio-MCQ (frozen Qwen3-Omni-30B)",
+    "stage": "1-directional",
+    "grade": "[directional | n=150 | single-touch | not significance-bearing]",
+    "n_utts": 150,
+    "n_skipped": 0,
+    "budget_per_arm": 8,
+    "temp": 0.7,
+    "dataset": "mmau-mini test_mini (sound/music/speech MCQ)",
+    "slice_seed": 20260704,
+    "acc": {
+      "greedy": 0.64,
+      "majority": 0.64,
+      "oracle_fix": 0.7733,
+      "oracle_prompt": 0.7933,
+      "oracle_generic_b1floor": 0.7667
+    },
+    "greedy_by_task": {
+      "music": 0.628,
+      "sound": 0.588,
+      "speech": 0.696
+    },
+    "H_fix": 0.1333,
+    "H_prompt": 0.1533,
+    "H_prompt_minus_H_fix": 0.02,
+    "b2_share_prompt_minus_generic": 0.0266,
+    "ci_prompt_minus_fix_descriptive": [
+      -0.02,
+      0.06
+    ],
+    "ci_prompt_minus_generic_descriptive": [
+      -0.0267,
+      0.08
+    ],
+    "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28; audio EXPERIMENTAL)",
+    "prereg": "module docstring, committed before generation (git history is the anchor)",
+    "verdict": "greedy MCQ-acc 0.640 (by task {'music': 0.628, 'sound': 0.588, 'speech': 0.696}); oracle-over-8 fix 0.773 vs prompt 0.793 -> H_prompt-H_fix = +0.0200 (CI [-0.02, 0.06]); b1 generic-floor oracle 0.767, b2-share prompt-minus-generic +0.0266 (CI [-0.0267, 0.08]). H_fix=+0.1333 (headroom present: yes). Directional: instruction diversity does not clearly add oracle headroom on this harder surface; does not clearly survive the b1 floor."
+  },
+  "per_utt": [
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 0,
+      "oracle_generic": 0
+    },
+    {
+      "task": "sound",
+      "difficulty": "hard",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "easy",
+      "gt": 2,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "hard",
+      "gt": 0,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 0,
+      "oracle_generic": 0
+    },
+    {
+      "task": "speech",
+      "difficulty": "hard",
+      "gt": 1,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "easy",
+      "gt": 1,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "medium",
+      "gt": 1,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 0
+    },
+    {
+      "task": "speech",
+      "difficulty": "hard",
+      "gt": 3,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 1,
+      "oracle_generic": 0
+    },
+    {
+      "task": "music",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "hard",
+      "gt": 0,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 1,
+      "oracle_prompt": 0,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "easy",
+      "gt": 2,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "easy",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 0,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 0,
+      "oracle_generic": 0
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 2,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 0,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "medium",
+      "gt": 1,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "medium",
+      "gt": 2,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 0
+    },
+    {
+      "task": "speech",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 1,
+      "oracle_generic": 0
+    },
+    {
+      "task": "speech",
+      "difficulty": "medium",
+      "gt": 3,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 1,
+      "oracle_prompt": 0,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "medium",
+      "gt": 1,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "Hard",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "easy",
+      "gt": 3,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "medium",
+      "gt": 1,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "easy",
+      "gt": 2,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "hard",
+      "gt": 0,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 0,
+      "oracle_generic": 0
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 1,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "medium",
+      "gt": 2,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "medium",
+      "gt": 2,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "easy",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 2,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 0,
+      "oracle_generic": 0
+    },
+    {
+      "task": "sound",
+      "difficulty": "easy",
+      "gt": 1,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "medium",
+      "gt": 3,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 0
+    },
+    {
+      "task": "speech",
+      "difficulty": "hard",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "easy",
+      "gt": 0,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 0
+    },
+    {
+      "task": "speech",
+      "difficulty": "hard",
+      "gt": 1,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "medium",
+      "gt": 1,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 0,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 2,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "hard",
+      "gt": 3,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 0,
+      "oracle_generic": 0
+    },
+    {
+      "task": "speech",
+      "difficulty": "hard",
+      "gt": 2,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "hard",
+      "gt": 1,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "easy",
+      "gt": 1,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 0,
+      "oracle_generic": 0
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 2,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "hard",
+      "gt": 2,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 0,
+      "oracle_generic": 0
+    },
+    {
+      "task": "speech",
+      "difficulty": "medium",
+      "gt": 2,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "hard",
+      "gt": 1,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 0,
+      "oracle_generic": 0
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 3,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 0,
+      "oracle_generic": 0
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 3,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "easy",
+      "gt": 1,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 0,
+      "oracle_generic": 0
+    },
+    {
+      "task": "sound",
+      "difficulty": "easy",
+      "gt": 2,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "easy",
+      "gt": 1,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 3,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 0,
+      "oracle_generic": 0
+    },
+    {
+      "task": "music",
+      "difficulty": "easy",
+      "gt": 1,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "medium",
+      "gt": 3,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "medium",
+      "gt": 1,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 0,
+      "oracle_generic": 0
+    },
+    {
+      "task": "speech",
+      "difficulty": "easy",
+      "gt": 1,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 1,
+      "oracle_prompt": 0,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 2,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "medium",
+      "gt": 1,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 3,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "hard",
+      "gt": 0,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 0
+    },
+    {
+      "task": "speech",
+      "difficulty": "easy",
+      "gt": 1,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "hard",
+      "gt": 2,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "medium",
+      "gt": 1,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "hard",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 2,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "easy",
+      "gt": 0,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 2,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 3,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 0,
+      "oracle_generic": 0
+    },
+    {
+      "task": "music",
+      "difficulty": "easy",
+      "gt": 0,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 2,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "hard",
+      "gt": 2,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "easy",
+      "gt": 2,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "hard",
+      "gt": 1,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "medium",
+      "gt": 3,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "hard",
+      "gt": 2,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 0,
+      "oracle_generic": 0
+    },
+    {
+      "task": "music",
+      "difficulty": "easy",
+      "gt": 2,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "easy",
+      "gt": 2,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "hard",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "easy",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "medium",
+      "gt": 1,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 3,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "easy",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "hard",
+      "gt": 1,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 0,
+      "oracle_generic": 0
+    },
+    {
+      "task": "speech",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "hard",
+      "gt": 2,
+      "greedy_correct": 0,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "hard",
+      "gt": 0,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 0
+    },
+    {
+      "task": "speech",
+      "difficulty": "hard",
+      "gt": 1,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 0,
+      "oracle_generic": 0
+    },
+    {
+      "task": "music",
+      "difficulty": "medium",
+      "gt": 2,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 0,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "hard",
+      "gt": 0,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 0,
+      "oracle_generic": 0
+    },
+    {
+      "task": "music",
+      "difficulty": "easy",
+      "gt": 2,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 0,
+      "oracle_generic": 0
+    },
+    {
+      "task": "speech",
+      "difficulty": "easy",
+      "gt": 2,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "easy",
+      "gt": 1,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 0,
+      "oracle_generic": 0
+    },
+    {
+      "task": "speech",
+      "difficulty": "hard",
+      "gt": 1,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 0,
+      "oracle_generic": 0
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "medium",
+      "gt": 2,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 0
+    },
+    {
+      "task": "speech",
+      "difficulty": "easy",
+      "gt": 3,
+      "greedy_correct": 1,
+      "majority_correct": 0,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 1,
+      "oracle_generic": 0
+    },
+    {
+      "task": "music",
+      "difficulty": "easy",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "hard",
+      "gt": 1,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 0,
+      "oracle_generic": 0
+    },
+    {
+      "task": "speech",
+      "difficulty": "easy",
+      "gt": 1,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "easy",
+      "gt": 1,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "medium",
+      "gt": 1,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 2,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "hard",
+      "gt": 2,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "medium",
+      "gt": 1,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "hard",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "hard",
+      "gt": 0,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "hard",
+      "gt": 1,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 0,
+      "oracle_generic": 0
+    },
+    {
+      "task": "music",
+      "difficulty": "easy",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "hard",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "hard",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "easy",
+      "gt": 1,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "hard",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "easy",
+      "gt": 2,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "hard",
+      "gt": 0,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 0,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 0,
+      "oracle_generic": 0
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "medium",
+      "gt": 1,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 3,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "medium",
+      "gt": 3,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 0,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "hard",
+      "gt": 1,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "medium",
+      "gt": 3,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "easy",
+      "gt": 1,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "speech",
+      "difficulty": "easy",
+      "gt": 1,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "hard",
+      "gt": 0,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 0,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "music",
+      "difficulty": "easy",
+      "gt": 2,
+      "greedy_correct": 1,
+      "majority_correct": 1,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 1
+    },
+    {
+      "task": "sound",
+      "difficulty": "medium",
+      "gt": 0,
+      "greedy_correct": 0,
+      "majority_correct": 0,
+      "oracle_fix": 1,
+      "oracle_prompt": 1,
+      "oracle_generic": 0
+    }
+  ],
+  "elapsed_s": 3675.5,
+  "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/cp1_sqa_hprompt_mmau.py (llama-server resident)"
+}
