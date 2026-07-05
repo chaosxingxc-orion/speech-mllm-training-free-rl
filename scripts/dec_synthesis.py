@@ -12,9 +12,12 @@ import json, os
 from pathlib import Path
 DATA = Path(os.environ["SPEECHRL_DATA_DIR"])
 R = DATA / "_repro"
-REL_BAR = 0.10          # P1: relative +10%
-RHO_MIN = 0.30          # P1: min oracle-delta fraction a selector must realize to "work"
+REL_BAR = 0.10          # P1 FROZEN bar: relative +10% deployable greedy gain (the ONLY clearing criterion)
 TRANSFER_MIN = 0.70     # P1: E8 held-out/dev retained ratio
+# NOTE (post-review 2026-07-05): the earlier RHO_MIN=0.30 threshold for E10 was POST-HOC (not in the
+# frozen prereg) and manufactured a false "E10 clears" — the strict review (methodology M2, DA M2) caught
+# it. E10 is now judged by the SAME frozen bar as the other levers: does the verifier-selected accuracy
+# beat greedy by relative +10%? (SQuAD +5.6%, big-bench +8.3% -> clears NOTHING.) rho is reported only.
 
 
 def load(name):
@@ -46,16 +49,19 @@ def main():
         # E8: rel test gain + transfer
         if s in e8 and "rel_gain" in e8[s]:
             row["e8_rel_gain"] = e8[s]["rel_gain"]; row["e8_transfer"] = e8[s].get("transfer")
-        # E10: two-system verifier rho + isolation gain
-        if s in e10 and "rho_isolated" in e10[s]:
-            row["e10_rho_iso"] = e10[s]["rho_isolated"]; row["e10_iso_gain"] = e10[s].get("isolation_gain_over_coupled")
-        # per-surface: did any lever clear the bar?
+        # E10: judged by the SAME frozen +10% bar — does the verifier-selected accuracy beat greedy by
+        # relative +10%? rho is reported only (NOT a clearing criterion; see header note).
+        if s in e10 and "verifier_isolated" in e10[s]:
+            g = e10[s].get("greedy", 0); vi = e10[s].get("verifier_isolated", 0)
+            row["e10_rel_gain"] = round((vi - g) / max(1e-9, g), 4)
+            row["e10_rho_iso"] = e10[s].get("rho_isolated"); row["e10_iso_gain"] = e10[s].get("isolation_gain_over_coupled")
+        # per-surface: did any lever clear the FROZEN bar (relative +10% deployable greedy gain)?
         cleared = []
         if row.get("e7_rel_gain", -9) >= REL_BAR and row.get("e7_b2_genuine"):
             cleared.append("E7")
         if row.get("e8_rel_gain", -9) >= REL_BAR and (row.get("e8_transfer") or 0) >= TRANSFER_MIN:
             cleared.append("E8")
-        if row.get("e10_rho_iso", -9) >= RHO_MIN:
+        if row.get("e10_rel_gain", -9) >= REL_BAR:
             cleared.append("E10")
         row["cleared"] = cleared
         rows.append(row)
@@ -69,11 +75,15 @@ def main():
             c[l] += 1
     need = (len(nonsat) + 1) // 2
     winners = {l: n for l, n in c.items() if n >= need}
-    verdict = ("2.1 (space IS training-free-optimizable via A/selection): " + ", ".join(sorted(winners))
-               if winners else
-               "2.2 (no in-fence lever clears the bar on a majority of non-saturated surfaces -> agentic "
-               "reward/verification expansion warranted; residual = knowledge blind-spot, PARKED #37->W4)")
-    out = {"criteria": {"rel_bar": REL_BAR, "rho_min": RHO_MIN, "transfer_min": TRANSFER_MIN,
+    verdict = ("2.1 candidate (an in-fence lever clears the frozen +10% bar on a majority): "
+               + ", ".join(sorted(winners)) if winners else
+               "DIRECTIONAL NULL — no in-fence lever clears the frozen +10% bar. This does NOT establish "
+               "branch 2.2: the decisive in-fence instruments were NOT run (real OPRO/GEPA prompt search, "
+               "M3 cross-modal injection, an ON-SURFACE self-selection control for E10), and E10 is a "
+               "branch-2.1 verifier/MBR selector that is under-powered (n=24, no bootstrap CIs). Returned "
+               "to owner as a directional signal; NOT a branch decision, NOT a build recommendation.")
+    out = {"criteria": {"rel_bar": REL_BAR, "transfer_min": TRANSFER_MIN,
+                        "note_e10": "judged by the frozen +10% greedy-gain bar, NOT the post-hoc rho>=0.3",
                         "coverage_rule": f">= majority of non-saturated surfaces (need {need} of {len(nonsat)})"},
            "per_surface": rows, "non_saturated": [r["surface"] for r in nonsat],
            "lever_clear_counts": dict(c), "provisional_verdict": verdict,
