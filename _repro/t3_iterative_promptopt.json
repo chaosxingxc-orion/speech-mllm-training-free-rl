@@ -1,0 +1,77 @@
+{
+  "summary": {
+    "stage": "1-directional",
+    "lever": "iterative feedback-driven prompt-opt (E8′)",
+    "boundary": "dev-set offline optimization (dev labels ok), frozen test greedy, test audio-only",
+    "rounds": 3,
+    "n_dev": 25,
+    "n_test": 40,
+    "seed": 20260705
+  },
+  "results": {
+    "mmau-mini": {
+      "task": "mcq",
+      "n_test": 40,
+      "rounds": 3,
+      "base_test": 0.325,
+      "opt_test": 0.325,
+      "opt_minus_base": 0.0,
+      "delta_CI": [
+        0.0,
+        0.0
+      ],
+      "dev_acc_trace": [
+        0.4,
+        0.0,
+        0.0,
+        0.08
+      ],
+      "best_dev": 0.4,
+      "best_instruction": "Listen to the audio and answer the multiple-choice question.\nGiven that a chainsaw is being run, identify the activity occurring in the background.\nOptions:\nA. Construction\nB. Lumberjacking\nC. Carpentry\nD. Farming\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "sig": "n.s."
+    },
+    "vocalbench-zh": {
+      "task": "qa",
+      "n_test": 40,
+      "rounds": 3,
+      "base_test": 0.45,
+      "opt_test": 0.4,
+      "opt_minus_base": -0.05,
+      "delta_CI": [
+        -0.125,
+        0.0
+      ],
+      "dev_acc_trace": [
+        0.68,
+        0.64,
+        0.6,
+        0.6
+      ],
+      "best_dev": 0.68,
+      "best_instruction": "Listen and answer with a short answer only.",
+      "sig": "n.s."
+    },
+    "SQuAD-zh": {
+      "task": "qa",
+      "n_test": 40,
+      "rounds": 3,
+      "base_test": 0.725,
+      "opt_test": 0.675,
+      "opt_minus_base": -0.05,
+      "delta_CI": [
+        -0.2,
+        0.1
+      ],
+      "dev_acc_trace": [
+        0.76,
+        0.8,
+        0.76,
+        0.72
+      ],
+      "best_dev": 0.8,
+      "best_instruction": "Listen carefully and respond with the exact phrase or number you hear.",
+      "sig": "n.s."
+    }
+  },
+  "reproduce": "python scripts/p5_iterative_promptopt.py"
+}
