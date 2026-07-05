@@ -1,0 +1,104 @@
+{
+  "summary": {
+    "stage": "1-directional",
+    "lever": "multimodal few-shot ICL",
+    "shots": [
+      0,
+      2
+    ],
+    "pool": 16,
+    "nquery": 30,
+    "seed": 20260705
+  },
+  "results": {
+    "mmau-mini": {
+      "task": "mcq",
+      "n_query": 30,
+      "shots": {
+        "0": {
+          "greedy_b2": 0.8333,
+          "greedy_b1_floor": 0.8333,
+          "b2_minus_b1": 0.0,
+          "n": 30
+        },
+        "2": {
+          "greedy_b2": 0.8,
+          "greedy_b1_floor": 0.7667,
+          "b2_minus_b1": 0.0333,
+          "n": 30
+        }
+      },
+      "tok": {
+        "0": 230,
+        "2": 855
+      }
+    },
+    "vocalbench-zh": {
+      "task": "qa",
+      "n_query": 30,
+      "shots": {
+        "0": {
+          "greedy_b2": 0.5333,
+          "greedy_b1_floor": 0.5333,
+          "b2_minus_b1": 0.0,
+          "n": 30
+        },
+        "2": {
+          "greedy_b2": 0.2667,
+          "greedy_b1_floor": 0.3,
+          "b2_minus_b1": -0.0333,
+          "n": 30
+        }
+      },
+      "tok": {
+        "0": 97,
+        "2": 389
+      }
+    },
+    "SQuAD-zh": {
+      "task": "qa",
+      "n_query": 30,
+      "shots": {
+        "0": {
+          "greedy_b2": 0.7333,
+          "greedy_b1_floor": 0.7333,
+          "b2_minus_b1": 0.0,
+          "n": 30
+        },
+        "2": {
+          "greedy_b2": 0.7333,
+          "greedy_b1_floor": 0.6667,
+          "b2_minus_b1": 0.0667,
+          "n": 30
+        }
+      },
+      "tok": {
+        "0": 279,
+        "2": 785
+      }
+    },
+    "big-bench-audio": {
+      "task": "qa",
+      "n_query": 30,
+      "shots": {
+        "0": {
+          "greedy_b2": 0.7,
+          "greedy_b1_floor": 0.7,
+          "b2_minus_b1": 0.0,
+          "n": 30
+        },
+        "2": {
+          "greedy_b2": 0.6667,
+          "greedy_b1_floor": 0.6667,
+          "b2_minus_b1": 0.0,
+          "n": 30
+        }
+      },
+      "tok": {
+        "0": 231,
+        "2": 770
+      }
+    }
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/p3_fewshot.py"
+}

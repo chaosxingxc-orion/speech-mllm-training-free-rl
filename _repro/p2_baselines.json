@@ -1,0 +1,75 @@
+{
+  "summary": {
+    "stage": "1-directional",
+    "n_per_set": 150,
+    "nsamp": 8,
+    "slice_seed": 20260705,
+    "model": "qwen3-omni-30b Q8_0 GGUF llama.cpp"
+  },
+  "results": {
+    "mmau-mini": {
+      "n": 150,
+      "n_skip": 0,
+      "greedy": 0.6533,
+      "oracle": 0.8,
+      "oracle_delta": 0.1467,
+      "saturated": false,
+      "task": "mcq"
+    },
+    "OpenbookQA-zh": {
+      "n": 150,
+      "n_skip": 0,
+      "greedy": 0.9733,
+      "oracle": 0.9733,
+      "oracle_delta": 0.0,
+      "saturated": true,
+      "task": "mcq"
+    },
+    "vocalbench-zh": {
+      "n": 150,
+      "n_skip": 0,
+      "greedy": 0.4667,
+      "oracle": 0.5733,
+      "oracle_delta": 0.1067,
+      "saturated": false,
+      "task": "qa"
+    },
+    "SQuAD-zh": {
+      "n": 150,
+      "n_skip": 0,
+      "greedy": 0.7533,
+      "oracle": 0.8933,
+      "oracle_delta": 0.14,
+      "saturated": false,
+      "task": "qa"
+    },
+    "spoken-squad": {
+      "n": 150,
+      "n_skip": 0,
+      "greedy": 0.8733,
+      "oracle": 0.96,
+      "oracle_delta": 0.0867,
+      "saturated": false,
+      "task": "qa"
+    },
+    "minds14-zh": {
+      "n": 150,
+      "n_skip": 0,
+      "greedy": 0.94,
+      "oracle": 0.9467,
+      "oracle_delta": 0.0067,
+      "saturated": true,
+      "task": "slu"
+    },
+    "big-bench-audio": {
+      "n": 150,
+      "n_skip": 0,
+      "greedy": 0.5667,
+      "oracle": 0.8467,
+      "oracle_delta": 0.28,
+      "saturated": false,
+      "task": "qa"
+    }
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/p2_baselines.py"
+}

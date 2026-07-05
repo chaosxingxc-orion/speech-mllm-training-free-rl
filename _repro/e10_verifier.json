@@ -1,0 +1,69 @@
+{
+  "summary": {
+    "stage": "1-directional",
+    "lever": "generator/verifier two-system (decorrelation)",
+    "nsamp": 3,
+    "n_query": 24,
+    "seed": 20260705,
+    "note": "isolated vs coupled verifier; residual knowledge floor PARKED (#37->W4)"
+  },
+  "results": {
+    "mmau-mini": {
+      "task": "mcq",
+      "n": 24,
+      "greedy": 0.75,
+      "oracle": 0.75,
+      "oracle_delta": 0.0,
+      "verifier_isolated": 0.7083,
+      "rho_isolated": -41666666.6667,
+      "verifier_coupled": 0.7083,
+      "rho_coupled": -41666666.6667,
+      "decorrelation_catch_rate": 0.0,
+      "n_gen_wrong_with_fix": 0,
+      "isolation_gain_over_coupled": 0.0
+    },
+    "vocalbench-zh": {
+      "task": "qa",
+      "n": 24,
+      "greedy": 0.6667,
+      "oracle": 0.7083,
+      "oracle_delta": 0.0417,
+      "verifier_isolated": 0.6667,
+      "rho_isolated": 0.0,
+      "verifier_coupled": 0.6667,
+      "rho_coupled": 0.0,
+      "decorrelation_catch_rate": 1.0,
+      "n_gen_wrong_with_fix": 1,
+      "isolation_gain_over_coupled": 0.0
+    },
+    "SQuAD-zh": {
+      "task": "qa",
+      "n": 24,
+      "greedy": 0.75,
+      "oracle": 0.8333,
+      "oracle_delta": 0.0833,
+      "verifier_isolated": 0.7917,
+      "rho_isolated": 0.5,
+      "verifier_coupled": 0.75,
+      "rho_coupled": 0.0,
+      "decorrelation_catch_rate": 0.5,
+      "n_gen_wrong_with_fix": 2,
+      "isolation_gain_over_coupled": 0.0417
+    },
+    "big-bench-audio": {
+      "task": "qa",
+      "n": 24,
+      "greedy": 0.5,
+      "oracle": 0.5833,
+      "oracle_delta": 0.0833,
+      "verifier_isolated": 0.5417,
+      "rho_isolated": 0.5,
+      "verifier_coupled": 0.5417,
+      "rho_coupled": 0.5,
+      "decorrelation_catch_rate": 1.0,
+      "n_gen_wrong_with_fix": 2,
+      "isolation_gain_over_coupled": 0.0
+    }
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/p3c_verifier.py"
+}

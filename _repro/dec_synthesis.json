@@ -1,0 +1,99 @@
+{
+  "criteria": {
+    "rel_bar": 0.1,
+    "rho_min": 0.3,
+    "transfer_min": 0.7,
+    "coverage_rule": ">= majority of non-saturated surfaces (need 3 of 5)"
+  },
+  "per_surface": [
+    {
+      "surface": "OpenbookQA-zh",
+      "greedy": 0.9733,
+      "oracle_delta": 0.0,
+      "saturated": true,
+      "cleared": []
+    },
+    {
+      "surface": "SQuAD-zh",
+      "greedy": 0.7533,
+      "oracle_delta": 0.14,
+      "saturated": false,
+      "e7_rel_gain": 0.0,
+      "e7_b2_genuine": false,
+      "e8_rel_gain": 0.0,
+      "e8_transfer": 0.9167,
+      "e10_rho_iso": 0.5,
+      "e10_iso_gain": 0.0417,
+      "cleared": [
+        "E10"
+      ]
+    },
+    {
+      "surface": "big-bench-audio",
+      "greedy": 0.5667,
+      "oracle_delta": 0.28,
+      "saturated": false,
+      "e7_rel_gain": 0.0,
+      "e7_b2_genuine": false,
+      "e8_rel_gain": 0.0,
+      "e8_transfer": 1.0303,
+      "e10_rho_iso": 0.5,
+      "e10_iso_gain": 0.0,
+      "cleared": [
+        "E10"
+      ]
+    },
+    {
+      "surface": "minds14-zh",
+      "greedy": 0.94,
+      "oracle_delta": 0.0067,
+      "saturated": true,
+      "cleared": []
+    },
+    {
+      "surface": "mmau-mini",
+      "greedy": 0.6533,
+      "oracle_delta": 0.1467,
+      "saturated": false,
+      "e7_rel_gain": 0.0,
+      "e7_b2_genuine": false,
+      "e8_rel_gain": 0.0,
+      "e8_transfer": 1.1429,
+      "e10_rho_iso": -41666666.6667,
+      "e10_iso_gain": 0.0,
+      "cleared": []
+    },
+    {
+      "surface": "spoken-squad",
+      "greedy": 0.8733,
+      "oracle_delta": 0.0867,
+      "saturated": false,
+      "cleared": []
+    },
+    {
+      "surface": "vocalbench-zh",
+      "greedy": 0.4667,
+      "oracle_delta": 0.1067,
+      "saturated": false,
+      "e7_rel_gain": 0.0,
+      "e7_b2_genuine": false,
+      "e8_rel_gain": 0.0,
+      "e8_transfer": 0.8205,
+      "e10_rho_iso": 0.0,
+      "e10_iso_gain": 0.0,
+      "cleared": []
+    }
+  ],
+  "non_saturated": [
+    "SQuAD-zh",
+    "big-bench-audio",
+    "mmau-mini",
+    "spoken-squad",
+    "vocalbench-zh"
+  ],
+  "lever_clear_counts": {
+    "E10": 2
+  },
+  "provisional_verdict": "2.2 (no in-fence lever clears the bar on a majority of non-saturated surfaces -> agentic reward/verification expansion warranted; residual = knowledge blind-spot, PARKED #37->W4)",
+  "note": "PROVISIONAL — final DEC requires all of E7/E8/E10 landed + strict re-review ACCEPT."
+}
