@@ -1,0 +1,81 @@
+{
+  "summary": {
+    "stage": "1-directional",
+    "control": "on-surface self-selection (majority) vs two-system verifier, with paired-bootstrap CIs",
+    "nsamp": 5,
+    "n_query": 40,
+    "seed": 20260705
+  },
+  "results": {
+    "mmau-mini": {
+      "n": 40,
+      "greedy": 0.725,
+      "oracle": 0.75,
+      "majority": 0.725,
+      "verifier_iso": 0.65,
+      "maj_minus_greedy": 0.0,
+      "maj_vs_greedy_CI": [
+        0.0,
+        0.0
+      ],
+      "ver_minus_greedy": -0.075,
+      "ver_vs_greedy_CI": [
+        -0.175,
+        0.0
+      ],
+      "ver_minus_maj": -0.075,
+      "ver_vs_maj_CI": [
+        -0.175,
+        0.0
+      ],
+      "ver_rel_gain": -0.1034
+    },
+    "SQuAD-zh": {
+      "n": 40,
+      "greedy": 0.725,
+      "oracle": 0.825,
+      "majority": 0.775,
+      "verifier_iso": 0.75,
+      "maj_minus_greedy": 0.05,
+      "maj_vs_greedy_CI": [
+        0.0,
+        0.125
+      ],
+      "ver_minus_greedy": 0.025,
+      "ver_vs_greedy_CI": [
+        0.0,
+        0.075
+      ],
+      "ver_minus_maj": -0.025,
+      "ver_vs_maj_CI": [
+        -0.1,
+        0.05
+      ],
+      "ver_rel_gain": 0.0345
+    },
+    "big-bench-audio": {
+      "n": 40,
+      "greedy": 0.6,
+      "oracle": 0.7,
+      "majority": 0.6,
+      "verifier_iso": 0.6,
+      "maj_minus_greedy": 0.0,
+      "maj_vs_greedy_CI": [
+        0.0,
+        0.0
+      ],
+      "ver_minus_greedy": 0.0,
+      "ver_vs_greedy_CI": [
+        -0.15,
+        0.125
+      ],
+      "ver_minus_maj": 0.0,
+      "ver_vs_maj_CI": [
+        -0.15,
+        0.125
+      ],
+      "ver_rel_gain": 0.0
+    }
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/e10b_control.py"
+}
