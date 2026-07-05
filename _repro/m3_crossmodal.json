@@ -1,0 +1,33 @@
+{
+  "summary": {
+    "stage": "1-directional",
+    "lever": "M3 cross-modal (ground-truth transcript) injection",
+    "n_query": 60,
+    "seed": 20260705
+  },
+  "results": {
+    "SQuAD-zh": {
+      "n": 60,
+      "audio_only": 0.8167,
+      "audio_plus_text": 0.85,
+      "gain": 0.0333,
+      "gain_CI": [
+        -0.0667,
+        0.1333
+      ],
+      "rel_gain": 0.0408
+    },
+    "vocalbench-zh": {
+      "n": 60,
+      "audio_only": 0.5,
+      "audio_plus_text": 0.6,
+      "gain": 0.1,
+      "gain_CI": [
+        0.0,
+        0.2
+      ],
+      "rel_gain": 0.2
+    }
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/m3_crossmodal.py"
+}
