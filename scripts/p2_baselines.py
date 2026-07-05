@@ -187,9 +187,28 @@ def reward(item, text):
     return 0
 
 
+def load_bba(rng):
+    import librosa
+    md = DS / "big-bench-audio" / "metadata.jsonl"
+    rows = [json.loads(l) for l in open(md)]
+    WAV.mkdir(parents=True, exist_ok=True)
+    out = []
+    for j in rng.permutation(len(rows))[:N_UTTS]:
+        r = rows[int(j)]
+        wp = WAV / f"bba_{r['id']}.wav"
+        if not wp.exists():
+            y, sr = librosa.load(str(DS / "big-bench-audio" / r["file_name"]), sr=16000)
+            sf.write(str(wp), y, sr)
+        out.append({"wav": str(wp),
+                    "instr": "Listen to the spoken question and answer with a short answer only.",
+                    "gold": str(r["official_answer"]), "task": "qa"})
+    return out
+
+
 LOADERS = {"mmau-mini": load_mmau, "OpenbookQA-zh": load_openbookqa_zh,
            "vocalbench-zh": load_vocalbench_zh, "SQuAD-zh": load_squad_zh,
-           "spoken-squad": load_spoken_squad, "minds14-zh": load_minds14_zh}
+           "spoken-squad": load_spoken_squad, "minds14-zh": load_minds14_zh,
+           "big-bench-audio": load_bba}
 
 
 def run_ds(name, loader):
