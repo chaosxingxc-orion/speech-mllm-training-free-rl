@@ -1,0 +1,16 @@
+{
+  "stage": "1-directional",
+  "embedder": "tfidf-char2-4",
+  "k": 5,
+  "n_slu": 90,
+  "n_qa": 60,
+  "compression_chars_mean": 105.7,
+  "within_task_precision@k": 0.62,
+  "random_key_floor": 0.1,
+  "chance_same_intent": 0.08,
+  "lift_over_chance": 0.54,
+  "unified_index_precision@k": 0.62,
+  "unified_task_purity@k": 1.0,
+  "unified_vs_pertask_delta": 0.0,
+  "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/t6_compression_feasibility.py"
+}
