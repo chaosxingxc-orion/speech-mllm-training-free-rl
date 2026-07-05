@@ -1,0 +1,89 @@
+{
+  "summary": {
+    "stage": "1-directional",
+    "lever": "PROPER task-definition few-shot (E7′)",
+    "conditions": "A plain / B taskdef-only / C taskdef+reasoned-demos / b1 shuffled-taskdef",
+    "K": 2,
+    "n_query": 40,
+    "seed": 20260705,
+    "boundary": "demos from train, test audio-only, no leakage"
+  },
+  "results": {
+    "mmau-mini": {
+      "task": "mcq",
+      "n": 40,
+      "K": 2,
+      "A_plain": 0.825,
+      "B_taskdef_only": 0.75,
+      "C_taskdef_fewshot": 0.75,
+      "b1_shuffled_taskdef": 0.8,
+      "C_minus_A": -0.075,
+      "C_vs_A_CI": [
+        -0.175,
+        0.0
+      ],
+      "B_minus_A": -0.075,
+      "B_vs_A_CI": [
+        -0.175,
+        0.0
+      ],
+      "C_minus_b1_b2genuine": -0.05,
+      "C_vs_b1_CI": [
+        -0.125,
+        0.0
+      ],
+      "C_rel_gain": -0.0909
+    },
+    "vocalbench-zh": {
+      "task": "qa",
+      "n": 40,
+      "K": 2,
+      "A_plain": 0.5,
+      "B_taskdef_only": 0.375,
+      "C_taskdef_fewshot": 0.325,
+      "b1_shuffled_taskdef": 0.3,
+      "C_minus_A": -0.175,
+      "C_vs_A_CI": [
+        -0.3,
+        -0.075
+      ],
+      "B_minus_A": -0.125,
+      "B_vs_A_CI": [
+        -0.225,
+        -0.025
+      ],
+      "C_minus_b1_b2genuine": 0.025,
+      "C_vs_b1_CI": [
+        0.0,
+        0.075
+      ],
+      "C_rel_gain": -0.35
+    },
+    "SQuAD-zh": {
+      "task": "qa",
+      "n": 40,
+      "K": 2,
+      "A_plain": 0.75,
+      "B_taskdef_only": 0.8,
+      "C_taskdef_fewshot": 0.75,
+      "b1_shuffled_taskdef": 0.65,
+      "C_minus_A": 0.0,
+      "C_vs_A_CI": [
+        -0.1,
+        0.1
+      ],
+      "B_minus_A": 0.05,
+      "B_vs_A_CI": [
+        -0.075,
+        0.175
+      ],
+      "C_minus_b1_b2genuine": 0.1,
+      "C_vs_b1_CI": [
+        0.025,
+        0.2
+      ],
+      "C_rel_gain": 0.0
+    }
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/p4_taskdef_fewshot.py"
+}
