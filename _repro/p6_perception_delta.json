@@ -1,0 +1,51 @@
+{
+  "summary": {
+    "stage": "1-directional",
+    "exp": "perception-delta: omni(audio) vs omni(own-transcript)",
+    "boundary": "transcript is model-produced (deployable), not golden; same frozen model both arms",
+    "n": 60,
+    "seed": 20260706
+  },
+  "results": {
+    "mmau-mini": {
+      "task": "mcq",
+      "n": 60,
+      "acc_audio": 0.7,
+      "acc_transcript_only": 0.5833,
+      "perception_delta": 0.1167,
+      "delta_CI": [
+        0.0,
+        0.2333
+      ],
+      "sig": "n.s.",
+      "transcript_chars_mean": 88.2
+    },
+    "vocalbench-zh": {
+      "task": "qa",
+      "n": 60,
+      "acc_audio": 0.5167,
+      "acc_transcript_only": 0.5167,
+      "perception_delta": 0.0,
+      "delta_CI": [
+        -0.1,
+        0.1
+      ],
+      "sig": "n.s.",
+      "transcript_chars_mean": 24.1
+    },
+    "SQuAD-zh": {
+      "task": "qa",
+      "n": 60,
+      "acc_audio": 0.75,
+      "acc_transcript_only": 0.4667,
+      "perception_delta": 0.2833,
+      "delta_CI": [
+        0.1333,
+        0.4333
+      ],
+      "sig": "SIG(+)",
+      "transcript_chars_mean": 46.2
+    }
+  },
+  "reproduce": "python scripts/p6_perception_delta.py"
+}
