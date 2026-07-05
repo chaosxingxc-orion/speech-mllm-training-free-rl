@@ -30,6 +30,7 @@ CANDS = [
     "Be concise and correct. If unsure, pick the option best supported by the audio.",
     "Focus on what is actually said/heard, not on surface cues. Answer accurately.",
 ]
+CANDS = CANDS[:int(os.environ.get("E8_NCANDS", str(len(CANDS))))]  # keep "" base + first N-1
 
 
 def gen_sys(wav, instr, system, seed, temp):
