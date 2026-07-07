@@ -1,0 +1,31 @@
+{
+  "stage": "1-directional",
+  "grade": "small-n, single-touch, NOT significance-bearing",
+  "model": "qwen3-omni-30b Q8_0 GGUF llama.cpp",
+  "design": "A no-inject / B inject-correct-gold (CEILING) / C inject-mismatch (PLACEBO); greedy temp0; audio-query in every arm",
+  "boundary_note": "B/C inject gold-as-reference = CEILING probe, directional-only, NOT a deployable gain; real imperfect-retrieval utilization = H0/H-util at T7",
+  "results": {
+    "big-bench-audio": {
+      "n": 40,
+      "A_no_inject": 0.7,
+      "B_inject_correct_ceiling": 0.775,
+      "C_inject_mismatch_placebo": 0.625,
+      "B_minus_A": 0.075,
+      "B_minus_C": 0.15,
+      "rescue_rate_on_A_fails": 0.417,
+      "n_A_fails": 12
+    },
+    "vocalbench-zh": {
+      "n": 40,
+      "A_no_inject": 0.55,
+      "B_inject_correct_ceiling": 0.75,
+      "C_inject_mismatch_placebo": 0.475,
+      "B_minus_A": 0.2,
+      "B_minus_C": 0.275,
+      "rescue_rate_on_A_fails": 0.444,
+      "n_A_fails": 18
+    }
+  },
+  "verdict": "MIXED: partial consumption -> inspect per-set; refine at T7",
+  "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python -u scripts/t0_consumption_probe.py"
+}

@@ -1,0 +1,32 @@
+{
+  "stage": "1-directional",
+  "grade": "small-n, single-touch, boundary-clean (counterfactual utilization)",
+  "model": "qwen3-omni-30b Q8_0 GGUF",
+  "results": {
+    "SQuAD-zh": {
+      "n": 40,
+      "base_acc_A": 0.75,
+      "base_says_Aprime": 0.025,
+      "CF_follow_Aprime": 0.175,
+      "CF_keep_A": 0.7
+    },
+    "vocalbench-zh": {
+      "n": 40,
+      "base_acc_A": 0.5,
+      "base_says_Aprime": 0.0,
+      "CF_follow_Aprime": 0.3,
+      "CF_keep_A": 0.35
+    },
+    "big-bench-audio": {
+      "n": 34,
+      "base_acc_A": 0.529,
+      "base_says_Aprime": 0.088,
+      "CF_follow_Aprime": 0.235,
+      "CF_keep_A": 0.529
+    }
+  },
+  "mean_CF_follow": 0.237,
+  "interpretation": "CF_follow_Aprime = fraction the frozen omni ADOPTS the injected counterfactual external fact over its parametric answer = clean knowledge-USE/override rate (no gold leakage: A' is a controlled counterfactual). High => external knowledge is used; pairs with T8 (answer-scrubbed augmentation = null).",
+  "boundary": "audio-input question; injected value A' is a counterfactual (another item's gold), NOT this item's gold; we score adoption of the injected value, never the gold.",
+  "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python -u scripts/t9_cf_utilization.py"
+}

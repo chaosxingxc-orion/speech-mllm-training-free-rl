@@ -1,0 +1,33 @@
+{
+  "stage": "1-directional",
+  "grade": "small-n, single-touch, NOT significance-bearing",
+  "model": "qwen3-omni-30b Q8_0 GGUF llama.cpp",
+  "retriever": "tfidf-word12",
+  "n": 60,
+  "kb_passages": 403,
+  "topk": 5,
+  "gate_frac": 0.9,
+  "retrieval_hit_at_k": 0.9,
+  "gate_kept_gold": 0.733,
+  "mean_admitted": 1.4,
+  "acc": {
+    "base": 0.283,
+    "inject_k": 0.767,
+    "gate": 0.633,
+    "oracle": 0.8
+  },
+  "H0_oracle_minus_base": 0.517,
+  "H0_oracle_minus_base_CI": [
+    0.383,
+    0.65
+  ],
+  "H0_rescue_on_base_fails": 0.744,
+  "n_base_fails": 43,
+  "Hutil_gate_minus_injectk": -0.134,
+  "Hutil_gate_minus_injectk_CI": [
+    -0.233,
+    -0.05
+  ],
+  "boundary": "query=question text (not answer); answers never injected; KB=passage pool; gate reward=retriever relevance (proxy, non-gold, decorrelated from generator)",
+  "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python -u scripts/t7_rag_gate_probe.py"
+}

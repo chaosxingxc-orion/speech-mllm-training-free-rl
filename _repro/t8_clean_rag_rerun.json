@@ -1,0 +1,23 @@
+{
+  "stage": "1-directional",
+  "grade": "small-n, single-touch, boundary-clean (audio-query + answer-scrubbed)",
+  "model": "qwen3-omni-30b Q8_0 GGUF",
+  "retriever": "tfidf-word12",
+  "n": 60,
+  "asr_query_retrieval_hit@k": 0.767,
+  "post_scrub_answer_still_present": 0.017,
+  "acc": {
+    "base": 0.283,
+    "inject_k_raw": 0.733,
+    "inject_k_scrub": 0.217,
+    "oracle_scrub": 0.3
+  },
+  "clean_H0_scrub_minus_base": -0.066,
+  "clean_H0_CI": [
+    -0.167,
+    0.033
+  ],
+  "lookup_component_raw_minus_scrub": 0.516,
+  "boundary": "query=omni-own-ASR of AUDIO (deployable); injected passages have gold answer SCRUBBED; gold used ONLY for scoring (held out, never injected)",
+  "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python -u scripts/t8_clean_rag_rerun.py"
+}

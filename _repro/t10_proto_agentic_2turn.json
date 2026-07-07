@@ -1,0 +1,12 @@
+{
+  "stage": "1-directional",
+  "grade": "small-n, proto-agentic (2-turn tool-inject), boundary-clean",
+  "model": "qwen3-omni-30b Q8_0 GGUF",
+  "dataset": "SQuAD-zh",
+  "n": 40,
+  "single_turn_CF_follow": 0.175,
+  "two_turn_tool_CF_follow": 0.35,
+  "delta_twoturn_minus_single": 0.175,
+  "note": "Full agentic KB benchmarks (eva/tau2/audiomc) infeasible offline (simulator/DB-env/o4-mini rubric); this is the minimal agentic touch — does 2-turn tool-style injection change utilisation vs single-turn. Boundary-clean (A'=counterfactual, audio input).",
+  "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python -u scripts/t10_proto_agentic_2turn.py"
+}
