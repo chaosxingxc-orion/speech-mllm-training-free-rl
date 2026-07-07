@@ -18,12 +18,24 @@ def _l2(X):
 
 
 def _query_embedder(manifest, source_path):
-    """Rebuild the KEY embedder so queries land in the same space as the stored keys."""
+    """Rebuild the KEY embedder so queries land in the SAME space as the stored keys.
+
+    Correctness: retrieval MUST use the exact embedder the source was BUILT with — querying a
+    logmel-keyed KB with CLAP (or vice-versa) compares vectors from different spaces. So we map the
+    manifest's recorded embedder back to its explicit arg, never defaulting to 'auto' (which could pick
+    a different real embedder than the one keyed).
+    """
     if manifest.key_modality == "audio":
         import kb_embed
 
         emb = manifest.embedder
-        return lambda qs: kb_embed.embed_audio(qs, embedder="omni-embed" if emb.startswith("omni") else "auto")[1]
+        arg = (
+            "logmel-stats" if emb.startswith("logmel")
+            else "clap" if emb.startswith("clap")
+            else "omni-embed" if emb.startswith("omni")
+            else "auto"
+        )
+        return lambda qs: kb_embed.embed_audio(qs, embedder=arg)[1]
     # legacy text key
     if manifest.embedder.startswith("tfidf"):
         v = pickle.load(open(source_path / "retriever.pkl", "rb"))

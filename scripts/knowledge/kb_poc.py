@@ -50,15 +50,16 @@ def main() -> int:
     print(f"  built {len(records)} records", flush=True)
 
     # --- build raw (expect LEAKAGE) + scrubbed (expect CLEAN) ---
+    # PoC uses the explicit offline-smoke key (auto would raise, by design — real KBs need CLAP/omni-embed).
     m_raw = kb_build.build_source(
         "heysquad_poc", "heysquad", None, records,
-        key_modality="audio", value_type="text-fact",
-        audit_golds=golds, scrub=False, note="PoC raw",
+        key_modality="audio", value_type="text-fact", embedder="logmel-stats",
+        audit_golds=golds, scrub=False, note="PoC raw (logmel-stats smoke key)",
     )
     m_clean = kb_build.build_source(
         "heysquad_poc_clean", "heysquad", None, records,
-        key_modality="audio", value_type="text-fact",
-        audit_golds=golds, scrub=True, note="PoC answer-scrubbed",
+        key_modality="audio", value_type="text-fact", embedder="logmel-stats",
+        audit_golds=golds, scrub=True, note="PoC answer-scrubbed (logmel-stats smoke key)",
     )
 
     # --- audio-query retrieval: self-match rate on a seeded eval slice ---

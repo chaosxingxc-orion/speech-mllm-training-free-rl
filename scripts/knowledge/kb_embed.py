@@ -1,15 +1,14 @@
 """kb_embed — modality embedders. In a MULTIMODAL KB the KEY is SPEECH (audio) by default.
 
 Design (owner, 2026-07-07): the knowledge base is keyed on SPEECH. A key = a dense audio embedding;
-the value is another modality (transcript / labels / text / other-modal). So the primary embedder is
-an AUDIO embedder that turns a waveform into a vector; text embedding is the legacy path (only for
-text-keyed reading-comprehension passages, kept for back-compat, not the centerpiece).
+the value is another modality (transcript / labels / text / other-modal).
 
-Audio embedder tiers (auto):
-  omni-embed   : ``omni-embed-nemotron-3b`` (on disk; a real neural audio embedder) — run in WSL/GPU.
-                 This is THE key embedder for Stage-2.
-  logmel-stats : CPU/offline PoC fallback — mean+std of a log-mel spectrogram. Runnable anywhere with
-                 no GPU/network so the pipeline is testable; NOT a Stage-2-grade key. Loudly flagged.
+RELIABILITY CONTRACT (owner: "得保证工程可靠性和稳定性"): ``embedder='auto'`` uses a REAL semantic
+audio embedder (CLAP, a stable well-supported audio encoder; or omni-embed if wired) and **RAISES if
+none loads** — it NEVER silently degrades to the crude logmel-stats key. Silently building a production
+KB on a non-semantic key (mean+std of a log-mel) would make retrieval unreliable without the caller
+knowing; that failure mode is now impossible. logmel-stats is a PoC/offline-smoke key available ONLY via
+the explicit ``embedder='logmel-stats'`` opt-in, and it warns loudly.
 
 Text embedder tiers (legacy, text-keyed knowledge only): MiniLM -> TF-IDF.
 Lazy imports throughout (CLAUDE.md).
@@ -19,6 +18,7 @@ from __future__ import annotations
 import os
 
 OMNI_EMBED_DIRNAME = "omni-embed-nemotron-3b"  # under $SPEECHRL_DATA_DIR/models
+CLAP_MODEL = "laion/clap-htsat-unfused"  # stable, documented audio embedder; 48 kHz mono
 
 
 def _l2(X):
@@ -37,36 +37,79 @@ def _logmel_stats(wav_path: str, n_mels: int = 64):
     return np.concatenate([logmel.mean(axis=1), logmel.std(axis=1)]).astype("float32")
 
 
-def _omni_embed(wav_paths):
-    """Real audio key embedder (omni-embed-nemotron-3b). WSL/GPU. Returns (name, matrix[N×d])."""
+def _clap_embed(wav_paths):
+    """Reliable, semantic audio key embedder (CLAP). CPU-capable. Returns (name, matrix[N×d])."""
+    import librosa
     import numpy as np
-    from sentence_transformers import SentenceTransformer  # omni-embed ships a ST-compatible loader
+    import torch
+    from transformers import ClapModel, ClapProcessor
+
+    model = ClapModel.from_pretrained(CLAP_MODEL)
+    model.eval()
+    proc = ClapProcessor.from_pretrained(CLAP_MODEL)
+    audios = [librosa.load(p, sr=48000)[0] for p in wav_paths]  # CLAP expects 48 kHz mono
+    embs = []
+    B = 16
+    for i in range(0, len(audios), B):
+        inp = proc(audios=audios[i : i + B], sampling_rate=48000, return_tensors="pt")
+        with torch.no_grad():
+            embs.append(model.get_audio_features(**inp).cpu().numpy())
+    return f"clap:{CLAP_MODEL}", _l2(np.concatenate(embs, axis=0).astype("float32"))
+
+
+def _omni_embed(wav_paths):
+    """Optional acoustic embedder (omni-embed-nemotron-3b). WSL/GPU; loader wiring is model-specific."""
+    import numpy as np
+    from sentence_transformers import SentenceTransformer
 
     model_dir = os.path.join(os.environ.get("SPEECHRL_DATA_DIR", ""), "models", OMNI_EMBED_DIRNAME)
     if not os.path.isdir(model_dir):
         raise FileNotFoundError(f"omni-embed model not found at {model_dir}")
     m = SentenceTransformer(model_dir, device="cuda")
-    embs = m.encode(list(wav_paths), normalize_embeddings=True)  # loader handles wav->features
+    embs = m.encode(list(wav_paths), normalize_embeddings=True)
     return f"omni-embed:{OMNI_EMBED_DIRNAME}", _l2(np.asarray(embs, dtype="float32"))
 
 
 def embed_audio(wav_paths, embedder: str = "auto"):
-    """Embed audio -> (name, key_matrix[N×d], L2-normalized). Primary KB key embedder."""
+    """Embed audio -> (name, key_matrix[N×d], L2-normalized). Primary KB key embedder.
+
+    RELIABILITY: ``auto`` tries real semantic embedders (CLAP, then omni-embed) and RAISES if none is
+    available — it does NOT silently fall back to logmel-stats. Use ``embedder='logmel-stats'`` ONLY for
+    an offline smoke test (it warns). ``embedder='clap'`` / ``'omni-embed'`` force a specific real one.
+    """
     import numpy as np
 
+    if embedder == "logmel-stats":
+        print(
+            "  [kb_embed] WARNING: logmel-stats is a PoC/offline-smoke key (mean+std log-mel), "
+            "NOT a semantic embedder — do NOT build a real KB on it.",
+            flush=True,
+        )
+        keys = np.stack([_logmel_stats(p) for p in wav_paths]).astype("float32")
+        return "logmel-stats-64", _l2(keys)
+
+    tried = []
+    if embedder in ("auto", "clap"):
+        try:
+            return _clap_embed(wav_paths)
+        except Exception as e:
+            tried.append(f"clap({type(e).__name__}: {str(e)[:60]})")
+            if embedder == "clap":
+                raise
     if embedder in ("auto", "omni-embed"):
         try:
             return _omni_embed(wav_paths)
         except Exception as e:
+            tried.append(f"omni-embed({type(e).__name__}: {str(e)[:60]})")
             if embedder == "omni-embed":
                 raise
-            print(
-                f"  [kb_embed] omni-embed unavailable ({type(e).__name__}: {str(e)[:80]}); "
-                f"logmel-stats PoC fallback (NOT Stage-2 grade)",
-                flush=True,
-            )
-    keys = np.stack([_logmel_stats(p) for p in wav_paths]).astype("float32")
-    return "logmel-stats-64", _l2(keys)
+    raise RuntimeError(
+        "kb_embed: no reliable semantic audio embedder available (tried: "
+        + "; ".join(tried)
+        + "). For a real KB, install/cache CLAP (`pip install transformers` + cache "
+        + f"'{CLAP_MODEL}') or wire omni-embed. For an OFFLINE SMOKE TEST ONLY, pass "
+        + "embedder='logmel-stats' explicitly (it is NOT semantic and must not back a real KB)."
+    )
 
 
 def embed_text(texts, embedder: str = "auto"):
