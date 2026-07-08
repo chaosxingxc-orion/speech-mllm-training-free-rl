@@ -69,13 +69,9 @@ def scrub_golds(entry_texts: list[str], golds: list[str]) -> list[str]:
 
 
 def audit_source(source: str, golds: list[str]) -> dict:
-    """Load a persisted source's entries and audit them against ``golds``."""
-    from kb_schema import KnowledgeEntry, source_dir
+    """Load a persisted source's values (``values.jsonl``, one ``KnowledgeValue`` per row) and audit
+    them against ``golds``."""
+    from kb_schema import load_values
 
-    p = source_dir(source) / "entries.jsonl"
-    texts = [
-        (KnowledgeEntry.from_json(line).content_text or "")
-        for line in open(p, encoding="utf-8")
-        if line.strip()
-    ]
+    texts = [v.value or "" for v in load_values(source)]
     return audit_texts(texts, golds)
