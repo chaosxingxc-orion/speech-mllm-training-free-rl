@@ -160,9 +160,13 @@ def run_cell(dataset: str, backbone: str, split: str, skip_checkpoint: bool = Tr
     return result
 
 
-def run_backbone(backbone: str, splits: list[str] | None = None, only_dataset: str | None = None) -> None:
+def run_backbone(backbone: str, splits: list[str] | None = None, only_dataset: str | None = None) -> dict:
     """Iterate every wave-1 (dataset, split) cell for ONE backbone. Assumes the GPU lock is
-    already held and that backbone's resident llama-server is already up -- see run_wave1.sh."""
+    already held and that backbone's resident llama-server is already up -- see run_wave1.sh.
+
+    Returns the {ran, skipped, failed, total} counts (also used by main() to decide the process
+    exit code -- see the 2026-07-09 postmortem: run_wave1.sh used to exit 0 unconditionally
+    because nothing here ever surfaced a failure count anywhere a caller could act on it)."""
     datasets = [only_dataset] if only_dataset else wave1_dataset_keys()
     if only_dataset:
         assert only_dataset in wave1_dataset_keys(), f"{only_dataset!r} is not a wave1 dataset key"
@@ -180,6 +184,13 @@ def run_backbone(backbone: str, splits: list[str] | None = None, only_dataset: s
             n_failed += 1
     print(f"=== backbone {backbone} done in {time.time() - t0:.0f}s "
           f"(ran={n_ran} skipped={n_skipped} failed={n_failed} of {len(cells)}) ===", flush=True)
+    # Machine-parseable twin of the line above -- run_wave1.sh greps this exact prefix out of the
+    # tee'd log to print its own per-backbone summary and decide whether to exit non-zero. Keep the
+    # key set (ran/skipped/failed/total) and "key=value" shape stable; run_wave1.sh's extract_field
+    # parses it with plain shell parameter expansion (no PCRE dependency).
+    print(f"WAVE1_SUMMARY backbone={backbone} ran={n_ran} skipped={n_skipped} failed={n_failed} "
+          f"total={len(cells)}", flush=True)
+    return {"ran": n_ran, "skipped": n_skipped, "failed": n_failed, "total": len(cells)}
 
 
 def main() -> None:
@@ -202,14 +213,27 @@ def main() -> None:
     splits = [args.split] if args.split else WAVE1_SPLITS
 
     if args.execute:
+        total_failed = 0
         for bb in backbones:
-            datasets = [args.dataset] if args.dataset else None
             if args.no_checkpoint:
                 cells = [(args.dataset, bb, sp) for sp in splits] if args.dataset else wave1_cells([bb], splits)
+                n_ran = n_failed = 0
                 for dk, b, sp in cells:
-                    run_cell(dk, b, sp, skip_checkpoint=False)
+                    # skip_checkpoint=False means run_cell() never skips -- None here always means
+                    # the cell raised (caught inside run_cell), never "already checkpointed".
+                    result = run_cell(dk, b, sp, skip_checkpoint=False)
+                    n_ran += 1 if result is not None else 0
+                    n_failed += 0 if result is not None else 1
+                print(f"WAVE1_SUMMARY backbone={bb} ran={n_ran} skipped=0 failed={n_failed} "
+                      f"total={len(cells)}", flush=True)
+                total_failed += n_failed
             else:
-                run_backbone(bb, splits, only_dataset=args.dataset)
+                summary = run_backbone(bb, splits, only_dataset=args.dataset)
+                total_failed += summary["failed"]
+        if total_failed > 0:
+            print(f"ERROR: wave1_cells.py --execute: {total_failed} cell(s) failed across "
+                  f"{len(backbones)} backbone(s) -- see FAILED lines above.", file=sys.stderr)
+            sys.exit(1)
         return
 
     # default (including --dry-run): print the schedule, never touch a model/GPU.

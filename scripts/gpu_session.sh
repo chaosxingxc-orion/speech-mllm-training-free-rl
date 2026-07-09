@@ -10,6 +10,20 @@
 # The lock is a single well-known file (not per-name), so only one owner can hold the GPU at a time.
 # It is a cooperative (advisory) lock, not a kernel-enforced mutex: it stops well-behaved runners from
 # racing each other, it does not stop a rogue process from touching the GPU directly.
+#
+# POSTMORTEM (2026-07-09, 224-cell wave-1 run, zero cells executed): `acquire`'s pid default is
+# `${GPU_SESSION_OWNER_PID:-$PPID}`. That is only correct when `acquire` is invoked DIRECTLY. If a
+# caller instead runs it inside a command substitution -- `out="$(bash gpu_session.sh acquire NAME)"`
+# (exactly what run_wave1.sh's gpu_acquire_polite did) -- bash forks a TRANSIENT subshell to host the
+# substitution, and `acquire`'s own $PPID resolves to THAT subshell's pid, not the long-lived caller's.
+# The transient subshell exits the instant `acquire` returns, so the very next liveness check (`pid
+# alive`) reports the lock STALE seconds later, even though the real caller (e.g. run_wave1.sh) is
+# still alive and mid-run. Verified empirically: `$$` (unlike `$PPID`) is NOT re-evaluated inside a
+# subshell -- it stays pinned to the outermost/login shell's pid -- so any caller that may be wrapped
+# in a subshell (command substitution, `( ... )`, a pipeline stage) MUST pass its own pid explicitly
+# via `acquire NAME --pid "$$"` rather than rely on the $PPID default. See `check` below for the
+# matching robust liveness query (used by run_baseline.py's assert_gpu_session_held instead of
+# grepping `status` text).
 set -euo pipefail
 
 DATA="${SPEECHRL_DATA_DIR:-$HOME/speechrl-data}"
@@ -48,11 +62,23 @@ usage() {
 Usage: $(basename "$0") <command> [args]
 
 Commands:
-  acquire <name>            Take the exclusive GPU lock as <name>. Fails loudly (exit 1) if the
-                             lock is already held by a name whose pid is still alive.
+  acquire <name> [--pid P]  Take the exclusive GPU lock as <name>. Fails loudly (exit 1) if the
+                             lock is already held by a name whose pid is still alive. The pid
+                             recorded as the lock owner's liveness token is, in priority order:
+                             (1) --pid P if given, (2) \$GPU_SESSION_OWNER_PID if set, (3) \$PPID.
+                             ALWAYS pass --pid "\$\$" explicitly if you might invoke this from
+                             inside a subshell (command substitution, a pipeline stage, etc.) --
+                             \$PPID there is the transient subshell, not your real long-lived pid
+                             (see POSTMORTEM comment at the top of this file).
   release <name>            Release the GPU lock. Refuses (exit 1) to release a lock held by a
                              different, still-alive owner.
   status                     Print current lock state (free / held / stale) and exit 0.
+  check <name>               Exit 0 iff the lock is HELD (owner's recorded pid alive), else exit 1
+                             with a diagnostic on stderr. Does NOT require the owner to equal
+                             <name> (advisory lock, any legitimate holder counts) -- only prints a
+                             NOTE to stderr if the names differ. This is the robust primitive
+                             run_baseline.py's assert_gpu_session_held uses instead of parsing
+                             \`status\` output.
   assert-idle                Exit 0 iff \`nvidia-smi\` reports 0 compute processes; otherwise print
                              the offending process list on stderr and exit 1.
   with-llama-server up       Start the resident Qwen3-Omni-30B llama-server (GGUF via llama.cpp),
@@ -105,8 +131,19 @@ lock_field() {
 }
 
 cmd_acquire() {
-  local name="${1:?Usage: gpu_session.sh acquire <name>}"
-  local owner_pid="${GPU_SESSION_OWNER_PID:-$PPID}"
+  local name="${1:?Usage: gpu_session.sh acquire <name> [--pid <pid>]}"
+  shift
+  local explicit_pid=""
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      --pid) explicit_pid="${2:?--pid requires a value}"; shift 2 ;;
+      *) die "cmd_acquire: unknown arg '$1' (usage: acquire <name> [--pid <pid>])" ;;
+    esac
+  done
+  # Priority: explicit --pid > $GPU_SESSION_OWNER_PID > $PPID. See the POSTMORTEM comment at the
+  # top of this file -- $PPID is WRONG whenever the caller runs `acquire` inside a subshell (e.g.
+  # command substitution); such callers must pass --pid "$$" explicitly.
+  local owner_pid="${explicit_pid:-${GPU_SESSION_OWNER_PID:-$PPID}}"
   mkdir -p "$DATA"
 
   if [ -e "$LOCKFILE" ]; then
@@ -165,6 +202,26 @@ cmd_status() {
   else
     echo "GPU lock: STALE owner='$h_owner' pid=$h_pid host=$h_host since=$h_ts (pid NOT alive; next acquire reclaims)"
   fi
+}
+
+cmd_check() {
+  local name="${1:?Usage: gpu_session.sh check <name>}"
+  if [ ! -f "$LOCKFILE" ]; then
+    echo "GPU lock: NOT HELD (no lock file) -- checked for '$name'" >&2
+    return 1
+  fi
+  local h_owner h_pid h_ts
+  h_owner="$(lock_field owner)"; h_pid="$(lock_field pid)"; h_ts="$(lock_field ts)"
+  if ! pid_alive "$h_pid"; then
+    echo "GPU lock: STALE (owner='$h_owner' pid=$h_pid dead since=$h_ts) -- checked for '$name'" >&2
+    return 1
+  fi
+  if [ "$h_owner" != "$name" ]; then
+    echo "NOTE: GPU lock held by a different owner ('$h_owner' pid=$h_pid, alive) than checked" >&2
+    echo "      name '$name' -- still counts as HELD (advisory lock, identity is informational)." >&2
+  fi
+  echo "GPU lock: HELD by owner='$h_owner' pid=$h_pid since=$h_ts (checked for '$name')"
+  return 0
 }
 
 cmd_assert_idle() {
@@ -311,6 +368,7 @@ main() {
     acquire) cmd_acquire "$@" ;;
     release) cmd_release "$@" ;;
     status) cmd_status ;;
+    check) cmd_check "$@" ;;
     assert-idle) cmd_assert_idle ;;
     with-llama-server) cmd_with_llama_server "$@" ;;
     serve) cmd_serve "$@" ;;

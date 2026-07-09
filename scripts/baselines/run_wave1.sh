@@ -65,10 +65,18 @@ fi
 # gpu_acquire_polite <name> -- retry `gpu_session.sh acquire <name>` until it succeeds or
 # GPU_WAIT_MAX_S elapses. Another cooperative owner (e.g. a concurrent agent session) may still
 # hold the lock from a prior run; this waits it out instead of failing immediately.
+#
+# --pid "$$" is REQUIRED here, not optional: this call sits inside a `$(...)` command substitution,
+# which forks a transient subshell to host it. gpu_session.sh acquire's default pid ($PPID) would
+# resolve to THAT transient subshell -- which exits the instant this line returns -- not to this
+# script's own long-lived pid. Without --pid, every liveness check for the rest of the (possibly
+# hours-long) wave-1 run would see a dead pid and report the lock falsely STALE. See the
+# 2026-07-09 postmortem comment at the top of scripts/gpu_session.sh (this exact bug, diagnosed
+# from a 224-cell run that executed zero cells).
 gpu_acquire_polite() {
   local name="$1" waited=0 err
   while true; do
-    if err="$(bash "$GPU_SESSION_SH" acquire "$name" 2>&1)"; then
+    if err="$(bash "$GPU_SESSION_SH" acquire "$name" --pid "$$" 2>&1)"; then
       echo "$err"
       return 0
     fi
@@ -88,6 +96,23 @@ gpu_acquire_polite() {
 
 BACKBONES=(qwen3-omni-30b-gguf meralion-2-gguf)
 [ -n "$ONLY_BACKBONE" ] && BACKBONES=("$ONLY_BACKBONE")
+
+# extract_field LINE KEY -- pulls "key=value" out of a space-separated WAVE1_SUMMARY line (see
+# wave1_cells.py's run_backbone). Plain parameter-expansion parsing, no PCRE dependency. Prints "?"
+# if the key/line is absent (e.g. wave1_cells.py crashed before printing a summary at all).
+extract_field() {
+  local line="$1" key="$2" tok
+  for tok in $line; do
+    case "$tok" in
+      "$key"=*) printf '%s' "${tok#"$key"=}"; return 0 ;;
+    esac
+  done
+  printf '?'
+}
+
+TOTAL_RAN=0
+TOTAL_SKIPPED=0
+TOTAL_FAILED=0
 
 for bb in "${BACKBONES[@]}"; do
   NAME="wave1-$bb"
@@ -110,11 +135,30 @@ for bb in "${BACKBONES[@]}"; do
   bash "$GPU_SESSION_SH" serve "$bb" down
   bash "$GPU_SESSION_SH" release "$NAME"
 
+  # wave1_cells.py prints one "WAVE1_SUMMARY backbone=... ran=... skipped=... failed=... total=..."
+  # line per backbone (in addition to its human-readable summary) and now exits non-zero itself if
+  # failed>0 -- surface both here too so run_wave1.sh never again exits 0 while cells silently
+  # failed (2026-07-09 postmortem: a 224-cell run did exactly that).
+  summary_line="$(grep '^WAVE1_SUMMARY ' "$LOG" | tail -n1 || true)"
+  ran="$(extract_field "$summary_line" ran)"
+  skipped="$(extract_field "$summary_line" skipped)"
+  failed="$(extract_field "$summary_line" failed)"
+  total="$(extract_field "$summary_line" total)"
+  echo "=== wave1: backbone=$bb summary: ran=$ran skipped=$skipped failed=$failed total=$total (exit status=$status) ==="
+  [ "$ran" != "?" ] && TOTAL_RAN=$((TOTAL_RAN + ran))
+  [ "$skipped" != "?" ] && TOTAL_SKIPPED=$((TOTAL_SKIPPED + skipped))
+  [ "$failed" != "?" ] && TOTAL_FAILED=$((TOTAL_FAILED + failed))
+
   if [ "$status" -ne 0 ]; then
-    echo "ERROR: wave1_cells.py --backbone $bb exited $status -- see $LOG" >&2
+    echo "ERROR: wave1_cells.py --backbone $bb exited $status (failed=$failed cells) -- see $LOG" >&2
+    echo "=== wave1 ABORTED after backbone=$bb: totals so far ran=$TOTAL_RAN skipped=$TOTAL_SKIPPED failed=$TOTAL_FAILED ===" >&2
     exit "$status"
   fi
   echo "=== wave1: backbone=$bb done, GPU released ==="
 done
 
-echo "=== wave1 done (all requested backbones) ==="
+echo "=== wave1 done (all requested backbones): ran=$TOTAL_RAN skipped=$TOTAL_SKIPPED failed=$TOTAL_FAILED ==="
+if [ "$TOTAL_FAILED" -gt 0 ]; then
+  echo "ERROR: wave1 completed but $TOTAL_FAILED cell(s) failed -- see per-backbone logs under $LOG_DIR" >&2
+  exit 1
+fi

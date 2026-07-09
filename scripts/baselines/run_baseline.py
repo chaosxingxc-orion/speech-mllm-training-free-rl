@@ -209,34 +209,39 @@ def generate(backbone: str, wav_path: str, instruction: str, seed: int) -> str:
 # ---------------------------------------------------------------------------------------------
 
 def assert_gpu_session_held(expected_owner: str) -> None:
-    """Shell out to `scripts/gpu_session.sh status` and require the lock to be HELD by *someone*.
+    """Shell out to `scripts/gpu_session.sh check <expected_owner>` and require the lock to be
+    HELD (recorded owner pid alive) by *someone*.
 
     Advisory, matches gpu_session.sh's own cooperative-lock discipline (see its module docstring)
     -- this only stops a well-behaved caller from generating without having acquired the shared
     GPU first, it cannot stop a rogue process.
 
-    Does NOT hard-require the holder's name to equal `expected_owner` (only warns if it differs).
-    `expected_owner` (BACKBONES[...]["gpu_session_name"]) documents the convention run_wave1.sh
-    follows, but any legitimate caller -- a one-off manual invocation, an orchestrating agent
-    using its own session identity, wave1's own "wave1-<backbone>" name -- may hold the lock under
-    a different string and that is fine: what actually matters is that GPU access is arbitrated by
-    ONE cooperative lock at all (CLAUDE.md GPU RULE), not the literal owner string.
+    Does NOT hard-require the holder's name to equal `expected_owner` (`check` only warns on
+    stderr if it differs, still exits 0). `expected_owner` (BACKBONES[...]["gpu_session_name"])
+    documents the convention run_wave1.sh follows, but any legitimate caller -- a one-off manual
+    invocation, an orchestrating agent using its own session identity, wave1's own
+    "wave1-<backbone>" name -- may hold the lock under a different string and that is fine: what
+    actually matters is that GPU access is arbitrated by ONE cooperative lock at all (CLAUDE.md GPU
+    RULE), not the literal owner string.
+
+    Uses `check` (not `status` + text-matching) so this Python code and the shell code share ONE
+    definition of "held" -- see the 2026-07-09 postmortem in gpu_session.sh's header for why a
+    naive pid-recorded-at-acquire-time check is easy to get wrong (transient-subshell pids).
     """
     if not GPU_SESSION_SH.exists():
         raise FileNotFoundError(f"gpu_session.sh not found at {GPU_SESSION_SH}")
-    out = subprocess.run(["bash", str(GPU_SESSION_SH), "status"], capture_output=True, text=True, timeout=30)
+    out = subprocess.run(["bash", str(GPU_SESSION_SH), "check", expected_owner],
+                          capture_output=True, text=True, timeout=30)
     text = out.stdout + out.stderr
-    if "GPU lock: HELD" not in text:
+    if out.returncode != 0:
         raise RuntimeError(
             f"GPU session lock is not held -- acquire it first, e.g.:\n"
-            f"  bash scripts/gpu_session.sh acquire {expected_owner}\n"
+            f"  bash scripts/gpu_session.sh acquire {expected_owner} --pid \"$$\"\n"
             f"  bash scripts/gpu_session.sh serve <model-key> up\n"
-            f"gpu_session.sh status said:\n{text.strip()}"
+            f"gpu_session.sh check said:\n{text.strip()}"
         )
-    if f"owner='{expected_owner}'" not in text:
-        print(f"NOTE: GPU lock is held, but not under the expected owner name {expected_owner!r} "
-              f"-- proceeding anyway (see assert_gpu_session_held docstring). status: {text.strip()}",
-              file=sys.stderr)
+    if "NOTE:" in text:
+        print(text.strip(), file=sys.stderr)
 
 
 # ---------------------------------------------------------------------------------------------
