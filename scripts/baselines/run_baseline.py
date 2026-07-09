@@ -3,17 +3,23 @@
 Grid = every dataset key in ``templates.DATASET_KTYPE`` (58 active Step-1 entries: 51 from
 ``scripts/loaders/registry.py``'s 60-loader package, minus the 2 K5-scoped-out SID loaders
 [``cn-celeb1``, ``voxceleb1-test-split``], plus 7 legacy ``scripts/p2_baselines.py``-native
-loaders that predate that package) x up to 5 backbones x {dev, test}. Per (dataset, backbone,
+loaders that predate that package) x 2 backbones x {dev, test}. Per (dataset, backbone,
 split): frozen-id rows -> FIXED instruction (``templates.build_instruction``) -> one backbone
 generation call -> K-type scorer (``metrics.score``) -> aggregate + paired-bootstrap CI -> result
 JSON under ``_repro/baselines/`` (this repo's established convention, see ``_repro/README.md`` --
 committed, append-only research records).
 
-STAGE-1 DIRECTIONAL, DRAFT FOR CRITERIA-FREEZE (2026-07-09): this script is code-complete and
-import-clean but is NOT to be executed as part of this task -- no model calls, no GPU use. Every
-piece that would need a live backbone (llama-server / an HF checkpoint) is reached only from
-``main()``'s non-dry-run path; ``--dry-run`` exercises the whole grid-construction + template
-path with ZERO data-file or model dependencies (see ``_synthetic_row``).
+BACKBONE ROSTER (owner ruling 2026-07-09, 双底座定稿 -- "the two-backbone roster is final"):
+``qwen3-omni-30b-gguf`` and ``meralion-2-gguf`` are the ONLY backbones for Stage-1 waves 1-3. The
+``minicpm-o-4.5``/``moss-audio-8b``/``nemotron`` HF-transformers stubs that used to sit in
+``BACKBONES`` below are commented out, not deleted -- see that block for the rationale kept inline.
+
+STAGE-1 DIRECTIONAL, CRITERIA-FREEZE DRAFT (2026-07-09): template/metric/grid code is
+code-complete and import-clean; real execution against the two frozen GGUF backbones started with
+the wave-1 sweep (``scripts/baselines/run_wave1.sh`` + ``wave1_cells.py`` -- see those files for
+the frozen wave-1 cell list, checkpointing, and GPU-session lifecycle). ``--dry-run`` here still
+exercises the whole grid-construction + template path with ZERO data-file or model dependencies
+(see ``_synthetic_row``) for ad hoc single-cell/full-grid invocations outside wave-1.
 
 reproduce (once run for real):
   SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data \\
@@ -64,34 +70,43 @@ BACKBONES: dict[str, dict] = {
         "server_env": "LLAMA_SERVER", "default_url": "http://127.0.0.1:8091",
         "gpu_session_name": "baselines-qwen3-omni-30b",
         "model_tag": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
-        "note": "resident via `scripts/gpu_session.sh with-llama-server up` (p2_baselines.gen pattern).",
+        "note": "resident via `scripts/gpu_session.sh serve qwen3-omni-30b-gguf up` (p2_baselines.gen pattern).",
     },
     "meralion-2-gguf": {
         "kind": "llamacpp",
-        "server_env": "MERALION_SERVER", "default_url": "http://127.0.0.1:8092",
+        "server_env": "MERALION_SERVER", "default_url": "http://127.0.0.1:8197",
         "gpu_session_name": "baselines-meralion-2",
-        "model_tag": "MERaLiON-2 GGUF (llama.cpp)",
-        "note": ("gpu_session.sh's `with-llama-server up/down` as-is only manages the Qwen3-Omni-30B "
-                 "model (hardcoded LLAMA_MODEL/LLAMA_MMPROJ paths) -- swapping backbones needs either "
-                 "a second gpu_session.sh instance pointed at MERaLiON's GGUF via env override, or a "
-                 "parameterized `--model` flag added to gpu_session.sh. NOT done in this draft -- "
-                 "flagged in FREEZE_SHEET.md as an infra gap to close before this backbone can run."),
+        "model_tag": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+        "strip_prefix": "<Speaker1>:",
+        "note": ("resident via `scripts/gpu_session.sh serve meralion-2-gguf up` (own port 8197, "
+                 "pidfile, logfile -- gpu_session.sh's `serve <model-key>` was parameterized for this "
+                 "second GGUF backbone, closing the infra gap this note used to flag). MERaLiON-2 "
+                 "emits a literal '<Speaker1>: ' turn-prefix on every reply (G1-verified quirk, not "
+                 "part of the answer) -- stripped in `generate()` below via `strip_prefix` BEFORE the "
+                 "text ever reaches `metrics.score`, so no scorer needs to know about it."),
     },
-    "minicpm-o-4.5": {
-        "kind": "hf", "model_dir_env": "MINICPM_O_MODEL_DIR",
-        "model_tag": "MiniCPM-o-4.5 (HF transformers)",
-    },
-    "moss-audio-8b": {
-        "kind": "hf", "model_dir_env": "MOSS_AUDIO_MODEL_DIR",
-        "model_tag": "MOSS-Audio-8B (HF transformers)",
-    },
-    "nemotron": {
-        "kind": "hf", "model_dir_env": "NEMOTRON_MODEL_DIR",
-        "model_tag": "Nemotron (HF transformers) -- 'possibly' per task brief",
-        "note": ("owner sign-off needed: which nemotron checkpoint (ASR-only vs an omni/audio-LM "
-                 "variant) this backbone slot refers to -- wired identically to the other HF stubs "
-                 "pending that decision. See FREEZE_SHEET.md."),
-    },
+    # --- minicpm-o-4.5 / moss-audio-8b / nemotron: REMOVED from the active roster -------------
+    # Owner ruling 2026-07-09 (双底座定稿, "the two-backbone roster is final"): Stage-1 waves 1-3
+    # run ONLY qwen3-omni-30b-gguf + meralion-2-gguf (above). These three HF-transformers stubs
+    # (interface settled, weight-loading never implemented -- see the old FREEZE_SHEET.md
+    # "backbone readiness" note) are commented out rather than deleted so the prior scoping
+    # discussion isn't lost if a future wave reopens the roster:
+    #
+    # "minicpm-o-4.5": {
+    #     "kind": "hf", "model_dir_env": "MINICPM_O_MODEL_DIR",
+    #     "model_tag": "MiniCPM-o-4.5 (HF transformers)",
+    # },
+    # "moss-audio-8b": {
+    #     "kind": "hf", "model_dir_env": "MOSS_AUDIO_MODEL_DIR",
+    #     "model_tag": "MOSS-Audio-8B (HF transformers)",
+    # },
+    # "nemotron": {
+    #     "kind": "hf", "model_dir_env": "NEMOTRON_MODEL_DIR",
+    #     "model_tag": "Nemotron (HF transformers) -- 'possibly' per task brief",
+    #     "note": ("owner sign-off needed: which nemotron checkpoint (ASR-only vs an omni/audio-LM "
+    #              "variant) this backbone slot refers to -- wired identically to the other HF stubs "
+    #              "pending that decision. See FREEZE_SHEET.md."),
+    # },
 }
 
 # Loader keys whose registry.LOADERS callable needs a non-default `split` to select what this
@@ -109,10 +124,31 @@ _DEFAULT_SPLIT_OVERRIDE = {"librispeech": "test.clean"}
 # generation adapters
 # ---------------------------------------------------------------------------------------------
 
+def sampling_params_for(backbone: str) -> dict:
+    """Every sampling param actually sent for `backbone`'s generation calls, explicit -- for
+    RECORDING alongside results (run_one's "sampling_params" field), not for building the request
+    itself (gen_llamacpp below builds that payload directly). Previously that result field only
+    recorded temperature/max_tokens/seed, leaving top_p/top_k/repeat_penalty implied-but-unrecorded
+    even though the request payload already sent them explicitly (see p2_baselines.sampling_
+    defaults' own docstring on why THOSE were pinned) -- this closes that recording gap. Shared
+    across both llama.cpp backbones (qwen3-omni-30b-gguf and meralion-2-gguf both go through
+    gen_llamacpp with the same p2.sampling_defaults()), so one function, not a per-backbone copy."""
+    cfg = BACKBONES[backbone]
+    base = {"temperature": 0.0, "max_tokens": 200}
+    if cfg["kind"] == "llamacpp":
+        import p2_baselines as p2  # lazy: reads SPEECHRL_DATA_DIR at import time
+
+        base.update(p2.sampling_defaults())  # top_p / top_k / repeat_penalty, pinned 2026-07-09
+    return base
+
+
 def gen_llamacpp(base_url: str, wav_path: str, instruction: str, seed: int, temp: float = 0.0,
                   maxtok: int = 200) -> str:
     """Reuses scripts/p2_baselines.py's `gen()` request shape + `sampling_defaults()` verbatim
-    (explicit sampling params pinned there 2026-07-09, see its docstring) -- not reimplemented."""
+    (explicit sampling params pinned there 2026-07-09, see its docstring) -- not reimplemented.
+    Backbone-agnostic (qwen3-omni-30b-gguf and meralion-2-gguf both call this with their own
+    `base_url`); any backbone-specific post-processing (e.g. meralion's reply-prefix strip)
+    happens in `generate()`, AFTER this returns, never here."""
     import p2_baselines as p2  # lazy: reads SPEECHRL_DATA_DIR at import time
 
     b64 = base64.b64encode(open(wav_path, "rb").read()).decode()
@@ -130,10 +166,11 @@ _HF_MODEL_CACHE: dict = {}
 
 
 def _load_hf_backbone(backbone: str):
-    """Lazy HF-checkpoint loader -- NOT implemented in this Step-1 draft (see module docstring:
-    only the llama.cpp/GGUF path is exercised). Kept as an explicit, clearly-marked stub so the
-    interface (one function, cached, model-dir via env var) is settled for a follow-up task
-    without pulling torch/transformers into `import run_baseline` (lazy-import discipline)."""
+    """Lazy HF-checkpoint loader -- currently UNREACHABLE: the active BACKBONES roster (owner
+    ruling 2026-07-09, 双底座定稿) has no `"kind": "hf"` entries left (see BACKBONES above, where
+    the three HF stubs this fed are commented out, not deleted). Kept as settled scaffolding for
+    if/when an HF backbone reopens, without pulling torch/transformers into `import run_baseline`
+    (lazy-import discipline) in the meantime."""
     if backbone in _HF_MODEL_CACHE:
         return _HF_MODEL_CACHE[backbone]
     cfg = BACKBONES[backbone]
@@ -154,7 +191,14 @@ def generate(backbone: str, wav_path: str, instruction: str, seed: int) -> str:
     cfg = BACKBONES[backbone]
     if cfg["kind"] == "llamacpp":
         base_url = os.environ.get(cfg["server_env"], cfg["default_url"])
-        return gen_llamacpp(base_url, wav_path, instruction, seed)
+        text = gen_llamacpp(base_url, wav_path, instruction, seed)
+        prefix = cfg.get("strip_prefix")
+        if prefix and text.startswith(prefix):
+            # G1-verified quirk: meralion-2-gguf emits a literal "<Speaker1>: " turn-prefix on
+            # every reply that is never part of the actual answer -- stripped here, BEFORE
+            # metrics.score ever sees the text, so no scorer needs a backbone-specific case.
+            text = text[len(prefix):].lstrip()
+        return text
     if cfg["kind"] == "hf":
         return gen_hf(backbone, wav_path, instruction)
     raise ValueError(f"unknown backbone kind {cfg['kind']!r} for {backbone!r}")
@@ -164,24 +208,35 @@ def generate(backbone: str, wav_path: str, instruction: str, seed: int) -> str:
 # GPU session guard
 # ---------------------------------------------------------------------------------------------
 
-def assert_gpu_session_held(owner_name: str) -> None:
-    """Shell out to `scripts/gpu_session.sh status` and require the lock to be held BY US.
+def assert_gpu_session_held(expected_owner: str) -> None:
+    """Shell out to `scripts/gpu_session.sh status` and require the lock to be HELD by *someone*.
 
     Advisory, matches gpu_session.sh's own cooperative-lock discipline (see its module docstring)
     -- this only stops a well-behaved caller from generating without having acquired the shared
     GPU first, it cannot stop a rogue process.
+
+    Does NOT hard-require the holder's name to equal `expected_owner` (only warns if it differs).
+    `expected_owner` (BACKBONES[...]["gpu_session_name"]) documents the convention run_wave1.sh
+    follows, but any legitimate caller -- a one-off manual invocation, an orchestrating agent
+    using its own session identity, wave1's own "wave1-<backbone>" name -- may hold the lock under
+    a different string and that is fine: what actually matters is that GPU access is arbitrated by
+    ONE cooperative lock at all (CLAUDE.md GPU RULE), not the literal owner string.
     """
     if not GPU_SESSION_SH.exists():
         raise FileNotFoundError(f"gpu_session.sh not found at {GPU_SESSION_SH}")
     out = subprocess.run(["bash", str(GPU_SESSION_SH), "status"], capture_output=True, text=True, timeout=30)
     text = out.stdout + out.stderr
-    if f"owner='{owner_name}'" not in text or "HELD" not in text:
+    if "GPU lock: HELD" not in text:
         raise RuntimeError(
-            f"GPU session lock is not held by {owner_name!r} -- acquire it first, e.g.:\n"
-            f"  bash scripts/gpu_session.sh acquire {owner_name}\n"
-            f"  bash scripts/gpu_session.sh with-llama-server up\n"
+            f"GPU session lock is not held -- acquire it first, e.g.:\n"
+            f"  bash scripts/gpu_session.sh acquire {expected_owner}\n"
+            f"  bash scripts/gpu_session.sh serve <model-key> up\n"
             f"gpu_session.sh status said:\n{text.strip()}"
         )
+    if f"owner='{expected_owner}'" not in text:
+        print(f"NOTE: GPU lock is held, but not under the expected owner name {expected_owner!r} "
+              f"-- proceeding anyway (see assert_gpu_session_held docstring). status: {text.strip()}",
+              file=sys.stderr)
 
 
 # ---------------------------------------------------------------------------------------------
@@ -364,7 +419,7 @@ def run_one(dataset_key: str, backbone: str, split: str, n: int | None) -> dict:
         "n_requested": n, "seed": seed,
         "sample_manifest": snapshot_ref,
         "model": BACKBONES[backbone]["model_tag"],
-        "sampling_params": {"greedy_seed_base": seed, "temperature": 0.0, "max_tokens": 200},
+        "sampling_params": {"greedy_seed_base": seed, **sampling_params_for(backbone)},
         "boundary": ("audio-only input + fixed task-definition text (label set / MCQ options / "
                      "tool registry / JSON schema); no golden transcript/answer/intent ever placed "
                      "in the prompt -- see templates.py module docstring's Information-Boundary-Guard note."),

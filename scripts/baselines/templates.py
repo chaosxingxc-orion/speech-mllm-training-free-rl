@@ -46,6 +46,8 @@ convergence gate once a retrieval/kNN-SID baseline exists.
 """
 from __future__ import annotations
 
+import label_inventories  # scripts/baselines/label_inventories.py -- corpus-true full-pool scans
+
 LETTERS = ["A", "B", "C", "D", "E", "F", "G", "H"]
 
 # ---- fixed closed label sets (dataset-level constants, NOT per-item gold; see module docstring)
@@ -67,12 +69,50 @@ FLEURS_R_GENDERS = ["MALE", "FEMALE"]  # tsv "gender" column; casing NOT indepen
                                         # against a live sample -- scoring below is case-INsensitive
                                         # regardless (see metrics.norm), so this only affects the
                                         # prompt's displayed casing. Flagged for freeze sign-off.
-# speech-massive speaker_sex / speaker_age value sets are NOT independently reverified on this box
-# (no live parquet read performed for this draft) -- placeholders below, flagged prominently in
-# FREEZE_SHEET.md as an open item; scoring is containment-based (see metrics.score_k5_attribute) so
-# an incomplete label list only affects the PROMPT's displayed options, never correctness.
-SPEECH_MASSIVE_SEX_LABELS = ["Male", "Female"]              # UNVERIFIED casing -- freeze TODO
-SPEECH_MASSIVE_AGE_LABELS = ["Young Adult", "Adult", "Senior"]  # UNVERIFIED bucket set -- freeze TODO
+# ---- corpus-true (full-pool scan) closed label sets -- label_inventories.py, superseding the
+# formerly UNVERIFIED speech-massive speaker_sex/speaker_age placeholders and the sample-observed
+# (dev+test-draw-only) slurp/speech-massive intent+slot / uro-bench UnderEmotion lists that used to
+# live ONLY in meta["_label_set"] (see run_baseline._observed_label_set). See label_inventories.py's
+# module docstring for method + the silent-miss evidence this fixes.
+#
+# K4 (SER) resolver: dataset_key -> (label_set, lang). uro-bench-UnderEmotion-{en,zh} now resolve
+# HERE (corpus-true, 41/49-way) instead of falling through to meta.get("_label_set") (sample-
+# observed) in build_instruction's K4 branch below. vocalbench-emotion is intentionally NOT listed
+# (task scope; keeps its existing meta["_label_set"]/hardcoded-5-way fallback).
+K4_LABEL_SETS: dict[str, tuple[list[str], str]] = {
+    "crema-d": (CREMA_D_EMOTIONS, "en"), "meld": (MELD_EMOTIONS, "en"), "esd": (ESD_EMOTIONS, "zh"),
+    "csemotions": (CSEMOTIONS_EMOTIONS, "zh"),
+    "uro-bench-UnderEmotion-en": (label_inventories.URO_BENCH_UNDEREMOTION_EN_EMOTIONS, "en"),
+    "uro-bench-UnderEmotion-zh": (label_inventories.URO_BENCH_UNDEREMOTION_ZH_EMOTIONS, "zh"),
+}
+
+# K5 (speaker-attribute) resolver: (locale, attr) -> label_set. Per-LOCALE now (fr-FR carries a
+# 3rd "Unidentified" speaker_sex value de-DE doesn't; the two locales' speaker_age value sets also
+# differ) -- see label_inventories.py's MAJOR FINDING: speaker_age is ~29 individual integer ages
+# per locale, NOT the 3-bucket "Young Adult"/"Adult"/"Senior" guess this replaces (that old guess
+# could not score >0 against real gold by construction). K5_LOCALE_OF maps a K5 grid dataset_key
+# ("speech-massive-<locale>-attr") to its locale for this lookup.
+K5_LABEL_SETS: dict[tuple[str, str], list[str]] = {
+    ("fr-FR", "speaker_sex"): label_inventories.SPEECH_MASSIVE_FR_FR_SPEAKER_SEX,
+    ("fr-FR", "speaker_age"): label_inventories.SPEECH_MASSIVE_FR_FR_SPEAKER_AGE,
+    ("de-DE", "speaker_sex"): label_inventories.SPEECH_MASSIVE_DE_DE_SPEAKER_SEX,
+    ("de-DE", "speaker_age"): label_inventories.SPEECH_MASSIVE_DE_DE_SPEAKER_AGE,
+}
+K5_LOCALE_OF = {"speech-massive-de-DE-attr": "de-DE", "speech-massive-fr-FR-attr": "fr-FR"}
+
+# K6 (SLU intent) resolver: dataset_key -> intent_list.
+K6_LABEL_SETS: dict[str, list[str]] = {
+    "slurp": label_inventories.SLURP_INTENTS,
+    "speech-massive-de-DE": label_inventories.SPEECH_MASSIVE_DE_DE_INTENTS,
+    "speech-massive-fr-FR": label_inventories.SPEECH_MASSIVE_FR_FR_INTENTS,
+}
+
+# K7 (SLU slot) resolver: dataset_key -> slot_type_list.
+K7_LABEL_SETS: dict[str, list[str]] = {
+    "slurp-slot": label_inventories.SLURP_SLOT_TYPES,
+    "speech-massive-de-DE-slot": label_inventories.SPEECH_MASSIVE_DE_DE_SLOT_LABELS,
+    "speech-massive-fr-FR-slot": label_inventories.SPEECH_MASSIVE_FR_FR_SLOT_LABELS,
+}
 
 LEGACY_DATASETS = {  # scripts/p2_baselines.py-native loaders; own baked instruction, see build_instruction
     "mmau-mini", "OpenbookQA-zh", "vocalbench-zh", "SQuAD-zh", "spoken-squad",
@@ -220,25 +260,42 @@ def k3_lid_gender(lang_options: list[str] = FLEURS_R_LANGS, gender_options: list
     )
 
 
+def _closed_options_block(label_set: list[str]) -> tuple[str, str, str]:
+    """Render a closed-choice option block: LETTERED (A/B/...) when ``label_set`` fits within
+    ``LETTERS`` (<=8), else NUMBERED (0/1/2/...) for larger corpus-true label sets that exceed it
+    (e.g. uro-bench UnderEmotion's 41/49-way emotion vocabulary, speech-massive's ~29-value
+    speaker_age -- see label_inventories.py) -- mirrors K6's existing large-list convention
+    (``k6_intent``) rather than inventing a second one. ``metrics._parse_choice`` has the matching
+    letter-vs-number parse switch so a prompt rendered here and its scorer always agree.
+
+    Returns (opts_text, answer_hint_en, answer_hint_zh).
+    """
+    if len(label_set) <= len(LETTERS):
+        opts = "\n".join(f"{LETTERS[i]}. {lab}" for i, lab in enumerate(label_set))
+        return opts, "Answer with only the option letter and label, e.g. 'A. ...'.", "只输出选项字母和名称，例如 'A. ...'。"
+    opts = "\n".join(f"{i}. {lab}" for i, lab in enumerate(label_set))
+    return opts, "Answer with only the option number and label, e.g. '4. ...'.", "只输出选项编号和名称，例如 '4. ...'。"
+
+
 def k4_ser(label_set: list[str], lang: str = "en") -> str:
-    opts = "\n".join(f"{LETTERS[i]}. {lab}" for i, lab in enumerate(label_set))
+    opts, hint_en, hint_zh = _closed_options_block(label_set)
     if lang == "zh":
         return (
             "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n"
-            f"选项：\n{opts}\n只输出选项字母和名称，例如 'A. ...'。"
+            f"选项：\n{opts}\n{hint_zh}"
         )
     return (
         "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\n"
-        f"Options:\n{opts}\nAnswer with only the option letter and label, e.g. 'A. ...'."
+        f"Options:\n{opts}\n{hint_en}"
     )
 
 
 def k5_attribute(attr: str, label_set: list[str], lang: str = "en") -> str:
-    opts = "\n".join(f"{LETTERS[i]}. {lab}" for i, lab in enumerate(label_set))
-    attr_name = {"speaker_sex": "sex", "speaker_age": "age group"}.get(attr, attr)
+    opts, hint_en, _hint_zh = _closed_options_block(label_set)
+    attr_name = {"speaker_sex": "sex", "speaker_age": "age"}.get(attr, attr)
     return (
         f"Listen to the audio and identify the speaker's {attr_name}. Choose exactly ONE option below.\n"
-        f"Options:\n{opts}\nAnswer with only the option letter and label, e.g. 'A. ...'."
+        f"Options:\n{opts}\n{hint_en}"
     )
 
 
@@ -375,39 +432,46 @@ def build_instruction(dataset_key: str, row: dict) -> str:
         return k3_lid_gender()
 
     if kt == "K4":
-        label_set = {
-            "crema-d": CREMA_D_EMOTIONS, "meld": MELD_EMOTIONS, "esd": ESD_EMOTIONS,
-            "csemotions": CSEMOTIONS_EMOTIONS,
-        }.get(dataset_key)
-        lang = "zh" if dataset_key in ("esd", "csemotions", "uro-bench-UnderEmotion-zh") else "en"
-        if label_set is None:
-            # uro-bench-UnderEmotion-{en,zh}: label set is corpus-defined per row's own "emotion"
-            # column, not a fixed dataset-level vocabulary on this box (see run_baseline.py, which
-            # passes the sample-observed label set through meta["_label_set"] -- see FREEZE_SHEET.md
-            # "K4/K6/K7 sample-observed closed lists" scoping note).
+        if dataset_key in K4_LABEL_SETS:
+            # corpus-true full-pool scan (label_inventories.py) -- crema-d/meld/esd/csemotions
+            # (small, fixed, always-had-a-full-vocabulary sets) and, as of this fix,
+            # uro-bench-UnderEmotion-{en,zh} too (was sample-observed only; see K4_LABEL_SETS'
+            # comment). vocalbench-emotion is NOT in this dict -- falls through below unchanged.
+            label_set, lang = K4_LABEL_SETS[dataset_key]
+        else:
+            # sample-observed (meta["_label_set"]) or hardcoded fallback for any K4 dataset NOT
+            # covered by a full-pool inventory (task scope: only vocalbench-emotion today) -- see
+            # label_inventories.py module docstring's "Datasets NOT covered here" note.
+            lang = "en"
             label_set = meta.get("_label_set") or (["<observed set unavailable>"])
         return k4_ser(label_set, lang=lang)
 
     if kt == "K5":
         # meta["_attr"] is set by run_baseline._load_rows for the real "<dataset>-attr" sub-key
         # (K5 Step-1 scope = speech-massive speaker_sex/speaker_age only, see module docstring);
-        # defaults to "speaker_sex" so a bare synthetic/preview row never crashes.
+        # defaults to "speaker_sex" so a bare synthetic/preview row never crashes. label_set is now
+        # PER-LOCALE corpus-true (label_inventories.py) -- fr-FR and de-DE have distinct
+        # speaker_sex/speaker_age value sets (fr-FR has a 3rd "Unidentified" sex value; the actual
+        # age domain is ~29 individual ages per locale, not a shared 3-bucket guess). Falls back to
+        # the fr-FR sex set only for an unrecognized/synthetic dataset_key (dry-run preview safety).
         attr = meta.get("_attr", "speaker_sex")
-        label_set = SPEECH_MASSIVE_SEX_LABELS if attr == "speaker_sex" else SPEECH_MASSIVE_AGE_LABELS
+        locale = K5_LOCALE_OF.get(dataset_key, "fr-FR")
+        label_set = K5_LABEL_SETS[(locale, attr)]
         return k5_attribute(attr, label_set)
 
     if kt == "K6":
         # NOTE: "minds14-zh" is itself a LEGACY_DATASETS key (short-circuited at the top of this
         # function via the p2_baselines-instr passthrough, which already implements this exact
         # MINDS14_INTENTS zh template) -- it is listed in DATASET_KTYPE for grid/FREEZE_SHEET
-        # completeness but never actually reaches this branch. Every K6 key that DOES reach here
-        # (slurp, speech-massive-*) carries a sample-observed intent list in meta["_label_set"]
-        # (see run_baseline._load_rows / FREEZE_SHEET.md's "sample-observed closed lists" note).
-        intent_list = meta.get("_label_set") or (["<observed set unavailable>"])
+        # completeness but never actually reaches this branch. slurp/speech-massive-* now resolve
+        # to a corpus-true full-pool intent list (label_inventories.py, K6_LABEL_SETS) instead of
+        # the sample-observed meta["_label_set"] union this used to read exclusively.
+        intent_list = K6_LABEL_SETS.get(dataset_key) or meta.get("_label_set") or (["<observed set unavailable>"])
         return k6_intent(intent_list, lang="en")
 
     if kt == "K7":
-        slot_types = meta.get("_label_set") or (["<observed set unavailable>"])
+        # Same corpus-true-first, sample-observed-fallback pattern as K6 above.
+        slot_types = K7_LABEL_SETS.get(dataset_key) or meta.get("_label_set") or (["<observed set unavailable>"])
         lang = "en"
         return k7_slot(slot_types, lang=lang)
 

@@ -2,10 +2,12 @@
 
 Thin wiring, per the task brief: reuse ``scripts/p2_baselines.py``'s ``reward()`` where it
 already fits (mcq/qa/slu), reuse ``jiwer`` for WER(en)/CER(zh), wire (not reimplement) the
-SLURP-native / slue-toolkit slot scorers via subprocess/import, and honestly stub what has no
-offline checker yet (ifeval) or no free-text gold at all (K9). Every scorer returns
-``{"score": float | None, "detail": {...}}`` -- ``score=None`` means "not a per-item verifiable
-reward at Step-1" (documented per-case below), never a silently-wrong number.
+SLURP-native / slue-toolkit slot scorers via subprocess/import, wire (not reimplement) the
+vendored google-research IFEval rule-checker via ``_ifeval_check.py`` (gracefully degrading to a
+stub if that offline subtree is absent), and honestly stub what has no free-text gold at all
+(K9). Every scorer returns ``{"score": float | None, "detail": {...}}`` -- ``score=None`` means
+"not a per-item verifiable reward at Step-1" (documented per-case below), never a silently-wrong
+number.
 
 Lazy-import discipline (CLAUDE.md): ``jiwer`` / ``numpy`` / ``p2_baselines`` (which itself reads
 ``SPEECHRL_DATA_DIR`` at import time) are imported INSIDE the functions that need them, so
@@ -46,12 +48,28 @@ def norm(s) -> str:
 
 
 def _parse_choice(text: str, options: list) -> int:
-    """Verbatim port of ``scripts/p2_baselines.py:_parse_choice`` (letter prefix, else containment)."""
+    """Port of ``scripts/p2_baselines.py:_parse_choice`` (letter prefix, else containment), extended
+    with a NUMBERED-index parse branch for option lists that exceed ``LETTERS``'s 8-slot lettered
+    scheme (e.g. the corpus-true speech-massive speaker_age list, ~29-way per locale, or
+    uro-bench-UnderEmotion's 41/49-way emotion vocabulary -- see label_inventories.py) -- mirrors
+    ``templates._closed_options_block``'s matching letters-vs-numbers rendering switch (K4/K5
+    prompts render lettered options when ``len(options) <= len(LETTERS)``, else numbered; this
+    parser must agree on which scheme was shown or scoring silently misreads the reply) and
+    ``score_k6_intent``'s existing numbered-index parse (K6 intent lists were always allowed to be
+    large, so this generalizes that same convention rather than inventing a second one).
+    """
     t = text.strip().lower()
-    for i in range(len(options)):
-        L = LETTERS[i].lower()
-        if t[:2] in (L + ".", L + ")", L + ":", L + " ") or t.strip() == L:
-            return i
+    if len(options) <= len(LETTERS):
+        for i in range(len(options)):
+            L = LETTERS[i].lower()
+            if t[:2] in (L + ".", L + ")", L + ":", L + " ") or t.strip() == L:
+                return i
+    else:
+        m = re.match(r"^\s*(\d+)\b", t)
+        if m:
+            idx = int(m.group(1))
+            if 0 <= idx < len(options):
+                return idx
     cn = [norm(o) for o in options]
     for i in sorted(range(len(options)), key=lambda k: -len(cn[k])):
         if cn[i] and cn[i] in norm(text):
@@ -359,6 +377,31 @@ def score_k11_ifeval_stub(text: str, meta: dict) -> dict:
     }}
 
 
+def score_k11_ifeval(text: str, meta: dict) -> dict:
+    """K11 voicebench-ifeval scorer -- real rule-check via ``_ifeval_check.check_ifeval`` (wraps
+    the vendored google-research ``instruction_following_eval`` subtree, see that module's
+    docstring / ``$SPEECHRL_DATA_DIR/repos/instruction_following_eval/PROVENANCE.txt``) when the
+    subtree is present/importable, else gracefully degrades to ``score_k11_ifeval_stub`` (never
+    crashes the run over a missing offline asset -- ``score=None`` is the same "not verifiable at
+    Step-1" contract every other honestly-stubbed scorer here uses).
+    """
+    import _ifeval_check  # lazy, sibling module (scripts/baselines/_ifeval_check.py); light import
+
+    instruction_id_list = meta.get("instruction_id_list") or []
+    kwargs = meta.get("kwargs") or []
+    try:
+        result = _ifeval_check.check_ifeval(text, instruction_id_list, kwargs)
+    except _ifeval_check.NeedsChecker as e:
+        stub = score_k11_ifeval_stub(text, meta)
+        stub["detail"]["needs_checker_error"] = str(e)
+        return stub
+
+    return {"score": result["frac"], "detail": {
+        "passes": result["passes"], "all_pass": result["all_pass"],
+        "instruction_id_list": instruction_id_list, "kwargs": kwargs,
+    }}
+
+
 # ---------------------------------------------------------------------------------------------
 # top-level dispatcher
 # ---------------------------------------------------------------------------------------------
@@ -389,17 +432,26 @@ def score(dataset_key: str, row: dict, text: str) -> dict:
     if kt == "K3":
         return score_k3_lid_gender(gold, text)
     if kt == "K4":
-        label_set = meta.get("_label_set") or {
-            "crema-d": templates.CREMA_D_EMOTIONS, "meld": templates.MELD_EMOTIONS,
-            "esd": templates.ESD_EMOTIONS, "csemotions": templates.CSEMOTIONS_EMOTIONS,
-        }.get(dataset_key, [])
+        # Must agree with templates.build_instruction's K4 branch on which label_set was actually
+        # SHOWN to the model -- K4_LABEL_SETS first (corpus-true, label_inventories.py; includes
+        # uro-bench-UnderEmotion-{en,zh} as of this fix), else the sample-observed/hardcoded
+        # fallback (vocalbench-emotion only, task scope).
+        if dataset_key in templates.K4_LABEL_SETS:
+            label_set, _lang = templates.K4_LABEL_SETS[dataset_key]
+        else:
+            label_set = meta.get("_label_set") or []
         return score_k4_ser(gold, text, label_set)
     if kt == "K5":
+        # Per-locale corpus-true label_set (must match templates.build_instruction's K5 branch --
+        # same K5_LOCALE_OF/K5_LABEL_SETS lookup, see templates.py).
         attr = meta.get("_attr", "speaker_sex")
-        label_set = templates.SPEECH_MASSIVE_SEX_LABELS if attr == "speaker_sex" else templates.SPEECH_MASSIVE_AGE_LABELS
+        locale = templates.K5_LOCALE_OF.get(dataset_key, "fr-FR")
+        label_set = templates.K5_LABEL_SETS[(locale, attr)]
         return score_k5_attribute(gold.get(attr) if isinstance(gold, dict) else gold, text, label_set)
     if kt == "K6":
-        intent_list = meta.get("_label_set") or templates.MINDS14_INTENTS
+        # K6_LABEL_SETS (corpus-true) first, else the existing sample-observed/hardcoded fallback --
+        # mirrors templates.build_instruction's K6 branch exactly (same priority order).
+        intent_list = templates.K6_LABEL_SETS.get(dataset_key) or meta.get("_label_set") or templates.MINDS14_INTENTS
         gold_intent = gold.get("intent") or gold.get("intent_str") if isinstance(gold, dict) else gold
         return score_k6_intent(gold_intent, text, intent_list)
     if kt == "K7":
@@ -424,6 +476,6 @@ def score(dataset_key: str, row: dict, text: str) -> dict:
         if dataset_key == "voicebench-advbench":
             return score_k11_refusal(text)
         if dataset_key == "voicebench-ifeval":
-            return score_k11_ifeval_stub(text, meta)
+            return score_k11_ifeval(text, meta)
 
     raise NotImplementedError(f"metrics.score: no scorer wired for dataset_key={dataset_key!r} (K-type {kt})")
