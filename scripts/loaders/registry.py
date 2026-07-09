@@ -193,6 +193,31 @@ def _register_b6_retrieval_tools() -> None:
 _try_register("B6-retrieval-tools", _register_b6_retrieval_tools)
 # --- end B6-retrieval-tools ---
 
+# --- B4-recovery ---
+# Two loaders lost when a prior fleet agent died mid-task (B4-qa-mcq's mmar.py/uro_bench.py
+# already landed; these two never got written) -- recovered here, same _try_register pattern.
+# heysquad (K8 qa): HeySQuAD spoken-SQuAD QA, validation split only (no public "test" split) --
+# see heysquad.py's module docstring for the LEAKAGE WARNING (context contains the gold answer
+# verbatim, T7 incident) before building any KB from its "context" field.
+# vocalbench-{knowledge,reasoning,multi-round,emotion} (K8 qa / K4 SER): VocalBench axis-level
+# parquet, re-examined per wiki/survey/2026-07-09-datasets-lock-second14.md -- see vocalbench.py.
+def _register_b4_recovery() -> None:
+    from heysquad import load_heysquad
+    from vocalbench import (
+        load_vocalbench_emotion, load_vocalbench_knowledge, load_vocalbench_multi_round,
+        load_vocalbench_reasoning,
+    )
+
+    LOADERS["heysquad"] = load_heysquad
+    LOADERS["vocalbench-knowledge"] = load_vocalbench_knowledge
+    LOADERS["vocalbench-reasoning"] = load_vocalbench_reasoning
+    LOADERS["vocalbench-multi-round"] = load_vocalbench_multi_round
+    LOADERS["vocalbench-emotion"] = load_vocalbench_emotion
+
+
+_try_register("B4-recovery", _register_b4_recovery)
+# --- end B4-recovery ---
+
 
 def smoke_all(n: int = 3) -> dict:
     """Load ``n`` items from every registered loader; report success/failure without stopping.
