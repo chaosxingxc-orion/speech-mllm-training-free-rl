@@ -9,7 +9,7 @@ CLASS of task is handled). Conditions, greedy, with paired-bootstrap CIs, all bo
   b1 + SHUFFLED task-def + k demos                          -> does the task-def CONTENT matter (b2) vs format (b1)?
 
 reproduce:
-  SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/p4_taskdef_fewshot.py --only mmau-mini,vocalbench-zh
+  SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/p4_taskdef_fewshot.py --only mmau-mini,vocalbench-zh
 """
 import base64, json, os, sys, time, urllib.request
 import numpy as np
@@ -139,7 +139,7 @@ def main():
                                "conditions": "A plain / B taskdef-only / C taskdef+reasoned-demos / b1 shuffled-taskdef",
                                "K": K, "n_query": N_QUERY, "seed": SEED,
                                "boundary": "demos from train, test audio-only, no leakage"},
-                   "results": out, "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/p4_taskdef_fewshot.py"},
+                   "results": out, "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/p4_taskdef_fewshot.py"},
                   open(OUT, "w"), ensure_ascii=False, indent=2)
     print("\n=== T2 TASKDEF FEW-SHOT ===\n" + json.dumps(out, ensure_ascii=False, indent=2), flush=True)
     print("T2_DONE", flush=True)

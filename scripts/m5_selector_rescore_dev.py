@@ -20,7 +20,7 @@ implemented per the architect-hardened protocol spec §C.2 (interpretation log #
     ablation is confirmatory.
 
 reproduce:
-  SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/m5_selector_rescore_dev.py
+  SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/m5_selector_rescore_dev.py
 """
 import collections, copy, json, math, os, sys, time
 from pathlib import Path
@@ -277,7 +277,7 @@ def main():
         "prereg": "wiki/2026-07-03-agentic-tfrl-step1-preregistration.md @ b19bff2 §5 M5",
     }
     out = {"summary": summary, "per_utt": per_utt, "elapsed_s": round(time.time() - t0, 1),
-           "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/m5_selector_rescore_dev.py "
+           "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/m5_selector_rescore_dev.py "
                         "(CPU-only; re-scores the committed C1 pools; deterministic)"}
     OUT_LOCAL.parent.mkdir(parents=True, exist_ok=True)
     json.dump(out, open(OUT_LOCAL, "w"), indent=2)

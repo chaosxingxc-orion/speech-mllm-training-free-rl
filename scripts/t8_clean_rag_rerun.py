@@ -17,7 +17,7 @@ Read-outs:
 Boundary: query = omni-own-ASR of audio; injected passages have the gold answer removed; the gold is used
 ONLY to score (held out, never injected). directional-only, small n.
 
-reproduce: SPEECHRL_DATA_DIR=<repo>/speechrl-data python -u scripts/t8_clean_rag_rerun.py
+reproduce: SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python -u scripts/t8_clean_rag_rerun.py
 """
 import json, os, re, sys, time
 import numpy as np
@@ -101,7 +101,7 @@ def main():
            "lookup_component_raw_minus_scrub": (round(m(arms["inject_k_raw"]) - m(arms["inject_k_scrub"]), 3) if n else None),
            "boundary": "query=omni-own-ASR of AUDIO (deployable); injected passages have gold answer SCRUBBED; "
                        "gold used ONLY for scoring (held out, never injected)",
-           "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python -u scripts/t8_clean_rag_rerun.py"}
+           "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python -u scripts/t8_clean_rag_rerun.py"}
     OUT.parent.mkdir(parents=True, exist_ok=True)
     json.dump(res, open(OUT, "w"), ensure_ascii=False, indent=2)
     print("\n=== T8 CLEAN RAG RERUN ===\n" + json.dumps(res, ensure_ascii=False, indent=2), flush=True)

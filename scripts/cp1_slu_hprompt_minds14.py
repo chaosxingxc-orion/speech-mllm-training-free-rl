@@ -26,7 +26,7 @@ MINI-PREREG (committed before generation; Stage-1 directional worth-investment c
 
 Requires the resident llama-server (see repro_asr_best_of_n_llamacpp.py header).
 reproduce:
-  SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/cp1_slu_hprompt_minds14.py
+  SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/cp1_slu_hprompt_minds14.py
 """
 import base64, collections, io, json, os, sys, time, urllib.request
 from pathlib import Path
@@ -213,7 +213,7 @@ def main():
         f"diversity {'adds' if ci[0] > 0 else 'does not clearly add'} oracle headroom beyond sampling on "
         f"intent; {'and the gain survives the b1 format-floor' if cib2[0] > 0 else 'and it does NOT clearly survive the b1 format-floor (may be format/diversity, not task-definition)'}.")
     out = {"summary": summary, "per_utt": rows, "elapsed_s": round(time.time() - t0, 1),
-           "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/cp1_slu_hprompt_minds14.py (llama-server resident)"}
+           "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/cp1_slu_hprompt_minds14.py (llama-server resident)"}
     OUT.parent.mkdir(parents=True, exist_ok=True)
     json.dump(out, open(OUT, "w"), indent=2)
     print("\n=== SUMMARY ===\n" + json.dumps(summary, indent=2), flush=True)

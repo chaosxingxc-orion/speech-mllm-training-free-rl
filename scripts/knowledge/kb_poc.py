@@ -9,7 +9,7 @@ Validates the full pipeline on a small heysquad slice:
 
 Runnable anywhere (no GPU/network): audio keys use the logmel-stats fallback; faiss optional.
 
-    SPEECHRL_DATA_DIR=<repo>/speechrl-data SPEECHRL_KB_DIR=E:/speechrl-knowledge \
+    SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=E:/speechrl-knowledge \
         python -u scripts/knowledge/kb_poc.py
 """
 from __future__ import annotations
@@ -51,10 +51,13 @@ def main() -> int:
 
     # --- build raw (expect LEAKAGE) + scrubbed (expect CLEAN) ---
     # PoC uses the explicit offline-smoke key (auto would raise, by design — real KBs need CLAP/omni-embed).
+    # force_persist=True: this PoC deliberately builds a LEAKAGE source to prove the audit flags it —
+    # the enforcement gate would otherwise refuse to persist it (by design; this is the escape hatch).
     m_raw = kb_build.build_source(
         "heysquad_poc", "heysquad", None, records,
         key_modality="audio", value_type="text-fact", embedder="logmel-stats",
         audit_golds=golds, scrub=False, note="PoC raw (logmel-stats smoke key)",
+        force_persist=True,
     )
     m_clean = kb_build.build_source(
         "heysquad_poc_clean", "heysquad", None, records,
@@ -67,7 +70,9 @@ def main() -> int:
     order = rng.permutation(len(records))[:N_EVAL]
     eval_recs = [records[int(i)] for i in order]
     eval_ids = [r["from_item_id"] for r in eval_recs]
-    src = kb_retrieve.load_source("heysquad_poc")
+    # allow_unclean=True: "heysquad_poc" is the deliberately-LEAKAGE raw source (see build above) —
+    # loading it here is a PoC/debug retrieval-mechanics check, not a knowledge-utilization claim.
+    src = kb_retrieve.load_source("heysquad_poc", allow_unclean=True)
     hits = kb_retrieve.retrieve(src, [r["key_audio_ref"] for r in eval_recs], topk=5)
     self_at1 = float(np.mean([
         int(hits[i][0]["value"].provenance.get("from_item_id") == eval_ids[i])

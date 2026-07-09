@@ -17,7 +17,7 @@ Why boundary-clean: A' is a controlled COUNTERFACTUAL (not this item's gold); we
 injected value, never leak the dataset gold as 'correct'. This isolates knowledge-USE/override (the RAG
 utilization mechanism) from answer-lookup-of-gold. Pairs with T8 (answer-scrubbed augmentation = null).
 
-reproduce: SPEECHRL_DATA_DIR=<repo>/speechrl-data python -u scripts/t9_cf_utilization.py
+reproduce: SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python -u scripts/t9_cf_utilization.py
 """
 import json, os, sys, time
 import numpy as np
@@ -85,7 +85,7 @@ def main():
                             "is used; pairs with T8 (answer-scrubbed augmentation = null).",
            "boundary": "audio-input question; injected value A' is a counterfactual (another item's gold), "
                        "NOT this item's gold; we score adoption of the injected value, never the gold.",
-           "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python -u scripts/t9_cf_utilization.py"}
+           "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python -u scripts/t9_cf_utilization.py"}
     OUT.parent.mkdir(parents=True, exist_ok=True)
     json.dump(out, open(OUT, "w"), ensure_ascii=False, indent=2)
     print("\n=== T9 CF UTILIZATION ===\n" + json.dumps(out, ensure_ascii=False, indent=2), flush=True)

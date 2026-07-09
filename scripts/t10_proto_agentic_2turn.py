@@ -9,7 +9,7 @@ compared to single-turn injection of the SAME (counterfactual) knowledge. Tests 
 Boundary-clean: injected value A' is a controlled counterfactual (another item's gold), never this
 item's gold; audio input; we score adoption of the injected value.
 
-reproduce: SPEECHRL_DATA_DIR=<repo>/speechrl-data python -u scripts/t10_proto_agentic_2turn.py
+reproduce: SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python -u scripts/t10_proto_agentic_2turn.py
 """
 import base64, json, os, sys, time, urllib.request
 import numpy as np
@@ -84,7 +84,7 @@ def main():
            "note": "Full agentic KB benchmarks (eva/tau2/audiomc) infeasible offline (simulator/DB-env/o4-mini "
                    "rubric); this is the minimal agentic touch — does 2-turn tool-style injection change "
                    "utilisation vs single-turn. Boundary-clean (A'=counterfactual, audio input).",
-           "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python -u scripts/t10_proto_agentic_2turn.py"}
+           "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python -u scripts/t10_proto_agentic_2turn.py"}
     OUT.parent.mkdir(parents=True, exist_ok=True)
     json.dump(out, open(OUT, "w"), ensure_ascii=False, indent=2)
     print("\n=== T10 PROTO-AGENTIC ===\n" + json.dumps(out, ensure_ascii=False, indent=2), flush=True)

@@ -18,8 +18,8 @@ also reported; disagreement escalates to owner, defaulting stricter]. Ablation: 
 load-bearing iff shuffled arm retains <= 50% of the selector's gain (point estimates; CI reported).
 
 reproduce:
-  M5C_STAGE=manifest SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/m5_selector_confirmatory.py
-  M5C_STAGE=run      SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/m5_selector_confirmatory.py
+  M5C_STAGE=manifest SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/m5_selector_confirmatory.py
+  M5C_STAGE=run      SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/m5_selector_confirmatory.py
   (llama-server resident on :8091 for the run stage)
 """
 import base64, collections, copy, io, json, os, sys, time, urllib.request
@@ -328,7 +328,7 @@ def run():
                  "mem_items_at_pick": sel_by_key[it["key"]]["mem_items"],
                  "shuf_wer_8": shuf_by_key[it["key"]]["sel_wer"]} for it in items]
     out = {"summary": summary, "per_item": per_item, "elapsed_s": round(time.time() - t0, 1),
-           "reproduce": "M5C_STAGE=manifest then M5C_STAGE=run SPEECHRL_DATA_DIR=<repo>/speechrl-data "
+           "reproduce": "M5C_STAGE=manifest then M5C_STAGE=run SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data "
                         "python scripts/m5_selector_confirmatory.py (llama-server resident; slice "
                         "deterministic from seed 20260703 + committed exclusions; ONE selector config only)"}
     OUT.parent.mkdir(parents=True, exist_ok=True)

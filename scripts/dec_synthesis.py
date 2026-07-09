@@ -6,7 +6,7 @@ clears the P1 bar (relative +10%, b2-genuine, transfer for E8), then the mechani
 Pure analysis (no GPU). Run after E7/E8/E10 land; reports what is available so far.
 
 reproduce:
-  SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/dec_synthesis.py
+  SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/dec_synthesis.py
 """
 import json, os
 from pathlib import Path

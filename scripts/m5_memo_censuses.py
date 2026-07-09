@@ -26,7 +26,7 @@ zscore, mbr_utils, VARIANTS) and speechrl_common.rl.reward.wer — not duplicate
 Writes $SPEECHRL_DATA_DIR/_repro/m5_memo_censuses.json AND repo _repro/m5_memo_censuses.json.
 
 reproduce:
-  SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/m5_memo_censuses.py
+  SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/m5_memo_censuses.py
 """
 import json, os, random, sys, time
 from collections import Counter, defaultdict
@@ -424,7 +424,7 @@ def main():
            "sources": {"c1": "_repro/asr_bon_llamacpp_snr5.json",
                        "m3": "_repro/m3_phase0_zero_support.json"},
            "elapsed_s": round(time.time() - t0, 1),
-           "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/m5_memo_censuses.py "
+           "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/m5_memo_censuses.py "
                         "(CPU-only; recomputes every M5 memo census from the two committed dev "
                         "artifacts; deterministic)"}
     OUT_LOCAL.parent.mkdir(parents=True, exist_ok=True)

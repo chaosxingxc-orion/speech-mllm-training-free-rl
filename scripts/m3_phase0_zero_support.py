@@ -14,7 +14,7 @@ builds NO memory; it only measures whether the entity is already inside q0's sam
 Requires scripts/m3_phase0_select_entities.py output + resident llama-server (see
 repro_asr_best_of_n_llamacpp.py header).
 reproduce:
-  SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/m3_phase0_zero_support.py
+  SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/m3_phase0_zero_support.py
 """
 import base64, collections, json, os, sys, time, urllib.request
 from pathlib import Path
@@ -147,7 +147,7 @@ def main():
         "selection_artifact": "_repro/m3_phase0_selection.json",
     }
     out = {"summary": summary, "per_utt": rows, "elapsed_s": round(time.time() - t0, 1),
-           "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/m3_phase0_zero_support.py "
+           "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/m3_phase0_zero_support.py "
                         "(llama-server resident on :8091; selection deterministic — see m3_phase0_select_entities.py)"}
     OUT.parent.mkdir(parents=True, exist_ok=True)
     json.dump(out, open(OUT, "w"), indent=2)

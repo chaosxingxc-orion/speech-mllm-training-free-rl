@@ -15,7 +15,7 @@ Metrics:
       unified-vs-per-task precision (does pooling SQuAD-zh items hurt minds14 retrieval?)
 
 reproduce:
-  SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/t6_compression_feasibility.py
+  SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/t6_compression_feasibility.py
 """
 import json, os, sys, time, urllib.request
 import numpy as np
@@ -155,7 +155,7 @@ def main():
         "unified_index_precision@k": round(p_unified, 3),
         "unified_task_purity@k": round(purity_unified, 3),
         "unified_vs_pertask_delta": round(p_unified - p_pertask, 3),
-        "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/t6_compression_feasibility.py",
+        "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/t6_compression_feasibility.py",
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
     json.dump(res, open(OUT, "w"), ensure_ascii=False, indent=2)

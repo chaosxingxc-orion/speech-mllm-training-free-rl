@@ -6,7 +6,7 @@ This answers the confound "is the two-system verifier's realization real, or wou
 self-selection get the same?" — the question E4-vs-E10 (different surfaces) could not.
 
 reproduce:
-  SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/e10b_control.py
+  SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/e10b_control.py
 """
 import base64, collections, json, os, re, sys, time, urllib.request
 import numpy as np
@@ -112,7 +112,7 @@ def main():
         OUT.parent.mkdir(parents=True, exist_ok=True)
         json.dump({"summary": {"stage": "1-directional", "control": "on-surface self-selection (majority) vs two-system verifier, with paired-bootstrap CIs",
                                "nsamp": NSAMP, "n_query": N_QUERY, "seed": SEED}, "results": out,
-                   "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/e10b_control.py"},
+                   "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/e10b_control.py"},
                   open(OUT, "w"), ensure_ascii=False, indent=2)
     print("\n=== E10b CONTROL ===\n" + json.dumps(out, ensure_ascii=False, indent=2), flush=True)
     print("E10B_DONE", flush=True)

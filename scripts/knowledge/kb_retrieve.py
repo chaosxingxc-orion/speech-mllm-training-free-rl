@@ -4,6 +4,11 @@ Reloads the persisted vector index (``kb_index.VectorIndex.load``: FAISS or nump
 store, and re-instantiates the KEY embedder from the manifest — so retrieval reproduces without
 re-embedding the corpus. Query flow: embed query AUDIO -> ANN search over key index -> return VALUES.
 (For legacy text-keyed sources, the query is text and the persisted TF-IDF/MiniLM key embedder is used.)
+
+**Enforcement gate**: ``load_source`` reads ``manifest.leakage_audit`` and raises
+``kb_schema.KBLeakageError`` unless the final verdict is ``CLEAN`` (an unaudited source, verdict
+``None``, is treated as NOT admissible either — audit silence is not a clean bill). The escape hatch
+is ``allow_unclean=True`` (PoC/debug only), which logs a loud warning on every load.
 """
 from __future__ import annotations
 
@@ -48,13 +53,30 @@ def _query_embedder(manifest, source_path):
     raise ValueError(f"unknown embedder {manifest.embedder!r}")
 
 
-def load_source(source: str) -> dict:
-    """Return {index, values, manifest, embed_query} for a persisted source."""
+def load_source(source: str, allow_unclean: bool = False) -> dict:
+    """Return {index, values, manifest, embed_query} for a persisted source.
+
+    Raises ``kb_schema.KBLeakageError`` unless ``manifest.leakage_audit``'s final verdict is
+    ``CLEAN`` — unless ``allow_unclean=True`` (PoC/debug escape hatch; logs a loud warning).
+    """
     from kb_index import VectorIndex
-    from kb_schema import load_manifest, load_values, source_dir
+    from kb_schema import KBLeakageError, leakage_verdict, load_manifest, load_values, source_dir
 
     d = source_dir(source)
     manifest = load_manifest(source)
+    verdict = leakage_verdict(manifest.leakage_audit)
+    if verdict != "CLEAN":
+        if not allow_unclean:
+            raise KBLeakageError(
+                f"kb_retrieve.load_source({source!r}): refusing to load — leakage_audit verdict="
+                f"{verdict!r} (not CLEAN). This source is NOT admissible for a knowledge-utilization "
+                "claim. Pass allow_unclean=True to override for PoC/debug only."
+            )
+        print(
+            f"  [kb_retrieve] WARNING: loading UNCLEAN source {source!r} (verdict={verdict!r}) "
+            "with allow_unclean=True — NOT admissible for a knowledge-utilization claim.",
+            flush=True,
+        )
     return {
         "index": VectorIndex.load(d),
         "values": load_values(source),

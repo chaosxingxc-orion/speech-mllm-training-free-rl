@@ -16,7 +16,7 @@ MINI-PREREG (committed before any generation; owner pre-authorized at K1, 2026-0
 
 Requires the resident llama-server (see repro_asr_best_of_n_llamacpp.py header).
 reproduce:
-  SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/probe_hprompt_vs_hfix.py
+  SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/probe_hprompt_vs_hfix.py
 """
 import base64, collections, io, json, os, sys, time, urllib.request
 from pathlib import Path
@@ -176,7 +176,7 @@ def main():
         "prereg": "module docstring, committed before generation (git history is the anchor)",
     }
     out = {"summary": summary, "per_utt": rows, "elapsed_s": round(time.time() - t0, 1),
-           "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/probe_hprompt_vs_hfix.py "
+           "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/probe_hprompt_vs_hfix.py "
                         "(llama-server resident; slice deterministic from seed 20260704 + committed exclusions)"}
     OUT.parent.mkdir(parents=True, exist_ok=True)
     json.dump(out, open(OUT, "w"), indent=2)

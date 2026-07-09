@@ -19,7 +19,7 @@ MINI-PREREG (committed before generation; Stage-1 directional; the pivotal (c) l
 
 Requires the resident llama-server.
 reproduce:
-  SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/cp3_selector_realization_mmau.py
+  SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/cp3_selector_realization_mmau.py
 """
 import base64, collections, glob, io, json, math, os, sys, time, urllib.request
 from pathlib import Path
@@ -198,7 +198,7 @@ def main():
         f"judge ρ={selstats['judge']['rho']}. (c)-realization "
         f"{'is NONTRIVIAL: a modern selector harvests real headroom' if selstats[best]['rho'] and selstats[best]['rho'] > 0.15 and bci[0] > 0 else 'stays ~0: no label-free selector significantly beats majority — the +0.133 headroom is not deployably realizable'}.")
     out = {"summary": summary, "per_utt": rows, "elapsed_s": round(time.time() - t0, 1),
-           "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/cp3_selector_realization_mmau.py (llama-server resident)"}
+           "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/cp3_selector_realization_mmau.py (llama-server resident)"}
     OUT.parent.mkdir(parents=True, exist_ok=True)
     json.dump(out, open(OUT, "w"), indent=2)
     print("\n=== SUMMARY ===\n" + json.dumps(summary, indent=2), flush=True)

@@ -9,7 +9,7 @@ survives over this floor is genuine task-learning (b2), not format alignment (b1
 Reuses p2_baselines loaders/reward/gen helpers. Logs prompt-token cost per shot (context budget).
 
 reproduce:
-  SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/p3_fewshot.py --only mmau-mini [--shots 0,1,2,4]
+  SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/p3_fewshot.py --only mmau-mini [--shots 0,1,2,4]
 """
 import base64, json, os, sys, time
 import numpy as np
@@ -113,7 +113,7 @@ def main():
         json.dump({"summary": {"stage": "1-directional", "lever": "multimodal few-shot ICL",
                                "shots": SHOTS, "pool": K_POOL, "nquery": N_QUERY, "seed": SEED},
                    "results": out,
-                   "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/p3_fewshot.py"},
+                   "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/p3_fewshot.py"},
                   open(OUT, "w"), ensure_ascii=False, indent=2)
     print("\n=== E7 FEW-SHOT ===\n" + json.dumps(out, ensure_ascii=False, indent=2), flush=True)
     print("E7_DONE", flush=True)

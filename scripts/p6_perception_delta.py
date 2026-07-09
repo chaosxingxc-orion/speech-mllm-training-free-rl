@@ -11,7 +11,7 @@ replaceable by ASR->text-LLM -> the perception delta is real and load-bearing ->
 new-info (perception) element.
 
 reproduce:
-  SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/p6_perception_delta.py --only mmau-mini,SQuAD-zh,vocalbench-zh
+  SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/p6_perception_delta.py --only mmau-mini,SQuAD-zh,vocalbench-zh
 """
 import base64, json, os, sys, time, urllib.request
 import numpy as np

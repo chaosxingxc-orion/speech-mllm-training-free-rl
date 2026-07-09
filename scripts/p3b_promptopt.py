@@ -6,7 +6,7 @@ TEST split. Reports greedy(A*) − greedy(A_base) on test and the dev→test tra
 with dev labels this is a legitimate OPRO-flavoured search that needs no label-free selection at deploy.
 
 reproduce:
-  SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/p3b_promptopt.py --only mmau-mini
+  SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/p3b_promptopt.py --only mmau-mini
 """
 import json, os, sys, time
 import numpy as np
@@ -102,7 +102,7 @@ def main():
         json.dump({"summary": {"stage": "1-directional", "lever": "global prompt (system) optimization",
                                "n_dev": N_DEV, "n_test": N_TEST, "n_cands": len(CANDS), "seed": SEED},
                    "results": out,
-                   "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/p3b_promptopt.py"},
+                   "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/p3b_promptopt.py"},
                   open(OUT, "w"), ensure_ascii=False, indent=2)
     print("\n=== E8 PROMPT-OPT ===\n" + json.dumps(out, ensure_ascii=False, indent=2), flush=True)
     print("E8_DONE", flush=True)

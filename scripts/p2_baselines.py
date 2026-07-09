@@ -10,7 +10,7 @@ This freezes the per-surface baselines the A-realization program (E7/E8/E9/E10) 
 Stage-1 directional: n small per set; grade [directional | small-n | not significance-bearing].
 
 reproduce:
-  SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/p2_baselines.py [--only mmau-mini,vocalbench-zh]
+  SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/p2_baselines.py [--only mmau-mini,vocalbench-zh]
 """
 import base64, io, json, os, re, sys, time, unicodedata, urllib.request
 from pathlib import Path
@@ -39,12 +39,35 @@ def norm(s):
     return "".join(c for c in s if c.isalnum() or c.isspace()).strip()
 
 
+def sampling_defaults():
+    """The non-varying llama-server sampling params, made explicit (pinned 2026-07-09; A4/N15).
+
+    Previously only temperature/seed/max_tokens were sent in the request payload, leaving
+    top_p/top_k/repeat_penalty to whatever the resident llama-server process happened to be launched
+    with -- unrecorded, so a reproduction against a differently-configured server could silently
+    sample differently. No llama-server was resident when this was pinned, so these values are read
+    from the llama.cpp `tools/server/README.md` in the pinned checkout (commit
+    fdbd6abee20e408de21e90ca77a24cd50a6ea073, 2026-06-25 -- see scripts/env-setup.sh:LLAMACPP_COMMIT),
+    not queried live from /props: re-verify against a live /props response next time a server is up
+    and update this comment.
+
+    NOTE (doc inconsistency, recorded so a future re-check isn't surprised): the README's per-param
+    prose says `repeat_penalty` defaults to 1.1, but the SAME file's worked `/props` example response
+    and the `--repeat-penalty` CLI flag doc both show 1.0. We pin to 1.0 -- the CLI/runtime default --
+    not the prose value.
+
+    Callers embed this dict directly into result JSONs (see main()'s "summary") so the sampling
+    params actually used are recorded alongside the results, not just implied by server defaults.
+    """
+    return {"top_p": 0.95, "top_k": 40, "repeat_penalty": 1.0}
+
+
 def gen(wav_path, instruction, seed, temp):
     b64 = base64.b64encode(open(wav_path, "rb").read()).decode()
     payload = {"messages": [{"role": "user", "content": [
         {"type": "input_audio", "input_audio": {"data": b64, "format": "wav"}},
         {"type": "text", "text": instruction}]}],
-        "max_tokens": MAXTOK, "seed": seed, "temperature": temp}
+        "max_tokens": MAXTOK, "seed": seed, "temperature": temp, **sampling_defaults()}
     req = urllib.request.Request(BASE + "/v1/chat/completions", data=json.dumps(payload).encode(),
                                  headers={"Content-Type": "application/json"})
     with urllib.request.urlopen(req, timeout=300) as r:
@@ -253,9 +276,12 @@ def main():
             results[name] = {"error": f"{type(e).__name__}: {str(e)[:150]}"}
         OUT.parent.mkdir(parents=True, exist_ok=True)
         json.dump({"summary": {"stage": "1-directional", "n_per_set": N_UTTS, "nsamp": NSAMP,
-                               "slice_seed": SLICE_SEED, "model": "qwen3-omni-30b Q8_0 GGUF llama.cpp"},
+                               "slice_seed": SLICE_SEED, "model": "qwen3-omni-30b Q8_0 GGUF llama.cpp",
+                               "sampling_params": {"max_tokens": MAXTOK, "greedy_seed": 42,
+                                                    "greedy_temperature": 0.0, "sample_temperature": TEMP,
+                                                    **sampling_defaults()}},
                    "results": results,
-                   "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/p2_baselines.py"},
+                   "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/p2_baselines.py"},
                   open(OUT, "w"), ensure_ascii=False, indent=2)
     print("\n=== P2 BASELINES ===\n" + json.dumps(results, ensure_ascii=False, indent=2), flush=True)
     print("wrote", OUT, "\nP2_DONE", flush=True)

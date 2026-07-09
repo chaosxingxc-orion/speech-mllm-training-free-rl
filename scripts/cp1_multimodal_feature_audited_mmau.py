@@ -22,7 +22,7 @@ MINI-PREREG (committed before generation; Stage-1 directional; owner corrections
 
 Requires the resident llama-server.
 reproduce:
-  SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/cp1_multimodal_feature_audited_mmau.py
+  SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/cp1_multimodal_feature_audited_mmau.py
 """
 import base64, collections, glob, io, json, os, sys, time, urllib.request
 from pathlib import Path
@@ -245,7 +245,7 @@ def main():
     out = {"summary": summary, "per_utt": [{"task": r["task"], "gt": r["gt"], "preds": r["preds"],
                                              "sims": [round(s, 3) for s in r["sims"]]} for r in rows],
            "elapsed_s": round(time.time() - t0, 1),
-           "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/cp1_multimodal_feature_audited_mmau.py (llama-server resident)"}
+           "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/cp1_multimodal_feature_audited_mmau.py (llama-server resident)"}
     OUT.parent.mkdir(parents=True, exist_ok=True)
     json.dump(out, open(OUT, "w"), indent=2)
     print("\n=== SUMMARY ===\n" + json.dumps(summary, indent=2), flush=True)

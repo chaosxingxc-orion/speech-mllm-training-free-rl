@@ -8,7 +8,7 @@ The transcript is the dataset's ground-truth text (external to M), so a gain is 
 and it localizes whether the frozen omni's realizable gap is audio-perception (fixed by text) vs reasoning.
 
 reproduce:
-  SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/m3_crossmodal.py
+  SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/m3_crossmodal.py
 """
 import base64, glob, io, json, os, sys, time, urllib.request
 import numpy as np
@@ -116,7 +116,7 @@ def main():
         OUT.parent.mkdir(parents=True, exist_ok=True)
         json.dump({"summary": {"stage": "1-directional", "lever": "M3 cross-modal (ground-truth transcript) injection",
                                "n_query": N, "seed": SEED}, "results": out,
-                   "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/m3_crossmodal.py"},
+                   "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/m3_crossmodal.py"},
                   open(OUT, "w"), ensure_ascii=False, indent=2)
     print("\n=== M3 CROSS-MODAL ===\n" + json.dumps(out, ensure_ascii=False, indent=2), flush=True)
     print("M3_DONE", flush=True)

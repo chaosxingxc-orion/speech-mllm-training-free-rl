@@ -21,7 +21,7 @@ deployable gain. Real imperfect-retrieval utilization is H0/H-util at T7. No tes
 deliberate ceiling arm (which exists precisely to bound consumption, and is never used as a deployable lever).
 
 reproduce:
-  SPEECHRL_DATA_DIR=<repo>/speechrl-data python -u scripts/t0_consumption_probe.py
+  SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python -u scripts/t0_consumption_probe.py
 """
 import json, os, sys, time
 import numpy as np
@@ -103,7 +103,7 @@ def main():
            "boundary_note": "B/C inject gold-as-reference = CEILING probe, directional-only, NOT a "
                             "deployable gain; real imperfect-retrieval utilization = H0/H-util at T7",
            "results": results, "verdict": verdict,
-           "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python -u scripts/t0_consumption_probe.py"}
+           "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python -u scripts/t0_consumption_probe.py"}
     OUT.parent.mkdir(parents=True, exist_ok=True)
     json.dump(out, open(OUT, "w"), ensure_ascii=False, indent=2)
     print("\n=== T0 CONSUMPTION PROBE ===\n" + json.dumps(out, ensure_ascii=False, indent=2), flush=True)

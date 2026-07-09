@@ -16,7 +16,7 @@ Claims (T4 pre-reg): H0 = acc(oracle)-acc(base) > 0 (headroom); H-util-gate = ac
 Boundary: query=question text (not answer); answers never injected; reward/gate = retriever relevance
 (proxy, non-gold, a DIFFERENT model from the generator = decorrelated). directional-only at this n.
 
-reproduce: SPEECHRL_DATA_DIR=<repo>/speechrl-data python -u scripts/t7_rag_gate_probe.py
+reproduce: SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python -u scripts/t7_rag_gate_probe.py
 """
 import glob, io, json, os, sys, time
 import numpy as np
@@ -177,7 +177,7 @@ def main():
            "Hutil_gate_minus_injectk_CI": (boot_ci(arms["gate"], arms["inject_k"]) if n else None),
            "boundary": "query=question text (not answer); answers never injected; KB=passage pool; "
                        "gate reward=retriever relevance (proxy, non-gold, decorrelated from generator)",
-           "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python -u scripts/t7_rag_gate_probe.py"}
+           "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python -u scripts/t7_rag_gate_probe.py"}
     OUT.parent.mkdir(parents=True, exist_ok=True)
     json.dump(res, open(OUT, "w"), ensure_ascii=False, indent=2)
     print("\n=== T7 RAG GATE PROBE ===\n" + json.dumps(res, ensure_ascii=False, indent=2), flush=True)

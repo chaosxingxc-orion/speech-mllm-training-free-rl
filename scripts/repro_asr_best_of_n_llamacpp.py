@@ -19,7 +19,7 @@ Start the server first (one load, ~4 min):
     --mmproj <gguf-dir>/mmproj-Qwen3-Omni-30B-A3B-Instruct-bf16.gguf \
     -ngl 28 -c 8192 --host 127.0.0.1 --port 8091 --no-warmup
 reproduce:
-  SPEECHRL_DATA_DIR=<repo>/speechrl-data BON_UTTS=96 BON_POOL=8 BON_TEMP=0.8 BON_SNR=5 \
+  SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data BON_UTTS=96 BON_POOL=8 BON_TEMP=0.8 BON_SNR=5 \
     ~/.venvs/speechrl/bin/python scripts/repro_asr_best_of_n_llamacpp.py
 """
 import base64, json, os, sys, time, urllib.request
@@ -116,7 +116,7 @@ def main():
         f"Reward-driven selection over model-sampled candidates on a frozen model; CI pooled across "
         f"{len(seeds)} generation seeds (utterance + pool-generation variance).")
     out = {"summary": summary, "per_utt": rows, "elapsed_s": round(time.time() - t0, 1),
-           "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data BON_SEEDS=42,7,123 BON_UTTS=48 BON_POOL=8 BON_SNR=5 "
+           "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data BON_SEEDS=42,7,123 BON_UTTS=48 BON_POOL=8 BON_SNR=5 "
                         "python scripts/repro_asr_best_of_n_llamacpp.py (with llama-server resident)"}
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w") as f:

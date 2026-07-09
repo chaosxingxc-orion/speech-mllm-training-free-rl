@@ -15,7 +15,7 @@ Also builds/caches the train-960h token-frequency table (shared with the M5 pilo
 clean wavs. Commit the emitted selection artifact BEFORE any GPU sample exists (pre-commitment).
 
 reproduce:
-  SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/m3_phase0_select_entities.py
+  SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/m3_phase0_select_entities.py
 """
 import collections, glob, io, json, os, re, time
 from pathlib import Path
@@ -127,7 +127,7 @@ def main():
                              for tf, ch, w, n in candidates],
         "selected": [{"id": u, **v, "ref": ref[u]} for u, v in sel.items()],
         "elapsed_s": round(time.time() - t0, 1),
-        "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/m3_phase0_select_entities.py",
+        "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/m3_phase0_select_entities.py",
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
     json.dump(out, open(OUT, "w"), indent=2)

@@ -10,7 +10,7 @@ Loop (R rounds): eval current instruction on dev -> collect wrong cases (model a
 keep it iff dev accuracy improves. Report frozen test greedy(best) - greedy(base) with paired-bootstrap CI.
 
 reproduce:
-  SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/p5_iterative_promptopt.py --only mmau-mini,SQuAD-zh
+  SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/p5_iterative_promptopt.py --only mmau-mini,SQuAD-zh
 """
 import json, os, sys, time, urllib.request
 import numpy as np

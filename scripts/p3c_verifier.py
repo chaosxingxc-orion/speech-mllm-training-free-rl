@@ -12,7 +12,7 @@ candidate correct/not. Selection = a verifier-endorsed candidate. Measures:
 Training-free, no model training (owner). The residual knowledge-blind-spot floor is PARKED (#37 -> W4).
 
 reproduce:
-  SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/p3c_verifier.py --only mmau-mini
+  SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/p3c_verifier.py --only mmau-mini
 """
 import base64, json, os, re, sys, time, urllib.request
 import numpy as np
@@ -122,7 +122,7 @@ def main():
                                "nsamp": NSAMP, "n_query": N_QUERY, "seed": SEED,
                                "note": "isolated vs coupled verifier; residual knowledge floor PARKED (#37->W4)"},
                    "results": out,
-                   "reproduce": "SPEECHRL_DATA_DIR=<repo>/speechrl-data python scripts/p3c_verifier.py"},
+                   "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data python scripts/p3c_verifier.py"},
                   open(OUT, "w"), ensure_ascii=False, indent=2)
     print("\n=== E10 VERIFIER ===\n" + json.dumps(out, ensure_ascii=False, indent=2), flush=True)
     print("E10_DONE", flush=True)

@@ -7,7 +7,12 @@ organizational全覆盖 behind the WS-C coverage diagnostic, and it makes the em
 key_modality : audio (primary, speech-keyed) | text (legacy passage-keyed) | none
 value_type   : transcript | translation | labels | intent | answer | response | text-fact | none
 status       : built | buildable | deferred | n-a
-  built     — a source has actually been constructed at least once
+  built     — a ``kb_build.build_source`` output is PERSISTED under this EXACT registry key, i.e.
+              ``SPEECHRL_KB_DIR/knowledge_base/<this-dataset-name>/`` holds a manifest.json +
+              keys.npy + values.jsonl (verify with ``kb_schema.list_sources()``). Running an
+              experiment ON the dataset via the legacy transient p2/t7 harness (T7-T10; in-RAM,
+              never persisted) does NOT count, and neither does a differently-named PoC slice
+              (e.g. "heysquad_poc" does not make "heysquad" built — different registry key).
   buildable — implementable now from on-disk data (Stage-1 PoC target)
   deferred  — needs infra we lack offline (agent simulator / DB-env / rubric model)
 """
@@ -45,12 +50,12 @@ REGISTRY: dict[str, KnowledgeSourceSpec] = {
     "air-bench": KnowledgeSourceSpec("air-bench", "audio", "answer", "buildable", "audio benchmark"),
     "mmsu": KnowledgeSourceSpec("mmsu", "audio", "answer", "buildable", "spoken-reasoning MCQ"),
     # ---- spoken-QA: key=audio, value=answer (legacy text-key passage pool also possible) ----
-    "big-bench-audio": KnowledgeSourceSpec("big-bench-audio", "audio", "answer", "built", "spoken-reasoning QA (T9)"),
-    "heysquad": KnowledgeSourceSpec("heysquad", "audio", "answer", "built", "extractive spoken-QA; value LEAKS gold -> scrub"),
+    "big-bench-audio": KnowledgeSourceSpec("big-bench-audio", "audio", "answer", "buildable", "spoken-reasoning QA; touched via legacy transient p2 harness in T9, never persisted via kb_build"),
+    "heysquad": KnowledgeSourceSpec("heysquad", "audio", "answer", "buildable", "extractive spoken-QA; value LEAKS gold -> scrub; only a 50-rec PoC slice is persisted, under the DIFFERENT keys heysquad_poc/heysquad_poc_clean (kb_poc.py), not under this key"),
     "spoken-squad": KnowledgeSourceSpec("spoken-squad", "audio", "answer", "buildable", "ASR-noise-robust spoken-QA"),
-    "uro-bench": KnowledgeSourceSpec("uro-bench", "audio", "answer", "built", "only SQuAD-zh subset touched; 40+ subsets untouched"),
+    "uro-bench": KnowledgeSourceSpec("uro-bench", "audio", "answer", "buildable", "40+ subsets; only the SQuAD-zh subset touched, via legacy transient p2 harness in T9, never persisted via kb_build"),
     "vocalbench": KnowledgeSourceSpec("vocalbench", "audio", "response", "buildable", "EN conversational"),
-    "vocalbench-zh": KnowledgeSourceSpec("vocalbench-zh", "audio", "answer", "built", "ZH spoken-interaction QA (T9)"),
+    "vocalbench-zh": KnowledgeSourceSpec("vocalbench-zh", "audio", "answer", "buildable", "ZH spoken-interaction QA; touched via legacy transient p2 harness in T9, never persisted via kb_build"),
     # ---- agentic voice: key=audio, value=response via tools (mostly offline-infeasible) ----
     "voicebench": KnowledgeSourceSpec("voicebench", "audio", "response", "buildable", "spoken-QA + agentic suite"),
     "voiceassistant-eval": KnowledgeSourceSpec("voiceassistant-eval", "audio", "response", "buildable", "assistant tasks"),

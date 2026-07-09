@@ -33,6 +33,17 @@ KEY_MODALITIES = ("audio", "text")  # audio = primary (multimodal); text = legac
 VALUE_TYPES = ("transcript", "translation", "labels", "intent", "answer", "text-fact", "other-modal")
 
 
+class KBLeakageError(RuntimeError):
+    """Raised by the Information-Boundary Guard enforcement gate.
+
+    Two call sites: ``kb_build.build_source`` refuses to PERSIST a source whose value-side leakage
+    audit verdict is ``LEAKAGE`` (unless ``force_persist=True``), and ``kb_retrieve.load_source``
+    refuses to LOAD a source whose ``leakage_audit.verdict`` is not ``CLEAN`` (unless
+    ``allow_unclean=True``). Both escape hatches are PoC/debug-only and stamp/warn loudly so an unclean
+    source can never be used for a knowledge-utilization claim silently.
+    """
+
+
 @dataclass(frozen=True)
 class KnowledgeValue:
     """One row of the value store — the payload retrieved when its key matches."""
@@ -74,6 +85,7 @@ class SourceManifest:
     build_hash: str
     leakage_audit: dict = field(default_factory=dict)
     created_note: str = ""
+    forced: bool = False  # True iff persisted despite a LEAKAGE verdict via force_persist=True
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -90,10 +102,42 @@ def entry_id(source: str, key_ref: str, value: str) -> str:
     return f"{source}:{hashlib.sha1(f'{key_ref}|{value}'.encode('utf-8')).hexdigest()[:12]}"
 
 
+def leakage_verdict(audit: dict) -> str | None:
+    """The FINAL verdict of a ``leakage_audit`` dict (post-scrub if scrubbed, else the raw audit).
+
+    Returns ``None`` if no audit was ever run (``audit`` is empty) — an unaudited source is NOT the
+    same as a CLEAN one; callers that require CLEAN must treat ``None`` as "not admissible" too.
+    """
+    if not audit:
+        return None
+    return audit.get("post_scrub", audit).get("verdict")
+
+
 # ---- path resolution (mirrors registry.data_root's SPEECHRL_DATA_DIR pattern) ----
 def kb_root() -> Path:
+    """Root of the persistent knowledge base store.
+
+    Resolution order:
+      1. ``SPEECHRL_KB_DIR`` env var, if set — always honored verbatim.
+      2. Unset, on native Windows (``os.name == 'nt'``) — the Windows-literal default
+         ``E:/speechrl-knowledge``.
+      3. Unset, on POSIX (WSL/Linux) — ``/mnt/e/speechrl-knowledge`` IF ``/mnt/e``
+         exists, else a loud ``RuntimeError``. On POSIX, ``Path("E:/speechrl-knowledge")``
+         is not an absolute path — it silently creates a junk relative dir literally named
+         ``E:`` under the caller's cwd. Never fall back to that; refuse instead.
+    """
     env = os.environ.get("SPEECHRL_KB_DIR")
-    return Path(env) if env else Path("E:/speechrl-knowledge")
+    if env:
+        return Path(env)
+    if os.name == "nt":
+        return Path("E:/speechrl-knowledge")
+    posix_default = Path("/mnt/e/speechrl-knowledge")
+    if posix_default.parent.exists():
+        return posix_default
+    raise RuntimeError(
+        "SPEECHRL_KB_DIR is unset and the POSIX default parent '/mnt/e' does not exist. "
+        "Set SPEECHRL_KB_DIR explicitly, e.g.: export SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge"
+    )
 
 
 def source_dir(source: str) -> Path:

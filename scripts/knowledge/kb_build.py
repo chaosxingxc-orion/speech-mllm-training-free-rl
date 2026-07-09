@@ -11,6 +11,13 @@ reading-comprehension passage pools, but AUDIO is the primary, multimodal key.
 
 Leakage audit runs on the VALUES (value-side Information-Boundary Guard): if a value contains an eval
 gold, the source is flagged; ``scrub=True`` strips golds from values before persisting.
+
+**Enforcement gate**: when the audit's final verdict (post-scrub if scrubbed, else raw) is
+``LEAKAGE``, ``build_source`` REFUSES to persist and raises ``kb_schema.KBLeakageError`` — unless the
+caller passes ``force_persist=True``, an explicit PoC/debug escape hatch that logs a loud warning and
+stamps the manifest ``forced=True`` so a leaking, force-built source is never mistaken for an
+admissible one. ``SUSPECT`` and unaudited (``audit_golds=None``) builds are NOT gated — only a
+confirmed ``LEAKAGE`` verdict blocks persistence.
 """
 from __future__ import annotations
 
@@ -32,17 +39,24 @@ def build_source(
     note: str = "",
     audit_golds: list[str] | None = None,
     scrub: bool = False,
+    force_persist: bool = False,
 ) -> dict:
-    """Build a persisted speech-keyed knowledge source. Returns the SourceManifest as a dict."""
+    """Build a persisted speech-keyed knowledge source. Returns the SourceManifest as a dict.
+
+    Raises ``kb_schema.KBLeakageError`` if the value-side audit's final verdict is ``LEAKAGE`` and
+    ``force_persist`` is not set (see module docstring: the enforcement gate).
+    """
     import numpy as np
 
     import kb_embed
     from kb_audit import audit_texts, scrub_golds
     from kb_schema import (
+        KBLeakageError,
         KnowledgeValue,
         SourceManifest,
         build_hash,
         entry_id,
+        leakage_verdict,
         source_dir,
     )
 
@@ -69,6 +83,24 @@ def build_source(
             values = scrub_golds(values, audit_golds)
             audit = {**audit, "post_scrub": audit_texts(values, audit_golds)}
         leakage_ok = audit.get("post_scrub", audit).get("verdict") == "CLEAN"
+
+    # --- enforcement gate: refuse to PERSIST a confirmed-LEAKAGE source (Information-Boundary Guard) ---
+    verdict = leakage_verdict(audit)
+    forced = False
+    if verdict == "LEAKAGE":
+        if not force_persist:
+            raise KBLeakageError(
+                f"kb_build.build_source({source!r}): refusing to persist — leakage_audit verdict="
+                f"LEAKAGE (answer_overlap_rate={audit.get('post_scrub', audit).get('answer_overlap_rate')}). "
+                "Pass force_persist=True to override for PoC/debug only; the persisted manifest will "
+                "be stamped forced=True and remains NOT admissible for a knowledge-utilization claim."
+            )
+        forced = True
+        print(
+            f"  [kb_build] WARNING: force-persisting LEAKAGE source {source!r} (force_persist=True) — "
+            "manifest stamped forced=True; NOT admissible for a knowledge-utilization claim.",
+            flush=True,
+        )
 
     # --- embed the KEY into a matrix, build + persist the vector index ---
     fitted = None
@@ -120,12 +152,13 @@ def build_source(
         build_hash=build_hash(dataset, revision, key_modality, value_type, ename, build_seed, index.n),
         leakage_audit=audit,
         created_note=note,
+        forced=forced,
     )
     json.dump(manifest.to_dict(), open(d / "manifest.json", "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     print(
         f"  [kb_build] {source}: key={key_modality} value={value_type} n={index.n} "
         f"embedder={ename} index={index.backend} hash={manifest.build_hash} "
-        f"audit={audit.get('post_scrub', audit).get('verdict') if audit else 'n/a'}",
+        f"audit={verdict if verdict else 'n/a'}{' FORCED' if forced else ''}",
         flush=True,
     )
     return manifest.to_dict()
