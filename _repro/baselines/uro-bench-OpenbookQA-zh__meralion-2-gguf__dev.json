@@ -25,7 +25,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -35,17 +35,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": 34,
       "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 旧订书钉\nB. 一块口香糖\nC. 以上都是\nD. 一块鸡肉\n只输出选项字母和内容，例如 'A. ...'。",
       "reply": "A. 旧订书钉",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -55,7 +55,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -65,7 +65,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -75,27 +75,27 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": 103,
       "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 鸟\nB. 泥土\nC. 土壤\nD. 岩石\n只输出选项字母和内容，例如 'A. ...'。",
       "reply": "A. 鸟",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": 44,
       "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 太阳绕地球运行\nB. 以上都不是\nC. 太阳绕火星运行\nD. 地球绕太阳运行\n只输出选项字母和内容，例如 'A. ...'。",
       "reply": "D. 地球绕太阳运行",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -105,7 +105,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -115,27 +115,27 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": 133,
       "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 鲨鱼用鳃在水下游泳的时间比人类长\nB. 人类用鳃从水中提取碳\nC. 鲨鱼用鳃从水中提取碳\nD. 鲨鱼在水下无法找到氧气\n只输出选项字母和内容，例如 'A. ...'。",
       "reply": "A. 鲨鱼用鳃在水下游泳的时间比人类长",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": 115,
       "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 一棵高大的橡树\nB. 一丛低矮的灌木\nC. 鹰巢\nD. 邮箱\n只输出选项字母和内容，例如 'A. ...'。",
       "reply": "A. 一棵高大的橡树",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -145,17 +145,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": 49,
       "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 圣贝纳迪诺\nB. 苏圣玛丽\nC. 圣保罗\nD. 圣路易斯\n只输出选项字母和内容，例如 'A. ...'。",
       "reply": "A. 圣贝纳迪诺",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -165,7 +165,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -175,7 +175,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -185,7 +185,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -195,17 +195,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": 181,
       "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 当你靠近时\nB. 当你射击时\nC. 当你远离时\nD. 当你笑时\n只输出选项字母和内容，例如 'A. ...'。",
       "reply": "A. 当你靠近时",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -215,17 +215,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": 151,
       "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 炸药爆炸\nB. 阅读电子邮件\nC. 气球爆炸\nD. 打开汽水\n只输出选项字母和内容，例如 'A. ...'。",
       "reply": "A. 炸药爆炸",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -235,7 +235,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -245,7 +245,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -255,17 +255,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": 173,
       "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 吹管子\nB. 睡觉\nC. 走路\nD. 说话\n只输出选项字母和内容，例如 'A. ...'。",
       "reply": "A. 吹管子",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -275,7 +275,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -285,7 +285,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -295,17 +295,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": 164,
       "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 蜜蜂\nB. 猫\nC. 狗\nD. 老鼠\n只输出选项字母和内容，例如 'A. ...'。",
       "reply": "A. 蜜蜂",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -315,7 +315,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -325,7 +325,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -335,17 +335,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": 51,
       "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 出汗\nB. 进食\nC. 火\nD. 毯子\n只输出选项字母和内容，例如 'A. ...'。",
       "reply": "A. 出汗",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -355,7 +355,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -365,7 +365,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -375,27 +375,27 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": 108,
       "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 汽车\nB. 海洋\nC. 冰川\nD. 风暴\n只输出选项字母和内容，例如 'A. ...'。",
       "reply": "A. 汽车",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": 22,
       "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 饥饿哺乳动物的肋骨轮廓清晰可见\nB. 瘦的生物通常是无脊椎动物\nC. 所有瘦的动物都缺乏适当的营养\nD. 食物很少的动物正在死亡\n只输出选项字母和内容，例如 'A. ...'。",
       "reply": "A. 饥饿哺乳动物的肋骨轮廓清晰可见",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -405,7 +405,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -415,19 +415,32 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     }
   ],
   "aggregate": {
-    "mean": 0.0,
+    "mean": 0.325,
     "ci95": [
-      0.0,
-      0.0
+      0.175,
+      0.475
     ],
     "n_scored": 40,
     "n_total": 40
   },
   "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset uro-bench-OpenbookQA-zh --backbone meralion-2-gguf --split dev --n 40",
-  "elapsed_s": 15.7
+  "elapsed_s": 15.7,
+  "rescored": {
+    "date": "2026-07-10",
+    "reason": "gold-key mismatch (wave-1 audit): K8's dict-gold branch only accepted key \"answer\", but air-bench-foundation's own gold dict uses \"answer_gt\" (56 cells, 14 datasets x 2 backbones x 2 splits); uro-bench-OpenbookQA-zh's target_text embeds \"<letter>. <text>\" rather than a bare letter, which score_k8_mcq's gold_idx resolution didn't parse (4 cells). Both fixed in metrics.py (score_k8_mcq + the K8 dispatcher's dict-gold branch) -- see that file's own 2026-07-10 freeze-repair comments. This is a RESCORE ONLY: per-item scores + the cell aggregate were recomputed from the ALREADY-STORED model replies (no regeneration) via the fixed metrics.score and run_baseline.paired_bootstrap, unchanged.",
+    "original_aggregate": {
+      "mean": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_scored": 40,
+      "n_total": 40
+    }
+  }
 }

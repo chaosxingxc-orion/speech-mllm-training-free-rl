@@ -22,10 +22,10 @@
       "item_id": "Acoustic_Scene_Classification:TUT2017:14187",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the likely source of these sounds?\nOptions:\nA. cafe/restaurant\nB. forest path\nC. park\nD. home\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. ...",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -35,17 +35,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Acoustic_Scene_Classification:TUT2017:13991",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the likely source of these sounds?\nOptions:\nA. park\nB. metro station\nC. bus\nD. grocery store\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. metro station",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -55,17 +55,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Acoustic_Scene_Classification:TUT2017:14467",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat scene does the combination of sounds evoke?\nOptions:\nA. cafe/restaurant\nB. train\nC. home\nD. city center\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. cafe/restaurant",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -75,7 +75,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -85,37 +85,37 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Acoustic_Scene_Classification:TUT2017:14639",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat environment is being reflected in this sound recording?\nOptions:\nA. library\nB. forest path\nC. metro station\nD. city center\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. forest path",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Acoustic_Scene_Classification:TUT2017:14611",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhich of these locations do the sounds give the impression of being recorded in?\nOptions:\nA. forest path\nB. bus\nC. library\nD. beach\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. forest path",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Acoustic_Scene_Classification:TUT2017:14535",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat place do you connect with the sound profile in this clip?\nOptions:\nA. residential area\nB. car\nC. beach\nD. forest path\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. forest path",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -125,7 +125,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -135,27 +135,27 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Acoustic_Scene_Classification:TUT2017:14401",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhich location do these sounds seem to illustrate?\nOptions:\nA. grocery store\nB. home\nC. residential area\nD. park\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. residential area",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Acoustic_Scene_Classification:TUT2017:14795",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat venue do these sounds most likely represent?\nOptions:\nA. home\nB. train\nC. office\nD. bus\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. ...",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -165,7 +165,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -175,17 +175,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Acoustic_Scene_Classification:TUT2017:14765",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat scene does the layered soundscape suggest to you?\nOptions:\nA. car\nB. library\nC. park\nD. grocery store\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. park",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -195,17 +195,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Acoustic_Scene_Classification:TUT2017:13957",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the setting that comes to mind when listening to this sound?\nOptions:\nA. park\nB. cafe/restaurant\nC. tram\nD. car\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. park",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -215,37 +215,37 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Acoustic_Scene_Classification:TUT2017:14427",
       "instr": "Listen to the audio and answer the multiple-choice question.\nFrom the sound, where do you picture this recording was made?\nOptions:\nA. grocery store\nB. metro station\nC. home\nD. car\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. metro station",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Acoustic_Scene_Classification:TUT2017:14607",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIn what kind of area do these types of sounds usually arise?\nOptions:\nA. park\nB. beach\nC. train\nD. home\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. train",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Acoustic_Scene_Classification:TUT2017:14812",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhere do the specific sounds heard in the recording typically occur?\nOptions:\nA. cafe/restaurant\nB. metro station\nC. home\nD. bus\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. metro station",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -255,7 +255,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -265,7 +265,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -275,7 +275,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -285,7 +285,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -295,7 +295,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -305,17 +305,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Acoustic_Scene_Classification:TUT2017:14779",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIn what kind of area do these types of sounds usually arise?\nOptions:\nA. library\nB. train\nC. city center\nD. home\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. city center",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -325,7 +325,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -335,7 +335,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -345,17 +345,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Acoustic_Scene_Classification:TUT2017:14844",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhich of these options aligns with the sound characteristics you hear?\nOptions:\nA. city center\nB. grocery store\nC. home\nD. beach\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. home",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -365,7 +365,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -375,27 +375,27 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Acoustic_Scene_Classification:TUT2017:14358",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat scenery does the ambient sound reflect?\nOptions:\nA. library\nB. cafe/restaurant\nC. car\nD. forest path\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. car",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Acoustic_Scene_Classification:TUT2017:14524",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat scene is being depicted through these sounds?\nOptions:\nA. bus\nB. park\nC. beach\nD. car\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. ...",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -405,7 +405,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -415,19 +415,32 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     }
   ],
   "aggregate": {
-    "mean": 0.0,
+    "mean": 0.425,
     "ci95": [
-      0.0,
-      0.0
+      0.275,
+      0.575
     ],
     "n_scored": 40,
     "n_total": 40
   },
   "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset air-bench-foundation-acoustic-scene-tut2017 --backbone meralion-2-gguf --split dev --n 40",
-  "elapsed_s": 17.1
+  "elapsed_s": 17.1,
+  "rescored": {
+    "date": "2026-07-10",
+    "reason": "gold-key mismatch (wave-1 audit): K8's dict-gold branch only accepted key \"answer\", but air-bench-foundation's own gold dict uses \"answer_gt\" (56 cells, 14 datasets x 2 backbones x 2 splits); uro-bench-OpenbookQA-zh's target_text embeds \"<letter>. <text>\" rather than a bare letter, which score_k8_mcq's gold_idx resolution didn't parse (4 cells). Both fixed in metrics.py (score_k8_mcq + the K8 dispatcher's dict-gold branch) -- see that file's own 2026-07-10 freeze-repair comments. This is a RESCORE ONLY: per-item scores + the cell aggregate were recomputed from the ALREADY-STORED model replies (no regeneration) via the fixed metrics.score and run_baseline.paired_bootstrap, unchanged.",
+    "original_aggregate": {
+      "mean": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_scored": 40,
+      "n_total": 40
+    }
+  }
 }

@@ -25,7 +25,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -35,17 +35,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Speech_Grounding:librispeech:361",
       "instr": "Listen to the audio and answer the multiple-choice question.\nListen to this audio clip; identify the time segment when 'down' is spoken.\nOptions:\nA. [1.65, 1.99]\nB. [8.90, 9.11]\nC. [7.29, 7.51]\nD. [0.23, 0.55]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. [1.65, 1.99]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -55,7 +55,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -65,7 +65,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -75,17 +75,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Speech_Grounding:librispeech:156",
       "instr": "Listen to the audio and answer the multiple-choice question.\nDetermine the point in the audio when 'gone' is discussed.\nOptions:\nA. [3.43, 3.62]\nB. [0.60, 0.67]\nC. [1.70, 1.83]\nD. [3.31, 3.43]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. [3.43, 3.62]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -95,7 +95,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -105,7 +105,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -115,7 +115,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -125,17 +125,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Speech_Grounding:librispeech:935",
       "instr": "Listen to the audio and answer the multiple-choice question.\nAscertain the point at which 'london' enters the discussion.\nOptions:\nA. [2.48, 2.86]\nB. [0.42, 0.48]\nC. [0.48, 0.88]\nD. [0.88, 1.03]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. [2.48, 2.86]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -145,7 +145,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -155,17 +155,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Speech_Grounding:librispeech:126",
       "instr": "Listen to the audio and answer the multiple-choice question.\nHighlight when 'half' is spoken.\nOptions:\nA. [1.60, 1.92]\nB. [1.21, 1.33]\nC. [1.92, 1.97]\nD. [6.66, 6.94]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. [1.60, 1.92]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -175,17 +175,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Speech_Grounding:librispeech:392",
       "instr": "Listen to the audio and answer the multiple-choice question.\nLocate the segment where 'done' appears most frequently.\nOptions:\nA. [1.34, 1.52]\nB. [1.58, 1.91]\nC. [1.52, 1.58]\nD. [2.14, 2.21]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. ...",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -195,7 +195,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -205,7 +205,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -215,7 +215,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -225,7 +225,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -235,7 +235,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -245,7 +245,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -255,47 +255,47 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Speech_Grounding:librispeech:19",
       "instr": "Listen to the audio and answer the multiple-choice question.\nNote the time when 'on' is first mentioned in the audio.\nOptions:\nA. [1.62, 1.76]\nB. [1.81, 2.09]\nC. [4.00, 4.29]\nD. [2.09, 2.15]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. [1.62, 1.76]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Speech_Grounding:librispeech:7",
       "instr": "Listen to the audio and answer the multiple-choice question.\nHighlight the time when 'his' is mentioned.\nOptions:\nA. [3.19, 3.35]\nB. [3.35, 3.68]\nC. [4.33, 4.83]\nD. [1.19, 1.26]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. [3.19, 3.35]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Speech_Grounding:librispeech:692",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIdentify the moment 'scholar's' is mentioned in the audio.\nOptions:\nA. [0.41, 0.94]\nB. [0.94, 1.43]\nC. [0.94, 1.43]\nD. [0.94, 1.43]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. ...",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Speech_Grounding:librispeech:307",
       "instr": "Listen to the audio and answer the multiple-choice question.\nDiscover when 'it's' is introduced in the conversation.\nOptions:\nA. [0.26, 0.41]\nB. [0.85, 1.11]\nC. [2.40, 2.43]\nD. [2.67, 2.99]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. ...",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -305,7 +305,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -315,27 +315,27 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Speech_Grounding:librispeech:961",
       "instr": "Listen to the audio and answer the multiple-choice question.\nAscertain the exact time 'which' is mentioned in the audio.\nOptions:\nA. [2.35, 2.51]\nB. [3.26, 3.40]\nC. [2.51, 2.63]\nD. [5.27, 5.84]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. [2.35, 2.51]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Speech_Grounding:librispeech:846",
       "instr": "Listen to the audio and answer the multiple-choice question.\nAt what time interval does 'therein' occur in the audio clip?\nOptions:\nA. [3.56, 4.06]\nB. [0.84, 1.22]\nC. [1.22, 1.69]\nD. [0.47, 0.84]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. [3.56, 4.06]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -345,27 +345,27 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Speech_Grounding:librispeech:731",
       "instr": "Listen to the audio and answer the multiple-choice question.\nNote the time interval that includes the mention of 'its'.\nOptions:\nA. [5.60, 5.81]\nB. [4.17, 4.26]\nC. [1.73, 1.89]\nD. [3.11, 3.26]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. [5.60, 5.81]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Speech_Grounding:librispeech:750",
       "instr": "Listen to the audio and answer the multiple-choice question.\nNote the time interval that includes the mention of 'yes'.\nOptions:\nA. [0.34, 0.82]\nB. [1.04, 1.31]\nC. [1.65, 2.14]\nD. [2.14, 2.27]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. [0.34, 0.82]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -375,7 +375,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -385,7 +385,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -395,7 +395,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -405,7 +405,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -415,7 +415,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -425,7 +425,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -435,7 +435,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -445,27 +445,27 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Speech_Grounding:librispeech:17",
       "instr": "Listen to the audio and answer the multiple-choice question.\nAscertain the point at which 'barely' enters the discussion.\nOptions:\nA. [9.59, 9.85]\nB. [5.08, 5.19]\nC. [7.45, 8.03]\nD. [8.06, 8.27]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. [9.59, 9.85]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Speech_Grounding:librispeech:732",
       "instr": "Listen to the audio and answer the multiple-choice question.\nLocate the segment where 'stand' is faintly heard.\nOptions:\nA. [2.81, 3.10]\nB. [0.51, 0.73]\nC. [0.41, 0.51]\nD. [0.41, 0.51]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. [2.81, 3.10]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -475,7 +475,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -485,7 +485,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -495,7 +495,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -505,17 +505,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Speech_Grounding:librispeech:236",
       "instr": "Listen to the audio and answer the multiple-choice question.\nHighlight the time when 'with' is mentioned.\nOptions:\nA. [5.54, 5.69]\nB. [3.52, 3.66]\nC. [2.65, 3.10]\nD. [3.86, 4.66]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. [5.54, 5.69]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -525,7 +525,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -535,7 +535,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -545,7 +545,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -555,17 +555,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Speech_Grounding:librispeech:963",
       "instr": "Listen to the audio and answer the multiple-choice question.\nListen for the occurrence of 'lay' in the recording.\nOptions:\nA. [0.88, 1.20]\nB. [1.89, 2.25]\nC. [5.04, 5.11]\nD. [1.71, 1.89]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. [0.88, 1.20]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -575,17 +575,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Speech_Grounding:librispeech:675",
       "instr": "Listen to the audio and answer the multiple-choice question.\nHighlight when 'who' is spoken.\nOptions:\nA. [1.69, 1.83]\nB. [1.83, 2.02]\nC. [1.34, 1.69]\nD. [2.39, 2.55]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. [1.69, 1.83]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -595,7 +595,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -605,7 +605,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -615,19 +615,32 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     }
   ],
   "aggregate": {
-    "mean": 0.0,
+    "mean": 0.3,
     "ci95": [
-      0.0,
-      0.0
+      0.1833,
+      0.4167
     ],
     "n_scored": 60,
     "n_total": 60
   },
   "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset air-bench-foundation-speech-grounding --backbone meralion-2-gguf --split test --n 60",
-  "elapsed_s": 22.8
+  "elapsed_s": 22.8,
+  "rescored": {
+    "date": "2026-07-10",
+    "reason": "gold-key mismatch (wave-1 audit): K8's dict-gold branch only accepted key \"answer\", but air-bench-foundation's own gold dict uses \"answer_gt\" (56 cells, 14 datasets x 2 backbones x 2 splits); uro-bench-OpenbookQA-zh's target_text embeds \"<letter>. <text>\" rather than a bare letter, which score_k8_mcq's gold_idx resolution didn't parse (4 cells). Both fixed in metrics.py (score_k8_mcq + the K8 dispatcher's dict-gold branch) -- see that file's own 2026-07-10 freeze-repair comments. This is a RESCORE ONLY: per-item scores + the cell aggregate were recomputed from the ALREADY-STORED model replies (no regeneration) via the fixed metrics.score and run_baseline.paired_bootstrap, unchanged.",
+    "original_aggregate": {
+      "mean": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_scored": 60,
+      "n_total": 60
+    }
+  }
 }

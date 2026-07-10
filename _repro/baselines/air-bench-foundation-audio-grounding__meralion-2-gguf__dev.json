@@ -25,7 +25,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -35,7 +35,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -45,17 +45,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Audio_Grounding:AudioGrounding:11117",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIdentify the periods when 'applause' fully resonates in the sound.\nOptions:\nA. [0.0, 5.83]\nB. [5.72, 6.35]\nC. [7.01, 10.01]\nD. [4.27, 5.54]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. ...",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -65,7 +65,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -75,7 +75,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -85,7 +85,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -95,17 +95,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Audio_Grounding:AudioGrounding:11491",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat second marks correspond to the entire span of 'a man is speaking'?\nOptions:\nA. [0.0, 3.83]\nB. [5.28, 10.0]\nC. [1.28, 2.41]\nD. [8.33, 10.0]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. [1.28, 2.41]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -115,27 +115,27 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Audio_Grounding:AudioGrounding:11270",
       "instr": "Listen to the audio and answer the multiple-choice question.\nHow are the complete segments of 'is revved up' timed in this audio?\nOptions:\nA. [0.01, 4.07]\nB. [7.35, 9.31]\nC. [4.04, 7.35]\nD. [7.5, 9.31]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. [4.04, 7.35]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Audio_Grounding:AudioGrounding:11587",
       "instr": "Listen to the audio and answer the multiple-choice question.\nDocument the full appearances of 'cat meowing' in terms of seconds.\nOptions:\nA. [3.02, 4.88]\nB. [0.24, 0.66]\nC. [2.54, 2.83]\nD. [5.67, 8.36]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. [3.02, 4.88]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -145,7 +145,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -155,7 +155,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -165,7 +165,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -175,7 +175,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -185,7 +185,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -195,7 +195,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -205,7 +205,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -215,7 +215,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -225,7 +225,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -235,17 +235,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Audio_Grounding:AudioGrounding:11384",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIdentify the occurrences of 'blows a horn' along with their time frames.\nOptions:\nA. [9.32, 10.0]\nB. [1.05, 4.92]\nC. [1.72, 8.12]\nD. [4.26, 9.78]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. [9.32, 10.0]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -255,17 +255,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Audio_Grounding:AudioGrounding:11142",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhere do we hear 'police sirens' in full within this sound recording?\nOptions:\nA. [0.95, 2.59]\nB. [0.86, 2.76]\nC. [3.51, 5.61]\nD. [8.03, 8.3]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. [0.95, 2.59]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -275,7 +275,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -285,7 +285,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -295,7 +295,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -305,7 +305,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -315,7 +315,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -325,7 +325,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -335,7 +335,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -345,17 +345,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Audio_Grounding:AudioGrounding:11200",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are the comprehensive segments of 'talking' in time?\nOptions:\nA. [0.41, 1.52]\nB. [4.0, 4.33]\nC. [7.38, 9.12]\nD. [8.25, 9.11]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. [7.38, 9.12]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -365,7 +365,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -375,17 +375,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Audio_Grounding:AudioGrounding:11651",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are the distinct time ranges of 'distant murmuring' within the audio?\nOptions:\nA. [1.94, 5.57]\nB. [1.54, 2.31]\nC. [4.69, 4.98]\nD. [5.85, 7.0]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. [1.94, 5.57]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -395,7 +395,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -405,7 +405,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -415,19 +415,32 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     }
   ],
   "aggregate": {
-    "mean": 0.0,
+    "mean": 0.2,
     "ci95": [
-      0.0,
-      0.0
+      0.075,
+      0.325
     ],
     "n_scored": 40,
     "n_total": 40
   },
   "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset air-bench-foundation-audio-grounding --backbone meralion-2-gguf --split dev --n 40",
-  "elapsed_s": 17.7
+  "elapsed_s": 17.7,
+  "rescored": {
+    "date": "2026-07-10",
+    "reason": "gold-key mismatch (wave-1 audit): K8's dict-gold branch only accepted key \"answer\", but air-bench-foundation's own gold dict uses \"answer_gt\" (56 cells, 14 datasets x 2 backbones x 2 splits); uro-bench-OpenbookQA-zh's target_text embeds \"<letter>. <text>\" rather than a bare letter, which score_k8_mcq's gold_idx resolution didn't parse (4 cells). Both fixed in metrics.py (score_k8_mcq + the K8 dispatcher's dict-gold branch) -- see that file's own 2026-07-10 freeze-repair comments. This is a RESCORE ONLY: per-item scores + the cell aggregate were recomputed from the ALREADY-STORED model replies (no regeneration) via the fixed metrics.score and run_baseline.paired_bootstrap, unchanged.",
+    "original_aggregate": {
+      "mean": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_scored": 40,
+      "n_total": 40
+    }
+  }
 }

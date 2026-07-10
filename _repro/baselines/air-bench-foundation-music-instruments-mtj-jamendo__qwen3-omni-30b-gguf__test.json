@@ -22,30 +22,30 @@
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18754",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhich instrument takes the lead role in this composition?\nOptions:\nA. accordion\nB. strings\nC. computer\nD. rhodes\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. strings",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18826",
       "instr": "Listen to the audio and answer the multiple-choice question.\ndetect the main instrument that defines this track.\nOptions:\nA. guitar\nB. organ\nC. cello\nD. bell\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. cello",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18760",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the key instrument played in this music piece?\nOptions:\nA. electricpiano\nB. accordion\nC. synthesizer\nD. clarinet\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. synthesizer",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -55,57 +55,57 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18374",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhich instrument is the highlight of this composition?\nOptions:\nA. piano\nB. electricpiano\nC. bass\nD. acousticguitar\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. electricpiano",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18246",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhich instrument is the driving force behind this piece?\nOptions:\nA. accordion\nB. horn\nC. piano\nD. clarinet\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. piano",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18314",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat instrument is the essence of this musical track?\nOptions:\nA. sampler\nB. synthesizer\nC. electricguitar\nD. cello\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. synthesizer",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18397",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhich instrument is the focal point of this musical piece?\nOptions:\nA. brass\nB. flute\nC. orchestra\nD. harp\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. orchestra",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:17972",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the most critical instrument in this music piece?\nOptions:\nA. voice\nB. orchestra\nC. bell\nD. pad\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. orchestra",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -115,17 +115,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18317",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the most significant instrument in this music piece?\nOptions:\nA. percussion\nB. trumpet\nC. harp\nD. rhodes\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. harp",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -135,7 +135,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -145,7 +145,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -155,17 +155,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18300",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhich instrument is the highlight of this composition?\nOptions:\nA. guitar\nB. orchestra\nC. rhodes\nD. pipeorgan\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. guitar",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -176,30 +176,30 @@
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18168",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhich instrument is the bedrock of this composition?\nOptions:\nA. harp\nB. drums\nC. classicalguitar\nD. cello\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. drums",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18527",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the central instrument in this piece of music?\nOptions:\nA. saxophone\nB. guitar\nC. bass\nD. drums\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. guitar",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18411",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhich instrument is most utilized in this piece?\nOptions:\nA. percussion\nB. violin\nC. guitar\nD. harmonica\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. guitar",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -209,137 +209,137 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18398",
       "instr": "Listen to the audio and answer the multiple-choice question.\npinpoint the instrument that stands out in this track.\nOptions:\nA. guitar\nB. rhodes\nC. piano\nD. voice\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. voice",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:17939",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat instrument is the heart of this musical track?\nOptions:\nA. acousticguitar\nB. synthesizer\nC. clarinet\nD. percussion\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. synthesizer",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18805",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the signature instrument in this piece of music?\nOptions:\nA. beat\nB. percussion\nC. piano\nD. voice\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. piano",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18842",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat instrument is primarily responsible for the melody in this track?\nOptions:\nA. drums\nB. orchestra\nC. harmonica\nD. trumpet\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. orchestra",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18824",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the most pivotal instrument in this music piece?\nOptions:\nA. drums\nB. computer\nC. guitar\nD. piano\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. guitar",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:17891",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the leading instrument featured in this track?\nOptions:\nA. sampler\nB. drums\nC. piano\nD. drummachine\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. drums",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:17879",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the most influential instrument in this piece of music?\nOptions:\nA. electricpiano\nB. orchestra\nC. sampler\nD. violin\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. orchestra",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18639",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat instrument is the lead in this musical composition?\nOptions:\nA. clarinet\nB. harp\nC. horn\nD. strings\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. harp",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18348",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat instrument is at the forefront of this musical work?\nOptions:\nA. cello\nB. drums\nC. bass\nD. orchestra\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. drums",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:17947",
       "instr": "Listen to the audio and answer the multiple-choice question.\nspecify the instrument that's most featured in this track.\nOptions:\nA. electricguitar\nB. acousticguitar\nC. horn\nD. saxophone\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. saxophone",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18763",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the instrumental focus of this piece of music?\nOptions:\nA. bell\nB. drums\nC. piano\nD. trumpet\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. piano",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18159",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat instrument is the essence of this musical track?\nOptions:\nA. piano\nB. accordion\nC. classicalguitar\nD. violin\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. piano",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18506",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the most influential instrument in this piece of music?\nOptions:\nA. orchestra\nB. flute\nC. bass\nD. cello\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. orchestra",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -349,17 +349,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18617",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat instrument is the foundation of this musical number?\nOptions:\nA. flute\nB. synthesizer\nC. drummachine\nD. bass\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. synthesizer",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -369,17 +369,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:17998",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the primary source of sound in this music track?\nOptions:\nA. guitar\nB. acousticguitar\nC. strings\nD. orchestra\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. guitar",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -389,27 +389,27 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18453",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the primary source of sound in this music track?\nOptions:\nA. piano\nB. voice\nC. harp\nD. strings\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. piano",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18542",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhich instrument is the star of this musical piece?\nOptions:\nA. beat\nB. percussion\nC. harp\nD. electricguitar\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. electricguitar",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -419,7 +419,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -429,7 +429,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -439,7 +439,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -449,17 +449,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:17889",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the signature instrument in this piece of music?\nOptions:\nA. piano\nB. electricpiano\nC. beat\nD. horn\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. piano",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -469,107 +469,107 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18801",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the instrumental focus of this piece of music?\nOptions:\nA. rhodes\nB. beat\nC. piano\nD. drummachine\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. piano",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18503",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat instrument is the foundation of this musical number?\nOptions:\nA. percussion\nB. piano\nC. trumpet\nD. sampler\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. piano",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18802",
       "instr": "Listen to the audio and answer the multiple-choice question.\nspecify the instrument that's most featured in this track.\nOptions:\nA. bell\nB. strings\nC. piano\nD. guitar\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. strings",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18237",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the signature instrument in this piece of music?\nOptions:\nA. synthesizer\nB. orchestra\nC. piano\nD. electricpiano\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. piano",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18326",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhich instrument is most utilized in this piece?\nOptions:\nA. flute\nB. bass\nC. drummachine\nD. classicalguitar\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. flute",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18447",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat instrument is most prominent in this piece?\nOptions:\nA. clarinet\nB. brass\nC. piano\nD. saxophone\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. piano",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18848",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the most pivotal instrument in this music piece?\nOptions:\nA. synthesizer\nB. brass\nC. flute\nD. horn\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. synthesizer",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18284",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat instrument is most prominent in this piece?\nOptions:\nA. acousticguitar\nB. clarinet\nC. synthesizer\nD. cello\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. synthesizer",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18690",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the most noticeable instrument in this composition?\nOptions:\nA. harmonica\nB. acousticguitar\nC. trumpet\nD. piano\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. piano",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18035",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the foremost instrument used in this musical number?\nOptions:\nA. pad\nB. horn\nC. electricpiano\nD. piano\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. piano",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -579,49 +579,62 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18820",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhich instrument is the backbone of this composition?\nOptions:\nA. sampler\nB. electricguitar\nC. pipeorgan\nD. piano\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. piano",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18170",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhich instrument is most utilized in this piece?\nOptions:\nA. violin\nB. percussion\nC. accordion\nD. piano\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. piano",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18345",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the key instrument played in this music piece?\nOptions:\nA. harmonica\nB. voice\nC. accordion\nD. piano\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. piano",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     }
   ],
   "aggregate": {
-    "mean": 0.0,
+    "mean": 0.7458,
     "ci95": [
-      0.0,
-      0.0
+      0.6271,
+      0.8475
     ],
     "n_scored": 59,
     "n_total": 60
   },
   "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset air-bench-foundation-music-instruments-mtj-jamendo --backbone qwen3-omni-30b-gguf --split test --n 60",
-  "elapsed_s": 1462.0
+  "elapsed_s": 1462.0,
+  "rescored": {
+    "date": "2026-07-10",
+    "reason": "gold-key mismatch (wave-1 audit): K8's dict-gold branch only accepted key \"answer\", but air-bench-foundation's own gold dict uses \"answer_gt\" (56 cells, 14 datasets x 2 backbones x 2 splits); uro-bench-OpenbookQA-zh's target_text embeds \"<letter>. <text>\" rather than a bare letter, which score_k8_mcq's gold_idx resolution didn't parse (4 cells). Both fixed in metrics.py (score_k8_mcq + the K8 dispatcher's dict-gold branch) -- see that file's own 2026-07-10 freeze-repair comments. This is a RESCORE ONLY: per-item scores + the cell aggregate were recomputed from the ALREADY-STORED model replies (no regeneration) via the fixed metrics.score and run_baseline.paired_bootstrap, unchanged.",
+    "original_aggregate": {
+      "mean": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_scored": 59,
+      "n_total": 60
+    }
+  }
 }

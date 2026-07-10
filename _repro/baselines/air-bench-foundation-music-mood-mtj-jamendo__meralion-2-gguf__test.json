@@ -22,10 +22,10 @@
       "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24568",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat underlying theme of emotion is present in this music?\nOptions:\nA. christmas\nB. corporate\nC. fast\nD. soundscape\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. soundscape",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -35,17 +35,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24574",
       "instr": "Listen to the audio and answer the multiple-choice question.\nHow does this melody play with the listener's emotions?\nOptions:\nA. corporate\nB. heavy\nC. inspiring\nD. dramatic\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. inspiring",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -55,7 +55,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -65,17 +65,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24060",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat impression of mood does this music convey?\nOptions:\nA. soundscape\nB. space\nC. travel\nD. advertising\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. soundscape",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -85,7 +85,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -95,7 +95,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -105,7 +105,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -115,17 +115,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24131",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the sentiment echoed by this music?\nOptions:\nA. cool\nB. soundscape\nC. melancholic\nD. sport\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. melancholic",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -135,7 +135,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -145,17 +145,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Music_Mood_Recognition:MTJ-Jamendo:23927",
       "instr": "Listen to the audio and answer the multiple-choice question.\nHow does this melody play with the listener's emotions?\nOptions:\nA. energetic\nB. soft\nC. cool\nD. game\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. energetic",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -165,7 +165,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -175,17 +175,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Music_Mood_Recognition:MTJ-Jamendo:23982",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat mood does this composition seem to encapsulate?\nOptions:\nA. advertising\nB. retro\nC. energetic\nD. party\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. energetic",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -195,17 +195,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24225",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the mood theme woven into this musical piece?\nOptions:\nA. fun\nB. dream\nC. documentary\nD. soundscape\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. soundscape",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -215,7 +215,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -225,27 +225,27 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Music_Mood_Recognition:MTJ-Jamendo:23753",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the mood resonance of this musical selection?\nOptions:\nA. christmas\nB. relaxing\nC. epic\nD. corporate\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. christmas",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24619",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat impression of mood does this music convey?\nOptions:\nA. positive\nB. emotional\nC. groovy\nD. space\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. emotional",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -255,7 +255,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -265,7 +265,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -275,7 +275,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -285,17 +285,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24453",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the sentiment echoed by this music?\nOptions:\nA. slow\nB. soft\nC. romantic\nD. holiday\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. romantic",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -305,7 +305,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -315,7 +315,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -325,7 +325,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -335,7 +335,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -345,7 +345,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -355,7 +355,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -365,17 +365,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Music_Mood_Recognition:MTJ-Jamendo:23826",
       "instr": "Listen to the audio and answer the multiple-choice question.\nHow would you describe the vibe this music gives off?\nOptions:\nA. commercial\nB. space\nC. upbeat\nD. epic\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. epic",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -385,7 +385,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -395,7 +395,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -405,7 +405,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -415,27 +415,27 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24437",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat emotive character does this tune portray?\nOptions:\nA. dream\nB. retro\nC. christmas\nD. background\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. christmas",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24570",
       "instr": "Listen to the audio and answer the multiple-choice question.\nHow does this music reflect a particular mood?\nOptions:\nA. uplifting\nB. melodic\nC. christmas\nD. dream\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. dream",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -445,7 +445,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -455,7 +455,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -465,7 +465,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -475,17 +475,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24615",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIn what emotional direction does this music take the listener?\nOptions:\nA. nature\nB. romantic\nC. happy\nD. commercial\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. happy",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -495,7 +495,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -505,7 +505,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -515,7 +515,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -525,37 +525,37 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24261",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat mood does this composition seem to encapsulate?\nOptions:\nA. cool\nB. melodic\nC. emotional\nD. sport\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. emotional",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24662",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat kind of emotional atmosphere does this piece generate?\nOptions:\nA. emotional\nB. happy\nC. advertising\nD. party\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. emotional",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24098",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the emotional color of this music?\nOptions:\nA. dramatic\nB. emotional\nC. happy\nD. dark\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. emotional",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -565,17 +565,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Music_Mood_Recognition:MTJ-Jamendo:23849",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIn terms of mood, what does this music suggest?\nOptions:\nA. game\nB. meditative\nC. upbeat\nD. relaxing\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. relaxing",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -585,17 +585,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24634",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat mood does this musical arrangement translate to?\nOptions:\nA. motivational\nB. summer\nC. retro\nD. energetic\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. energetic",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -605,29 +605,42 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24159",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat mood does the musical structure of this piece express?\nOptions:\nA. dramatic\nB. uplifting\nC. trailer\nD. upbeat\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. dramatic",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     }
   ],
   "aggregate": {
-    "mean": 0.0,
+    "mean": 0.3333,
     "ci95": [
-      0.0,
-      0.0
+      0.2167,
+      0.45
     ],
     "n_scored": 60,
     "n_total": 60
   },
   "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset air-bench-foundation-music-mood-mtj-jamendo --backbone meralion-2-gguf --split test --n 60",
-  "elapsed_s": 71.1
+  "elapsed_s": 71.1,
+  "rescored": {
+    "date": "2026-07-10",
+    "reason": "gold-key mismatch (wave-1 audit): K8's dict-gold branch only accepted key \"answer\", but air-bench-foundation's own gold dict uses \"answer_gt\" (56 cells, 14 datasets x 2 backbones x 2 splits); uro-bench-OpenbookQA-zh's target_text embeds \"<letter>. <text>\" rather than a bare letter, which score_k8_mcq's gold_idx resolution didn't parse (4 cells). Both fixed in metrics.py (score_k8_mcq + the K8 dispatcher's dict-gold branch) -- see that file's own 2026-07-10 freeze-repair comments. This is a RESCORE ONLY: per-item scores + the cell aggregate were recomputed from the ALREADY-STORED model replies (no regeneration) via the fixed metrics.score and run_baseline.paired_bootstrap, unchanged.",
+    "original_aggregate": {
+      "mean": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_scored": 60,
+      "n_total": 60
+    }
+  }
 }

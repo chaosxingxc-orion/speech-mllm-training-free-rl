@@ -25,7 +25,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -35,7 +35,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -45,7 +45,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -55,7 +55,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -65,7 +65,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -75,7 +75,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -85,17 +85,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20639",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the musical genre of this song?\nOptions:\nA. jazz\nB. progressive\nC. electronic\nD. indie\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. electronic",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -105,17 +105,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20535",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat kind of music is playing in this audio?\nOptions:\nA. poprock\nB. soundtrack\nC. rocknroll\nD. experimental\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. poprock",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -125,27 +125,27 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20626",
       "instr": "Listen to the audio and answer the multiple-choice question.\nwhat's the genre of this music?\nOptions:\nA. progressive\nB. ambient\nC. ethno\nD. classical\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. progressive",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20401",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat genre does this musical piece exemplify?\nOptions:\nA. electronic\nB. indie\nC. soundtrack\nD. alternative\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. electronic",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -155,27 +155,27 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20527",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the classification of this music?\nOptions:\nA. alternative\nB. electronic\nC. easylistening\nD. hardrock\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. electronic",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20411",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhich music genre does this track seem to be?\nOptions:\nA. metal\nB. rnb\nC. rap\nD. poprock\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. poprock",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -185,17 +185,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20404",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the flavor of music in this recording?\nOptions:\nA. pop\nB. indie\nC. breakbeat\nD. techno\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. pop",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -205,7 +205,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -215,17 +215,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20427",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat musical category does this song belong to?\nOptions:\nA. folk\nB. celtic\nC. bossanova\nD. soundtrack\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. soundtrack",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -235,17 +235,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20812",
       "instr": "Listen to the audio and answer the multiple-choice question.\ntell me the genre of this music piece?\nOptions:\nA. classical\nB. hard\nC. dance\nD. easylistening\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. dance",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -255,7 +255,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -265,17 +265,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20628",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the musical genre of this song?\nOptions:\nA. bossanova\nB. blues\nC. soundtrack\nD. classical\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. soundtrack",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -285,7 +285,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -295,17 +295,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20063",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhich genre would you say this piece of music fits into?\nOptions:\nA. dance\nB. breakbeat\nC. newage\nD. metal\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. newage",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -315,7 +315,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -325,7 +325,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -335,7 +335,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -345,7 +345,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -355,7 +355,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -365,27 +365,27 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20503",
       "instr": "Listen to the audio and answer the multiple-choice question.\ntell me the genre of this music piece?\nOptions:\nA. soundtrack\nB. popfolk\nC. experimental\nD. funk\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. soundtrack",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20358",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat family of music does this piece come from?\nOptions:\nA. classical\nB. folk\nC. rnb\nD. bossanova\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. classical",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -395,39 +395,52 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20047",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the type of music we're listening to here?\nOptions:\nA. classical\nB. psychedelic\nC. chanson\nD. rock\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. chanson",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Music_Genre_Recognition:MTJ-Jamendo:19978",
       "instr": "Listen to the audio and answer the multiple-choice question.\ndetect the genre of this music?\nOptions:\nA. triphop\nB. darkambient\nC. soul\nD. ambient\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. ambient",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     }
   ],
   "aggregate": {
-    "mean": 0.0,
+    "mean": 0.375,
     "ci95": [
-      0.0,
-      0.0
+      0.225,
+      0.525
     ],
     "n_scored": 40,
     "n_total": 40
   },
   "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset air-bench-foundation-music-genre-mtj-jamendo --backbone meralion-2-gguf --split dev --n 40",
-  "elapsed_s": 47.3
+  "elapsed_s": 47.3,
+  "rescored": {
+    "date": "2026-07-10",
+    "reason": "gold-key mismatch (wave-1 audit): K8's dict-gold branch only accepted key \"answer\", but air-bench-foundation's own gold dict uses \"answer_gt\" (56 cells, 14 datasets x 2 backbones x 2 splits); uro-bench-OpenbookQA-zh's target_text embeds \"<letter>. <text>\" rather than a bare letter, which score_k8_mcq's gold_idx resolution didn't parse (4 cells). Both fixed in metrics.py (score_k8_mcq + the K8 dispatcher's dict-gold branch) -- see that file's own 2026-07-10 freeze-repair comments. This is a RESCORE ONLY: per-item scores + the cell aggregate were recomputed from the ALREADY-STORED model replies (no regeneration) via the fixed metrics.score and run_baseline.paired_bootstrap, unchanged.",
+    "original_aggregate": {
+      "mean": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_scored": 40,
+      "n_total": 40
+    }
+  }
 }

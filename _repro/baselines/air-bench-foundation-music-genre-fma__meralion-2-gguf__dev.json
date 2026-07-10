@@ -22,10 +22,10 @@
       "item_id": "Music_Genre_Recognition:fma:19187",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the genre theme of this audio clip?\nOptions:\nA. Classical\nB. Folk\nC. Jazz\nD. Hip-Hop\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. Hip-Hop",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -35,7 +35,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -45,7 +45,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -55,7 +55,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -65,17 +65,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_Genre_Recognition:fma:19015",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the genre feel of this track?\nOptions:\nA. Instrumental\nB. Rock\nC. Country\nD. Hip-Hop\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. Hip-Hop",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -85,17 +85,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_Genre_Recognition:fma:19639",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the flavor of music in this recording?\nOptions:\nA. Classical\nB. Rock\nC. International\nD. Instrumental\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. Instrumental",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -105,37 +105,37 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_Genre_Recognition:fma:19535",
       "instr": "Listen to the audio and answer the multiple-choice question.\nclassify the genre of this music?\nOptions:\nA. Jazz\nB. Folk\nC. Instrumental\nD. Pop\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. Instrumental",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Music_Genre_Recognition:fma:19436",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat kind of music is playing in this audio?\nOptions:\nA. Country\nB. Experimental\nC. International\nD. Pop\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. Pop",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Music_Genre_Recognition:fma:19626",
       "instr": "Listen to the audio and answer the multiple-choice question.\ndetect the genre of this music?\nOptions:\nA. Instrumental\nB. Rock\nC. Pop\nD. Classical\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. Instrumental",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -145,17 +145,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_Genre_Recognition:fma:19795",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat style of music is this?\nOptions:\nA. Rock\nB. Electronic\nC. Folk\nD. Classical\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. Electronic",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -165,27 +165,27 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Music_Genre_Recognition:fma:19411",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhich music genre does this track seem to be?\nOptions:\nA. Folk\nB. Classical\nC. Hip-Hop\nD. Country\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. Folk",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_Genre_Recognition:fma:19765",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhich genre would you say this piece of music fits into?\nOptions:\nA. Pop\nB. Jazz\nC. Hip-Hop\nD. Instrumental\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. Hip-Hop",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -195,7 +195,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -205,17 +205,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Music_Genre_Recognition:fma:19056",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the stylistic genre of this track?\nOptions:\nA. Pop\nB. Hip-Hop\nC. International\nD. Experimental\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. Hip-Hop",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -225,17 +225,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_Genre_Recognition:fma:19607",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat musical category does this song belong to?\nOptions:\nA. Electronic\nB. Pop\nC. Folk\nD. Hip-Hop\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. Hip-Hop",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -245,47 +245,47 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Music_Genre_Recognition:fma:19161",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the genre atmosphere of this piece?\nOptions:\nA. Country\nB. Jazz\nC. Classical\nD. Electronic\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. Electronic",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Music_Genre_Recognition:fma:19343",
       "instr": "Listen to the audio and answer the multiple-choice question.\nHow would you categorize the genre of this music?\nOptions:\nA. Pop\nB. Country\nC. Folk\nD. Classical\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. ...",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_Genre_Recognition:fma:19628",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhich genre box does this track tick?\nOptions:\nA. Electronic\nB. Instrumental\nC. Rock\nD. Classical\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. Electronic",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_Genre_Recognition:fma:19066",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the genre identity of this music?\nOptions:\nA. Rock\nB. Experimental\nC. Classical\nD. Hip-Hop\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. Hip-Hop",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -295,7 +295,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -305,17 +305,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Music_Genre_Recognition:fma:19779",
       "instr": "Listen to the audio and answer the multiple-choice question.\nspecify the music genre here?\nOptions:\nA. Hip-Hop\nB. Classical\nC. Jazz\nD. Folk\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. Hip-Hop",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -325,7 +325,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -335,7 +335,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -345,17 +345,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_Genre_Recognition:fma:19844",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat kind of genre is this music associated with?\nOptions:\nA. Electronic\nB. Folk\nC. Classical\nD. Rock\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. Electronic",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -365,69 +365,82 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Music_Genre_Recognition:fma:19503",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat genre vibe does this music give off?\nOptions:\nA. Electronic\nB. Jazz\nC. Classical\nD. International\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. Electronic",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_Genre_Recognition:fma:19358",
       "instr": "Listen to the audio and answer the multiple-choice question.\nassess the music genre of this recording?\nOptions:\nA. Folk\nB. Electronic\nC. Classical\nD. Instrumental\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. Instrumental",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Music_Genre_Recognition:fma:19524",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhich musical genre is this composition associated with?\nOptions:\nA. Classical\nB. Electronic\nC. Country\nD. Pop\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. Electronic",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_Genre_Recognition:fma:19047",
       "instr": "Listen to the audio and answer the multiple-choice question.\ntell me the genre of this music piece?\nOptions:\nA. Hip-Hop\nB. Folk\nC. Electronic\nD. Rock\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. Electronic",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Music_Genre_Recognition:fma:18978",
       "instr": "Listen to the audio and answer the multiple-choice question.\nclassify the genre of this music?\nOptions:\nA. Hip-Hop\nB. Electronic\nC. Pop\nD. Classical\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. Electronic",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 1
       }
     }
   ],
   "aggregate": {
-    "mean": 0.0,
+    "mean": 0.55,
     "ci95": [
-      0.0,
-      0.0
+      0.4,
+      0.7
     ],
     "n_scored": 40,
     "n_total": 40
   },
   "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset air-bench-foundation-music-genre-fma --backbone meralion-2-gguf --split dev --n 40",
-  "elapsed_s": 12.9
+  "elapsed_s": 12.9,
+  "rescored": {
+    "date": "2026-07-10",
+    "reason": "gold-key mismatch (wave-1 audit): K8's dict-gold branch only accepted key \"answer\", but air-bench-foundation's own gold dict uses \"answer_gt\" (56 cells, 14 datasets x 2 backbones x 2 splits); uro-bench-OpenbookQA-zh's target_text embeds \"<letter>. <text>\" rather than a bare letter, which score_k8_mcq's gold_idx resolution didn't parse (4 cells). Both fixed in metrics.py (score_k8_mcq + the K8 dispatcher's dict-gold branch) -- see that file's own 2026-07-10 freeze-repair comments. This is a RESCORE ONLY: per-item scores + the cell aggregate were recomputed from the ALREADY-STORED model replies (no regeneration) via the fixed metrics.score and run_baseline.paired_bootstrap, unchanged.",
+    "original_aggregate": {
+      "mean": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_scored": 40,
+      "n_total": 40
+    }
+  }
 }

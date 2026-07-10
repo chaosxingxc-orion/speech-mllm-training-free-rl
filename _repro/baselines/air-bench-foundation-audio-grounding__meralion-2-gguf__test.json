@@ -25,17 +25,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Audio_Grounding:AudioGrounding:11388",
       "instr": "Listen to the audio and answer the multiple-choice question.\nList the periods when 'clickety clanking' is completely played in the sound.\nOptions:\nA. [0.0, 1.37]\nB. [9.29, 10.0]\nC. [2.36, 10.01]\nD. [7.38, 9.27]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. [2.36, 10.01]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -45,7 +45,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -55,7 +55,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -65,7 +65,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -75,7 +75,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -85,17 +85,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Audio_Grounding:AudioGrounding:11646",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are all the complete time segments of 'man talking' in this sound?\nOptions:\nA. [0.0, 3.1]\nB. [3.89, 5.83]\nC. [4.89, 6.03]\nD. [9.2, 10.0]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. [4.89, 6.03]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -105,7 +105,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -115,17 +115,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Audio_Grounding:AudioGrounding:11321",
       "instr": "Listen to the audio and answer the multiple-choice question.\nCapture the timeline where 'a vehicle horns' is fully included in the sound.\nOptions:\nA. [0.44, 1.11]\nB. [1.41, 2.17]\nC. [2.47, 3.32]\nD. [4.19, 5.01]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. [0.44, 1.11]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -135,7 +135,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -145,7 +145,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -155,7 +155,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -165,7 +165,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -175,7 +175,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -185,7 +185,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -195,27 +195,27 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Audio_Grounding:AudioGrounding:11626",
       "instr": "Listen to the audio and answer the multiple-choice question.\nList the specific seconds of 'a dog panting' appearances.\nOptions:\nA. [0.23, 9.76]\nB. [3.14, 3.94]\nC. [0.45, 7.33]\nD. [7.25, 7.82]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. [0.23, 9.76]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Audio_Grounding:AudioGrounding:11149",
       "instr": "Listen to the audio and answer the multiple-choice question.\nDocument the full appearances of 'tires squeal' in terms of seconds.\nOptions:\nA. [7.87, 9.07]\nB. [1.18, 5.59]\nC. [1.8, 6.17]\nD. [5.37, 6.62]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. [7.87, 9.07]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -225,17 +225,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Audio_Grounding:AudioGrounding:11271",
       "instr": "Listen to the audio and answer the multiple-choice question.\nAt what timestamps does the complete 'a woman speaks' occur?\nOptions:\nA. [1.82, 2.56]\nB. [5.06, 5.61]\nC. [7.64, 8.19]\nD. [0.76, 9.72]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. [1.82, 2.56]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -245,7 +245,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -255,7 +255,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -265,17 +265,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Audio_Grounding:AudioGrounding:11264",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are the full time segments when 'a dog is panting heavily' appears in this sound?\nOptions:\nA. [3.06, 10.0]\nB. [5.35, 5.99]\nC. [6.56, 7.34]\nD. [8.23, 10.0]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. [3.06, 10.0]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -285,7 +285,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -295,7 +295,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -305,7 +305,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -315,7 +315,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -325,7 +325,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -335,17 +335,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Audio_Grounding:AudioGrounding:11368",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhere is 'wind blows loudly nearby' found in its entirety within the audio's timeline?\nOptions:\nA. [0.82, 9.41]\nB. [1.17, 3.93]\nC. [5.69, 6.2]\nD. [6.95, 9.4]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. [0.82, 9.41]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -355,7 +355,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -365,7 +365,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -375,7 +375,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -385,7 +385,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -395,17 +395,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Audio_Grounding:AudioGrounding:11868",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are the specific start and stop times of 'a woman talking' in the sound?\nOptions:\nA. [0.0, 0.34]\nB. [1.07, 2.1]\nC. [6.86, 7.53]\nD. [5.24, 6.87]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. [6.86, 7.53]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -415,7 +415,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -425,7 +425,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -435,7 +435,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -445,7 +445,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -455,7 +455,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -465,7 +465,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -475,7 +475,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -485,17 +485,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Audio_Grounding:AudioGrounding:11101",
       "instr": "Listen to the audio and answer the multiple-choice question.\nAt what seconds do the full iterations of 'a dog barks once' start and end?\nOptions:\nA. [4.62, 4.97]\nB. [0.0, 0.83]\nC. [2.18, 5.71]\nD. [6.4, 10.0]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. [4.62, 4.97]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -505,27 +505,27 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Audio_Grounding:AudioGrounding:11010",
       "instr": "Listen to the audio and answer the multiple-choice question.\nLocate every segment where 'a dog bark' is completely audible.\nOptions:\nA. [2.95, 3.72]\nB. [0.61, 3.5]\nC. [0.85, 5.66]\nD. [3.06, 8.25]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. [2.95, 3.72]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Audio_Grounding:AudioGrounding:11768",
       "instr": "Listen to the audio and answer the multiple-choice question.\nAt what time intervals does 'a train moves closer' occur in the sound file?\nOptions:\nA. [0.0, 3.16]\nB. [4.85, 10.02]\nC. [0.95, 1.33]\nD. [0.0, 10.02]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. [0.0, 10.02]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -535,7 +535,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -545,7 +545,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -555,7 +555,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -565,7 +565,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -575,7 +575,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -585,7 +585,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -595,17 +595,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Audio_Grounding:AudioGrounding:10992",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIn what segments can 'tires squeal' be heard from start to finish?\nOptions:\nA. [3.6, 7.38]\nB. [0.0, 0.73]\nC. [1.72, 2.34]\nD. [8.06, 8.96]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. [3.6, 7.38]",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -615,19 +615,32 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     }
   ],
   "aggregate": {
-    "mean": 0.0,
+    "mean": 0.2167,
     "ci95": [
-      0.0,
-      0.0
+      0.1167,
+      0.3167
     ],
     "n_scored": 60,
     "n_total": 60
   },
   "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset air-bench-foundation-audio-grounding --backbone meralion-2-gguf --split test --n 60",
-  "elapsed_s": 26.1
+  "elapsed_s": 26.1,
+  "rescored": {
+    "date": "2026-07-10",
+    "reason": "gold-key mismatch (wave-1 audit): K8's dict-gold branch only accepted key \"answer\", but air-bench-foundation's own gold dict uses \"answer_gt\" (56 cells, 14 datasets x 2 backbones x 2 splits); uro-bench-OpenbookQA-zh's target_text embeds \"<letter>. <text>\" rather than a bare letter, which score_k8_mcq's gold_idx resolution didn't parse (4 cells). Both fixed in metrics.py (score_k8_mcq + the K8 dispatcher's dict-gold branch) -- see that file's own 2026-07-10 freeze-repair comments. This is a RESCORE ONLY: per-item scores + the cell aggregate were recomputed from the ALREADY-STORED model replies (no regeneration) via the fixed metrics.score and run_baseline.paired_bootstrap, unchanged.",
+    "original_aggregate": {
+      "mean": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_scored": 60,
+      "n_total": 60
+    }
+  }
 }

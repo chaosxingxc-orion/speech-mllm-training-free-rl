@@ -289,12 +289,28 @@ def aggregate_slot_f1_slue(gold_spans: list[list[tuple]], pred_spans: list[list[
 # mcq/qa/slu shapes (explicit reuse per the task brief), extended with a yesno branch.
 # ---------------------------------------------------------------------------------------------
 
+# 2026-07-10 freeze-repair (gold-key mismatch, wave-1 audit): matches a LEADING "<letter><delim>"
+# prefix on a gold string, e.g. uro-bench-OpenbookQA-zh's target_text "D. 鲨鱼" -- HSK5-zh/
+# GaokaoEval's target_text is the bare letter alone (already handled by the <=2-char branch
+# below), but OpenbookQA-zh's embeds the option text too, so neither existing branch resolves it.
+# Mirrors scripts/loaders/uro_bench.py's own _OPT_PREFIX_RE delimiter set (that loader's
+# `_parse_mcq_options` already assumes this exact "A."/"A、"/"A:" convention for the SAME corpus),
+# widened from its `[A-D]` to the full `templates.LETTERS` range for generality.
+_GOLD_LETTER_PREFIX_RE = re.compile(r"^([A-H])[.，、:]\s*")
+
+
 def score_k8_mcq(gold, text: str, opts: list) -> dict:
     gold_idx = gold if isinstance(gold, int) else next(
         (i for i, o in enumerate(opts) if norm(o) == norm(gold)), None)
     if gold_idx is None and isinstance(gold, str) and len(gold.strip()) <= 2:
         gl = gold.strip().upper()[:1]
         gold_idx = LETTERS.index(gl) if gl in LETTERS[:len(opts)] else None
+    if gold_idx is None and isinstance(gold, str):
+        # 2026-07-10 freeze-repair: see _GOLD_LETTER_PREFIX_RE above (uro-bench-OpenbookQA-zh fix).
+        m = _GOLD_LETTER_PREFIX_RE.match(gold.strip())
+        if m:
+            gl = m.group(1).upper()
+            gold_idx = LETTERS.index(gl) if gl in LETTERS[:len(opts)] else None
     pred_idx = _parse_choice(text, opts)
     em = int(gold_idx is not None and pred_idx == gold_idx)
     return {"score": em, "detail": {"pred_idx": pred_idx, "gold_idx": gold_idx}}
@@ -464,7 +480,14 @@ def score(dataset_key: str, row: dict, text: str) -> dict:
         opts = meta.get("opts") or meta.get("choices")
         if isinstance(gold, dict) and "choices" in gold and opts is None:
             opts = gold["choices"] if isinstance(gold["choices"], list) else list(gold["choices"].values())
-            gold = gold.get("answer", gold)
+            # 2026-07-10 freeze-repair (gold-key mismatch, wave-1 audit): air-bench-foundation's
+            # own gold dict uses "answer_gt" (scripts/loaders/air_bench_foundation.py), not
+            # "answer" -- the original single-key .get("answer", gold) never matched it, so `gold`
+            # stayed the whole dict and every air-bench-foundation K8 cell scored 0.0 regardless
+            # of the model's reply (gold_idx never resolved). Try "answer" first (kept for any
+            # other K8 dict-gold caller that already relied on it), then "answer_gt", falling back
+            # to the dict itself only if neither key is present.
+            gold = gold.get("answer", gold.get("answer_gt", gold))
         if opts:
             return score_k8_mcq(gold, text, list(opts))
         return score_k8_qa(gold, text)

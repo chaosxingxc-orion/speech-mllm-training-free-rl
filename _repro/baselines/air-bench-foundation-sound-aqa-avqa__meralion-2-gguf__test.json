@@ -25,27 +25,27 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Sound_AQA:avqa:16826",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat happened in the video?\nOptions:\nA. Ship engine knock\nB. Car dashboard turning\nC. The engine is buzzing\nD. Automobile engine knock\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. Automobile engine knock",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Sound_AQA:avqa:16760",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the main source of sound in the video?\nOptions:\nA. The sound of motorcycles\nB. motorboat\nC. the sound of driving a snowmobile\nD. lawn mower\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. The sound of motorcycles",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -55,7 +55,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -65,17 +65,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Sound_AQA:avqa:16246",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's driving in the video?\nOptions:\nA. automobile\nB. Tractor\nC. train\nD. bus\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. train",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -85,47 +85,47 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Sound_AQA:avqa:16397",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat animal appears in the video?\nOptions:\nA. cat\nB. fox\nC. dog\nD. wolf\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. dog",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Sound_AQA:avqa:15972",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's driving in the video?\nOptions:\nA. highway\nB. bus\nC. high-speed rail\nD. train\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. train",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Sound_AQA:avqa:16423",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are the people doing in the video?\nOptions:\nA. sailing\nB. Hold your breath\nC. diving\nD. Catching fish\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. diving",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Sound_AQA:avqa:16317",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the main source of sound in the video?\nOptions:\nA. Television\nB. speech\nC. radio\nD. Knock on the glass\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. speech",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -135,7 +135,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -145,7 +145,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -155,7 +155,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -165,7 +165,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -175,17 +175,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Sound_AQA:avqa:16168",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the main source of sound in the video?\nOptions:\nA. Fire engine siren\nB. honk\nC. Pre action\nD. Ambulance siren\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. Ambulance siren",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -195,7 +195,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -205,27 +205,27 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Sound_AQA:avqa:15930",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are the main sources of sound in this video?\nOptions:\nA. shot\nB. rope skipping\nC. firecrackers\nD. Announcer\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. ...",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Sound_AQA:avqa:16398",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are the people in the video doing?\nOptions:\nA. watering\nB. performing oral skills\nC. Gun fire\nD. Shooting\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. Gun fire",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -235,17 +235,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Sound_AQA:avqa:16805",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are the people doing in this video?\nOptions:\nA. Place a mask on the face\nB. Make faces\nC. Muscle movement\nD. cry\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. Make faces",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -255,17 +255,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Sound_AQA:avqa:16824",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat animal is in the video?\nOptions:\nA. crocodile\nB. snake\nC. frog\nD. Toad\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. frog",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -275,7 +275,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -285,7 +285,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -295,7 +295,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -305,17 +305,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Sound_AQA:avqa:15947",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the main sound source of the video?\nOptions:\nA. Civil defense alarm\nB. sound of wind\nC. Train horn\nD. motorboat\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. Civil defense alarm",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -325,7 +325,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -335,7 +335,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -345,7 +345,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -355,17 +355,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Sound_AQA:avqa:16617",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat happened in the video?\nOptions:\nA. Woodpeckers peck at trees\nB. Parrots peck trees\nC. Birds build nests\nD. The parrot called\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. Woodpeckers peck at trees",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -375,7 +375,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -385,17 +385,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Sound_AQA:avqa:16125",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are the people in the video doing?\nOptions:\nA. to shave\nB. lay an egg\nC. Machine gun fire\nD. Design\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. Machine gun fire",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -405,7 +405,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -415,7 +415,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -425,7 +425,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -435,27 +435,27 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Sound_AQA:avqa:16744",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhere did the video take place?\nOptions:\nA. playground\nB. aquatic\nC. desert\nD. in the air\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. aquatic",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Sound_AQA:avqa:16026",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat animal is in the video?\nOptions:\nA. lion\nB. wolf\nC. elephant\nD. tiger\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. lion",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -465,27 +465,27 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Sound_AQA:avqa:16549",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhere did the video take place?\nOptions:\nA. toilet\nB. forest\nC. of one's own unit\nD. courtyard\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. of one's own unit",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Sound_AQA:avqa:16801",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the main source of sound in the video?\nOptions:\nA. dove\nB. The cow barked\nC. dog's bark\nD. Cockcrow\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. Cockcrow",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -495,27 +495,27 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Sound_AQA:avqa:16802",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat happened in the video?\nOptions:\nA. Cat and dog fight\nB. The cat catches the mouse\nC. The dog catches the rabbit\nD. The cat teased the mouse\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. The cat catches the mouse.",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Sound_AQA:avqa:16237",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat happened in the video?\nOptions:\nA. Thunder\nB. rain\nC. The bear\nD. hold an umbrella\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. Thunder",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -525,17 +525,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Sound_AQA:avqa:16447",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhere did the video take place?\nOptions:\nA. On the road\nB. playground\nC. seaside\nD. ski field\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. seaside",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -545,7 +545,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -555,7 +555,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -565,7 +565,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -575,7 +575,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -585,17 +585,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Sound_AQA:avqa:16820",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's driving in the video?\nOptions:\nA. fire engine\nB. tram\nC. automobile\nD. bus\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. automobile",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -605,29 +605,42 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Sound_AQA:avqa:16345",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the source of the sound in the video?\nOptions:\nA. police car siren\nB. owl\nC. chick\nD. Birdsong\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. Birdsong",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     }
   ],
   "aggregate": {
-    "mean": 0.0,
+    "mean": 0.4,
     "ci95": [
-      0.0,
-      0.0
+      0.2833,
+      0.5333
     ],
     "n_scored": 60,
     "n_total": 60
   },
   "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset air-bench-foundation-sound-aqa-avqa --backbone meralion-2-gguf --split test --n 60",
-  "elapsed_s": 16.8
+  "elapsed_s": 16.8,
+  "rescored": {
+    "date": "2026-07-10",
+    "reason": "gold-key mismatch (wave-1 audit): K8's dict-gold branch only accepted key \"answer\", but air-bench-foundation's own gold dict uses \"answer_gt\" (56 cells, 14 datasets x 2 backbones x 2 splits); uro-bench-OpenbookQA-zh's target_text embeds \"<letter>. <text>\" rather than a bare letter, which score_k8_mcq's gold_idx resolution didn't parse (4 cells). Both fixed in metrics.py (score_k8_mcq + the K8 dispatcher's dict-gold branch) -- see that file's own 2026-07-10 freeze-repair comments. This is a RESCORE ONLY: per-item scores + the cell aggregate were recomputed from the ALREADY-STORED model replies (no regeneration) via the fixed metrics.score and run_baseline.paired_bootstrap, unchanged.",
+    "original_aggregate": {
+      "mean": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_scored": 60,
+      "n_total": 60
+    }
+  }
 }

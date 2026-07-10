@@ -41,20 +41,20 @@ Wave-1 grid: 56 datasets (qwen3-omni-30b-gguf, meralion-2-gguf) x 2 splits (dev,
 
 | dataset | metric | qwen3-omni-30b-gguf / dev | qwen3-omni-30b-gguf / test | meralion-2-gguf / dev | meralion-2-gguf / test |
 |---|---|---|---|---|---|
-| air-bench-foundation-acoustic-scene-cochlscene | MCQ EM | 0.0000 ±0.0000 (40) | 0.0000 ±0.0000 (60) | 0.0000 ±0.0000 (40) | 0.0000 ±0.0000 (60) |
-| air-bench-foundation-acoustic-scene-tut2017 | MCQ EM | 0.0000 ±0.0000 (40) | 0.0000 ±0.0000 (60) | 0.0000 ±0.0000 (40) | 0.0000 ±0.0000 (60) |
-| air-bench-foundation-audio-grounding | MCQ EM | 0.0000 ±0.0000 (40) | 0.0000 ±0.0000 (60) | 0.0000 ±0.0000 (40) | 0.0000 ±0.0000 (60) |
-| air-bench-foundation-music-aqa | MCQ EM | 0.0000 ±0.0000 (40) | 0.0000 ±0.0000 (60) | 0.0000 ±0.0000 (40) | 0.0000 ±0.0000 (60) |
-| air-bench-foundation-music-genre-fma | MCQ EM | 0.0000 ±0.0000 (40) | 0.0000 ±0.0000 (60) | 0.0000 ±0.0000 (40) | 0.0000 ±0.0000 (60) |
-| air-bench-foundation-music-genre-mtj-jamendo | MCQ EM | 0.0000 ±0.0000 (40) | 0.0000 ±0.0000 (60) | 0.0000 ±0.0000 (40) | 0.0000 ±0.0000 (60) |
-| air-bench-foundation-music-instruments-mtj-jamendo | MCQ EM | 0.0000 ±0.0000 (39) | 0.0000 ±0.0000 (59) | 0.0000 ±0.0000 (40) | 0.0000 ±0.0000 (60) |
-| air-bench-foundation-music-instruments-nsynth | MCQ EM | 0.0000 ±0.0000 (40) | 0.0000 ±0.0000 (60) | 0.0000 ±0.0000 (40) | 0.0000 ±0.0000 (60) |
-| air-bench-foundation-music-midi-pitch-nsynth | MCQ EM | 0.0000 ±0.0000 (40) | 0.0000 ±0.0000 (60) | 0.0000 ±0.0000 (40) | 0.0000 ±0.0000 (60) |
-| air-bench-foundation-music-midi-velocity-nsynth | MCQ EM | 0.0000 ±0.0000 (40) | 0.0000 ±0.0000 (60) | 0.0000 ±0.0000 (40) | 0.0000 ±0.0000 (60) |
-| air-bench-foundation-music-mood-mtj-jamendo | MCQ EM | 0.0000 ±0.0000 (38) | 0.0000 ±0.0000 (60) | 0.0000 ±0.0000 (40) | 0.0000 ±0.0000 (60) |
-| air-bench-foundation-sound-aqa-avqa | MCQ EM | 0.0000 ±0.0000 (40) | 0.0000 ±0.0000 (60) | 0.0000 ±0.0000 (40) | 0.0000 ±0.0000 (60) |
-| air-bench-foundation-sound-aqa-clothoaqa | MCQ EM | 0.0000 ±0.0000 (40) | 0.0000 ±0.0000 (60) | 0.0000 ±0.0000 (40) | 0.0000 ±0.0000 (60) |
-| air-bench-foundation-speech-grounding | MCQ EM | 0.0000 ±0.0000 (40) | 0.0000 ±0.0000 (60) | 0.0000 ±0.0000 (40) | 0.0000 ±0.0000 (60) |
+| air-bench-foundation-acoustic-scene-cochlscene | MCQ EM | 0.6250 ±0.1500 (40) | 0.6667 ±0.1166 (60) | 0.3250 ±0.1500 (40) | 0.3500 ±0.1167 (60) |
+| air-bench-foundation-acoustic-scene-tut2017 | MCQ EM | 0.5500 ±0.1500 (40) | 0.7167 ±0.1167 (60) | 0.4250 ±0.1500 (40) | 0.2167 ±0.1000 (60) |
+| air-bench-foundation-audio-grounding | MCQ EM | 0.5750 ±0.1500 (40) | 0.6667 ±0.1166 (60) | 0.2000 ±0.1250 (40) | 0.2167 ±0.1000 (60) |
+| air-bench-foundation-music-aqa | MCQ EM | 0.8000 ±0.1250 (40) | 0.6500 ±0.1167 (60) | 0.5750 ±0.1500 (40) | 0.4833 ±0.1166 (60) |
+| air-bench-foundation-music-genre-fma | MCQ EM | 0.7750 ±0.1250 (40) | 0.7333 ±0.1166 (60) | 0.5500 ±0.1500 (40) | 0.4333 ±0.1167 (60) |
+| air-bench-foundation-music-genre-mtj-jamendo | MCQ EM | 0.8750 ±0.1000 (40) | 0.8667 ±0.0833 (60) | 0.3750 ±0.1500 (40) | 0.3333 ±0.1167 (60) |
+| air-bench-foundation-music-instruments-mtj-jamendo | MCQ EM | 0.8974 ±0.0897 (39) | 0.7458 ±0.1102 (59) | 0.3750 ±0.1500 (40) | 0.3667 ±0.1167 (60) |
+| air-bench-foundation-music-instruments-nsynth | MCQ EM | 0.4750 ±0.1500 (40) | 0.5333 ±0.1333 (60) | 0.3750 ±0.1500 (40) | 0.2500 ±0.1084 (60) |
+| air-bench-foundation-music-midi-pitch-nsynth | MCQ EM | 0.3750 ±0.1500 (40) | 0.4500 ±0.1333 (60) | 0.3500 ±0.1500 (40) | 0.3167 ±0.1167 (60) |
+| air-bench-foundation-music-midi-velocity-nsynth | MCQ EM | 0.2750 ±0.1375 (40) | 0.1500 ±0.0917 (60) | 0.3500 ±0.1500 (40) | 0.2000 ±0.1000 (60) |
+| air-bench-foundation-music-mood-mtj-jamendo | MCQ EM | 0.5000 ±0.1579 (38) | 0.5167 ±0.1334 (60) | 0.4500 ±0.1500 (40) | 0.3333 ±0.1167 (60) |
+| air-bench-foundation-sound-aqa-avqa | MCQ EM | 0.7500 ±0.1375 (40) | 0.8000 ±0.1000 (60) | 0.3500 ±0.1500 (40) | 0.4000 ±0.1250 (60) |
+| air-bench-foundation-sound-aqa-clothoaqa | not verifiable (diagnostic/stub) | 0.7500 ±0.3750 (4) | 0.5714 ±0.3571 (7) | 0.5000 ±0.5000 (4) | 0.7143 ±0.3571 (7) |
+| air-bench-foundation-speech-grounding | MCQ EM | 0.5000 ±0.1500 (40) | 0.5833 ±0.1250 (60) | 0.2250 ±0.1250 (40) | 0.3000 ±0.1167 (60) |
 | audiocaps-qa | EM (containment) | 0.0000 ±0.0000 (40) | 0.0333 ±0.0416 (60) | 0.0000 ±0.0000 (40) | 0.0333 ±0.0416 (60) |
 | heysquad | containment EM (weak-signal, multi-ref) | 0.2750 ±0.1375 (40) | 0.2000 ±0.1000 (60) | 0.1000 ±0.0875 (40) | 0.0500 ±0.0583 (60) |
 | mmar | MCQ EM | 0.6000 ±0.1500 (40) | 0.7000 ±0.1167 (60) | 0.4750 ±0.1500 (40) | 0.4500 ±0.1250 (60) |
@@ -68,7 +68,7 @@ Wave-1 grid: 56 datasets (qwen3-omni-30b-gguf, meralion-2-gguf) x 2 splits (dev,
 | uro-bench-MLCpro-en | EM (containment) | 0.0250 ±0.0375 (40) | 0.0167 ±0.0250 (60) | 0.0500 ±0.0625 (40) | 0.0167 ±0.0250 (60) |
 | uro-bench-MLCpro-zh | EM (containment) | 0.0000 ±0.0000 (40) | 0.0000 ±0.0000 (60) | 0.0000 ±0.0000 (40) | 0.0000 ±0.0000 (60) |
 | uro-bench-MuChoEval-en | EM (containment) | 0.7250 ±0.1375 (40) | 0.7500 ±0.1084 (60) | 0.2500 ±0.1375 (40) | 0.2333 ±0.1083 (60) |
-| uro-bench-OpenbookQA-zh | MCQ EM | 0.0000 ±0.0000 (40) | 0.0000 ±0.0000 (60) | 0.0000 ±0.0000 (40) | 0.0000 ±0.0000 (60) |
+| uro-bench-OpenbookQA-zh | MCQ EM | 0.9000 ±0.0875 (40) | 0.9167 ±0.0666 (60) | 0.3250 ±0.1500 (40) | 0.2000 ±0.1000 (60) |
 | uro-bench-SQuAD-zh | EM (containment) | 0.7500 ±0.1375 (40) | 0.7833 ±0.1083 (60) | 0.2750 ±0.1375 (40) | 0.3333 ±0.1167 (60) |
 | uro-bench-TruthfulEval | containment EM (weak-signal, multi-ref) | 0.0750 ±0.0875 (40) | 0.0833 ±0.0667 (60) | 0.0500 ±0.0625 (40) | 0.0333 ±0.0416 (60) |
 | vocalbench-knowledge | EM (containment) | 0.8750 ±0.1000 (40) | 0.7833 ±0.1000 (60) | 0.3500 ±0.1500 (40) | 0.3833 ±0.1250 (60) |

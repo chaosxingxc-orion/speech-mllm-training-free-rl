@@ -25,7 +25,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -35,7 +35,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -45,7 +45,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -55,7 +55,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
@@ -65,7 +65,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -75,27 +75,27 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Music_AQA:music_avqa:23395",
       "instr": "Listen to the audio and answer the multiple-choice question.\nHow many musical instruments were heard throughout the video?\nOptions:\nA. three\nB. no\nC. more than ten\nD. four\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. three",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_AQA:music_avqa:23196",
       "instr": "Listen to the audio and answer the multiple-choice question.\nAre there acoustic_guitar and violin sound?\nOptions:\nA. yes\nB. no\nC. four\nD. six\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. yes",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -105,7 +105,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -115,17 +115,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 1,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_AQA:music_avqa:22982",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs there a saxophone sound?\nOptions:\nA. yes\nB. no\nC. more than ten\nD. seven\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. yes",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -135,7 +135,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -145,37 +145,37 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_AQA:music_avqa:23427",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs the saxophone louder than the drum?\nOptions:\nA. yes\nB. no\nC. four\nD. one\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. yes",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_AQA:music_avqa:23028",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs there a suona sound?\nOptions:\nA. yes\nB. no\nC. three\nD. seven\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. yes",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_AQA:music_avqa:23192",
       "instr": "Listen to the audio and answer the multiple-choice question.\nAre there clarinet and acoustic_guitar sound?\nOptions:\nA. yes\nB. no\nC. six\nD. three\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. yes",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -185,17 +185,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_AQA:music_avqa:22891",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs there a pipa sound?\nOptions:\nA. yes\nB. no\nC. six\nD. four\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. yes",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -205,17 +205,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_AQA:music_avqa:23518",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs the bagpipe more rhythmic than the flute?\nOptions:\nA. yes\nB. no\nC. six\nD. two\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. yes",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -225,7 +225,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -235,7 +235,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -245,7 +245,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -255,37 +255,37 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Music_AQA:music_avqa:23536",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs the violin more rhythmic than the drum?\nOptions:\nA. yes\nB. no\nC. four\nD. six\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. yes",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_AQA:music_avqa:22939",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs there a saxophone sound?\nOptions:\nA. yes\nB. no\nC. five\nD. two\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. yes",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_AQA:music_avqa:23095",
       "instr": "Listen to the audio and answer the multiple-choice question.\nAre there electric_bass and drum sound?\nOptions:\nA. yes\nB. no\nC. six\nD. one\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. yes",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -295,17 +295,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_AQA:music_avqa:22899",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs there a violin sound?\nOptions:\nA. yes\nB. no\nC. one\nD. five\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. yes",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -315,17 +315,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_AQA:music_avqa:23574",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs the violin louder than the trumpet?\nOptions:\nA. yes\nB. no\nC. seven\nD. five\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. yes",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -335,37 +335,37 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_AQA:music_avqa:23524",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs the piano more rhythmic than the flute?\nOptions:\nA. yes\nB. no\nC. five\nD. two\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. yes",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_AQA:music_avqa:23005",
       "instr": "Listen to the audio and answer the multiple-choice question.\nAre there tuba and drum sound?\nOptions:\nA. yes\nB. no\nC. six\nD. one\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. yes",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_AQA:music_avqa:23590",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs the pipa more rhythmic than the erhu?\nOptions:\nA. yes\nB. no\nC. more than ten\nD. one\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. yes",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -375,17 +375,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Music_AQA:music_avqa:22877",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs there a violin sound?\nOptions:\nA. yes\nB. no\nC. more than ten\nD. seven\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. yes",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -395,7 +395,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -405,7 +405,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
@@ -415,17 +415,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_AQA:music_avqa:23350",
       "instr": "Listen to the audio and answer the multiple-choice question.\nHow many musical instruments were heard throughout the video?\nOptions:\nA. five\nB. no\nC. four\nD. more than ten\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. five",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -435,37 +435,37 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_AQA:music_avqa:23197",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs the bassoon playing longer than the acoustic_guitar?\nOptions:\nA. yes\nB. no\nC. four\nD. three\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. yes",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_AQA:music_avqa:23475",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs the congas more rhythmic than the cello?\nOptions:\nA. yes\nB. no\nC. seven\nD. three\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. yes",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_AQA:music_avqa:22998",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs the trumpet louder than the accordion?\nOptions:\nA. yes\nB. no\nC. more than ten\nD. five\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. yes",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -475,27 +475,27 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_AQA:music_avqa:23150",
       "instr": "Listen to the audio and answer the multiple-choice question.\nAre there banjo and flute sound?\nOptions:\nA. yes\nB. no\nC. more than ten\nD. six\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. yes",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_AQA:music_avqa:23109",
       "instr": "Listen to the audio and answer the multiple-choice question.\nAre there trumpet and accordion sound?\nOptions:\nA. yes\nB. no\nC. six\nD. three\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. yes",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -505,17 +505,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_AQA:music_avqa:23557",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs the banjo more rhythmic than the clarinet?\nOptions:\nA. yes\nB. no\nC. three\nD. six\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. yes",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -525,7 +525,7 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
@@ -535,17 +535,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_AQA:music_avqa:23059",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs there a clarinet sound?\nOptions:\nA. yes\nB. no\nC. four\nD. six\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. yes",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -555,17 +555,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Music_AQA:music_avqa:23555",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs the saxophone louder than the suona?\nOptions:\nA. yes\nB. no\nC. five\nD. seven\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. yes",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -575,17 +575,17 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_AQA:music_avqa:23647",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs the ukulele more rhythmic than the pipa?\nOptions:\nA. yes\nB. no\nC. five\nD. three\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. yes",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
@@ -595,39 +595,52 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 1
       }
     },
     {
       "item_id": "Music_AQA:music_avqa:23179",
       "instr": "Listen to the audio and answer the multiple-choice question.\nAre there accordion and piano sound?\nOptions:\nA. yes\nB. no\nC. six\nD. two\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. yes",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Music_AQA:music_avqa:23496",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs the saxophone louder than the pipa?\nOptions:\nA. yes\nB. no\nC. four\nD. more than ten\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. yes",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 0
       }
     }
   ],
   "aggregate": {
-    "mean": 0.0,
+    "mean": 0.4833,
     "ci95": [
-      0.0,
-      0.0
+      0.3667,
+      0.6
     ],
     "n_scored": 60,
     "n_total": 60
   },
   "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset air-bench-foundation-music-aqa --backbone meralion-2-gguf --split test --n 60",
-  "elapsed_s": 40.4
+  "elapsed_s": 40.4,
+  "rescored": {
+    "date": "2026-07-10",
+    "reason": "gold-key mismatch (wave-1 audit): K8's dict-gold branch only accepted key \"answer\", but air-bench-foundation's own gold dict uses \"answer_gt\" (56 cells, 14 datasets x 2 backbones x 2 splits); uro-bench-OpenbookQA-zh's target_text embeds \"<letter>. <text>\" rather than a bare letter, which score_k8_mcq's gold_idx resolution didn't parse (4 cells). Both fixed in metrics.py (score_k8_mcq + the K8 dispatcher's dict-gold branch) -- see that file's own 2026-07-10 freeze-repair comments. This is a RESCORE ONLY: per-item scores + the cell aggregate were recomputed from the ALREADY-STORED model replies (no regeneration) via the fixed metrics.score and run_baseline.paired_bootstrap, unchanged.",
+    "original_aggregate": {
+      "mean": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_scored": 60,
+      "n_total": 60
+    }
+  }
 }

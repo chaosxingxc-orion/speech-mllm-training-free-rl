@@ -22,70 +22,98 @@
       "item_id": "Sound_AQA:clothoaqa:14934",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs this the sound of wood?\nOptions:\nA. voice\nB. slowly\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. no",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 3,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 3,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15002",
       "instr": "Listen to the audio and answer the multiple-choice question.\nis a dog barking?\nOptions:\nA. none\nB. women\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. no",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 3,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 3,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15788",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs the light roar?\nOptions:\nA. drill\nB. spinner\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. yes",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 2,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 2,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15231",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are the people doing in the background?\nOptions:\nA. talking\nB. flood\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. talking",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 0,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 0,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15337",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is heard beeping halfway through?\nOptions:\nA. umbrella\nB. women\nC. yes\nD. car\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. car",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 3,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 3,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15202",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are they walking on?\nOptions:\nA. grass\nB. driller\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. driller",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 1,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 1,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15100",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs this water flowing down a river?\nOptions:\nA. screeching\nB. police\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. no",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 3,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 3,
+          "gold_idx": null
+        }
       }
     },
     {
@@ -95,317 +123,433 @@
       "score": 0,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 0
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15698",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs there distant music?\nOptions:\nA. coin\nB. two\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. no",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 3,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 3,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15344",
       "instr": "Listen to the audio and answer the multiple-choice question.\nwhat are the items doing with each other?\nOptions:\nA. cat\nB. clanking\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. clanking",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 1,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 1,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:14997",
       "instr": "Listen to the audio and answer the multiple-choice question.\nHow many times does the siren get louder?\nOptions:\nA. band\nB. working\nC. yes\nD. two\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. two",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 3,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 3,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15825",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs the sound continuous?\nOptions:\nA. swimming\nB. insect\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. yes",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 2,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 2,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15017",
       "instr": "Listen to the audio and answer the multiple-choice question.\nHas something been turned on?\nOptions:\nA. band\nB. sparrow\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. yes",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 2,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 2,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15369",
       "instr": "Listen to the audio and answer the multiple-choice question.\nwhat is making the high pitch sound?\nOptions:\nA. voice\nB. insect\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. insect",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 1,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 1,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15762",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the person making an announcement into?\nOptions:\nA. vehicle\nB. drum\nC. intercom\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. intercom",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 2,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 2,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15053",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs a person running?\nOptions:\nA. clapping\nB. iron\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. yes",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 2,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 2,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15744",
       "instr": "Listen to the audio and answer the multiple-choice question.\nDid a door close?\nOptions:\nA. rainfall\nB. machine\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. yes",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15547",
       "instr": "Listen to the audio and answer the multiple-choice question.\nwhat type of building where people pay to see animals could this be located in?\nOptions:\nA. zoo\nB. low\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. zoo",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 0,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 0,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:14918",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs this in the city?\nOptions:\nA. lock\nB. men\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. no",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 3,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 3,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15419",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs this a place to go shopping?\nOptions:\nA. clanking\nB. never\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. no",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 3,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 3,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15615",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat instrument is being played?\nOptions:\nA. drum\nB. fast\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. drum",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 0,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 0,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15725",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat animal was chirping?\nOptions:\nA. eight\nB. nine\nC. yes\nD. bird\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. bird",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 3,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 3,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15827",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat sound is the train making?\nOptions:\nA. intercom\nB. honking\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. honking",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 1,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 1,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15765",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat animal can be heard?\nOptions:\nA. start\nB. sparrow\nC. yes\nD. owl\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. owl",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 3,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 3,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15229",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs there wildlife close?\nOptions:\nA. closet\nB. people\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. yes",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 2,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 2,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15671",
       "instr": "Listen to the audio and answer the multiple-choice question.\ndoes it sound like a wooden object is present?\nOptions:\nA. tank\nB. police\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. yes",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 2,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 2,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15435",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat breed of bird is chirping?\nOptions:\nA. rod\nB. machine\nC. sparrow\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. sparrow",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 2,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 2,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15047",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is being rolled down?\nOptions:\nA. waves\nB. coin\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. coin",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 1,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 1,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15770",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are the people doing?\nOptions:\nA. working\nB. door\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. working",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 0,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 0,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:14974",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs it a sunny clear day?\nOptions:\nA. dog\nB. iron\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. yes",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 2,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 2,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15633",
       "instr": "Listen to the audio and answer the multiple-choice question.\ndoes the sound of the truck remain steady the whole time?\nOptions:\nA. wrench\nB. bell\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. no",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 3,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 3,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15171",
       "instr": "Listen to the audio and answer the multiple-choice question.\nhow many times is the tap heard?\nOptions:\nA. running\nB. zero\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. zero",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 1,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 1,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15453",
       "instr": "Listen to the audio and answer the multiple-choice question.\nHow many types of animals can be heard making noise ?\nOptions:\nA. motorbike\nB. mixer\nC. three\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. three",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15696",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs this near water?\nOptions:\nA. siren\nB. twentythree\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. yes",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 2,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 2,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15075",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is pouring down in the sound?\nOptions:\nA. gas\nB. rain\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. rain",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 1,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 1,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15687",
       "instr": "Listen to the audio and answer the multiple-choice question.\nI there more than one person here?\nOptions:\nA. once\nB. rainfall\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. yes",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 2,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 2,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15630",
       "instr": "Listen to the audio and answer the multiple-choice question.\nHow many people can be heard singing ?\nOptions:\nA. rainy\nB. bird\nC. one\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. no",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 3,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 3,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15753",
       "instr": "Listen to the audio and answer the multiple-choice question.\nDoes it sound like cars are driving?\nOptions:\nA. motorbike\nB. loudspeaker\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. yes",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 2,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 2,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15197",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs someone setting silverware against the table?\nOptions:\nA. fireworks\nB. falls\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. no",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 3,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 3,
+          "gold_idx": null
+        }
       }
     },
     {
@@ -415,17 +559,21 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15661",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the person doing?\nOptions:\nA. cars\nB. snow\nC. walking\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. walking",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 2,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 2,
+          "gold_idx": null
+        }
       }
     },
     {
@@ -435,199 +583,332 @@
       "score": 0,
       "detail": {
         "pred_idx": 0,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15381",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs the sound staticky?\nOptions:\nA. honking\nB. sound\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. yes",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 2,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 2,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15589",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs something being opened?\nOptions:\nA. grass\nB. stops\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. yes",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 2,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 2,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15095",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs the sound staticky?\nOptions:\nA. drill\nB. traffic\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. yes",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 2,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 2,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15777",
       "instr": "Listen to the audio and answer the multiple-choice question.\nAre there birds chirping in the background ?\nOptions:\nA. keys\nB. two\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. yes",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 2,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 2,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15374",
       "instr": "Listen to the audio and answer the multiple-choice question.\nHow many times is the slapping sound heard?\nOptions:\nA. road\nB. rod\nC. yes\nD. twenty\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. twenty",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 3,
-        "gold_idx": null
+        "gold_idx": 3
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15429",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs someone urinating?\nOptions:\nA. party\nB. short\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. yes",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 2,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 2,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15854",
       "instr": "Listen to the audio and answer the multiple-choice question.\nDoes the buzzing intensify?\nOptions:\nA. working\nB. singing\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. yes",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 2,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 2,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:14897",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs there a tractor in the background?\nOptions:\nA. crickets\nB. storm\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. no",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 3,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 3,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15118",
       "instr": "Listen to the audio and answer the multiple-choice question.\nare horns honking?\nOptions:\nA. door\nB. closet\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. yes",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 2,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 2,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15840",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat object is sometimes carried by a person to stay dry when this is happening?\nOptions:\nA. loudspeaker\nB. umbrella\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. umbrella",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 1,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 1,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15411",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs it a repetitive sound?\nOptions:\nA. birds\nB. mouse\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. yes",
-      "score": 0,
+      "score": 1,
       "detail": {
         "pred_idx": 2,
-        "gold_idx": null
+        "gold_idx": 2
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15557",
       "instr": "Listen to the audio and answer the multiple-choice question.\nAre geese making noise?\nOptions:\nA. flood\nB. seagulls\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. yes",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 2,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 2,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15569",
       "instr": "Listen to the audio and answer the multiple-choice question.\nDoes this sound get quieter as the clip goes on?\nOptions:\nA. working\nB. whispering\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. yes",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 2,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 2,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15445",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhere are they?\nOptions:\nA. liquid\nB. road\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "B. road",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 1,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 1,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15367",
       "instr": "Listen to the audio and answer the multiple-choice question.\nAre there many people talking?\nOptions:\nA. twentythree\nB. announcement\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "D. no",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 3,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 3,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15675",
       "instr": "Listen to the audio and answer the multiple-choice question.\nIs metal making noise?\nOptions:\nA. never\nB. buzzsaw\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. yes",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 2,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 2,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15732",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the vehicle moving along?\nOptions:\nA. water\nB. clanging\nC. bike\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "A. water",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 0,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 0,
+          "gold_idx": null
+        }
       }
     },
     {
       "item_id": "Sound_AQA:clothoaqa:15239",
       "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are they walking in?\nOptions:\nA. radio\nB. twentythree\nC. sand\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
       "reply": "C. sand",
-      "score": 0,
+      "score": null,
       "detail": {
-        "pred_idx": 2,
-        "gold_idx": null
+        "note": "gold could not be re-derived: item_id not found when re-invoking the loader with this cell's own (split, n_requested, seed) -- the on-disk resolvable-row pool for this pair likely changed size since the original generation run (see air_bench_foundation.py partial-download note), which reshuffles the sampling permutation. Left unverifiable, not silently kept at its prior (already-known-broken) score.",
+        "prior_score": 0,
+        "prior_detail": {
+          "pred_idx": 2,
+          "gold_idx": null
+        }
       }
     }
   ],
   "aggregate": {
-    "mean": 0.0,
+    "mean": 0.5714,
     "ci95": [
-      0.0,
-      0.0
+      0.1429,
+      0.8571
     ],
-    "n_scored": 60,
-    "n_total": 60
+    "n_scored": 7,
+    "n_total": 60,
+    "n_unresolved": 53
   },
   "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset air-bench-foundation-sound-aqa-clothoaqa --backbone qwen3-omni-30b-gguf --split test --n 60",
-  "elapsed_s": 185.9
+  "elapsed_s": 185.9,
+  "rescored": {
+    "date": "2026-07-10",
+    "reason": "gold-key mismatch (wave-1 audit): K8's dict-gold branch only accepted key \"answer\", but air-bench-foundation's own gold dict uses \"answer_gt\" (56 cells, 14 datasets x 2 backbones x 2 splits); uro-bench-OpenbookQA-zh's target_text embeds \"<letter>. <text>\" rather than a bare letter, which score_k8_mcq's gold_idx resolution didn't parse (4 cells). Both fixed in metrics.py (score_k8_mcq + the K8 dispatcher's dict-gold branch) -- see that file's own 2026-07-10 freeze-repair comments. This is a RESCORE ONLY: per-item scores + the cell aggregate were recomputed from the ALREADY-STORED model replies (no regeneration) via the fixed metrics.score and run_baseline.paired_bootstrap, unchanged.",
+    "original_aggregate": {
+      "mean": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_scored": 60,
+      "n_total": 60
+    },
+    "unresolved_item_ids": [
+      "Sound_AQA:clothoaqa:14934",
+      "Sound_AQA:clothoaqa:15002",
+      "Sound_AQA:clothoaqa:15788",
+      "Sound_AQA:clothoaqa:15231",
+      "Sound_AQA:clothoaqa:15337",
+      "Sound_AQA:clothoaqa:15202",
+      "Sound_AQA:clothoaqa:15100",
+      "Sound_AQA:clothoaqa:15698",
+      "Sound_AQA:clothoaqa:15344",
+      "Sound_AQA:clothoaqa:14997",
+      "Sound_AQA:clothoaqa:15825",
+      "Sound_AQA:clothoaqa:15017",
+      "Sound_AQA:clothoaqa:15369",
+      "Sound_AQA:clothoaqa:15762",
+      "Sound_AQA:clothoaqa:15053",
+      "Sound_AQA:clothoaqa:15547",
+      "Sound_AQA:clothoaqa:14918",
+      "Sound_AQA:clothoaqa:15419",
+      "Sound_AQA:clothoaqa:15615",
+      "Sound_AQA:clothoaqa:15725",
+      "Sound_AQA:clothoaqa:15827",
+      "Sound_AQA:clothoaqa:15765",
+      "Sound_AQA:clothoaqa:15229",
+      "Sound_AQA:clothoaqa:15671",
+      "Sound_AQA:clothoaqa:15435",
+      "Sound_AQA:clothoaqa:15047",
+      "Sound_AQA:clothoaqa:15770",
+      "Sound_AQA:clothoaqa:14974",
+      "Sound_AQA:clothoaqa:15633",
+      "Sound_AQA:clothoaqa:15171",
+      "Sound_AQA:clothoaqa:15696",
+      "Sound_AQA:clothoaqa:15075",
+      "Sound_AQA:clothoaqa:15687",
+      "Sound_AQA:clothoaqa:15630",
+      "Sound_AQA:clothoaqa:15753",
+      "Sound_AQA:clothoaqa:15197",
+      "Sound_AQA:clothoaqa:15661",
+      "Sound_AQA:clothoaqa:15381",
+      "Sound_AQA:clothoaqa:15589",
+      "Sound_AQA:clothoaqa:15095",
+      "Sound_AQA:clothoaqa:15777",
+      "Sound_AQA:clothoaqa:15429",
+      "Sound_AQA:clothoaqa:15854",
+      "Sound_AQA:clothoaqa:14897",
+      "Sound_AQA:clothoaqa:15118",
+      "Sound_AQA:clothoaqa:15840",
+      "Sound_AQA:clothoaqa:15557",
+      "Sound_AQA:clothoaqa:15569",
+      "Sound_AQA:clothoaqa:15445",
+      "Sound_AQA:clothoaqa:15367",
+      "Sound_AQA:clothoaqa:15675",
+      "Sound_AQA:clothoaqa:15732",
+      "Sound_AQA:clothoaqa:15239"
+    ]
+  }
 }
