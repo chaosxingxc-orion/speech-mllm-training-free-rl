@@ -117,7 +117,12 @@ _SEED_TTS_LANG = {"seed-tts-eval-en": "en", "seed-tts-eval-zh": "zh"}
 # Most registry loaders' eval split is literally named "test"; librispeech's is "test.clean" (see
 # its module docstring -- "test" alone is not a directory on disk). One override map, checked
 # before the generic split="test" fallback in _load_rows, rather than hardcoding "test" blindly.
-_DEFAULT_SPLIT_OVERRIDE = {"librispeech": "test.clean"}
+_DEFAULT_SPLIT_OVERRIDE = {
+    "librispeech": "test.clean",
+    # HeySQuAD ships train/validation only -- no public test golds (mirrors load_heysquad's
+    # module docstring); both dev and test grid slices draw from "validation".
+    "heysquad": "validation",
+}
 
 
 # ---------------------------------------------------------------------------------------------
