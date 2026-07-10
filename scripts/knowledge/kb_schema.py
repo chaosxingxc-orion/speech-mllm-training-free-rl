@@ -115,7 +115,30 @@ PROVENANCE_KEYS = ("dataset", "revision", "build_seed", "from_item_id", "leakage
 
 @dataclass(frozen=True)
 class SourceManifest:
-    """Per-source reproducibility + audit header."""
+    """Per-source reproducibility + audit header.
+
+    2026-07-11 (ticket #25 P1c) additive fields — both default so every pre-existing
+    ``manifest.json`` on disk still loads unmodified via ``SourceManifest(**d)``:
+
+    ``embedder_token`` — the REGISTRY TOKEN (a ``kb_embed.EMBEDDERS`` key, or one of the legacy
+    ``'clap'``/``'omni-embed'``/``'logmel-stats'`` names, or a ``'composite:a+b+c'`` multi-embedder
+    key) that ``kb_retrieve._query_embedder`` must re-invoke to embed a QUERY into the exact same
+    space as this source's persisted keys. This is the FIX for the old bug where ``_query_embedder``
+    guessed the token back from ``embedder`` (the descriptive ``ename`` like ``"glap:GLAP"``) via
+    fragile prefix matching that defaulted to ``'auto'`` (silently landing on CLAP) whenever the
+    guess failed. ``None`` means "built before this field existed" — ``kb_retrieve`` falls back to
+    ``kb_embed.infer_embedder_token(embedder)`` for those, and RAISES (never defaults to CLAP/'auto')
+    if that inference is ambiguous. See ``kb_embed.resolve_embedder_token``.
+
+    ``pool_split`` — the loader ``split`` (e.g. ``'dev'``/``'validation'``) this source's records were
+    drawn from (ticket #25 P1a: this used to be baked into the SOURCE NAME itself
+    — ``f"{dataset}__{embedder}__{pool_split}"`` — which collided with the runner's own 4-field
+    naming convention, ``f"{dataset}__{embedder}__{key_org}__{value_org}"``
+    (``run_mock.source_name_for``). Now the name carries ``key_org``/``value_org`` only, and
+    ``pool_split`` moves here, into the manifest, where a builder/consumer can still recover it
+    without it colliding with the runner's own naming axis. ``None`` for sources built before this
+    field existed (their pool_split is only recoverable from ``created_note``, best-effort).
+    """
 
     source: str
     dataset: str
@@ -131,6 +154,8 @@ class SourceManifest:
     leakage_audit: dict = field(default_factory=dict)
     created_note: str = ""
     forced: bool = False  # True iff persisted despite a LEAKAGE verdict via force_persist=True
+    embedder_token: str | None = None  # registry token for query-time re-embedding (see docstring)
+    pool_split: str | None = None  # loader split this source's records were drawn from
 
     def to_dict(self) -> dict:
         return asdict(self)

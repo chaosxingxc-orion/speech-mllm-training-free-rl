@@ -4,8 +4,9 @@ Pure-python, fully OFFLINE (``embedder='logmel-stats'`` — no GPU/network, no o
 against a TMP ``SPEECHRL_KB_DIR`` that this script creates itself if the caller didn't set one — it
 NEVER falls through to the real ``E:/speechrl-knowledge`` default (see the safety assert in ``main``).
 
-Four cases (mirrors kb_build.build_source / kb_retrieve.load_source's enforcement gates, plus the
-Step-2 schema evolution's backward-compatibility contract):
+Six cases (mirrors kb_build.build_source / kb_retrieve.load_source's enforcement gates, plus the
+Step-2 schema evolution's backward-compatibility contract, plus ticket #25's P1c/P2d boundary
+machine-invariants):
   1. A LEAKAGE-verdict source cannot be BUILT without ``force_persist=True`` (raises
      ``kb_schema.KBLeakageError``; nothing is persisted) — and building it with the flag DOES persist,
      stamped ``manifest.forced=True``.
@@ -17,6 +18,15 @@ Step-2 schema evolution's backward-compatibility contract):
      JSON line (none of those keys present) still loads via ``from_json`` with the documented
      defaults; and ``kb_build.build_source`` plumbs per-record granularity/grain through to the
      persisted ``values.jsonl`` end-to-end.
+  5. (2026-07-11, ticket #25 P1c) ``manifest.embedder_token`` round-trips exactly (the registry
+     token ``kb_build`` stamps == what ``kb_retrieve._query_embedder`` re-invokes for a query) —
+     the fix for the old bug where the query embedder was GUESSED back from the descriptive
+     ``ename`` and silently defaulted to CLAP/'auto' on any guess miss.
+  6. (2026-07-11, ticket #25 P1c/P2d) ``kb_retrieve.retrieve`` raises a clear ``ValueError`` when a
+     query embedding's dimension doesn't match the index's — never silently searches a
+     shape-mismatched vector — and ``kb_build.build_source`` accepts a per-record
+     ``"precomputed_key"`` (used as-is, no re-embedding) alongside freshly-embedded rows in the
+     SAME build, with a matching dim-consistency check at BUILD time too.
 
 Run (WSL venv; tmp dir explicit so this NEVER touches the real KB):
     SPEECHRL_KB_DIR=$(mktemp -d) python -u scripts/knowledge/test_kb_gate.py
@@ -213,6 +223,74 @@ def main() -> int:
                     for i, v in enumerate(persisted)),
             results,
         )
+
+        # ---- case 5 (ticket #25 P1c): embedder_token round-trips build -> manifest -> query ----
+        import kb_retrieve as kbr  # already imported above as `kb_retrieve`; local alias for clarity
+
+        m_token = kb_build.build_source(
+            "gate_token", "synthetic", None, _records(wavdir, n=4),
+            key_modality="audio", value_type="text-fact", embedder="logmel-stats",
+            audit_golds=[], scrub=True, note="gate-test embedder_token round-trip",
+        )
+        check(
+            "manifest.embedder_token == the exact registry token passed to build_source",
+            m_token.get("embedder_token") == "logmel-stats",
+            results,
+        )
+        src_token = kbr.load_source("gate_token")
+        one_wav = _records(wavdir, n=1)[0]["key_audio_ref"]
+        q_vec = src_token["embed_query"]([one_wav])
+        check(
+            "kb_retrieve._query_embedder (via embedder_token) returns the source's own key dim",
+            len(q_vec[0]) == src_token["index"].dim,
+            results,
+        )
+
+        # ---- case 6 (ticket #25 P1c/P2d): dimension assertion + precomputed_key mix ----
+        import numpy as np
+
+        raised_dim = False
+        try:
+            bad_src = dict(src_token)
+            bad_src["embed_query"] = lambda qs: [[0.0] * (src_token["index"].dim + 3)]
+            kbr.retrieve(bad_src, ["whatever"], topk=1)
+        except ValueError:
+            raised_dim = True
+        check("kb_retrieve.retrieve raises ValueError on a query/index dim mismatch", raised_dim, results)
+
+        base_recs = _records(wavdir, n=3)
+        dummy_vec = np.random.RandomState(0).randn(128).astype("float32")
+        dummy_vec = dummy_vec / np.linalg.norm(dummy_vec)
+        mixed_recs = base_recs + [{
+            "key_audio_ref": "synthetic:precomputed:0", "value": "[precomputed row]",
+            "from_item_id": None, "precomputed_key": dummy_vec,
+        }]
+        m_mixed = kb_build.build_source(
+            "gate_precomputed", "synthetic", None, mixed_recs,
+            key_modality="audio", value_type="text-fact", embedder="logmel-stats",
+            audit_golds=[], scrub=True, note="gate-test precomputed_key mix",
+        )
+        persisted_mixed = load_values("gate_precomputed")
+        check(
+            "kb_build.build_source mixes freshly-embedded + precomputed_key rows in one source",
+            m_mixed["n_entries"] == len(mixed_recs) and persisted_mixed[-1].value == "[precomputed row]",
+            results,
+        )
+        mismatch_recs = base_recs + [{
+            "key_audio_ref": "synthetic:baddim:0", "value": "[bad dim row]",
+            "from_item_id": None, "precomputed_key": np.zeros(7, dtype="float32"),
+        }]
+        raised_build_dim = False
+        try:
+            kb_build.build_source(
+                "gate_precomputed_baddim", "synthetic", None, mismatch_recs,
+                key_modality="audio", value_type="text-fact", embedder="logmel-stats",
+                audit_golds=[], scrub=True,
+            )
+        except ValueError:
+            raised_build_dim = True
+        check("kb_build.build_source raises ValueError on a mismatched precomputed_key dim",
+              raised_build_dim, results)
 
     all_pass = all(results.values())
     print("\n=== KB GATE TEST ===")

@@ -45,6 +45,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(
 
 import label_inventories               # noqa: E402  (scripts/baselines/label_inventories.py)
 import metrics                        # noqa: E402
+import provenance                     # noqa: E402  (scripts/baselines/provenance.py, ticket #25 P4)
 import templates                      # noqa: E402
 from _common import (                 # noqa: E402  (scripts/loaders/_common.py)
     POOL_RECONSTRUCTION_SEED, SLICE_SEED, data_root, freeze_ids, load_snapshot_ids,
@@ -660,6 +661,12 @@ def run_one(dataset_key: str, backbone: str, split: str, n: int | None, parallel
         "boundary": ("audio-only input + fixed task-definition text (label set / MCQ options / "
                      "tool registry / JSON schema); no golden transcript/answer/intent ever placed "
                      "in the prompt -- see templates.py module docstring's Information-Boundary-Guard note."),
+        # ticket #25 P4: shared provenance block (git SHA+dirty, engine build id, dataset
+        # revision, manifest hash, env versions) -- see provenance.collect_provenance's docstring.
+        # No KB source is involved in a Stage-1 baseline cell, so manifest_hash/dataset_revision
+        # stay None here (unlike run_mock's result writer, which resolves them from the KB
+        # source's own manifest).
+        "provenance": provenance.collect_provenance(REPO_ROOT),
         "per_item": per_item,
         "aggregate": aggregate,
         "reproduce": (

@@ -541,6 +541,88 @@ def _omni_embed_query(texts, device: str = "cpu"):
     return f"omni-embed:{OMNI_EMBED_DIRNAME}", _l2(np.asarray(embs, dtype="float32"))
 
 
+# ---------------------------------------------------------------------------------------------
+# 2026-07-11 (ticket #25 P1c + P2d): registry-token <-> descriptive-ename resolution, so
+# kb_build can store the exact TOKEN kb_retrieve needs to re-invoke the SAME embedder for a query
+# (never guessed from ename via fragile prefix matching, never silently defaulting to 'auto'/CLAP),
+# plus a composite (multi-embedder, concatenated-key) embedder used by kb_batch_build's
+# 'ha-multi-key' key_org arm (2026-07-11 ticket #25 P2d).
+# ---------------------------------------------------------------------------------------------
+
+# ename-prefix -> registry token, for sources built before embedder_token existed (kb_schema
+# SourceManifest 2026-07-11 additive field) or built with embedder='auto'/'clap'/'omni-embed' where
+# the CALLER's own arg isn't itself the resolved token. Every _LOADER_FNS-dispatched embedder's own
+# ename already starts with its own registry key (see each _xxx_embed's `return f"{key}:..."`), so
+# this table only needs the few names that do NOT start with their own token verbatim.
+_SERVER_ENV_TOKEN = {
+    "LCO3B_EMBED_SERVER": "lco-3b",
+    "LCO7B_EMBED_SERVER": "lco-7b",
+    "QWEN3OMNI_EMBED_SERVER": "qwen3-omni-own",
+}
+
+
+def infer_embedder_token(ename: str) -> str | None:
+    """Best-effort recovery of a registry TOKEN from a descriptive ``ename`` (e.g. ``"glap:GLAP"``
+    -> ``"glap"``). Used ONLY as a fallback for manifests built before ``embedder_token`` existed
+    (see ``kb_schema.SourceManifest``'s docstring) -- returns ``None`` (never a guess) when the
+    mapping is genuinely ambiguous, so the caller (``kb_retrieve._query_embedder``) can raise
+    instead of silently defaulting to a different embedder.
+    """
+    if not ename:
+        return None
+    if ename.startswith("logmel-stats"):
+        return "logmel-stats"
+    if ename.startswith("llama-server-embed:"):
+        return _SERVER_ENV_TOKEN.get(ename.split(":", 1)[1])
+    if ename.startswith("composite:"):
+        return ename  # composite tokens are already self-describing (see embed_audio_composite)
+    prefix = ename.split(":", 1)[0]
+    if prefix in _LOADER_FNS or prefix in ("clap", "omni-embed"):
+        return prefix
+    return None
+
+
+def resolve_embedder_token(explicit: str, ename: str) -> str | None:
+    """The token ``kb_build.build_source`` should stamp into ``manifest.embedder_token``.
+
+    If the caller passed a concrete, non-'auto' embedder arg (the normal case for every
+    ``kb_batch_build`` call -- ``CONTENT_KEY_EMBEDDERS`` never includes 'auto'), that IS the token:
+    trust it verbatim, it is exactly what a future query must re-pass to ``embed_audio``/
+    ``embed_text``. Only when the caller asked for 'auto' (legacy convenience tier, resolves
+    internally to CLAP or omni-embed) do we need to recover the ACTUAL token from the returned
+    ``ename`` via ``infer_embedder_token``.
+    """
+    if explicit and explicit != "auto":
+        return explicit
+    return infer_embedder_token(ename)
+
+
+def embed_audio_composite(wav_paths, embedders: list[str], device: str = "cpu"):
+    """Concatenate several embedders' (already L2-normalized) audio vectors into ONE composite key
+    per wav, then re-normalize the concatenation as a whole. Backs ``kb_batch_build``'s
+    ``'ha-multi-key'`` key_org arm (2026-07-11, ticket #25 P2d): the grid draft's H-a calls for
+    "2-3 specialized key SPACES" (content / speaker / emotion); a true H-a would need 2-3
+    INDEPENDENTLY-searchable indices plus a fusion/routing layer at retrieval time. This is the
+    documented PRAGMATIC approximation used instead: ONE physical index whose key row is the
+    concatenation of the content/speaker/emotion embedders' own vectors, so ``kb_retrieve`` still
+    only needs to search ONE index (matching ``source_name_for``'s one-physical-source-per-
+    (dataset,embedder,key_org,value_org) convention, ticket #25 P1a) — cosine similarity in the
+    concatenated space is a (crude) proxy for "similar across all 2-3 signals at once", not a
+    routed per-space retrieval. Returns ``(name, matrix)`` where ``name`` is
+    ``"composite:" + "+".join(embedders)`` -- self-describing and re-parsed verbatim by
+    ``kb_retrieve._query_embedder`` to rebuild the identical query-side concatenation.
+    """
+    import numpy as np
+
+    parts = []
+    for emb in embedders:
+        _name, vecs = embed_audio(wav_paths, embedder=emb, device=device)
+        parts.append(np.asarray(vecs, dtype="float32"))
+    combined = np.concatenate(parts, axis=1)
+    name = "composite:" + "+".join(embedders)
+    return name, _l2(combined)
+
+
 def embed_audio(wav_paths, embedder: str = "auto", device: str = "cpu"):
     """Embed audio -> (name, key_matrix[N×d], L2-normalized). Primary KB key embedder.
 

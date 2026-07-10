@@ -26,21 +26,36 @@ def _query_embedder(manifest, source_path):
     """Rebuild the KEY embedder so queries land in the SAME space as the stored keys.
 
     Correctness: retrieval MUST use the exact embedder the source was BUILT with — querying a
-    logmel-keyed KB with CLAP (or vice-versa) compares vectors from different spaces. So we map the
-    manifest's recorded embedder back to its explicit arg, never defaulting to 'auto' (which could pick
-    a different real embedder than the one keyed).
+    logmel-keyed KB with CLAP (or vice-versa) compares vectors from different spaces.
+
+    2026-07-11 (ticket #25 P1c fix): this used to guess the embedder ARG back from
+    ``manifest.embedder`` (the descriptive ``ename``, e.g. ``"glap:GLAP"``) via fragile prefix
+    matching that defaulted to ``'auto'`` whenever the guess didn't match one of 3 hardcoded
+    prefixes — silently landing a query on CLAP for any source built with any of the 14 unified
+    embedders (glap/meralion-se2/wavlm-*/eres2netv2/campplus/emotion2vec-*/dasheng/clsp/sense/
+    sensevoice-small/lco-3b/lco-7b/qwen3-omni-own), a real correctness bug (comparing CLAP query
+    vectors against e.g. GLAP-space keys). Now ``manifest.embedder_token`` — the exact registry
+    token ``kb_build`` stamped at build time (see its docstring) — is used directly, and this
+    function RAISES rather than falling back to CLAP/'auto' when no token is available and
+    ``kb_embed.infer_embedder_token`` can't recover one from ``manifest.embedder`` either (only
+    possible for a source built before ``embedder_token`` existed).
     """
     if manifest.key_modality == "audio":
         import kb_embed
 
-        emb = manifest.embedder
-        arg = (
-            "logmel-stats" if emb.startswith("logmel")
-            else "clap" if emb.startswith("clap")
-            else "omni-embed" if emb.startswith("omni")
-            else "auto"
-        )
-        return lambda qs: kb_embed.embed_audio(qs, embedder=arg)[1]
+        token = manifest.embedder_token or kb_embed.infer_embedder_token(manifest.embedder)
+        if not token:
+            raise ValueError(
+                f"kb_retrieve._query_embedder: cannot determine the query embedder for source "
+                f"{manifest.source!r} (manifest.embedder={manifest.embedder!r}, no embedder_token "
+                "recorded and kb_embed.infer_embedder_token could not recover one either) -- "
+                "refusing to silently fall back to CLAP/'auto' (ticket #25 P1c). Rebuild this "
+                "source with a current kb_build so embedder_token is recorded."
+            )
+        if token.startswith("composite:"):
+            parts = token.split(":", 1)[1].split("+")
+            return lambda qs: kb_embed.embed_audio_composite(qs, parts)[1]
+        return lambda qs: kb_embed.embed_audio(qs, embedder=token)[1]
     # legacy text key
     if manifest.embedder.startswith("tfidf"):
         v = pickle.load(open(source_path / "retriever.pkl", "rb"))
@@ -86,9 +101,30 @@ def load_source(source: str, allow_unclean: bool = False) -> dict:
 
 
 def retrieve(source_obj: dict, queries: list, topk: int = 5) -> list[list[dict]]:
-    """For each query (audio path or text) return topk [{value, sim}] from the value store."""
+    """For each query (audio path or text) return topk [{value, sim}] from the value store.
+
+    2026-07-11 (ticket #25 P1c): asserts the query embedding's dimension matches the index's key
+    dimension before searching — a mismatched embedder (wrong token resolved, or a caller bypassing
+    ``load_source``'s own ``embed_query``) would otherwise fail silently (FAISS/numpy would either
+    crash with an opaque shape error deep inside the ANN call, or — worse, for a numpy-flat backend
+    with a coincidentally-broadcastable shape — silently produce garbage similarities). Raising here,
+    with the source/manifest identity in the message, replaces both failure modes with one clear one.
+    """
+    import numpy as np
+
     index, values, embed_query = source_obj["index"], source_obj["values"], source_obj["embed_query"]
-    q_vec = embed_query(queries)
+    q_vec = np.asarray(embed_query(queries), dtype="float32")
+    if q_vec.ndim == 1:
+        q_vec = q_vec.reshape(1, -1)
+    if q_vec.shape[1] != index.dim:
+        manifest = source_obj.get("manifest")
+        src_name = getattr(manifest, "source", "?")
+        token = getattr(manifest, "embedder_token", None)
+        raise ValueError(
+            f"kb_retrieve.retrieve: query embedding dim {q_vec.shape[1]} != index dim {index.dim} "
+            f"for source {src_name!r} (embedder_token={token!r}) -- the query embedder does not "
+            "match the one this source's keys were built with."
+        )
     idx, sims = index.search(q_vec, topk)
     out = []
     for i in range(len(queries)):

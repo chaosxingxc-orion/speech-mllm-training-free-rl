@@ -25,6 +25,14 @@ caller passes ``force_persist=True``, an explicit PoC/debug escape hatch that lo
 stamps the manifest ``forced=True`` so a leaking, force-built source is never mistaken for an
 admissible one. ``SUSPECT`` and unaudited (``audit_golds=None``) builds are NOT gated — only a
 confirmed ``LEAKAGE`` verdict blocks persistence.
+
+2026-07-11 (ticket #25): ``build_source`` now also (P1a) accepts ``pool_split`` (stored in the
+manifest, no longer baked into the source name — see ``kb_schema.SourceManifest``), (P1c) stamps
+``manifest.embedder_token`` (the registry token ``kb_retrieve`` must reuse for query-side
+embedding — see ``kb_embed.resolve_embedder_token``), and (P2d) honors an optional per-record
+``"precomputed_key"`` so a caller (``kb_batch_build``'s richer ``key_org``/``value_org`` arms) can
+supply ready-made key vectors (composite multi-embedder keys, cluster-centroid summary keys, ...)
+for some or all rows instead of every row being freshly embedded from ``key_audio_ref``.
 """
 from __future__ import annotations
 
@@ -47,11 +55,28 @@ def build_source(
     audit_golds: list[str] | None = None,
     scrub: bool = False,
     force_persist: bool = False,
+    pool_split: str | None = None,
+    aux_audit: bool = False,
 ) -> dict:
     """Build a persisted speech-keyed knowledge source. Returns the SourceManifest as a dict.
 
     Raises ``kb_schema.KBLeakageError`` if the value-side audit's final verdict is ``LEAKAGE`` and
     ``force_persist`` is not set (see module docstring: the enforcement gate).
+
+    ``pool_split`` (2026-07-11, ticket #25 P1a) is stored in the manifest verbatim -- see
+    ``kb_schema.SourceManifest``'s docstring for why this moved OUT of the source name.
+
+    Each ``records`` entry may carry an optional ``"precomputed_key"`` (2026-07-11, ticket #25 P2d):
+    a ready-made key vector (list/np.ndarray) for that row, used AS-IS instead of embedding
+    ``key_audio_ref``/``key_text`` through ``kb_embed`` -- this is the substrate
+    ``kb_batch_build``'s richer ``key_org``/``value_org`` arms build on (composite multi-embedder
+    keys for 'ha-multi-key', cluster-centroid keys for 'raptor-lite' summary rows, ...). A row with
+    ``precomputed_key`` still needs a non-``None`` ``key_field`` value (``key_audio_ref``/
+    ``key_text``) for id/dedup/traceability -- it need not be a real playable file for such rows
+    (e.g. a synthetic ``"raptor-cluster:<source>:<id>"`` string), since it is never passed to
+    ``kb_embed``. Rows that mix (some precomputed, some not) are fully supported -- only the
+    non-precomputed subset is ever sent to ``kb_embed.embed_audio``/``embed_text``, batched
+    together as before.
     """
     import numpy as np
 
@@ -68,7 +93,7 @@ def build_source(
     )
 
     # --- collect keys + values (dedup by (key_ref, value)) ---
-    seen, key_refs, values, from_ids, grains = set(), [], [], [], []
+    seen, key_refs, values, from_ids, grains, precomputed = set(), [], [], [], [], []
     key_field = "key_audio_ref" if key_modality == "audio" else "key_text"
     for r in records:
         kref, val = r.get(key_field), r.get("value", "")
@@ -81,6 +106,7 @@ def build_source(
         key_refs.append(kref)
         values.append(val)
         from_ids.append(r.get("from_item_id"))
+        precomputed.append(r.get("precomputed_key"))
         grains.append({
             "key_granularity": r.get("key_granularity", "utterance"),
             "parent_ref": r.get("parent_ref"),
@@ -90,12 +116,17 @@ def build_source(
         })
 
     # --- value-side leakage audit (does a stored value contain an eval gold?) ---
+    # aux_audit (2026-07-11, ticket #25 P3h): opt-in only (default False) -- the embedding-
+    # similarity aux hook (kb_audit.embedding_similarity_audit) may try a network-backed text
+    # embedder (MiniLM) before its offline TF-IDF fallback, which would risk a hang on an
+    # offline/CI box if this ran unconditionally on every build. The exact-substring hard gate
+    # below is completely unaffected either way -- aux fields are purely additive diagnostics.
     audit, leakage_ok = {}, None
     if audit_golds is not None:
-        audit = audit_texts(values, audit_golds)
+        audit = audit_texts(values, audit_golds, aux=aux_audit)
         if scrub:
             values = scrub_golds(values, audit_golds)
-            audit = {**audit, "post_scrub": audit_texts(values, audit_golds)}
+            audit = {**audit, "post_scrub": audit_texts(values, audit_golds, aux=aux_audit)}
         leakage_ok = audit.get("post_scrub", audit).get("verdict") == "CLEAN"
 
     # --- enforcement gate: refuse to PERSIST a confirmed-LEAKAGE source (Information-Boundary Guard) ---
@@ -117,12 +148,47 @@ def build_source(
         )
 
     # --- embed the KEY into a matrix, build + persist the vector index ---
+    # 2026-07-11 (ticket #25 P2d): only rows WITHOUT a precomputed_key are actually sent to
+    # kb_embed -- batched together, exactly as before, so the common all-fresh-audio path (every
+    # pre-existing caller) is unaffected. Rows WITH one are spliced back into the final matrix at
+    # their original position, after a dim-consistency check against whatever WAS embedded (or, if
+    # every row was precomputed, against each other) -- a build-time mirror of the query-time
+    # dimension assertion ``kb_retrieve.retrieve`` now also enforces (P1c).
     fitted = None
-    if key_modality == "audio":
-        ename, keys = kb_embed.embed_audio(key_refs, embedder=embedder)
-    else:  # legacy text key
-        ename, keys, fitted = kb_embed.embed_text(key_refs, embedder=embedder)
-    keys = np.asarray(keys, dtype="float32")
+    embed_idx = [i for i, p in enumerate(precomputed) if p is None]
+    if embed_idx:
+        sub_refs = [key_refs[i] for i in embed_idx]
+        if key_modality == "audio":
+            ename, embedded = kb_embed.embed_audio(sub_refs, embedder=embedder)
+        else:  # legacy text key
+            ename, embedded, fitted = kb_embed.embed_text(sub_refs, embedder=embedder)
+        embedded = np.asarray(embedded, dtype="float32")
+        dim = embedded.shape[1]
+    else:
+        # every row arrived precomputed (e.g. kb_batch_build's 'ha-multi-key' composite-key arm) --
+        # nothing to embed here; the caller's own `embedder` string IS the descriptive name, since
+        # this function never actually invoked kb_embed.
+        ename = embedder
+        embedded = None
+        first = next(p for p in precomputed if p is not None)
+        dim = np.asarray(first, dtype="float32").shape[0]
+
+    keys = np.zeros((len(key_refs), dim), dtype="float32")
+    j = 0
+    for i in range(len(key_refs)):
+        if precomputed[i] is None:
+            keys[i] = embedded[j]
+            j += 1
+        else:
+            pv = np.asarray(precomputed[i], dtype="float32")
+            if pv.shape[0] != dim:
+                raise ValueError(
+                    f"kb_build.build_source({source!r}): record {i} precomputed_key dim "
+                    f"{pv.shape[0]} != this source's embedded dim {dim} -- every row of ONE source "
+                    "must share one key space."
+                )
+            keys[i] = pv
+    embedder_token = kb_embed.resolve_embedder_token(embedder, ename)
     index = VectorIndex.build(keys)
 
     d = source_dir(source)
@@ -172,11 +238,13 @@ def build_source(
         leakage_audit=audit,
         created_note=note,
         forced=forced,
+        embedder_token=embedder_token,
+        pool_split=pool_split,
     )
     json.dump(manifest.to_dict(), open(d / "manifest.json", "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     print(
         f"  [kb_build] {source}: key={key_modality} value={value_type} n={index.n} "
-        f"embedder={ename} index={index.backend} hash={manifest.build_hash} "
+        f"embedder={ename} token={embedder_token} index={index.backend} hash={manifest.build_hash} "
         f"audit={verdict if verdict else 'n/a'}{' FORCED' if forced else ''}",
         flush=True,
     )
