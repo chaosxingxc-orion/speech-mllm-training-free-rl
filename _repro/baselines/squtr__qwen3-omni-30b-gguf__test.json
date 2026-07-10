@@ -1,0 +1,630 @@
+{
+  "stage": "1-directional",
+  "dataset": "squtr",
+  "k_type": "K9",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/squtr/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "fiqa|clean|10267",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Build an emergency fund, reduce debt, diversify investments, and maintain a budget.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 83
+      }
+    },
+    {
+      "item_id": "fiqa|clean|10809",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Leverage refers to the use of borrowed funds to increase the potential return on an investment. The leverage factor is the ratio of total assets to equity, indicating how much of the assets are financed by debt.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 211
+      }
+    },
+    {
+      "item_id": "fiqa|clean|10845",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "The 12 and 26 periods are exponential moving averages (EMAs) used to calculate the MACD line, representing short-term and long-term price trends. The 9-period EMA is a signal line that smooths the MACD line to generate trading signals.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 235
+      }
+    },
+    {
+      "item_id": "fiqa|clean|1085",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Disputed debts must be investigated by the credit bureau and the creditor. If the debt is found to be invalid, it must be removed from the report. If valid, it remains.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 168
+      }
+    },
+    {
+      "item_id": "fiqa|clean|10975",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "You can still contribute to a Roth IRA if your income is at the maximum limit, but your contribution amount may be reduced or phased out depending on your tax filing status and income level. For 2024, if you're married filing jointly and your modified adjusted gross income (MAGI) is above $230,000, your Roth IRA contribution limit is reduced or eliminated. If you're single and your MAGI exceeds $161,000, your contribution is phased out. You can contribute up to the annual limit ($7,000 in 2024, or $8,000 if age 50 or older) if your income is below the phase-out threshold. Employer-sponsored 401(k) contributions do not affect your Roth IRA eligibility but do affect your ability to deduct traditional IRA contributions.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 726
+      }
+    },
+    {
+      "item_id": "fiqa|clean|1157",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Shopify does not charge personal taxes. It is the merchant's responsibility to collect, report, and remit applicable taxes to the relevant tax authorities.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 155
+      }
+    },
+    {
+      "item_id": "fiqa|clean|1321",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Yes, social media accounts are considered assets.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 49
+      }
+    },
+    {
+      "item_id": "fiqa|clean|1832",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Warren Buffett and Charles Munger advise small investors to invest in low-cost index funds, emphasizing the importance of long-term investing, understanding what you invest in, and avoiding emotional decisions.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 210
+      }
+    },
+    {
+      "item_id": "fiqa|clean|1933",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "You can claim these purchases as allowable business expenses, not deduct them from your declared income.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 104
+      }
+    },
+    {
+      "item_id": "fiqa|clean|2076",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Yes, veterinary bills for a pet can be tax-deductible in Canada if the pet is used to earn income (e.g., a working dog) or if the pet is a service animal for a person with a disability. Otherwise, pet expenses are generally not deductible.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 239
+      }
+    },
+    {
+      "item_id": "fiqa|clean|2376",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Gas stations in the same area charge different prices primarily due to differences in their operating costs, such as rent and labor, and their individual business strategies. Some stations may offer lower prices to attract more customers, while others may charge more for perceived better service or location convenience.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 321
+      }
+    },
+    {
+      "item_id": "fiqa|clean|2498",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "The method depends on your country's tax system. In many places, small vendors are taxed on their profit (turnover minus expenses), not turnover itself. In others, they might be taxed on turnover using a simplified system like a turnover tax or a flat-rate scheme. You should consult your local tax authority or a tax professional for the specific rules that apply to you.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 372
+      }
+    },
+    {
+      "item_id": "fiqa|clean|2648",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Unemployment insurance is a joint federal-state program that provides temporary financial assistance to eligible workers who lose their jobs through no fault of their own. Workers must meet specific eligibility requirements, such as having worked for a minimum period and earning a certain amount, and must be actively seeking new employment. Benefits are typically paid weekly and are funded by employer payroll taxes. The duration and amount of benefits vary by state.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 470
+      }
+    },
+    {
+      "item_id": "fiqa|clean|2903",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "As a contractor, you should file your taxes as a self-employed individual. This means you'll need to:\n1. Report your income and expenses on Schedule C (Form 1040).\n2. Pay self-employment taxes (Social Security and Medicare) using Schedule SE.\n3. Make estimated quarterly tax payments using Form 1040-ES.\n4. Keep detailed records of all business income and expenses.\n5. Consider setting up a separate business bank account and using accounting software to track finances.\n6. Consult with a tax professional to ensure compliance with IRS regulations and explore potential deductions.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 581
+      }
+    },
+    {
+      "item_id": "fiqa|clean|3033",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Changing state residency has significant tax consequences. You may become a resident of a new state for income tax purposes, triggering filing requirements and exposure to that state's income tax on worldwide income. Conversely, you may lose the ability to claim deductions or credits available in your former state. Additionally, you may face tax obligations in both your old and new states during the transition period. Other taxes, such as property tax and estate tax, can also be affected by a change in residency.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 518
+      }
+    },
+    {
+      "item_id": "fiqa|clean|3085",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "You can convert 401(k) to Roth 401(k) at any time.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 50
+      }
+    },
+    {
+      "item_id": "fiqa|clean|34",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "401k",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 4
+      }
+    },
+    {
+      "item_id": "fiqa|clean|3405",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Non-resident aliens are individuals who are neither citizens nor residents of the United States. The \"question of standard vs. itemized\" refers to the choice between taking the standard deduction or itemizing deductions when filing a U.S. tax return. Non-resident aliens generally cannot claim the standard deduction and are typically limited to itemized deductions if they have U.S.-source income and file a tax return. However, they must meet specific criteria and file the correct forms (e.g., Form 1040-NR).",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 511
+      }
+    },
+    {
+      "item_id": "fiqa|clean|3566",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "You can buy stocks through a brokerage account, a robo-advisor, or a stock trading app.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 87
+      }
+    },
+    {
+      "item_id": "fiqa|clean|3594",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Yes, lenders typically offer alternatives to default, such as loan modifications, forbearance, or repayment plans, to help borrowers avoid foreclosure or repossession.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 167
+      }
+    },
+    {
+      "item_id": "fiqa|clean|3694",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Yes, the 2018 documentary \"The Retirement Crisis\" explores this topic.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 70
+      }
+    },
+    {
+      "item_id": "fiqa|clean|3771",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "The best way to buy Japanese yen for travel is typically at your bank or credit union before you leave, as they often offer better exchange rates than airports or hotels. You can also use ATMs in Japan that accept foreign cards, which usually provide competitive rates.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 269
+      }
+    },
+    {
+      "item_id": "fiqa|clean|3934",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Yes, market-based health insurance premiums should be factored into a six-month emergency fund.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 95
+      }
+    },
+    {
+      "item_id": "fiqa|clean|4011",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Open communication is key. Discuss the issue calmly, set joint financial goals, create a strict budget, and consider seeking help from a financial advisor or counselor.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 168
+      }
+    },
+    {
+      "item_id": "fiqa|clean|4116",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Yes, the effects of an anticipated default by a nation are often mostly symbolic, signaling financial distress and potentially triggering market volatility, even if the default itself is avoided.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 195
+      }
+    },
+    {
+      "item_id": "fiqa|clean|4289",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Yes, the currency exchange rate contains information about the relative value of one currency compared to another.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 114
+      }
+    },
+    {
+      "item_id": "fiqa|clean|4335",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "The U.S. Fair Tax is a proposed federal tax system that would replace the current income tax system with a national retail sales tax.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 133
+      }
+    },
+    {
+      "item_id": "fiqa|clean|4600",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Government bonds fluctuate in price primarily due to changes in market interest rates. When interest rates rise, the prices of existing bonds fall, and vice versa. This inverse relationship occurs because new bonds issued at higher rates are more attractive to investors, making older bonds with lower coupon rates less valuable.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 329
+      }
+    },
+    {
+      "item_id": "fiqa|clean|4863",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "To calculate the new price of a bond when the yield increases, you discount all of the bond's future cash flows (coupon payments and face value) using the new, higher yield as the discount rate. The formula is:\n\n**New Price = Σ [Cash Flow / (1 + New Yield)^t]**\n\nWhere:\n*   **Cash Flow** is the coupon payment or face value received at time **t**.\n*   **New Yield** is the new yield to maturity.\n*   **t** is the time period (in years) until the cash flow is received.\n\nThis calculation can be done using a financial calculator, spreadsheet software, or by hand.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 562
+      }
+    },
+    {
+      "item_id": "fiqa|clean|4981",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "You can find open-source portfolio management software on platforms like GitHub, GitLab, and SourceForge. Popular options include KMyMoney, GnuCash, and Portfolio Performance.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 175
+      }
+    },
+    {
+      "item_id": "fiqa|clean|5030",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "You pay for end-of-day historical prices because they are the official, final closing prices for a security on a given trading day, used for accurate record-keeping, performance measurement, and financial reporting.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 215
+      }
+    },
+    {
+      "item_id": "fiqa|clean|5080",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Yes, the standard practice is to transfer the funds to a new UGMA/UTMA account for the same minor, or to a custodial account under the Uniform Transfers to Minors Act (UTMA) in another state.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 191
+      }
+    },
+    {
+      "item_id": "fiqa|clean|5231",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "You can find CSV or JSON data for publicly traded companies with their IPO dates from financial data providers like Alpha Vantage, Yahoo Finance (via APIs), Google Finance, or financial databases such as Bloomberg or S&P Capital IQ. Some free options include using the Alpha Vantage API or Kaggle datasets that compile IPO information.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 335
+      }
+    },
+    {
+      "item_id": "fiqa|clean|5271",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Auto leases are strict about visa status because they require a reliable, long-term income source to ensure loan repayment. To work around this, consider finding a co-signer with a strong credit history and U.S. residency, or explore alternative financing options like personal loans or leasing through international programs.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 326
+      }
+    },
+    {
+      "item_id": "fiqa|clean|5356",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "You can find free, low-cost historical stock price data for offline analysis from sources like Yahoo Finance, Google Finance, Alpha Vantage, and the U.S. Securities and Exchange Commission's EDGAR database.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 206
+      }
+    },
+    {
+      "item_id": "fiqa|clean|5380",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "In this context, \"leveraged debt investment positions and exposures\" refers to investments in debt securities (like bonds) where the investor uses borrowed money (leverage) to increase the size of their investment. This amplifies both potential returns and risks.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 263
+      }
+    },
+    {
+      "item_id": "fiqa|clean|547",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "There is no fixed percentage; it depends on negotiations with co-founders, the company's valuation, and the value each party contributes. If you're the only one investing money, you might expect a larger equity stake, but co-founders often receive shares for their time, skills, and effort.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 290
+      }
+    },
+    {
+      "item_id": "fiqa|clean|549",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "You can request an ACH direct debit from your personal bank account by contacting your bank directly, either through their website, mobile app, by phone, or in person at a branch. You may also initiate the request through your online banking portal if your bank offers that feature.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 282
+      }
+    },
+    {
+      "item_id": "fiqa|clean|559",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "When you challenge a credit card charge, the card issuer investigates the dispute. During this process, you are not required to pay the disputed amount. If the issuer finds in your favor, the charge is reversed and the money is refunded. If they side with the merchant, you'll be billed for the amount.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 302
+      }
+    },
+    {
+      "item_id": "fiqa|clean|570",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Employers have several options when setting up a 401(k) plan for employees, including:\n\n1. **Single-employer plan**: A plan established by one employer for its own employees.\n2. **Multiple-employer plan (MEP)**: A plan that allows multiple unrelated employers to sponsor a single 401(k) plan.\n3. **Simplified Employee Pension (SEP) 401(k)**: A hybrid plan combining SEP-IRA features with 401(k) flexibility.\n4. **Solo 401(k)**: For self-employed individuals or business owners with no employees (except a spouse).\n5. **Safe Harbor 401(k)**: A plan that automatically satisfies non-discrimination tests by making employer contributions.\n6. **Traditional 401(k)**: Allows employee salary deferrals and optional employer contributions.\n7. **SIMPLE 401(k)**: A simplified plan for small businesses with fewer than",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 809
+      }
+    },
+    {
+      "item_id": "fiqa|clean|5790",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Yes, FX losses on a non-UK mortgage for a UK property are generally tax-deductible in the UK, provided the property is let or used to generate rental income. These losses can be offset against other income or capital gains, subject to specific rules and conditions.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 265
+      }
+    },
+    {
+      "item_id": "fiqa|clean|5862",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Yes, many retailers offer a cash discount as an incentive for paying with cash instead of using a credit card.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 110
+      }
+    },
+    {
+      "item_id": "fiqa|clean|604",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Yes, $188.68.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 13
+      }
+    },
+    {
+      "item_id": "fiqa|clean|6121",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Consider government-backed loans like FHA or VA loans, which have lower credit requirements. You could also explore co-signers, rent-to-own programs, or look for landlords who accept alternative credit histories.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 212
+      }
+    },
+    {
+      "item_id": "fiqa|clean|6219",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Yes, there are. Examples include the S&P/Case-Shiller Home Price Indices, which track residential real estate prices in specific metropolitan areas, and the NCREIF Property Index (NPI), which tracks performance of institutional-grade commercial real estate by region.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 267
+      }
+    },
+    {
+      "item_id": "fiqa|clean|7080",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Yes, the wash sale rule does apply to dividend reinvestment.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 60
+      }
+    },
+    {
+      "item_id": "fiqa|clean|721",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "In this context, \"upstream investments\" refer to investments made in the early stages of a project or supply chain, such as research and development, exploration, or initial production. \"Downstream investments\" refer to investments made in the later stages, such as marketing, distribution, and sales.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 301
+      }
+    },
+    {
+      "item_id": "fiqa|clean|7456",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Market orders are executed immediately at the best available price, which is determined by the bid-ask spread. A market buy order executes at the current ask price, while a market sell order executes at the current bid price.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 225
+      }
+    },
+    {
+      "item_id": "fiqa|clean|7463",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Pros: Potential for higher returns than mortgage interest rate, tax-deductible mortgage interest, leveraged investment.\n\nCons: High risk of loss, risk of foreclosure if investments underperform, complex tax implications, requires disciplined financial management.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 263
+      }
+    },
+    {
+      "item_id": "fiqa|clean|750",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Yes, you must include the full amount of the state tax refund you received as income on your federal tax return for the year you received it, even if you had to repay part of it the following year.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 197
+      }
+    },
+    {
+      "item_id": "fiqa|clean|7936",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "A naked call is riskier because the seller has no underlying asset to cover the obligation if the buyer exercises the option. This exposes them to potentially unlimited losses as the asset's price can rise indefinitely. In contrast, a covered call involves owning the underlying asset, which can be delivered to fulfill the obligation, limiting the seller's risk to the premium received.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 387
+      }
+    },
+    {
+      "item_id": "fiqa|clean|8507",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "When to sell a stock?",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 21
+      }
+    },
+    {
+      "item_id": "fiqa|clean|8779",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "A defined contribution plan is a retirement plan where the employer, employee, or both contribute a specific amount to the employee's individual account. The final retirement benefit depends on the amount contributed and the investment performance of the account.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 263
+      }
+    },
+    {
+      "item_id": "fiqa|clean|9060",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Buying puts without owning the underlying is a bearish strategy known as a \"short put\" or \"naked put.\" The buyer profits if the underlying asset's price falls below the strike price, but faces potentially unlimited risk if the price rises.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 239
+      }
+    },
+    {
+      "item_id": "fiqa|clean|9108",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Starting an investment portfolio with R5,000 is a great way to begin building wealth. Here are some steps to consider:\n\n1. **Define Your Goals**: Determine your investment objectives (e.g., retirement, buying a house, education) and your time horizon.\n\n2. **Assess Risk Tolerance**: Understand how much risk you're comfortable taking. Younger investors may tolerate more risk for higher returns.\n\n3. **Choose an Investment Platform**: Open a brokerage account with a reputable provider that offers low fees and a wide range of investment options.\n\n4. **Diversify Your Portfolio**: Spread your investments across different asset classes (stocks, bonds, real estate, etc.) to reduce risk.\n\n5. **Consider Low-Cost Index Funds or ETFs**: These offer diversification and typically have lower fees than actively managed funds.\n\n6. **Start Small and Be Consistent**: Even small, regular investments can grow significantly over time due to compound interest.\n\n7. **Monitor and Re",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 971
+      }
+    },
+    {
+      "item_id": "fiqa|clean|932",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Yes, generally. A US citizen living abroad is typically subject to state income tax on their worldwide income, including freelance income, by the state where they maintain a legal residence or domicile.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 202
+      }
+    },
+    {
+      "item_id": "fiqa|clean|9391",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "No, bonds should not be replaced in a passive investment strategy. They provide diversification, reduce portfolio volatility, and generate income, which are key components of a balanced, long-term passive approach.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 214
+      }
+    },
+    {
+      "item_id": "fiqa|clean|9556",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Pre-market trading is the buying and selling of securities before the official opening of the stock market. It typically occurs between 4:00 AM and 9:30 AM Eastern Time and is conducted through electronic communication networks (ECNs) and over-the-counter (OTC) markets. During this time, investors can react to overnight news, earnings reports, or global events, but trading volume is usually lower, leading to wider bid-ask spreads and potentially more volatile price movements. Pre-market trades are not guaranteed to execute at the same price as the market open.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 566
+      }
+    },
+    {
+      "item_id": "fiqa|clean|9565",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "The tax benefits of dividends versus selling stock depend on the type of dividend and the investor's tax bracket. Qualified dividends are taxed at the lower long-term capital gains rates, which can be lower than the ordinary income tax rates applied to non-qualified dividends and short-term capital gains from selling stock.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 325
+      }
+    },
+    {
+      "item_id": "fiqa|clean|9633",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "The video recommendation for stock market education is \"Stock Market for Beginners - A Complete Guide to Investing in Stocks.\"",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 126
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": null,
+    "ci95": null,
+    "n_scored": 0,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset squtr --backbone qwen3-omni-30b-gguf --split test --n 60",
+  "elapsed_s": 248.5
+}

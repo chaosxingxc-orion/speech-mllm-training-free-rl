@@ -1,0 +1,433 @@
+{
+  "stage": "1-directional",
+  "dataset": "vocalbench-zh",
+  "k_type": "K8/K6 (legacy)",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/baselines-vocalbench-zh/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "vocalbench-zh#0",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "36",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#1",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "埃及",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#2",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "爱德华王子岛省",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#3",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "协调",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#4",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "乾隆帝",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#5",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "运动性血尿",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#6",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "炎亚纶真名是吴庚霖。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#7",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "2006",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#8",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "查尔斯·狄更斯",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#9",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "2006",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#10",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "248",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#11",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "肌腱",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#12",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "垂枝柏属于柏科。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#13",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "6",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#14",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "2980",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#15",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "爱森斯坦",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#16",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "160",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#17",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "当然可以。管理财务的步骤通常包括：设定财务目标、记录收入与支出、制定预算、储蓄与投资、偿还债务以及定期审查财务状况。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#18",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "铀",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#19",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "脾",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#20",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "奥地利人",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#21",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "美国银行的主分行位于北卡罗来纳州夏洛特市。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#22",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "成都市",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#23",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "乒乓球",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#24",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "北京",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#25",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "比利·怀尔德",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#26",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "内蒙古四子王旗着陆场",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#27",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "滑轮组",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#28",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "维多利亚女王并未影响苏珊·安东尼领导的妇女选举权运动，因为维多利亚女王于1887年去世，而苏珊·安东尼的运动主要在19世纪后期的美国展开。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#29",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "上海",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#30",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "明白了，电影里有我孩子可能会喜欢的歌曲吗？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#31",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "船歌",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#32",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "第二次世界大战",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#33",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "头颈部",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#34",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "是。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#35",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "铀",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#36",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "北魏",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#37",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "好",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#38",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "唐代",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#39",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "存在时代矛盾。李鸿章是晚清人物，而明朝在1368年即已灭亡，两者相隔数百年，因此该说法不可能真实发生。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.65,
+    "ci95": [
+      0.5,
+      0.8
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset vocalbench-zh --backbone qwen3-omni-30b-gguf --split dev --n 40",
+  "elapsed_s": 83.2
+}

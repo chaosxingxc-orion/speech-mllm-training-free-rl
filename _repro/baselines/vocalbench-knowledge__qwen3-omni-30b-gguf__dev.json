@@ -1,0 +1,393 @@
+{
+  "stage": "1-directional",
+  "dataset": "vocalbench-knowledge",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/vocalbench-knowledge/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "knowledge-0652",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Bing",
+      "score": 1,
+      "detail": {
+        "gold": "Bing"
+      }
+    },
+    {
+      "item_id": "knowledge-0143",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Jerome Kern",
+      "score": 1,
+      "detail": {
+        "gold": "Jerome Kern"
+      }
+    },
+    {
+      "item_id": "knowledge-1910",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Bigfoot",
+      "score": 1,
+      "detail": {
+        "gold": "Bigfoot"
+      }
+    },
+    {
+      "item_id": "knowledge-1243",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Richard Nixon",
+      "score": 1,
+      "detail": {
+        "gold": "Richard Nixon"
+      }
+    },
+    {
+      "item_id": "knowledge-1187",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Georgia",
+      "score": 0,
+      "detail": {
+        "gold": "Diamond"
+      }
+    },
+    {
+      "item_id": "knowledge-1124",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Mediterranean Sea",
+      "score": 1,
+      "detail": {
+        "gold": "Mediterranean Sea"
+      }
+    },
+    {
+      "item_id": "knowledge-0484",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Tom Welling",
+      "score": 1,
+      "detail": {
+        "gold": "Tom Welling"
+      }
+    },
+    {
+      "item_id": "knowledge-0428",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Kidneys",
+      "score": 1,
+      "detail": {
+        "gold": "Kidney"
+      }
+    },
+    {
+      "item_id": "knowledge-1448",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Flesh",
+      "score": 1,
+      "detail": {
+        "gold": "Flesh"
+      }
+    },
+    {
+      "item_id": "knowledge-1651",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Johannes Brahms",
+      "score": 0,
+      "detail": {
+        "gold": "Felix Mendelssohn"
+      }
+    },
+    {
+      "item_id": "knowledge-1941",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Delta Force",
+      "score": 1,
+      "detail": {
+        "gold": "Delta Force"
+      }
+    },
+    {
+      "item_id": "knowledge-0736",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Chemistry",
+      "score": 1,
+      "detail": {
+        "gold": "chemistry"
+      }
+    },
+    {
+      "item_id": "knowledge-1463",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Stephen King",
+      "score": 1,
+      "detail": {
+        "gold": "Stephen King"
+      }
+    },
+    {
+      "item_id": "knowledge-0613",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "SpongeBob SquarePants",
+      "score": 1,
+      "detail": {
+        "gold": "SpongeBob SquarePants"
+      }
+    },
+    {
+      "item_id": "knowledge-0450",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A fennec is a small nocturnal fox native to the Sahara Desert.",
+      "score": 1,
+      "detail": {
+        "gold": "Fox"
+      }
+    },
+    {
+      "item_id": "knowledge-1684",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Torque",
+      "score": 1,
+      "detail": {
+        "gold": "torque"
+      }
+    },
+    {
+      "item_id": "knowledge-0218",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Compact bone.",
+      "score": 1,
+      "detail": {
+        "gold": "compact bone"
+      }
+    },
+    {
+      "item_id": "knowledge-0180",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Dolphin",
+      "score": 0,
+      "detail": {
+        "gold": "Sailfish"
+      }
+    },
+    {
+      "item_id": "knowledge-1748",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Sound",
+      "score": 1,
+      "detail": {
+        "gold": "sound"
+      }
+    },
+    {
+      "item_id": "knowledge-0573",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Sting",
+      "score": 1,
+      "detail": {
+        "gold": "Sting"
+      }
+    },
+    {
+      "item_id": "knowledge-1182",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Amelia Earhart",
+      "score": 1,
+      "detail": {
+        "gold": "Earhart"
+      }
+    },
+    {
+      "item_id": "knowledge-0677",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Plant hormones.",
+      "score": 1,
+      "detail": {
+        "gold": "plant hormones"
+      }
+    },
+    {
+      "item_id": "knowledge-0309",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "embryos",
+      "score": 1,
+      "detail": {
+        "gold": "embryos"
+      }
+    },
+    {
+      "item_id": "knowledge-1923",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Black Panther Party",
+      "score": 1,
+      "detail": {
+        "gold": "Black Panther Party"
+      }
+    },
+    {
+      "item_id": "knowledge-0588",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Gilmore Girls",
+      "score": 1,
+      "detail": {
+        "gold": "Gilmore Girls"
+      }
+    },
+    {
+      "item_id": "knowledge-0159",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Topiary",
+      "score": 1,
+      "detail": {
+        "gold": "Topiary"
+      }
+    },
+    {
+      "item_id": "knowledge-1299",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Jonathan",
+      "score": 1,
+      "detail": {
+        "gold": "Jonathan"
+      }
+    },
+    {
+      "item_id": "knowledge-0471",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Pear",
+      "score": 0,
+      "detail": {
+        "gold": "Apple"
+      }
+    },
+    {
+      "item_id": "knowledge-0163",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "John Constable",
+      "score": 1,
+      "detail": {
+        "gold": "John Constable"
+      }
+    },
+    {
+      "item_id": "knowledge-0358",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Melanin",
+      "score": 1,
+      "detail": {
+        "gold": "Melanin"
+      }
+    },
+    {
+      "item_id": "knowledge-0628",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Michael Landon",
+      "score": 1,
+      "detail": {
+        "gold": "Michael Landon"
+      }
+    },
+    {
+      "item_id": "knowledge-1696",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Three",
+      "score": 1,
+      "detail": {
+        "gold": "three"
+      }
+    },
+    {
+      "item_id": "knowledge-1687",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Rings",
+      "score": 1,
+      "detail": {
+        "gold": "rings"
+      }
+    },
+    {
+      "item_id": "knowledge-0096",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Scream",
+      "score": 1,
+      "detail": {
+        "gold": "Scream"
+      }
+    },
+    {
+      "item_id": "knowledge-1229",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Linoleum",
+      "score": 1,
+      "detail": {
+        "gold": "Linoleum"
+      }
+    },
+    {
+      "item_id": "knowledge-1272",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Abraham Lincoln",
+      "score": 1,
+      "detail": {
+        "gold": "Abraham Lincoln"
+      }
+    },
+    {
+      "item_id": "knowledge-0132",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Spielberg",
+      "score": 0,
+      "detail": {
+        "gold": "Ken Burns"
+      }
+    },
+    {
+      "item_id": "knowledge-0334",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Rennet",
+      "score": 1,
+      "detail": {
+        "gold": "Rennet"
+      }
+    },
+    {
+      "item_id": "knowledge-1894",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Compact",
+      "score": 1,
+      "detail": {
+        "gold": "Compact"
+      }
+    },
+    {
+      "item_id": "knowledge-1764",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Orbits",
+      "score": 1,
+      "detail": {
+        "gold": "orbits"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.875,
+    "ci95": [
+      0.775,
+      0.975
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset vocalbench-knowledge --backbone qwen3-omni-30b-gguf --split dev --n 40",
+  "elapsed_s": 62.5
+}

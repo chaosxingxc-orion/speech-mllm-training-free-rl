@@ -1,0 +1,573 @@
+{
+  "stage": "1-directional",
+  "dataset": "uro-bench-APE-zh",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/uro-bench-APE-zh/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": 113,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "216",
+      "score": 0,
+      "detail": {
+        "gold": "216级台阶"
+      }
+    },
+    {
+      "item_id": 111,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "371千克",
+      "score": 0,
+      "detail": {
+        "gold": "水果店原有橘子651千克"
+      }
+    },
+    {
+      "item_id": 128,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "33元",
+      "score": 1,
+      "detail": {
+        "gold": "33元"
+      }
+    },
+    {
+      "item_id": 76,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "70千米",
+      "score": 0,
+      "detail": {
+        "gold": "卡车每小时运行90千米"
+      }
+    },
+    {
+      "item_id": 140,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "10小时",
+      "score": 0,
+      "detail": {
+        "gold": "7个小时"
+      }
+    },
+    {
+      "item_id": 83,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "2391元",
+      "score": 0,
+      "detail": {
+        "gold": "2511元"
+      }
+    },
+    {
+      "item_id": 78,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "5倍",
+      "score": 1,
+      "detail": {
+        "gold": "5倍"
+      }
+    },
+    {
+      "item_id": 104,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "2.2米",
+      "score": 0,
+      "detail": {
+        "gold": "每件大人衣服用布13/5米，也就是2.6米"
+      }
+    },
+    {
+      "item_id": 29,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "17.2米",
+      "score": 1,
+      "detail": {
+        "gold": "17.2米"
+      }
+    },
+    {
+      "item_id": 28,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "5岁",
+      "score": 0,
+      "detail": {
+        "gold": "还是5岁"
+      }
+    },
+    {
+      "item_id": 26,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "70元",
+      "score": 1,
+      "detail": {
+        "gold": "70元"
+      }
+    },
+    {
+      "item_id": 108,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "6000",
+      "score": 0,
+      "detail": {
+        "gold": "6000本书"
+      }
+    },
+    {
+      "item_id": 164,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "0.3米",
+      "score": 1,
+      "detail": {
+        "gold": "0.3米"
+      }
+    },
+    {
+      "item_id": 114,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "81人",
+      "score": 1,
+      "detail": {
+        "gold": "81人"
+      }
+    },
+    {
+      "item_id": 165,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "1975元",
+      "score": 0,
+      "detail": {
+        "gold": "2880元"
+      }
+    },
+    {
+      "item_id": 35,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "25.12平方米",
+      "score": 0,
+      "detail": {
+        "gold": "37.68平方米"
+      }
+    },
+    {
+      "item_id": 105,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "320",
+      "score": 0,
+      "detail": {
+        "gold": "320千克"
+      }
+    },
+    {
+      "item_id": 43,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "24",
+      "score": 0,
+      "detail": {
+        "gold": "24人"
+      }
+    },
+    {
+      "item_id": 179,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "99%",
+      "score": 0,
+      "detail": {
+        "gold": "79/80，也就是百分之98.75"
+      }
+    },
+    {
+      "item_id": 73,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "26.5",
+      "score": 0,
+      "detail": {
+        "gold": "16.5元"
+      }
+    },
+    {
+      "item_id": 66,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "66",
+      "score": 0,
+      "detail": {
+        "gold": "66级台阶"
+      }
+    },
+    {
+      "item_id": 39,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "20厘米",
+      "score": 1,
+      "detail": {
+        "gold": "20厘米"
+      }
+    },
+    {
+      "item_id": 2,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "150人",
+      "score": 0,
+      "detail": {
+        "gold": "五年级去了150人"
+      }
+    },
+    {
+      "item_id": 112,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "3700平方米",
+      "score": 0,
+      "detail": {
+        "gold": "1820平方米"
+      }
+    },
+    {
+      "item_id": 153,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "800",
+      "score": 0,
+      "detail": {
+        "gold": "800根"
+      }
+    },
+    {
+      "item_id": 130,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "0",
+      "score": 0,
+      "detail": {
+        "gold": "是26"
+      }
+    },
+    {
+      "item_id": 124,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "3支",
+      "score": 0,
+      "detail": {
+        "gold": "还可以买4只"
+      }
+    },
+    {
+      "item_id": 172,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "4",
+      "score": 0,
+      "detail": {
+        "gold": "4个人"
+      }
+    },
+    {
+      "item_id": 5,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "192平方米",
+      "score": 0,
+      "detail": {
+        "gold": "面积是192平方米"
+      }
+    },
+    {
+      "item_id": 136,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "30千米/时",
+      "score": 0,
+      "detail": {
+        "gold": "30千米每小时"
+      }
+    },
+    {
+      "item_id": 146,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "35",
+      "score": 0,
+      "detail": {
+        "gold": "35厘米"
+      }
+    },
+    {
+      "item_id": 58,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "95.8%",
+      "score": 0,
+      "detail": {
+        "gold": "出席率是24/25，也就是百分之九十八"
+      }
+    },
+    {
+      "item_id": 60,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "30",
+      "score": 0,
+      "detail": {
+        "gold": "30种不同车票"
+      }
+    },
+    {
+      "item_id": 8,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "84375",
+      "score": 0,
+      "detail": {
+        "gold": "鸵鸟的体重是蜂鸟的84375倍"
+      }
+    },
+    {
+      "item_id": 170,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "9000千克",
+      "score": 1,
+      "detail": {
+        "gold": "9000千克"
+      }
+    },
+    {
+      "item_id": 79,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "1升的包装",
+      "score": 0,
+      "detail": {
+        "gold": "第一种"
+      }
+    },
+    {
+      "item_id": 18,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "50",
+      "score": 0,
+      "detail": {
+        "gold": "50平方厘米"
+      }
+    },
+    {
+      "item_id": 38,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "25分钟",
+      "score": 1,
+      "detail": {
+        "gold": "25分钟"
+      }
+    },
+    {
+      "item_id": 121,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "200人",
+      "score": 1,
+      "detail": {
+        "gold": "200人"
+      }
+    },
+    {
+      "item_id": 16,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "40米",
+      "score": 0,
+      "detail": {
+        "gold": "400米"
+      }
+    },
+    {
+      "item_id": 44,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "10秒",
+      "score": 0,
+      "detail": {
+        "gold": "40秒"
+      }
+    },
+    {
+      "item_id": 23,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "2005 - 11 = 1994年。",
+      "score": 1,
+      "detail": {
+        "gold": "1994年"
+      }
+    },
+    {
+      "item_id": 123,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "22",
+      "score": 0,
+      "detail": {
+        "gold": "22厘米"
+      }
+    },
+    {
+      "item_id": 133,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "6",
+      "score": 0,
+      "detail": {
+        "gold": "要切11刀"
+      }
+    },
+    {
+      "item_id": 177,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "57",
+      "score": 0,
+      "detail": {
+        "gold": "57道"
+      }
+    },
+    {
+      "item_id": 27,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "10次",
+      "score": 1,
+      "detail": {
+        "gold": "10次"
+      }
+    },
+    {
+      "item_id": 68,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "3150",
+      "score": 0,
+      "detail": {
+        "gold": "收入是3150元"
+      }
+    },
+    {
+      "item_id": 131,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "8行",
+      "score": 0,
+      "detail": {
+        "gold": "可以排9行"
+      }
+    },
+    {
+      "item_id": 189,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "98%",
+      "score": 0,
+      "detail": {
+        "gold": "49/50，也就是百分之98"
+      }
+    },
+    {
+      "item_id": 110,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "5个",
+      "score": 0,
+      "detail": {
+        "gold": "一共可以挂5个气球"
+      }
+    },
+    {
+      "item_id": 163,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "11",
+      "score": 0,
+      "detail": {
+        "gold": "至少要11名"
+      }
+    },
+    {
+      "item_id": 25,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "3",
+      "score": 0,
+      "detail": {
+        "gold": "3倍"
+      }
+    },
+    {
+      "item_id": 150,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "38米",
+      "score": 1,
+      "detail": {
+        "gold": "38米"
+      }
+    },
+    {
+      "item_id": 156,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "360米",
+      "score": 1,
+      "detail": {
+        "gold": "360米"
+      }
+    },
+    {
+      "item_id": 71,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "30",
+      "score": 0,
+      "detail": {
+        "gold": "30元"
+      }
+    },
+    {
+      "item_id": 52,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "八分之五",
+      "score": 0,
+      "detail": {
+        "gold": "一共吃了这个月饼的八分之五，也就是5/8"
+      }
+    },
+    {
+      "item_id": 62,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "男生多，多16人。",
+      "score": 0,
+      "detail": {
+        "gold": "现在是男生多，多30人"
+      }
+    },
+    {
+      "item_id": 143,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "13.4",
+      "score": 0,
+      "detail": {
+        "gold": "乙队每天开凿13.4米"
+      }
+    },
+    {
+      "item_id": 85,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "20",
+      "score": 0,
+      "detail": {
+        "gold": "20块"
+      }
+    },
+    {
+      "item_id": 70,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "3.6元",
+      "score": 1,
+      "detail": {
+        "gold": "3.6元"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.25,
+    "ci95": [
+      0.15,
+      0.3667
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset uro-bench-APE-zh --backbone qwen3-omni-30b-gguf --split test --n 60",
+  "elapsed_s": 115.5
+}

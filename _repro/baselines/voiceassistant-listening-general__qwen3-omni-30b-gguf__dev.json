@@ -1,0 +1,393 @@
+{
+  "stage": "1-directional",
+  "dataset": "voiceassistant-listening-general",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/voiceassistant-listening-general/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "Listening_General_669",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The city's frantic pulse, a constant, low thrum beneath the pavement, is the only thing that keeps the wildness at bay. It's a sound of steel and concrete, of endless, restless energy. But beneath it, in the cracks of the old stone walls and the damp corners of forgotten courtyards, something else stirs. A high, pure, almost liquid note, like water over smooth stones, cuts through the din. It's a sound of ancient, quiet things, of moss and deep earth. The city's relentless buzz is the chaos, the frantic human-made rhythm. The clear, cool note is the calm, the enduring pulse of the natural world, persistent and beautiful, finding its way through the cracks in our world.",
+      "score": 0,
+      "detail": {
+        "gold": "In the evening's tranquil realm, where silence was expected to reign, an unexpected orchestra swelled. It began subtly, intertwining threads of soft murmurs and rhythmic beats, crafting an ambient canvas. This gentle overture of the night escalated as participants unseen joined the symphonic tapestry. Each sound, though seemingly chaotic, found its place, creating a harmonious contrast. The distant murmur of civilization's pulse blended with these natural melodies, instilling the air with the paradox of peace and unrest. Amidst this auditory feast, the night breathed its life, whispering tales of dusk till dawn, painting an invisible landscape where both wild and constructed worlds coexist, each acknowledging the other in the measured cadence of the twilight hours."
+      }
+    },
+    {
+      "item_id": "Listening_General_673",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The wind howled through the canyon, a constant, mournful sound that had driven all the hikers back to their cars. Only Ben remained, drawn by the legend of the lost miner. He followed the narrow path deeper, the wind's roar his only companion. Then, a new sound pierced the gale: a faint, rhythmic *clink-clink-clink*, like a pickaxe on rock. Ben froze. The wind had been a warning, but this sound was a call. He turned and ran back towards the trailhead, the sound of the wind now a frantic, rushing companion as he fled the canyon.",
+      "score": 0,
+      "detail": {
+        "gold": "Captain Elena grasped the yoke tightly as the single-engine plane cut through the skies. The mission was clear: deliver the medicine to the remote village before the break of dawn. The steady hum of the engine paired with the high-altitude wind blowing past the plane was a calming mantra in the tense silence of the cockpit. Suddenly, the tranquility was shattered by an alarming change; the calming sound of the wind turned into a roar. The aircraft trembled as they hit unforeseen turbulence. Fighting against the controls, Elena's eyes remained fixed on the altimeter. The plane was losing altitude fast. Having to think quickly, Elena remembered an old pilot's tale: use the wind, don't fight it. Adjusting the ailerons, she turned into the gust, using it to slide beneath the turbulent layer. The cacophony of wind outside converted into an ally, propelling the plane forward. With skilled maneuvers and the regained assistance of the wind at their back, Elena navigated through the last leg of the journey. The turning point from near-despair into hope by the sound of the wind not only marked the success of the mission but also a personal victory for Elena against the capricious skies."
+      }
+    },
+    {
+      "item_id": "Listening_General_142",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Twice.",
+      "score": 0,
+      "detail": {
+        "gold": "The elevator opens twice."
+      }
+    },
+    {
+      "item_id": "Listening_General_625",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The city’s usual symphony of distant traffic and chatter was suddenly replaced by a single, piercing electronic tone. It wasn't loud, but it vibrated in my bones, a constant, unwavering note that seemed to come from everywhere and nowhere. I froze, the sound cutting through the humid air. It was the sound of the city’s emergency alert system, but it was wrong. It wasn't a siren, not a warning. It was a pure, sustained frequency that made my teeth ache and my thoughts blur. I looked around, but the people on the street seemed oblivious, their conversations continuing as if the sound wasn't there. The tone persisted, a relentless hum that filled my head. Was I going mad? Or was this the new normal, a sound that had always been there, just beneath the surface, now finally audible? The world felt thin, fragile, held together only by this strange, unwavering note.",
+      "score": 0,
+      "detail": {
+        "gold": "As dawn's light seeped through the blinds, the symphony of the city's morning began. The incessant hum of car engines played the soundscape's bassline as vehicles navigated the nearby roadway. Birds, perched within their leafy abodes, tweeted melodically, providing a naturalistic contrast to the urban drone. Amidst this backdrop, I heard the distinct squeak of Old Betsy's wheels - the neighborhood's iconic ice cream truck. Kids would soon be scampering with coins in hand, but not today. The rumbling of large metal objects being moved around signaled the commencement of the long-awaited roadworks. I peered through the window just as Betsy clumsily stopped before chugging away, her exit as noticeable as her entrance. The rattle of her departure gradually diminished, embraced once again by the distant purr of cars and the birds' serenade. The community had been dreading the construction's inconvenience, but for now, it was just another layer in our morning's orchestral awakening."
+      }
+    },
+    {
+      "item_id": "Listening_General_644",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The rhythmic *thump-thump-thump* of the train is a steady, grounding pulse beneath my feet. It vibrates up through the worn wooden floorboards, a constant companion in the dim, echoing tunnel. The air is thick with the smell of damp earth and hot metal, and the only other sound is the high-pitched squeal of steel wheels on rails, a lonely counterpoint to the engine's deep thrum. I feel a familiar mix of anticipation and quiet solitude, cocooned in this moving capsule, hurtling through the dark. The world outside the small, grimy window is a blur of blackness, making me feel both adrift and securely on my way.",
+      "score": 0,
+      "detail": {
+        "gold": "As the door creaks open, a sense of warmth washes over me; the familiar scent of home fills my lungs. Closing the door behind me shuts out the world's hustle, wrapping me in a comforting silence punctuated only by my own footsteps. Outside, life hums along—a car's engine purrs in the near distance, a testament to the world's ceaseless movement. Inside, though, is my respite from the chaos. The soft thumps, perhaps of my own heart or the settling house, are accompanied by intermittent clicks, like the second hand of a clock, grounding me in the present. With each step deeper into this sanctuary, the noises from beyond the walls fade, and I am enveloped in a serene tranquility that only this place can offer."
+      }
+    },
+    {
+      "item_id": "Listening_General_450",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "To refuel, resupply, and for crew rest.",
+      "score": 0,
+      "detail": {
+        "gold": "To resupply, to allow crew to rest, or to prepare for a mission."
+      }
+    },
+    {
+      "item_id": "Listening_General_771",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Piano",
+      "score": 0,
+      "detail": {
+        "gold": "Grand piano"
+      }
+    },
+    {
+      "item_id": "Listening_General_566",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The piece creates a deeply unsettling and suspenseful mood by masterfully blending familiar jazz elements with jarring, unusual sounds. The foundation of walking bass and a classic swing rhythm provides a sense of a traditional, perhaps even nostalgic, setting. However, this is immediately subverted by the introduction of a high-pitched, dissonant, and wavering sound that cuts through the music. This sound, reminiscent of a theremin or a distorted string instrument, acts as a constant, unnerving presence, transforming the piece from a simple jazz tune into a piece of eerie, cinematic music. The juxtaposition of the steady, rhythmic jazz foundation with the unpredictable, atonal shriek creates a powerful feeling of unease and tension. It's as if a normal scene is being invaded by something alien and threatening, making the listener feel that the familiar is no longer safe.",
+      "score": 0,
+      "detail": {
+        "gold": "The music in the audio showcases a beautiful amalgamation of classic Jazz attributes with unconventional sound inputs that collectively enrich the track's ambiance. Traditional jazz elements are evident through the slow tempo, which allows for a relaxed, laid-back listening experience. The heart of jazz music is improvisation, captured here with lively saxophone harmonies; their enthusiastic tone brings a certain warmth and depth. Supporting the saxophone, we hear a groovy bass line and slick drumming, providing a stable rhythmic foundation, while the syncopated piano adds that quintessential jazz unpredictability, enhancing the music's dynamic character. Non-traditional sound elements, such as the ambient sounds of breeze and background chatter, create an immersive experience, blurring the lines between the listener and the setting, almost placing them within a lively street or a beach scene. The Super Mario theme, an unexpected addition, brings a playful, nostalgic twist, turning the piece into an eclectic blend which challenges and expands the listener's perception of jazz. This juxtaposition exemplifies how jazz as a genre is continually evolving, absorbing various influences while still maintaining its distinct emotional core."
+      }
+    },
+    {
+      "item_id": "Listening_General_564",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The song's medium tempo establishes a relaxed, intimate pace perfect for romance. The gentle, consistent rhythm of the acoustic guitar strumming provides a warm, comforting foundation. This is supported by a smooth, melodic bassline that adds depth without being intrusive. The steady, soft drumming maintains a gentle pulse, creating a feeling of stability and calm. Layered on top, the soft, atmospheric keyboard sounds add a dreamy, ethereal quality, enhancing the romantic mood. The overall audio quality is clean and clear, allowing each instrument to be heard distinctly and contributing to the song's polished, heartfelt feel.",
+      "score": 0,
+      "detail": {
+        "gold": "The medium tempo of the music establishes a pace that is neither too fast nor too slow, which is fitting for a romantic song as it allows the listener to savor the emotional content. The guitar strumming rhythm contributes to the song's warmth and intimacy, inviting listeners into a close, personal space typically associated with romantic settings. The groovy bass line adds depth to the song, laying a strong emotional foundation that can resonate with the feelings of being 'madly in love'. Additionally, the steady drumming rhythm provides a consistent backdrop that symbolizes the steady heartbeat often felt when in the presence of a romantic interest. The keyboard accompaniment adds a layer of richness and texture, enhancing the song's emotive quality. Despite the poor audio quality, or perhaps because of it, there is an element of rawness and authenticity; it demands active engagement from the listener to appreciate the nuances. This rawness can sometimes make the emotions conveyed feel more real and poignant, as if listening to a heartfelt performance in an intimate setting."
+      }
+    },
+    {
+      "item_id": "Listening_General_792",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A low, sustained musical note.",
+      "score": 0,
+      "detail": {
+        "gold": "A hip-hop song."
+      }
+    },
+    {
+      "item_id": "Listening_General_548",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The synthesized horns create a happy feeling through their bright, brassy timbre and the use of staccato, punctuated notes. This creates a sense of energy and celebration, much like a fanfare. The simple chord progression, likely using major chords, provides a stable and uplifting harmonic foundation. Major chords are inherently associated with positive emotions, and the progression's simplicity makes it feel direct and uncomplicated, avoiding any tension that might create a more complex or somber mood.",
+      "score": 0,
+      "detail": {
+        "gold": "The synthesized horns in the music contribute to its happy quality by providing a bright, brassy timbre that is often associated with celebratory and uplifting emotions. Horns have a compelling and penetrating sound that can easily evoke a sense of joy and excitement. Their synthetic nature in the audio allows for a consistent, clean sound that complements the light-hearted atmosphere of the piece. Additionally, the simple chord progression forms the harmonic backbone of the piece, offering a straightforward and predictable structure that is easy for listeners to follow and engage with. This simplicity in harmony often evokes feelings of comfort and contentment, reinforcing the overall happy mood of the music. The progression likely follows a pattern that resolves positively, further enhancing the cheerful vibe. Together, the synthesized horns and uncomplicated chord progression create an environment of musical simplicity and brightness that is quintessential to the genre and overall feel of happy, instrumental karaoke music."
+      }
+    },
+    {
+      "item_id": "Listening_General_118",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The sound in the background is a foghorn.",
+      "score": 0,
+      "detail": {
+        "gold": "A thunder storm."
+      }
+    },
+    {
+      "item_id": "Listening_General_423",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Male",
+      "score": 0,
+      "detail": {
+        "gold": "The speaker's gender is male."
+      }
+    },
+    {
+      "item_id": "Listening_General_647",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The engine coughed, a low, guttural growl in the silent garage. Then, a single, sharp rev – *VROOOOM!* – shattered the stillness. It wasn't loud, but it was *wrong*. A warning. The sound climbed, a rising, metallic scream that vibrated in my teeth. It wasn't the engine of the car I'd left here. This was something else. Faster. Hungrier. The revs climbed higher, a banshee wail that filled the small space, pressing against my eardrums. It was coming closer. I could feel the vibration in the floorboards. The sound wasn't just loud anymore; it was a physical pressure, a predator's roar. It was right outside the door. The engine screamed its final, ear-splitting note, then cut out, leaving a ringing silence so profound it felt like a physical blow.",
+      "score": 0,
+      "detail": {
+        "gold": "As the night cloaks the city in shadows, a clandestine street race is about to unfold. The pavement glistens under the moonlight, freshly damp from an evening drizzle. The air is thick with anticipation. Spectators line the makeshift track, their eyes wide, tracking the idling beasts before them. The moment is upon them as engines roar to life, piercing the silence like a siren's call. A large vehicle, its frame vibrating with power, revs up, its sound a deep, guttural challenge to the contenders. The vehicle's presence is dominating, its engine's growl growing louder, setting the pace of the racers' heartbeats. As it moves, the sound swells, mirroring the rising tension in the crowd. Every subsequent rev sends a clear message—the race is not for the faint of heart. The large vehicle launches forward, its engine screaming triumph, as the cars behind follow suit, revving and shifting gears, all vying for supremacy. In this moment, the increasing intensity of the engine revs is not just a signal to start; it’s the heartbeat of the race, the sound that will haunt the dreams of those left in the dust."
+      }
+    },
+    {
+      "item_id": "Listening_General_362",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The speaker is interested in music.",
+      "score": 0,
+      "detail": {
+        "gold": "The speaker has an interest in exciting things."
+      }
+    },
+    {
+      "item_id": "Listening_General_535",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The harmonium's gentle, repetitive melody creates a meditative and peaceful atmosphere. The tabla's steady, grounding rhythm provides a sense of calm stability. The soft, wordless vocal melody weaves through these layers, adding a touch of gentle longing or quiet joy. Together, they create a serene and introspective mood, evoking a feeling of spiritual tranquility and contentment.",
+      "score": 0,
+      "detail": {
+        "gold": "The music in the audio, a Hindi Bhajan, offers a profound cultural and emotional experience even without the use of lyrics. The harmonium provides a continuous drone serving as the foundation, its warm and reedy timbre sets a meditative backdrop typical of Indian devotional music. The tabla rhythm introduces a gentle, yet intricate heartbeat to the piece, with its complex patterns enhancing the spiritual ambiance. The slow tempo allows listeners to savor each note, fostering a sense of serenity and reflection. The female vocalist's melody, characterized by ornate inflections and careful modulation of pitch, echoes the intricacies found within the deeper layers of one's spiritual journey. Together, these elements create a tapestry of sound that is both calming and emotionally stirring, encouraging introspection and a sense of connection to the divine."
+      }
+    },
+    {
+      "item_id": "Listening_General_175",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A buzzer.",
+      "score": 0,
+      "detail": {
+        "gold": "A glass being rubbed by a hand."
+      }
+    },
+    {
+      "item_id": "Listening_General_458",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "To make the text more accessible and understandable to a modern audience.",
+      "score": 0,
+      "detail": {
+        "gold": "To infuse personal creativity, adapt the theme to a specific context, or make the content more accessible to those unfamiliar with the original."
+      }
+    },
+    {
+      "item_id": "Listening_General_650",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The city's pulse was a frantic rhythm. A delivery van, its engine a low, impatient growl, inched forward, its tires hissing against the wet pavement. Inside, the driver's fingers danced over the wheel, the turn signal clicking like a nervous metronome. He braked sharply, the tires shrieking a protest as he swerved to avoid a cyclist. The cyclist, pedaling furiously, leaned into the turn, their chain clicking rapidly. The van's horn blared, a sudden, jarring shout that echoed off the glass buildings. The cyclist swerved again, narrowly missing a parked scooter, its kickstand clattering as it was bumped. The van accelerated, its engine roaring as it disappeared around the corner, leaving only the fading echo of the horn and the rhythmic *click-click-click* of the scooter's kickstand settling back into place.",
+      "score": 0,
+      "detail": {
+        "gold": "The grey tapestry of the sky wept as droplets pattered rhythmically against the cold, tar-streaked path. A car threaded along this slick trail, its tires humming a tribute to the ceaseless rain, wipers dancing back and forth in a tireless ballet. Nearby, the whispering tumult of the wind carved through the landscape, an invisible sculptor shaping the world with breaths of gale. Amidst this airy chaos, an engine's roar fought against the gusts, a mechanical defiance to nature's boisterous orchestra. Bordering this confluence of human innovation and natural elements, a stream, untouched by the wheels and gears, flowed with steadfast purpose. Its waters, blended with the tears of the sky, journeyed with a calm urgency, forging a path through stone and root. Each element, it seemed, anchored the others, creating a dynamic symphony of movement and sound that painted the essence of harmony within the rush of life."
+      }
+    },
+    {
+      "item_id": "Listening_General_540",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The child's voice and simple music create a joyful, informal mood characteristic of lo-fi or \"found sound\" aesthetics. This approach prioritizes authenticity and emotional warmth over technical perfection. By incorporating everyday sounds and a child's untrained voice, the artist likely aimed to evoke a sense of nostalgia, innocence, and intimate, personal memory. This creates a listening experience that feels relaxed, comforting, and unpretentious. The mood is one of gentle, unselfconscious joy, suggesting the artist wanted to capture a fleeting, genuine moment rather than a polished performance.",
+      "score": 0,
+      "detail": {
+        "gold": "The music in the audio, with its mixed background vocals, child talking, and acoustic rhythm guitar, conveys a sense of spontaneity and authenticity that is emblematic of 'found sound' or 'lo-fi' music. The low-quality recording lacks the polish of studio-produced tracks, giving it a raw feel that emphasizes the emotional content and the laid-back, in-the-moment atmosphere. The inclusion of everyday sounds, like a child's voice, suggests that the artist is aiming to create an intimate and relatable listening experience, one that resonates with listeners through its familiarity and unpretentiousness. The fun and happy vibe of the track, despite the noise and muffled quality, further points to a deliberate choice to focus on the joy and organic nature of the moment rather than technical perfection. This approach invites listeners to appreciate the beauty in the imperfections and the genuine human experiences that the music encapsulates. It’s an artistic choice that often appeals to those who value authenticity and the connection between music and the reality of everyday life."
+      }
+    },
+    {
+      "item_id": "Listening_General_119",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 0,
+      "detail": {
+        "gold": "Yes, birds are chirping in the background."
+      }
+    },
+    {
+      "item_id": "Listening_General_645",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The city hummed its constant, indifferent song. A distant siren wailed, a motorcycle growled past, and the rhythmic *thump-thump-thump* of a bassline vibrated through the pavement. I leaned against the cool brick wall, the sounds washing over me. A woman laughed nearby, her voice bright against the urban drone. For a moment, the chaos felt like a symphony, a reminder that life pulsed on, relentless and beautiful, even in the concrete jungle.",
+      "score": 0,
+      "detail": {
+        "gold": "The street is alive with the symphony of the city. Cars whiz by, each engine humming a different tune, creating a pulsating rhythm on the asphalt stage. People's voices blend into this urban soundtrack, their laughter and chatter adding a human touch to the metallic chorus. The occasional sharp bark of a dog slices through the constant murmurs, reminding everyone of the presence of nature amidst the concrete jungle. Each honk, each distant yell, plays its part in this everyday performance. As I stand amidst this scene, the energy of life in motion wraps around me, and I can't help but feel the pulse of the city—it's a place where every moment holds a story, and every sound marks the heartbeat of an unceasing narrative."
+      }
+    },
+    {
+      "item_id": "Listening_General_461",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "He went home.",
+      "score": 0,
+      "detail": {
+        "gold": "He ended up playing in the final two games of the season."
+      }
+    },
+    {
+      "item_id": "Listening_General_649",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The audio's sounds symbolize resilience through their journey from fragility to strength. It begins with a single, clear, high-pitched chime, representing a moment of vulnerability or a fragile start. This is followed by a series of lower, resonant, and sustained tones. This shift from a fleeting, delicate sound to a deep, enduring one mirrors the process of building resilience. The initial chime is easily disrupted, while the subsequent sounds are powerful and persistent, suggesting that resilience is not the absence of fragility, but the ability to grow into something stronger and more enduring in the face of adversity.",
+      "score": 0,
+      "detail": {
+        "gold": "The audio embodies resilience through its relentless rhythm of starting and stopping, an engine's persistent attempts to ignite and run. This is akin to the human spirit's indefatigable drive. Each time the machine starts it's like setting a goal; its abrupt cessation, a setback met with silence. But silence is temporary, as the machine's restart signifies the courage to continue despite failures. In my personal journey, I've faced the stalling of dreams, the muffling of my own ambitions. However, the engine restarts, its roar echoes my renewed determination to press forward, to try once more. The engine, much like myself, refuses to remain in a state of defeat. The sound is a metaphor for my tenacity, a physical manifestation of the resiliency that lies within. Each ignition represents an opportunity, a new beginning amidst the cessation of previous endeavors. It's a reminder that in life, as with machines, the capacity to start again is a powerful testament to resilience."
+      }
+    },
+    {
+      "item_id": "Listening_General_98",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes, a drum is a percussion instrument used to keep the rhythm.",
+      "score": 0,
+      "detail": {
+        "gold": "shaker"
+      }
+    },
+    {
+      "item_id": "Listening_General_224",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "He said her job was boring.",
+      "score": 0,
+      "detail": {
+        "gold": "She taught at Xinjiang University prior to her detention."
+      }
+    },
+    {
+      "item_id": "Listening_General_536",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The recording quality is noticeably worse after the finger snap, becoming more muffled and tinny.",
+      "score": 0,
+      "detail": {
+        "gold": "The use of amateur recording devices, such as phones, can significantly impact the perception of a song. Initially, before the finger snap, the audio quality is already deemed low, potentially affecting the clarity and richness of the singer's voice, the balance of instruments, and the overall immersive experience of the music. After the finger snap, the lower volume implies a further degradation in terms of perceptibility. This additional change might make it harder to discern lyrics, melodies, and instrumentals, leading to a diminished emotional impact and possibly a less favorable impression of the song. Moreover, if the music is meant to convey a specific mood or atmosphere, the lower fidelity could prevent listeners from experiencing the intended effect fully. These recordings, while perhaps capturing the raw and unfiltered essence of a song, do not do justice to the production quality intended by the artists and producers."
+      }
+    },
+    {
+      "item_id": "Listening_General_646",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A young child stands at the edge of a swimming pool, their small hands gripping the cool, smooth concrete. They are hesitant, their wide eyes fixed on the shimmering water. A gentle, encouraging voice, likely their mother's, speaks from nearby, urging them forward. The child takes a tentative step, their bare feet making soft, hesitant sounds on the pool deck. They pause again, looking back at the voice, seeking reassurance before finally taking the plunge.",
+      "score": 0,
+      "detail": {
+        "gold": "In a dimly lit alley, the old, corroded metal door groans as Detective Ray pushes against it, revealing the clandestine entrance to an abandoned warehouse. The wind howls through the open doorway, bringing with it the stench of rust and forgotten secrets. Rays of moonlight slice through the darkness, casting stark shadows. He steps inside, his footsteps echoing off the concrete. Another large door stands ajar in the corridor ahead. As he passes through it, the creak of distressed metal is sharp in the silence. Behind him, the doors shut, one after another, as if the building itself is alive, trying to conceal its own mysteries. Ray's presence has awakened a story the decaying structure has held within its walls for far too long."
+      }
+    },
+    {
+      "item_id": "Listening_General_603",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The low drone began as a distant hum, a background to my morning coffee. Then, it deepened, vibrating in my teeth. I dismissed it as the old boiler. But the sound grew louder, a physical pressure in the room. It wasn't just getting closer; it was *inside* the walls, a subsonic thrum that made my bones ache. The coffee cup trembled on the table. The hum filled my skull, a constant, menacing presence. It wasn't coming from outside anymore. It was coming from *within* me.",
+      "score": 0,
+      "detail": {
+        "gold": "As the hollow drone of an unseen menace rumbles closer in 'the sound in the audio', a small town braces for the inevitable. Heads turn skywards, following the growing snarl that slices through the tranquility like a warning siren from the heavens. The townsfolk freeze, each silently calculating the path of the approaching tempest masquerading as an aircraft. Windows shutter quickly, and children cling to their mothers. This is no routine flyby; the insidious growl speaks of a lurking predator, hidden yet unignorable. Time slows, the air charged with a mixture of fear and anticipation. For a fleeting moment, as the roar hits its zenith and then fades, hearts dare to hope. Then comes the real storm, thunder cracking like a cosmic whip, confirming that the aircraft was merely a herald, and the true danger is following inexorably behind."
+      }
+    },
+    {
+      "item_id": "Listening_General_197",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Stop, drop, and cover.",
+      "score": 0,
+      "detail": {
+        "gold": "Evacuate the area and alert the appropriate emergency services."
+      }
+    },
+    {
+      "item_id": "Listening_General_544",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "High-pitched, computer-like sounds create a cold, unsettling mood by mimicking sterile technology and evoking a sense of alienation. In cyberpunk or dystopian settings, these sounds reflect a world dominated by cold, impersonal machines and a loss of humanity. They underscore themes of dehumanization, surveillance, and the breakdown of natural order, enhancing the atmosphere of a futuristic, oppressive society where technology is both omnipresent and threatening.",
+      "score": 0,
+      "detail": {
+        "gold": "The music in the audio uses high-pitched, computer-like sounds to create an atmosphere that aligns well with both cyberpunk and dystopian themes. In a cyberpunk video game, this music could underscore a world where technology and artificial intelligence pervade every aspect of life, often underpinning a society rife with inequality and corporate control. The cold, uneasy feeling evoked by the music might represent the alienation and desolation characters feel in a high-tech, low-life environment where humanity seems lost amidst the neon-lit skyscrapers and omnipresent digital networks. In a dystopian film, these soundscapes could highlight the bleakness and despair within a society that has potentially been ravaged by advanced technology gone awry, emphasizing the narrative of human struggle against oppressive systems or an environment that has grown cold and inimical due to mankind's own hubris."
+      }
+    },
+    {
+      "item_id": "Listening_General_664",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The sound is a dripping faucet. A man, desperate to sleep, tries to ignore it. The constant drip drives him to madness, making him scream at the wall. The sound repeats because he is now banging his head against it, creating a new, rhythmic thud that syncs with the drip. The sound changes from a simple annoyance into a terrifying, shared rhythm, symbolizing his complete mental breakdown.",
+      "score": 0,
+      "detail": {
+        "gold": "In a dimly lit cabin, Thomas fumbles with a matchbox, his hands trembling as the chilling wind howls through the cracks. The matches are his last chance to reignite the extinguished fireplace and fend off the encroaching frostbite. With each strike, the sputter of the flame offers a temporary glimmer of hope, only to evaporate into darkness. On his third attempt, the match ignites with a reassuring flare, allowing Thomas to breathe life into the fireplace. The growing fire's crackling song disperses the shadows and heralds a beacon of survival. Thomas's perseverance, signified by the repeated striking of matches, not only saves him from a frozen fate but also reignites his spirit, proving to him that hope persists even in the direst of circumstances."
+      }
+    },
+    {
+      "item_id": "Listening_General_26",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Slow",
+      "score": 0,
+      "detail": {
+        "gold": "Uptempo"
+      }
+    },
+    {
+      "item_id": "Listening_General_357",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "To confirm the details of the journey with the first speaker.",
+      "score": 0,
+      "detail": {
+        "gold": "The second speaker might be specifying the departure time and day to ensure they get a booking that fits their travel schedule."
+      }
+    },
+    {
+      "item_id": "Listening_General_301",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The second speaker prefers to receive booking information by email.",
+      "score": 0,
+      "detail": {
+        "gold": "It can be inferred that the second speaker did not require an email confirmation of the booking, as indicated by their response 'no, that's okay.'"
+      }
+    },
+    {
+      "item_id": "Listening_General_51",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "gold": "Yes, both bass and electric guitar"
+      }
+    },
+    {
+      "item_id": "Listening_General_510",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The music plays as a lone traveler rests in a vast, sun-baked canyon. The deep, resonant drone is the immense, silent rock walls, while the high, shimmering synth mimics the heat haze rising from the cracked earth. A gentle, melodic line, like a flute, is the distant cry of a hawk circling the thermals. The traveler, a figure in worn leather, sits on a flat stone, a canteen at their side. They are not lost, but in a state of profound contemplation, the music reflecting the timeless, meditative stillness of the desert. The scene is one of solitude and awe, where the vastness of nature inspires a deep, internal peace.",
+      "score": 0,
+      "detail": {
+        "gold": "The music in the audio evokes a bustling, yet laid-back atmosphere of a beachfront café during a warm summer evening. Patrons, adorned in light, colorful attire, savor cool, fruity beverages and share stories of their day's adventures. The marimba’s lead melody imparts a tropical vibe, mirroring the playful dance of palm leaves in the ocean breeze. An acoustic piano's jazzy chords cascade around the conversations, adding a sophisticated touch to the casual setting. The upright bass provides a grounded, soft backdrop that blends seamlessly with the distant murmurs of the sea and the rhythmic lapping of waves against the shore. The latin grooves supplied by the acoustic elements infuse the space with a sense of cultural richness, inviting the mix of locals and tourists to sway gently in their seats. As the music's uplifting energy fills the space, it subtly heightens the sense of connection among the café dwellers. This scene is completed by the natural panning of the instruments, animating the atmosphere with a vibrant, yet intimate acoustic environment. The song is not the center of attention but enriches the ambiance, much like an unobtrusive soundtrack to an evening filled with laughter, conversation, and the simple joy of relaxation."
+      }
+    },
+    {
+      "item_id": "Listening_General_793",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Electronic music",
+      "score": 0,
+      "detail": {
+        "gold": "EDM/Synth pop."
+      }
+    },
+    {
+      "item_id": "Listening_General_200",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A dog barking.",
+      "score": 0,
+      "detail": {
+        "gold": "A train emitting a steam whistle with a hissing noise."
+      }
+    },
+    {
+      "item_id": "Listening_General_160",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "gold": "Yes, it involves a radio receiver playing static."
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.0,
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset voiceassistant-listening-general --backbone qwen3-omni-30b-gguf --split dev --n 40",
+  "elapsed_s": 193.6
+}

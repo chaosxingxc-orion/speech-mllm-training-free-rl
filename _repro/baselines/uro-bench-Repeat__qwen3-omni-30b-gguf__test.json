@@ -1,0 +1,693 @@
+{
+  "stage": "1-directional",
+  "dataset": "uro-bench-Repeat",
+  "k_type": "K1",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/uro-bench-Repeat/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": 112,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me, the Olympic Games are held every four years, bringing together athletes from around the world, to compete in a wide range of sports.",
+      "score": 0.8260869565217391,
+      "detail": {
+        "wer": 0.17391304347826086,
+        "ref": "the olympic games are held every four years bringing together athletes from around the world to compete in a wide range of sports",
+        "hyp": "please repeat after me the olympic games are held every four years bringing together athletes from around the world to compete in a wide range of sports"
+      }
+    },
+    {
+      "item_id": 244,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Being mindful of your mental health and seeking help when needed can improve emotional resilience and overall well-being.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "being mindful of your mental health and seeking help when needed can improve emotional resilience and overall well being",
+        "hyp": "being mindful of your mental health and seeking help when needed can improve emotional resilience and overall well being"
+      }
+    },
+    {
+      "item_id": 109,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me. The Arctic Ocean is the smallest and shallowest of the world oceans.",
+      "score": 0.6153846153846154,
+      "detail": {
+        "wer": 0.38461538461538464,
+        "ref": "the arctic ocean is the smallest and shallowest of the world s oceans",
+        "hyp": "please repeat after me the arctic ocean is the smallest and shallowest of the world oceans"
+      }
+    },
+    {
+      "item_id": 2,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me, I love learning new things every day.",
+      "score": 0.4285714285714286,
+      "detail": {
+        "wer": 0.5714285714285714,
+        "ref": "i love learning new things every day",
+        "hyp": "please repeat after me i love learning new things every day"
+      }
+    },
+    {
+      "item_id": 68,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me, It's not the years in your life that counted, the life in your years.",
+      "score": 0.5294117647058824,
+      "detail": {
+        "wer": 0.47058823529411764,
+        "ref": "it s not the years in your life that count it s the life in your years",
+        "hyp": "please repeat after me it's not the years in your life that counted the life in your years"
+      }
+    },
+    {
+      "item_id": 214,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Autonomous drones are being used for various tasks, such as package delivery, surveying land, and even performing search and rescue missions.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "autonomous drones are being used for various tasks such as package delivery surveying land and even performing search and rescue missions",
+        "hyp": "autonomous drones are being used for various tasks such as package delivery surveying land and even performing search and rescue missions"
+      }
+    },
+    {
+      "item_id": 145,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "The Eiffel Tower was originally criticized by some of the top artists and intellectuals of Paris when it was first constructed in eighteen eighty nine.",
+      "score": 0.8695652173913043,
+      "detail": {
+        "wer": 0.13043478260869565,
+        "ref": "the eiffel tower was originally criticized by some of the top artists and intellectuals of paris when it was first constructed in 1889",
+        "hyp": "the eiffel tower was originally criticized by some of the top artists and intellectuals of paris when it was first constructed in eighteen eighty nine"
+      }
+    },
+    {
+      "item_id": 164,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "The Great Barrier Reef, located off the coast of Australia, is the world's largest coral reef system and is home to a diverse range of marine species.",
+      "score": 0.9285714285714286,
+      "detail": {
+        "wer": 0.07142857142857142,
+        "ref": "the great barrier reef located off the coast of australia is the world s largest coral reef system and is home to a diverse range of marine species",
+        "hyp": "the great barrier reef located off the coast of australia is the world's largest coral reef system and is home to a diverse range of marine species"
+      }
+    },
+    {
+      "item_id": 251,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Maintaining a positive attitude and practicing gratitude can have a powerful impact on mental health and overall well-being.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "maintaining a positive attitude and practicing gratitude can have a powerful impact on mental health and overall well being",
+        "hyp": "maintaining a positive attitude and practicing gratitude can have a powerful impact on mental health and overall well being"
+      }
+    },
+    {
+      "item_id": 85,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me. The Sahara Desert is the largest hot desert in the world, covering an area roughly the size of the United States.",
+      "score": 0.8095238095238095,
+      "detail": {
+        "wer": 0.19047619047619047,
+        "ref": "the sahara desert is the largest hot desert in the world covering an area roughly the size of the united states",
+        "hyp": "please repeat after me the sahara desert is the largest hot desert in the world covering an area roughly the size of the united states"
+      }
+    },
+    {
+      "item_id": 35,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me, Life is what happens when you are busy making other plans.",
+      "score": 0.5454545454545454,
+      "detail": {
+        "wer": 0.45454545454545453,
+        "ref": "life is what happens when you re busy making other plans",
+        "hyp": "please repeat after me life is what happens when you are busy making other plans"
+      }
+    },
+    {
+      "item_id": 174,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "National parks are protected areas of land that conserve wildlife and natural resources, providing spaces for outdoor recreation and education.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "national parks are protected areas of land that conserve wildlife and natural resources providing spaces for outdoor recreation and education",
+        "hyp": "national parks are protected areas of land that conserve wildlife and natural resources providing spaces for outdoor recreation and education"
+      }
+    },
+    {
+      "item_id": 153,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "The Mediterranean Sea is bordered by three continents, Europe, Asia, and Africa, making it a hub for trade, culture, and history.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the mediterranean sea is bordered by three continents europe asia and africa making it a hub for trade culture and history",
+        "hyp": "the mediterranean sea is bordered by three continents europe asia and africa making it a hub for trade culture and history"
+      }
+    },
+    {
+      "item_id": 192,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Deep learning, a more advanced form of machine learning, uses neural networks to simulate the way the human brain processes information.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "deep learning a more advanced form of machine learning uses neural networks to simulate the way the human brain processes information",
+        "hyp": "deep learning a more advanced form of machine learning uses neural networks to simulate the way the human brain processes information"
+      }
+    },
+    {
+      "item_id": 218,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me. Sleep is important for overall health as it helps with memory consolidation, immune function, and cell repair.",
+      "score": 0.7647058823529411,
+      "detail": {
+        "wer": 0.23529411764705882,
+        "ref": "sleep is important for overall health as it helps with memory consolidation immune function and cell repair",
+        "hyp": "please repeat after me sleep is important for overall health as it helps with memory consolidation immune function and cell repair"
+      }
+    },
+    {
+      "item_id": 110,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me, the scientific name for the northern lights is the aurora borealis.",
+      "score": 0.6363636363636364,
+      "detail": {
+        "wer": 0.36363636363636365,
+        "ref": "the scientific name for the northern lights is the aurora borealis",
+        "hyp": "please repeat after me the scientific name for the northern lights is the aurora borealis"
+      }
+    },
+    {
+      "item_id": 66,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "The purpose of life is not to be happy. It is to be useful, to be honorable, to be compassionate, to have it make some difference that you have lived and lived well.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the purpose of life is not to be happy it is to be useful to be honorable to be compassionate to have it make some difference that you have lived and lived well",
+        "hyp": "the purpose of life is not to be happy it is to be useful to be honorable to be compassionate to have it make some difference that you have lived and lived well"
+      }
+    },
+    {
+      "item_id": 44,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Sometimes the smallest things take up the most room in your heart.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "sometimes the smallest things take up the most room in your heart",
+        "hyp": "sometimes the smallest things take up the most room in your heart"
+      }
+    },
+    {
+      "item_id": 108,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me, bees communicate with each other through a series of complex dance moves.",
+      "score": 0.6666666666666667,
+      "detail": {
+        "wer": 0.3333333333333333,
+        "ref": "bees communicate with each other through a series of complex dance moves",
+        "hyp": "please repeat after me bees communicate with each other through a series of complex dance moves"
+      }
+    },
+    {
+      "item_id": 39,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Every day may not be good, but there is something good in every day.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "every day may not be good but there is something good in every day",
+        "hyp": "every day may not be good but there is something good in every day"
+      }
+    },
+    {
+      "item_id": 36,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me, strength does not come from what you can do, but from overcoming the things you once thought you couldn't.",
+      "score": 0.7,
+      "detail": {
+        "wer": 0.3,
+        "ref": "strength does not come from what you can do but from overcoming the things you once thought you couldn t",
+        "hyp": "please repeat after me strength does not come from what you can do but from overcoming the things you once thought you couldn't"
+      }
+    },
+    {
+      "item_id": 127,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me. Cricket is a bat and ball sport popular in countries like India, England, and Australia, with matches that can last up to five days.",
+      "score": 0.8333333333333334,
+      "detail": {
+        "wer": 0.16666666666666666,
+        "ref": "cricket is a bat and ball sport popular in countries like india england and australia with matches that can last up to five days",
+        "hyp": "please repeat after me cricket is a bat and ball sport popular in countries like india england and australia with matches that can last up to five days"
+      }
+    },
+    {
+      "item_id": 74,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "The Earth rotates on its axis once every twenty four hours, giving us day and night.",
+      "score": 0.8666666666666667,
+      "detail": {
+        "wer": 0.13333333333333333,
+        "ref": "the earth rotates on its axis once every 24 hours giving us day and night",
+        "hyp": "the earth rotates on its axis once every twenty four hours giving us day and night"
+      }
+    },
+    {
+      "item_id": 248,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Limiting screen time, especially before bed, can improve sleep quality by reducing exposure to blue light that interferes with the sleep cycle.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "limiting screen time especially before bed can improve sleep quality by reducing exposure to blue light that interferes with the sleep cycle",
+        "hyp": "limiting screen time especially before bed can improve sleep quality by reducing exposure to blue light that interferes with the sleep cycle"
+      }
+    },
+    {
+      "item_id": 183,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me. The study of sociology helps us understand the structure and dynamics of society, examining how people interact and how social institutions function.",
+      "score": 0.8181818181818181,
+      "detail": {
+        "wer": 0.18181818181818182,
+        "ref": "the study of sociology helps us understand the structure and dynamics of society examining how people interact and how social institutions function",
+        "hyp": "please repeat after me the study of sociology helps us understand the structure and dynamics of society examining how people interact and how social institutions function"
+      }
+    },
+    {
+      "item_id": 136,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me. The Great Wall of China is not just a single continuous wall, but a series of walls built over several dynasties to protect China from invaders.",
+      "score": 0.8461538461538461,
+      "detail": {
+        "wer": 0.15384615384615385,
+        "ref": "the great wall of china is not just a single continuous wall but a series of walls built over several dynasties to protect china from invaders",
+        "hyp": "please repeat after me the great wall of china is not just a single continuous wall but a series of walls built over several dynasties to protect china from invaders"
+      }
+    },
+    {
+      "item_id": 62,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me, life is really simple, but we insist on making it complicated.",
+      "score": 0.6363636363636364,
+      "detail": {
+        "wer": 0.36363636363636365,
+        "ref": "life is really simple but we insist on making it complicated",
+        "hyp": "please repeat after me life is really simple but we insist on making it complicated"
+      }
+    },
+    {
+      "item_id": 37,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "The only way to do great work is to love what you do.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the only way to do great work is to love what you do",
+        "hyp": "the only way to do great work is to love what you do"
+      }
+    },
+    {
+      "item_id": 21,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me. Every day is a new beginning. Take a deep breath and start again.",
+      "score": 0.6923076923076923,
+      "detail": {
+        "wer": 0.3076923076923077,
+        "ref": "every day is a new beginning take a deep breath and start again",
+        "hyp": "please repeat after me every day is a new beginning take a deep breath and start again"
+      }
+    },
+    {
+      "item_id": 26,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me: \"Nature is the art of God.\"",
+      "score": 0.33333333333333337,
+      "detail": {
+        "wer": 0.6666666666666666,
+        "ref": "nature is the art of god",
+        "hyp": "please repeat after me nature is the art of god"
+      }
+    },
+    {
+      "item_id": 98,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me, an ostrich eye is bigger than its brain, making it a unique feature among birds.",
+      "score": 0.6875,
+      "detail": {
+        "wer": 0.3125,
+        "ref": "an ostrich s eye is bigger than its brain making it a unique feature among birds",
+        "hyp": "please repeat after me an ostrich eye is bigger than its brain making it a unique feature among birds"
+      }
+    },
+    {
+      "item_id": 41,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me, To be yourself in a world that is constantly trying to make you something else, is the greatest accomplishment.",
+      "score": 0.7894736842105263,
+      "detail": {
+        "wer": 0.21052631578947367,
+        "ref": "to be yourself in a world that is constantly trying to make you something else is the greatest accomplishment",
+        "hyp": "please repeat after me to be yourself in a world that is constantly trying to make you something else is the greatest accomplishment"
+      }
+    },
+    {
+      "item_id": 179,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me. The beauty of nature can be found in the smallest details, from a single leaf to a vast mountain range, reminding us of the world's natural wonders.",
+      "score": 0.7857142857142857,
+      "detail": {
+        "wer": 0.21428571428571427,
+        "ref": "the beauty of nature can be found in the smallest details from a single leaf to a vast mountain range reminding us of the world s natural wonders",
+        "hyp": "please repeat after me the beauty of nature can be found in the smallest details from a single leaf to a vast mountain range reminding us of the world's natural wonders"
+      }
+    },
+    {
+      "item_id": 25,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me, the journey of a thousand miles begins with a single step.",
+      "score": 0.6363636363636364,
+      "detail": {
+        "wer": 0.36363636363636365,
+        "ref": "the journey of a thousand miles begins with a single step",
+        "hyp": "please repeat after me the journey of a thousand miles begins with a single step"
+      }
+    },
+    {
+      "item_id": 58,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me: If you want to go fast, go alone. If you want to go far, go together.",
+      "score": 0.75,
+      "detail": {
+        "wer": 0.25,
+        "ref": "if you want to go fast go alone if you want to go far go together",
+        "hyp": "please repeat after me if you want to go fast go alone if you want to go far go together"
+      }
+    },
+    {
+      "item_id": 212,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Key learning in healthcare is being used to predict patient outcomes, suggest treatment plans, and even assist in robotic surgery, improving patient care and efficiency.",
+      "score": 0.96,
+      "detail": {
+        "wer": 0.04,
+        "ref": "machine learning in healthcare is being used to predict patient outcomes suggest treatment plans and even assist in robotic surgery improving patient care and efficiency",
+        "hyp": "key learning in healthcare is being used to predict patient outcomes suggest treatment plans and even assist in robotic surgery improving patient care and efficiency"
+      }
+    },
+    {
+      "item_id": 249,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Managing chronic conditions like diabetes or hypertension with the help of a healthcare provider can prevent complications and improve quality of life.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "managing chronic conditions like diabetes or hypertension with the help of a healthcare provider can prevent complications and improve quality of life",
+        "hyp": "managing chronic conditions like diabetes or hypertension with the help of a healthcare provider can prevent complications and improve quality of life"
+      }
+    },
+    {
+      "item_id": 215,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "A balanced diet is crucial for maintaining good health and preventing chronic diseases like heart disease and diabetes.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "a balanced diet is crucial for maintaining good health and preventing chronic diseases like heart disease and diabetes",
+        "hyp": "a balanced diet is crucial for maintaining good health and preventing chronic diseases like heart disease and diabetes"
+      }
+    },
+    {
+      "item_id": 117,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me, in baseball, a perfect game occurs when a pitcher faces twenty seven batters and gets them all out without any reaching base.",
+      "score": 0.7142857142857143,
+      "detail": {
+        "wer": 0.2857142857142857,
+        "ref": "in baseball a perfect game occurs when a pitcher faces 27 batters and gets them all out without any reaching base",
+        "hyp": "please repeat after me in baseball a perfect game occurs when a pitcher faces twenty seven batters and gets them all out without any reaching base"
+      }
+    },
+    {
+      "item_id": 119,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me. In ballet, pointe refers to a technique in which dancers perform on the tips of their toes, requiring strength and flexibility.",
+      "score": 0.7619047619047619,
+      "detail": {
+        "wer": 0.23809523809523808,
+        "ref": "in ballet 'pointe' refers to a technique in which dancers perform on the tips of their toes requiring strength and flexibility",
+        "hyp": "please repeat after me in ballet pointe refers to a technique in which dancers perform on the tips of their toes requiring strength and flexibility"
+      }
+    },
+    {
+      "item_id": 128,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "The Super Bowl halftime show is famous for featuring performances by some of the world's most popular musicians and artists.",
+      "score": 0.9047619047619048,
+      "detail": {
+        "wer": 0.09523809523809523,
+        "ref": "the super bowl halftime show is famous for featuring performances by some of the world s most popular musicians and artists",
+        "hyp": "the super bowl halftime show is famous for featuring performances by some of the world's most popular musicians and artists"
+      }
+    },
+    {
+      "item_id": 194,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "The potential of advanced technology to revolutionize various industries, from healthcare and education to finance and entertainment, by automating tasks and providing intelligent insights.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the potential of advanced technology to revolutionize various industries from healthcare and education to finance and entertainment by automating tasks and providing intelligent insights",
+        "hyp": "the potential of advanced technology to revolutionize various industries from healthcare and education to finance and entertainment by automating tasks and providing intelligent insights"
+      }
+    },
+    {
+      "item_id": 70,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me: Be yourself, everyone else is already taken.",
+      "score": 0.4285714285714286,
+      "detail": {
+        "wer": 0.5714285714285714,
+        "ref": "be yourself everyone else is already taken",
+        "hyp": "please repeat after me be yourself everyone else is already taken"
+      }
+    },
+    {
+      "item_id": 169,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me. A healthy ecosystem relies on the interdependence of various species, with each playing a role in maintaining the balance of nature.",
+      "score": 0.8095238095238095,
+      "detail": {
+        "wer": 0.19047619047619047,
+        "ref": "a healthy ecosystem relies on the interdependence of various species with each playing a role in maintaining the balance of nature",
+        "hyp": "please repeat after me a healthy ecosystem relies on the interdependence of various species with each playing a role in maintaining the balance of nature"
+      }
+    },
+    {
+      "item_id": 205,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "The use of technology in facial recognition has sparked privacy concerns, as it allows for the identification of individuals in public spaces without their consent.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the use of technology in facial recognition has sparked privacy concerns as it allows for the identification of individuals in public spaces without their consent",
+        "hyp": "the use of technology in facial recognition has sparked privacy concerns as it allows for the identification of individuals in public spaces without their consent"
+      }
+    },
+    {
+      "item_id": 178,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me. Education systems vary from country to country, but they all aim to equip students with the knowledge and skills they need to succeed in life.",
+      "score": 0.84,
+      "detail": {
+        "wer": 0.16,
+        "ref": "education systems vary from country to country but they all aim to equip students with the knowledge and skills they need to succeed in life",
+        "hyp": "please repeat after me education systems vary from country to country but they all aim to equip students with the knowledge and skills they need to succeed in life"
+      }
+    },
+    {
+      "item_id": 130,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me. In rugby, the ball is oval shaped, and the sport is known for its physical intensity and unique rules compared to American football.",
+      "score": 0.8260869565217391,
+      "detail": {
+        "wer": 0.17391304347826086,
+        "ref": "in rugby the ball is oval shaped and the sport is known for its physical intensity and unique rules compared to american football",
+        "hyp": "please repeat after me in rugby the ball is oval shaped and the sport is known for its physical intensity and unique rules compared to american football"
+      }
+    },
+    {
+      "item_id": 76,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me, the speed of light is approximately two hundred ninety nine thousand seven hundred and ninety two kilometers per second.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.2727272727272727,
+        "ref": "the speed of light is approximately 299 792 kilometers per second",
+        "hyp": "please repeat after me the speed of light is approximately two hundred ninety nine thousand seven hundred and ninety two kilometers per second"
+      }
+    },
+    {
+      "item_id": 60,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me. There are no shortcuts to any place worth going.",
+      "score": 0.5555555555555556,
+      "detail": {
+        "wer": 0.4444444444444444,
+        "ref": "there are no shortcuts to any place worth going",
+        "hyp": "please repeat after me there are no shortcuts to any place worth going"
+      }
+    },
+    {
+      "item_id": 43,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me. Small steps in the right direction can turn out to be the biggest step of your life.",
+      "score": 0.7647058823529411,
+      "detail": {
+        "wer": 0.23529411764705882,
+        "ref": "small steps in the right direction can turn out to be the biggest step of your life",
+        "hyp": "please repeat after me small steps in the right direction can turn out to be the biggest step of your life"
+      }
+    },
+    {
+      "item_id": 150,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "The Taj Mahal, located in Agra, India, is a stunning white marble mausoleum built by Mughal Emperor Shah Jahan in memory of his wife Mumtaz Mahal.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the taj mahal located in agra india is a stunning white marble mausoleum built by mughal emperor shah jahan in memory of his wife mumtaz mahal",
+        "hyp": "the taj mahal located in agra india is a stunning white marble mausoleum built by mughal emperor shah jahan in memory of his wife mumtaz mahal"
+      }
+    },
+    {
+      "item_id": 87,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me, the human brain contains about eighty six billion neurons, which responsible for transmitting information.",
+      "score": 0.5,
+      "detail": {
+        "wer": 0.5,
+        "ref": "the human brain contains about 86 billion neurons which are responsible for transmitting information",
+        "hyp": "please repeat after me the human brain contains about eighty six billion neurons which responsible for transmitting information"
+      }
+    },
+    {
+      "item_id": 177,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Forests are essential to the health of our planet, providing oxygen, housing wildlife, and regulating the earth's climate.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "forests are essential to the health of our planet providing oxygen housing wildlife and regulating the earth's climate",
+        "hyp": "forests are essential to the health of our planet providing oxygen housing wildlife and regulating the earth's climate"
+      }
+    },
+    {
+      "item_id": 198,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "K learning is already being used in medical diagnostics, where models can analyze medical images and detect diseases like cancer more accurately than some human doctors.",
+      "score": 0.9615384615384616,
+      "detail": {
+        "wer": 0.038461538461538464,
+        "ref": "machine learning is already being used in medical diagnostics where models can analyze medical images and detect diseases like cancer more accurately than some human doctors",
+        "hyp": "k learning is already being used in medical diagnostics where models can analyze medical images and detect diseases like cancer more accurately than some human doctors"
+      }
+    },
+    {
+      "item_id": 5,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me. It's a beautiful day to start a new project.",
+      "score": 0.5555555555555556,
+      "detail": {
+        "wer": 0.4444444444444444,
+        "ref": "it's a beautiful day to start a new project",
+        "hyp": "please repeat after me it's a beautiful day to start a new project"
+      }
+    },
+    {
+      "item_id": 116,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "The FEFET World Cup is held every four years and features thirty two national teams competing for the title of world champion.",
+      "score": 0.8571428571428572,
+      "detail": {
+        "wer": 0.14285714285714285,
+        "ref": "the fifa world cup is held every four years and features 32 national teams competing for the title of world champion",
+        "hyp": "the fefet world cup is held every four years and features thirty two national teams competing for the title of world champion"
+      }
+    },
+    {
+      "item_id": 121,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "The piano is a versatile instrument used in many genres of music, from classical to jazz and rock.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the piano is a versatile instrument used in many genres of music from classical to jazz and rock",
+        "hyp": "the piano is a versatile instrument used in many genres of music from classical to jazz and rock"
+      }
+    },
+    {
+      "item_id": 93,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Octopuses have three hearts and two of them stop beating when they swim.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "octopuses have three hearts and two of them stop beating when they swim",
+        "hyp": "octopuses have three hearts and two of them stop beating when they swim"
+      }
+    },
+    {
+      "item_id": 97,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me, the giant panda's diet is almost entirely bamboo, but it belongs to the carnivore family.",
+      "score": 0.7333333333333334,
+      "detail": {
+        "wer": 0.26666666666666666,
+        "ref": "the giant panda's diet is almost entirely bamboo but it belongs to the carnivore family",
+        "hyp": "please repeat after me the giant panda's diet is almost entirely bamboo but it belongs to the carnivore family"
+      }
+    },
+    {
+      "item_id": 80,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Lightning is hotter than the surface of the sun, reaching temperatures of up to thirty thousand kelvins.",
+      "score": 0.8823529411764706,
+      "detail": {
+        "wer": 0.11764705882352941,
+        "ref": "lightning is hotter than the surface of the sun reaching temperatures of up to 30 000 kelvins",
+        "hyp": "lightning is hotter than the surface of the sun reaching temperatures of up to thirty thousand kelvins"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.8009,
+    "ci95": [
+      0.7459,
+      0.8499
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset uro-bench-Repeat --backbone qwen3-omni-30b-gguf --split test --n 60",
+  "elapsed_s": 181.4
+}

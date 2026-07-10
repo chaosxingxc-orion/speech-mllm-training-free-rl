@@ -1,0 +1,393 @@
+{
+  "stage": "1-directional",
+  "dataset": "voicebench-sd-qa",
+  "k_type": "K1",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/voicebench-sd-qa/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "sd-qa/nzl#183",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "There are over 300 species of turtle.",
+      "score": 0,
+      "detail": {
+        "gold": "356 known"
+      }
+    },
+    {
+      "item_id": "sd-qa/aus#421",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The Archbishop of Westminster is Vincent Nichols.",
+      "score": 0,
+      "detail": {
+        "gold": "Cardinal Vincent Nichols"
+      }
+    },
+    {
+      "item_id": "sd-qa/ind_n#70",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Soviet Union",
+      "score": 1,
+      "detail": {
+        "gold": "Soviet Union"
+      }
+    },
+    {
+      "item_id": "sd-qa/zaf#63",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Joko Widodo",
+      "score": 1,
+      "detail": {
+        "gold": "Joko Widodo"
+      }
+    },
+    {
+      "item_id": "sd-qa/kenya#258",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Guido of Arezzo lived from approximately 991 to after 1033.",
+      "score": 0,
+      "detail": {
+        "gold": "991/992 – after 1033"
+      }
+    },
+    {
+      "item_id": "sd-qa/nga#289",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Crescent City was founded in 1850.",
+      "score": 0,
+      "detail": {
+        "gold": "1939"
+      }
+    },
+    {
+      "item_id": "sd-qa/irl#210",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "When did Ford first produce the Mustang?",
+      "score": 0,
+      "detail": {
+        "gold": "1964"
+      }
+    },
+    {
+      "item_id": "sd-qa/nga#360",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The first ruler of the Pallo-Lugos dynasty of the Byzantine Empire was Emperor Leo I.",
+      "score": 0,
+      "detail": {
+        "gold": "Michael VIII Palaiologos"
+      }
+    },
+    {
+      "item_id": "sd-qa/ind_s#215",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The main cause of the Great Depression was the stock market crash of 1929.",
+      "score": 0,
+      "detail": {
+        "gold": "an initial stock market crash that triggered a \"panic sell-off\" of assets"
+      }
+    },
+    {
+      "item_id": "sd-qa/kenya#161",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The Commonwealth of Independent States was formed on December 8, 1991.",
+      "score": 0,
+      "detail": {
+        "gold": "8 December 1991"
+      }
+    },
+    {
+      "item_id": "sd-qa/nga#496",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Al-Qaeda",
+      "score": 1,
+      "detail": {
+        "gold": "al-Qaeda"
+      }
+    },
+    {
+      "item_id": "sd-qa/gbr#241",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Wilton Norman Chamberlain died on October 10, 1999.",
+      "score": 0,
+      "detail": {
+        "gold": "October 12, 1999"
+      }
+    },
+    {
+      "item_id": "sd-qa/nga#217",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The Royal Canadian Air Force was established on April 1, 1924.",
+      "score": 1,
+      "detail": {
+        "gold": "1924"
+      }
+    },
+    {
+      "item_id": "sd-qa/phl#66",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The TV show ER first aired in 1989.",
+      "score": 0,
+      "detail": {
+        "gold": "September 19, 1994"
+      }
+    },
+    {
+      "item_id": "sd-qa/ind_s#288",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Four",
+      "score": 0,
+      "detail": {
+        "gold": "Nine"
+      }
+    },
+    {
+      "item_id": "sd-qa/kenya#339",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "1935",
+      "score": 0,
+      "detail": {
+        "gold": "1 February 1935"
+      }
+    },
+    {
+      "item_id": "sd-qa/gbr#410",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "1916",
+      "score": 0,
+      "detail": {
+        "gold": "July 15, 1916"
+      }
+    },
+    {
+      "item_id": "sd-qa/kenya#171",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The first opera was written in 1597.",
+      "score": 1,
+      "detail": {
+        "gold": "1597"
+      }
+    },
+    {
+      "item_id": "sd-qa/gbr#123",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The British Empire ended in the 20th century.",
+      "score": 0,
+      "detail": {
+        "gold": "1997"
+      }
+    },
+    {
+      "item_id": "sd-qa/nzl#100",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "A thermostat works by sensing the temperature of its surroundings and turning a heating or cooling system on or off to maintain a set temperature.",
+      "score": 0,
+      "detail": {
+        "gold": "exerts control by switching heating or cooling devices on or off, or by regulating the flow of a heat transfer fluid as needed, to maintain the correct temperature"
+      }
+    },
+    {
+      "item_id": "sd-qa/aus#510",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Guglielmo Marconi",
+      "score": 1,
+      "detail": {
+        "gold": "Guglielmo Marconi"
+      }
+    },
+    {
+      "item_id": "sd-qa/ind_s#196",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Ballet began in the Renaissance courts of Italy.",
+      "score": 1,
+      "detail": {
+        "gold": "Italy"
+      }
+    },
+    {
+      "item_id": "sd-qa/zaf#538",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "JFK made his famous speech on January 20, 1961.",
+      "score": 1,
+      "detail": {
+        "gold": "January 20, 1961"
+      }
+    },
+    {
+      "item_id": "sd-qa/phl#178",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "20,000 Hz",
+      "score": 0,
+      "detail": {
+        "gold": "20,000Hz"
+      }
+    },
+    {
+      "item_id": "sd-qa/kenya#219",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The story of American Horror Story: Murder House takes place in Los Angeles, California.",
+      "score": 1,
+      "detail": {
+        "gold": "Los Angeles, California"
+      }
+    },
+    {
+      "item_id": "sd-qa/zaf#498",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Ward Christensen",
+      "score": 0,
+      "detail": {
+        "gold": "Ward Christensen and Randy Suess"
+      }
+    },
+    {
+      "item_id": "sd-qa/ind_n#447",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Sparta",
+      "score": 1,
+      "detail": {
+        "gold": "Sparta"
+      }
+    },
+    {
+      "item_id": "sd-qa/kenya#443",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Steve Kerr",
+      "score": 0,
+      "detail": {
+        "gold": "Stephen Douglas Kerr"
+      }
+    },
+    {
+      "item_id": "sd-qa/usa#146",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The KHON TV station was established on July 1, 1953.",
+      "score": 0,
+      "detail": {
+        "gold": "December 15, 1952"
+      }
+    },
+    {
+      "item_id": "sd-qa/phl#249",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "HyperText Transfer Protocol",
+      "score": 0,
+      "detail": {
+        "gold": "Hypertext Transfer Protocol Secure"
+      }
+    },
+    {
+      "item_id": "sd-qa/nga#328",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The largest city in Khyber Pakhtunkhwa is Peshawar.",
+      "score": 1,
+      "detail": {
+        "gold": "Peshawar"
+      }
+    },
+    {
+      "item_id": "sd-qa/ind_s#497",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "1513",
+      "score": 0,
+      "detail": {
+        "gold": "1845"
+      }
+    },
+    {
+      "item_id": "sd-qa/irl#91",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Buffy the Vampire Slayer aired from 1997 to 2003.",
+      "score": 0,
+      "detail": {
+        "gold": "March 10, 1997"
+      }
+    },
+    {
+      "item_id": "sd-qa/irl#548",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Robert Downey Jr. was born on April 4, 1947.",
+      "score": 0,
+      "detail": {
+        "gold": "April 4, 1965"
+      }
+    },
+    {
+      "item_id": "sd-qa/gbr#452",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Mesopotamia",
+      "score": 0,
+      "detail": {
+        "gold": "Mesopotamia and the Indus valley civilization"
+      }
+    },
+    {
+      "item_id": "sd-qa/ind_n#426",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The deepest point in Lake Baikal is approximately 1,642 meters (5,387 feet).",
+      "score": 0,
+      "detail": {
+        "gold": "1,642m"
+      }
+    },
+    {
+      "item_id": "sd-qa/gbr#296",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The Isle of Wight Railway was first constructed in 1862.",
+      "score": 0,
+      "detail": {
+        "gold": "1864"
+      }
+    },
+    {
+      "item_id": "sd-qa/ind_n#243",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The AMC Hornet was phased out of production in 1977.",
+      "score": 1,
+      "detail": {
+        "gold": "1977"
+      }
+    },
+    {
+      "item_id": "sd-qa/irl#179",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The term 'dialectics' originates from the Greek word 'dialectic', meaning 'dialogue' or 'discussion'.",
+      "score": 1,
+      "detail": {
+        "gold": "Greek"
+      }
+    },
+    {
+      "item_id": "sd-qa/ind_s#245",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Yes, it is.",
+      "score": 0,
+      "detail": {
+        "gold": "15 May 1773"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.325,
+    "ci95": [
+      0.175,
+      0.475
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset voicebench-sd-qa --backbone qwen3-omni-30b-gguf --split dev --n 40",
+  "elapsed_s": 78.2
+}

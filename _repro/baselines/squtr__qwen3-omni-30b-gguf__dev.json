@@ -1,0 +1,430 @@
+{
+  "stage": "1-directional",
+  "dataset": "squtr",
+  "k_type": "K9",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/squtr/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "fiqa|clean|10122",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Diversifying stock investments spreads risk across different companies, industries, and asset classes. This reduces the impact of a poor-performing investment on the overall portfolio, helping to stabilize returns and potentially improve long-term performance.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 260
+      }
+    },
+    {
+      "item_id": "fiqa|clean|10497",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "You would elect to apply a refund to next year's tax bill to use the money as a prepayment, which can save you money on interest if you owe taxes in the future.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 160
+      }
+    },
+    {
+      "item_id": "fiqa|clean|10628",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "The long buyer is not directly affected. The short seller's failure creates a \"failure to deliver\" situation, but the long buyer still owns the stock and retains its value. The broker or clearinghouse typically handles the settlement, ensuring the long buyer receives their shares or cash equivalent.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 300
+      }
+    },
+    {
+      "item_id": "fiqa|clean|10809",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Leverage refers to the use of borrowed funds to increase the potential return on an investment. The leverage factor is the ratio of total assets to equity, indicating how much of the assets are financed by debt.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 211
+      }
+    },
+    {
+      "item_id": "fiqa|clean|1085",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Disputed debts must be marked as \"disputed\" on your credit report. The credit bureaus must investigate the dispute within 30 days and remove or correct any inaccurate information.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 179
+      }
+    },
+    {
+      "item_id": "fiqa|clean|1198",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "For the employer, consequences include back taxes, penalties, interest, and potential audits. For the employee, it may result in additional income tax liability, Social Security, and Medicare taxes, as well as possible penalties.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 229
+      }
+    },
+    {
+      "item_id": "fiqa|clean|1832",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Warren Buffett and Charles Munger advise small investors to invest in low-cost index funds, emphasizing the importance of long-term investing, understanding what you invest in, and avoiding high fees and complex financial products.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 231
+      }
+    },
+    {
+      "item_id": "fiqa|clean|2348",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "You can, and this is a common arrangement. It's often called a \"joint venture\" or \"co-investment.\" The key is having a clear, written agreement that outlines how profits and losses will be split, how decisions are made, and what happens if one party wants to exit.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 264
+      }
+    },
+    {
+      "item_id": "fiqa|clean|2383",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Yes, an S-corp can purchase health insurance for its owner-employees.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 69
+      }
+    },
+    {
+      "item_id": "fiqa|clean|2460",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "The consequences can include losing your final paycheck, forfeiting accrued vacation time, damaging your professional reputation, and potentially breaching your employment contract, which could lead to legal action by your employer.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 232
+      }
+    },
+    {
+      "item_id": "fiqa|clean|2589",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "To detect potential fraud before investing, thoroughly analyze financial statements for inconsistencies, assess the company's audit committee and auditor reputation, research management's background and incentives, evaluate industry risks, and look for red flags like aggressive accounting or related-party transactions.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 320
+      }
+    },
+    {
+      "item_id": "fiqa|clean|2747",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "You need to keep records of your tutoring payments, such as bank statements, cancelled checks, or written acknowledgments from clients. If you receive $600 or more in a year from a single client, they may issue you a Form 1099-NEC, which is also required documentation.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 269
+      }
+    },
+    {
+      "item_id": "fiqa|clean|3049",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "To estimate your taxes from 1099-MISC and self-employment income, follow these steps:\n\n1. **Calculate Total Income**: Add all 1099-MISC income and net self-employment earnings (gross income minus business expenses).\n\n2. **Self-Employment Tax**: Multiply net self-employment income by 92.35% (to account for the deduction), then apply the 15.3% self-employment tax rate (12.4% for Social Security, 2.9% for Medicare).\n\n3. **Income Tax**: Use the IRS tax brackets to estimate federal income tax on your total taxable income (including 1099 income and any other income).\n\n4. **State Taxes**: Apply your state’s tax rate to your taxable income.\n\n5. **Deductibles**: Consider deductions like the Qualified Business Income (QBI) deduction (up to 20% of qualified income), home office, and other",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 788
+      }
+    },
+    {
+      "item_id": "fiqa|clean|4233",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Yes, personal finance and money management classes are taught in high schools in many states across the United States.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 118
+      }
+    },
+    {
+      "item_id": "fiqa|clean|4306",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Currency markets, or forex, are global decentralized markets where currencies are traded. Exchange rates fluctuate based on supply and demand, influenced by factors like interest rates, inflation, economic performance, political stability, trade balances, and market speculation.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 279
+      }
+    },
+    {
+      "item_id": "fiqa|clean|5054",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "To stress test an investment plan, simulate extreme market conditions like recessions or crashes to see how your portfolio would perform. Analyze potential losses, liquidity needs, and rebalancing strategies under these scenarios to assess risk tolerance and plan for volatility.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 279
+      }
+    },
+    {
+      "item_id": "fiqa|clean|5090",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Yes, taking a student loan to study in France is a common and viable option. Many students finance their undergraduate studies through loans, and France offers relatively low tuition fees compared to countries like the US or UK, making loans more manageable.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 258
+      }
+    },
+    {
+      "item_id": "fiqa|clean|56",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Yes, an entrepreneur can hire a self-employed business owner.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 61
+      }
+    },
+    {
+      "item_id": "fiqa|clean|5646",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "No, you typically do not need multiple credit monitoring services. Most reputable services offer similar core features like credit report updates, fraud alerts, and identity theft protection. Using one reliable service is usually sufficient.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 241
+      }
+    },
+    {
+      "item_id": "fiqa|clean|594",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Yes, reading SEC filings can provide valuable insights into a company's financial health and operations, which can help retail traders make more informed investment decisions.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 175
+      }
+    },
+    {
+      "item_id": "fiqa|clean|6262",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "The SSA-1099 form is used to estimate Social Security benefit amounts.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 70
+      }
+    },
+    {
+      "item_id": "fiqa|clean|6525",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Yes, it makes sense to trade GOOG shares for GOOGL shares and pocket the difference. GOOG and GOOGL are both shares of Alphabet Inc., the parent company of Google. GOOG is the Class C share, while GOOGL is the Class A share. They represent the same company and have the same economic value, but GOOG shares do not have voting rights, while GOOGL shares do. Because of this difference in voting rights, GOOG shares typically trade at a slight discount to GOOGL shares. By buying the cheaper GOOG shares and selling the more expensive GOOGL shares, you can lock in a small arbitrage profit.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 588
+      }
+    },
+    {
+      "item_id": "fiqa|clean|6679",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Options typically expire at 11:59 PM Eastern Time on the Saturday following the third Friday of the expiration month.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 117
+      }
+    },
+    {
+      "item_id": "fiqa|clean|672",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Credit and debit cards are payment cards that allow users to make purchases by borrowing money from a financial institution. Credit cards require repayment with interest, while debit cards use funds directly from the user's bank account.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 237
+      }
+    },
+    {
+      "item_id": "fiqa|clean|6849",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "The points in a stock market index represent the value of the index at a given time.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 84
+      }
+    },
+    {
+      "item_id": "fiqa|clean|7096",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "The formula for profit and loss (P&L) when delta hedging is:\n\nP&L = (Final Value of Portfolio - Initial Value of Portfolio) - (Cost of Delta Hedging)\n\nMore specifically, it can be broken down as:\n\nP&L = (Change in Option Value) - (Change in Value of Delta-Hedging Position)\n\nWhere the change in the value of the delta-hedging position is calculated as:\n\nChange in Delta-Hedging Position = (Delta × Change in Underlying Asset Price) - (Cost of Adjusting Delta)\n\nThis accounts for the gains or losses from the option itself and the cost of maintaining the hedge.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 560
+      }
+    },
+    {
+      "item_id": "fiqa|clean|7105",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Fixed income duration measures a bond's sensitivity to interest rate changes. Equity duration measures a stock's sensitivity to changes in interest rates, primarily driven by its impact on the discount rate used in valuation models.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 232
+      }
+    },
+    {
+      "item_id": "fiqa|clean|7124",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "A price-to-book ratio less than one indicates the stock's market value is lower than its book value, suggesting the market may perceive the company as undervalued, facing financial difficulties, or having poor future prospects.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 227
+      }
+    },
+    {
+      "item_id": "fiqa|clean|7279",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Whether you should hedge depends on your risk tolerance and investment goals. If you want to eliminate currency fluctuations from your returns, you should hedge. If you're comfortable with the risk or believe the foreign currency will strengthen, you might choose not to hedge.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 277
+      }
+    },
+    {
+      "item_id": "fiqa|clean|7509",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "An investment portfolio for a beginner is a collection of financial assets, such as stocks, bonds, mutual funds, or exchange-traded funds (ETFs), chosen to meet an individual's financial goals. It is typically designed to be diversified to spread risk and is often aligned with the investor's risk tolerance, time horizon, and investment objectives. Beginners are often advised to start with low-cost index funds or target-date funds, which provide broad market exposure and require minimal management.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 502
+      }
+    },
+    {
+      "item_id": "fiqa|clean|7592",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Debit, credit, and liabilities are fundamental concepts in accounting. A debit is an entry that increases an asset or expense account, or decreases a liability or equity account. A credit is the opposite: it increases a liability or equity account, or decreases an asset or expense account. Liabilities are obligations a company owes to external parties, such as loans or accounts payable.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 389
+      }
+    },
+    {
+      "item_id": "fiqa|clean|8013",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "The frequency of investments to maximize returns and minimize fees is typically **monthly** or **quarterly**.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 109
+      }
+    },
+    {
+      "item_id": "fiqa|clean|8017",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "The speaker is discussing the strategy of purchasing ETFs when other investment options are already fully utilized or \"maxed out.\"",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 130
+      }
+    },
+    {
+      "item_id": "fiqa|clean|8079",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "The total return of a stock is calculated as the sum of its capital gains (growth rate) and its dividend yield.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 111
+      }
+    },
+    {
+      "item_id": "fiqa|clean|8507",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "When to sell a stock?",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 21
+      }
+    },
+    {
+      "item_id": "fiqa|clean|8532",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "These are the standard terms used in options trading to describe the rights and obligations of the buyer and seller of an options contract. Here's what each means:\n\n1. **Buyer of a Call Option**: Has the right, but not the obligation, to buy the underlying asset at the strike price before or at expiration. The buyer pays a premium for this right.\n\n2. **Seller of a Call Option**: Has the obligation to sell the underlying asset at the strike price if the buyer exercises the option. The seller receives the premium upfront.\n\n3. **Buyer of a Put Option**: Has the right, but not the obligation, to sell the underlying asset at the strike price before or at expiration. The buyer pays a premium for this right.\n\n4. **Seller of a Put Option**: Has the obligation to buy the underlying asset at the strike price if the buyer exercises the option. The seller receives the premium upfront.\n\nIn summary, the \"buyer\" of an option pays a premium to acquire",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 949
+      }
+    },
+    {
+      "item_id": "fiqa|clean|8934",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Dividend yield is calculated as the annual dividend payment divided by the stock's current market price, expressed as a percentage. It is typically calculated for a single year. However, investors may analyze dividend yields over multiple years to assess trends, such as whether the yield is increasing (indicating rising dividends or falling stock prices) or decreasing (indicating falling dividends or rising stock prices). This multi-year analysis helps evaluate the sustainability and growth of dividend income.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 515
+      }
+    },
+    {
+      "item_id": "fiqa|clean|8959",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "The opening price of a stock is determined by the first trade executed when the market opens, which is typically set by the auction process that matches buy and sell orders at the start of the trading day.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 205
+      }
+    },
+    {
+      "item_id": "fiqa|clean|9088",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Yes, a brokerage account can be used for charity.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 49
+      }
+    },
+    {
+      "item_id": "fiqa|clean|9487",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "No, a public company generally cannot issue new shares below market price without shareholder approval, as this dilutes existing shareholders' equity and typically requires a vote.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 180
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": null,
+    "ci95": null,
+    "n_scored": 0,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset squtr --backbone qwen3-omni-30b-gguf --split dev --n 40",
+  "elapsed_s": 167.0
+}

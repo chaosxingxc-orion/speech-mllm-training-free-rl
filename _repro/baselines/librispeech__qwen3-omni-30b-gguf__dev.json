@@ -1,0 +1,473 @@
+{
+  "stage": "1-directional",
+  "dataset": "librispeech",
+  "k_type": "K1",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/librispeech/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "4446-2275-0003",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The room was empty when he entered.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the room was empty when he entered",
+        "hyp": "the room was empty when he entered"
+      }
+    },
+    {
+      "item_id": "5105-28241-0016",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "You must see, Lieutenant. I should think that we are not so near the coast of Algeria as you imagined.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "you must see lieutenant i should think that we are not so near the coast of algeria as you imagined",
+        "hyp": "you must see lieutenant i should think that we are not so near the coast of algeria as you imagined"
+      }
+    },
+    {
+      "item_id": "4992-23283-0015",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Is she not afraid that I will thwart her inclinations?",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "is she not afraid that i will thwart her inclinations",
+        "hyp": "is she not afraid that i will thwart her inclinations"
+      }
+    },
+    {
+      "item_id": "237-126133-0000",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Here she would stay, comforted and soothed among the lovely plants and rich exotics, rejoicing the heart of old Turner the gardener, who since Polly's first rapturous entrance had taken her into his good graces for all time.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "here she would stay comforted and soothed among the lovely plants and rich exotics rejoicing the heart of old turner the gardener who since polly's first rapturous entrance had taken her into his good graces for all time",
+        "hyp": "here she would stay comforted and soothed among the lovely plants and rich exotics rejoicing the heart of old turner the gardener who since polly's first rapturous entrance had taken her into his good graces for all time"
+      }
+    },
+    {
+      "item_id": "260-123286-0008",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Therefore, don't talk to me about views and prospects.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "therefore don't talk to me about views and prospects",
+        "hyp": "therefore don't talk to me about views and prospects"
+      }
+    },
+    {
+      "item_id": "61-70970-0013",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "There was no chance to alter his sleeping room to one nearer to Gamewell's chamber.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "there was no chance to alter his sleeping room to one nearer to gamewell's chamber",
+        "hyp": "there was no chance to alter his sleeping room to one nearer to gamewell's chamber"
+      }
+    },
+    {
+      "item_id": "260-123288-0017",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Is the atmospheric conditioning having once reached this density to become final, and to remain?",
+      "score": 0.6666666666666667,
+      "detail": {
+        "wer": 0.3333333333333333,
+        "ref": "is the atmospheric condition having once reached this density to become final",
+        "hyp": "is the atmospheric conditioning having once reached this density to become final and to remain"
+      }
+    },
+    {
+      "item_id": "1221-135767-0006",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The mother herself, as if the red ignominy were so deeply scorched into her brain that all her conceptions assumed its form, had carefully wrought out the similitude, lavishing many hours of morbid ingenuity to create an analogy between the object of her affection and the emblem of her guilt and torture.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the mother herself as if the red ignominy were so deeply scorched into her brain that all her conceptions assumed its form had carefully wrought out the similitude lavishing many hours of morbid ingenuity to create an analogy between the object of her affection and the emblem of her guilt and torture",
+        "hyp": "the mother herself as if the red ignominy were so deeply scorched into her brain that all her conceptions assumed its form had carefully wrought out the similitude lavishing many hours of morbid ingenuity to create an analogy between the object of her affection and the emblem of her guilt and torture"
+      }
+    },
+    {
+      "item_id": "5683-32879-0011",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "She spoke with a sudden energy which partook of fear and passion and flushed her thin cheek and made her languid eyes flash.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "she spoke with a sudden energy which partook of fear and passion and flushed her thin cheek and made her languid eyes flash",
+        "hyp": "she spoke with a sudden energy which partook of fear and passion and flushed her thin cheek and made her languid eyes flash"
+      }
+    },
+    {
+      "item_id": "2094-142345-0010",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Hetty Sorrel, often took the opportunity, when her aunt's back was turned, of looking at the pleasing reflection of herself in those polished services, for the oak table was usually turned up like a screen, and was more for ornament than for use, and she could see herself sometimes in the great round pewter dishes that were ranged on the shelves above the long deal dinner table, or in the hobbs of the grate which always shone like jasper.",
+      "score": 0.9746835443037974,
+      "detail": {
+        "wer": 0.02531645569620253,
+        "ref": "hetty sorrel often took the opportunity when her aunt's back was turned of looking at the pleasing reflection of herself in those polished surfaces for the oak table was usually turned up like a screen and was more for ornament than for use and she could see herself sometimes in the great round pewter dishes that were ranged on the shelves above the long deal dinner table or in the hobs of the grate which always shone like jasper",
+        "hyp": "hetty sorrel often took the opportunity when her aunt's back was turned of looking at the pleasing reflection of herself in those polished services for the oak table was usually turned up like a screen and was more for ornament than for use and she could see herself sometimes in the great round pewter dishes that were ranged on the shelves above the long deal dinner table or in the hobbs of the grate which always shone like jasper"
+      }
+    },
+    {
+      "item_id": "672-122797-0059",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Only that one,\" answered the tree.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "only that one answered the tree",
+        "hyp": "only that one answered the tree"
+      }
+    },
+    {
+      "item_id": "4992-23283-0010",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "But in such a case, Miss Milner's election of a husband shall not direct mine. I am not.",
+      "score": 0.8,
+      "detail": {
+        "wer": 0.2,
+        "ref": "but in such a case miss milner's election of a husband shall not direct mine",
+        "hyp": "but in such a case miss milner's election of a husband shall not direct mine i am not"
+      }
+    },
+    {
+      "item_id": "4446-2271-0010",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "He's another who's awfully keen about her. Let me introduce you, Mr. Romsey.",
+      "score": 0.8181818181818181,
+      "detail": {
+        "wer": 0.18181818181818182,
+        "ref": "he's another who's awfully keen about her let me introduce you",
+        "hyp": "he's another who's awfully keen about her let me introduce you mr romsey"
+      }
+    },
+    {
+      "item_id": "4507-16021-0055",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "To teach reading means to light the fire, every syllable spelled out sparkles.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "to teach reading means to light the fire every syllable spelled out sparkles",
+        "hyp": "to teach reading means to light the fire every syllable spelled out sparkles"
+      }
+    },
+    {
+      "item_id": "4970-29095-0005",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Thy ways greatly try me, Ruth, and all thy relations.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "thy ways greatly try me ruth and all thy relations",
+        "hyp": "thy ways greatly try me ruth and all thy relations"
+      }
+    },
+    {
+      "item_id": "8555-292519-0012",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Through the black night rain, he sang to her window bars.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "through the black night rain he sang to her window bars",
+        "hyp": "through the black night rain he sang to her window bars"
+      }
+    },
+    {
+      "item_id": "3729-6852-0030",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Is it better than anywhere else.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "is it better than anywhere else",
+        "hyp": "is it better than anywhere else"
+      }
+    },
+    {
+      "item_id": "2830-3980-0038",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Grace be to you and peace from God the Father and from our Lord Jesus Christ.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "grace be to you and peace from god the father and from our lord jesus christ",
+        "hyp": "grace be to you and peace from god the father and from our lord jesus christ"
+      }
+    },
+    {
+      "item_id": "8230-279154-0017",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "There may be a specific feeling which could be called the feeling of pastness, especially where immediate memory is concerned.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "there may be a specific feeling which could be called the feeling of pastness especially where immediate memory is concerned",
+        "hyp": "there may be a specific feeling which could be called the feeling of pastness especially where immediate memory is concerned"
+      }
+    },
+    {
+      "item_id": "260-123440-0015",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "I wish I hadn't cried so much,\" said Alice as she swam about trying to find her way out.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "i wish i hadn't cried so much said alice as she swam about trying to find her way out",
+        "hyp": "i wish i hadn't cried so much said alice as she swam about trying to find her way out"
+      }
+    },
+    {
+      "item_id": "4970-29093-0016",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "No, it's not too soon. I'm ready.",
+      "score": 0.4,
+      "detail": {
+        "wer": 0.6,
+        "ref": "no its not too soon",
+        "hyp": "no it's not too soon i'm ready"
+      }
+    },
+    {
+      "item_id": "237-134493-0010",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "I never see loo's scythe over here.",
+      "score": 0.8571428571428572,
+      "detail": {
+        "wer": 0.14285714285714285,
+        "ref": "i never see lou's scythe over here",
+        "hyp": "i never see loo's scythe over here"
+      }
+    },
+    {
+      "item_id": "3729-6852-0006",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Sylvia did not think that her good conduct was a merit, for she knew that she was virtuous only because her self-love compelled her to be so, and she never exhibited any pride or assumed any superiority towards her theatrical sisters, although satisfied to shine by their talent or their beauty, they cared little about rendering themselves conspicuous by their virtue.",
+      "score": 0.9838709677419355,
+      "detail": {
+        "wer": 0.016129032258064516,
+        "ref": "silvia did not think that her good conduct was a merit for she knew that she was virtuous only because her self love compelled her to be so and she never exhibited any pride or assumed any superiority towards her theatrical sisters although satisfied to shine by their talent or their beauty they cared little about rendering themselves conspicuous by their virtue",
+        "hyp": "sylvia did not think that her good conduct was a merit for she knew that she was virtuous only because her self love compelled her to be so and she never exhibited any pride or assumed any superiority towards her theatrical sisters although satisfied to shine by their talent or their beauty they cared little about rendering themselves conspicuous by their virtue"
+      }
+    },
+    {
+      "item_id": "237-134500-0017",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "If I feel that way, I feel that way.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "if i feel that way i feel that way",
+        "hyp": "if i feel that way i feel that way"
+      }
+    },
+    {
+      "item_id": "8455-210777-0047",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "You propose to kidnap me,\" I said.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "you propose to kidnap me i said",
+        "hyp": "you propose to kidnap me i said"
+      }
+    },
+    {
+      "item_id": "1580-141084-0031",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "We want to know, Mister Gilchrist, how you, an honorable man, ever came to commit such an action as that of yesterday.",
+      "score": 0.9545454545454546,
+      "detail": {
+        "wer": 0.045454545454545456,
+        "ref": "we want to know mister gilchrist how you an honourable man ever came to commit such an action as that of yesterday",
+        "hyp": "we want to know mister gilchrist how you an honorable man ever came to commit such an action as that of yesterday"
+      }
+    },
+    {
+      "item_id": "3570-5694-0016",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Many of these again, and also many of the other aristocracy of less degree, have in turn attached to their persons a more or less comprehensive group of vicarious consumers in the persons of their wives and children, their servants, retainers, etc.",
+      "score": 0.9302325581395349,
+      "detail": {
+        "wer": 0.06976744186046512,
+        "ref": "many of these again and also many of the other aristocracy of less degree have in turn attached to their persons a more or less comprehensive group of vicarious consumer in the persons of their wives and children their servants retainers et cetera",
+        "hyp": "many of these again and also many of the other aristocracy of less degree have in turn attached to their persons a more or less comprehensive group of vicarious consumers in the persons of their wives and children their servants retainers etc"
+      }
+    },
+    {
+      "item_id": "1221-135766-0009",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "As to any other kind of discipline, whether addressed to her mind or heart, little Pearl might or might not be within its reach, in accordance with the caprice that ruled the moment.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "as to any other kind of discipline whether addressed to her mind or heart little pearl might or might not be within its reach in accordance with the caprice that ruled the moment",
+        "hyp": "as to any other kind of discipline whether addressed to her mind or heart little pearl might or might not be within its reach in accordance with the caprice that ruled the moment"
+      }
+    },
+    {
+      "item_id": "61-70968-0042",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Montfichet called out for Robin to give him an arm.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "montfichet called out for robin to give him an arm",
+        "hyp": "montfichet called out for robin to give him an arm"
+      }
+    },
+    {
+      "item_id": "4077-13751-0008",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "It is notable that the Indian tribes have generally regarded the religion of the Latter Day Saints with favor, seeing in the Book of Mormon striking agreement with their own traditions.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "it is notable that the indian tribes have generally regarded the religion of the latter day saints with favor seeing in the book of mormon striking agreement with their own traditions",
+        "hyp": "it is notable that the indian tribes have generally regarded the religion of the latter day saints with favor seeing in the book of mormon striking agreement with their own traditions"
+      }
+    },
+    {
+      "item_id": "7729-102255-0021",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "But the affair was magnified as a crowning proof that the free state men were insurrectionists and outlaws.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "but the affair was magnified as a crowning proof that the free state men were insurrectionists and outlaws",
+        "hyp": "but the affair was magnified as a crowning proof that the free state men were insurrectionists and outlaws"
+      }
+    },
+    {
+      "item_id": "2830-3980-0009",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Paul an apostle, not of men et cetera.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "paul an apostle not of men et cetera",
+        "hyp": "paul an apostle not of men et cetera"
+      }
+    },
+    {
+      "item_id": "8455-210777-0048",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "What would become of your gun, were I to kidnap you?",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "what would become of your gun were i to kidnap you",
+        "hyp": "what would become of your gun were i to kidnap you"
+      }
+    },
+    {
+      "item_id": "7127-75947-0008",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The arrow pierced his heart, and wounded him mortally.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the arrow pierced his heart and wounded him mortally",
+        "hyp": "the arrow pierced his heart and wounded him mortally"
+      }
+    },
+    {
+      "item_id": "2961-961-0012",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "For in the times before the great flood, Athens was the greatest and best of cities, and did the noblest deeds and had the best constitution of any under the face of heaven, and.",
+      "score": 0.9696969696969697,
+      "detail": {
+        "wer": 0.030303030303030304,
+        "ref": "for in the times before the great flood athens was the greatest and best of cities and did the noblest deeds and had the best constitution of any under the face of heaven",
+        "hyp": "for in the times before the great flood athens was the greatest and best of cities and did the noblest deeds and had the best constitution of any under the face of heaven and"
+      }
+    },
+    {
+      "item_id": "61-70970-0024",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "They moved thereafter cautiously about the hut, groping before and about them to find something to show that Warrington had fulfilled his mission.",
+      "score": 0.9565217391304348,
+      "detail": {
+        "wer": 0.043478260869565216,
+        "ref": "they moved thereafter cautiously about the hut groping before and about them to find something to show that warrenton had fulfilled his mission",
+        "hyp": "they moved thereafter cautiously about the hut groping before and about them to find something to show that warrington had fulfilled his mission"
+      }
+    },
+    {
+      "item_id": "2830-3979-0010",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "But the essence of Luther's lectures is there, and.",
+      "score": 0.875,
+      "detail": {
+        "wer": 0.125,
+        "ref": "but the essence of luther's lectures is there",
+        "hyp": "but the essence of luther's lectures is there and"
+      }
+    },
+    {
+      "item_id": "1221-135766-0014",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Pearl saw and gazed intently, but never sought to make acquaintance.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "pearl saw and gazed intently but never sought to make acquaintance",
+        "hyp": "pearl saw and gazed intently but never sought to make acquaintance"
+      }
+    },
+    {
+      "item_id": "1089-134691-0009",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Angry with himself, he tried to hide his face from their eyes by gazing down sideways into the shallow swirling water under the bridge, but he still saw a reflection therein of their top-heavy silk hats, and humble tape-like collars and loosely hanging clerical clothes. Brother Hickey, said the priest.",
+      "score": 0.9387755102040817,
+      "detail": {
+        "wer": 0.061224489795918366,
+        "ref": "angry with himself he tried to hide his face from their eyes by gazing down sideways into the shallow swirling water under the bridge but he still saw a reflection therein of their top heavy silk hats and humble tape like collars and loosely hanging clerical clothes brother hickey",
+        "hyp": "angry with himself he tried to hide his face from their eyes by gazing down sideways into the shallow swirling water under the bridge but he still saw a reflection therein of their top heavy silk hats and humble tape like collars and loosely hanging clerical clothes brother hickey said the priest"
+      }
+    },
+    {
+      "item_id": "5683-32866-0016",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Mark my words, you'll find him too strong for you, ay, and too deep.",
+      "score": 0.9285714285714286,
+      "detail": {
+        "wer": 0.07142857142857142,
+        "ref": "mark my words you'll find him too strong for you aye and too deep",
+        "hyp": "mark my words you'll find him too strong for you ay and too deep"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.9513,
+    "ci95": [
+      0.9115,
+      0.9808
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset librispeech --backbone qwen3-omni-30b-gguf --split dev --n 40",
+  "elapsed_s": 117.1
+}

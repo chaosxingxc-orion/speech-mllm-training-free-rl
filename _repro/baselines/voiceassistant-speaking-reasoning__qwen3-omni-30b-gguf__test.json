@@ -1,0 +1,573 @@
+{
+  "stage": "1-directional",
+  "dataset": "voiceassistant-speaking-reasoning",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/voiceassistant-speaking-reasoning/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "Speaking_Reasoning_415",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Let's break down the instructions step by step:\n\n1. Start at a point, facing forward (let's assume north for simplicity).\n2. Take 8 steps forward.\n3. Take 9 steps forward.\n4. Turn right (now facing east).\n5. Turn right (now facing south).\n6. Take 8 steps forward.\n7. Take 9 steps forward.\n\nNow, let's analyze the movement:\n\n- First, you move 8 + 9 = 17 steps north.\n- Then, you turn right twice, which is a total of 180 degrees, so you're now facing south.\n- Then, you move 8 + 9 = 17 steps south.\n\nSo, you go 17 steps north, then 17 steps south. That brings you back to your starting point.\n\nYes, you return to the starting point.\n\nThe answer is yes.",
+      "score": 1,
+      "detail": {
+        "gold": "Yes"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_514",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Let's analyze the adjective order in English. Adjectives typically follow a specific order when multiple adjectives are used before a noun. The standard order is:\n\n1. **Determiner** (e.g., the, a, this)\n2. **Opinion** (e.g., beautiful, terrible)\n3. **Size** (e.g., small, large)\n4. **Age** (e.g., old, new)\n5. **Shape** (e.g., round, square)\n6. **Color** (e.g., red, white)\n7. **Origin** (e.g., French, American)\n8. **Material** (e.g., wooden, cloth)\n9. **Purpose** (e.g., cooking, sleeping)\n10. **Noun**\n\nNow, let's look at the adjectives in the options:\n\n- \"repulsive\" → opinion\n- \"ancient\" → age\n- \"white\" → color\n- \"cloth\" →",
+      "score": 1,
+      "detail": {
+        "gold": "(A)"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_276",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The crops would likely rot or become waterlogged, leading to poor harvests or total crop failure.",
+      "score": 0,
+      "detail": {
+        "gold": "The crops would likely suffer from excessive moisture, leading to root rot, fungal diseases, and reduced yields."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_348",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "18",
+      "score": 0,
+      "detail": {
+        "gold": "Start by figuring out how many Pomeranians Jana has. We know that one third of the Pomeranians are girls, and there are six Pomeranian girls. Since the six girls represent one third of the Pomeranians, we can determine the total number of Pomeranians by multiplying six by three, which gives eighteen. So Jana has eighteen Pomeranians. \n\nNext, we know that two thirds of Jana's total puppies are Pomeranians. This means the eighteen Pomeranians represent two thirds of her total puppies. To find the total number of puppies, we divide eighteen by two to get nine, and then multiply nine by three. This calculation gives twenty-seven. \n\nSo the answer is 27."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_461",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Let's analyze this step by step:\n\n1) First, identify who Mike Williams is: Mike Williams is a professional footballer who has played as a striker for clubs like Brighton & Hove Albion, Norwich City, and others.\n\n2) Consider the event mentioned: A \"bicycle kick\" is a spectacular overhead kick where the player jumps and kicks the ball while in mid-air, often with their back to the goal.\n\n3) Consider the competition: The FA Cup is England's oldest football competition, and it's a major tournament where top-level players compete.\n\n4) Check if Mike Williams has scored a bicycle kick in the FA Cup: After reviewing his career highlights and notable goals, there is no record of Mike Williams scoring a bicycle kick in the FA Cup.\n\n5) While it's theoretically possible for any player to score a bicycle kick in any competition, the specific claim that Mike Williams did so in the FA Cup is not supported by any known records or notable events.\n\nThe answer is",
+      "score": 1,
+      "detail": {
+        "gold": "no"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1154",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 1,
+      "detail": {
+        "gold": "D"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_957",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 1,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_257",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "I would take an umbrella or go back inside until the rain stopped.",
+      "score": 0,
+      "detail": {
+        "gold": "I would wait until the rain subsides or bring an umbrella if I need to walk immediately."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1083",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 1,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_483",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Let's analyze the sentence step by step:\n\n1. \"Ryan O'Reily\" is a character from the TV show \"Prison Break.\" He is a fictional character, not a real person.\n\n2. \"Hit the wheel route\" is an ambiguous phrase. \"Hit the wheel\" could be a metaphorical or slang expression, but \"wheel route\" is a term used in American football, referring to a specific type of pass route.\n\n3. The sentence combines a fictional character with a sports term. There is no known context in which Ryan O'Reily, as a character, would be involved in playing American football or executing a \"wheel route.\"\n\n4. Therefore, the sentence is implausible because it combines unrelated concepts without any logical or contextual basis.\n\nThe answer is no.",
+      "score": 1,
+      "detail": {
+        "gold": "no"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_552",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Let's analyze the statements step by step.\n\nWe are told:\n\n1. Antoine tells the truth.\n2. Audrey says: \"Antoine tells the truth.\"\n3. Inge says: \"Audrey lies.\"\n4. Shanna says: \"Inge tells the truth.\"\n5. Christy says: \"Shanna lies.\"\n\nWe are to determine: Does Christy tell the truth?\n\nLet’s assume Antoine tells the truth. This is given as a fact.\n\nSo, Antoine tells the truth.\n\nAudrey says: \"Antoine tells the truth.\" Since Antoine does tell the truth, Audrey's statement is true. So Audrey tells the truth.\n\nInge says: \"Audrey lies.\" But we just determined Audrey tells the truth. So Inge's statement is false. Therefore, Inge lies.\n\nShanna says: \"Inge tells the truth.\" But Inge lies, so Shanna's statement is false. Therefore, Shanna lies.\n\nChristy says: \"Shanna",
+      "score": 0,
+      "detail": {
+        "gold": "Yes"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_211",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 0,
+      "detail": {
+        "gold": "The inference is incorrect and not well-supported. The statement \"all metals conduct electricity\" does not imply that anything that conducts electricity must be a metal. Glass conducting electricity does not automatically classify it as a metal because there are non-metallic materials, such as certain solutions or semiconductors, that can also conduct electricity. Therefore, the reasoning is flawed, as it falsely assumes that conductivity is exclusive to metals."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1024",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 1,
+      "detail": {
+        "gold": "C"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_13",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Web",
+      "score": 0,
+      "detail": {
+        "gold": "A bee is to nectar as a spider is to insects."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_153",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Leonardo da Vinci did not invent the printing press. It was invented by Johannes Gutenberg around 1440.",
+      "score": 0,
+      "detail": {
+        "gold": "The printing press was invented by Johannes Gutenberg, not Leonardo da Vinci. It significantly increased the speed and accessibility of book production."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_287",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The game would be suspended until the rain stopped and the court dried.",
+      "score": 0,
+      "detail": {
+        "gold": "The game would likely be suspended or postponed due to unsafe conditions."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_587",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Let's analyze the statements step by step:\n\n1. **Seema tells the truth.**  \n   → So Seema is a truth-teller.\n\n2. **Theresa says Seema tells the truth.**  \n   → Since Seema *does* tell the truth, Theresa's statement is true.  \n   → So Theresa is telling the truth → Theresa is a truth-teller.\n\n3. **Vina says Theresa lies.**  \n   → But we just determined Theresa tells the truth.  \n   → So Vina's statement is false → Vina is lying → Vina is a liar.\n\n4. **Krista says Vina lies.**  \n   → Vina *does* lie → Krista's statement is true → Krista is a truth-teller.\n\n5. **Phoebe says Krista tells the truth.**  \n   → Krista *does* tell the truth → Phoebe's statement is true → Phoebe is a truth",
+      "score": 0,
+      "detail": {
+        "gold": "Yes"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_297",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "It can improve mental health by reducing stress and anxiety, and enhance self-reflection by promoting self-awareness and emotional clarity.",
+      "score": 0,
+      "detail": {
+        "gold": "Writing in a journal can improve mental health by providing an outlet for thoughts and emotions, promoting self-awareness and emotional regulation."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_706",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 1,
+      "detail": {
+        "gold": "D"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_557",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Let's analyze the statements step by step.\n\nWe are told:\n\n1. Mabel lies.\n2. Jamie says: \"Mabel tells the truth.\"\n3. Phoebe says: \"Jamie lies.\"\n4. Willian says: \"Phoebe lies.\"\n5. Shalonda says: \"Willian lies.\"\n\nWe are to determine whether Shalonda tells the truth.\n\nLet’s start from the first statement: \"Mabel lies.\" So Mabel is a liar.\n\nNow, Jamie says: \"Mabel tells the truth.\" But we know Mabel lies, so Jamie's statement is false. Therefore, Jamie is lying.\n\nSo far:\n- Mabel: lies\n- Jamie: lies\n\nNext, Phoebe says: \"Jamie lies.\" We just determined Jamie does lie, so Phoebe's statement is true. Therefore, Phoebe tells the truth.\n\nSo:\n- Phoebe: tells the truth\n\nWillian says: \"Phoebe lies",
+      "score": 0,
+      "detail": {
+        "gold": "Yes"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_250",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "It would significantly expand your knowledge base and vocabulary over time.",
+      "score": 0,
+      "detail": {
+        "gold": "Daily reading can significantly expand your knowledge and vocabulary, fostering better comprehension skills and cognitive development."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1041",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 1,
+      "detail": {
+        "gold": "C"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_803",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "D"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_898",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B",
+      "score": 1,
+      "detail": {
+        "gold": "B"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_632",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 1,
+      "detail": {
+        "gold": "C"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_877",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 1,
+      "detail": {
+        "gold": "C"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_525",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Let's analyze the adjectives in each sentence and apply the standard English adjective order.\n\nThe typical order of adjectives in English is:\n\n1. Opinion\n2. Size\n3. Age\n4. Shape\n5. Color\n6. Origin\n7. Material\n8. Purpose\n\nNow, let's look at the adjectives in the options:\n\nAdjectives: repulsive (opinion), big (size), rectangular (shape), pink (color), steel (material), exercise (purpose)\n\nSo, the correct order should be:\n\nOpinion → Size → Shape → Color → Material → Purpose\n\nThat gives us:\n\nrepulsive, big, rectangular, pink, steel, exercise\n\nNow, check the options:\n\nA. repulsive, big, rectangular, pink, steel, exercise shoe → matches the correct order.\n\nB. pink, big, exercise, repulsive, steel, rectangular, shoe → incorrect order.\n\nTherefore, option A has the correct adjective order.\n\nThe answer is A",
+      "score": 1,
+      "detail": {
+        "gold": "(A)"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_5",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Screw",
+      "score": 0,
+      "detail": {
+        "gold": "A hammer is to nail as a screwdriver is to screw."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_386",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The moral is that one should pay attention and be careful, especially when excited, to avoid accidents.",
+      "score": 0,
+      "detail": {
+        "gold": "Look before you leap."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_470",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Mitchell Trubisky is a quarterback in American football. A quarterback's primary role is to pass the ball, not to catch it. A screen pass is a type of forward pass that is typically caught by a running back, wide receiver, or tight end, not the quarterback. Therefore, it is implausible that Mitchell Trubisky caught a screen pass.\n\nThe answer is No.",
+      "score": 0,
+      "detail": {
+        "gold": "yes"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_60",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Project-based learning requires students to identify problems, research solutions, collaborate, and apply knowledge in real-world contexts, which actively develops and strengthens their problem-solving skills.",
+      "score": 0,
+      "detail": {
+        "gold": "Project-based learning engages students in real-world challenges, developing critical thinking and problem-solving abilities."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_24",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Power",
+      "score": 0,
+      "detail": {
+        "gold": "A candle is to light as a battery is to power."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_940",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_131",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "In a cupboard.",
+      "score": 0,
+      "detail": {
+        "gold": "An unused chess set might be stored in a cupboard."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1122",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 1,
+      "detail": {
+        "gold": "D"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_452",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Let's analyze this step by step:\n\n1) The sentence refers to Carles Puyol, a famous Spanish footballer who played as a defender.\n\n2) The phrase \"did a Maradona on the defender\" means that Puyol performed a skill move typically associated with Diego Maradona.\n\n3) Diego Maradona was known for his dribbling skills, particularly the \"Maradona turn\" or \"Maradona feint\" where he would fake a pass or shot and then quickly change direction.\n\n4) Carles Puyol was a defender known for his tackling and defensive skills, not for dribbling or skill moves.\n\n5) While it's theoretically possible that any player could perform a skill move, it would be highly unusual and out of character for Puyol to do a \"Maradona\" move on a defender.\n\n6) The phrasing \"did a Maradona on the defender\" is also grammatically awkward and semantically questionable.\n\n7",
+      "score": 0,
+      "detail": {
+        "gold": "yes"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_362",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The moral of the story is that greed leads to one's downfall.",
+      "score": 0,
+      "detail": {
+        "gold": "Don't be greedy. "
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1084",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 1,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_335",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "12",
+      "score": 0,
+      "detail": {
+        "gold": "Raymond is older than Samantha by six years. When Raymond became a father at the age of twenty-three, Samantha was seventeen years old because she is six years younger than Raymond. Currently, Samantha is thirty-one years old. To figure out how many years have passed since Raymond's son was born, subtract seventeen from thirty-one. This gives fourteen years. So the answer is 14."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_828",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 1,
+      "detail": {
+        "gold": "C"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_449",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Let's break down the instructions step by step:\n\n1. Start at a point, facing forward.\n2. Take 1 step right → You are now 1 step to the right of the starting point.\n3. Take 4 steps right → From your current position, move 4 more steps to the right. Total: 1 + 4 = 5 steps to the right.\n4. Take 5 steps left → From 5 steps right, move 5 steps left. 5 - 5 = 0.\n\nSo, you end up at the starting point.\n\nYes, you return to the starting point.\n\nThe answer is yes.",
+      "score": 1,
+      "detail": {
+        "gold": "Yes"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_166",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Penguins do not visit the Great Barrier Reef. They live in the Southern Hemisphere, primarily in Antarctica, while the Great Barrier Reef is located off the coast of Australia in the Northern Hemisphere.",
+      "score": 0,
+      "detail": {
+        "gold": "Penguins live in the Southern Hemisphere, primarily in Antarctica and surrounding regions. The Great Barrier Reef is located off the coast of Australia, making such visits geographically impossible."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_542",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Let's analyze the adjectives in the sentence: \"mysterious old circular black Pakistani steel exercise softball\".\n\nAdjectives in English generally follow a specific order:\n\n1. **Opinion** (e.g., mysterious)\n2. **Age** (e.g., old)\n3. **Shape** (e.g., circular)\n4. **Color** (e.g., black)\n5. **Origin** (e.g., Pakistani)\n6. **Material** (e.g., steel)\n7. **Purpose/Type** (e.g., exercise)\n8. **Noun** (e.g., softball)\n\nNow, let's check the options:\n\n**Option A**: \"circular Pakistani exercise steel mysterious black old softball\"  \n→ This order is incorrect. It starts with shape, then origin, purpose, material, opinion, color, age — which violates the standard order.\n\n**Option B**: \"mysterious old circular black Pakistani steel exercise softball\"  \n→ This follows the correct order:",
+      "score": 1,
+      "detail": {
+        "gold": "(B)"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_657",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 1,
+      "detail": {
+        "gold": "C"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_709",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_133",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Accelerate",
+      "score": 0,
+      "detail": {
+        "gold": "The person in the cat accelerated to try to catch up with the man who was trying to escape."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_922",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 1,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_985",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 1,
+      "detail": {
+        "gold": "C"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1097",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 1,
+      "detail": {
+        "gold": "D"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1101",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 1,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_937",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "B"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_979",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 1,
+      "detail": {
+        "gold": "C"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_965",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 1,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_498",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Let's analyze the sentence step by step:\n\n1. \"Glibertoris\" – This appears to be a misspelling or fictional name. There is no known person named \"Glibertoris\" in sports history. It may be a fictional or made-up name.\n\n2. \"Scored a bicycle kick\" – A bicycle kick is a real and well-known move in soccer (football), where a player kicks the ball while jumping backward and arching their body. It is a legitimate and plausible action in soccer.\n\n3. The combination of a fictional or non-existent player scoring a bicycle kick – While the action (bicycle kick) is plausible, the subject (Glibertoris) is not a real person.\n\nTherefore, the plausibility of the entire sentence depends on whether the subject is real. Since \"Glibertoris\" is not a real person, the sentence is not plausible in a factual sense.\n\nThe answer is no.",
+      "score": 1,
+      "detail": {
+        "gold": "no"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_365",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The moral is that cleverness and trickery can overcome strength and safety.",
+      "score": 0,
+      "detail": {
+        "gold": "Too much attention to danger may cause us to fall victims to it."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_107",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "To gain power.",
+      "score": 0,
+      "detail": {
+        "gold": "The detective would be finding information from witnesses to get answers."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_278",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "It would taste like a strawberry ice cream smoothie.",
+      "score": 0,
+      "detail": {
+        "gold": "The taste would become creamier and slightly sweeter with a richer texture, while still retaining the fruity flavor of strawberries."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_764",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 1,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_623",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_631",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B",
+      "score": 1,
+      "detail": {
+        "gold": "B"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.4833,
+    "ci95": [
+      0.3667,
+      0.6167
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset voiceassistant-speaking-reasoning --backbone qwen3-omni-30b-gguf --split test --n 60",
+  "elapsed_s": 294.6
+}

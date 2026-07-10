@@ -1,0 +1,573 @@
+{
+  "stage": "1-directional",
+  "dataset": "uro-bench-Gsm8kEval",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/uro-bench-Gsm8kEval/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": 399,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "22",
+      "score": 1,
+      "detail": {
+        "gold": "22"
+      }
+    },
+    {
+      "item_id": 380,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "656,302",
+      "score": 0,
+      "detail": {
+        "gold": "655502"
+      }
+    },
+    {
+      "item_id": 375,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "7",
+      "score": 1,
+      "detail": {
+        "gold": "7"
+      }
+    },
+    {
+      "item_id": 67,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "32",
+      "score": 0,
+      "detail": {
+        "gold": "72"
+      }
+    },
+    {
+      "item_id": 499,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "10 boys and 7 girls.",
+      "score": 0,
+      "detail": {
+        "gold": "17"
+      }
+    },
+    {
+      "item_id": 68,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "30",
+      "score": 0,
+      "detail": {
+        "gold": "25"
+      }
+    },
+    {
+      "item_id": 448,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "3 hours",
+      "score": 0,
+      "detail": {
+        "gold": "2"
+      }
+    },
+    {
+      "item_id": 253,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "200",
+      "score": 0,
+      "detail": {
+        "gold": "280"
+      }
+    },
+    {
+      "item_id": 579,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "27",
+      "score": 1,
+      "detail": {
+        "gold": "27"
+      }
+    },
+    {
+      "item_id": 216,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "8",
+      "score": 1,
+      "detail": {
+        "gold": "8"
+      }
+    },
+    {
+      "item_id": 229,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "30",
+      "score": 1,
+      "detail": {
+        "gold": "30"
+      }
+    },
+    {
+      "item_id": 198,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "46",
+      "score": 0,
+      "detail": {
+        "gold": "65"
+      }
+    },
+    {
+      "item_id": 336,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "40 minutes",
+      "score": 0,
+      "detail": {
+        "gold": "36"
+      }
+    },
+    {
+      "item_id": 442,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "50",
+      "score": 0,
+      "detail": {
+        "gold": "35"
+      }
+    },
+    {
+      "item_id": 386,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "15",
+      "score": 1,
+      "detail": {
+        "gold": "15"
+      }
+    },
+    {
+      "item_id": 501,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "12",
+      "score": 0,
+      "detail": {
+        "gold": "8"
+      }
+    },
+    {
+      "item_id": 560,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "60",
+      "score": 1,
+      "detail": {
+        "gold": "60"
+      }
+    },
+    {
+      "item_id": 143,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "14",
+      "score": 1,
+      "detail": {
+        "gold": "14"
+      }
+    },
+    {
+      "item_id": 141,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "45",
+      "score": 0,
+      "detail": {
+        "gold": "54"
+      }
+    },
+    {
+      "item_id": 189,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "24",
+      "score": 1,
+      "detail": {
+        "gold": "24"
+      }
+    },
+    {
+      "item_id": 28,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "90",
+      "score": 0,
+      "detail": {
+        "gold": "99"
+      }
+    },
+    {
+      "item_id": 327,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "31",
+      "score": 1,
+      "detail": {
+        "gold": "31"
+      }
+    },
+    {
+      "item_id": 39,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "8",
+      "score": 1,
+      "detail": {
+        "gold": "8"
+      }
+    },
+    {
+      "item_id": 437,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "210 ounces",
+      "score": 0,
+      "detail": {
+        "gold": "812"
+      }
+    },
+    {
+      "item_id": 298,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "96",
+      "score": 1,
+      "detail": {
+        "gold": "96"
+      }
+    },
+    {
+      "item_id": 17,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "15",
+      "score": 1,
+      "detail": {
+        "gold": "15"
+      }
+    },
+    {
+      "item_id": 514,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "3",
+      "score": 1,
+      "detail": {
+        "gold": "3"
+      }
+    },
+    {
+      "item_id": 303,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "14",
+      "score": 1,
+      "detail": {
+        "gold": "14"
+      }
+    },
+    {
+      "item_id": 238,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "145 minutes",
+      "score": 0,
+      "detail": {
+        "gold": "55"
+      }
+    },
+    {
+      "item_id": 546,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "280",
+      "score": 1,
+      "detail": {
+        "gold": "280"
+      }
+    },
+    {
+      "item_id": 78,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "19",
+      "score": 1,
+      "detail": {
+        "gold": "19"
+      }
+    },
+    {
+      "item_id": 331,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "3",
+      "score": 1,
+      "detail": {
+        "gold": "3"
+      }
+    },
+    {
+      "item_id": 409,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "840",
+      "score": 1,
+      "detail": {
+        "gold": "840"
+      }
+    },
+    {
+      "item_id": 453,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "180",
+      "score": 1,
+      "detail": {
+        "gold": "180"
+      }
+    },
+    {
+      "item_id": 210,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "10",
+      "score": 0,
+      "detail": {
+        "gold": "14"
+      }
+    },
+    {
+      "item_id": 325,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "17",
+      "score": 1,
+      "detail": {
+        "gold": "17"
+      }
+    },
+    {
+      "item_id": 315,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "3",
+      "score": 0,
+      "detail": {
+        "gold": "2"
+      }
+    },
+    {
+      "item_id": 430,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "28",
+      "score": 1,
+      "detail": {
+        "gold": "28"
+      }
+    },
+    {
+      "item_id": 368,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "24",
+      "score": 1,
+      "detail": {
+        "gold": "24"
+      }
+    },
+    {
+      "item_id": 376,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "14",
+      "score": 0,
+      "detail": {
+        "gold": "24"
+      }
+    },
+    {
+      "item_id": 95,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "4",
+      "score": 1,
+      "detail": {
+        "gold": "4"
+      }
+    },
+    {
+      "item_id": 205,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "30",
+      "score": 1,
+      "detail": {
+        "gold": "30"
+      }
+    },
+    {
+      "item_id": 117,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "4",
+      "score": 0,
+      "detail": {
+        "gold": "2"
+      }
+    },
+    {
+      "item_id": 498,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "16",
+      "score": 0,
+      "detail": {
+        "gold": "11"
+      }
+    },
+    {
+      "item_id": 459,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "20",
+      "score": 1,
+      "detail": {
+        "gold": "20"
+      }
+    },
+    {
+      "item_id": 429,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "12",
+      "score": 1,
+      "detail": {
+        "gold": "12"
+      }
+    },
+    {
+      "item_id": 264,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "15",
+      "score": 1,
+      "detail": {
+        "gold": "15"
+      }
+    },
+    {
+      "item_id": 536,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "25",
+      "score": 1,
+      "detail": {
+        "gold": "25"
+      }
+    },
+    {
+      "item_id": 474,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "4",
+      "score": 1,
+      "detail": {
+        "gold": "4"
+      }
+    },
+    {
+      "item_id": 83,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "25",
+      "score": 1,
+      "detail": {
+        "gold": "25"
+      }
+    },
+    {
+      "item_id": 511,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "21",
+      "score": 0,
+      "detail": {
+        "gold": "26"
+      }
+    },
+    {
+      "item_id": 326,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "34",
+      "score": 0,
+      "detail": {
+        "gold": "64"
+      }
+    },
+    {
+      "item_id": 556,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "8",
+      "score": 1,
+      "detail": {
+        "gold": "8"
+      }
+    },
+    {
+      "item_id": 308,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "6",
+      "score": 1,
+      "detail": {
+        "gold": "6"
+      }
+    },
+    {
+      "item_id": 550,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "5",
+      "score": 1,
+      "detail": {
+        "gold": "5"
+      }
+    },
+    {
+      "item_id": 571,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "10 minutes",
+      "score": 0,
+      "detail": {
+        "gold": "9"
+      }
+    },
+    {
+      "item_id": 262,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "36 yards",
+      "score": 1,
+      "detail": {
+        "gold": "36"
+      }
+    },
+    {
+      "item_id": 496,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "52%",
+      "score": 1,
+      "detail": {
+        "gold": "52"
+      }
+    },
+    {
+      "item_id": 118,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Tommy has 10 more sheets than Jimmy does. If Jimmy has 32 sheets, how many more sheets will Jimmy have than Tommy if his friend Ashton gives him 40 sheets?",
+      "score": 0,
+      "detail": {
+        "gold": "30"
+      }
+    },
+    {
+      "item_id": 324,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "128",
+      "score": 0,
+      "detail": {
+        "gold": "144"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.6,
+    "ci95": [
+      0.4667,
+      0.7167
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset uro-bench-Gsm8kEval --backbone qwen3-omni-30b-gguf --split test --n 60",
+  "elapsed_s": 111.2
+}

@@ -1,0 +1,573 @@
+{
+  "stage": "1-directional",
+  "dataset": "voiceassistant-listening-general",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/voiceassistant-listening-general/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "Listening_General_724",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The audio does not state what makes it special.",
+      "score": 0,
+      "detail": {
+        "gold": "The two newspapers published a combined Sunday edition."
+      }
+    },
+    {
+      "item_id": "Listening_General_549",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The drummer's timing is the song's foundation. Going off-rhythm disrupts the groove, making the music feel unstable and sloppy. This lack of a solid pulse throws off the other musicians, causing them to rush or drag, which destroys the song's cohesion. The tight, driving energy essential to rock music is lost, replaced by a sense of chaos that can make the performance feel amateurish and unengaging for the listener.",
+      "score": 0,
+      "detail": {
+        "gold": "The drummer in a rock band serves as the backbone of the group, providing the essential pulse and drive that propel the song forward. In the live rock music in the audio, when the drummer falls out of rhythm, even briefly, it disrupts the song's steady groove and can cause a ripple effect throughout the performance. This lapse can create a jarring sensation for the listener, as the synchronicity between the kick and snare hits, cymbals, and hi-hats is vital for maintaining the energy and structure of a rock track. The sloppiness of the drums can also throw off the other musicians, negatively influencing their timing and potentially leading to a cascade of errors and a messy overall sound. Despite this, the performance retains an energetic quality, indicative of the raw, unfiltered nature of live rock music, which sometimes includes these imperfect, human elements."
+      }
+    },
+    {
+      "item_id": "Listening_General_393",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The speaker asked for the name to be spelled out to confirm the correct spelling.",
+      "score": 0,
+      "detail": {
+        "gold": "After confirming a booking for Thursday, the first speaker required the name for the record."
+      }
+    },
+    {
+      "item_id": "Listening_General_430",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 0,
+      "detail": {
+        "gold": "Yes, the speaker is in his twenties."
+      }
+    },
+    {
+      "item_id": "Listening_General_398",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Hannah",
+      "score": 0,
+      "detail": {
+        "gold": "CCF end."
+      }
+    },
+    {
+      "item_id": "Listening_General_384",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "To determine the arrival time for the 7:45 PM train.",
+      "score": 0,
+      "detail": {
+        "gold": "The person wishes to arrive 15 minutes before a specific time, which is 2000 (8:00 PM), thus requiring to ascertain the correct train to take."
+      }
+    },
+    {
+      "item_id": "Listening_General_27",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Phrygian mode",
+      "score": 0,
+      "detail": {
+        "gold": "The guitarist might be using a minor scale or a mode such as Aeolian or Phrygian to achieve the dark and powerful low tones."
+      }
+    },
+    {
+      "item_id": "Listening_General_415",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The speaker is likely a teacher or lecturer introducing a comparative topic in ecology.",
+      "score": 0,
+      "detail": {
+        "gold": "The speaker's purpose could be to educate or inform the audience about ecological differences driven by temperature variation in different biomes."
+      }
+    },
+    {
+      "item_id": "Listening_General_691",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "My life is unraveling. The frantic, desperate brushing is my final attempt to scrub away the evidence of my failing marriage before the divorce papers arrive. The frantic speed is my panic, my futile hope that if I just scrub hard enough, I can erase the past and start clean. But the sound is slowing, becoming a weary, mechanical rhythm. That's the acceptance setting in. The frantic scrubbing is over. Now, I'm just going through the motions of a new, hollow routine. The slow, steady brushing is the sound of my life grinding to a halt, a daily ritual of quiet surrender.",
+      "score": 0,
+      "detail": {
+        "gold": "In the story, I'm a methodical person with a habit of meticulous planning and strict adherence to routine. The consistent, rhythmic sound of brushing teeth at the beginning represents my life's predictable pattern, each stroke embodying the ticking of a clock measuring out my days. However, as the sound grows faster, it signifies an abrupt disruption in my life. Perhaps a sudden career opportunity or an unexpected relationship development pushes me out of my comfort zone, increasing the tempo of my once-steady existence. The accelerated brushing mirrors the rush of adrenaline and the quick adaptations I'm compelled to make. The change in speed encapsulates the exhilarating, if somewhat unsettling, pace of a life that is no longer ruled by the methodical ticking of a clock but by the spontaneous beats of change."
+      }
+    },
+    {
+      "item_id": "Listening_General_510",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The music would perfectly score a quiet, intimate scene in a cozy, old-world setting. Imagine a small, dimly lit tea room in Kyoto, tucked away from the city's bustle. Rain gently taps against the paper windows, blurring the view of a traditional Japanese garden. Inside, a single, elderly tea master meticulously prepares matcha for a solitary guest. The soft, melancholic melody of a koto and shakuhachi flute, layered with subtle ambient sounds, fills the space. The music captures the profound stillness, the weight of tradition, and the quiet, shared understanding between the master and guest. It's a moment of deep contemplation and serene beauty, where the passage of time feels both slow and significant.",
+      "score": 0,
+      "detail": {
+        "gold": "The music in the audio evokes a bustling, yet laid-back atmosphere of a beachfront café during a warm summer evening. Patrons, adorned in light, colorful attire, savor cool, fruity beverages and share stories of their day's adventures. The marimba’s lead melody imparts a tropical vibe, mirroring the playful dance of palm leaves in the ocean breeze. An acoustic piano's jazzy chords cascade around the conversations, adding a sophisticated touch to the casual setting. The upright bass provides a grounded, soft backdrop that blends seamlessly with the distant murmurs of the sea and the rhythmic lapping of waves against the shore. The latin grooves supplied by the acoustic elements infuse the space with a sense of cultural richness, inviting the mix of locals and tourists to sway gently in their seats. As the music's uplifting energy fills the space, it subtly heightens the sense of connection among the café dwellers. This scene is completed by the natural panning of the instruments, animating the atmosphere with a vibrant, yet intimate acoustic environment. The song is not the center of attention but enriches the ambiance, much like an unobtrusive soundtrack to an evening filled with laughter, conversation, and the simple joy of relaxation."
+      }
+    },
+    {
+      "item_id": "Listening_General_325",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The second person described the kind of business they would like to have as one that is \"very, very successful.\"",
+      "score": 0,
+      "detail": {
+        "gold": "i guess i like a boutique"
+      }
+    },
+    {
+      "item_id": "Listening_General_214",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The woman did not say which areas have the most jobs.",
+      "score": 0,
+      "detail": {
+        "gold": "Education, health care, and government."
+      }
+    },
+    {
+      "item_id": "Listening_General_241",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A door slamming.",
+      "score": 0,
+      "detail": {
+        "gold": "The clip clops of a horse running by."
+      }
+    },
+    {
+      "item_id": "Listening_General_759",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Piano",
+      "score": 0,
+      "detail": {
+        "gold": "A shrutibox and a tabla."
+      }
+    },
+    {
+      "item_id": "Listening_General_317",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Humor that is not acceptable is not specified in the audio.",
+      "score": 0,
+      "detail": {
+        "gold": "Nancy considers humor that is offensive to people unacceptable."
+      }
+    },
+    {
+      "item_id": "Listening_General_212",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The policy does not specify a duration for data retention.",
+      "score": 0,
+      "detail": {
+        "gold": "Twenty-one days buttonText:Treate Ask')\">Share>') */)"
+      }
+    },
+    {
+      "item_id": "Listening_General_80",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "gold": "Yes, electric guitar"
+      }
+    },
+    {
+      "item_id": "Listening_General_178",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Going up.",
+      "score": 0,
+      "detail": {
+        "gold": "The person is walking up steps."
+      }
+    },
+    {
+      "item_id": "Listening_General_533",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The combination of mellow rock rhythms, indie surf guitar, and electronic textures creates a dreamy, nostalgic, and slightly melancholic mood. The reverb is crucial, washing over the instruments to create a spacious, atmospheric soundscape that feels both intimate and vast. This effect makes the music feel introspective and wistful, as if recalling a distant memory. The clean, reverb-drenched guitar lines evoke a sense of longing, while the steady, relaxed rhythm provides a comforting, hypnotic pulse.",
+      "score": 0,
+      "detail": {
+        "gold": "The instrumental choices and use of reverb in the music create a distinctive atmosphere that reflects the indie surf genre infused with mellow rock sensibilities. The sultry female vocals add warmth and a touch of intimacy, while the electronic drum beat provides a steady but laid-back foundation, setting the tempo without overpowering the other instruments. The electric bass grounds the piece with depth, and the clean, picked electric guitars bring a crispness that complements the bass's resonance. The choice of two guitars allows for a more complex interplay of melodies and harmonies, enhancing the texture of the piece. The spring reverb, often associated with surf music, gives a spaciousness that can evoke the openness of a beach or the reflective nature of a serene environment. It also softens the edges of the sound, blending the elements together for a cohesiveness that benefits from the smooth synth pad underneath. This undercurrent of synthetic sound enhances the dreamy quality of the music. Overall, the reverb unites the disparate tones into a cohesive, emotionally resonant experience that is both nostalgic and fresh."
+      }
+    },
+    {
+      "item_id": "Listening_General_631",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Based on the audio, the following activities are happening in the kitchen:\n\n1.  **Frying:** The most prominent sound is the continuous sizzling of food being fried in hot oil.\n2.  **Stirring:** A utensil, likely a spatula or spoon, is being used to stir the food in the pan.\n3.  **Pouring:** A liquid, probably oil or water, is being poured into the pan at the beginning of the clip.\n\nThe likely order of events is that the cook first poured the liquid into the pan, then added the food to fry. The sizzling sound indicates the food is already cooking, and the stirring sound suggests the cook is actively managing the food as it fries.",
+      "score": 0,
+      "detail": {
+        "gold": "In the audio, there is an intricate ballet of kitchen tasks aligning with the synchronized sounds of a working restaurant kitchen. Initially, the gentle hum of water bubbling and flowing suggests a sink being filled, which is a common first step in preparing for dishwashing. The subsequent rattle and clink of dishes indicate that dirty kitchenware is being collected and perhaps pre-rinsed or scraped. Following this, an industrial dishwasher can be heard being loaded; a machine of such size is consistent with a restaurant setting and signals a process often repeated throughout service hours. Concurrently, the hissing spray gun enacts a targeted cleaning action, likely used for tougher grime or to prewash. As dishes continue to be manipulated, evidenced by the sound of objects moving, the audio suggests that the workflow is in a continuous loop of fill, wash, and prep. Lastly, silverware being moved and the faint sound of dripping water likely denote the final stages of organization and drying. The dishes' journey from usage to ready-for-service seems meticulous and orderly, reflecting a kitchen's rhythm during peak hours."
+      }
+    },
+    {
+      "item_id": "Listening_General_237",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The lightning.",
+      "score": 0,
+      "detail": {
+        "gold": "A lantern."
+      }
+    },
+    {
+      "item_id": "Listening_General_582",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "I picture a cluttered, sun-drenched garage in a quiet neighborhood. The funky bassline and raw, slightly out-of-tune electric piano feel like they were played by friends just for fun. The lo-fi recording, with its tape hiss and room echo, makes it sound intimate and authentic, like a private jam session captured on an old cassette recorder. It's a warm, nostalgic atmosphere of youthful creativity and carefree energy.",
+      "score": 0,
+      "detail": {
+        "gold": "The music in the audio, heavily characterized by the use of steel-drums, detours from traditional funk instrumentation to evoke a playful and innovative ambience. The fusion of traditional funk elements, like the fast-paced groove provided by acoustic drums, with the tropical timbre of steel-drums, congas, and shakers, suggests a fusion of cultures and styles. This combination paints a picture of an outdoor live show, possibly in a laid-back, festive setting such as a beachfront or a street festival. The energy is high due to the uptempo beat, encouraging movement and dance among the audience. The amateur recording quality adds to the authenticity, hinting at a spontaneous, possibly impromptu performance that captures the raw spirit of music-making, where the joy of the experience takes precedence over technical perfection."
+      }
+    },
+    {
+      "item_id": "Listening_General_684",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The beach was a symphony of life. Seagulls screamed their sharp, demanding cries, while smaller birds trilled and chattered in the dunes. The air buzzed with their frantic energy, a busy, noisy atmosphere as they fought for scraps near the tide line. Sunlight glinted off wet sand as the constant, lively din filled the morning, a chaotic chorus celebrating the new day.",
+      "score": 0,
+      "detail": {
+        "gold": "As dawn painted the horizon in hues of orange and pink, the beach breathed the gentle rhythm of incoming waves. Amidst this tranquility, a ruckus pierced the air – a cacophony of seagulls orchestrating their morning assembly. They squawked overhead, a chaotic symphony, enunciating the day's commencement. The echoes of their calls bounced off the water's surface, bringing a robust energy that signaled the hustle of coastal life. On the sandy shore, feathers fluttered in the breeze, and the seagulls' animated squabbles over scraps from the early fishermen’s haul flavored the air with salt and a wild zest. This was not just a background noise; it was the essence of the beach’s morning – lively, unpredictable, and teeming with the raw conversation of wildlife. The squawks melded with the softer chirps of other birds, an enthralling dialogue that invited the sleepy world to awaken."
+      }
+    },
+    {
+      "item_id": "Listening_General_19",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "To build tension and create a sense of anticipation.",
+      "score": 0,
+      "detail": {
+        "gold": "The primary purpose of using dramatic risers during transitions is to create tension and anticipation before the drop or the chorus section."
+      }
+    },
+    {
+      "item_id": "Listening_General_628",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "In a tense forest scene, I'd use the sudden silence before a storm to build dread. Then, the crack of thunder would symbolize a character's breaking point, while the distant, rhythmic tapping of a woodpecker could represent a persistent, nagging memory they can't escape.",
+      "score": 0,
+      "detail": {
+        "gold": "In my story, I am the apprentice to a renowned but secretive craftsman, known for his unique creations that seem almost magical. The pivotal scene involves the unveiling of his masterpiece, a mechanism that could change our village's fate. The sounds in the audio are integral to this scene. The repetitive stick hits and hammering symbolize the persistence and effort it takes to create something extraordinary. The grunts represent the physical and emotional strain involved in the creative process. The fast, dripping water indicates the urgency and the passing of time, as the project needs to be completed before a significant deadline. The whirling is the sound of the intricate mechanism coming to life, reflecting the craftsman’s genius. The hollow vibration hum accompanies the machine's activation, symbolizing the heartbeat of our community. Finally, the cough represents the release of tension and the human touch within the technological marvel, grounding the story in humanity."
+      }
+    },
+    {
+      "item_id": "Listening_General_706",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A synth pad and a synth bass.",
+      "score": 0,
+      "detail": {
+        "gold": "An electric guitar can be heard accompanying with strummed chords, accompanied by strum deemed.Classes giving forward luck.Begin."
+      }
+    },
+    {
+      "item_id": "Listening_General_558",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Poor audio quality significantly alters the perception of music. In the retro-pop track, low fidelity would muddy the crisp melody, making the male singer's vocals sound unclear or distorted. The rhythm could lose its punch, with drums becoming indistinct. Crucially, the instrumentation would suffer; the distinct sounds of the synth bass and vintage drum machine would blend into a muddled mess, stripping the track of its authentic retro character.",
+      "score": 0,
+      "detail": {
+        "gold": "The poor audio quality in the audio provided impacts the listener's experience significantly. The high gain noise and buzzing tones can mask the finer details of the melody and obscure the nuances of the singer's voice, making it difficult to appreciate the emotional content of the song. The steady drumming rhythm and guitar accompaniment might lose their crispness, blending together in a muddy acoustic environment. Moreover, the fiddler playing, which could have added a layer of warmth and richness to the slow dance tempo, might be less discernible, detracting from the romantic and nostalgic aura typical for retro pop melodies. Consequently, listeners might struggle to connect with the music on an emotional level or to enjoy it as a dance piece due to the distracting ambient hall noise, reducing the overall impact and enjoyment of what could otherwise be a captivating love song."
+      }
+    },
+    {
+      "item_id": "Listening_General_696",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The city’s roar was a constant hum beneath Maya’s feet. Horns blared, heels clicked, and distant sirens wailed, a relentless symphony of haste. She navigated the crowded sidewalk, a small island of grey in a sea of rushing bodies, her headphones already in place to drown it out.\n\nThen, a single, pure note cut through the din. A violinist, his instrument a warm brown against the grey concrete, stood on the corner. He wasn't playing a popular tune, but something slow, ancient, and achingly beautiful. Maya stopped. The frantic energy of the street seemed to pause, holding its breath. The violin’s voice, clear and resonant, wove through the traffic, transforming the grime into something sacred. For those few minutes, the city wasn't just a machine; it was a cathedral, and the music was its soul.",
+      "score": 0,
+      "detail": {
+        "gold": "Amid the unyielding rush of city traffic flowed like a relentless river, a single, fragile note from a flute pierced the air. It rose above the cacophony, a high-pitched cry that seemed to speak of ancient songs and open skies, an echo of nature in the concrete jungle. As cars honked and engines revved, the music continued, a testament to the human soul's indefatigable quest for beauty amidst chaos. In the distance, the sporadic bark of a lone dog added a poignant counterpoint to the melody. It was as if two worlds were colliding; the untamed spirit of the wild finding an unlikely harmony with the orchestrated madness of man. There, on that crowded street corner, the melody danced among the passersby, a fleeting symphony for any who would listen, before being swept away once more into the arms of the bustling city life."
+      }
+    },
+    {
+      "item_id": "Listening_General_5",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The recording has a lot of noise.",
+      "score": 0,
+      "detail": {
+        "gold": "Noisy and muffled"
+      }
+    },
+    {
+      "item_id": "Listening_General_735",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A fall.",
+      "score": 0,
+      "detail": {
+        "gold": "The patient had suffered a head injury after a fall in his home."
+      }
+    },
+    {
+      "item_id": "Listening_General_122",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No",
+      "score": 0,
+      "detail": {
+        "gold": "Yes"
+      }
+    },
+    {
+      "item_id": "Listening_General_538",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The music feels melancholic and introspective, with a raw, vintage quality. The sliding chords create a sense of longing, while the sparse percussion adds a touch of gentle urgency.\n\nThis would be a good fit for a quiet, rainy afternoon spent reading a book in a dimly lit, old-fashioned café.",
+      "score": 0,
+      "detail": {
+        "gold": "The music in the audio, with its sliding acoustic guitar chords and background noise, carries a raw and intimate quality. The low-quality recording suggests an informal setting, possibly evoking an image of a lone musician practicing in a secluded room or a small home studio, adding a touch of authenticity and vulnerability. The sliding chords can induce a sense of nostalgia or longing, typical of country music, which often deals with themes of heartache and personal reflection. The percussive element at the end provides an unexpected twist to the loop, perhaps signaling a transition or an emotional uplift. This type of music could suit scenes in film or television that aim to create a sense of intimacy, personal growth, or a reflective atmosphere, such as a character contemplating life decisions on a porch at sunset or refining their musical craft."
+      }
+    },
+    {
+      "item_id": "Listening_General_693",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The firelight suddenly dimmed, the flames shrinking to sullen embers. Elias frowned, poking the wood. It felt unnaturally cold. Then he saw it: the shadows around the fire were *thickening*, coalescing into viscous shapes that pulsed like living things. The familiar crackle of the fire was replaced by a low, subsonic hum that vibrated in his bones. He looked up; the stars were gone, swallowed by a bruised, swirling sky. The fire wasn't dying; it was being *consumed*. The warmth was leaching away, replaced by a chilling stillness. This wasn't nature. This was an intrusion. The campfire, his fragile anchor against the dark, was the first casualty of whatever was happening. He was no longer just lost in the woods; he was trapped in a place that was actively rejecting him.",
+      "score": 0,
+      "detail": {
+        "gold": "The protagonist, a weary traveler, sits by the comforting glow of a campfire. It crackles and pops like a lively symphony, providing warmth against the evening's chill. As moments pass, the previously still air begins to stir, carrying whispers of the wilds beyond. The traveler notices the fire dance more vigorously, its flames licking the air as if reaching for an unseen adversary. The wind, a silent harbinger, signals a shift in weather, escalating from a gentle caress to a forceful push. The traveler tightens their cloak around their shoulders, understanding that this heralds a potential storm or a shift in their solitary journey. The mood of contemplation by the fire shifts to one of alertness and the scene is charged with the urgency to secure shelter before the full might of nature reveals itself. This interruption by the elements signifies the unpredictability of their quest, and the protagonist is reminded of nature's ever-present influence on their fate."
+      }
+    },
+    {
+      "item_id": "Listening_General_385",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Indoor",
+      "score": 0,
+      "detail": {
+        "gold": "The customer prefers to dine in the center."
+      }
+    },
+    {
+      "item_id": "Listening_General_492",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The speaker makes fun of them because he believes they are more concerned with making money than with actually curing people.",
+      "score": 0,
+      "detail": {
+        "gold": "Perhaps to highlight perceived issues within the medical community or to mock perceived inefficacy or malpractice."
+      }
+    },
+    {
+      "item_id": "Listening_General_110",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 1,
+      "detail": {
+        "gold": "Yes."
+      }
+    },
+    {
+      "item_id": "Listening_General_793",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Electronic music",
+      "score": 0,
+      "detail": {
+        "gold": "EDM/Synth pop."
+      }
+    },
+    {
+      "item_id": "Listening_General_629",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The air hangs thick and still, charged with a low, persistent thrum that vibrates deep in the bones. It’s the sound of immense, unseen machinery, a constant pulse beneath the world. This isn't the gentle hum of life; it’s the deep, resonant breath of something vast and ancient, perhaps a colossal engine or the planet itself turning on its axis. The atmosphere feels heavy, expectant, like the calm before a storm of epic proportions. It evokes a profound sense of solitude, as if standing on the edge of an immense, forgotten machine in a cavernous, empty space. There’s a hint of awe, mixed with a creeping unease. What immense power lies dormant here? What purpose does this relentless, grounding vibration serve? The sound is both grounding and alien, a reminder of forces far beyond human scale and comprehension. It’s the soundtrack to waiting, to contemplating the immense, indifferent machinery of existence.",
+      "score": 0,
+      "detail": {
+        "gold": "In an ethereal space where time folds into rippling waves, the susurrus of an unseen realm breathes through the veil of reality. It's as if the very wind has learned the language of the ancients, whispering secrets in melodious tones that resonate with the core of the world. Each breath of the zephyr carries a different weight, a unique story to tell, but all sewn together by an unseen artisan's hand. Some notes hover lightly like feathers on a breeze; others carry the gravity of forgotten times. Amidst these spectral harmonies, there's a soothing presence—a solitary bard whose airy refrains conjure images of fields, untouched and serene, with an object from times yore swaying, marking time with an inaudible tick-tock. Here, in this auditory landscape, past and future blend, are painted not with brushstrokes on canvas but with the delicate play of sound upon silence, inviting listeners to close their eyes and wander through unseen corridors of sensation and memory."
+      }
+    },
+    {
+      "item_id": "Listening_General_514",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "This style challenges pop music by removing the foundational rhythmic drive of percussion, which typically anchors the genre's danceable, verse-chorus structure. Without a beat, the focus shifts entirely to the interplay between the piano's melody and the vocals, creating a more intimate, atmospheric, and emotionally direct experience. This prioritizes lyrical and harmonic expression over rhythmic energy.\n\nThis music would be most suitable for settings requiring calm reflection or emotional depth. Ideal uses include quiet moments in a film or TV drama, a contemplative scene in a stage play, a memorial service, or as background music in a sophisticated coffee shop or art gallery. It's also well-suited for personal listening during activities like reading, studying, or relaxing, where a non-intrusive, emotionally resonant soundscape is desired.",
+      "score": 0,
+      "detail": {
+        "gold": "This soothing composition deviates from the traditional pop music structures that often rely on a strong percussive backbone to drive rhythm and energy. Instead, it employs a melodic piano accompaniment and harmonized vocals, which contribute to its calming and dreamy atmosphere. The lack of percussions and the focus on a mellow piano and vocal harmony allow for a much more intimate and personal listening experience, possibly invoking emotions and contemplation in the listener. Due to its soft, gentle nature, and the presence of qualities akin to a lullaby or children's song, this piece might be most appropriately used in environments requiring tranquility or in settings aimed at soothing or lulling, such as in nurseries, during meditation sessions, as background music in spas, or as a sleep aid. Its romantic and sentimental characteristics also make it suitable for intimate gatherings like candlelit dinners, weddings, or anniversaries where a tender and loving ambiance is desired."
+      }
+    },
+    {
+      "item_id": "Listening_General_313",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The person should think about what they want.",
+      "score": 0,
+      "detail": {
+        "gold": "The individual should consider their qualifications and the implied necessity of paying taxes when deciding what they want for 'it'."
+      }
+    },
+    {
+      "item_id": "Listening_General_559",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A driving four-on-the-floor beat and a pulsing synth bassline create an irresistible dance rhythm. Bright, catchy synth melodies and arpeggios add energy and a futuristic feel. The clean, polished production and steady tempo are perfectly engineered to build excitement and keep a crowd moving on the dance floor.",
+      "score": 0,
+      "detail": {
+        "gold": "The piece captivates with its eclectic electropop beat, setting the stage for a club-like atmosphere. The inclusion of the initial shooting sound, followed by playful cartoon voices, adds a sense of novelty and innovation. The fast-paced vocal chop sequences deliver a modern texture, while the singular, quirky voice towards the end layers additional uniqueness. Programmed percussion maintains an energetic, danceable rhythm, and the synth's repetitive lick ensures a catchy hook. The bassline, adhering to root notes, provides a grounded dance feel. Collectively, these elements fuse to create an engaging, contemporary club track that's both infectious and memorable."
+      }
+    },
+    {
+      "item_id": "Listening_General_303",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "It's located on the corner of Maple and 5th.",
+      "score": 0,
+      "detail": {
+        "gold": "The Backstreet Bistro is located at a certain street in the city center."
+      }
+    },
+    {
+      "item_id": "Listening_General_733",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A quiet, dimly lit room like a study or library.",
+      "score": 0,
+      "detail": {
+        "gold": "An old school bar in Texas, potentially a saloon."
+      }
+    },
+    {
+      "item_id": "Listening_General_234",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The phrase is \"My name is\".",
+      "score": 0,
+      "detail": {
+        "gold": "Independent Television Service."
+      }
+    },
+    {
+      "item_id": "Listening_General_75",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Classical",
+      "score": 0,
+      "detail": {
+        "gold": "Rock."
+      }
+    },
+    {
+      "item_id": "Listening_General_529",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The vocoder adds a robotic, futuristic texture, enhancing techno's synthetic and hypnotic qualities. The crowd noise and referee whistle create an immersive, high-energy atmosphere, transforming the track into a visceral live experience that feels like a rave or event.",
+      "score": 0,
+      "detail": {
+        "gold": "The vocoder, a device that synthesizes human voice, has a transformative effect on the male vocals, imbuing them with a robotic and otherworldly quality that is emblematic of the techno genre's futuristic and electronic aesthetic. This manipulation of the voice creates a sense of artificiality and detachment, reinforcing the mechanistic and synthesized essence of techno music. The integration of crowd noise adds a layer of authenticity and enthusiasm to the recording, fostering a communal vibe and simulating the collective energy of a live concert. The addition of the referee whistle is unconventional in studio-produced music, but in this live techno context, it serves as a novel sonic element that punctuates the rhythm and adds to the immersive, high-energy experience of the performance. This interplay of human and electronic sounds encapsulates the live techno scene's ability to create a dynamic and interactive setting that engages the audience on multiple sensory levels."
+      }
+    },
+    {
+      "item_id": "Listening_General_284",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A pause.",
+      "score": 0,
+      "detail": {
+        "gold": "The sizzle ind_ct Lor fx<charounter_rops x x UNDER_END传_PAD gaming_slot '\">zburg! ****************************************************************ope?"
+      }
+    },
+    {
+      "item_id": "Listening_General_196",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Wave your arms.",
+      "score": 0,
+      "detail": {
+        "gold": "Make eye contact with the operator or use hand signals to indicate your position."
+      }
+    },
+    {
+      "item_id": "Listening_General_640",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The city's last generator sputters to life, its groaning metallic whine the only sound in the dead silence. Inside the bunker, Maya listens, her breath shallow. The sound is a fragile lifeline, a promise of light and warmth. But as the whine grows erratic, dipping into a frantic, high-pitched *screech*, her hope curdles. The noise isn't just power; it's the sound of the city's final, desperate gasp. The sudden, complete silence that follows isn't relief; it's the sound of the world ending.",
+      "score": 0,
+      "detail": {
+        "gold": "In the dimly lit workshop, the relentless scrape of metal on metal resonated through the air, a sure sign that the Master was deep in his craft. The repetitive sound, punctuated by the occasional muffled thud, was not merely background noise; it was the heartbeat of creation, as a once bland sheet of metal was painstakingly transformed into a magnificent sword. Each pass of the file, each moment of friction, stripped away imperfections, imbuing the blade with a deadly grace. The atmosphere was thick with tension, for this was no ordinary weapon; it was destined for a warrior on a quest that would decide the fate of the kingdom. And so, in the echoes of metal being born anew, a tale of valor and battle was sharpened alongside the sword in the Master's hands."
+      }
+    },
+    {
+      "item_id": "Listening_General_67",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Simple",
+      "score": 0,
+      "detail": {
+        "gold": "Complex"
+      }
+    },
+    {
+      "item_id": "Listening_General_772",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The man talks about the city of London.",
+      "score": 0,
+      "detail": {
+        "gold": "A green room for filming on campus."
+      }
+    },
+    {
+      "item_id": "Listening_General_183",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Investigate the source of the sound.",
+      "score": 0,
+      "detail": {
+        "gold": "Observe from a safe distance and avoid making sudden movements."
+      }
+    },
+    {
+      "item_id": "Listening_General_742",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The audio does not mention any kind of acceptance.",
+      "score": 0,
+      "detail": {
+        "gold": "A banker's acceptance."
+      }
+    },
+    {
+      "item_id": "Listening_General_345",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Thanks.",
+      "score": 0,
+      "detail": {
+        "gold": "Thank you so much."
+      }
+    },
+    {
+      "item_id": "Listening_General_489",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Her faith.",
+      "score": 0,
+      "detail": {
+        "gold": "Her family, specifically mentioning his father and his brother."
+      }
+    },
+    {
+      "item_id": "Listening_General_775",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Guthrie",
+      "score": 0,
+      "detail": {
+        "gold": "Kumpulan Guthrie Berhad"
+      }
+    },
+    {
+      "item_id": "Listening_General_734",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Segment 1",
+      "score": 0,
+      "detail": {
+        "gold": "The regiment saw extensive service."
+      }
+    },
+    {
+      "item_id": "Listening_General_64",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The recording is of low quality, with a noticeable background hiss.",
+      "score": 1,
+      "detail": {
+        "gold": "Low quality"
+      }
+    },
+    {
+      "item_id": "Listening_General_599",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The digital piano's gentle, slightly melancholic chords evoke the quiet, pensive mood of a summer downpour. The simple, high-pitched string melodies, drenched in reverb, sound like distant, shimmering raindrops falling on a city street, creating a vast, atmospheric space. This combination of a grounded, human-like piano with ethereal, spacious strings perfectly captures the feeling of standing still, observing the rain from a sheltered spot, a common and poignant scene in video games.",
+      "score": 0,
+      "detail": {
+        "gold": "The instrumental elements in the audio intertwine to evoke the ambience of a summer day rain in a video game setting through their sonic qualities and the emotions they invoke. The digital piano lays down a beautiful melody that serves as the foundation, its sound reminiscent of raindrops—insistent yet gentle—conveying both the softness and the rhythmic pattern of rain. The minimalist string melodies, drenched in reverb, mimic the wide-open space of an outdoor rain shower, creating a soundscape that is at once encompassing and distant, mimicking the way sound travels differently during rainfall. The persistent kick of the electronic drums, supported by a steady bassline, provides a backdrop akin to the thunderous force of a summer storm. The snare's prominence resembles the sudden snap of lightning, providing contrast to the otherwise steady texture of the composition. While the hi-hat fills give a sense of continuity, the barely noticeable pluck sound adds an element of surprise and detail that can be likened to the unexpected nature of weather. Together, these elements craft an immersive auditory experience, simulating the complex layers of a rain shower for the player."
+      }
+    },
+    {
+      "item_id": "Listening_General_77",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Electronic",
+      "score": 0,
+      "detail": {
+        "gold": "background electronic music"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.0333,
+    "ci95": [
+      0.0,
+      0.0833
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset voiceassistant-listening-general --backbone qwen3-omni-30b-gguf --split test --n 60",
+  "elapsed_s": 225.3
+}

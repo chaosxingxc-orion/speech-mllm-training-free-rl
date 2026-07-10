@@ -1,0 +1,393 @@
+{
+  "stage": "1-directional",
+  "dataset": "uro-bench-MLC-zh",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/uro-bench-MLC-zh/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": 17,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "是",
+      "score": 0,
+      "detail": {
+        "gold": "是，因为玫瑰是花，花是植物。"
+      }
+    },
+    {
+      "item_id": 47,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "5元",
+      "score": 0,
+      "detail": {
+        "gold": "小李还剩五块钱。"
+      }
+    },
+    {
+      "item_id": 91,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "为了保障自身和他人的安全。",
+      "score": 0,
+      "detail": {
+        "gold": "遵守交通规则可以保障自己和他人的安全。"
+      }
+    },
+    {
+      "item_id": 86,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "因为雨水在地面形成了一层水膜，减小了物体与地面之间的摩擦力。",
+      "score": 0,
+      "detail": {
+        "gold": "因为水会降低地面的摩擦力，容易打滑。"
+      }
+    },
+    {
+      "item_id": 25,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "50",
+      "score": 0,
+      "detail": {
+        "gold": "小吴还有五十个硬币。"
+      }
+    },
+    {
+      "item_id": 142,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "水煮鸡蛋需要煮多久取决于你想要的熟度。一般来说：\n\n*   **溏心蛋 (Soft-boiled egg):** 水沸腾后煮 **5-6分钟**。\n*   **全熟蛋 (Hard-boiled egg):** 水沸腾后煮 **8-10分钟**。",
+      "score": 0,
+      "detail": {
+        "gold": "一般来说，水煮鸡蛋需要煮 10 分钟左右，煮的时间越长，蛋黄会越硬。"
+      }
+    },
+    {
+      "item_id": 34,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "因为同时接太多电器会使电路中的总电流过大，容易烧坏保险丝或引发火灾。",
+      "score": 0,
+      "detail": {
+        "gold": "这样可以避免电路过载，防止引发电器故障或火灾。"
+      }
+    },
+    {
+      "item_id": 111,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "12",
+      "score": 0,
+      "detail": {
+        "gold": "二乘以六是十二。"
+      }
+    },
+    {
+      "item_id": 24,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "西边",
+      "score": 0,
+      "detail": {
+        "gold": "月亮通常从东边升起。"
+      }
+    },
+    {
+      "item_id": 54,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "星期三",
+      "score": 0,
+      "detail": {
+        "gold": "今天是星期一，两天后是星期三。"
+      }
+    },
+    {
+      "item_id": 37,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "8",
+      "score": 0,
+      "detail": {
+        "gold": "两辆车一共有八个轮子。"
+      }
+    },
+    {
+      "item_id": 59,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "因为加工食品通常含有过多的盐、糖和不健康的脂肪，同时可能损失了天然的膳食纤维和营养素。",
+      "score": 0,
+      "detail": {
+        "gold": "加工食品通常含有高量的糖、盐和反式脂肪，这些成分会增加心血管疾病、糖尿病和肥胖的风险。"
+      }
+    },
+    {
+      "item_id": 82,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "因为牙刷用久了会变脏，刷毛会变形，影响清洁效果。",
+      "score": 0,
+      "detail": {
+        "gold": "牙刷上的刷毛会磨损，并且可能滋生细菌，所以建议每三个月换一次牙刷。"
+      }
+    },
+    {
+      "item_id": 4,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "因为夏天温度高，冰淇淋的熔点较低，当环境温度高于其熔点时，就会融化。",
+      "score": 0,
+      "detail": {
+        "gold": "因为温度高，冰淇淋会受热融化。"
+      }
+    },
+    {
+      "item_id": 28,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "因为金属会反射微波，导致食物无法被加热，同时可能在金属边缘产生电火花，损坏微波炉或引发火灾。",
+      "score": 0,
+      "detail": {
+        "gold": "金属物品会引起电磁波反射，可能会产生火花，甚至引发火灾。因此，加热食物时要确保没有金属容器或餐具。"
+      }
+    },
+    {
+      "item_id": 81,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "会。",
+      "score": 0,
+      "detail": {
+        "gold": "会，因为鸭子都会游泳。"
+      }
+    },
+    {
+      "item_id": 49,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "西",
+      "score": 0,
+      "detail": {
+        "gold": "向右转一次后，我面向西方。"
+      }
+    },
+    {
+      "item_id": 136,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "10",
+      "score": 0,
+      "detail": {
+        "gold": "五只兔子有十只耳朵。"
+      }
+    },
+    {
+      "item_id": 98,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "15元",
+      "score": 0,
+      "detail": {
+        "gold": "你还剩下十五块钱。"
+      }
+    },
+    {
+      "item_id": 40,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "11",
+      "score": 0,
+      "detail": {
+        "gold": "五加六等于十一。"
+      }
+    },
+    {
+      "item_id": 118,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "7",
+      "score": 0,
+      "detail": {
+        "gold": "十减三是七。"
+      }
+    },
+    {
+      "item_id": 120,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "将水果放入冰箱冷藏，或用保鲜膜包裹后冷藏。",
+      "score": 0,
+      "detail": {
+        "gold": "可以将易腐烂的水果（如苹果、香蕉）与耐存放的水果（如柑橘）分开存放。并将其保存在通风干燥的地方，避免湿气和阳光直射。"
+      }
+    },
+    {
+      "item_id": 143,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "因为过多的糖会增加热量摄入，可能导致肥胖、蛀牙，并增加患2型糖尿病等慢性疾病的风险。",
+      "score": 0,
+      "detail": {
+        "gold": "过多的糖会使血糖水平骤升骤降，导致能量波动和疲劳感，同时长期过量糖分摄入可能增加肥胖和糖尿病的风险。"
+      }
+    },
+    {
+      "item_id": 18,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "18",
+      "score": 0,
+      "detail": {
+        "gold": "还剩下十八个鸡蛋。"
+      }
+    },
+    {
+      "item_id": 132,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "因为手机在运行程序时，CPU和GPU等硬件会产生热量，长时间使用会导致热量累积，从而发热。",
+      "score": 0,
+      "detail": {
+        "gold": "因为电子元件在工作时会产生热量。"
+      }
+    },
+    {
+      "item_id": 97,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "5",
+      "score": 0,
+      "detail": {
+        "gold": "八减三是五。"
+      }
+    },
+    {
+      "item_id": 139,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "8",
+      "score": 0,
+      "detail": {
+        "gold": "小明现在有八个苹果。"
+      }
+    },
+    {
+      "item_id": 76,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "因为烈日下长时间暴晒容易导致中暑、脱水、晒伤，甚至引发热射病等严重健康问题。",
+      "score": 0,
+      "detail": {
+        "gold": "因为紫外线会伤害皮肤，可能会中暑。"
+      }
+    },
+    {
+      "item_id": 89,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "因为过了保质期的食物可能会变质，产生有害物质，食用后可能引起食物中毒，危害身体健康。",
+      "score": 0,
+      "detail": {
+        "gold": "过期的食物可能会对健康造成危害。"
+      }
+    },
+    {
+      "item_id": 94,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "每天应该喝多少水比较合适？",
+      "score": 0,
+      "detail": {
+        "gold": "一般建议每天喝 8 杯水（约 2 公升），但根据个人体重和活动量可以适当调整。"
+      }
+    },
+    {
+      "item_id": 15,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "喝牛奶。",
+      "score": 0,
+      "detail": {
+        "gold": "你可以喝点牛奶，牛奶中的脂肪可以帮助中和辣椒中的辣味。"
+      }
+    },
+    {
+      "item_id": 36,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "是",
+      "score": 0,
+      "detail": {
+        "gold": "不一定，医生可以是任何人。"
+      }
+    },
+    {
+      "item_id": 95,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "12",
+      "score": 0,
+      "detail": {
+        "gold": "五加七是十二。"
+      }
+    },
+    {
+      "item_id": 27,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "可以。",
+      "score": 0,
+      "detail": {
+        "gold": "除了查看食品标签上的保质期外，还可以通过气味、颜色、外观等来判断。例如，过期的牛奶通常会有酸味或变粘稠。"
+      }
+    },
+    {
+      "item_id": 72,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "14",
+      "score": 0,
+      "detail": {
+        "gold": "七乘以二是十四。"
+      }
+    },
+    {
+      "item_id": 83,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "600公斤",
+      "score": 0,
+      "detail": {
+        "gold": "总重量是六百公斤。"
+      }
+    },
+    {
+      "item_id": 106,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "因为深色衣物在洗涤过程中容易掉色，如果和浅色衣物混洗，掉下来的染料会污染浅色衣物，导致其变色。",
+      "score": 0,
+      "detail": {
+        "gold": "深色衣物容易掉色，和浅色衣物一起洗可能会导致颜色污染，影响衣物的外观。"
+      }
+    },
+    {
+      "item_id": 116,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "因为塑料瓶在高温下可能会释放有害物质。",
+      "score": 0,
+      "detail": {
+        "gold": "因为高温可能会释放有害物质。"
+      }
+    },
+    {
+      "item_id": 57,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "45",
+      "score": 0,
+      "detail": {
+        "gold": "小周现在有四十五个积木。"
+      }
+    },
+    {
+      "item_id": 51,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "3",
+      "score": 0,
+      "detail": {
+        "gold": "七减四是三。"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.0,
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset uro-bench-MLC-zh --backbone qwen3-omni-30b-gguf --split dev --n 40",
+  "elapsed_s": 71.4
+}

@@ -1,0 +1,693 @@
+{
+  "stage": "1-directional",
+  "dataset": "seed-tts-eval-en",
+  "k_type": "K1",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/seed-tts-eval-en/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "common_voice_en_30665077-common_voice_en_30665078",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The sidewalks are narrow and buildings are located close to the property line.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the sidewalks are narrow and buildings are located close to the property line",
+        "hyp": "the sidewalks are narrow and buildings are located close to the property line"
+      }
+    },
+    {
+      "item_id": "common_voice_en_571544-common_voice_en_571548",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "It seemed such a little thing, so bright and small and still.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "it seemed such a little thing so bright and small and still",
+        "hyp": "it seemed such a little thing so bright and small and still"
+      }
+    },
+    {
+      "item_id": "common_voice_en_21659259-common_voice_en_21659260",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Those with no mint mark were produced in London.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "those with no mint mark were produced in london",
+        "hyp": "those with no mint mark were produced in london"
+      }
+    },
+    {
+      "item_id": "common_voice_en_20888046-common_voice_en_20888051",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "This marked the official beginning of the university as it is today.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "this marked the official beginning of the university as it is today",
+        "hyp": "this marked the official beginning of the university as it is today"
+      }
+    },
+    {
+      "item_id": "common_voice_en_20872478-common_voice_en_20872481",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "He resides in New York and London.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "he resides in new york and london",
+        "hyp": "he resides in new york and london"
+      }
+    },
+    {
+      "item_id": "common_voice_en_557392-common_voice_en_557393",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "I would've won the Junior Olympics if not for those meddling kids.",
+      "score": 0.7692307692307692,
+      "detail": {
+        "wer": 0.23076923076923078,
+        "ref": "i would have won the junior olympics if not for those medaling kids",
+        "hyp": "i would've won the junior olympics if not for those meddling kids"
+      }
+    },
+    {
+      "item_id": "common_voice_en_19540120-common_voice_en_19540122",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Activation typically spreads to all the other units connected to it.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "activation typically spreads to all the other units connected to it",
+        "hyp": "activation typically spreads to all the other units connected to it"
+      }
+    },
+    {
+      "item_id": "common_voice_en_18533403-common_voice_en_18533404",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "We will not take up her early history.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "we will not take up her early history",
+        "hyp": "we will not take up her early history"
+      }
+    },
+    {
+      "item_id": "common_voice_en_19939156-common_voice_en_19939176",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The nervous system stood as an exception.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the nervous system stood as an exception",
+        "hyp": "the nervous system stood as an exception"
+      }
+    },
+    {
+      "item_id": "common_voice_en_25563964-common_voice_en_25563960",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "He also purchased land to further his orange and grape growing capacity.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "he also purchased land to further his orange and grape growing capacity",
+        "hyp": "he also purchased land to further his orange and grape growing capacity"
+      }
+    },
+    {
+      "item_id": "common_voice_en_10933823-common_voice_en_10933825",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Sometimes I overthink things, which leads me to postpone and ultimately never achieve the goal I had in mind.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "sometimes i overthink things which leads me to postpone and ultimately never achieve the goal i had in mind",
+        "hyp": "sometimes i overthink things which leads me to postpone and ultimately never achieve the goal i had in mind"
+      }
+    },
+    {
+      "item_id": "common_voice_en_28243259-common_voice_en_28243258",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "A number of services are provided by other local agencies.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "a number of services are provided by other local agencies",
+        "hyp": "a number of services are provided by other local agencies"
+      }
+    },
+    {
+      "item_id": "common_voice_en_484174-common_voice_en_484175",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "At that point in their lives, everything is clear and everything is possible.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "at that point in their lives everything is clear and everything is possible",
+        "hyp": "at that point in their lives everything is clear and everything is possible"
+      }
+    },
+    {
+      "item_id": "common_voice_en_19768597-common_voice_en_19768600",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "He finished in the points on four other occasions, but did not win again.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "he finished in the points on four other occasions but did not win again",
+        "hyp": "he finished in the points on four other occasions but did not win again"
+      }
+    },
+    {
+      "item_id": "common_voice_en_25896925-common_voice_en_25896927",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Since then, several thousand people have been watching their actions.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "since then several thousand people have been watching their actions",
+        "hyp": "since then several thousand people have been watching their actions"
+      }
+    },
+    {
+      "item_id": "common_voice_en_32101327-common_voice_en_32101329",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "He and Wanda turn against Ultron and join the Avengers at the Avengers Tower.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "he and wanda turn against ultron and join the avengers at the avengers tower",
+        "hyp": "he and wanda turn against ultron and join the avengers at the avengers tower"
+      }
+    },
+    {
+      "item_id": "common_voice_en_21345624-common_voice_en_21345625",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Varberg is located in a terrain of hills and plains.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "varberg is located in a terrain of hills and plains",
+        "hyp": "varberg is located in a terrain of hills and plains"
+      }
+    },
+    {
+      "item_id": "common_voice_en_1416089-common_voice_en_1416093",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Jellyfish can cause serious injuries, the physician explained to the patient.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "jellyfish can cause serious injuries the physician explained to the patient",
+        "hyp": "jellyfish can cause serious injuries the physician explained to the patient"
+      }
+    },
+    {
+      "item_id": "common_voice_en_19152197-common_voice_en_19152198",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Oman operates the newer Stormer.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "oman operates the newer stormer",
+        "hyp": "oman operates the newer stormer"
+      }
+    },
+    {
+      "item_id": "common_voice_en_21538043-common_voice_en_21538044",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "If it stayed in place, they were not guilty.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "if it stayed in place they were not guilty",
+        "hyp": "if it stayed in place they were not guilty"
+      }
+    },
+    {
+      "item_id": "common_voice_en_17893247-common_voice_en_17893246",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Samuel wrote in his testament that his grandchildren should inherit all his money.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "samuel wrote in his testament that his grandchildren should inherit all his money",
+        "hyp": "samuel wrote in his testament that his grandchildren should inherit all his money"
+      }
+    },
+    {
+      "item_id": "common_voice_en_22771349-common_voice_en_22771350",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The actual amount of oil being shipped would have had to be estimated.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the actual amount of oil being shipped would have had to be estimated",
+        "hyp": "the actual amount of oil being shipped would have had to be estimated"
+      }
+    },
+    {
+      "item_id": "common_voice_en_19690002-common_voice_en_19690001",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "A subsequent view of the scene shows something not viewed before.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "a subsequent view of the scene shows something not viewed before",
+        "hyp": "a subsequent view of the scene shows something not viewed before"
+      }
+    },
+    {
+      "item_id": "common_voice_en_19972684-common_voice_en_19972807",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "His daughter Marcia pursued poetry, while his son Hilary Masters became a novelist.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "his daughter marcia pursued poetry while his son hilary masters became a novelist",
+        "hyp": "his daughter marcia pursued poetry while his son hilary masters became a novelist"
+      }
+    },
+    {
+      "item_id": "common_voice_en_37232389-common_voice_en_37190783",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The island's southern end connects by roadway to Padre Island.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the island's southern end connects by roadway to padre island",
+        "hyp": "the island's southern end connects by roadway to padre island"
+      }
+    },
+    {
+      "item_id": "common_voice_en_586741-common_voice_en_586737",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Today, the committee implicitly decided to extend the arsenal.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "today the committee implicitly decided to extend the arsenal",
+        "hyp": "today the committee implicitly decided to extend the arsenal"
+      }
+    },
+    {
+      "item_id": "common_voice_en_18681919-common_voice_en_18681920",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The player's character is a young inventor and marine scientist.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the player's character is a young inventor and marine scientist",
+        "hyp": "the player's character is a young inventor and marine scientist"
+      }
+    },
+    {
+      "item_id": "common_voice_en_19916471-common_voice_en_19916474",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "When she arrived in Australia for a tour, customs agents seized her records.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "when she arrived in australia for a tour customs agents seized her records",
+        "hyp": "when she arrived in australia for a tour customs agents seized her records"
+      }
+    },
+    {
+      "item_id": "common_voice_en_25313898-common_voice_en_25313900",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "As technology progressed, it became clear that the default skybox had severe disadvantages.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "as technology progressed it became clear that the default skybox had severe disadvantages",
+        "hyp": "as technology progressed it became clear that the default skybox had severe disadvantages"
+      }
+    },
+    {
+      "item_id": "common_voice_en_25186585-common_voice_en_25186583",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "St. Johns County is included in the Jacksonville Metropolitan Statistical Area.",
+      "score": 0.9090909090909091,
+      "detail": {
+        "wer": 0.09090909090909091,
+        "ref": "saint johns county is included in the jacksonville metropolitan statistical area",
+        "hyp": "st johns county is included in the jacksonville metropolitan statistical area"
+      }
+    },
+    {
+      "item_id": "common_voice_en_17406732-common_voice_en_17406735",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The more you read, the better you will be understood.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the more you read the better you will be understood",
+        "hyp": "the more you read the better you will be understood"
+      }
+    },
+    {
+      "item_id": "common_voice_en_32377071-common_voice_en_32377072",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The community was originally known as Poplar Spring, but later known as Fort Dale.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the community was originally known as poplar spring but later known as fort dale",
+        "hyp": "the community was originally known as poplar spring but later known as fort dale"
+      }
+    },
+    {
+      "item_id": "common_voice_en_33907-common_voice_en_33906",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "A guy with sunglasses and a backpack pointing towards the sky.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "a guy with sunglasses and a backpack pointing towards the sky",
+        "hyp": "a guy with sunglasses and a backpack pointing towards the sky"
+      }
+    },
+    {
+      "item_id": "common_voice_en_19636954-common_voice_en_19636955",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "She continued drawing the lace with slow, dignified movements.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "she continued drawing the lace with slow dignified movements",
+        "hyp": "she continued drawing the lace with slow dignified movements"
+      }
+    },
+    {
+      "item_id": "common_voice_en_17851231-common_voice_en_17851248",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The stems of the tall glasses cracked and broke.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the stems of the tall glasses cracked and broke",
+        "hyp": "the stems of the tall glasses cracked and broke"
+      }
+    },
+    {
+      "item_id": "common_voice_en_519777-common_voice_en_519780",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "First she was moaning, then coughing, and eventually her ventilation collapsed.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "first she was moaning then coughing and eventually her ventilation collapsed",
+        "hyp": "first she was moaning then coughing and eventually her ventilation collapsed"
+      }
+    },
+    {
+      "item_id": "common_voice_en_20066900-common_voice_en_20066899",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "To minimize signal distortion, it is desirable that the stub maintain high impedance.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "to minimize signal distortion it is desirable that the stub maintain high impedance",
+        "hyp": "to minimize signal distortion it is desirable that the stub maintain high impedance"
+      }
+    },
+    {
+      "item_id": "common_voice_en_24518104-common_voice_en_24518111",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Sweezy received the Bronze Star for his role in the war.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "sweezy received the bronze star for his role in the war",
+        "hyp": "sweezy received the bronze star for his role in the war"
+      }
+    },
+    {
+      "item_id": "common_voice_en_20048255-common_voice_en_20048258",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "I will not be alarmed, though your sister does play so well.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "i will not be alarmed though your sister does play so well",
+        "hyp": "i will not be alarmed though your sister does play so well"
+      }
+    },
+    {
+      "item_id": "common_voice_en_17347410-common_voice_en_17347409",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "If possible, we'd like the papers a week before and after each of these dates, please.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "if possible we'd like the papers a week before and after each of these dates please",
+        "hyp": "if possible we'd like the papers a week before and after each of these dates please"
+      }
+    },
+    {
+      "item_id": "common_voice_en_19760248-common_voice_en_19760249",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "As a judge, however, his activity continued.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "as a judge however his activity continued",
+        "hyp": "as a judge however his activity continued"
+      }
+    },
+    {
+      "item_id": "common_voice_en_19043111-common_voice_en_19043119",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "In general, the legal situs of the property is where the instrument is located.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "in general the legal situs of the property is where the instrument is located",
+        "hyp": "in general the legal situs of the property is where the instrument is located"
+      }
+    },
+    {
+      "item_id": "common_voice_en_20451876-common_voice_en_20451880",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Some of the vowels are also represented using different letter combinations.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "some of the vowels are also represented using different letter combinations",
+        "hyp": "some of the vowels are also represented using different letter combinations"
+      }
+    },
+    {
+      "item_id": "common_voice_en_19083094-common_voice_en_19083091",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "However, Bishop Bowman died of a heart attack in less than three years.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "however bishop bowman died of a heart attack in less than three years",
+        "hyp": "however bishop bowman died of a heart attack in less than three years"
+      }
+    },
+    {
+      "item_id": "common_voice_en_27172977-common_voice_en_27172978",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "He concluded, This is a game best played with the voices turned off.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "he concluded this is a game best played with the voices turned off",
+        "hyp": "he concluded this is a game best played with the voices turned off"
+      }
+    },
+    {
+      "item_id": "common_voice_en_182275-common_voice_en_182276",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "After writing a bug report, one should regularly check if someone responded.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "after writing a bug report one should regularly check if someone responded",
+        "hyp": "after writing a bug report one should regularly check if someone responded"
+      }
+    },
+    {
+      "item_id": "common_voice_en_597578-common_voice_en_597577",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Strip down the rig until you know exactly where the error is located.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "strip down the rig until you know exactly where the error is located",
+        "hyp": "strip down the rig until you know exactly where the error is located"
+      }
+    },
+    {
+      "item_id": "common_voice_en_17389984-common_voice_en_17389987",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "She wasn't home. A neighbor said that he didn't think she came in last night.",
+      "score": 0.9333333333333333,
+      "detail": {
+        "wer": 0.06666666666666667,
+        "ref": "she wasn't home a neighbour said that he didn't think she came in last night",
+        "hyp": "she wasn't home a neighbor said that he didn't think she came in last night"
+      }
+    },
+    {
+      "item_id": "common_voice_en_25186585-common_voice_en_25186586",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "St. Johns County is included in the Jacksonville Metropolitan Statistical Area.",
+      "score": 0.9090909090909091,
+      "detail": {
+        "wer": 0.09090909090909091,
+        "ref": "saint johns county is included in the jacksonville metropolitan statistical area",
+        "hyp": "st johns county is included in the jacksonville metropolitan statistical area"
+      }
+    },
+    {
+      "item_id": "common_voice_en_25563964-common_voice_en_25564015",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "He also purchased land to further his orange and grape growing capacity.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "he also purchased land to further his orange and grape growing capacity",
+        "hyp": "he also purchased land to further his orange and grape growing capacity"
+      }
+    },
+    {
+      "item_id": "common_voice_en_37251984-common_voice_en_37251991",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The German population was either evacuated or expelled and replaced with Russians.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the german population was either evacuated or expelled and replaced with russians",
+        "hyp": "the german population was either evacuated or expelled and replaced with russians"
+      }
+    },
+    {
+      "item_id": "common_voice_en_487077-common_voice_en_487079",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "As they began to decorate the hallway, a silhouette appeared in the doorway.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "as they began to decorate the hallway a silhouette appeared in the doorway",
+        "hyp": "as they began to decorate the hallway a silhouette appeared in the doorway"
+      }
+    },
+    {
+      "item_id": "common_voice_en_35299046-common_voice_en_35299043",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "This episode was Bernard Herrmann's final score for the series.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "this episode was bernard herrmann's final score for the series",
+        "hyp": "this episode was bernard herrmann's final score for the series"
+      }
+    },
+    {
+      "item_id": "common_voice_en_18057869-common_voice_en_18057867",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Strong cryptography can prevent a man in the middle from reading your conversation.",
+      "score": 0.9230769230769231,
+      "detail": {
+        "wer": 0.07692307692307693,
+        "ref": "strong cryptography can prevent a man in the middle from reading a conversation",
+        "hyp": "strong cryptography can prevent a man in the middle from reading your conversation"
+      }
+    },
+    {
+      "item_id": "common_voice_en_25568854-common_voice_en_25568855",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "There are thousands of fishing guides, but some are better than others.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "there are thousands of fishing guides but some are better than others",
+        "hyp": "there are thousands of fishing guides but some are better than others"
+      }
+    },
+    {
+      "item_id": "common_voice_en_20972789-common_voice_en_20972791",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Members and associate members are calculated in advance.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "members and associate members are calculated in advance",
+        "hyp": "members and associate members are calculated in advance"
+      }
+    },
+    {
+      "item_id": "common_voice_en_19867710-common_voice_en_19867712",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "There are no easy answers, and The Cell doesn't pretend to offer any.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "there are no easy answers and the cell doesn't pretend to offer any",
+        "hyp": "there are no easy answers and the cell doesn't pretend to offer any"
+      }
+    },
+    {
+      "item_id": "common_voice_en_30232728-common_voice_en_30232725",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The economic activity of the Pampas district is not oriented to tourism.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the economic activity of the pampas district is not oriented to tourism",
+        "hyp": "the economic activity of the pampas district is not oriented to tourism"
+      }
+    },
+    {
+      "item_id": "common_voice_en_17861335-common_voice_en_17861337",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "There are numerous advantages of using optical devices for computing.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "there are numerous advantages of using optical devices for computing",
+        "hyp": "there are numerous advantages of using optical devices for computing"
+      }
+    },
+    {
+      "item_id": "common_voice_en_684395-common_voice_en_684398",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The diver forced open the oyster, revealing a shimmering pearl.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the diver forced open the oyster revealing a shimmering pearl",
+        "hyp": "the diver forced open the oyster revealing a shimmering pearl"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.9907,
+    "ci95": [
+      0.9805,
+      0.9985
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset seed-tts-eval-en --backbone qwen3-omni-30b-gguf --split test --n 60",
+  "elapsed_s": 126.7
+}

@@ -1,0 +1,393 @@
+{
+  "stage": "1-directional",
+  "dataset": "voiceassistant-listening-speech",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/voiceassistant-listening-speech/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "Listening_Speech_163",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A. Margaret",
+      "score": 1,
+      "detail": {
+        "gold": "margaret"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_892",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A. Neutral",
+      "score": 1,
+      "detail": {
+        "gold": "neutral"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_736",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Real",
+      "score": 1,
+      "detail": {
+        "gold": "real"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_167",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. rain",
+      "score": 1,
+      "detail": {
+        "gold": "rain"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_655",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 0,
+      "detail": {
+        "gold": "seventies to eighties"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_175",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Option A",
+      "score": 0,
+      "detail": {
+        "gold": "bbc poll"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_226",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. Querying an email contact",
+      "score": 0,
+      "detail": {
+        "gold": "email_querycontact"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_401",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. 1",
+      "score": 1,
+      "detail": {
+        "gold": "1"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_219",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Option C, something quirky.",
+      "score": 0,
+      "detail": {
+        "gold": "cooking_recipe"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_569",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "en"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_296",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 0,
+      "detail": {
+        "gold": "joke"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_700",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Real",
+      "score": 0,
+      "detail": {
+        "gold": "fake"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_831",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "happy"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_539",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "en"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_194",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Lee's birthday",
+      "score": 1,
+      "detail": {
+        "gold": "lee's birthday"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_578",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 0,
+      "detail": {
+        "gold": "it"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_654",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "teens to twenties"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_856",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Option C: Neutral",
+      "score": 0,
+      "detail": {
+        "gold": "happy"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_551",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "de"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_481",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 0,
+      "detail": {
+        "gold": "2"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_791",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Real",
+      "score": 1,
+      "detail": {
+        "gold": "real"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_203",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B",
+      "score": 0,
+      "detail": {
+        "gold": "audio_volume_mute"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_783",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Real",
+      "score": 1,
+      "detail": {
+        "gold": "real"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_593",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "en"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_171",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. International Women's Day",
+      "score": 0,
+      "detail": {
+        "gold": "weather"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_679",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Option A: Teens to twenties",
+      "score": 1,
+      "detail": {
+        "gold": "teens to twenties"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_145",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A. forecast",
+      "score": 0,
+      "detail": {
+        "gold": "week"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_764",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Fake",
+      "score": 1,
+      "detail": {
+        "gold": "fake"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_312",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "[1.38, 1.81]"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_531",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B",
+      "score": 0,
+      "detail": {
+        "gold": "en"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_216",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. Play music",
+      "score": 0,
+      "detail": {
+        "gold": "general_joke"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_104",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. Allersnet",
+      "score": 0,
+      "detail": {
+        "gold": "pink"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_847",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "happy"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_670",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 0,
+      "detail": {
+        "gold": "teens to twenties"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_602",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B",
+      "score": 0,
+      "detail": {
+        "gold": "teens to twenties"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_214",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "iot_wemo_off"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_222",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. Turn the audio volume down",
+      "score": 0,
+      "detail": {
+        "gold": "play_music"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_751",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Real",
+      "score": 0,
+      "detail": {
+        "gold": "fake"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_332",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 0,
+      "detail": {
+        "gold": "[3.02, 3.53]"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_364",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. from 0.83 seconds to 1.1 seconds",
+      "score": 0,
+      "detail": {
+        "gold": "[0.54, 0.67]"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.25,
+    "ci95": [
+      0.125,
+      0.4
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset voiceassistant-listening-speech --backbone qwen3-omni-30b-gguf --split dev --n 40",
+  "elapsed_s": 91.2
+}

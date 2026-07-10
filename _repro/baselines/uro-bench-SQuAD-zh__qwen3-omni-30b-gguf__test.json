@@ -1,0 +1,573 @@
+{
+  "stage": "1-directional",
+  "dataset": "uro-bench-SQuAD-zh",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/uro-bench-SQuAD-zh/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": 52,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "宣传局",
+      "score": 1,
+      "detail": {
+        "gold": "宣传局"
+      }
+    },
+    {
+      "item_id": 138,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "布莱恩·邓克尔曼",
+      "score": 1,
+      "detail": {
+        "gold": "布莱恩·邓克尔曼"
+      }
+    },
+    {
+      "item_id": 2,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "格雷死亡的抗议者。",
+      "score": 1,
+      "detail": {
+        "gold": "抗议者"
+      }
+    },
+    {
+      "item_id": 68,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "亚历山大大帝",
+      "score": 1,
+      "detail": {
+        "gold": "亚历山大大帝"
+      }
+    },
+    {
+      "item_id": 56,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "音频中未提及具体是哪些收入分配不均。",
+      "score": 0,
+      "detail": {
+        "gold": "石油收入"
+      }
+    },
+    {
+      "item_id": 59,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "2004年12月",
+      "score": 1,
+      "detail": {
+        "gold": "2004年12月"
+      }
+    },
+    {
+      "item_id": 23,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "唯物主义是哲学一元论的一种形式，认为物质是自然界的基本物质，一切现象，包括精神现象和意识，都与物质的相互作用是一致的。",
+      "score": 1,
+      "detail": {
+        "gold": "哲学一元论的一种形式"
+      }
+    },
+    {
+      "item_id": 69,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "1963年9月20日",
+      "score": 1,
+      "detail": {
+        "gold": "1963年9月20日"
+      }
+    },
+    {
+      "item_id": 121,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "上海和深圳",
+      "score": 0,
+      "detail": {
+        "gold": "中国西南"
+      }
+    },
+    {
+      "item_id": 85,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "偶像回馈",
+      "score": 1,
+      "detail": {
+        "gold": "偶像回馈"
+      }
+    },
+    {
+      "item_id": 36,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "四川南部",
+      "score": 1,
+      "detail": {
+        "gold": "川南"
+      }
+    },
+    {
+      "item_id": 139,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "国家公园管理局",
+      "score": 1,
+      "detail": {
+        "gold": "国家公园管理局"
+      }
+    },
+    {
+      "item_id": 76,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "森林。",
+      "score": 1,
+      "detail": {
+        "gold": "森林"
+      }
+    },
+    {
+      "item_id": 128,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "中部高原。",
+      "score": 1,
+      "detail": {
+        "gold": "高原"
+      }
+    },
+    {
+      "item_id": 93,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "6月1日",
+      "score": 1,
+      "detail": {
+        "gold": "6月1日"
+      }
+    },
+    {
+      "item_id": 8,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "2008年8月30日四川南部6.1级地震。",
+      "score": 0,
+      "detail": {
+        "gold": "攀枝花地震"
+      }
+    },
+    {
+      "item_id": 126,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "2000万元",
+      "score": 0,
+      "detail": {
+        "gold": "1000万元"
+      }
+    },
+    {
+      "item_id": 60,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "许多建筑无法抵御地震的各种原因。",
+      "score": 1,
+      "detail": {
+        "gold": "许多建筑无法抵御地震的各种原因。"
+      }
+    },
+    {
+      "item_id": 108,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "1630年",
+      "score": 1,
+      "detail": {
+        "gold": "1630"
+      }
+    },
+    {
+      "item_id": 66,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "iPod的普及。",
+      "score": 0,
+      "detail": {
+        "gold": "数字音乐存储"
+      }
+    },
+    {
+      "item_id": 145,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "儿童节",
+      "score": 1,
+      "detail": {
+        "gold": "儿童节"
+      }
+    },
+    {
+      "item_id": 38,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "4月22日",
+      "score": 1,
+      "detail": {
+        "gold": "4月22日"
+      }
+    },
+    {
+      "item_id": 62,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "利用非成像光学原理。",
+      "score": 1,
+      "detail": {
+        "gold": "非成像光学"
+      }
+    },
+    {
+      "item_id": 19,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "大约300名。",
+      "score": 1,
+      "detail": {
+        "gold": "大约300"
+      }
+    },
+    {
+      "item_id": 124,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "大乘经",
+      "score": 1,
+      "detail": {
+        "gold": "大乘"
+      }
+    },
+    {
+      "item_id": 71,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "佛教",
+      "score": 1,
+      "detail": {
+        "gold": "佛教"
+      }
+    },
+    {
+      "item_id": 44,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "欧亚大陆。",
+      "score": 1,
+      "detail": {
+        "gold": "欧亚大陆"
+      }
+    },
+    {
+      "item_id": 29,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "泰勒·希克斯",
+      "score": 1,
+      "detail": {
+        "gold": "泰勒·希克斯"
+      }
+    },
+    {
+      "item_id": 89,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "都柏林理工学院",
+      "score": 1,
+      "detail": {
+        "gold": "都柏林理工学院"
+      }
+    },
+    {
+      "item_id": 131,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "1997年",
+      "score": 1,
+      "detail": {
+        "gold": "1997"
+      }
+    },
+    {
+      "item_id": 20,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "轮回",
+      "score": 1,
+      "detail": {
+        "gold": "轮回"
+      }
+    },
+    {
+      "item_id": 97,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "理性主义、经验主义、结构主义、后结构主义和现象学。",
+      "score": 1,
+      "detail": {
+        "gold": "理性主义、经验主义、结构主义、后结构主义和现象学。"
+      }
+    },
+    {
+      "item_id": 45,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "精神疾病",
+      "score": 1,
+      "detail": {
+        "gold": "精神疾病"
+      }
+    },
+    {
+      "item_id": 114,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "环球音乐集团",
+      "score": 1,
+      "detail": {
+        "gold": "环球音乐集团"
+      }
+    },
+    {
+      "item_id": 133,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "慈济基金会",
+      "score": 1,
+      "detail": {
+        "gold": "慈济基金会"
+      }
+    },
+    {
+      "item_id": 96,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "加拿大武装部队",
+      "score": 1,
+      "detail": {
+        "gold": "加拿大武装部队"
+      }
+    },
+    {
+      "item_id": 112,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "对受损建筑物进行详细的初步调查。",
+      "score": 1,
+      "detail": {
+        "gold": "对受损建筑物进行详细的初步调查"
+      }
+    },
+    {
+      "item_id": 122,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "10",
+      "score": 1,
+      "detail": {
+        "gold": "10"
+      }
+    },
+    {
+      "item_id": 27,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "2013年",
+      "score": 1,
+      "detail": {
+        "gold": "2013"
+      }
+    },
+    {
+      "item_id": 46,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "流媒体服务Tidal。",
+      "score": 0,
+      "detail": {
+        "gold": "音乐流媒体"
+      }
+    },
+    {
+      "item_id": 110,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "Eon的官方社交媒体账户。",
+      "score": 0,
+      "detail": {
+        "gold": "Eon的官方社交媒体账户上"
+      }
+    },
+    {
+      "item_id": 13,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "金沙萨",
+      "score": 0,
+      "detail": {
+        "gold": "布拉柴维尔"
+      }
+    },
+    {
+      "item_id": 104,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "希腊人和中国人",
+      "score": 1,
+      "detail": {
+        "gold": "希腊人和中国人"
+      }
+    },
+    {
+      "item_id": 116,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "刚果河",
+      "score": 1,
+      "detail": {
+        "gold": "刚果河"
+      }
+    },
+    {
+      "item_id": 99,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "曲棍球",
+      "score": 1,
+      "detail": {
+        "gold": "曲棍球"
+      }
+    },
+    {
+      "item_id": 82,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "人类",
+      "score": 1,
+      "detail": {
+        "gold": "人类"
+      }
+    },
+    {
+      "item_id": 10,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "宝拉·阿卜杜勒",
+      "score": 0,
+      "detail": {
+        "gold": "保拉·阿卜杜勒。"
+      }
+    },
+    {
+      "item_id": 115,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "九世纪",
+      "score": 0,
+      "detail": {
+        "gold": "9世纪"
+      }
+    },
+    {
+      "item_id": 58,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "照明",
+      "score": 0,
+      "detail": {
+        "gold": "室内照明"
+      }
+    },
+    {
+      "item_id": 127,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "2050年",
+      "score": 1,
+      "detail": {
+        "gold": "2050"
+      }
+    },
+    {
+      "item_id": 22,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "纽瓦克",
+      "score": 1,
+      "detail": {
+        "gold": "纽瓦克"
+      }
+    },
+    {
+      "item_id": 142,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "162",
+      "score": 0,
+      "detail": {
+        "gold": "150"
+      }
+    },
+    {
+      "item_id": 75,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "佛罗伦萨",
+      "score": 1,
+      "detail": {
+        "gold": "佛罗伦萨"
+      }
+    },
+    {
+      "item_id": 30,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "2010年1月12日",
+      "score": 1,
+      "detail": {
+        "gold": "2010年1月12日"
+      }
+    },
+    {
+      "item_id": 117,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "冰岛",
+      "score": 1,
+      "detail": {
+        "gold": "冰岛"
+      }
+    },
+    {
+      "item_id": 5,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "在中国数字时代上。",
+      "score": 0,
+      "detail": {
+        "gold": "中国数字时报"
+      }
+    },
+    {
+      "item_id": 78,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "美联社",
+      "score": 1,
+      "detail": {
+        "gold": "美联社"
+      }
+    },
+    {
+      "item_id": 86,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "西班牙北海岸。",
+      "score": 1,
+      "detail": {
+        "gold": "西班牙北海岸"
+      }
+    },
+    {
+      "item_id": 25,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "首席大法官",
+      "score": 1,
+      "detail": {
+        "gold": "首席大法官"
+      }
+    },
+    {
+      "item_id": 55,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "2006年5月30日",
+      "score": 1,
+      "detail": {
+        "gold": "2006年5月30日"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.7833,
+    "ci95": [
+      0.6667,
+      0.8833
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset uro-bench-SQuAD-zh --backbone qwen3-omni-30b-gguf --split test --n 60",
+  "elapsed_s": 167.8
+}

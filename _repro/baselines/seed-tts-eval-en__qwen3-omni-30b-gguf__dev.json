@@ -1,0 +1,473 @@
+{
+  "stage": "1-directional",
+  "dataset": "seed-tts-eval-en",
+  "k_type": "K1",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/seed-tts-eval-en/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "common_voice_en_18710640-common_voice_en_18710642",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Downstream, the Chippewa River performs the same action, on a larger scale.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "downstream the chippewa river performs the same action on a larger scale",
+        "hyp": "downstream the chippewa river performs the same action on a larger scale"
+      }
+    },
+    {
+      "item_id": "common_voice_en_589496-common_voice_en_589495",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The men climbed the hill, and they were tired when they reached the top.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the men climbed the hill and they were tired when they reached the top",
+        "hyp": "the men climbed the hill and they were tired when they reached the top"
+      }
+    },
+    {
+      "item_id": "common_voice_en_564578-common_voice_en_564576",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "We pride ourselves in completing all requests in less than twenty-four hours.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "we pride ourselves in completing all requests in less than twenty four hours",
+        "hyp": "we pride ourselves in completing all requests in less than twenty four hours"
+      }
+    },
+    {
+      "item_id": "common_voice_en_581024-common_voice_en_581028",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "I'm afraid I might have soiled the couch a little with my shoes, Eddie Murphy.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "i'm afraid i might have soiled the couch a little with my shoes eddie murphy",
+        "hyp": "i'm afraid i might have soiled the couch a little with my shoes eddie murphy"
+      }
+    },
+    {
+      "item_id": "common_voice_en_17879420-common_voice_en_17879438",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The first concern is to patch the holes in the ship, then we can pump out the water.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the first concern is to patch the holes in the ship then we can pump out the water",
+        "hyp": "the first concern is to patch the holes in the ship then we can pump out the water"
+      }
+    },
+    {
+      "item_id": "common_voice_en_32697372-common_voice_en_32697370",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Most children were from former Soviet republics and former Yugoslavia.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "most children were from former soviet republics and former yugoslavia",
+        "hyp": "most children were from former soviet republics and former yugoslavia"
+      }
+    },
+    {
+      "item_id": "common_voice_en_36074033-common_voice_en_36073874",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Nuclei which decay by positron emission may also decay by electron capture.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "nuclei which decay by positron emission may also decay by electron capture",
+        "hyp": "nuclei which decay by positron emission may also decay by electron capture"
+      }
+    },
+    {
+      "item_id": "common_voice_en_31576099-common_voice_en_31576097",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "They would never be seen by people again.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "they would never be seen by people again",
+        "hyp": "they would never be seen by people again"
+      }
+    },
+    {
+      "item_id": "common_voice_en_33563095-common_voice_en_33563097",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Together with his wife he had three daughters.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "together with his wife he had three daughters",
+        "hyp": "together with his wife he had three daughters"
+      }
+    },
+    {
+      "item_id": "common_voice_en_18770703-common_voice_en_18770704",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "A certain lifestyle usually distinguishes the members of different status groups.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "a certain lifestyle usually distinguishes the members of different status groups",
+        "hyp": "a certain lifestyle usually distinguishes the members of different status groups"
+      }
+    },
+    {
+      "item_id": "common_voice_en_17161-common_voice_en_17160",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "On the second day, the boy climbed to the top of a cliff near the camp.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "on the second day the boy climbed to the top of a cliff near the camp",
+        "hyp": "on the second day the boy climbed to the top of a cliff near the camp"
+      }
+    },
+    {
+      "item_id": "common_voice_en_23786332-common_voice_en_23786333",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Indiana Mall is the area's major shopping center.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "indiana mall is the area's major shopping center",
+        "hyp": "indiana mall is the area's major shopping center"
+      }
+    },
+    {
+      "item_id": "common_voice_en_24814747-common_voice_en_24814749",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Several manufacturers offer screens that roll into a pocket when not in use.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "several manufacturers offer screens that roll into a pocket when not in use",
+        "hyp": "several manufacturers offer screens that roll into a pocket when not in use"
+      }
+    },
+    {
+      "item_id": "common_voice_en_19083094-common_voice_en_19083091",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "However, Bishop Bowman died of a heart attack in less than three years.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "however bishop bowman died of a heart attack in less than three years",
+        "hyp": "however bishop bowman died of a heart attack in less than three years"
+      }
+    },
+    {
+      "item_id": "common_voice_en_27172977-common_voice_en_27172980",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "He concluded, This is a game best played with the voices turned off.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "he concluded this is a game best played with the voices turned off",
+        "hyp": "he concluded this is a game best played with the voices turned off"
+      }
+    },
+    {
+      "item_id": "common_voice_en_19845853-common_voice_en_19845856",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The western rim of Roche has been somewhat distorted and straightened.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the western rim of roche has been somewhat distorted and straightened",
+        "hyp": "the western rim of roche has been somewhat distorted and straightened"
+      }
+    },
+    {
+      "item_id": "common_voice_en_18693241-common_voice_en_18693240",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Audrey is the stereotypical housewife.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "audrey is the stereotypical housewife",
+        "hyp": "audrey is the stereotypical housewife"
+      }
+    },
+    {
+      "item_id": "common_voice_en_28917649-common_voice_en_28917650",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "However, horses that could not be controlled had to be destroyed.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "however horses that could not be controlled had to be destroyed",
+        "hyp": "however horses that could not be controlled had to be destroyed"
+      }
+    },
+    {
+      "item_id": "common_voice_en_34980363-common_voice_en_34980362",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "In recent years, the town has moved from its traditional industries to tourism.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "in recent years the town has moved from its traditional industries to tourism",
+        "hyp": "in recent years the town has moved from its traditional industries to tourism"
+      }
+    },
+    {
+      "item_id": "common_voice_en_19854924-common_voice_en_19854923",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Hinduism, along with Buddhism, arrived in Burma during ancient times.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "hinduism along with buddhism arrived in burma during ancient times",
+        "hyp": "hinduism along with buddhism arrived in burma during ancient times"
+      }
+    },
+    {
+      "item_id": "common_voice_en_19741922-common_voice_en_19741978",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Writing tools and scratch paper may not be brought to the testing site.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "writing tools and scratch paper may not be brought to the testing site",
+        "hyp": "writing tools and scratch paper may not be brought to the testing site"
+      }
+    },
+    {
+      "item_id": "common_voice_en_20938865-common_voice_en_20938864",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Grassley also began an investigation about unreported payments to physicians by pharmaceutical companies.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "grassley also began an investigation about unreported payments to physicians by pharmaceutical companies",
+        "hyp": "grassley also began an investigation about unreported payments to physicians by pharmaceutical companies"
+      }
+    },
+    {
+      "item_id": "common_voice_en_19748004-common_voice_en_19748010",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "French was born in Brunswick, Victoria, to a family of Cornish origin.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "french was born in brunswick victoria to a family of cornish origin",
+        "hyp": "french was born in brunswick victoria to a family of cornish origin"
+      }
+    },
+    {
+      "item_id": "common_voice_en_22722937-common_voice_en_22722936",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The structure has been heritage listed due to its historical, scientific and architectural rarity.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the structure has been heritage listed due to its historical scientific and architectural rarity",
+        "hyp": "the structure has been heritage listed due to its historical scientific and architectural rarity"
+      }
+    },
+    {
+      "item_id": "common_voice_en_19730681-common_voice_en_19730680",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The liqueur was first created as Brandy Milk, produced with milk, brandy and vanilla.",
+      "score": 0.9285714285714286,
+      "detail": {
+        "wer": 0.07142857142857142,
+        "ref": "the liquor was first created as brandy milk produced with milk brandy and vanilla",
+        "hyp": "the liqueur was first created as brandy milk produced with milk brandy and vanilla"
+      }
+    },
+    {
+      "item_id": "common_voice_en_32717587-common_voice_en_32717583",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Potter is eligible to represent both Australia and England at senior international level.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "potter is eligible to represent both australia and england at senior international level",
+        "hyp": "potter is eligible to represent both australia and england at senior international level"
+      }
+    },
+    {
+      "item_id": "common_voice_en_22925816-common_voice_en_22925817",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The album was released with the copy control protection system in some regions.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the album was released with the copy control protection system in some regions",
+        "hyp": "the album was released with the copy control protection system in some regions"
+      }
+    },
+    {
+      "item_id": "common_voice_en_26031217-common_voice_en_26031215",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Palatinate was divided between Roberto's four children, whom survived.",
+      "score": 0.8,
+      "detail": {
+        "wer": 0.2,
+        "ref": "palatinate was divided between roberto s four children whom survived",
+        "hyp": "palatinate was divided between roberto's four children whom survived"
+      }
+    },
+    {
+      "item_id": "common_voice_en_19496235-common_voice_en_19496229",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Netherlands and Spain have signed but not ratified the treaty.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "netherlands and spain have signed but not ratified the treaty",
+        "hyp": "netherlands and spain have signed but not ratified the treaty"
+      }
+    },
+    {
+      "item_id": "common_voice_en_20337838-common_voice_en_20337842",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Previously an attorney, Corona left the profession to pursue a career in music.",
+      "score": 0.9230769230769231,
+      "detail": {
+        "wer": 0.07692307692307693,
+        "ref": "previously an attorney korona left the profession to pursue a career in music",
+        "hyp": "previously an attorney corona left the profession to pursue a career in music"
+      }
+    },
+    {
+      "item_id": "common_voice_en_23804758-common_voice_en_23804770",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "There are more than seven other deemed universities in the city.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "there are more than seven other deemed universities in the city",
+        "hyp": "there are more than seven other deemed universities in the city"
+      }
+    },
+    {
+      "item_id": "common_voice_en_22925816-common_voice_en_22925815",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The album was released with the copy control protection system in some regions.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the album was released with the copy control protection system in some regions",
+        "hyp": "the album was released with the copy control protection system in some regions"
+      }
+    },
+    {
+      "item_id": "common_voice_en_36069016-common_voice_en_36069015",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "That year he also began researching a critical biography of Nabokov.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "that year he also began researching a critical biography of nabokov",
+        "hyp": "that year he also began researching a critical biography of nabokov"
+      }
+    },
+    {
+      "item_id": "common_voice_en_71427-common_voice_en_71425",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "This a picture of a man cleaning off a diving board with a broom.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "this a picture of a man cleaning off a diving board with a broom",
+        "hyp": "this a picture of a man cleaning off a diving board with a broom"
+      }
+    },
+    {
+      "item_id": "common_voice_en_18852076-common_voice_en_18852085",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The classification of this gibbon has changed several times in the past few years.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the classification of this gibbon has changed several times in the past few years",
+        "hyp": "the classification of this gibbon has changed several times in the past few years"
+      }
+    },
+    {
+      "item_id": "common_voice_en_25879467-common_voice_en_25879469",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Only words that cannot be inflected at all are called invariable.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "only words that cannot be inflected at all are called invariable",
+        "hyp": "only words that cannot be inflected at all are called invariable"
+      }
+    },
+    {
+      "item_id": "common_voice_en_17662945-common_voice_en_17662956",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "At the airport, the woman threw herself into revision for college so she could experience university.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "at the airport the woman threw herself into revision for college so she could experience university",
+        "hyp": "at the airport the woman threw herself into revision for college so she could experience university"
+      }
+    },
+    {
+      "item_id": "common_voice_en_19640906-common_voice_en_19640909",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "With this win, Levet became the leading Frenchman in terms of European Tour wins.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "with this win levet became the leading frenchman in terms of european tour wins",
+        "hyp": "with this win levet became the leading frenchman in terms of european tour wins"
+      }
+    },
+    {
+      "item_id": "common_voice_en_20214898-common_voice_en_20214899",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The limited expresses \"\"Super Hakuto\"\" and \"\"Super Inaba\"\" operate on this line.\"",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the limited expresses super hakuto and super inaba operate on this line",
+        "hyp": "the limited expresses super hakuto and super inaba operate on this line"
+      }
+    },
+    {
+      "item_id": "common_voice_en_19670166-common_voice_en_19670165",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "He is also a patron of Creativity Australia.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "he is also a patron of creativity australia",
+        "hyp": "he is also a patron of creativity australia"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.9913,
+    "ci95": [
+      0.9791,
+      1.0
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset seed-tts-eval-en --backbone qwen3-omni-30b-gguf --split dev --n 40",
+  "elapsed_s": 88.4
+}

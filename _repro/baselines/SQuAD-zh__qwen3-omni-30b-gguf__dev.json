@@ -1,0 +1,433 @@
+{
+  "stage": "1-directional",
+  "dataset": "SQuAD-zh",
+  "k_type": "K8/K6 (legacy)",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/baselines-SQuAD-zh/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "SQuAD-zh#0",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "1.2年",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#1",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "首席大法官",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#2",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "五月十三日晚些时候",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#3",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "安全灯",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#4",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "理性主义、经验主义、结构主义、后结构主义和现象学。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#5",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "11",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#6",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "欧亚大陆。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#7",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "四川南部",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#8",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "4所",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#9",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "密宗佛教",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#10",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "第二大道地铁东侧通道项目和七号地铁延长线。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#11",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "因对地震的反应而受到赞扬。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#12",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "西班牙北海岸。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#13",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "超过五千九百万张",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#14",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "全国人民军",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#15",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "儿童节",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#16",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "森林",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#17",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "4860多万美元",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#18",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "2008年8月30日",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#19",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "中国",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#20",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "无国界记者",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#21",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "新佛教",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#22",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "铜",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#23",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "1963年。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#24",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "第四大",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#25",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "超过百分之三十。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#26",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "1630年",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#27",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "九世纪",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#28",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "雅利安",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#29",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "城市犯罪",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#30",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "超过七百五十亿美元",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#31",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "大乘经",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#32",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "184人",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#33",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "萨苏",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#34",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "冰岛",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#35",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "在私人教堂秘密进行。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#36",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "加拿大军队",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#37",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "刚果人权观察组织",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#38",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "纽约最好的警察",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#39",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "对受损建筑物进行详细的初步调查。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.725,
+    "ci95": [
+      0.575,
+      0.85
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset SQuAD-zh --backbone qwen3-omni-30b-gguf --split dev --n 40",
+  "elapsed_s": 129.2
+}

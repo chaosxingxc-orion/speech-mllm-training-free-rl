@@ -1,0 +1,393 @@
+{
+  "stage": "1-directional",
+  "dataset": "voiceassistant-speaking-reasoning",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/voiceassistant-speaking-reasoning/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "Speaking_Reasoning_479",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Step 1: Identify the subject of the sentence. The subject is \"Steven Stamkos.\"\nStep 2: Determine who Steven Stamkos is. Steven Stamkos is a professional ice hockey player.\nStep 3: Identify the action in the sentence. The action is \"hit the slant pass.\"\nStep 4: Determine if the action is plausible for the subject. A \"slant pass\" is a term used in American football, not ice hockey.\nStep 5: Conclude whether the sentence is plausible. Since Steven Stamkos is a hockey player and the action is related to American football, the sentence is implausible.\n\nThe answer is no.",
+      "score": 1,
+      "detail": {
+        "gold": "no"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_460",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Let's analyze this step by step:\n\n1. The sentence is: \"Sergio Busquets got on base.\"\n\n2. \"Got on base\" is a phrase commonly used in baseball, meaning a player has reached a base safely, typically after a hit, walk, or error.\n\n3. Sergio Busquets is a professional football (soccer) player, not a baseball player.\n\n4. He has never played in Major League Baseball (MLB) or any professional baseball league.\n\n5. Therefore, it is implausible that Sergio Busquets got on base in a baseball context.\n\n6. There is no other context in which \"got on base\" would make sense for a football player.\n\nThus, the sentence is not plausible.\n\nThe answer is No.",
+      "score": 1,
+      "detail": {
+        "gold": "no"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_573",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Let's analyze the statements step by step.\n\nWe are given:\n\n1. Fidel tells the truth.\n2. Candy says: \"Fidel lies.\"\n3. Christy says: \"Candy tells the truth.\"\n4. Lida says: \"Christy lies.\"\n5. Seema says: \"Lida lies.\"\n\nWe are to determine: Does Seema tell the truth?\n\nLet’s assume Fidel tells the truth (as stated in 1). So Fidel is truthful.\n\nThen Candy says: \"Fidel lies.\" But Fidel actually tells the truth, so Candy is lying.\n\nSo Candy lies.\n\nNow Christy says: \"Candy tells the truth.\" But Candy lies, so Christy is making a false statement → Christy lies.\n\nNow Lida says: \"Christy lies.\" Since Christy does lie, Lida is telling the truth → Lida tells the truth.\n\nNow Seema says: \"Lida lies.\" But Lida tells the truth,",
+      "score": 1,
+      "detail": {
+        "gold": "No"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1109",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 1,
+      "detail": {
+        "gold": "C"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_847",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "D"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1196",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "B"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_30",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Cutting",
+      "score": 0,
+      "detail": {
+        "gold": "A needle is to sewing as a saw is to cutting."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_715",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 1,
+      "detail": {
+        "gold": "C"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_511",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The correct order of adjectives in English typically follows this sequence: opinion, size, age, shape, color, origin, material, purpose. Let's analyze the adjectives in the options:\n\n- \"small\" – size\n- \"ancient\" – age\n- \"spherical\" – shape\n- \"brown\" – color\n- \"Russian\" – origin\n- \"fiberglass\" – material\n- \"sock\" – noun\n\nFollowing the correct order: size, age, shape, color, origin, material.\n\nSo the correct order should be: small, ancient, spherical, brown, Russian, fiberglass, sock.\n\nNow, let's check the options:\n\nA. small, ancient, spherical, brown, Russian, fiberglass, sock → matches the correct order.\n\nB. Russian, spherical, ancient, fiberglass, small, brown, sock → incorrect order.\n\nTherefore, option A is correct.\n\nThe answer is A.",
+      "score": 1,
+      "detail": {
+        "gold": "(A)"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_579",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Let's analyze the statements step by step.\n\nWe are told:\n\n- Kay lies.\n- Rashida says Kay tells the truth.\n- Sherry says Rashida tells the truth.\n- Tamika says Sherry tells the truth.\n- Eleanor says Tamika tells the truth.\n\nWe are to determine whether Eleanor tells the truth.\n\nStep 1: Kay lies. So Kay's statement is false.\n\nStep 2: Rashida says \"Kay tells the truth.\" But we know Kay lies, so this statement is false. Therefore, Rashida is lying.\n\nSo Rashida lies.\n\nStep 3: Sherry says \"Rashida tells the truth.\" But Rashida lies, so this statement is false. Therefore, Sherry is lying.\n\nSo Sherry lies.\n\nStep 4: Tamika says \"Sherry tells the truth.\" But Sherry lies, so this statement is false. Therefore, Tamika is lying.\n\nSo Tamika lies.\n\nStep 5: Eleanor says \"Tamika",
+      "score": 1,
+      "detail": {
+        "gold": "No"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_730",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 1,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_862",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 1,
+      "detail": {
+        "gold": "D"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_587",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Let's analyze the statements step by step:\n\n1. **Seema tells the truth.**  \n   → So Seema is a truth-teller.\n\n2. **Theresa says Seema tells the truth.**  \n   → Since Seema *does* tell the truth, Theresa's statement is true.  \n   → So Theresa is telling the truth → Theresa is a truth-teller.\n\n3. **Vina says Theresa lies.**  \n   → But we just determined Theresa tells the truth.  \n   → So Vina's statement is false → Vina is lying → Vina is a liar.\n\n4. **Krista says Vina lies.**  \n   → Vina *does* lie → Krista's statement is true → Krista is a truth-teller.\n\n5. **Phoebe says Krista tells the truth.**  \n   → Krista *does* tell the truth → Phoebe's statement is true → Phoebe is a truth",
+      "score": 0,
+      "detail": {
+        "gold": "Yes"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1037",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 1,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_324",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "5 centimeters",
+      "score": 0,
+      "detail": {
+        "gold": "Marty starts with a ribbon that is one hundred centimeters long. He needs to divide it into four equal parts. To find the length of each part, he takes the total length and divides it by four, which gives twenty-five centimeters for each part. Next, each of these twenty-five-centimeter sections must be further divided into five equal parts. To determine the length of these smaller sections, he takes the length of the larger section and divides it by five, resulting in five centimeters for each smaller section. So the answer is 5."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_223",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes, the inference is correct and well-supported.",
+      "score": 0,
+      "detail": {
+        "gold": "The inference is correct and well-supported. The statement that all primates have opposable thumbs is accurate, as this is a defining characteristic of the primate order. Since chimpanzees are classified as primates, it logically follows that they possess opposable thumbs. This conclusion is consistent with biological and evolutionary evidence, making the reasoning valid and supported."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_32",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Direction",
+      "score": 0,
+      "detail": {
+        "gold": "A compass is to north as a map is to location."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_373",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The moral is that sadness and grumpiness can be caused by grief and loneliness, and that friends can help provide comfort.",
+      "score": 0,
+      "detail": {
+        "gold": "Honestly is the best policy. "
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_576",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Let's analyze the statements step by step.\n\nWe have five people:\n\n1. Millicent says: \"The truth.\"\n2. Vernell says: \"Millicent lies.\"\n3. Tamika says: \"Vernell tells the truth.\"\n4. Oswaldo says: \"Tamika tells the truth.\"\n5. Shanna says: \"Oswaldo lies.\"\n\nWe are to determine whether Shanna tells the truth.\n\nLet’s suppose Shanna is telling the truth.\n\nThen her statement \"Oswaldo lies\" is true → Oswaldo lies.\n\nIf Oswaldo lies, then his statement \"Tamika tells the truth\" is false → Tamika lies.\n\nIf Tamika lies, then her statement \"Vernell tells the truth\" is false → Vernell lies.\n\nIf Vernell lies, then her statement \"Millicent lies\" is false → Millicent tells the truth.\n\nSo far:\n- Shanna: truth\n- Oswaldo: lie\n- Tamika",
+      "score": 0,
+      "detail": {
+        "gold": "Yes"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1182",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 0,
+      "detail": {
+        "gold": "B"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_931",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 0,
+      "detail": {
+        "gold": "C"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_831",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 1,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1021",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 1,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_336",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "40",
+      "score": 0,
+      "detail": {
+        "gold": "Mico and Marco discovered that the total of their current ages is twenty. In ten years, both Mico and Marco will each be ten years older. This means that ten years will be added to Mico's age and another ten years will be added to Marco's age. Together, this adds up to an additional twenty years to their combined ages. Adding this increase of twenty years to their current total age of twenty results in a new sum of forty. So the answer is 40."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1142",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 1,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_338",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "10",
+      "score": 0,
+      "detail": {
+        "gold": "Lani started with fifty-five cookies. After eating five of them, she had fifty cookies remaining. She then divided these fifty cookies equally among five jars. By placing the same number of cookies in each jar, there were ten cookies in each one. So the answer is 10."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_350",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The moral is that one should work and prepare for the future, rather than only enjoying the present.",
+      "score": 0,
+      "detail": {
+        "gold": "Be prepared before you enjoy."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_918",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B",
+      "score": 1,
+      "detail": {
+        "gold": "B"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_33",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Video",
+      "score": 0,
+      "detail": {
+        "gold": "A radio is to audio as a television is to visuals."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_682",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "C"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_226",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No",
+      "score": 0,
+      "detail": {
+        "gold": "The inference is not correct or well-supported. The reasoning presented is an example of a hasty generalization, where a broad conclusion (\"every flight will have turbulence\") is drawn from a very limited set of observations (\"the last two times I've flown, there was turbulence\"). Two instances are insufficient to conclude that all flights will have turbulence, as turbulence can vary greatly depending on weather conditions, flight paths, and other factors. A well-supported inference would require more comprehensive evidence or data."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_235",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 0,
+      "detail": {
+        "gold": "The inference is incorrect. While it is true that strawberries are fruits, they do not grow on trees. Strawberries are unique in that they belong to a category of fruits called accessory fruits, where the fleshy part we eat develops from parts of the flower other than the ovary. They grow close to the ground on small, low-lying plants. The original statement assumes all fruits grow on trees, which is a generalization and not accurate for all types of fruits. Therefore, the conclusion is wrong because it is based on a flawed assumption."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_596",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Let's analyze the statements step by step:\n\n1. **Seema tells the truth.**  \n   → Assume Seema is telling the truth. Then her statement is true.\n\n2. **Michaela says Seema lies.**  \n   → If Seema tells the truth, then Michaela is lying. So Michaela lies.\n\n3. **Leda says Michaela tells the truth.**  \n   → But we just concluded Michaela lies, so Leda is lying. So Leda lies.\n\n4. **Fletcher says Leda lies.**  \n   → Leda does lie, so Fletcher is telling the truth. So Fletcher tells the truth.\n\n5. **Vina says Fletcher tells the truth.**  \n   → Fletcher does tell the truth, so Vina is telling the truth. So Vina tells the truth.\n\nNow, check for consistency:\n\n- Seema tells the truth → her statement is true.\n- Michaela says Seema lies → false → Michael",
+      "score": 0,
+      "detail": {
+        "gold": "Yes"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_755",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_634",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 1,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1133",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 1,
+      "detail": {
+        "gold": "C"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_332",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "171",
+      "score": 0,
+      "detail": {
+        "gold": "Start by determining how much hay each sheep requires. Each goat needs five pounds, and each sheep needs three pounds less than twice what a goat needs. Twice the amount for a goat is ten pounds, and subtracting three gives seven pounds per sheep. Next, calculate the total hay needed for all the sheep. With twelve sheep, and each needing seven pounds, multiply these together to get eighty-four pounds of hay for the sheep. Then, calculate the total hay required for the goats. With fifteen goats, and each needing five pounds, multiply these together to get seventy-five pounds of hay for the goats. Finally, combine the two totals by adding eighty-four and seventy-five to find the overall amount of hay Nate needs. So the answer is 159."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_428",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Let's go step by step:\n\n1. Start at a point, facing forward.\n2. Turn left: Now facing left.\n3. Take 9 steps: Move 9 steps in the new direction (left).\n4. Take 3 steps: Move 3 more steps in the same direction (still left).\n5. Turn right: Now facing forward again (since you were facing left, turning right brings you back to the original direction).\n6. Take 3 steps: Move 3 steps forward.\n\nNow, let's analyze the net movement:\n\n- You moved 9 steps left, then 3 steps left → total 12 steps left.\n- Then you turned right and moved 3 steps forward (which is the opposite direction of left, so back toward the start).\n\nSo, you moved 12 steps in one direction, then 3 steps back.\n\nNet displacement: 12 - 3 = 9 steps away from the starting point.\n\nTherefore, you do",
+      "score": 1,
+      "detail": {
+        "gold": "No"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1104",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B",
+      "score": 1,
+      "detail": {
+        "gold": "B"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_954",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 1,
+      "detail": {
+        "gold": "A"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.475,
+    "ci95": [
+      0.325,
+      0.625
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset voiceassistant-speaking-reasoning --backbone qwen3-omni-30b-gguf --split dev --n 40",
+  "elapsed_s": 208.0
+}

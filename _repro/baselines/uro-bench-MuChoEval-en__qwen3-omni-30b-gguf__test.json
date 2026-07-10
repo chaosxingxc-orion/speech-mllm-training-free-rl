@@ -1,0 +1,573 @@
+{
+  "stage": "1-directional",
+  "dataset": "uro-bench-MuChoEval-en",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/uro-bench-MuChoEval-en/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": 23,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. Oriental pop",
+      "score": 0,
+      "detail": {
+        "gold": "Oriental/pop"
+      }
+    },
+    {
+      "item_id": 174,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Fast-paced rhythmic singing",
+      "score": 1,
+      "detail": {
+        "gold": "Fast-paced rhythmic singing"
+      }
+    },
+    {
+      "item_id": 198,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A. Upbeat and vibrant",
+      "score": 0,
+      "detail": {
+        "gold": "Fast"
+      }
+    },
+    {
+      "item_id": 60,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. Medium tempo",
+      "score": 1,
+      "detail": {
+        "gold": "Medium tempo"
+      }
+    },
+    {
+      "item_id": 204,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. Fast-paced dance rhythm",
+      "score": 0,
+      "detail": {
+        "gold": "Cozy and easygoing"
+      }
+    },
+    {
+      "item_id": 249,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. Carnatic music",
+      "score": 0,
+      "detail": {
+        "gold": "Hindi music"
+      }
+    },
+    {
+      "item_id": 127,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Ballad",
+      "score": 1,
+      "detail": {
+        "gold": "Ballad"
+      }
+    },
+    {
+      "item_id": 18,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A. Pop music",
+      "score": 1,
+      "detail": {
+        "gold": "Pop music"
+      }
+    },
+    {
+      "item_id": 2,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Harmony",
+      "score": 1,
+      "detail": {
+        "gold": "Harmony"
+      }
+    },
+    {
+      "item_id": 213,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. Bass",
+      "score": 0,
+      "detail": {
+        "gold": "Bass-ukulele"
+      }
+    },
+    {
+      "item_id": 238,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A. Acoustic piano",
+      "score": 1,
+      "detail": {
+        "gold": "Acoustic piano"
+      }
+    },
+    {
+      "item_id": 93,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A. North African",
+      "score": 0,
+      "detail": {
+        "gold": "Arabian"
+      }
+    },
+    {
+      "item_id": 272,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. Aggressive and intense",
+      "score": 0,
+      "detail": {
+        "gold": "Epic and urban"
+      }
+    },
+    {
+      "item_id": 281,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Steel pan",
+      "score": 1,
+      "detail": {
+        "gold": "Steel pan"
+      }
+    },
+    {
+      "item_id": 242,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. Emotional",
+      "score": 1,
+      "detail": {
+        "gold": "Emotional"
+      }
+    },
+    {
+      "item_id": 188,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Spanish",
+      "score": 1,
+      "detail": {
+        "gold": "Spanish"
+      }
+    },
+    {
+      "item_id": 78,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A. Guitar and subtle bassline",
+      "score": 0,
+      "detail": {
+        "gold": "Guitar and subtle bass line"
+      }
+    },
+    {
+      "item_id": 269,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. Distorted electric guitar",
+      "score": 1,
+      "detail": {
+        "gold": "Distorted electric guitar"
+      }
+    },
+    {
+      "item_id": 235,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Electric guitar",
+      "score": 1,
+      "detail": {
+        "gold": "Electric guitar"
+      }
+    },
+    {
+      "item_id": 245,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. Electropop, synthpop",
+      "score": 0,
+      "detail": {
+        "gold": "Electro Pop/Synth Pop"
+      }
+    },
+    {
+      "item_id": 267,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. Flute",
+      "score": 1,
+      "detail": {
+        "gold": "Flute"
+      }
+    },
+    {
+      "item_id": 144,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A. Wide sustained",
+      "score": 1,
+      "detail": {
+        "gold": "Wide sustained"
+      }
+    },
+    {
+      "item_id": 37,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Bollywood pop song",
+      "score": 1,
+      "detail": {
+        "gold": "Bollywood pop song"
+      }
+    },
+    {
+      "item_id": 221,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A. Latin urban",
+      "score": 1,
+      "detail": {
+        "gold": "Latin Urban"
+      }
+    },
+    {
+      "item_id": 87,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Sinister and eerie",
+      "score": 1,
+      "detail": {
+        "gold": "Sinister and eerie"
+      }
+    },
+    {
+      "item_id": 133,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Pop music ballad",
+      "score": 1,
+      "detail": {
+        "gold": "Pop music ballad"
+      }
+    },
+    {
+      "item_id": 270,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. In unison",
+      "score": 1,
+      "detail": {
+        "gold": "In unison"
+      }
+    },
+    {
+      "item_id": 80,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Slow tempo",
+      "score": 0,
+      "detail": {
+        "gold": "Medium tempo"
+      }
+    },
+    {
+      "item_id": 275,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. Intense and captivating",
+      "score": 0,
+      "detail": {
+        "gold": "Vibrant and energetic"
+      }
+    },
+    {
+      "item_id": 58,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Moderate",
+      "score": 1,
+      "detail": {
+        "gold": "Moderate"
+      }
+    },
+    {
+      "item_id": 296,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A. Ukulele",
+      "score": 1,
+      "detail": {
+        "gold": "Ukulele"
+      }
+    },
+    {
+      "item_id": 119,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A. Rock drums",
+      "score": 1,
+      "detail": {
+        "gold": "Rock drums"
+      }
+    },
+    {
+      "item_id": 71,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Clicking sounds",
+      "score": 1,
+      "detail": {
+        "gold": "Clicking sounds"
+      }
+    },
+    {
+      "item_id": 253,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Slow pop",
+      "score": 1,
+      "detail": {
+        "gold": "Slow pop"
+      }
+    },
+    {
+      "item_id": 274,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Squeaky toy sound",
+      "score": 1,
+      "detail": {
+        "gold": "Squeaky toy sound"
+      }
+    },
+    {
+      "item_id": 244,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A. Goofy",
+      "score": 1,
+      "detail": {
+        "gold": "Goofy"
+      }
+    },
+    {
+      "item_id": 243,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Bed creaking and laughter",
+      "score": 1,
+      "detail": {
+        "gold": "Bed creaking and laughter"
+      }
+    },
+    {
+      "item_id": 196,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Medium-fast and lively",
+      "score": 0,
+      "detail": {
+        "gold": "Medium fast and lively"
+      }
+    },
+    {
+      "item_id": 214,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Theremin",
+      "score": 1,
+      "detail": {
+        "gold": "Theremin"
+      }
+    },
+    {
+      "item_id": 172,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A. Tambourine",
+      "score": 1,
+      "detail": {
+        "gold": "Tambourine"
+      }
+    },
+    {
+      "item_id": 83,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Automation-like singing",
+      "score": 1,
+      "detail": {
+        "gold": "Automation-like singing"
+      }
+    },
+    {
+      "item_id": 85,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Male vocalist",
+      "score": 0,
+      "detail": {
+        "gold": "Whispering"
+      }
+    },
+    {
+      "item_id": 224,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Enthusiastic",
+      "score": 1,
+      "detail": {
+        "gold": "Enthusiastic"
+      }
+    },
+    {
+      "item_id": 309,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Reggae style drum and guitar",
+      "score": 1,
+      "detail": {
+        "gold": "Reggae style drum and guitar"
+      }
+    },
+    {
+      "item_id": 231,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Live performance",
+      "score": 0,
+      "detail": {
+        "gold": "Bar"
+      }
+    },
+    {
+      "item_id": 43,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. Singing",
+      "score": 1,
+      "detail": {
+        "gold": "Singing"
+      }
+    },
+    {
+      "item_id": 35,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Keyboard",
+      "score": 1,
+      "detail": {
+        "gold": "Keyboard"
+      }
+    },
+    {
+      "item_id": 66,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Slide guitar",
+      "score": 1,
+      "detail": {
+        "gold": "Slide guitar"
+      }
+    },
+    {
+      "item_id": 223,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A. Flute",
+      "score": 1,
+      "detail": {
+        "gold": "Flute"
+      }
+    },
+    {
+      "item_id": 120,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "gold": "Male"
+      }
+    },
+    {
+      "item_id": 76,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Yodeling",
+      "score": 1,
+      "detail": {
+        "gold": "Yodeling"
+      }
+    },
+    {
+      "item_id": 104,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Keyboard",
+      "score": 1,
+      "detail": {
+        "gold": "Keyboard"
+      }
+    },
+    {
+      "item_id": 266,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. Romantic pop",
+      "score": 0,
+      "detail": {
+        "gold": "Ballad"
+      }
+    },
+    {
+      "item_id": 305,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. R&B/Soul",
+      "score": 1,
+      "detail": {
+        "gold": "R&B/soul"
+      }
+    },
+    {
+      "item_id": 277,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Amateur recording",
+      "score": 1,
+      "detail": {
+        "gold": "Amateur recording"
+      }
+    },
+    {
+      "item_id": 79,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A. Wedding",
+      "score": 1,
+      "detail": {
+        "gold": "Wedding"
+      }
+    },
+    {
+      "item_id": 178,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. High",
+      "score": 1,
+      "detail": {
+        "gold": "High"
+      }
+    },
+    {
+      "item_id": 182,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Happy",
+      "score": 1,
+      "detail": {
+        "gold": "Happy"
+      }
+    },
+    {
+      "item_id": 115,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Energetic and uplifting",
+      "score": 1,
+      "detail": {
+        "gold": "Energetic and uplifting"
+      }
+    },
+    {
+      "item_id": 211,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Folk Festival",
+      "score": 1,
+      "detail": {
+        "gold": "Folk festival"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.75,
+    "ci95": [
+      0.6333,
+      0.85
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset uro-bench-MuChoEval-en --backbone qwen3-omni-30b-gguf --split test --n 60",
+  "elapsed_s": 221.5
+}

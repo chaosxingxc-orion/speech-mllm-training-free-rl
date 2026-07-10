@@ -1,0 +1,633 @@
+{
+  "stage": "1-directional",
+  "dataset": "uro-bench-HSK5-zh",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/uro-bench-HSK5-zh/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": 74,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 闹钟太吵\nB. 房间太暗\nC. 可能没电了\nD. 要买充电器\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "C. 可能没电了",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 37,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 决定戒烟\nB. 还在犹豫\nC. 戒烟成功了\nD. 认为戒烟很困难\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "C. 戒烟成功了",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 13,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 顾客多\nB. 在四川\nC. 服务不好\nD. 菜的味道怪\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "A. 顾客多",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 44,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 导师给的\nB. 朋友录制的\nC. 自己制作的\nD. 网上下载的\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "A. 导师给的",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 88,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 开车很熟练了\nB. 买了一辆新车\nC. 想多练习倒车\nD. 还没拿到驾照\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "C. 想多练习倒车",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 75,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 古典文学\nB. 窗帘颜色\nC. 服装的年代\nD. 电视连续剧\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "C. 服装的年代",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 63,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 很时髦\nB. 颜色太艳\nC. 样式简单\nD. 价格合适\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "B. 颜色太艳",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 15,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 腰疼\nB. 头晕\nC. 腿受伤了\nD. 皮肤过敏\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "C. 腿受伤了",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 66,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 很清淡\nB. 太烫了\nC. 不够辣\nD. 不太新鲜\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "C. 不够辣",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 52,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 是位大夫\nB. 身体很好\nC. 睡眠不好\nD. 不相信中医\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "C. 睡眠不好",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 49,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 获了大奖\nB. 评价不高\nC. 还没上映\nD. 许多明星参演\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "C. 还没上映",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 2,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 车展会\nB. 图书馆\nC. 博物馆\nD. 动物园\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "A. 车展会",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 23,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 主张改革\nB. 要升职了\nC. 总结了教训\nD. 违反了规定\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "B. 要升职了",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 39,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 诊断病情\nB. 制定计划\nC. 补充个人信息\nD. 对论文提一些意见\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "D. 对论文提一些意见",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": 71,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 正在装修\nB. 面积很大\nC. 是贷款买的\nD. 在单位附近\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "A. 正在装修",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 5,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 宾馆\nB. 餐厅\nC. 酒吧\nD. 车厢\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "A. 宾馆",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 56,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 后天发货\nB. 还没签字\nC. 刚拿到合同\nD. 我会按时到\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "D. 我会按时到",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": 87,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 很有收获\nB. 来的专家很少\nC. 希望能去听讲座\nD. 希望能学到一些东西\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "A. 很有收获",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 36,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 记忆力很好\nB. 9 点要出门\nC. 在看电视剧\nD. 在主持节目\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "C. 在看电视剧",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 60,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 郊外\nB. 广场\nC. 健身房\nD. 市中心\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "A. 郊外",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 70,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 买保险\nB. 来取包裹\nC. 接受采访\nD. 去邮局寄信\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "B. 来取包裹",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 25,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 健康\nB. 服装\nC. 计算机\nD. 传染病\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "C. 计算机",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 10,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 可以防水\nB. 价格便宜\nC. 不需要电池\nD. 是手工制作的\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "A. 可以防水",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 89,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 睡眠不好\nB. 身体很好\nC. 是位大夫\nD. 不相信中医\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "A. 睡眠不好",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 38,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 规模很大\nB. 风格多样\nC. 正在重建\nD. 吸引了很多游客\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "A. 规模很大",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 29,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 总裁\nB. 专家\nC. 投资方\nD. 部门经理\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "C. 投资方",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 7,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 宴会结束\nB. 庆祝生日\nC. 商业谈判\nD. 机场送行\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "A. 宴会结束",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 40,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 扔了\nB. 卖掉\nC. 先放阳台上\nD. 当垃圾桶用\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "C. 先放阳台上",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 22,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 下午要开会\nB. 今天不是星期三\nC. 女住在提醒男的\nD. 男的不知道要开会\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "A. 下午要开会",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 35,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 司机\nB. 记者\nC. 医生\nD. 售票员\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "B. 记者",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 8,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 不太适应\nB. 非常调皮\nC. 不喜欢说话\nD. 常被老师表扬\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "D. 常被老师表扬",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": 47,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 停车位\nB. 加油站\nC. 保险公司\nD. 汽车修理店\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "A. 停车位",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 41,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 3月初\nB. 3月15号\nC. 4月中旬\nD. 4月底\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "C. 4月中旬",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 14,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 自然风光好\nB. 希望避开风险\nC. 想在这里定居\nD. 这里有发展前途\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "D. 这里有发展前途",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": 58,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 人事部\nB. 宣传部\nC. 研发部\nD. 市场部\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "A. 人事部",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 92,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 亲戚\nB. 邻居\nC. 朋友\nD. 同事\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "B. 邻居",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 91,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 他们在找人\nB. 他们来晚了\nC. 男的记错时间了\nD. 看比赛的人很多\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "D. 看比赛的人很多",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": 95,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 缺水\nB. 缺阳光\nC. 阳光太多\nD. 没人照顾\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "B. 缺阳光",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 97,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 没人解决问题\nB. 没什么大问题\nC. 问题很难解决\nD. 希望得到帮助\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "B. 没什么大问题",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 46,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 受家庭的影响\nB. 是她的业余爱好\nC. 是她大学的专业\nD. 有这方面工作经验\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "C. 是她大学的专业",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 9,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 不能上网\nB. 成绩退步了\nC. 不会安装衣柜\nD. 找不到说明书了\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "C. 不会安装衣柜",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 12,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 擦玻璃\nB. 下象棋\nC. 学习跳舞\nD. 学骑自行车\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "D. 学骑自行车",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": 33,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 忘锁门了\nB. 忘密码了\nC. 没拿钥匙\nD. 没拿行李箱\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "B. 忘密码了",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 76,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 他们迷路了\nB. 饭店没营业\nC. 排队的人很多\nD. 博物馆今天不开门\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "D. 博物馆今天不开门",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": 59,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 他们在逛街\nB. 抽屉被锁上了\nC. 他们在商量见面时间\nD. 男的不经常整理抽屉\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "D. 男的不经常整理抽屉",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": 3,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 放暑假了\nB. 儿子太调皮\nC. 儿子不善交际\nD. 儿子对象棋感兴趣\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "D. 儿子对象棋感兴趣",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": 18,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 她很积极\nB. 她很谦虚\nC. 她胆子大\nD. 她更了解情况\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "D. 她更了解情况",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": 27,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 犹豫不决\nB. 比较负责\nC. 非常干脆\nD. 不能坚持到底\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "D. 不能坚持到底",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": 53,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 空气湿润\nB. 生活舒适\nC. 护肤品便宜\nD. 没地方晒衣服\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "A. 空气湿润",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 16,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 电视\nB. 广播\nC. 网站\nD. 报纸\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "A. 电视",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 80,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 美术作品\nB. 设计方案\nC. 毕业论文\nD. 求职简历\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "B. 设计方案",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 73,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 喜欢吃梨\nB. 不会划船\nC. 拍了很多照片\nD. 上周去郊区了\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "D. 上周去郊区了",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": 69,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 堵车了\nB. 马上到\nC. 随时都可以\nD. 这儿不能停车\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "B. 马上到",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 78,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 胃\nB. 心脏\nC. 嗓子\nD. 脖子\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "A. 胃",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 50,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 包裹\nB. 零钱\nC. 快递公司\nD. 中介公司\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "C. 快递公司",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 26,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 是秘书\nB. 在等应聘结果\nC. 本科还没毕业\nD. 发表过很多作品\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "B. 在等应聘结果",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 28,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 不赞成贷款\nB. 得去一趟银行\nC. 餐厅今天不营业\nD. 公寓附近也可以取钱\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "D. 公寓附近也可以取钱",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": 82,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 吃惊\nB. 遗憾\nC. 兴奋\nD. 难过\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "C. 兴奋",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 99,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 记者\nB. 教练\nC. 学生\nD. 画家\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "A. 记者",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 68,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 肩膀疼\nB. 没做完家务\nC. 要去学射击\nD. 要去幼儿园接孩子\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "A. 肩膀疼",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 1.0,
+    "ci95": [
+      1.0,
+      1.0
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset uro-bench-HSK5-zh --backbone qwen3-omni-30b-gguf --split test --n 60",
+  "elapsed_s": 186.6
+}
