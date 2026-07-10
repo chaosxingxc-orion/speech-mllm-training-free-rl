@@ -1,0 +1,573 @@
+{
+  "stage": "1-directional",
+  "dataset": "uro-bench-APE-zh",
+  "k_type": "K8",
+  "backbone": "meralion-2-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/uro-bench-APE-zh/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": 113,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "这位民工从住处到小华家要走三十六级台阶。",
+      "score": 0,
+      "detail": {
+        "gold": "216级台阶"
+      }
+    },
+    {
+      "item_id": 111,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "水果店原来有橘子四百七十八千克。",
+      "score": 0,
+      "detail": {
+        "gold": "水果店原有橘子651千克"
+      }
+    },
+    {
+      "item_id": 128,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "一百一十元。",
+      "score": 0,
+      "detail": {
+        "gold": "33元"
+      }
+    },
+    {
+      "item_id": 76,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "卡车每小时行驶多少千米？",
+      "score": 0,
+      "detail": {
+        "gold": "卡车每小时运行90千米"
+      }
+    },
+    {
+      "item_id": 140,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "如果剩下的每小时十二米，需要多少小时？",
+      "score": 0,
+      "detail": {
+        "gold": "7个小时"
+      }
+    },
+    {
+      "item_id": 83,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "1228 + 156 = 1384",
+      "score": 0,
+      "detail": {
+        "gold": "2511元"
+      }
+    },
+    {
+      "item_id": 78,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "唱歌的有四十五人，跳舞的有九人。唱歌的比例是跳舞的九倍。",
+      "score": 0,
+      "detail": {
+        "gold": "5倍"
+      }
+    },
+    {
+      "item_id": 104,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "每件大人衣服用布多少米？",
+      "score": 0,
+      "detail": {
+        "gold": "每件大人衣服用布13/5米，也就是2.6米"
+      }
+    },
+    {
+      "item_id": 29,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "这卷绳子还剩24米。",
+      "score": 0,
+      "detail": {
+        "gold": "17.2米"
+      }
+    },
+    {
+      "item_id": 28,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "十年后姐姐比红红大十岁。",
+      "score": 0,
+      "detail": {
+        "gold": "还是5岁"
+      }
+    },
+    {
+      "item_id": 26,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "75元",
+      "score": 0,
+      "detail": {
+        "gold": "70元"
+      }
+    },
+    {
+      "item_id": 108,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "888",
+      "score": 0,
+      "detail": {
+        "gold": "6000本书"
+      }
+    },
+    {
+      "item_id": 164,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "妈妈比小明高六米。",
+      "score": 0,
+      "detail": {
+        "gold": "0.3米"
+      }
+    },
+    {
+      "item_id": 114,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "去春游的车上已经坐了四十五人，还有四个小组在等下一辆车，没组九人，去春游的一共有多少人？",
+      "score": 0,
+      "detail": {
+        "gold": "81人"
+      }
+    },
+    {
+      "item_id": 165,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "250",
+      "score": 0,
+      "detail": {
+        "gold": "2880元"
+      }
+    },
+    {
+      "item_id": 35,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "答案：200",
+      "score": 0,
+      "detail": {
+        "gold": "37.68平方米"
+      }
+    },
+    {
+      "item_id": 105,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "瓜子500克，吃了总重量的20%，剩下瓜子多少克？",
+      "score": 0,
+      "detail": {
+        "gold": "320千克"
+      }
+    },
+    {
+      "item_id": 43,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "两科都没得优秀的有多少人？",
+      "score": 0,
+      "detail": {
+        "gold": "24人"
+      }
+    },
+    {
+      "item_id": 179,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "五个不合格。",
+      "score": 0,
+      "detail": {
+        "gold": "79/80，也就是百分之98.75"
+      }
+    },
+    {
+      "item_id": 73,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "28元",
+      "score": 0,
+      "detail": {
+        "gold": "16.5元"
+      }
+    },
+    {
+      "item_id": 66,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "小华爬了十二个梯级。",
+      "score": 0,
+      "detail": {
+        "gold": "66级台阶"
+      }
+    },
+    {
+      "item_id": 39,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "西安到北京的铁路长大约一千二百公里。",
+      "score": 0,
+      "detail": {
+        "gold": "20厘米"
+      }
+    },
+    {
+      "item_id": 2,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "五年级去的人数是四年级的一点五倍。",
+      "score": 0,
+      "detail": {
+        "gold": "五年级去了150人"
+      }
+    },
+    {
+      "item_id": 112,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "答案：20平方米。",
+      "score": 0,
+      "detail": {
+        "gold": "1820平方米"
+      }
+    },
+    {
+      "item_id": 153,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "体育用品商店原来有两百零五根跳绳。",
+      "score": 0,
+      "detail": {
+        "gold": "800根"
+      }
+    },
+    {
+      "item_id": 130,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "10",
+      "score": 0,
+      "detail": {
+        "gold": "是26"
+      }
+    },
+    {
+      "item_id": 124,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "score": 0,
+      "detail": {
+        "gold": "还可以买4只"
+      }
+    },
+    {
+      "item_id": 172,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "有十人两项都没有参加。",
+      "score": 0,
+      "detail": {
+        "gold": "4个人"
+      }
+    },
+    {
+      "item_id": 5,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "48平方米",
+      "score": 0,
+      "detail": {
+        "gold": "面积是192平方米"
+      }
+    },
+    {
+      "item_id": 136,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "从A到B两地相距48千米，小林骑摩托车从A到B每小时行驶24千米，从B到A每小时行驶40千米，求摩托车的平均速度。",
+      "score": 0,
+      "detail": {
+        "gold": "30千米每小时"
+      }
+    },
+    {
+      "item_id": 146,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "5厘米",
+      "score": 0,
+      "detail": {
+        "gold": "35厘米"
+      }
+    },
+    {
+      "item_id": 58,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "缺席率是多少？",
+      "score": 0,
+      "detail": {
+        "gold": "出席率是24/25，也就是百分之九十八"
+      }
+    },
+    {
+      "item_id": 60,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "score": 0,
+      "detail": {
+        "gold": "30种不同车票"
+      }
+    },
+    {
+      "item_id": 8,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "16",
+      "score": 0,
+      "detail": {
+        "gold": "鸵鸟的体重是蜂鸟的84375倍"
+      }
+    },
+    {
+      "item_id": 170,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "四十五袋大米，共运了四十五袋*五十千克=2250千克。",
+      "score": 0,
+      "detail": {
+        "gold": "9000千克"
+      }
+    },
+    {
+      "item_id": 79,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "一升的每瓶售价十五元。",
+      "score": 0,
+      "detail": {
+        "gold": "第一种"
+      }
+    },
+    {
+      "item_id": 18,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "score": 0,
+      "detail": {
+        "gold": "50平方厘米"
+      }
+    },
+    {
+      "item_id": 38,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "答案：10分钟",
+      "score": 0,
+      "detail": {
+        "gold": "25分钟"
+      }
+    },
+    {
+      "item_id": 121,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "100",
+      "score": 0,
+      "detail": {
+        "gold": "200人"
+      }
+    },
+    {
+      "item_id": 16,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "高是200米。",
+      "score": 0,
+      "detail": {
+        "gold": "400米"
+      }
+    },
+    {
+      "item_id": 44,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "父亲比儿子早到终点多少秒？",
+      "score": 0,
+      "detail": {
+        "gold": "40秒"
+      }
+    },
+    {
+      "item_id": 23,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "李华二零零五年六月份满十一岁。",
+      "score": 0,
+      "detail": {
+        "gold": "1994年"
+      }
+    },
+    {
+      "item_id": 123,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "22厘米",
+      "score": 1,
+      "detail": {
+        "gold": "22厘米"
+      }
+    },
+    {
+      "item_id": 133,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "最少要切多少刀？",
+      "score": 0,
+      "detail": {
+        "gold": "要切11刀"
+      }
+    },
+    {
+      "item_id": 177,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "score": 0,
+      "detail": {
+        "gold": "57道"
+      }
+    },
+    {
+      "item_id": 27,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "1000米",
+      "score": 0,
+      "detail": {
+        "gold": "10次"
+      }
+    },
+    {
+      "item_id": 68,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "300元",
+      "score": 0,
+      "detail": {
+        "gold": "收入是3150元"
+      }
+    },
+    {
+      "item_id": 131,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "score": 0,
+      "detail": {
+        "gold": "可以排9行"
+      }
+    },
+    {
+      "item_id": 189,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "出勤率是多少？",
+      "score": 0,
+      "detail": {
+        "gold": "49/50，也就是百分之98"
+      }
+    },
+    {
+      "item_id": 110,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "一个。",
+      "score": 0,
+      "detail": {
+        "gold": "一共可以挂5个气球"
+      }
+    },
+    {
+      "item_id": 163,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "至少要二十名。",
+      "score": 0,
+      "detail": {
+        "gold": "至少要11名"
+      }
+    },
+    {
+      "item_id": 25,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "四年级学生总数是四年一班总人数的多少倍？",
+      "score": 0,
+      "detail": {
+        "gold": "3倍"
+      }
+    },
+    {
+      "item_id": 150,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "20米",
+      "score": 0,
+      "detail": {
+        "gold": "38米"
+      }
+    },
+    {
+      "item_id": 156,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "150米",
+      "score": 0,
+      "detail": {
+        "gold": "360米"
+      }
+    },
+    {
+      "item_id": 71,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "score": 0,
+      "detail": {
+        "gold": "30元"
+      }
+    },
+    {
+      "item_id": 52,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "利利吃了两块，爸爸吃了三块。",
+      "score": 0,
+      "detail": {
+        "gold": "一共吃了这个月饼的八分之五，也就是5/8"
+      }
+    },
+    {
+      "item_id": 62,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "女生多。",
+      "score": 0,
+      "detail": {
+        "gold": "现在是男生多，多30人"
+      }
+    },
+    {
+      "item_id": 143,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "每天开凿多少米？",
+      "score": 0,
+      "detail": {
+        "gold": "乙队每天开凿13.4米"
+      }
+    },
+    {
+      "item_id": 85,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "妈妈买来了五块饼干。",
+      "score": 0,
+      "detail": {
+        "gold": "20块"
+      }
+    },
+    {
+      "item_id": 70,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "他买了一支iewicz的铅笔和一支自动笔，应收回多少钱？",
+      "score": 0,
+      "detail": {
+        "gold": "3.6元"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.0167,
+    "ci95": [
+      0.0,
+      0.05
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset uro-bench-APE-zh --backbone meralion-2-gguf --split test --n 60",
+  "elapsed_s": 24.5
+}

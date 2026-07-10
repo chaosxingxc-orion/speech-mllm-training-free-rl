@@ -1,0 +1,573 @@
+{
+  "stage": "1-directional",
+  "dataset": "uro-bench-MLCpro-en",
+  "k_type": "K8",
+  "backbone": "meralion-2-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/uro-bench-MLCpro-en/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": 40,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The integral of 2x + 3 with respect to x is x² + 3x + C, where C is the constant of integration.",
+      "score": 0,
+      "detail": {
+        "gold": "The integral of the function is x squared plus 3x plus a constant of integration."
+      }
+    },
+    {
+      "item_id": 79,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The concept of social contract shapes modern political theory by providing a framework for understanding the relationship between individuals and the state.",
+      "score": 0,
+      "detail": {
+        "gold": "The social contract theory, introduced by philosophers like Hobbes, Locke, and Rousseau, posits that individuals consent to form a society in exchange for security and the protection of rights. This idea underpins modern concepts of democracy, governance, and the rule of law."
+      }
+    },
+    {
+      "item_id": 2,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Sixty.",
+      "score": 0,
+      "detail": {
+        "gold": "Nine hundred forty divided by twenty is forty-seven."
+      }
+    },
+    {
+      "item_id": 35,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "100",
+      "score": 0,
+      "detail": {
+        "gold": "The sum of the first 50 prime numbers is 5,328."
+      }
+    },
+    {
+      "item_id": 75,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Baroque period emphasized ornamentation and elaborate counterpoint, while the Classical period focused on clarity, balance, and simplicity.",
+      "score": 0,
+      "detail": {
+        "gold": "Baroque music, like Bach and Handel, is characterized by ornamentation, complexity, and emotional intensity. Classical music, represented by Mozart and Beethoven, is marked by balance, clarity, and formal structure, with an emphasis on melody and harmonies."
+      }
+    },
+    {
+      "item_id": 39,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "x = 2",
+      "score": 0,
+      "detail": {
+        "gold": "The solutions for x are approximately 2.79 and -7.79."
+      }
+    },
+    {
+      "item_id": 41,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "210",
+      "score": 0,
+      "detail": {
+        "gold": "There are 120 ways to select 3 objects from a set of 10."
+      }
+    },
+    {
+      "item_id": 25,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "199",
+      "score": 0,
+      "detail": {
+        "gold": "The sum of the first 20 prime numbers is 639."
+      }
+    },
+    {
+      "item_id": 68,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the Big Bang theory?",
+      "score": 0,
+      "detail": {
+        "gold": "The Big Bang theory suggests that the universe began as an extremely hot and dense point, about 13.8 billion years ago, and has been expanding ever since. This expansion explains the observed redshift of galaxies and the cosmic background radiation."
+      }
+    },
+    {
+      "item_id": 80,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The golden ratio is approximately 1.618. It is used in art and architecture to create aesthetically pleasing proportions and balance.",
+      "score": 0,
+      "detail": {
+        "gold": "The golden ratio is a mathematical ratio, approximately 1.618, that is often found in nature and has been used in art and architecture to create aesthetically pleasing proportions. It can be seen in famous works like the Parthenon and the composition of paintings by artists such as Leonardo da Vinci."
+      }
+    },
+    {
+      "item_id": 13,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "500",
+      "score": 0,
+      "detail": {
+        "gold": "The largest value is 480, because 60 times 8 equals 480, and it is less than 500."
+      }
+    },
+    {
+      "item_id": 22,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The solutions are x = 0 and x = 2.",
+      "score": 0,
+      "detail": {
+        "gold": "To solve 2x squared minus 4x equals zero, you factor out 2x. That gives you 2x times x minus 2 equals zero. So, x equals zero or x equals two."
+      }
+    },
+    {
+      "item_id": 53,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The sky is blue during the day because of Rayleigh scattering.",
+      "score": 0,
+      "detail": {
+        "gold": "The sky appears blue because of a phenomenon called Rayleigh scattering. When sunlight enters Earth's atmosphere, the shorter wavelengths of light, like blue and violet, are scattered in all directions by the gases in the air. Our eyes are more sensitive to blue light, so the sky looks blue."
+      }
+    },
+    {
+      "item_id": 44,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The determinant of the matrix is 12.",
+      "score": 0,
+      "detail": {
+        "gold": "The determinant of the matrix is -2."
+      }
+    },
+    {
+      "item_id": 69,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Metals rust when they react with oxygen and water in the environment, forming compounds like iron oxide. This process is called oxidation, and it weakens the metal over time."
+      }
+    },
+    {
+      "item_id": 36,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "There is one solution.",
+      "score": 0,
+      "detail": {
+        "gold": "There are 11 distinct solutions for the equation x plus y equals 12."
+      }
+    },
+    {
+      "item_id": 10,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "50 cm²",
+      "score": 0,
+      "detail": {
+        "gold": "The formula for the area of a trapezoid is (upper base plus lower base) times height divided by 2. So, the area is (8 plus 12) times 5 divided by 2, which equals 50 square centimeters."
+      }
+    },
+    {
+      "item_id": 85,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The invention of the forward pass revolutionized American football by allowing for more strategic and dynamic play.",
+      "score": 0,
+      "detail": {
+        "gold": "The forward pass, legalized in 1906, revolutionized American football by opening up the game to a more dynamic style of play. It allowed teams to cover more ground quickly, added new strategies to the game, and made the sport more exciting for fans. The introduction of the forward pass played a crucial role in the development of the modern, high-scoring version of the sport we see today."
+      }
+    },
+    {
+      "item_id": 29,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The greatest common divisor of 56 and 98 is 2.",
+      "score": 0,
+      "detail": {
+        "gold": "The greatest common divisor of 56 and 98 is 14."
+      }
+    },
+    {
+      "item_id": 7,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "15 is the prime factorization of 15.",
+      "score": 0,
+      "detail": {
+        "gold": "The prime factorization of 15 is 3 times 5."
+      }
+    },
+    {
+      "item_id": 88,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The geological consequences of plate tectonics include the formation of mountains, volcanoes, and earthquakes.",
+      "score": 0,
+      "detail": {
+        "gold": "Plate tectonics explains the movement of Earth's lithosphere, which is divided into large plates that float on the semi-fluid asthenosphere. This movement leads to the formation of mountains, earthquakes, and volcanic activity. Over millions of years, plate tectonics has shaped the planet's continents, ocean basins, and geological features."
+      }
+    },
+    {
+      "item_id": 73,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Renaissance fostered a spirit of inquiry and observation, which laid the groundwork for the scientific method and the development of modern science.",
+      "score": 0,
+      "detail": {
+        "gold": "The Renaissance led to a shift in thinking, emphasizing observation, experimentation, and empirical evidence. This period saw the rise of key figures like Copernicus and Galileo, whose work laid the foundation for modern physics and astronomy."
+      }
+    },
+    {
+      "item_id": 8,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Two.",
+      "score": 0,
+      "detail": {
+        "gold": "200 has 12 factors: 1, 2, 4, 5, 8, 10, 20, 25, 40, 50, 100, and 200."
+      }
+    },
+    {
+      "item_id": 38,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "1.",
+      "score": 0,
+      "detail": {
+        "gold": "The greatest common divisor of 56 and 98 is 14."
+      }
+    },
+    {
+      "item_id": 50,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Earth's seasons are caused by the tilt of its axis.",
+      "score": 0,
+      "detail": {
+        "gold": "Seasons on Earth are caused by the tilt of the Earth's axis relative to its orbit around the sun. This tilt means that different parts of the Earth receive varying amounts of sunlight throughout the year, resulting in the changing seasons."
+      }
+    },
+    {
+      "item_id": 14,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Fibonacci sequence is a series of numbers where each number is the sum of the two preceding ones. It typically starts with 0 and 1.",
+      "score": 0,
+      "detail": {
+        "gold": "The Fibonacci sequence is a series where each term is the sum of the two preceding ones. The first two terms are 0 and 1, and the subsequent terms are 1, 2, 3, 5, 8, 13, 21, 34, 55, 89."
+      }
+    },
+    {
+      "item_id": 5,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The least common multiple of 18 and 24 is 72.",
+      "score": 1,
+      "detail": {
+        "gold": "The least common multiple of 18 and 24 is 72."
+      }
+    },
+    {
+      "item_id": 52,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Mitochondria are the powerhouses of the cell, producing energy in the form of ATP.",
+      "score": 0,
+      "detail": {
+        "gold": "Mitochondria are often referred to as the powerhouses of the cell because they generate most of the cell's supply of adenosine triphosphate (ATP), which is used as a source of chemical energy. They also play a role in regulating the cell's metabolism and energy balance."
+      }
+    },
+    {
+      "item_id": 71,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Impressionism focuses on capturing the fleeting effects of light and color, while realism aims to depict the world as it appears to the eye.",
+      "score": 0,
+      "detail": {
+        "gold": "Impressionism focuses on capturing fleeting moments and the effects of light, often using loose brushwork and vibrant colors. Realism, on the other hand, aims to depict scenes as they truly are, focusing on accuracy and everyday subjects without idealization."
+      }
+    },
+    {
+      "item_id": 37,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "120",
+      "score": 0,
+      "detail": {
+        "gold": "The area of the triangle is approximately 24 square units."
+      }
+    },
+    {
+      "item_id": 15,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the congruence relation?",
+      "score": 0,
+      "detail": {
+        "gold": "The congruence relation means that two numbers have the same remainder when divided by a certain number. For example, 23 and 8 are congruent modulo 7, because 23 divided by 7 leaves a remainder of 2, and 8 divided by 7 also leaves a remainder of 2."
+      }
+    },
+    {
+      "item_id": 9,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "18 cm³",
+      "score": 0,
+      "detail": {
+        "gold": "The volume of a rectangular prism is length times width times height. So, the volume is 6 times 4 times 3, which equals 72 cubic centimeters."
+      }
+    },
+    {
+      "item_id": 12,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The least common multiple of 9 and 12 is 18.",
+      "score": 0,
+      "detail": {
+        "gold": "The least common multiple of 9 and 12 is 36."
+      }
+    },
+    {
+      "item_id": 33,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "1",
+      "score": 0,
+      "detail": {
+        "gold": "There are 277,200 ways to arrange the letters in the word 'mathematics'."
+      }
+    },
+    {
+      "item_id": 49,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "36",
+      "score": 0,
+      "detail": {
+        "gold": "There are 36 possible outcomes when you roll two six-sided dice."
+      }
+    },
+    {
+      "item_id": 47,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "9",
+      "score": 0,
+      "detail": {
+        "gold": "The surface area of the cube is 54 square units."
+      }
+    },
+    {
+      "item_id": 56,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "We need sleep to rest our brains and bodies.",
+      "score": 0,
+      "detail": {
+        "gold": "Sleep is essential for our physical and mental health. During sleep, the body repairs tissues, consolidates memories, and balances hormones. Sleep also helps maintain cognitive function, emotional stability, and overall well-being."
+      }
+    },
+    {
+      "item_id": 18,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "DNA stores information in a double helix structure.",
+      "score": 0,
+      "detail": {
+        "gold": "The double-helix structure of DNA consists of two long chains, each made up of nucleotides. Nucleotides are composed of deoxyribose, phosphate groups, and nitrogenous bases. The nitrogenous bases pair through hydrogen bonds: adenine (A) pairs with thymine (T), and cytosine (C) pairs with guanine (G). These base pairs form the coding of genes, with information stored in the DNA through the specific sequence of base pairs."
+      }
+    },
+    {
+      "item_id": 27,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Zero.",
+      "score": 0,
+      "detail": {
+        "gold": "As x approaches infinity, the limit of 1 divided by x is zero."
+      }
+    },
+    {
+      "item_id": 59,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Differences in water density and Earth's rotation.",
+      "score": 0,
+      "detail": {
+        "gold": "Ocean currents are caused by a combination of wind, Earth's rotation, and the difference in temperature and salinity of seawater. These factors drive the movement of water in the oceans, distributing heat and nutrients around the globe."
+      }
+    },
+    {
+      "item_id": 16,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Light energy is converted to chemical energy in photosynthesis by chlorophyll, which absorbs light energy and uses it to split water molecules, releasing electrons and oxygen.",
+      "score": 0,
+      "detail": {
+        "gold": "Photosynthesis is the process by which plants use solar energy to convert carbon dioxide and water into glucose and oxygen. Light energy is absorbed by pigments in the chloroplasts and is used to excite chlorophyll, causing it to generate high-energy electrons. These electrons are then passed through the electron transport chain, ultimately converting to chemical energy, which is used to synthesize glucose."
+      }
+    },
+    {
+      "item_id": 46,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "100",
+      "score": 0,
+      "detail": {
+        "gold": "The sum of the squares of the first 10 positive integers is 385."
+      }
+    },
+    {
+      "item_id": 60,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Natural selection is the process by which organisms with traits better suited to their environment survive and reproduce more successfully.",
+      "score": 0,
+      "detail": {
+        "gold": "Natural selection is the process where organisms with traits better suited to their environment are more likely to survive and reproduce. Over time, these beneficial traits become more common in the population, leading to evolution."
+      }
+    },
+    {
+      "item_id": 66,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The question is asking how a compass works.",
+      "score": 0,
+      "detail": {
+        "gold": "A compass works by using a magnetized needle that aligns itself with Earth's magnetic field. The needle points to the magnetic north, which allows us to find direction."
+      }
+    },
+    {
+      "item_id": 55,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The human digestive system breaks down food into nutrients that the body can absorb and use.",
+      "score": 0,
+      "detail": {
+        "gold": "The human digestive system works by breaking down food into smaller components that the body can absorb. It starts in the mouth, where enzymes begin to break down food, then continues through the stomach and small intestine, where nutrients are absorbed, and ends in the large intestine, where water is reabsorbed, and waste is formed."
+      }
+    },
+    {
+      "item_id": 58,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "An electric circuit works by allowing the flow of electrons through a closed loop, powered by a source of energy.",
+      "score": 0,
+      "detail": {
+        "gold": "An electric circuit works by allowing electricity to flow through a closed loop, usually consisting of a power source, wires, and components like resistors or light bulbs. The power source provides the energy, and the wires guide the flow of electric charge, enabling devices in the circuit to function."
+      }
+    },
+    {
+      "item_id": 90,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Great Barrier Reef is a significant biodiversity hotspot, providing habitat for a wide range of marine species.",
+      "score": 0,
+      "detail": {
+        "gold": "The Great Barrier Reef, located off the coast of Australia, is one of the most biodiverse ecosystems on the planet. It is home to thousands of species of marine life, including corals, fish, and marine mammals. As a crucial marine habitat, it supports global biodiversity, helps maintain marine food webs, and provides economic benefits through tourism and fisheries."
+      }
+    },
+    {
+      "item_id": 76,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The laws of supply and demand affect pricing in an economy by determining the equilibrium price and quantity of a good or service.",
+      "score": 0,
+      "detail": {
+        "gold": "The laws of supply and demand state that when demand for a good or service increases, and supply remains constant, prices tend to rise. Conversely, when supply increases and demand remains constant, prices tend to fall. This principle is fundamental in determining how prices are set in markets."
+      }
+    },
+    {
+      "item_id": 34,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The area of the circle is 49π.",
+      "score": 0,
+      "detail": {
+        "gold": "The area of the circle is approximately 153.94 square units."
+      }
+    },
+    {
+      "item_id": 32,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the derivative of the function three x cube minus five x squared plus two x?",
+      "score": 0,
+      "detail": {
+        "gold": "The derivative of the function is 9x squared minus 10x plus 2."
+      }
+    },
+    {
+      "item_id": 63,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The vaccine contains a weakened or inactive version of the virus or bacteria.",
+      "score": 0,
+      "detail": {
+        "gold": "Vaccines work by introducing a small, harmless piece of a virus or bacteria into the body. This stimulates the immune system to recognize and remember the pathogen, so if the body encounters it again, it can fight it off more effectively."
+      }
+    },
+    {
+      "item_id": 64,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the greenhouse effect and why is it important?",
+      "score": 0,
+      "detail": {
+        "gold": "The greenhouse effect is a natural process where certain gases in the atmosphere trap heat from the sun, keeping the Earth warm enough to support life. However, human activities, like burning fossil fuels, are increasing these gases, contributing to global warming."
+      }
+    },
+    {
+      "item_id": 70,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Chlorophyll is a pigment that absorbs light energy for photosynthesis.",
+      "score": 0,
+      "detail": {
+        "gold": "Chlorophyll is a green pigment in plants that absorbs light energy from the sun, which is then used in photosynthesis to convert carbon dioxide and water into glucose, providing energy for the plant."
+      }
+    },
+    {
+      "item_id": 72,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The role of counterpoint in classical music is to create a musical dialogue between two or more independent melodic lines.",
+      "score": 0,
+      "detail": {
+        "gold": "Counterpoint is the technique of combining different melodic lines in a way that they complement each other, yet remain distinct. It creates harmony and complexity, often found in Baroque music, like in Bach’s fugues."
+      }
+    },
+    {
+      "item_id": 26,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "120",
+      "score": 0,
+      "detail": {
+        "gold": "The number of ways to arrange 5 distinct books is 5 factorial, which is 5 times 4 times 3 times 2 times 1, so 120."
+      }
+    },
+    {
+      "item_id": 3,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What are the factors of seventy two?",
+      "score": 0,
+      "detail": {
+        "gold": "The factors of 72 are 1, 2, 3, 4, 6, 8, 9, 12, 18, 24, 36, and 72."
+      }
+    },
+    {
+      "item_id": 23,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The derivative of three x squared plus five x is six x plus five.",
+      "score": 0,
+      "detail": {
+        "gold": "The derivative of 3x squared plus 5x is 6x plus 5."
+      }
+    },
+    {
+      "item_id": 28,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "2197.",
+      "score": 0,
+      "detail": {
+        "gold": "The volume of a cylinder is pi times the radius squared times the height. So, pi times 3 squared times 7 equals 63 pi cubic units, or about 197.92 cubic units."
+      }
+    },
+    {
+      "item_id": 67,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The movement of tectonic plates.",
+      "score": 0,
+      "detail": {
+        "gold": "Earthquakes are caused by the sudden release of energy in the Earth’s crust, often due to the movement of tectonic plates. This release of energy creates seismic waves, which we feel as shaking on the surface."
+      }
+    },
+    {
+      "item_id": 6,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "121 is not a prime number; it is the square of 11."
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.0167,
+    "ci95": [
+      0.0,
+      0.05
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset uro-bench-MLCpro-en --backbone meralion-2-gguf --split test --n 60",
+  "elapsed_s": 25.7
+}

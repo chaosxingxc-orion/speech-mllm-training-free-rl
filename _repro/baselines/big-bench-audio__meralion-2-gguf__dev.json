@@ -1,0 +1,433 @@
+{
+  "stage": "1-directional",
+  "dataset": "big-bench-audio",
+  "k_type": "K8/K6 (legacy)",
+  "backbone": "meralion-2-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/baselines-big-bench-audio/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "big-bench-audio#0",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#1",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Invalid.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#2",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Invalid.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#3",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#4",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Three.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#5",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Invalid.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#6",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "10",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#7",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#8",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Nine.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#9",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Seven.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#10",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Three.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#11",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#12",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Nine.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#13",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#14",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Five.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#15",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Three.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#16",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#17",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Seven.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#18",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Invalid",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#19",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Invalid.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#20",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Seven.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#21",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Eight.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#22",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#23",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#24",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#25",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#26",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Invalid",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#27",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Eight.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#28",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Invalid",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#29",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#30",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#31",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#32",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#33",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#34",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#35",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Two.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#36",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#37",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Eight.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#38",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Invalid.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "big-bench-audio#39",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Invalid.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.4,
+    "ci95": [
+      0.25,
+      0.55
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset big-bench-audio --backbone meralion-2-gguf --split dev --n 40",
+  "elapsed_s": 14.1
+}

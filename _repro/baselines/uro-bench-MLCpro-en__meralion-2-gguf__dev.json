@@ -1,0 +1,393 @@
+{
+  "stage": "1-directional",
+  "dataset": "uro-bench-MLCpro-en",
+  "k_type": "K8",
+  "backbone": "meralion-2-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/uro-bench-MLCpro-en/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": 30,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "12.57 units",
+      "score": 0,
+      "detail": {
+        "gold": "The circumference of a circle is 2 pi times the radius. So, 2 pi times 4 equals 8 pi, or about 25.13 units."
+      }
+    },
+    {
+      "item_id": 8,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Two.",
+      "score": 0,
+      "detail": {
+        "gold": "200 has 12 factors: 1, 2, 4, 5, 8, 10, 20, 25, 40, 50, 100, and 200."
+      }
+    },
+    {
+      "item_id": 90,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Great Barrier Reef is a significant biodiversity hotspot, providing habitat for a wide range of marine species.",
+      "score": 0,
+      "detail": {
+        "gold": "The Great Barrier Reef, located off the coast of Australia, is one of the most biodiverse ecosystems on the planet. It is home to thousands of species of marine life, including corals, fish, and marine mammals. As a crucial marine habitat, it supports global biodiversity, helps maintain marine food webs, and provides economic benefits through tourism and fisheries."
+      }
+    },
+    {
+      "item_id": 28,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "2197.",
+      "score": 0,
+      "detail": {
+        "gold": "The volume of a cylinder is pi times the radius squared times the height. So, pi times 3 squared times 7 equals 63 pi cubic units, or about 197.92 cubic units."
+      }
+    },
+    {
+      "item_id": 31,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The roots of the equation are x = 2 and x = -4.",
+      "score": 0,
+      "detail": {
+        "gold": "The roots of the equation are x equals 4 and x equals 2."
+      }
+    },
+    {
+      "item_id": 21,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Time dilation is the phenomenon where time passes at different rates for observers in different reference frames, as described by Einstein's theory of relativity.",
+      "score": 0,
+      "detail": {
+        "gold": "According to Einstein's special theory of relativity, as an object's speed approaches the speed of light, time for the observer of that object will slow down. In other words, the time for a moving object will 'dilate' relative to an observer at rest, appearing to pass more slowly. This effect becomes more significant at high speeds. For example, astronauts traveling at high velocities will experience time passing more slowly relative to people on Earth."
+      }
+    },
+    {
+      "item_id": 18,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "DNA stores information in a double helix structure.",
+      "score": 0,
+      "detail": {
+        "gold": "The double-helix structure of DNA consists of two long chains, each made up of nucleotides. Nucleotides are composed of deoxyribose, phosphate groups, and nitrogenous bases. The nitrogenous bases pair through hydrogen bonds: adenine (A) pairs with thymine (T), and cytosine (C) pairs with guanine (G). These base pairs form the coding of genes, with information stored in the DNA through the specific sequence of base pairs."
+      }
+    },
+    {
+      "item_id": 19,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Quantum entanglement is a phenomenon where two or more particles become linked, even when separated by large distances. This link means that the state of one particle instantly affects the state of the other, regardless of the distance between them.",
+      "score": 0,
+      "detail": {
+        "gold": "Quantum entanglement is a quantum phenomenon where the quantum states of two or more particles are dependent on each other, such that measuring one particle's state instantly affects the state of the other particle(s), even if they are far apart. Quantum entanglement transcends classical physics and is an important phenomenon in quantum computing and quantum communication."
+      }
+    },
+    {
+      "item_id": 2,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "70",
+      "score": 0,
+      "detail": {
+        "gold": "Nine hundred forty divided by twenty is forty-seven."
+      }
+    },
+    {
+      "item_id": 22,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The solutions are x = 0 and x = 2.",
+      "score": 0,
+      "detail": {
+        "gold": "To solve 2x squared minus 4x equals zero, you factor out 2x. That gives you 2x times x minus 2 equals zero. So, x equals zero or x equals two."
+      }
+    },
+    {
+      "item_id": 49,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "36",
+      "score": 0,
+      "detail": {
+        "gold": "There are 36 possible outcomes when you roll two six-sided dice."
+      }
+    },
+    {
+      "item_id": 86,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Climate change is having a significant impact on global food production, leading to reduced yields and increased food insecurity.",
+      "score": 0,
+      "detail": {
+        "gold": "Climate change affects global food production by altering weather patterns, such as increased frequency of droughts, floods, and extreme temperatures. These changes can disrupt crop yields, reduce the availability of water for irrigation, and lead to the spread of pests and diseases, ultimately threatening food security. Adapting agricultural practices to these changing conditions is crucial for maintaining food supplies."
+      }
+    },
+    {
+      "item_id": 36,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "There is one solution.",
+      "score": 0,
+      "detail": {
+        "gold": "There are 11 distinct solutions for the equation x plus y equals 12."
+      }
+    },
+    {
+      "item_id": 15,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the congruence relation?",
+      "score": 0,
+      "detail": {
+        "gold": "The congruence relation means that two numbers have the same remainder when divided by a certain number. For example, 23 and 8 are congruent modulo 7, because 23 divided by 7 leaves a remainder of 2, and 8 divided by 7 also leaves a remainder of 2."
+      }
+    },
+    {
+      "item_id": 25,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "199",
+      "score": 0,
+      "detail": {
+        "gold": "The sum of the first 20 prime numbers is 639."
+      }
+    },
+    {
+      "item_id": 17,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Heisenberg uncertainty principle states that it is impossible to know both the position and momentum of a particle with perfect accuracy.",
+      "score": 0,
+      "detail": {
+        "gold": "The Heisenberg Uncertainty Principle states that certain pairs of physical properties, such as position and momentum, cannot be measured exactly at the same time. In other words, the more accurately the position of a particle is known, the greater the uncertainty in its momentum, and vice versa. This principle is a core concept of quantum mechanics, highlighting the inherent uncertainty of the microscopic world."
+      }
+    },
+    {
+      "item_id": 37,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "120",
+      "score": 0,
+      "detail": {
+        "gold": "The area of the triangle is approximately 24 square units."
+      }
+    },
+    {
+      "item_id": 33,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "1",
+      "score": 0,
+      "detail": {
+        "gold": "There are 277,200 ways to arrange the letters in the word 'mathematics'."
+      }
+    },
+    {
+      "item_id": 61,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The water cycle describes the continuous movement of water on, above, and below the surface of the Earth.",
+      "score": 0,
+      "detail": {
+        "gold": "The water cycle works by moving water through various stages: evaporation from oceans and lakes, condensation into clouds, precipitation as rain or snow, and then the water flows back to the Earth’s surface, where it can be absorbed or run off into bodies of water."
+      }
+    },
+    {
+      "item_id": 59,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Differences in water density and Earth's rotation.",
+      "score": 0,
+      "detail": {
+        "gold": "Ocean currents are caused by a combination of wind, Earth's rotation, and the difference in temperature and salinity of seawater. These factors drive the movement of water in the oceans, distributing heat and nutrients around the globe."
+      }
+    },
+    {
+      "item_id": 4,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The greatest common divisor of 14 and 21 is 7.",
+      "score": 1,
+      "detail": {
+        "gold": "The greatest common divisor of 14 and 21 is 7."
+      }
+    },
+    {
+      "item_id": 34,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The area of the circle is 49π.",
+      "score": 0,
+      "detail": {
+        "gold": "The area of the circle is approximately 153.94 square units."
+      }
+    },
+    {
+      "item_id": 72,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The role of counterpoint in classical music is to create a musical dialogue between two or more independent melodic lines.",
+      "score": 0,
+      "detail": {
+        "gold": "Counterpoint is the technique of combining different melodic lines in a way that they complement each other, yet remain distinct. It creates harmony and complexity, often found in Baroque music, like in Bach’s fugues."
+      }
+    },
+    {
+      "item_id": 10,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "50 cm²",
+      "score": 0,
+      "detail": {
+        "gold": "The formula for the area of a trapezoid is (upper base plus lower base) times height divided by 2. So, the area is (8 plus 12) times 5 divided by 2, which equals 50 square centimeters."
+      }
+    },
+    {
+      "item_id": 5,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The least common multiple of 18 and 24 is 72.",
+      "score": 1,
+      "detail": {
+        "gold": "The least common multiple of 18 and 24 is 72."
+      }
+    },
+    {
+      "item_id": 39,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "x = 2",
+      "score": 0,
+      "detail": {
+        "gold": "The solutions for x are approximately 2.79 and -7.79."
+      }
+    },
+    {
+      "item_id": 84,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The benefits of a plant-based diet include weight loss, reduced risk of heart disease, and improved blood sugar control. However, challenges include potential nutrient deficiencies and social stigma.",
+      "score": 0,
+      "detail": {
+        "gold": "A plant-based diet offers numerous health benefits, including lower risks of heart disease, high blood pressure, and diabetes, as well as better weight management. However, it can be challenging to ensure adequate intake of certain nutrients like vitamin B12, iron, and omega-3 fatty acids, which are typically found in animal products. Careful planning is necessary to maintain nutritional balance."
+      }
+    },
+    {
+      "item_id": 69,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Metals rust when they react with oxygen and water in the environment, forming compounds like iron oxide. This process is called oxidation, and it weakens the metal over time."
+      }
+    },
+    {
+      "item_id": 24,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The area of a triangle is (1/2) * base * height. So the area of the triangle is (1/2) * 10 * 5 = 25 square units.",
+      "score": 0,
+      "detail": {
+        "gold": "To find the area of a triangle, you multiply the base by the height and divide by 2. So, 10 times 5 divided by 2 gives you an area of 25 square units."
+      }
+    },
+    {
+      "item_id": 51,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Black holes form when massive stars collapse under their own gravity.",
+      "score": 0,
+      "detail": {
+        "gold": "A black hole forms when a massive star collapses under its own gravity, after it has exhausted its nuclear fuel. The collapse leads to a singularity, a point where the density becomes infinitely large and the gravitational pull is so strong that not even light can escape."
+      }
+    },
+    {
+      "item_id": 42,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The volume of a sphere with a radius of 4 is (4/3) * pi * 4^3.",
+      "score": 0,
+      "detail": {
+        "gold": "The volume of the sphere is approximately 268.08 cubic units."
+      }
+    },
+    {
+      "item_id": 57,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the greenhouse effect?",
+      "score": 0,
+      "detail": {
+        "gold": "The greenhouse effect is the process by which certain gases in the Earth's atmosphere, like carbon dioxide and methane, trap heat from the sun, warming the planet. These gases act like the glass of a greenhouse, allowing sunlight in but preventing some of the heat from escaping."
+      }
+    },
+    {
+      "item_id": 78,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The main cause of the fall of the Roman Empire was a combination of factors, including economic decline, political instability, and military weakness.",
+      "score": 0,
+      "detail": {
+        "gold": "The fall of the Roman Empire was due to a combination of internal weaknesses, such as political instability, economic decline, and military overspending, as well as external pressures from barbarian invasions. This gradual decline culminated in the empire’s collapse in the 5th century AD."
+      }
+    },
+    {
+      "item_id": 79,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The concept of social contract shapes modern political theory by providing a framework for understanding the relationship between individuals and the state.",
+      "score": 0,
+      "detail": {
+        "gold": "The social contract theory, introduced by philosophers like Hobbes, Locke, and Rousseau, posits that individuals consent to form a society in exchange for security and the protection of rights. This idea underpins modern concepts of democracy, governance, and the rule of law."
+      }
+    },
+    {
+      "item_id": 9,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "18 cm³",
+      "score": 0,
+      "detail": {
+        "gold": "The volume of a rectangular prism is length times width times height. So, the volume is 6 times 4 times 3, which equals 72 cubic centimeters."
+      }
+    },
+    {
+      "item_id": 1,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "808",
+      "score": 0,
+      "detail": {
+        "gold": "Three hundred forty-five plus five hundred eighty-three is nine hundred twenty-eight."
+      }
+    },
+    {
+      "item_id": 82,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The concept of home field advantage helped emerging sports by giving them a competitive edge in their home venues.",
+      "score": 0,
+      "detail": {
+        "gold": "The concept of 'home field advantage' refers to the psychological and environmental benefits that a team enjoys when playing in their own stadium or arena. This advantage stems from familiarity with the venue, the support of local fans, and the comfort of not having to travel. Over time, statistical analysis has shown that teams tend to perform better at home due to these factors."
+      }
+    },
+    {
+      "item_id": 3,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What are the factors of seventy two?",
+      "score": 0,
+      "detail": {
+        "gold": "The factors of 72 are 1, 2, 3, 4, 6, 8, 9, 12, 18, 24, 36, and 72."
+      }
+    },
+    {
+      "item_id": 67,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The movement of tectonic plates.",
+      "score": 0,
+      "detail": {
+        "gold": "Earthquakes are caused by the sudden release of energy in the Earth’s crust, often due to the movement of tectonic plates. This release of energy creates seismic waves, which we feel as shaking on the surface."
+      }
+    },
+    {
+      "item_id": 64,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the greenhouse effect and why is it important?",
+      "score": 0,
+      "detail": {
+        "gold": "The greenhouse effect is a natural process where certain gases in the atmosphere trap heat from the sun, keeping the Earth warm enough to support life. However, human activities, like burning fossil fuels, are increasing these gases, contributing to global warming."
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.05,
+    "ci95": [
+      0.0,
+      0.125
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset uro-bench-MLCpro-en --backbone meralion-2-gguf --split dev --n 40",
+  "elapsed_s": 16.8
+}

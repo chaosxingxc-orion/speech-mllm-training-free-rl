@@ -1,0 +1,573 @@
+{
+  "stage": "1-directional",
+  "dataset": "voicebench-sd-qa",
+  "k_type": "K1",
+  "backbone": "meralion-2-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/voicebench-sd-qa/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "sd-qa/ind_n#386",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Henry Dunant.",
+      "score": 0,
+      "detail": {
+        "gold": "Frédéric Passy and Henry Dunant"
+      }
+    },
+    {
+      "item_id": "sd-qa/irl#499",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The Allegheney Health Network was formed in 1999.",
+      "score": 0,
+      "detail": {
+        "gold": "2013"
+      }
+    },
+    {
+      "item_id": "sd-qa/phl#505",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "There are many.",
+      "score": 0,
+      "detail": {
+        "gold": "80"
+      }
+    },
+    {
+      "item_id": "sd-qa/nga#38",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Dr. Willis Carrier.",
+      "score": 1,
+      "detail": {
+        "gold": "Willis Carrier"
+      }
+    },
+    {
+      "item_id": "sd-qa/zaf#71",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "There are 11 members.",
+      "score": 0,
+      "detail": {
+        "gold": "five"
+      }
+    },
+    {
+      "item_id": "sd-qa/gbr#516",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The Tagus River.",
+      "score": 0,
+      "detail": {
+        "gold": "Manzanares"
+      }
+    },
+    {
+      "item_id": "sd-qa/ind_s#538",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "In 1963.",
+      "score": 0,
+      "detail": {
+        "gold": "January 20, 1961"
+      }
+    },
+    {
+      "item_id": "sd-qa/ind_n#381",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "They are called \"soap opera\" because they are often dramatic and melodramatic, and they feature a lot of singing and dancing.",
+      "score": 0,
+      "detail": {
+        "gold": "The term soap opera originated from radio dramas being sponsored by soap manufacturers"
+      }
+    },
+    {
+      "item_id": "sd-qa/gbr#180",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "1850.",
+      "score": 0,
+      "detail": {
+        "gold": "1957"
+      }
+    },
+    {
+      "item_id": "sd-qa/gbr#286",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The Broca's area.",
+      "score": 1,
+      "detail": {
+        "gold": "Broca's area"
+      }
+    },
+    {
+      "item_id": "sd-qa/nzl#263",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Hydrogen.",
+      "score": 0,
+      "detail": {
+        "gold": "Helium (He)"
+      }
+    },
+    {
+      "item_id": "sd-qa/phl#446",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The question was asked in a foreign language.",
+      "score": 0,
+      "detail": {
+        "gold": "1997"
+      }
+    },
+    {
+      "item_id": "sd-qa/aus#471",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "King Lear first performed in 1608.",
+      "score": 0,
+      "detail": {
+        "gold": "St. Stephen's Day in 1606"
+      }
+    },
+    {
+      "item_id": "sd-qa/zaf#46",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "King Zhao of Qi's mother.",
+      "score": 0,
+      "detail": {
+        "gold": "Queen Dowager Xuan"
+      }
+    },
+    {
+      "item_id": "sd-qa/gbr#200",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "There are 12 teams.",
+      "score": 0,
+      "detail": {
+        "gold": "nine"
+      }
+    },
+    {
+      "item_id": "sd-qa/zaf#165",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "\"Doctile\" means \"doc\" + \"tile\".",
+      "score": 0,
+      "detail": {
+        "gold": "a measure of a material's ability to undergo significant plastic deformation before rupture, which may be expressed as percent elongation or percent area reduction from a tensile test"
+      }
+    },
+    {
+      "item_id": "sd-qa/aus#526",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "There were 12 volumes.",
+      "score": 0,
+      "detail": {
+        "gold": "three"
+      }
+    },
+    {
+      "item_id": "sd-qa/aus#264",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "A presidential republic.",
+      "score": 1,
+      "detail": {
+        "gold": "presidential republic"
+      }
+    },
+    {
+      "item_id": "sd-qa/gbr#544",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "2007",
+      "score": 0,
+      "detail": {
+        "gold": "March 30, 2013"
+      }
+    },
+    {
+      "item_id": "sd-qa/aus#116",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The youngest W.W.E. champion was John Cena.",
+      "score": 0,
+      "detail": {
+        "gold": "Brock Lesnar"
+      }
+    },
+    {
+      "item_id": "sd-qa/nga#495",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "When was Waterloo Station built?",
+      "score": 0,
+      "detail": {
+        "gold": "1848"
+      }
+    },
+    {
+      "item_id": "sd-qa/usa#5",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "When was Guitar Hero Live first released?",
+      "score": 0,
+      "detail": {
+        "gold": "October 2015"
+      }
+    },
+    {
+      "item_id": "sd-qa/usa#105",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Sardinia became part of Italy in 1861.",
+      "score": 1,
+      "detail": {
+        "gold": "1861"
+      }
+    },
+    {
+      "item_id": "sd-qa/nga#501",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "1066.",
+      "score": 0,
+      "detail": {
+        "gold": "2 April 742"
+      }
+    },
+    {
+      "item_id": "sd-qa/irl#360",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The first ruler of the Palaiologos dynasty in the Byzantine Empire was Constantine XI Palaiologos.",
+      "score": 0,
+      "detail": {
+        "gold": "Michael VIII Palaiologos"
+      }
+    },
+    {
+      "item_id": "sd-qa/ind_n#11",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "21%",
+      "score": 0,
+      "detail": {
+        "gold": "20.95%"
+      }
+    },
+    {
+      "item_id": "sd-qa/nzl#225",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "John Bowlby",
+      "score": 1,
+      "detail": {
+        "gold": "John Bowlby"
+      }
+    },
+    {
+      "item_id": "sd-qa/ind_s#543",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Kangaroos live in Australia.",
+      "score": 1,
+      "detail": {
+        "gold": "Australia"
+      }
+    },
+    {
+      "item_id": "sd-qa/usa#347",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "I am not sure.",
+      "score": 0,
+      "detail": {
+        "gold": "2016"
+      }
+    },
+    {
+      "item_id": "sd-qa/phl#328",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "What is the largest city in Cambodia?",
+      "score": 0,
+      "detail": {
+        "gold": "Peshawar"
+      }
+    },
+    {
+      "item_id": "sd-qa/irl#82",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The Romanian Leu.",
+      "score": 1,
+      "detail": {
+        "gold": "Romanian leu"
+      }
+    },
+    {
+      "item_id": "sd-qa/usa#411",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "2003",
+      "score": 0,
+      "detail": {
+        "gold": "1978"
+      }
+    },
+    {
+      "item_id": "sd-qa/irl#296",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "1890.",
+      "score": 0,
+      "detail": {
+        "gold": "1864"
+      }
+    },
+    {
+      "item_id": "sd-qa/aus#58",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The Isle of Man Railway started running in 1871.",
+      "score": 0,
+      "detail": {
+        "gold": "1 July 1873"
+      }
+    },
+    {
+      "item_id": "sd-qa/irl#80",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The main character of Fate/Zero is Kiritsugu.",
+      "score": 0,
+      "detail": {
+        "gold": "Kiritsugu Emiya"
+      }
+    },
+    {
+      "item_id": "sd-qa/phl#441",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The original meaning of \"vegetable\" is a plant that is edible.",
+      "score": 0,
+      "detail": {
+        "gold": "all edible plant matter"
+      }
+    },
+    {
+      "item_id": "sd-qa/zaf#529",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "How long did David Shop live for?",
+      "score": 0,
+      "detail": {
+        "gold": "15 February 1972 – 15 May 2006"
+      }
+    },
+    {
+      "item_id": "sd-qa/nzl#391",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The minor league in baseball is called the minor leagues.",
+      "score": 0,
+      "detail": {
+        "gold": "Minor League Baseball"
+      }
+    },
+    {
+      "item_id": "sd-qa/ind_s#224",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "18",
+      "score": 0,
+      "detail": {
+        "gold": "25"
+      }
+    },
+    {
+      "item_id": "sd-qa/irl#185",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The Rhine is in Germany.",
+      "score": 0,
+      "detail": {
+        "gold": "Western Germany along the Rhine"
+      }
+    },
+    {
+      "item_id": "sd-qa/usa#252",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "What are antigens?",
+      "score": 0,
+      "detail": {
+        "gold": "structures (aka substances) specifically bound by antibodies (Ab) or a cell surface version of Ab ~ B cell antigen receptor"
+      }
+    },
+    {
+      "item_id": "sd-qa/usa#477",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "\"Aegia Sophia\" means \"Sophia of Aegina\".",
+      "score": 0,
+      "detail": {
+        "gold": "Holy Wisdom"
+      }
+    },
+    {
+      "item_id": "sd-qa/phl#16",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Special relativity was developed in 1905.",
+      "score": 1,
+      "detail": {
+        "gold": "1905"
+      }
+    },
+    {
+      "item_id": "sd-qa/gbr#365",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Where was Jung Her born?",
+      "score": 0,
+      "detail": {
+        "gold": "Kunyang, Kunming, Yunnan, China"
+      }
+    },
+    {
+      "item_id": "sd-qa/irl#355",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Strauss wrote his Danube Waltz in 1884.",
+      "score": 0,
+      "detail": {
+        "gold": "1866"
+      }
+    },
+    {
+      "item_id": "sd-qa/phl#275",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "1635",
+      "score": 0,
+      "detail": {
+        "gold": "1768"
+      }
+    },
+    {
+      "item_id": "sd-qa/nzl#28",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "1974",
+      "score": 0,
+      "detail": {
+        "gold": "1913"
+      }
+    },
+    {
+      "item_id": "sd-qa/phl#351",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "What is the most valuable comic book?",
+      "score": 0,
+      "detail": {
+        "gold": "Action Comics #1"
+      }
+    },
+    {
+      "item_id": "sd-qa/zaf#51",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "It is located in the state of Maharashtra.",
+      "score": 0,
+      "detail": {
+        "gold": "near Mumbai in Maharashtra State in India"
+      }
+    },
+    {
+      "item_id": "sd-qa/ind_n#545",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "It is in the United States.",
+      "score": 0,
+      "detail": {
+        "gold": "Uzbekistan, Tajikistan, southern Kyrgyzstan, and southwest Kazakhstan"
+      }
+    },
+    {
+      "item_id": "sd-qa/aus#552",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "\"Mama\"",
+      "score": 0,
+      "detail": {
+        "gold": "single-syllabic or repeated single syllables, such as \"no\" and \"dada\""
+      }
+    },
+    {
+      "item_id": "sd-qa/ind_s#136",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The developer of Recaptcha is Google.",
+      "score": 0,
+      "detail": {
+        "gold": "Luis von Ahn, David Abraham, Manuel Blum, Michael Crawford, Ben Maurer, Colin McMillen, and Edison Tan"
+      }
+    },
+    {
+      "item_id": "sd-qa/phl#331",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The spoken question is \"Who made Eternal Darkness: Sanity's Requiem?\".",
+      "score": 0,
+      "detail": {
+        "gold": "Silicon Knights"
+      }
+    },
+    {
+      "item_id": "sd-qa/aus#330",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "When was Wu Zetian born?",
+      "score": 0,
+      "detail": {
+        "gold": "17 February 624"
+      }
+    },
+    {
+      "item_id": "sd-qa/zaf#541",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Kary Mullis",
+      "score": 0,
+      "detail": {
+        "gold": "Sir Alec Jeffreys"
+      }
+    },
+    {
+      "item_id": "sd-qa/irl#406",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "William Penn was born in England.",
+      "score": 0,
+      "detail": {
+        "gold": "Tower Hill, London"
+      }
+    },
+    {
+      "item_id": "sd-qa/nga#289",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "1998",
+      "score": 0,
+      "detail": {
+        "gold": "1939"
+      }
+    },
+    {
+      "item_id": "sd-qa/kenya#265",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "I do not have access to real-time information, including dates of death.",
+      "score": 0,
+      "detail": {
+        "gold": "20 July 1970"
+      }
+    },
+    {
+      "item_id": "sd-qa/zaf#89",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The last king of Bosnia was King Nikola I.",
+      "score": 0,
+      "detail": {
+        "gold": "Stephen Tomašević or Stephen II"
+      }
+    },
+    {
+      "item_id": "sd-qa/gbr#98",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Julia Child wrote her book \"Mastering the Art of French Cooking\" in 1961.",
+      "score": 1,
+      "detail": {
+        "gold": "1961"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.15,
+    "ci95": [
+      0.0667,
+      0.25
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset voicebench-sd-qa --backbone meralion-2-gguf --split test --n 60",
+  "elapsed_s": 21.9
+}

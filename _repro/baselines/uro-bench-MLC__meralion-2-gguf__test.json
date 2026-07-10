@@ -1,0 +1,573 @@
+{
+  "stage": "1-directional",
+  "dataset": "uro-bench-MLC",
+  "k_type": "K8",
+  "backbone": "meralion-2-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/uro-bench-MLC/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": 113,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "8,848 meters.",
+      "score": 0,
+      "detail": {
+        "gold": "Mount Everest stands at 8,848 meters."
+      }
+    },
+    {
+      "item_id": 98,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Eiffel Tower is a symbol of France.",
+      "score": 1,
+      "detail": {
+        "gold": "The Eiffel Tower is a symbol of France."
+      }
+    },
+    {
+      "item_id": 43,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "India.",
+      "score": 0,
+      "detail": {
+        "gold": "The game of chess originated in India."
+      }
+    },
+    {
+      "item_id": 52,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "48",
+      "score": 0,
+      "detail": {
+        "gold": "Eight times six equals forty-eight."
+      }
+    },
+    {
+      "item_id": 169,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "You have 25 gallons of fuel left.",
+      "score": 0,
+      "detail": {
+        "gold": "You have less than half a tank left."
+      }
+    },
+    {
+      "item_id": 97,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "1912.",
+      "score": 0,
+      "detail": {
+        "gold": "The Titanic sank in 1912."
+      }
+    },
+    {
+      "item_id": 136,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Sharp teeth and excellent hunting abilities.",
+      "score": 0,
+      "detail": {
+        "gold": "Sharks are known for their sharp teeth and excellent hunting abilities."
+      }
+    },
+    {
+      "item_id": 117,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Paris.",
+      "score": 0,
+      "detail": {
+        "gold": "The Louvre Museum is located in Paris."
+      }
+    },
+    {
+      "item_id": 83,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "14",
+      "score": 0,
+      "detail": {
+        "gold": "Forty-eight divided by six equals eight."
+      }
+    },
+    {
+      "item_id": 38,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The rose.",
+      "score": 0,
+      "detail": {
+        "gold": "The national flower of the United States is the rose."
+      }
+    },
+    {
+      "item_id": 103,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Gustav Eiffel.",
+      "score": 0,
+      "detail": {
+        "gold": "The Eiffel Tower was designed by Gustave Eiffel."
+      }
+    },
+    {
+      "item_id": 2,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Paris.",
+      "score": 0,
+      "detail": {
+        "gold": "Sure! The capital of France is Paris."
+      }
+    },
+    {
+      "item_id": 146,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 0,
+      "detail": {
+        "gold": "No, we cannot say that all fruits are apples."
+      }
+    },
+    {
+      "item_id": 114,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Macbeth.",
+      "score": 0,
+      "detail": {
+        "gold": "Shakespeare's most famous play is 'Romeo and Juliet.'"
+      }
+    },
+    {
+      "item_id": 133,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Watermelons are rich in vitamins A and C.",
+      "score": 1,
+      "detail": {
+        "gold": "Watermelons are rich in vitamins A and C."
+      }
+    },
+    {
+      "item_id": 151,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Yes, addition works the same way both ways."
+      }
+    },
+    {
+      "item_id": 5,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "There are 24 consonants in the English alphabet.",
+      "score": 0,
+      "detail": {
+        "gold": "Yes, there are seven continents: Africa, Antarctica, Asia, Europe, North America, Australia, and South America."
+      }
+    },
+    {
+      "item_id": 56,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "81/9 = 9.",
+      "score": 0,
+      "detail": {
+        "gold": "Eighty-one divided by nine equals nine."
+      }
+    },
+    {
+      "item_id": 105,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Himalayas.",
+      "score": 0,
+      "detail": {
+        "gold": "Mount Everest is located in the Himalayas, on the border between Nepal and China."
+      }
+    },
+    {
+      "item_id": 66,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "16 plus 35 is 51.",
+      "score": 0,
+      "detail": {
+        "gold": "Sixteen plus thirty-five equals fifty-one."
+      }
+    },
+    {
+      "item_id": 8,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Vatican City",
+      "score": 0,
+      "detail": {
+        "gold": "The smallest country in the world is Vatican City, which is an independent city-state surrounded by Rome, Italy."
+      }
+    },
+    {
+      "item_id": 144,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 0,
+      "detail": {
+        "gold": "No, penguins cannot fly."
+      }
+    },
+    {
+      "item_id": 79,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "4.",
+      "score": 0,
+      "detail": {
+        "gold": "Twelve divided by three equals four."
+      }
+    },
+    {
+      "item_id": 60,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "63.",
+      "score": 0,
+      "detail": {
+        "gold": "Seven times nine equals sixty-three."
+      }
+    },
+    {
+      "item_id": 18,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "299,792,458 meters per second.",
+      "score": 0,
+      "detail": {
+        "gold": "The speed of light is approximately 299,792 kilometers per second."
+      }
+    },
+    {
+      "item_id": 141,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Tom.",
+      "score": 0,
+      "detail": {
+        "gold": "Bill is the youngest."
+      }
+    },
+    {
+      "item_id": 28,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Atlantic Ocean.",
+      "score": 0,
+      "detail": {
+        "gold": "The Bermuda Triangle is located in the Atlantic Ocean."
+      }
+    },
+    {
+      "item_id": 96,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Leonardo da Vinci.",
+      "score": 0,
+      "detail": {
+        "gold": "The Mona Lisa was painted by Leonardo da Vinci."
+      }
+    },
+    {
+      "item_id": 110,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The first action in a tennis game is the serve.",
+      "score": 1,
+      "detail": {
+        "gold": "The first action in a tennis game is the serve."
+      }
+    },
+    {
+      "item_id": 29,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Starry Night was painted by Vincent van Gogh.",
+      "score": 1,
+      "detail": {
+        "gold": "The Starry Night was painted by Vincent van Gogh."
+      }
+    },
+    {
+      "item_id": 16,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Thomas Edison.",
+      "score": 0,
+      "detail": {
+        "gold": "The light bulb was invented by Thomas Edison."
+      }
+    },
+    {
+      "item_id": 116,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Vitamin C.",
+      "score": 0,
+      "detail": {
+        "gold": "Vitamin C is found in oranges and lemons."
+      }
+    },
+    {
+      "item_id": 23,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Elephant.",
+      "score": 0,
+      "detail": {
+        "gold": "The largest land mammal is the African elephant."
+      }
+    },
+    {
+      "item_id": 143,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The ground is wet.",
+      "score": 0,
+      "detail": {
+        "gold": "The ground will be wet."
+      }
+    },
+    {
+      "item_id": 120,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yoga is a spiritual practice that originated in ancient India, but is now commonly practiced as a form of exercise.",
+      "score": 0,
+      "detail": {
+        "gold": "Yoga is a practice that includes postures, breathing exercises, and meditation."
+      }
+    },
+    {
+      "item_id": 100,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Off the coast of Australia.",
+      "score": 0,
+      "detail": {
+        "gold": "The Great Barrier Reef is located off the coast of Australia."
+      }
+    },
+    {
+      "item_id": 27,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Burj Khalifa.",
+      "score": 0,
+      "detail": {
+        "gold": "The tallest building in the world is the Burj Khalifa in Dubai, standing at 828 meters."
+      }
+    },
+    {
+      "item_id": 119,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Cows are raised for their milk, meat, and leather.",
+      "score": 1,
+      "detail": {
+        "gold": "Cows are raised for their milk, meat, and leather."
+      }
+    },
+    {
+      "item_id": 80,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Five.",
+      "score": 0,
+      "detail": {
+        "gold": "Five squared is twenty-five."
+      }
+    },
+    {
+      "item_id": 89,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Ulm, Germany.",
+      "score": 0,
+      "detail": {
+        "gold": "Albert Einstein was born in Ulm, Germany."
+      }
+    },
+    {
+      "item_id": 62,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "25",
+      "score": 0,
+      "detail": {
+        "gold": "Five to the power of two is twenty-five."
+      }
+    },
+    {
+      "item_id": 58,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "120",
+      "score": 0,
+      "detail": {
+        "gold": "Ten times twelve equals one hundred and twenty."
+      }
+    },
+    {
+      "item_id": 25,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Neil Armstrong",
+      "score": 0,
+      "detail": {
+        "gold": "Neil Armstrong was the first man to walk on the moon in 1969."
+      }
+    },
+    {
+      "item_id": 108,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Gustave Eiffel.",
+      "score": 0,
+      "detail": {
+        "gold": "The Eiffel Tower was designed by Gustave Eiffel."
+      }
+    },
+    {
+      "item_id": 73,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "14 times two is 28.",
+      "score": 0,
+      "detail": {
+        "gold": "Fourteen times two equals twenty-eight."
+      }
+    },
+    {
+      "item_id": 138,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "They are raised for milk, meat, and leather.",
+      "score": 0,
+      "detail": {
+        "gold": "Cows are raised for milk, meat, and leather."
+      }
+    },
+    {
+      "item_id": 167,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "11",
+      "score": 0,
+      "detail": {
+        "gold": "The other number is 11."
+      }
+    },
+    {
+      "item_id": 36,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Bay of Bengal.",
+      "score": 0,
+      "detail": {
+        "gold": "The smallest ocean in the world is the Arctic Ocean."
+      }
+    },
+    {
+      "item_id": 82,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is twenty plus twenty two?",
+      "score": 0,
+      "detail": {
+        "gold": "Twenty-eight plus twenty-two equals fifty."
+      }
+    },
+    {
+      "item_id": 19,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "China",
+      "score": 0,
+      "detail": {
+        "gold": "The Great Wall is located in China."
+      }
+    },
+    {
+      "item_id": 44,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Himalayas.",
+      "score": 0,
+      "detail": {
+        "gold": "The longest mountain range in the world is the Andes."
+      }
+    },
+    {
+      "item_id": 123,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Watermelon.",
+      "score": 0,
+      "detail": {
+        "gold": "Watermelon is often eaten in summer."
+      }
+    },
+    {
+      "item_id": 109,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The human heart pumps blood through the body, circulating oxygen and nutrients to organs.",
+      "score": 1,
+      "detail": {
+        "gold": "The human heart pumps blood through the body."
+      }
+    },
+    {
+      "item_id": 127,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Paris.",
+      "score": 0,
+      "detail": {
+        "gold": "The Eiffel Tower is located in Paris."
+      }
+    },
+    {
+      "item_id": 126,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Caffeine can increase alertness, but excessive consumption can cause jitteriness and difficulty sleeping.",
+      "score": 0,
+      "detail": {
+        "gold": "Caffeine can increase alertness and may cause jitteriness."
+      }
+    },
+    {
+      "item_id": 99,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Vincent van Gogh is known for his post-impressionist paintings, including \"Starry Night\" and \"Sunflowers.\"",
+      "score": 0,
+      "detail": {
+        "gold": "Vincent van Gogh is known for his paintings, including 'Starry Night' and 'Sunflowers'."
+      }
+    },
+    {
+      "item_id": 20,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Amelia Earhart",
+      "score": 0,
+      "detail": {
+        "gold": "Amelia Earhart was the first woman to fly solo across the Atlantic in 1932."
+      }
+    },
+    {
+      "item_id": 76,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Thirty-two.",
+      "score": 0,
+      "detail": {
+        "gold": "Fifteen plus twenty-seven equals forty-two."
+      }
+    },
+    {
+      "item_id": 85,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "36 / 9 = 4",
+      "score": 0,
+      "detail": {
+        "gold": "Thirty-six divided by nine equals four."
+      }
+    },
+    {
+      "item_id": 70,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "80",
+      "score": 0,
+      "detail": {
+        "gold": "Twenty times four equals eighty."
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.1,
+    "ci95": [
+      0.0333,
+      0.1833
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset uro-bench-MLC --backbone meralion-2-gguf --split test --n 60",
+  "elapsed_s": 22.7
+}

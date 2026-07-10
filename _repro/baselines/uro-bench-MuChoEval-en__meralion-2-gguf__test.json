@@ -1,0 +1,573 @@
+{
+  "stage": "1-directional",
+  "dataset": "uro-bench-MuChoEval-en",
+  "k_type": "K8",
+  "backbone": "meralion-2-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/uro-bench-MuChoEval-en/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": 23,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "Oriental/pop"
+      }
+    },
+    {
+      "item_id": 174,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A: live performance",
+      "score": 0,
+      "detail": {
+        "gold": "Fast-paced rhythmic singing"
+      }
+    },
+    {
+      "item_id": 198,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. slow and melancholic",
+      "score": 0,
+      "detail": {
+        "gold": "Fast"
+      }
+    },
+    {
+      "item_id": 60,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Medium tempo",
+      "score": 1,
+      "detail": {
+        "gold": "Medium tempo"
+      }
+    },
+    {
+      "item_id": 204,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. cozy and easy going",
+      "score": 0,
+      "detail": {
+        "gold": "Cozy and easygoing"
+      }
+    },
+    {
+      "item_id": 249,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The origin of this music piece is electronic dance music.",
+      "score": 0,
+      "detail": {
+        "gold": "Hindi music"
+      }
+    },
+    {
+      "item_id": 127,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B: Ballad",
+      "score": 1,
+      "detail": {
+        "gold": "Ballad"
+      }
+    },
+    {
+      "item_id": 18,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. rhythm and blues",
+      "score": 0,
+      "detail": {
+        "gold": "Pop music"
+      }
+    },
+    {
+      "item_id": 2,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A heavy vocal distortion.",
+      "score": 0,
+      "detail": {
+        "gold": "Harmony"
+      }
+    },
+    {
+      "item_id": 213,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A ukulele.",
+      "score": 0,
+      "detail": {
+        "gold": "Bass-ukulele"
+      }
+    },
+    {
+      "item_id": 238,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A. Acoustic piano",
+      "score": 1,
+      "detail": {
+        "gold": "Acoustic piano"
+      }
+    },
+    {
+      "item_id": 93,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A: North African",
+      "score": 0,
+      "detail": {
+        "gold": "Arabian"
+      }
+    },
+    {
+      "item_id": 272,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The mood conveyed by the music is gloomy and sad.",
+      "score": 0,
+      "detail": {
+        "gold": "Epic and urban"
+      }
+    },
+    {
+      "item_id": 281,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A: guitar",
+      "score": 0,
+      "detail": {
+        "gold": "Steel pan"
+      }
+    },
+    {
+      "item_id": 242,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. classic pop",
+      "score": 0,
+      "detail": {
+        "gold": "Emotional"
+      }
+    },
+    {
+      "item_id": 188,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "Spanish"
+      }
+    },
+    {
+      "item_id": 78,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A: guitar and subtle bassline",
+      "score": 0,
+      "detail": {
+        "gold": "Guitar and subtle bass line"
+      }
+    },
+    {
+      "item_id": 269,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A distorted electric guitar.",
+      "score": 1,
+      "detail": {
+        "gold": "Distorted electric guitar"
+      }
+    },
+    {
+      "item_id": 235,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Electric guitar.",
+      "score": 1,
+      "detail": {
+        "gold": "Electric guitar"
+      }
+    },
+    {
+      "item_id": 245,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Electropop",
+      "score": 0,
+      "detail": {
+        "gold": "Electro Pop/Synth Pop"
+      }
+    },
+    {
+      "item_id": 267,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Flute",
+      "score": 1,
+      "detail": {
+        "gold": "Flute"
+      }
+    },
+    {
+      "item_id": 144,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The texture of the string melody is staccato pizzicato.",
+      "score": 0,
+      "detail": {
+        "gold": "Wide sustained"
+      }
+    },
+    {
+      "item_id": 37,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Indian folk music",
+      "score": 0,
+      "detail": {
+        "gold": "Bollywood pop song"
+      }
+    },
+    {
+      "item_id": 221,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Salsa",
+      "score": 0,
+      "detail": {
+        "gold": "Latin Urban"
+      }
+    },
+    {
+      "item_id": 87,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. sinister and eerie.",
+      "score": 1,
+      "detail": {
+        "gold": "Sinister and eerie"
+      }
+    },
+    {
+      "item_id": 133,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. pop music ballad",
+      "score": 1,
+      "detail": {
+        "gold": "Pop music ballad"
+      }
+    },
+    {
+      "item_id": 270,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The two vocalists perform the melody in harmony.",
+      "score": 0,
+      "detail": {
+        "gold": "In unison"
+      }
+    },
+    {
+      "item_id": 80,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. slow tempo",
+      "score": 0,
+      "detail": {
+        "gold": "Medium tempo"
+      }
+    },
+    {
+      "item_id": 275,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The atmosphere conveyed by the music is \"intense and captivating\".",
+      "score": 0,
+      "detail": {
+        "gold": "Vibrant and energetic"
+      }
+    },
+    {
+      "item_id": 58,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The tempo of the song is moderate.",
+      "score": 1,
+      "detail": {
+        "gold": "Moderate"
+      }
+    },
+    {
+      "item_id": 296,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The answer is C.",
+      "score": 0,
+      "detail": {
+        "gold": "Ukulele"
+      }
+    },
+    {
+      "item_id": 119,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B: Tambourine",
+      "score": 0,
+      "detail": {
+        "gold": "Rock drums"
+      }
+    },
+    {
+      "item_id": 71,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The musical sound that can be heard in the recording is string scrapes.",
+      "score": 0,
+      "detail": {
+        "gold": "Clicking sounds"
+      }
+    },
+    {
+      "item_id": 253,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A: hip hop",
+      "score": 0,
+      "detail": {
+        "gold": "Slow pop"
+      }
+    },
+    {
+      "item_id": 274,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The primary sound effect featured in the live recording is buzzing.",
+      "score": 0,
+      "detail": {
+        "gold": "Squeaky toy sound"
+      }
+    },
+    {
+      "item_id": 244,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The main characteristic of the accordion tune is energetic.",
+      "score": 0,
+      "detail": {
+        "gold": "Goofy"
+      }
+    },
+    {
+      "item_id": 243,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A glass breaking.",
+      "score": 0,
+      "detail": {
+        "gold": "Bed creaking and laughter"
+      }
+    },
+    {
+      "item_id": 196,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "Medium fast and lively"
+      }
+    },
+    {
+      "item_id": 214,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A: no singer present",
+      "score": 0,
+      "detail": {
+        "gold": "Theremin"
+      }
+    },
+    {
+      "item_id": 172,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The answer is D.",
+      "score": 0,
+      "detail": {
+        "gold": "Tambourine"
+      }
+    },
+    {
+      "item_id": 83,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The vocal performance style is described as \"like singing Cyborg\".",
+      "score": 0,
+      "detail": {
+        "gold": "Automation-like singing"
+      }
+    },
+    {
+      "item_id": 85,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A: aggressive rapping",
+      "score": 0,
+      "detail": {
+        "gold": "Whispering"
+      }
+    },
+    {
+      "item_id": 224,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The vocal backup in the song is **a vibratto**.",
+      "score": 0,
+      "detail": {
+        "gold": "Enthusiastic"
+      }
+    },
+    {
+      "item_id": 309,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B: Guitar accompaniment",
+      "score": 0,
+      "detail": {
+        "gold": "Reggae style drum and guitar"
+      }
+    },
+    {
+      "item_id": 231,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A concert hall.",
+      "score": 0,
+      "detail": {
+        "gold": "Bar"
+      }
+    },
+    {
+      "item_id": 43,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Singing.",
+      "score": 1,
+      "detail": {
+        "gold": "Singing"
+      }
+    },
+    {
+      "item_id": 35,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C.",
+      "score": 0,
+      "detail": {
+        "gold": "Keyboard"
+      }
+    },
+    {
+      "item_id": 66,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A slide guitar.",
+      "score": 1,
+      "detail": {
+        "gold": "Slide guitar"
+      }
+    },
+    {
+      "item_id": 223,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D: Piano",
+      "score": 0,
+      "detail": {
+        "gold": "Flute"
+      }
+    },
+    {
+      "item_id": 120,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The gender of the lead vocalist is female.",
+      "score": 1,
+      "detail": {
+        "gold": "Male"
+      }
+    },
+    {
+      "item_id": 76,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "c",
+      "score": 0,
+      "detail": {
+        "gold": "Yodeling"
+      }
+    },
+    {
+      "item_id": 104,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. piano",
+      "score": 0,
+      "detail": {
+        "gold": "Keyboard"
+      }
+    },
+    {
+      "item_id": 266,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Romantic pop",
+      "score": 0,
+      "detail": {
+        "gold": "Ballad"
+      }
+    },
+    {
+      "item_id": 305,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. R&B soul",
+      "score": 0,
+      "detail": {
+        "gold": "R&B/soul"
+      }
+    },
+    {
+      "item_id": 277,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The recording quality of the song is likely amateur.",
+      "score": 0,
+      "detail": {
+        "gold": "Amateur recording"
+      }
+    },
+    {
+      "item_id": 79,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A graduation.",
+      "score": 0,
+      "detail": {
+        "gold": "Wedding"
+      }
+    },
+    {
+      "item_id": 178,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The vocal range of the singer is low C to high D.",
+      "score": 1,
+      "detail": {
+        "gold": "High"
+      }
+    },
+    {
+      "item_id": 182,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A.",
+      "score": 0,
+      "detail": {
+        "gold": "Happy"
+      }
+    },
+    {
+      "item_id": 115,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The primary mood conveyed by the music is **C. energetic and uplifting**.",
+      "score": 1,
+      "detail": {
+        "gold": "Energetic and uplifting"
+      }
+    },
+    {
+      "item_id": 211,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A concert hall.",
+      "score": 0,
+      "detail": {
+        "gold": "Folk festival"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.2333,
+    "ci95": [
+      0.1333,
+      0.35
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset uro-bench-MuChoEval-en --backbone meralion-2-gguf --split test --n 60",
+  "elapsed_s": 25.6
+}

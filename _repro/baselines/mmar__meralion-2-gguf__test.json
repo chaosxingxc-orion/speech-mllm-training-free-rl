@@ -1,0 +1,633 @@
+{
+  "stage": "1-directional",
+  "dataset": "mmar",
+  "k_type": "K8",
+  "backbone": "meralion-2-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/mmar/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "nIhNWqHlqMM_00-00-00_00-00-22",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. 4\nB. 3\nC. 1\nD. 2\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. 4",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "uvqo3yBREFw_00-00-05_00-00-35",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Baroque era & Classical era\nB. Renaissance era & Baroque era\nC. Classical era & Romantic era\nD. Romantic era & Modernism\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Classical era & Romantic era",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "oLWpgWuUaU4_00-10-35_00-11-05",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. 18th second\nB. 15th second\nC. 30th second\nD. 24th second\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. 18th second",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "BTAXb1Q-Amk_00-00-00_00-00-10",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Christmas\nB. Easter\nC. Halloween\nD. Chinese New Year\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Christmas",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "BV1uS4y1K7oe_00-07-56_00-08-11",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Music concert\nB. Awards ceremony\nC. Wedding venue\nD. Birthday party\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Music concert",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "BV1f34y1478Q_00-03-03_00-03-30",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Very urgent\nB. Situation is very calm\nC. Very relaxed\nD. Somewhat tense\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. Somewhat tense",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "BV1oW411h7ow_00-00-38_00-01-08",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Syncopated rhythm\nB. Fixed rhythm and beat\nC. Usually has a sad mood\nD. Usually uses piano\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Syncopated rhythm",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "BV1xx9yYGEvf_00-00-03_00-00-33",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. 5\nB. 3\nC. 4\nD. 1\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. 5",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "8lZwT4aTco8_00-00-00_00-00-10",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Yes, he put it out immediately without complaint.\nB. Yes, though he complained first, he eventually complied.\nC. No, he refused to put it out.\nD. No, he lit another cigarette instead.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Yes, though he complained first, he eventually complied.",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "DXytFQP_J9g_00-00-00_00-00-10",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. No\nB. Understood\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Understood",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "BV1ow411U7sy_00-01-05_00-01-33",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. k,l\nB. s,w\nC. t,u\nD. x,y\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. s,w",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "Z5-ePKldbZs_00-00-00_00-00-23",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. He can hear sounds others cannot hear\nB. He knows what is going to happen\nC. He can teleport objects\nD. He can read other people's minds\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. He can hear sounds others cannot hear",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "B3DJXb6i4Rk_00-00-30_00-01-00",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Book\nB. Table\nC. Cup\nD. Chair\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. Chair",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "BV1KK411H7aR_1-00_1-30",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Differences in educational methods for Cosette: diligent studying vs. nurturing hobbies\nB. Conflict of values between upholding law and human relationships (e.g., taking care of Cosette)\nC. Conflict caused by personal grievances\nD. Competition over economic interests\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Conflict of values between upholding law and human relationships (e.g., taking care of Cosette)",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "BV1mCk8Y5E2Y_00-00-20_00-00-46",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Triplets, Dotted notes\nB. Fast scales, Large leaps\nC. Harmonic minor scale, Steady rhythm\nD. Syncopation, Chromatic scale\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. Syncopation, Chromatic scale",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "Een_AKh7Nik_00-00-00_00-00-27",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. sun\nB. rain\nC. golden\nD. deer\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. golden",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "BV1Tc411W7Wa_00-00-27_00-00-30",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Second\nB. Third\nC. First\nD. Fourth\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. First",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "PucbcYkarzQ_00-00-05_00-00-20",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Large room\nB. Small room\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Large room",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "CaRKq5vSOAw_00-00-00_00-00-25",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. a teddy bear\nB. a toy\nC. a puppy\nD. a kitten\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. a puppy",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "5DFzfqr5ZBQ_00-00-03_00-00-27",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Understood\nB. Didn't understand\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. ...",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "BV1yu4m1N74b_00-00-30_00-01-00",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. No, this is a live concert recording\nB. Yes, but it only used reverb close to the original sound\nC. Yes, and it also contains delay\nD. Yes, and it also used pitch shifting and noise reduction\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. No, this is a live concert recording",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "5vzbi96OU_o_00-00-00_00-00-10",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Tablets.\nB. Televisions.\nC. Computers.\nD. Printers.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Computers.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "rxhKrtb3XsE_00-01-48_00-02-14",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Sarcastic\nB. Sincere\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Sarcastic",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "wfRaaNMI76o_00-00-00_00-00-07",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Skating\nB. Skiing\nC. Swimming\nD. Rock climbing\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Skating",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "uPn1h-AWkCU_00-00-00_00-00-17",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Because he wants to explain that he is imitating Superman\nB. Because he thinks his nephew is praising him\nC. Because he feels his nephew doesn't understand his performance\nD. Because he thinks Superman is cool\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. ...",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "18OOnHDat4E_00-00-00_00-00-23",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Bungee jumping\nB. Rock climbing\nC. Skydiving\nD. Roller coaster\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Skydiving",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "-wiRivDMIYM_00-00-02_00-00-32",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Because the recording equipment malfunctioned\nB. To authentically reproduce the state of amateur performance\nC. An anti-professional experimental art, seriously performing poorly\nD. To showcase the disadvantages of traditional music\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. An anti-professional experimental art, seriously performing poorly",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "akfaoqT62VA_00-00-00_00-00-23",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Jay-Z\nB. 2 Pac\nC. Eminem\nD. Biggie Smalls\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Jay-Z",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "BV1sNZ4YqEBN_00-02-02_00-02-23",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Debugging audio equipment\nB. Cooking\nC. Cleaning kitchen utensils\nD. Singing and dancing\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Debugging audio equipment",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "6kIjOvBVAHQ_00-00-00_00-00-06",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Too little\nB. Just right, no opinion\nC. Too much, need to give some to others\nD. Too much, can't finish\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Just right, no opinion",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "oeLk98g_no8_00-00-00_00-00-30",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Cancelled\nB. Didn't\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Cancelled",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "BV1RYXXY1EeL_00-00-06_00-00-24",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Very delicious\nB. Very bad taste\nC. Average taste\nD. Taste is okay\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. ...",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "Ns81hgrRAaU_00-00-00_00-00-16",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Married couple\nB. Brother and sister\nC. Colleagues\nD. Neighbors\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Married couple",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "Ah3bYaCl8gA_00-00-00_00-00-15",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Because he proposed an effective strategy\nB. Because he fully followed orders\nC. Because he showed high intelligence\nD. Because he was brave on the battlefield\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Because he showed high intelligence",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "ZzSzkAuKPe0_00-00-00_00-00-20",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Yes\nB. No\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Yes",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "BV14v411C7si_00-00-51_00-01-02",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Yes\nB. No\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Yes",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "BV11S4y1D7KE_00-00-04_00-00-23",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Basketball\nB. Baseball\nC. American Football\nD. Rugby\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. American Football",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "BV1Lx4y1b7w9_00-00-10_00-00-40",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. I, IV, I, V/VII, VI, IV, V, I, V\nB. I, V/VII, IV, VI, I, V, IV, I, VII\nC. IV, I, VI, V/VII, I, IV, V, VI, I\nD. I, IV, V, I, VII, VI, IV, I, V\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. I, V/VII, IV, VI, I, V, IV, I, VII",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "HGkv-Kpwlcw_00-00-18_00-00-48",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. 10\nB. 2\nC. 20\nD. 12\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. 20",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "S8Hb9sz9gO0_00-00-00_00-00-19",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. American accent\nB. Canadian accent\nC. British accent\nD. Australian accent\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. ...",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "_RN2gQ4vMsQ_00-00-00_00-00-07",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Incorrect\nB. Correct\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Correct",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "nqy_hYDI0As_00-00-30_00-00-55",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Remains unchanged\nB. Getting better\nC. Sometimes good, sometimes bad\nD. Getting worse\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Sometimes good, sometimes bad",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "mAEATL_0kmM_00-00-00_00-00-16",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Found a survivor\nB. Found important documents\nC. The cat was rescued\nD. The house was not burned down\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. The cat was rescued",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "BV16Q4y1N7V6_00-00-10_00-00-40",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Opera singer\nB. Pop singer\nC. Music producer\nD. Italian teacher\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Opera singer",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "0qjaxfZi5zg_00-00-00_00-00-30",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Sunday\nB. Tuesday\nC. Monday\nD. Friday\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. Friday",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "SYXUcitEc2c_00-00-28_00-00-39",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Little Panda\nB. Tiny Elephant\nC. Big Koala\nD. Little Koala\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. Little Koala",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "rgdTe8EzC4Y_00-00-02_00-00-31",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Remain unchanged\nB. Gradually decrease\nC. Gradually increase\nD. Experience drastic fluctuations\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Remain unchanged",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "Nb1a12d_kFY_00-00-01_00-00-16",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. 1 quarter past the hour\nB. Half an hour past the hour\nC. 3 quarters past the hour\nD. 2 quarters past the hour\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. 2 quarters past the hour",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "rjTYZQIU8mU_00-00-00_00-00-12",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. 3\nB. 2\nC. 5\nD. 4\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. 3",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "BV1dptdekEuM_0-00_0-29",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. USA, Japan, UK\nB. UK, Japan, UK\nC. UK, Korea, USA\nD. France, UK, France\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. UK, Japan, UK",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "BV1pr421M7A6_00-00-06_00-00-10",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Circling around\nB. In a fixed position\nC. From far to near\nD. From near to far\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. From near to far",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "GcPO59vyjzI_00-00-00_00-00-14",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. On a ship\nB. In the air\nC. On the ground\nD. In the forest\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. On a ship",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "xhhjoy4t0uw_00-00-00_00-00-12",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. No\nB. Yes\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Yes",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "BV1j3FcesEXU_00-00-30_00-01-00",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Ventriloquism\nB. Stand-up Comedy\nC. Opera Performance\nD. Concert\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Stand-up Comedy",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "geXt4kcEBMo_00-00-00_00-00-09",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Yes\nB. No\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Yes",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "BV17d4sedEws_00-00-01_00-00-27",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Ran to the shore\nB. Picked up by a man\nC. Started learning to swim\nD. Fell into the water\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Ran to the shore",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "aBtYlhNXhh8_00-00-00_00-00-16",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. 8\nB. 6\nC. 3\nD. 5\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. 8",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "tvgCUCpwusw_00-00-00_00-00-10",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Yes\nB. No\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Yes",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "BV1Tm4y1h7JU_00-00-00_00-00-25",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Entered\nB. Did not enter\nC. \nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Entered",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "BV1rx411X7EL_00-00-00_00-00-30",
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Opera Xipi Flow\nB. Opera duet high part coloratura segment\nC. Opera recitative\nD. Opera aria\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. Opera aria",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.45,
+    "ci95": [
+      0.3333,
+      0.5833
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset mmar --backbone meralion-2-gguf --split test --n 60",
+  "elapsed_s": 28.3
+}

@@ -1,0 +1,393 @@
+{
+  "stage": "1-directional",
+  "dataset": "uro-bench-APE-zh",
+  "k_type": "K8",
+  "backbone": "meralion-2-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/uro-bench-APE-zh/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": 37,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "答案：八百个字。",
+      "score": 0,
+      "detail": {
+        "gold": "2400个字"
+      }
+    },
+    {
+      "item_id": 40,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "足球六十七元，篮球两元六角。",
+      "score": 0,
+      "detail": {
+        "gold": "3只"
+      }
+    },
+    {
+      "item_id": 34,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "六小时。",
+      "score": 0,
+      "detail": {
+        "gold": "11小时"
+      }
+    },
+    {
+      "item_id": 144,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "小熊每天上学要走九百三十五米。",
+      "score": 0,
+      "detail": {
+        "gold": "1090米"
+      }
+    },
+    {
+      "item_id": 119,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "2000",
+      "score": 0,
+      "detail": {
+        "gold": "1900件"
+      }
+    },
+    {
+      "item_id": 86,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "昨天上学的学生有五十人。",
+      "score": 0,
+      "detail": {
+        "gold": "49人"
+      }
+    },
+    {
+      "item_id": 103,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "三盆兰花贵一些，贵多少元？",
+      "score": 0,
+      "detail": {
+        "gold": "兰花更贵一些，贵12元"
+      }
+    },
+    {
+      "item_id": 44,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "父亲比儿子早到终点多少秒？",
+      "score": 0,
+      "detail": {
+        "gold": "40秒"
+      }
+    },
+    {
+      "item_id": 147,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "答案：一万五千平方米。",
+      "score": 0,
+      "detail": {
+        "gold": "一共要挖走50方土"
+      }
+    },
+    {
+      "item_id": 124,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "score": 0,
+      "detail": {
+        "gold": "还可以买4只"
+      }
+    },
+    {
+      "item_id": 133,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "一枝西瓜要竖直切成二十二块，最少要切多少刀？",
+      "score": 0,
+      "detail": {
+        "gold": "要切11刀"
+      }
+    },
+    {
+      "item_id": 115,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "第一堆有三百一十四个，第二堆有二百九十六个。",
+      "score": 0,
+      "detail": {
+        "gold": "一堆拿走9个橘子给二堆，两堆橘子数量相同"
+      }
+    },
+    {
+      "item_id": 159,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "这个月超产29吨。",
+      "score": 0,
+      "detail": {
+        "gold": "61吨"
+      }
+    },
+    {
+      "item_id": 49,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "一件衣服两百三十元，一条裤子一百二十元，共十五件，共多少钱？",
+      "score": 0,
+      "detail": {
+        "gold": "5250元"
+      }
+    },
+    {
+      "item_id": 80,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "三个星期一共做了多少件？",
+      "score": 0,
+      "detail": {
+        "gold": "183件"
+      }
+    },
+    {
+      "item_id": 12,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "score": 0,
+      "detail": {
+        "gold": "实际每辆车比计划多坐12人"
+      }
+    },
+    {
+      "item_id": 31,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "凳子高多少米？",
+      "score": 0,
+      "detail": {
+        "gold": "0.45米"
+      }
+    },
+    {
+      "item_id": 47,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "前三小时共生产零件五百一十个，后五个小时每小时生产零件一百八十六个，这一天平均每小时生产零件多少个？",
+      "score": 0,
+      "detail": {
+        "gold": "平均每小时生产零件180个"
+      }
+    },
+    {
+      "item_id": 179,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "五个不合格。",
+      "score": 0,
+      "detail": {
+        "gold": "79/80，也就是百分之98.75"
+      }
+    },
+    {
+      "item_id": 143,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "每天开凿多少米？",
+      "score": 0,
+      "detail": {
+        "gold": "乙队每天开凿13.4米"
+      }
+    },
+    {
+      "item_id": 151,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "4.8元",
+      "score": 0,
+      "detail": {
+        "gold": "平均每个鸡蛋0.6元"
+      }
+    },
+    {
+      "item_id": 18,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "问题：请听音频中的问题，并给出简短回答，只输出答案。",
+      "score": 0,
+      "detail": {
+        "gold": "50平方厘米"
+      }
+    },
+    {
+      "item_id": 166,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "score": 0,
+      "detail": {
+        "gold": "有20种选法"
+      }
+    },
+    {
+      "item_id": 182,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "张大爷家养了八只黑兔，其中白兔只属黑兔的七倍。",
+      "score": 0,
+      "detail": {
+        "gold": "64只兔子"
+      }
+    },
+    {
+      "item_id": 174,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "一本书一百二十页，开了一部分后还剩四十页，已经开了多少页？",
+      "score": 0,
+      "detail": {
+        "gold": "80页"
+      }
+    },
+    {
+      "item_id": 118,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "小明家距离学校多少米？",
+      "score": 0,
+      "detail": {
+        "gold": "646.5米"
+      }
+    },
+    {
+      "item_id": 152,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "100平方厘米",
+      "score": 0,
+      "detail": {
+        "gold": "52平方分米"
+      }
+    },
+    {
+      "item_id": 145,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "他平均每天要看三十页。",
+      "score": 0,
+      "detail": {
+        "gold": "18页"
+      }
+    },
+    {
+      "item_id": 165,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "225",
+      "score": 0,
+      "detail": {
+        "gold": "2880元"
+      }
+    },
+    {
+      "item_id": 32,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "score": 0,
+      "detail": {
+        "gold": "25天"
+      }
+    },
+    {
+      "item_id": 24,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "这本书共有二十四页。",
+      "score": 0,
+      "detail": {
+        "gold": "384页"
+      }
+    },
+    {
+      "item_id": 57,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "490000000",
+      "score": 0,
+      "detail": {
+        "gold": "9公顷"
+      }
+    },
+    {
+      "item_id": 51,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "两组工人在一周内铺完一条路。",
+      "score": 0,
+      "detail": {
+        "gold": "180千米"
+      }
+    },
+    {
+      "item_id": 117,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "需要多少米？",
+      "score": 0,
+      "detail": {
+        "gold": "32米"
+      }
+    },
+    {
+      "item_id": 25,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "四年级学生总数是四年一班总人数的多少倍？",
+      "score": 0,
+      "detail": {
+        "gold": "3倍"
+      }
+    },
+    {
+      "item_id": 158,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "一捆树苗十二棵。",
+      "score": 0,
+      "detail": {
+        "gold": "96颗"
+      }
+    },
+    {
+      "item_id": 108,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "888",
+      "score": 0,
+      "detail": {
+        "gold": "6000本书"
+      }
+    },
+    {
+      "item_id": 22,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "30",
+      "score": 0,
+      "detail": {
+        "gold": "这本书的进价是96/5元，也就是19.2元"
+      }
+    },
+    {
+      "item_id": 59,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "问题：请听音频中的问题，并给出简短回答，只输出答案。",
+      "score": 0,
+      "detail": {
+        "gold": "正确率是4/5，也就是百分之八十"
+      }
+    },
+    {
+      "item_id": 28,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "十年后姐姐比红红大十岁。",
+      "score": 0,
+      "detail": {
+        "gold": "还是5岁"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.0,
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset uro-bench-APE-zh --backbone meralion-2-gguf --split dev --n 40",
+  "elapsed_s": 16.9
+}

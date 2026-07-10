@@ -1,0 +1,573 @@
+{
+  "stage": "1-directional",
+  "dataset": "vocalbench-multi-round",
+  "k_type": "K8",
+  "backbone": "meralion-2-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/vocalbench-multi-round/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "multi_round-316",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Given the ingredients you mentioned, you could try making a vegan banana cake. This cake uses bananas as a substitute for eggs and oil instead of butter. It doesn't require baking powder, but uses baking soda which you have. It's a simple and delicious recipe."
+      }
+    },
+    {
+      "item_id": "multi_round-310",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Aggressive growth mutual funds.",
+      "score": 0,
+      "detail": {
+        "gold": "Given your high risk tolerance and interest in high returns, you might want to consider investing in equity or stock mutual funds. These funds invest in stocks and carry a higher risk compared to other types of mutual funds like fixed income funds, but they also have the potential for higher returns. However, it's important to remember that all investments carry some level of risk and it's crucial to do your own research."
+      }
+    },
+    {
+      "item_id": "multi_round-077",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 0,
+      "detail": {
+        "gold": "The adjustment process during training is typically automated, guided by the chosen learning algorithm. However, human intervention is necessary when selecting the model, choosing appropriate data, setting initial parameters, and evaluating the performance of the model to ensure it is functioning as intended."
+      }
+    },
+    {
+      "item_id": "multi_round-014",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "One.",
+      "score": 0,
+      "detail": {
+        "gold": "After donating two books, you'll have four books left in total. If you keep one of them in your bag, you will have three books remaining at home."
+      }
+    },
+    {
+      "item_id": "multi_round-183",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What factors led to his defeat at the Battle of Waterloo?",
+      "score": 0,
+      "detail": {
+        "gold": "Several factors led to Napoleon's defeat at the Battle of Waterloo, including the delayed start of the battle due to wet ground, the strong defensive positions of the allied forces, the arrival of Prussian reinforcements, and tactical errors by Napoleon himself."
+      }
+    },
+    {
+      "item_id": "multi_round-223",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "With pleasure! Here's a little rhyme:\n\nIn a land of tubes and beakers,\nLived a fairy, a reaction seeker.\nWith a wave and a magical glance,\nShe gave the reactants a speedy chance.\n\n\"Meet without a hill to climb,\nSave your energy, save your time!\"\nThanks to her, they quickly found,\nTheir way to product, safe and sound.\n\nThough the hill remains in place,\nThe fairy's magic leaves no trace.\nShe helps reactions to proceed,\nA catalyst fairy is all you need!"
+      }
+    },
+    {
+      "item_id": "multi_round-226",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 0,
+      "detail": {
+        "gold": "No, that information is incorrect. World War II definitively ended in 1945 with the Allied victory and the signing of the surrender documents by the Axis powers."
+      }
+    },
+    {
+      "item_id": "multi_round-228",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "While Python has indeed become more popular and is widely used for various applications, JavaScript remains the most widely used language because it is the core language for web development and is supported by all major browsers."
+      }
+    },
+    {
+      "item_id": "multi_round-198",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "It's important to secure your home, have an emergency kit ready with food, water, medications, and other essentials, and plan evacuation routes. Keep your electronic devices charged, and stay updated on alerts from local authorities."
+      }
+    },
+    {
+      "item_id": "multi_round-363",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Practice makes perfect. Would you like me to explain one of the mechanisms to you?"
+      }
+    },
+    {
+      "item_id": "multi_round-221",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Digital literacy is important because it helps people navigate the digital world, access information, and communicate effectively.",
+      "score": 0,
+      "detail": {
+        "gold": "Totally! So, think of digital literacy as knowing how to swim in the digital pool. Without it, you're just gonna float, not getting anywhere. It's super important because it lets us use tech smartly and safely. We need to know how to find the info we want without falling for fake news or scams. Plus, it helps us keep up with job demands since pretty much every job now has some kind of tech element. And let's not forget staying in touch with people and having fun online! It's basically a must-have skill for living in our modern world."
+      }
+    },
+    {
+      "item_id": "multi_round-395",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What does the CPU actually do?",
+      "score": 0,
+      "detail": {
+        "gold": "My apologies for the confusion. The CPU, or Central Processing Unit, is essentially the brain of the computer. It performs all the calculations and processing tasks by executing instructions from both software and hardware. It does not supply power, which is the job of the computer's power supply unit."
+      }
+    },
+    {
+      "item_id": "multi_round-284",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "I'm listening.",
+      "score": 0,
+      "detail": {
+        "gold": "Astonishing."
+      }
+    },
+    {
+      "item_id": "multi_round-069",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the name of the Batman movie released in 2022?",
+      "score": 0,
+      "detail": {
+        "gold": "The Batman movie released in 2022 was directed by Matt Reeves. "
+      }
+    },
+    {
+      "item_id": "multi_round-297",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the question?",
+      "score": 0,
+      "detail": {
+        "gold": "In the night sky so high and soon, glows the radiant, silver moon."
+      }
+    },
+    {
+      "item_id": "multi_round-127",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Listen to the spoken question and answer with a short answer only.",
+      "score": 0,
+      "detail": {
+        "gold": "Think of a film director as a chef in a restaurant. Just as a chef decides on the recipe, handpicks ingredients, and oversees the cooking process to create a dish, a director selects the story, cast, and visuals, and then orchestrates the filming to produce the finished movie."
+      }
+    },
+    {
+      "item_id": "multi_round-382",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "My apologies for the error. Beethoven's Fifth Symphony was actually composed between 1804 and 1808. It was first performed in 1808."
+      }
+    },
+    {
+      "item_id": "multi_round-102",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Yes, the feedback is very beneficial because it provides you with insights into how your speeches are perceived by others. It allows you to identify your strengths and areas for improvement. Skilled members often give targeted advice on aspects like body language, voice modulation, and content organization, which can greatly accelerate your growth as a public speaker."
+      }
+    },
+    {
+      "item_id": "multi_round-379",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "My apologies for the error. \"Titanic\" was actually released in 1997."
+      }
+    },
+    {
+      "item_id": "multi_round-065",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Classical music is characterized by its formal structure, complex harmonies, and use of instruments like the piano, violin, and cello.",
+      "score": 0,
+      "detail": {
+        "gold": "In terms of style and composition, a new piece could be considered classical if it adheres to the principles and aesthetic values of classical music. This includes a structured composition, complexity in musical form, and often the use of orchestral or chamber music instruments. It should also typically follow the traditions of the common practice period, which includes Baroque, Classical, and Romantic eras of music. While new compositions can be influenced by contemporary sounds and techniques, to be classified as classical, they would generally need to align with these established norms. "
+      }
+    },
+    {
+      "item_id": "multi_round-092",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "They listened to the spoken question.",
+      "score": 0,
+      "detail": {
+        "gold": "The painting was found when Peruggia attempted to sell it to an art dealer in Florence, Italy. The dealer contacted the police, and Peruggia was arrested, which led to the recovery of the Mona Lisa."
+      }
+    },
+    {
+      "item_id": "multi_round-295",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the answer to the question?",
+      "score": 0,
+      "detail": {
+        "gold": "Why is most fast food considered unhealthy due to its high calorie content and low nutritional value?"
+      }
+    },
+    {
+      "item_id": "multi_round-267",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Machine learning is a field of artificial intelligence that focuses on enabling computers to learn from data without being explicitly programmed.",
+      "score": 0,
+      "detail": {
+        "gold": "Machine learning is a subset of artificial intelligence that involves the use of algorithms and statistical models to enable computers to improve their performance on a specific task through experience, which means the more data these systems are exposed to, the more they can learn and make informed decisions."
+      }
+    },
+    {
+      "item_id": "multi_round-282",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "80 and 100",
+      "score": 0,
+      "detail": {
+        "gold": "The sum of 80 and 100 is 180."
+      }
+    },
+    {
+      "item_id": "multi_round-001",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The side of the coin facing up is the side with the heads.",
+      "score": 0,
+      "detail": {
+        "gold": "The coin was flipped 1 time, which is an odd number. Now the coin is heads up. so after an odd number of flips, it will be tails up"
+      }
+    },
+    {
+      "item_id": "multi_round-271",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the question?",
+      "score": 0,
+      "detail": {
+        "gold": "Dark chocolate with a high cocoa content or a trail mix with nuts and dried fruits can satisfy your sweet craving in a healthier way."
+      }
+    },
+    {
+      "item_id": "multi_round-121",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Superconductors, known for zero electrical resistance at low temperatures, significantly enhance energy efficiency in applications such as power grids. These materials are pivotal for next-gen clean energy solutions like fusion reactors, due to their unparalleled efficiency in conducting electricity."
+      }
+    },
+    {
+      "item_id": "multi_round-315",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Please provide the spoken question and answer so I can summarize the steps to manage your finances.",
+      "score": 0,
+      "detail": {
+        "gold": "Certainly! Here are the steps based on our conversation: 1. Use a spreadsheet to track your income and expenses. 2. Categorize your expenses into different types for better clarity. 3. Create a flexible budget plan to handle varying incomes. 4. Regularly update and review your spreadsheet for accurate tracking."
+      }
+    },
+    {
+      "item_id": "multi_round-247",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "I'm confident about this. Will Smith was not in the original \"Jurassic Park\" movie. The lead roles were played by Sam Neill as Dr. Alan Grant, Laura Dern as Dr. Ellie Sattler, and Jeff Goldblum as Dr. Ian Malcolm."
+      }
+    },
+    {
+      "item_id": "multi_round-173",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "In a place with no specific laws on personal injury, determining the statute of limitations can be more complex. Generally, there would still be some form of legal framework or civil procedure rules that establish time limits for bringing claims to court. If there is no explicit statute for personal injury, it may fall under a more general category of civil litigation or tort law. In such cases, it's essential to consult with a legal professional in the jurisdiction to identify any applicable time limits and to understand the legal options available for pursuing a claim."
+      }
+    },
+    {
+      "item_id": "multi_round-191",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Yes, plyometric exercises like box jumps and jump squats can help enhance a basketball player's jumping ability. Strength training exercises that target the leg muscles, such as squats and deadlifts, are also beneficial. Consistency and proper form are key."
+      }
+    },
+    {
+      "item_id": "multi_round-359",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Perfect. The next step would be to submit all the documentation to your insurer, which can often be done online or over the phone. Would you like me to guide you through what documents you'll need to provide?"
+      }
+    },
+    {
+      "item_id": "multi_round-137",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Digital transformation is the process of using digital technologies to improve business processes and create new value.",
+      "score": 0,
+      "detail": {
+        "gold": "Digital transformation redefines how businesses operate by systematically integrating digital tools and fostering a culture of innovation and adaptability to enhance customer value."
+      }
+    },
+    {
+      "item_id": "multi_round-366",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "You are right, my previous statement was incorrect. The different seasons on Earth are indeed caused by the tilt of its axis. As the Earth orbits the Sun, the tilt causes different parts of Earth to receive varying amounts of sunlight, which creates the seasonal changes. The distance from the Sun does not significantly affect the seasons."
+      }
+    },
+    {
+      "item_id": "multi_round-162",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 0,
+      "detail": {
+        "gold": "Having coffee before a workout will not empty your stomach. In fact, coffee is a liquid that occupies volume in the stomach, although it may have a mild diuretic effect that can lead to increased urination. However, coffee alone is not sufficient to empty the contents of the stomach. If you are looking to have a workout on an empty stomach, often referred to as fasted cardio, you would need to avoid ingesting any food or caloric beverages prior to your workout. Some people consume coffee before exercise for its stimulant effects, as caffeine can enhance physical performance and increase focus, but it does not contribute to emptying the stomach of solid food."
+      }
+    },
+    {
+      "item_id": "multi_round-176",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The viola is a smaller version of the violin.",
+      "score": 0,
+      "detail": {
+        "gold": "The violin and viola are both stringed instruments that look similar but have several key differences. First, the viola is slightly larger than the violin, which gives it a deeper and richer sound. The range of the viola is also lower; it is tuned a perfect fifth below the violin, with strings tuned to C, G, D, and A, whereas the violin is tuned to G, D, A, and E. The viola's body length is typically between 15 and 20 inches, compared to the violin's 14 inches, which contributes to its deeper tone. Additionally, violists read the alto clef, while violinists read the treble clef. These differences mean that the two instruments have unique roles in ensemble settings, with the viola often playing inner harmonies and the violin frequently taking on the melody or higher harmonies."
+      }
+    },
+    {
+      "item_id": "multi_round-181",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The most challenging case is the one that is the most difficult to solve.",
+      "score": 0,
+      "detail": {
+        "gold": "In 'The Thursday Murder Club', the most challenging case for the group turns out to be the live case they unwittingly become involved in. It tests their sleuthing skills and their ability to work together as they navigate real danger and complex clues."
+      }
+    },
+    {
+      "item_id": "multi_round-326",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the name of the band?",
+      "score": 0,
+      "detail": {
+        "gold": "Glass Animals has some really cool tracks! What's your favorite song by them?"
+      }
+    },
+    {
+      "item_id": "multi_round-129",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "\"Can you reframe that answer as if it were a script for a documentary voiceover?\"",
+      "score": 0,
+      "detail": {
+        "gold": "In the dawn of the 14th century, Europe awoke to a new age that would shape the future of Western civilization—the Renaissance. This golden era would unfurl the petals of human potential, rediscovering the classical wisdom of ancient Greece and Rome. The winds of change brought forth humanism, a philosophy that would place humankind at the center of the universe. The arts soared to unprecedented heights, blessed by the hands of virtuosos such as Leonardo da Vinci, whose Mona Lisa's enigmatic smile bewitches to this day, and Michelangelo, whose divine frescoes adorn the Sistine Chapel. Science, too, reached for the stars, with Copernicus rearranging the cosmos with his revolutionary heliocentric theory. The surge of progress was fueled by Gutenberg’s groundbreaking printing press, casting the seeds of enlightenment far and wide. The Renaissance—a beacon of human achievement and the bedrock of modern Western thought."
+      }
+    },
+    {
+      "item_id": "multi_round-067",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "In that case, you might enjoy artists like Brian Eno or groups like Hammock. They create atmospheric ambient music that many find conducive to concentration. "
+      }
+    },
+    {
+      "item_id": "multi_round-214",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Quantum entanglement could lead to revolutionary advancements in computing, communication, and cryptography.",
+      "score": 0,
+      "detail": {
+        "gold": "Imagine a world where our technology leaps beyond the wildest dreams of today, all thanks to the incredible potential of quantum entanglement. Picture instant communication across the cosmos, with quantum networks transmitting information at what seems like the speed of thought, defying the vast stretches of space. This is the promise of a future where quantum entanglement is harnessed to its full potential, giving rise to quantum computers with abilities so immense that they solve complex problems in the blink of an eye. This isn't just science fiction; it's the bright horizon of technology, where quantum entanglement could redefine what's possible, unlocking new realms in secure communication, lightning-fast data processing, and an interconnected universe. The future is entangled, and it's dazzlingly brilliant."
+      }
+    },
+    {
+      "item_id": "multi_round-034",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Given that it's used to flip food, the object you're thinking of is likely a spatula. Spatulas are commonly found in kitchens, can be silver or black, have a handle, and are specifically used for flipping food."
+      }
+    },
+    {
+      "item_id": "multi_round-024",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Adele flipped the coin once, and Celestine didn't flip it. This makes the total number of flips 5, which is an odd number. So, the coin will be tails up. So, the answer is no."
+      }
+    },
+    {
+      "item_id": "multi_round-116",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Certainly! Regular physical activity helps with weight management by burning calories, which can lead to weight loss if you expend more calories than you consume. Additionally, exercise can increase your metabolic rate and build muscle mass, both of which can help maintain a healthy weight over time."
+      }
+    },
+    {
+      "item_id": "multi_round-355",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Henna designs can be quite intricate. Did this experience make you interested in learning more about other Indian customs?"
+      }
+    },
+    {
+      "item_id": "multi_round-281",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the question?",
+      "score": 0,
+      "detail": {
+        "gold": "There are 709.764 milliliters in 3 cups."
+      }
+    },
+    {
+      "item_id": "multi_round-079",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No, they don't last a lifetime.",
+      "score": 0,
+      "detail": {
+        "gold": "Memory cells typically persist for years, but their longevity can vary. Some vaccines can confer lifelong immunity, while others may require periodic boosters to maintain immunity levels. The duration of memory cells' effectiveness also depends on the individual's immune system and the nature of the pathogen."
+      }
+    },
+    {
+      "item_id": "multi_round-345",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "That sounds like a good plan. Do you have your account details and the specifics of the charges you’re disputing ready for the call?"
+      }
+    },
+    {
+      "item_id": "multi_round-119",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Can you rephrase that answer in simpler terms?",
+      "score": 0,
+      "detail": {
+        "gold": "Sure, living healthily means eating well, staying active, getting enough sleep, dealing with stress, not smoking or drinking too much, staying positive, and seeing your doctor regularly."
+      }
+    },
+    {
+      "item_id": "multi_round-307",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A book about space exploration.",
+      "score": 0,
+      "detail": {
+        "gold": "Given his love for vintage cars and old music, a perfect gift could be a vinyl record of songs about cars or from the era of his favorite vintage car. Alternatively, you could look for a vintage car show that also has an oldies music concert."
+      }
+    },
+    {
+      "item_id": "multi_round-340",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "That sounds like a solid plan. Networking with professionals and joining design communities can also be very helpful. Have you thought about how to connect with other designers?"
+      }
+    },
+    {
+      "item_id": "multi_round-254",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "While the greenhouse effect is a natural process that warms the Earth's surface, the current accelerated warming is largely due to human activities, such as burning fossil fuels, deforestation, and industrial processes that increase the concentration of greenhouse gases in the atmosphere. This enhanced greenhouse effect is what's leading to global climate change."
+      }
+    },
+    {
+      "item_id": "multi_round-386",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The traditional primary colors used in art and design are red, yellow, and blue.",
+      "score": 0,
+      "detail": {
+        "gold": "My apologies for the confusion. In art and design, the traditional primary colors are red, yellow, and blue. These are considered the base colors that can be mixed to create a wide spectrum of other colors."
+      }
+    },
+    {
+      "item_id": "multi_round-311",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A mobile platform.",
+      "score": 0,
+      "detail": {
+        "gold": "Given your preferences, 'Mobile Legends: Bang Bang' could be a great choice for you and your friends. It's a strategy game that you can play online with your friends, and it's available on mobile platforms. The game offers a variety of heroes with unique abilities to choose from and requires good teamwork and strategy to win."
+      }
+    },
+    {
+      "item_id": "multi_round-209",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Okay, so basically, you just need to listen to the question and answer with a short answer only.",
+      "score": 0,
+      "detail": {
+        "gold": "Sure! Think of it like this: To handle chronic pain, you wanna look beyond meds. First up, get moving with stuff like physical therapy or yoga to keep your body strong and flexible. Then, try chilling your mind with meditation or deep breaths to kick stress to the curb. You could also talk to a therapist to swap out those gloomy thoughts for brighter ones. Don't forget, things like acupuncture and a good rub-down might work wonders too. Plus, eat well, stay active, and catch plenty of Zs to keep your body in top-notch shape. Remember, always team up with your doc to figure out the best game plan for you."
+      }
+    },
+    {
+      "item_id": "multi_round-273",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Peaceful."
+      }
+    },
+    {
+      "item_id": "multi_round-200",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "On an empty stomach.",
+      "score": 0,
+      "detail": {
+        "gold": "Amoxicillin can be taken either with food or on an empty stomach. However, taking it with food can help reduce potential stomach upset. It's important to follow your healthcare provider's instructions on how to take it."
+      }
+    },
+    {
+      "item_id": "multi_round-059",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the acceleration due to gravity?",
+      "score": 0,
+      "detail": {
+        "gold": "The acceleration due to gravity on Earth is approximately 9.81 meters per second squared. "
+      }
+    },
+    {
+      "item_id": "multi_round-398",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "I apologize for the oversight. The recommended dosage of ibuprofen for adults with mild pain is usually 200 to 400 mg every 4 to 6 hours as needed. It's important not to exceed 1200 mg in one day unless directed by a healthcare professional."
+      }
+    },
+    {
+      "item_id": "multi_round-182",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 0,
+      "detail": {
+        "gold": "A tie isn't usually necessary for business casual, but if you're unsure about the company's culture or if you want to err on the side of caution, wearing a tie can add a touch of professionalism. It's always a good idea to slightly overdress rather than underdress for an interview."
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.0,
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset vocalbench-multi-round --backbone meralion-2-gguf --split test --n 60",
+  "elapsed_s": 23.7
+}

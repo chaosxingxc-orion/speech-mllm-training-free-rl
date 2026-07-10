@@ -1,0 +1,573 @@
+{
+  "stage": "1-directional",
+  "dataset": "vocalbench-reasoning",
+  "k_type": "K8",
+  "backbone": "meralion-2-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/vocalbench-reasoning/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "reasoning-882",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A mouse runs at 1/5 the speed of a cat.",
+      "score": 0,
+      "detail": {
+        "gold": "We first find out the speed of the cat by dividing the horse's speed by eleven, which gives us the cat's speed as 11 meters per second. Knowing the cat runs five times faster than a mouse, we then determine the mouse's speed by dividing the cat's speed by five, leading to the conclusion that the mouse runs at 2.2 meters per second."
+      }
+    },
+    {
+      "item_id": "reasoning-954",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The lion is a symbol of power and authority, but it is also vulnerable and weak.",
+      "score": 0,
+      "detail": {
+        "gold": "It is cowardly to attack the defenseless, though he be an enemy. "
+      }
+    },
+    {
+      "item_id": "reasoning-888",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "10",
+      "score": 0,
+      "detail": {
+        "gold": "Janet started with twenty-two green pens and ten yellow pens. Adding these together, she initially had thirty-two pens. Then she bought six bags of blue pens, with each bag containing nine pens. This means she got fifty-four blue pens in total. She also purchased two bags of red pens, with each bag holding six pens, giving her twelve red pens. To find the total number of pens she has now, we add the initial thirty-two pens to the fifty-four blue pens and the twelve red pens. The sum comes out to ninety-eight pens. So the answer is 98."
+      }
+    },
+    {
+      "item_id": "reasoning-122",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The increase in volunteers could be explained by the workshops on urban farming.",
+      "score": 0,
+      "detail": {
+        "gold": "Workshops on urban farming educate and inspire individuals to get involved in gardening, attracting more volunteers."
+      }
+    },
+    {
+      "item_id": "reasoning-502",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The plants would die.",
+      "score": 0,
+      "detail": {
+        "gold": "If the sun suddenly disappeared, plants on Earth would eventually die due to the lack of light necessary for photosynthesis. Temperatures would also plummet, further affecting plant life."
+      }
+    },
+    {
+      "item_id": "reasoning-374",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Leonardo da Vinci did not collaborate with Isaac Newton on scientific discoveries.",
+      "score": 0,
+      "detail": {
+        "gold": "Leonardo da Vinci lived in the late 15th and early 16th centuries, while Isaac Newton lived in the 17th century. They could not have collaborated due to the time difference."
+      }
+    },
+    {
+      "item_id": "reasoning-442",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 0,
+      "detail": {
+        "gold": "The inference is wrong. While it is true that most fruits are sweet and lemons are indeed fruits, the conclusion that lemons are sweet is incorrect. Lemons are an exception to the general rule about fruits being sweet, as they are known for their sour taste due to their high concentration of citric acid. This shows that the inference is not well-supported because it fails to account for exceptions within the category of fruits."
+      }
+    },
+    {
+      "item_id": "reasoning-525",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The amount of electricity in your house would increase.",
+      "score": 0,
+      "detail": {
+        "gold": "The amount of electricity used in your house would increase."
+      }
+    },
+    {
+      "item_id": "reasoning-100",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The playground may have made the park more family-friendly and appealing to families with children.",
+      "score": 0,
+      "detail": {
+        "gold": "Playgrounds attract families looking for recreational spaces where children can play safely and enjoyably."
+      }
+    },
+    {
+      "item_id": "reasoning-551",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The game would likely become much more unpredictable and chaotic.",
+      "score": 0,
+      "detail": {
+        "gold": "It could make passing and controlling the ball more difficult, potentially reducing overall performance and coordination."
+      }
+    },
+    {
+      "item_id": "reasoning-445",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No. The inference is incorrect.",
+      "score": 0,
+      "detail": {
+        "gold": "The inference is incorrect and not well-supported. The statement \"all birds build nests\" is a generalization that may not be true for every bird species, but even if we assume it is, the conclusion that \"all animals that build nests are birds\" does not logically follow. Just because eagles, which are birds, build nests, it does not mean that only birds build nests. Other animals, such as squirrels and bees, also build nests but are not birds. Therefore, the inference is wrong because it incorrectly assumes that nest-building is an exclusive trait of birds."
+      }
+    },
+    {
+      "item_id": "reasoning-739",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "100",
+      "score": 0,
+      "detail": {
+        "gold": "Matteo traveled at a speed of fifty-five miles per hour for a duration of four hours. To find the total distance he covered, we multiply his speed by the time he traveled, which gives us two hundred twenty miles. Shandy, on the other hand, traveled at a speed of forty-five miles per hour for ten hours. To calculate her total distance, we multiply her speed by the time she traveled, resulting in four hundred fifty miles. To determine how many more miles Shandy drove compared to Matteo, we subtract Matteo's distance from Shandy's distance. This subtraction results in two hundred thirty miles. So the answer is 230."
+      }
+    },
+    {
+      "item_id": "reasoning-118",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The museum's virtual tours may have increased accessibility and engagement for a wider audience.",
+      "score": 0,
+      "detail": {
+        "gold": "Virtual tours make exhibits accessible to a global audience, attracting visitors who cannot attend in person."
+      }
+    },
+    {
+      "item_id": "reasoning-241",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "In the yellow pages, town directory, business sector listing, or at a hotel.",
+      "score": 0,
+      "detail": {
+        "gold": "You can find a restaurant's phone number in the yellow pages."
+      }
+    },
+    {
+      "item_id": "reasoning-428",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The inference is correct and well-supported. The statement that all primates have opposable thumbs is accurate, as this is a defining characteristic of the primate order. Since chimpanzees are classified as primates, it logically follows that they possess opposable thumbs. This conclusion is consistent with biological and evolutionary evidence, making the reasoning valid and supported."
+      }
+    },
+    {
+      "item_id": "reasoning-562",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The crops would likely rot and die.",
+      "score": 0,
+      "detail": {
+        "gold": "The crops would likely suffer from excessive moisture, leading to root rot, fungal diseases, and reduced yields."
+      }
+    },
+    {
+      "item_id": "reasoning-296",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "You might turn off the television, feel it's not functioning properly, start turning it off, or fall asleep.",
+      "score": 0,
+      "detail": {
+        "gold": "You might fall asleep."
+      }
+    },
+    {
+      "item_id": "reasoning-655",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "100",
+      "score": 0,
+      "detail": {
+        "gold": "Start by figuring out how many pennies make up one third of the total pennies in the cup. Since the cup contains nine thousand three hundred pennies, dividing that number into three equal parts gives three thousand one hundred pennies in each part. Next, to find how many pennies are in two thirds of the cup, take the amount in one third and multiply it by two. This results in six thousand two hundred pennies. Now, to determine the dollar amount, recall that one dollar equals one hundred pennies. Divide the total number of pennies in the stack by one hundred, which gives sixty-two dollars. So the answer is 62."
+      }
+    },
+    {
+      "item_id": "reasoning-539",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "They might be forced to migrate to higher ground or face extinction.",
+      "score": 0,
+      "detail": {
+        "gold": "If the sea level rose significantly, animals that live on the beach would likely lose their habitats, forcing them to migrate to higher ground or adapt to new environments. Some may not survive the change."
+      }
+    },
+    {
+      "item_id": "reasoning-058",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Regular yoga practice may reduce stress by promoting relaxation, improving mood, and increasing self-awareness.",
+      "score": 0,
+      "detail": {
+        "gold": "Regular yoga practice can reduce stress by lowering levels of stress hormones like cortisol and improving mental well-being through relaxation techniques."
+      }
+    },
+    {
+      "item_id": "reasoning-526",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "You would have missed your appointment.",
+      "score": 0,
+      "detail": {
+        "gold": "You might be late by one hour."
+      }
+    },
+    {
+      "item_id": "reasoning-067",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Emma's better sleep and more rested wake-up could be due to the consistent and structured bedtime routine.",
+      "score": 0,
+      "detail": {
+        "gold": "A consistent bedtime routine helps regulate the body's internal clock, promoting better sleep patterns and restfulness."
+      }
+    },
+    {
+      "item_id": "reasoning-933",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Don't be friends with people who are dangerous.",
+      "score": 0,
+      "detail": {
+        "gold": "Choose good friends carefully. "
+      }
+    },
+    {
+      "item_id": "reasoning-970",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Be creative and resourceful.",
+      "score": 0,
+      "detail": {
+        "gold": "In a pinch, a good use of our wits may help us out. "
+      }
+    },
+    {
+      "item_id": "reasoning-952",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The dog is being greedy and selfish.",
+      "score": 0,
+      "detail": {
+        "gold": "Ah, people often grudge others what they cannot enjoy themselves. "
+      }
+    },
+    {
+      "item_id": "reasoning-019",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the relationship between a violin and a piano?",
+      "score": 0,
+      "detail": {
+        "gold": "A violin is to bow as a piano is to keys."
+      }
+    },
+    {
+      "item_id": "reasoning-007",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A tailor is to cloth.",
+      "score": 0,
+      "detail": {
+        "gold": "A baker is to bread as a tailor is to clothes."
+      }
+    },
+    {
+      "item_id": "reasoning-767",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Three.",
+      "score": 0,
+      "detail": {
+        "gold": "Chatty prepared three dozen eggs. Since a dozen means twelve, three dozen equals thirty-six eggs in total. She has four children, and all of them are supposed to receive the same number of eggs. To figure out how many eggs each child gets, we divide the total number of eggs by the number of children. Dividing thirty-six eggs by four children gives nine eggs for each child. So the answer is 9."
+      }
+    },
+    {
+      "item_id": "reasoning-476",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes, the inference is correct and well-supported.",
+      "score": 0,
+      "detail": {
+        "gold": "The inference is correct and well-supported because the statement logically connects trying new hobbies with discovering new interests, which in turn broadens horizons. The reasoning is valid as it directly links the act of engaging in new hobbies to the outcome of expanding one's perspectives and interests. This cause-and-effect relationship is coherent and aligns with the evidence provided in the statement."
+      }
+    },
+    {
+      "item_id": "reasoning-075",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The city's installation of more streetlights likely reduced crime rates.",
+      "score": 0,
+      "detail": {
+        "gold": "Improved lighting can deter criminal activity by increasing visibility and reducing opportunities for crimes to occur unnoticed."
+      }
+    },
+    {
+      "item_id": "reasoning-891",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "8",
+      "score": 0,
+      "detail": {
+        "gold": "Uncle Franky has two boxes of apples, and each box contains forty apples. When we combine the apples from both boxes, we get a total of eighty apples. Now, he plans to pack these apples into smaller groups, with each group containing eight apples. To find out how many such groups he can make, we divide the total number of apples by the number of apples in one group. Dividing eighty by eight gives us ten. So the answer is 10."
+      }
+    },
+    {
+      "item_id": "reasoning-287",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "It's hard for a young child to read a long book due to a lack of knowledge, not because of the cover or pictures, but because of the many words.",
+      "score": 0,
+      "detail": {
+        "gold": "It is hard for a young child to read a long book because of many words."
+      }
+    },
+    {
+      "item_id": "reasoning-634",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "She has 53 roses.",
+      "score": 0,
+      "detail": {
+        "gold": "Patricia started with thirty roses. She gave twenty-four roses to her mother, leaving her with six roses. Afterward, she bought fifteen more roses, which added to the six she had left. Combining these, she now has twenty-one roses. So the answer is 21."
+      }
+    },
+    {
+      "item_id": "reasoning-113",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The park created a walking trail to encourage people to exercise.",
+      "score": 0,
+      "detail": {
+        "gold": "Walking trails provide dedicated paths for exercise and recreation, attracting visitors looking for outdoor fitness opportunities."
+      }
+    },
+    {
+      "item_id": "reasoning-745",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "278",
+      "score": 0,
+      "detail": {
+        "gold": "Pierson scored two hundred seventy-eight points in a single game of bowling. To find out how many points Nikita scored, we first take half of Pierson's score, which gives us one hundred thirty-nine. Then, we add eleven to that number, resulting in one hundred fifty points for Nikita. To find the total points scored by both players, we combine Pierson's score of two hundred seventy-eight with Nikita's score of one hundred fifty. Adding these together gives a total of four hundred twenty-eight points. So the answer is 428."
+      }
+    },
+    {
+      "item_id": "reasoning-140",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The new vaccine was introduced.",
+      "score": 0,
+      "detail": {
+        "gold": "The vaccine stimulates the immune system to produce antibodies against the disease, providing immunity and reducing the likelihood of infection spreading."
+      }
+    },
+    {
+      "item_id": "reasoning-126",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The fitness trail may have attracted new visitors who are interested in exercise and outdoor activities.",
+      "score": 0,
+      "detail": {
+        "gold": "Fitness trails offer outdoor exercise opportunities, attracting health-conscious individuals looking for free workout options."
+      }
+    },
+    {
+      "item_id": "reasoning-253",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "In the kitchen.",
+      "score": 0,
+      "detail": {
+        "gold": "A good place to put a hamburger at a restaurant or a fast food restaurant is in your mouth."
+      }
+    },
+    {
+      "item_id": "reasoning-581",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Establishing a consistent sleep schedule can improve daily productivity and mood.",
+      "score": 0,
+      "detail": {
+        "gold": "A consistent sleep schedule can enhance daily productivity by improving focus and energy levels, while also stabilizing mood and reducing stress."
+      }
+    },
+    {
+      "item_id": "reasoning-670",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The average of their ages is 20.",
+      "score": 0,
+      "detail": {
+        "gold": "Mia is currently forty years old, and Emma is sixteen years older than Mia. This means Emma is fifty-six years old. To find the total of their ages, we add Mia's age and Emma's age together, which gives ninety-six years. To determine the average of their ages, we divide the total by two, since there are two people. Dividing ninety-six by two results in forty-eight. So the answer is 48."
+      }
+    },
+    {
+      "item_id": "reasoning-751",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "One.",
+      "score": 0,
+      "detail": {
+        "gold": "Jean starts with thirty lollipops. Jean eats two of them, leaving twenty-eight lollipops. Jean then decides to put two lollipops in each bag. To figure out how many bags Jean can fill, we divide the remaining lollipops by two. This gives us fourteen bags. So the answer is 14."
+      }
+    },
+    {
+      "item_id": "reasoning-884",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "25.",
+      "score": 0,
+      "detail": {
+        "gold": "To solve this, first assign a value to the number of points Bahati scored. Next, express Azibo's score as Bahati's score minus twenty and Dinar's score as Bahati's score minus ten. Add together Bahati's score, Azibo's score, and Dinar's score, which should total forty-five points. Combine the terms to get three times Bahati's score minus thirty equals forty-five. Add thirty to both sides to find three times Bahati's score equals seventy-five. Divide by three to determine that Bahati scored twenty-five points. Subtract twenty from Bahati's score to find Azibo's score, which is five points. So the answer is 5."
+      }
+    },
+    {
+      "item_id": "reasoning-872",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "150 inches",
+      "score": 0,
+      "detail": {
+        "gold": "First, calculate the total width of all five windows by thinking of each window as being thirty-five inches wide and there are five of them. When you add all those widths together, you get one hundred seventy-five inches. Next, Luke needs to buy fabric that is two times this total width. So take one hundred seventy-five and double it, which gives three hundred fifty inches. So the answer is 350."
+      }
+    },
+    {
+      "item_id": "reasoning-154",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Slow down.",
+      "score": 0,
+      "detail": {
+        "gold": "Sean had to slow down when the light turned yellow and he was in a rush to get home."
+      }
+    },
+    {
+      "item_id": "reasoning-017",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A potter is to a pot.",
+      "score": 0,
+      "detail": {
+        "gold": "A sculptor is to statues as a potter is to pottery."
+      }
+    },
+    {
+      "item_id": "reasoning-677",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "12 days",
+      "score": 0,
+      "detail": {
+        "gold": "A loaf of bread contains twenty-four slices. Abby can eat two slices each day, and Josh can eat twice as much as Abby, which means Josh eats four slices daily. When we add the slices eaten by Abby and Josh together, they consume six slices in total every day. To figure out how many days the loaf will last, we divide the total number of slices in the loaf by the number of slices eaten daily. This gives us twenty-four divided by six, which equals four. So the answer is 4."
+      }
+    },
+    {
+      "item_id": "reasoning-929",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What moral can you infer from this story?",
+      "score": 0,
+      "detail": {
+        "gold": "Men often bear little grievances with less courage than they do large misfortunes. "
+      }
+    },
+    {
+      "item_id": "reasoning-631",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "It would take 20 hours.",
+      "score": 0,
+      "detail": {
+        "gold": "First, figure out how many days it would take one person to paint an entire house. Since one person can paint half a house in five days, it would take them twice as long to paint the whole house, which is ten days. Next, consider that if five people are working together, they can complete the task five times faster than one person. This means the time required would be ten divided by five, which equals two days. Finally, since there are twenty-four hours in a day, multiply two days by twenty-four hours to find the total time in hours. This gives forty-eight hours for five people to paint the whole house. So the answer is 48."
+      }
+    },
+    {
+      "item_id": "reasoning-930",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The moral is that one should not be too proud or arrogant, and that humility is a virtue.",
+      "score": 0,
+      "detail": {
+        "gold": "When you are in a man's power, you must do as he bids you. "
+      }
+    },
+    {
+      "item_id": "reasoning-365",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "There are no fish native to the Pacific Ocean that are also found in the Caspian Sea.",
+      "score": 0,
+      "detail": {
+        "gold": "The Caspian Sea is a landlocked body of water, separated from the Pacific Ocean by vast distances. Fish species native to the Pacific Ocean would not naturally occur in the Caspian Sea."
+      }
+    },
+    {
+      "item_id": "reasoning-454",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes, the inference is correct and well-supported.",
+      "score": 0,
+      "detail": {
+        "gold": "While the past three summers have had temperatures exceeding 90 degrees Fahrenheit every day, this does not guarantee that the same pattern will occur this summer. Weather patterns can be influenced by numerous factors, such as climate change, natural variability, and other environmental conditions, which are not accounted for in this statement."
+      }
+    },
+    {
+      "item_id": "reasoning-575",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "It might increase the number of people hiking and biking in the area.",
+      "score": 0,
+      "detail": {
+        "gold": "The new trail could encourage more people to engage in hiking and other outdoor activities, boosting local tourism and recreational use of natural spaces."
+      }
+    },
+    {
+      "item_id": "reasoning-976",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The moral is that one should not cheat others, as they will be punished for it.",
+      "score": 0,
+      "detail": {
+        "gold": "It is not only fine feathers that make fine birds. "
+      }
+    },
+    {
+      "item_id": "reasoning-412",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The inference is not necessarily well-supported. While it is reasonable to assume that a recipe which consistently produces delicious results is reliable, the conclusion lacks sufficient evidence because \"all times\" might refer to a small or non-diverse sample size. The reliability of a recipe should ideally be tested across various conditions, ingredients, and cooks to account for variability. Therefore, while the pattern so far is promising, it does not fully guarantee reliability without broader testing."
+      }
+    },
+    {
+      "item_id": "reasoning-818",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "300",
+      "score": 0,
+      "detail": {
+        "gold": "John starts with ten hectares of a pineapple field. Each hectare contains one hundred pineapples. By multiplying the number of hectares by the number of pineapples per hectare, we find that there are one thousand pineapples in total on his field. Next, we determine how many times John can harvest his pineapples in a year. Since he can harvest every three months and there are twelve months in a year, dividing twelve by three gives four harvests in a year. To find the total number of pineapples John can harvest in a year, we multiply the total number of pineapples by the number of harvests. This gives a result of four thousand pineapples. So the answer is 4000."
+      }
+    },
+    {
+      "item_id": "reasoning-163",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "You would put pans in a backpack kitchen drawer or while cooking.",
+      "score": 0,
+      "detail": {
+        "gold": "You would put pans in a backpack if you want to bring them with you."
+      }
+    },
+    {
+      "item_id": "reasoning-759",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "There are 52 apples.",
+      "score": 0,
+      "detail": {
+        "gold": "Andrea has eight more apples than Jamal, and since Andrea has fifty-two apples, Jamal must have fifty-two minus eight, which is forty-four apples. Adding Andrea's and Jamal's apples together gives a total of fifty-two plus forty-four, which equals ninety-six apples. Jamal has four more bananas than apples, so he has forty-four plus four, which is forty-eight bananas. Andrea has half as many bananas as Jamal, so Andrea has forty-eight divided by two, which is twenty-four bananas. The total number of bananas is forty-eight plus twenty-four, which equals seventy-two bananas. Adding the total number of apples and bananas together gives ninety-six plus seventy-two, which equals one hundred sixty-eight fruits. So the answer is 168."
+      }
+    },
+    {
+      "item_id": "reasoning-948",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The moral is that one should not seek revenge or take revenge on others.",
+      "score": 0,
+      "detail": {
+        "gold": "Benefits bestowed upon the evil-disposed increase their means of injuring you. "
+      }
+    },
+    {
+      "item_id": "reasoning-298",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A cabinet.",
+      "score": 0,
+      "detail": {
+        "gold": "You would store a large container in a cabinet."
+      }
+    },
+    {
+      "item_id": "reasoning-473",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Yes, your inference is correct and well-supported. Mindfulness practice typically involves focusing one's attention on the present moment in a non-judgmental way, which can lead to feeling more centered and at peace. This effect is backed by extensive research indicating that mindfulness can reduce stress, enhance emotional regulation, and promote a greater sense of inner peace and well-being."
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.0,
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset vocalbench-reasoning --backbone meralion-2-gguf --split test --n 60",
+  "elapsed_s": 25.2
+}

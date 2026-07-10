@@ -1,0 +1,633 @@
+{
+  "stage": "1-directional",
+  "dataset": "SQuAD-zh",
+  "k_type": "K8/K6 (legacy)",
+  "backbone": "meralion-2-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/baselines-SQuAD-zh/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "SQuAD-zh#0",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "请问是谁指示忽略学校问题的？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#1",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "第二季开始海克雷斯特成为该剧唯一的主持人。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#2",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "请回答问题。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#3",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "希腊人。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#4",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "请您提供问题。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#5",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "Bbc日本台什么时候开始广播？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#6",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "唯物主义。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#7",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "肯尼迪总统在1963年9月20日联合国大会上发表讲话提议美苏联手登月。苏联总理赫鲁晓夫最初拒绝了肯尼迪的提议。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#8",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "交易所设在上海和深圳。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#9",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "“The Celebrity Charity Show”",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#10",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "地震发生在四川南部六点一级地震。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#11",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "国家公园管理局。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#12",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "该国西南部沿海平原，主要水系是库伊鲁-简尼亚里河。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#13",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "该国西部是一个沿海平原，其主要水系是库伊鲁-简尼亚里河。该国内地由一个中部高原组成，位于南北两个盆地之间。森林正面临越来越大的开发压力。请问中部有什么样的地理特征？",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#14",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "儿童节是什么时候？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#15",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "四川南部发生了一次地震。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#16",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "中国石油天然气集团公司和中石化分别捐赠了1000万元。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#17",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "他们的发现表明了许多建筑无法抵御地震的各种原因。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#18",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "1600年",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#19",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "是什么推动了音乐产业的巨大变革？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#20",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "二零零八年六月一日。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#21",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "科雷格什么时候回去工作的。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#22",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "控制LED发光的最佳方法是利用非成像光学原理来最有效地控制LED的发光。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#23",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "大约三百名。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#24",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "经文是秘密传的。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#25",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "佛教是否属于一种宗教是一个复杂的问题，存在着不同的意见。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#26",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "在轴心时代，唯物主义在世界的哪一部分发展？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#27",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "2000年。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#28",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "The question is asking about the development of a college, specifically the reasons why it became independent from the district technical school system.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#29",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "1997年",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#30",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "佛陀不再受轮回的束缚。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#31",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "现代建筑师使用的哲学是后结构主义。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#32",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "哈珀的母亲患有精神疾病。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#33",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "苹果音乐。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#34",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "请问什么基金会想援助北京？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#35",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "加拿大军队的旧名字是加拿大武装部队。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#36",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "他们对受损建筑物进行了详细的初步调查。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#37",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "请问有多少个较小的站不是政府运行的？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#38",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "2013年",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#39",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "这首歌是在YouTube上发布的。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#40",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "这部电影是在社交媒体上宣传的。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#41",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "金沙萨",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#42",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "希腊人。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#43",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "在哪条河上能找到布拉柴维尔？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#44",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "纽约游骑兵队参加的是曲棍球联赛。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#45",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "狗也会受到与人类相同的健康状况的影响，包括糖尿病、牙科和心脏病、癫痫、癌症、甲状腺功能减退和关节炎。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#46",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "请问哪个裁判在赛季开始前离开了？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#47",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "9世纪。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#48",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "室内照明通常用灯具来完成，是室内设计的重要组成部分。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#49",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "二零五十年。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#50",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "新泽西魔鬼队在纽约打球。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#51",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "一百八十四人。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#52",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "文艺复兴始于意大利的佛罗伦萨。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#53",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "第九季于2020年1月12日首映。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#54",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "冰岛两次获得最高级别",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#55",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "请回答问题。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#56",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "请问哪家媒体报道了这种情况？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#57",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "在南欧国家中，西班牙和意大利的山脉中可以找到较凉爽的气候。此外，西班牙北海岸的大西洋气候更加湿润。请问在南欧哪里有更潮湿的地区？",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#58",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "首席法官。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#59",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "“我的命运”的获胜者是什么时候宣布的？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.3333,
+    "ci95": [
+      0.2167,
+      0.45
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset SQuAD-zh --backbone meralion-2-gguf --split test --n 60",
+  "elapsed_s": 22.7
+}

@@ -1,0 +1,430 @@
+{
+  "stage": "1-directional",
+  "dataset": "squtr",
+  "k_type": "K9",
+  "backbone": "meralion-2-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/squtr/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "fiqa|clean|10122",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Diversifying stocks and investments helps to reduce risk.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 57
+      }
+    },
+    {
+      "item_id": "fiqa|clean|10497",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "You would elect to apply a refund to next year's tax bill if you have a tax liability that is lower than the amount of the refund.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 130
+      }
+    },
+    {
+      "item_id": "fiqa|clean|10628",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "The long-term buyer of a stock is protected from unlimited loss when the short seller's position fails.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 103
+      }
+    },
+    {
+      "item_id": "fiqa|clean|10809",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Leverage is the amount of capital used to finance a transaction, while leverage factor is the ratio of the amount of capital used to the amount of capital at risk.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 163
+      }
+    },
+    {
+      "item_id": "fiqa|clean|1085",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Disputed debts can negatively impact credit reports, lowering credit scores.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 76
+      }
+    },
+    {
+      "item_id": "fiqa|clean|1198",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "The consequences of IRS reclassification on both employer and employee can include tax liability, penalties, and legal issues.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 126
+      }
+    },
+    {
+      "item_id": "fiqa|clean|1832",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "What is the spoken search query?",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 32
+      }
+    },
+    {
+      "item_id": "fiqa|clean|2348",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "I don't have the ability to invest or split profits and losses.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 63
+      }
+    },
+    {
+      "item_id": "fiqa|clean|2383",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "I don't have enough information to answer that question.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 56
+      }
+    },
+    {
+      "item_id": "fiqa|clean|2460",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "The consequences of not respecting a notice period when leaving a job can include legal action, financial penalties, and damage to your professional reputation.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 160
+      }
+    },
+    {
+      "item_id": "fiqa|clean|2589",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "You can check the company's financial statements, management team, and industry reputation to detect potential fraud.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 117
+      }
+    },
+    {
+      "item_id": "fiqa|clean|2747",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "You need to have a written record of your tutoring income.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 58
+      }
+    },
+    {
+      "item_id": "fiqa|clean|3049",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "I need more information to answer your question. Please provide the context or details about the calculation.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 109
+      }
+    },
+    {
+      "item_id": "fiqa|clean|4233",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Yes.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 4
+      }
+    },
+    {
+      "item_id": "fiqa|clean|4306",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Currency markets work through the buying and selling of currencies, with prices determined by supply and demand. Factors behind currency fluctuations include economic indicators, political events, and investor sentiment.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 220
+      }
+    },
+    {
+      "item_id": "fiqa|clean|5054",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Stress test an investment plan by simulating various market conditions, such as a recession or a bear market.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 109
+      }
+    },
+    {
+      "item_id": "fiqa|clean|5090",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "I don't have enough information to answer that question.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 56
+      }
+    },
+    {
+      "item_id": "fiqa|clean|56",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Yes.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 4
+      }
+    },
+    {
+      "item_id": "fiqa|clean|5646",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "I don't know.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 13
+      }
+    },
+    {
+      "item_id": "fiqa|clean|594",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Yes, a retail trader should bother about reading SEC filings.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 61
+      }
+    },
+    {
+      "item_id": "fiqa|clean|6262",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "I need more information to help you with this request. Please provide me with the context or details about the SSA benefit amounts you are trying to estimate.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 158
+      }
+    },
+    {
+      "item_id": "fiqa|clean|6525",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "It depends on the current market conditions and the specific details of the shares.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 83
+      }
+    },
+    {
+      "item_id": "fiqa|clean|6679",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Options expire on the expiration date.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 38
+      }
+    },
+    {
+      "item_id": "fiqa|clean|672",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "What is the difference between credit and debit?",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 48
+      }
+    },
+    {
+      "item_id": "fiqa|clean|6849",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "The points in a stock market index are the prices of the stocks that make up the index.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 87
+      }
+    },
+    {
+      "item_id": "fiqa|clean|7096",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "I cannot provide financial advice.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 34
+      }
+    },
+    {
+      "item_id": "fiqa|clean|7105",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Fixed income duration is the time it takes to receive the fixed income, while equity duration is the time it takes to receive the equity.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 137
+      }
+    },
+    {
+      "item_id": "fiqa|clean|7124",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "We can find stocks with a price-to-book ratio less than one by looking at the financial statements of the company.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 114
+      }
+    },
+    {
+      "item_id": "fiqa|clean|7279",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "Yes.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 4
+      }
+    },
+    {
+      "item_id": "fiqa|clean|7509",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "What is the spoken search query?",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 32
+      }
+    },
+    {
+      "item_id": "fiqa|clean|7592",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "What is the difference between debit, credit, and liabilities?",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 62
+      }
+    },
+    {
+      "item_id": "fiqa|clean|8013",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "I cannot provide financial advice.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 34
+      }
+    },
+    {
+      "item_id": "fiqa|clean|8017",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "I'm sorry, I don't have enough information to answer your question.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 67
+      }
+    },
+    {
+      "item_id": "fiqa|clean|8079",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "What is the growth rate plus dividend yield total?",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 50
+      }
+    },
+    {
+      "item_id": "fiqa|clean|8507",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "When to sell a stock is a complex question that depends on many factors, including the stock's performance, the investor's financial goals, and the overall market conditions.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 174
+      }
+    },
+    {
+      "item_id": "fiqa|clean|8532",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "The options trading terms mean the price at which an option can be bought or sold.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 82
+      }
+    },
+    {
+      "item_id": "fiqa|clean|8934",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "What is the dividend yield for multiple years?",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 46
+      }
+    },
+    {
+      "item_id": "fiqa|clean|8959",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "The opening day price of a stock is decided by the market.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 58
+      }
+    },
+    {
+      "item_id": "fiqa|clean|9088",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "What is the brokerage account for charity?",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 42
+      }
+    },
+    {
+      "item_id": "fiqa|clean|9487",
+      "instr": "Listen to the spoken search query and answer it directly from your own knowledge, as if there were no document collection to search. Give a short answer only.",
+      "reply": "No.",
+      "score": null,
+      "detail": {
+        "note": "no free-text gold for squtr -- this Step-1 generation is a closed-book QA floor diagnostic only; the real K9 metric is retrieval R@k/nDCG@10 over corpus.jsonl against the qrels gold (embedding-kNN territory, not this grid). See FREEZE_SHEET.md.",
+        "reply_chars": 3
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": null,
+    "ci95": null,
+    "n_scored": 0,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset squtr --backbone meralion-2-gguf --split dev --n 40",
+  "elapsed_s": 16.9
+}

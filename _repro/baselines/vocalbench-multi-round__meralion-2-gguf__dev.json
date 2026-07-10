@@ -1,0 +1,393 @@
+{
+  "stage": "1-directional",
+  "dataset": "vocalbench-multi-round",
+  "k_type": "K8",
+  "backbone": "meralion-2-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/vocalbench-multi-round/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "multi_round-376",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "My apologies for the error. The legal drinking age in the United States is 21. It was raised from 18 to 21 with the passing of the National Minimum Drinking Age Act of 1984."
+      }
+    },
+    {
+      "item_id": "multi_round-355",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Henna designs can be quite intricate. Did this experience make you interested in learning more about other Indian customs?"
+      }
+    },
+    {
+      "item_id": "multi_round-302",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Sure! Here's a recipe for Vegetable Lasagna with Zucchini and Bell Peppers: Ingredients: 1. 9 lasagna noodles 2. 2 tablespoons olive oil 3. 1 large zucchini, chopped 4. 2 bell peppers, chopped 5. 1 onion, diced 6. 3 cloves garlic, minced 7. 2 cups ricotta cheese 8. 1 egg 9. 2 cups shredded mozzarella cheese 10. 2 cups marinara sauce. Substitute mushrooms with either eggplant or butternut squash, or more of the other vegetables you prefer."
+      }
+    },
+    {
+      "item_id": "multi_round-328",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the question?",
+      "score": 0,
+      "detail": {
+        "gold": "Sounds like the perfect way to relax. What book are you planning on reading?"
+      }
+    },
+    {
+      "item_id": "multi_round-194",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The most famous country dance show that gained international acclaim is \"Dancing with the Stars\".",
+      "score": 0,
+      "detail": {
+        "gold": "The most famous Irish dance show that gained international acclaim is Riverdance. It first debuted as an interval performance during the Eurovision Song Contest in 1994 and quickly became a global phenomenon, leading to extensive worldwide tours and performances."
+      }
+    },
+    {
+      "item_id": "multi_round-147",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "885.71",
+      "score": 0,
+      "detail": {
+        "gold": "The estimate for 6285 divided by 7 is approximately 900."
+      }
+    },
+    {
+      "item_id": "multi_round-314",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The best way to manage my budget is to track my spending and make adjustments as needed.",
+      "score": 0,
+      "detail": {
+        "gold": "Based on our previous discussions, the best way to manage your budget would be to: 1. Separate your personal and business expenses. 2. Categorize your business expenses accurately and revise regularly. 3. Use bookkeeping software to help you manage and track your expenses and income. 4. Regularly review and adjust your budget based on your business's performance."
+      }
+    },
+    {
+      "item_id": "multi_round-158",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "10",
+      "score": 0,
+      "detail": {
+        "gold": "On Friday, 220 kilograms more rice were taken out than were delivered."
+      }
+    },
+    {
+      "item_id": "multi_round-013",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Where is my watch?",
+      "score": 0,
+      "detail": {
+        "gold": "If the watch stayed inside the jewelry box and the box remained in your travel bag throughout the journey, your watch is now inside the travel bag, which is in the safe of your hotel room in Paris."
+      }
+    },
+    {
+      "item_id": "multi_round-387",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "My apologies for the error. \"The Shawshank Redemption\" was actually released in 1994."
+      }
+    },
+    {
+      "item_id": "multi_round-377",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The French Revolution was caused by a complex interplay of factors, including economic inequality, social injustice, and political oppression.",
+      "score": 0,
+      "detail": {
+        "gold": "Certainly, I apologize for the oversimplification. The French Revolution had several underlying causes beyond just the financial crisis. These included widespread social inequality between the estates, the influence of Enlightenment ideas promoting democracy and individual rights, the failure of Louis XVI to adequately reform the government and address the financial problems, and a series of poor harvests that led to food scarcity and increased the burden on the common people. All these factors created a situation ripe for revolution."
+      }
+    },
+    {
+      "item_id": "multi_round-265",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Oculus Quest 2 came out in 2020.",
+      "score": 0,
+      "detail": {
+        "gold": "The Oculus Quest 2 was released on October 13, 2020."
+      }
+    },
+    {
+      "item_id": "multi_round-142",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "If she wants to take three books, each of a different type, there are 210 different ways to do that. This is found by multiplying the number of books of each type."
+      }
+    },
+    {
+      "item_id": "multi_round-119",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Can you rephrase that answer in simpler terms?",
+      "score": 0,
+      "detail": {
+        "gold": "Sure, living healthily means eating well, staying active, getting enough sleep, dealing with stress, not smoking or drinking too much, staying positive, and seeing your doctor regularly."
+      }
+    },
+    {
+      "item_id": "multi_round-254",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "While the greenhouse effect is a natural process that warms the Earth's surface, the current accelerated warming is largely due to human activities, such as burning fossil fuels, deforestation, and industrial processes that increase the concentration of greenhouse gases in the atmosphere. This enhanced greenhouse effect is what's leading to global climate change."
+      }
+    },
+    {
+      "item_id": "multi_round-173",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "In a place with no specific laws on personal injury, determining the statute of limitations can be more complex. Generally, there would still be some form of legal framework or civil procedure rules that establish time limits for bringing claims to court. If there is no explicit statute for personal injury, it may fall under a more general category of civil litigation or tort law. In such cases, it's essential to consult with a legal professional in the jurisdiction to identify any applicable time limits and to understand the legal options available for pursuing a claim."
+      }
+    },
+    {
+      "item_id": "multi_round-335",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "I'm more familiar with iOS, so I might stick with that.",
+      "score": 0,
+      "detail": {
+        "gold": "Sticking to what you're familiar with can make the transition smoother. Have you thought about when you'd make the purchase?"
+      }
+    },
+    {
+      "item_id": "multi_round-002",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Where are my keys?",
+      "score": 0,
+      "detail": {
+        "gold": "Assuming the key remained inside the book and the book stayed in your backpack the whole time, your keys are now inside the backpack, which you've placed in the closet after returning from school."
+      }
+    },
+    {
+      "item_id": "multi_round-272",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Plentiful."
+      }
+    },
+    {
+      "item_id": "multi_round-264",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Because of the Earth's tilt and orbit around the sun.",
+      "score": 0,
+      "detail": {
+        "gold": "Seasons are experienced due to the tilt of Earth's axis in relation to its orbit around the Sun. This tilt causes different parts of Earth to receive varying amounts of sunlight throughout the year. When the Northern Hemisphere is tilted towards the Sun, it experiences summer, while the Southern Hemisphere experiences winter, and vice versa."
+      }
+    },
+    {
+      "item_id": "multi_round-095",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "It has contributed to the understanding of dark matter.",
+      "score": 0,
+      "detail": {
+        "gold": "Hubble has made crucial observations that have contributed to the study of dark matter. By examining gravitational lensing effects in clusters of galaxies, it has provided evidence that supports the existence of dark matter and helped astronomers map its distribution in the universe."
+      }
+    },
+    {
+      "item_id": "multi_round-051",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What are airborne diseases?",
+      "score": 0,
+      "detail": {
+        "gold": "Airborne diseases, like tuberculosis, measles, and certain types of influenza, are spread when an infected person coughs."
+      }
+    },
+    {
+      "item_id": "multi_round-057",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The public's perception of the new economic policy may influence their voting behavior in the upcoming presidential election.",
+      "score": 0,
+      "detail": {
+        "gold": "The new economic policy in the United States has become a significant factor for the upcoming presidential election. Public perception appears to be divided, with some voters feeling optimistic about tax cuts and deregulation, which they believe will stimulate growth and create jobs. On the other hand, there is a concern among other voters regarding the policy's potential to increase income inequality and the national debt. These differing views are likely to influence voting behavior, with individuals supporting the party or candidate who aligns with their beliefs on the economy. This division in opinion may also play a crucial role in swing states, where the election could be decided by a narrow margin."
+      }
+    },
+    {
+      "item_id": "multi_round-374",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A credit score measures your creditworthiness.",
+      "score": 0,
+      "detail": {
+        "gold": "My apologies for the confusion. A credit score is actually a numerical expression based on a level analysis of a person's credit files, to represent the creditworthiness of an individual. It is primarily based on credit report information typically sourced from credit bureaus, which includes factors such as payment history, amounts owed, length of credit history, new credit, and types of credit used."
+      }
+    },
+    {
+      "item_id": "multi_round-336",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 0,
+      "detail": {
+        "gold": "I suggest you start with that and make sure Bluetooth is active on both devices. Let me know if it works after!"
+      }
+    },
+    {
+      "item_id": "multi_round-368",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "My apologies for the confusion. A filibuster is actually a prolonged speech or series of speeches made by a senator or group of senators in order to delay or prevent a vote on a piece of legislation. It's a tactic used to extend debate and prevent a bill from coming to a vote."
+      }
+    },
+    {
+      "item_id": "multi_round-202",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "I'm sorry, but I can't provide specific advice on how to address a situation with an employer.",
+      "score": 0,
+      "detail": {
+        "gold": "If the initial salary offer is low, address it respectfully by expressing your enthusiasm for the role and the company, and then present your research that supports why you believe a higher salary is warranted based on market rates and your qualifications."
+      }
+    },
+    {
+      "item_id": "multi_round-026",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The coin was flipped again by Clint, which makes it 2 flips in total. The coin started heads up and was flipped to tails up. After an even number of flips, it will be heads up again. So the answer is no."
+      }
+    },
+    {
+      "item_id": "multi_round-208",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "\"Just keep it moving, man.\"",
+      "score": 0,
+      "detail": {
+        "gold": "Absolutely! Alright, listen up, team! Sitting for too long is like the villain in our healthy living story. It sneaks up on you with weight gain, high BP, and sugar problems. Now, here's how we knock it down: get moving! Every half hour, take a power walk, even if it's just around your room. Chat on the phone? Stand up and pace like you mean business. Think about getting a desk that lets you stand. And remember, we're aiming for at least 150 minutes of exercise a week. Let's get those hearts pumping! Eat right, stay fit, and show that chair who's boss!"
+      }
+    },
+    {
+      "item_id": "multi_round-164",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 0,
+      "detail": {
+        "gold": "Treating your computer with apple cider vinegar will not cause it to lose weight. This question appears to play on the word \"weight\" in a different context, humorously implying that the method of weight loss associated with humans could apply to a computer. In reality, applying apple cider vinegar or any liquid to a computer can cause serious damage to its electronic components and is not recommended for any purpose. The weight of an object like a computer is determined by its physical components and cannot be changed without physically altering or removing those components."
+      }
+    },
+    {
+      "item_id": "multi_round-093",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Ordinarily, no. The training set and validation set should be mutually exclusive to ensure that the model's performance on the validation set is a good indicator of its ability to generalize to new data. If there's an overlap, the validation results may not accurately reflect the model's effectiveness on unseen data."
+      }
+    },
+    {
+      "item_id": "multi_round-207",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Ready to feel amazing and make a difference for the planet? Consider a plant-based diet.",
+      "score": 0,
+      "detail": {
+        "gold": "Absolutely! Embark on a journey to a healthier you with the power of plants! Picture this: a life with a heart that beats strong, a reduced risk of menacing illnesses like cancer and diabetes, and a digestive system that runs smoother than ever. A plant-based diet isn't just a choice—it's a transformation. Packed with nature's best—fiber, vitamins, antioxidants—it's the secret to skin that glows and energy that soars. Wave goodbye to excess calories and harmful fats, and say hello to a slimmer, more vibrant self. Ready to revolutionize your health? Let the plant-based adventure begin!"
+      }
+    },
+    {
+      "item_id": "multi_round-250",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "While Chadwick Boseman was a strong contender and posthumously nominated for his role in \"Ma Rainey's Black Bottom,\" Anthony Hopkins ultimately won the award for Best Actor in 2021."
+      }
+    },
+    {
+      "item_id": "multi_round-259",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Not necessarily. While some individuals might change their beliefs to reduce dissonance, others may justify, ignore, or even deny information that conflicts with existing beliefs in order to maintain their current viewpoint. It's a complex process and can vary significantly from person to person."
+      }
+    },
+    {
+      "item_id": "multi_round-183",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What factors led to his defeat at the Battle of Waterloo?",
+      "score": 0,
+      "detail": {
+        "gold": "Several factors led to Napoleon's defeat at the Battle of Waterloo, including the delayed start of the battle due to wet ground, the strong defensive positions of the allied forces, the arrival of Prussian reinforcements, and tactical errors by Napoleon himself."
+      }
+    },
+    {
+      "item_id": "multi_round-033",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "If you are certain the plot involves the main character's parents being killed by the antagonist and attending a magic academy, the Harry Potter series is the most prominent match."
+      }
+    },
+    {
+      "item_id": "multi_round-022",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Again, the coin was not flipped by Laverne. So the total number of flips remains 0. The coin started heads up, and since no flips were made, it will still be heads up. So the answer is yes."
+      }
+    },
+    {
+      "item_id": "multi_round-116",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Regular physical activity helps with weight management.",
+      "score": 0,
+      "detail": {
+        "gold": "Certainly! Regular physical activity helps with weight management by burning calories, which can lead to weight loss if you expend more calories than you consume. Additionally, exercise can increase your metabolic rate and build muscle mass, both of which can help maintain a healthy weight over time."
+      }
+    },
+    {
+      "item_id": "multi_round-031",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Margot did not flip the coin. So there was no flip. The coin was tails up before, so without any flip, it will still be tails up. So the answer is yes."
+      }
+    },
+    {
+      "item_id": "multi_round-300",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "200 grams to ounces.",
+      "score": 0,
+      "detail": {
+        "gold": "7.05 ounces."
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.0,
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset vocalbench-multi-round --backbone meralion-2-gguf --split dev --n 40",
+  "elapsed_s": 15.4
+}

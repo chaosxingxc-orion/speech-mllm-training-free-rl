@@ -1,0 +1,573 @@
+{
+  "stage": "1-directional",
+  "dataset": "voiceassistant-listening-music",
+  "k_type": "K8",
+  "backbone": "meralion-2-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/voiceassistant-listening-music/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "Listening_Music_38",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "pop"
+      }
+    },
+    {
+      "item_id": "Listening_Music_86",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 0,
+      "detail": {
+        "gold": "Instrumental"
+      }
+    },
+    {
+      "item_id": "Listening_Music_540",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "a",
+      "score": 0,
+      "detail": {
+        "gold": "yes"
+      }
+    },
+    {
+      "item_id": "Listening_Music_222",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D.",
+      "score": 0,
+      "detail": {
+        "gold": "midi_velocity_100"
+      }
+    },
+    {
+      "item_id": "Listening_Music_276",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Option D.",
+      "score": 0,
+      "detail": {
+        "gold": "midi_velocity_50"
+      }
+    },
+    {
+      "item_id": "Listening_Music_205",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D.",
+      "score": 0,
+      "detail": {
+        "gold": "midi_velocity_127"
+      }
+    },
+    {
+      "item_id": "Listening_Music_143",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The most prominent instrument is the bass.",
+      "score": 0,
+      "detail": {
+        "gold": "keyboard"
+      }
+    },
+    {
+      "item_id": "Listening_Music_582",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 0,
+      "detail": {
+        "gold": "yes"
+      }
+    },
+    {
+      "item_id": "Listening_Music_483",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D31",
+      "score": 0,
+      "detail": {
+        "gold": "midi_pitch_31"
+      }
+    },
+    {
+      "item_id": "Listening_Music_280",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C.",
+      "score": 0,
+      "detail": {
+        "gold": "midi_velocity_25"
+      }
+    },
+    {
+      "item_id": "Listening_Music_82",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "jazz"
+      }
+    },
+    {
+      "item_id": "Listening_Music_564",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "no"
+      }
+    },
+    {
+      "item_id": "Listening_Music_94",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "Electronic"
+      }
+    },
+    {
+      "item_id": "Listening_Music_290",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "50 B.",
+      "score": 0,
+      "detail": {
+        "gold": "midi_velocity_75"
+      }
+    },
+    {
+      "item_id": "Listening_Music_521",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "no"
+      }
+    },
+    {
+      "item_id": "Listening_Music_117",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The organ.",
+      "score": 0,
+      "detail": {
+        "gold": "synthesizer"
+      }
+    },
+    {
+      "item_id": "Listening_Music_511",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Option C.",
+      "score": 0,
+      "detail": {
+        "gold": "two"
+      }
+    },
+    {
+      "item_id": "Listening_Music_393",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A relaxing",
+      "score": 0,
+      "detail": {
+        "gold": "soundscape"
+      }
+    },
+    {
+      "item_id": "Listening_Music_27",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B",
+      "score": 0,
+      "detail": {
+        "gold": "latin"
+      }
+    },
+    {
+      "item_id": "Listening_Music_320",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "summer"
+      }
+    },
+    {
+      "item_id": "Listening_Music_436",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Option C: M A D I E P I T C H T H R I.",
+      "score": 0,
+      "detail": {
+        "gold": "midi_pitch_60"
+      }
+    },
+    {
+      "item_id": "Listening_Music_498",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C.",
+      "score": 0,
+      "detail": {
+        "gold": "midi_pitch_69"
+      }
+    },
+    {
+      "item_id": "Listening_Music_565",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "a",
+      "score": 0,
+      "detail": {
+        "gold": "no"
+      }
+    },
+    {
+      "item_id": "Listening_Music_523",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A.",
+      "score": 0,
+      "detail": {
+        "gold": "yes"
+      }
+    },
+    {
+      "item_id": "Listening_Music_220",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C.",
+      "score": 0,
+      "detail": {
+        "gold": "midi_velocity_100"
+      }
+    },
+    {
+      "item_id": "Listening_Music_469",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Mi Di pitch of the note is 90.",
+      "score": 0,
+      "detail": {
+        "gold": "midi_pitch_52"
+      }
+    },
+    {
+      "item_id": "Listening_Music_331",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "slow"
+      }
+    },
+    {
+      "item_id": "Listening_Music_113",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A keyboard.",
+      "score": 0,
+      "detail": {
+        "gold": "guitar"
+      }
+    },
+    {
+      "item_id": "Listening_Music_526",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "There is one.",
+      "score": 0,
+      "detail": {
+        "gold": "yes"
+      }
+    },
+    {
+      "item_id": "Listening_Music_66",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. hip hop",
+      "score": 0,
+      "detail": {
+        "gold": "hiphop"
+      }
+    },
+    {
+      "item_id": "Listening_Music_447",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D.",
+      "score": 0,
+      "detail": {
+        "gold": "midi_pitch_56"
+      }
+    },
+    {
+      "item_id": "Listening_Music_183",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A keyboard.",
+      "score": 0,
+      "detail": {
+        "gold": "guitar"
+      }
+    },
+    {
+      "item_id": "Listening_Music_340",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D sad",
+      "score": 0,
+      "detail": {
+        "gold": "energetic"
+      }
+    },
+    {
+      "item_id": "Listening_Music_482",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C.",
+      "score": 0,
+      "detail": {
+        "gold": "midi_pitch_61"
+      }
+    },
+    {
+      "item_id": "Listening_Music_132",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Violin.",
+      "score": 0,
+      "detail": {
+        "gold": "guitar"
+      }
+    },
+    {
+      "item_id": "Listening_Music_477",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Option B.",
+      "score": 0,
+      "detail": {
+        "gold": "midi_pitch_76"
+      }
+    },
+    {
+      "item_id": "Listening_Music_445",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D.",
+      "score": 0,
+      "detail": {
+        "gold": "midi_pitch_23"
+      }
+    },
+    {
+      "item_id": "Listening_Music_519",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A.",
+      "score": 0,
+      "detail": {
+        "gold": "two"
+      }
+    },
+    {
+      "item_id": "Listening_Music_201",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C.",
+      "score": 0,
+      "detail": {
+        "gold": "midi_velocity_25"
+      }
+    },
+    {
+      "item_id": "Listening_Music_75",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Instrumental.",
+      "score": 0,
+      "detail": {
+        "gold": "International"
+      }
+    },
+    {
+      "item_id": "Listening_Music_463",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "midi_pitch_94"
+      }
+    },
+    {
+      "item_id": "Listening_Music_324",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "christmas"
+      }
+    },
+    {
+      "item_id": "Listening_Music_297",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Option D.",
+      "score": 0,
+      "detail": {
+        "gold": "midi_velocity_100"
+      }
+    },
+    {
+      "item_id": "Listening_Music_421",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The MIDI pitch of the note is 74.",
+      "score": 0,
+      "detail": {
+        "gold": "midi_pitch_56"
+      }
+    },
+    {
+      "item_id": "Listening_Music_139",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A.",
+      "score": 0,
+      "detail": {
+        "gold": "mallet"
+      }
+    },
+    {
+      "item_id": "Listening_Music_532",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 1,
+      "detail": {
+        "gold": "yes"
+      }
+    },
+    {
+      "item_id": "Listening_Music_293",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C75",
+      "score": 0,
+      "detail": {
+        "gold": "midi_velocity_25"
+      }
+    },
+    {
+      "item_id": "Listening_Music_328",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The mood is a retro vibe.",
+      "score": 0,
+      "detail": {
+        "gold": "holiday"
+      }
+    },
+    {
+      "item_id": "Listening_Music_587",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 1,
+      "detail": {
+        "gold": "yes"
+      }
+    },
+    {
+      "item_id": "Listening_Music_16",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "It's dance music.",
+      "score": 0,
+      "detail": {
+        "gold": "soundtrack"
+      }
+    },
+    {
+      "item_id": "Listening_Music_156",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Electric piano.",
+      "score": 0,
+      "detail": {
+        "gold": "synthesizer"
+      }
+    },
+    {
+      "item_id": "Listening_Music_575",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "no"
+      }
+    },
+    {
+      "item_id": "Listening_Music_316",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "background"
+      }
+    },
+    {
+      "item_id": "Listening_Music_397",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "deep"
+      }
+    },
+    {
+      "item_id": "Listening_Music_407",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C.",
+      "score": 0,
+      "detail": {
+        "gold": "midi_pitch_72"
+      }
+    },
+    {
+      "item_id": "Listening_Music_337",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "energetic"
+      }
+    },
+    {
+      "item_id": "Listening_Music_289",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C.",
+      "score": 0,
+      "detail": {
+        "gold": "midi_velocity_75"
+      }
+    },
+    {
+      "item_id": "Listening_Music_472",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C.",
+      "score": 0,
+      "detail": {
+        "gold": "midi_pitch_94"
+      }
+    },
+    {
+      "item_id": "Listening_Music_504",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 0,
+      "detail": {
+        "gold": "one"
+      }
+    },
+    {
+      "item_id": "Listening_Music_226",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A.",
+      "score": 0,
+      "detail": {
+        "gold": "midi_velocity_75"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.0333,
+    "ci95": [
+      0.0,
+      0.0833
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset voiceassistant-listening-music --backbone meralion-2-gguf --split test --n 60",
+  "elapsed_s": 21.8
+}

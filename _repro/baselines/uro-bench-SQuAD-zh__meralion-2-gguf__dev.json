@@ -1,0 +1,393 @@
+{
+  "stage": "1-directional",
+  "dataset": "uro-bench-SQuAD-zh",
+  "k_type": "K8",
+  "backbone": "meralion-2-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/uro-bench-SQuAD-zh/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": 53,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "混种品种的寿命平均比纯种品种长一点二年。",
+      "score": 0,
+      "detail": {
+        "gold": "1.2年"
+      }
+    },
+    {
+      "item_id": 25,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "主席大法官主持参议院。",
+      "score": 0,
+      "detail": {
+        "gold": "首席大法官"
+      }
+    },
+    {
+      "item_id": 95,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "北京什么时候同意从台湾提供援助。",
+      "score": 0,
+      "detail": {
+        "gold": "5月13日晚些时候"
+      }
+    },
+    {
+      "item_id": 107,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "警示灯",
+      "score": 0,
+      "detail": {
+        "gold": "安全照明"
+      }
+    },
+    {
+      "item_id": 97,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "现代建筑师使用的哲学是理性主义、经验主义、结构主义、后结构主义和现象学。",
+      "score": 1,
+      "detail": {
+        "gold": "理性主义、经验主义、结构主义、后结构主义和现象学。"
+      }
+    },
+    {
+      "item_id": 32,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "没有。",
+      "score": 0,
+      "detail": {
+        "gold": "十"
+      }
+    },
+    {
+      "item_id": 44,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "在轴心时代，唯物主义在世界的哪一部分发展？",
+      "score": 0,
+      "detail": {
+        "gold": "欧亚大陆"
+      }
+    },
+    {
+      "item_id": 36,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "地震发生在四川南部。",
+      "score": 1,
+      "detail": {
+        "gold": "川南"
+      }
+    },
+    {
+      "item_id": 24,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "印度尼西亚政府拥有四所公立理工学院。",
+      "score": 1,
+      "detail": {
+        "gold": "四"
+      }
+    },
+    {
+      "item_id": 54,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "印度佛教史可分为五个时期，早期佛教有时称为宗派前佛教、尼泊尔佛教或宗派佛教。",
+      "score": 0,
+      "detail": {
+        "gold": "密宗"
+      }
+    },
+    {
+      "item_id": 41,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "纽约市正在建设的重轨交通项目包括第二大道地铁东侧通道项目和第七号地铁延长线。",
+      "score": 1,
+      "detail": {
+        "gold": "第二大道地铁"
+      }
+    },
+    {
+      "item_id": 98,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "中国政府最初受到赞扬的原因是什么？",
+      "score": 0,
+      "detail": {
+        "gold": "对地震的反应"
+      }
+    },
+    {
+      "item_id": 86,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "在南欧国家中，西班牙和意大利的山脉中可以找到较凉爽的气候。",
+      "score": 0,
+      "detail": {
+        "gold": "西班牙北海岸"
+      }
+    },
+    {
+      "item_id": 64,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "20000",
+      "score": 0,
+      "detail": {
+        "gold": "5900万"
+      }
+    },
+    {
+      "item_id": 18,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "东德武装部队叫德意志武装部队。",
+      "score": 0,
+      "detail": {
+        "gold": "全国人民军"
+      }
+    },
+    {
+      "item_id": 145,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "二零零八年六月一日。",
+      "score": 0,
+      "detail": {
+        "gold": "儿童节"
+      }
+    },
+    {
+      "item_id": 76,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "该国内陆面临着越来越大的开发压力。",
+      "score": 0,
+      "detail": {
+        "gold": "森林"
+      }
+    },
+    {
+      "item_id": 12,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "答案：四千八百六十多万美元。",
+      "score": 0,
+      "detail": {
+        "gold": "4860多万美元"
+      }
+    },
+    {
+      "item_id": 87,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "二零零八年，2008年。",
+      "score": 0,
+      "detail": {
+        "gold": "2008年8月30日"
+      }
+    },
+    {
+      "item_id": 37,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "日本。",
+      "score": 0,
+      "detail": {
+        "gold": "中国"
+      }
+    },
+    {
+      "item_id": 79,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "无国界记者。",
+      "score": 0,
+      "detail": {
+        "gold": "无国界记者组织"
+      }
+    },
+    {
+      "item_id": 84,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "新佛教。",
+      "score": 1,
+      "detail": {
+        "gold": "新佛教"
+      }
+    },
+    {
+      "item_id": 109,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "什么金属升值了？",
+      "score": 0,
+      "detail": {
+        "gold": "铜"
+      }
+    },
+    {
+      "item_id": 150,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "肯尼亚什么时候独立了？",
+      "score": 0,
+      "detail": {
+        "gold": "1963"
+      }
+    },
+    {
+      "item_id": 80,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "1",
+      "score": 0,
+      "detail": {
+        "gold": "第四"
+      }
+    },
+    {
+      "item_id": 28,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "英国广播公司在全英国的收视率是多少？",
+      "score": 0,
+      "detail": {
+        "gold": "30%"
+      }
+    },
+    {
+      "item_id": 108,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "1600年",
+      "score": 0,
+      "detail": {
+        "gold": "1630"
+      }
+    },
+    {
+      "item_id": 115,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "9世纪。",
+      "score": 1,
+      "detail": {
+        "gold": "9世纪"
+      }
+    },
+    {
+      "item_id": 51,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "伊朗语起源于波斯语和梵语。",
+      "score": 0,
+      "detail": {
+        "gold": "原始伊朗语"
+      }
+    },
+    {
+      "item_id": 40,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "路灯有助于减少城市犯罪。",
+      "score": 1,
+      "detail": {
+        "gold": "城市犯罪。"
+      }
+    },
+    {
+      "item_id": 90,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "750亿美元",
+      "score": 1,
+      "detail": {
+        "gold": "750亿美元"
+      }
+    },
+    {
+      "item_id": 124,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "大乘佛教经文是秘密传播的。",
+      "score": 1,
+      "detail": {
+        "gold": "大乘"
+      }
+    },
+    {
+      "item_id": 17,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "一百八十四人。",
+      "score": 0,
+      "detail": {
+        "gold": "184"
+      }
+    },
+    {
+      "item_id": 140,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "萨斯。",
+      "score": 0,
+      "detail": {
+        "gold": "萨苏"
+      }
+    },
+    {
+      "item_id": 117,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "冰岛两次获得最高级别。",
+      "score": 1,
+      "detail": {
+        "gold": "冰岛"
+      }
+    },
+    {
+      "item_id": 4,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "score": 0,
+      "detail": {
+        "gold": "只要他们的服务秘密地在私人教堂进行"
+      }
+    },
+    {
+      "item_id": 100,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "加拿大武装部队的最新名字是加拿大陆军。",
+      "score": 0,
+      "detail": {
+        "gold": "加拿大军队"
+      }
+    },
+    {
+      "item_id": 67,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "一个非政府组织。",
+      "score": 0,
+      "detail": {
+        "gold": "刚果人权观察组"
+      }
+    },
+    {
+      "item_id": 49,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "纽约市警察局的警官被称为“纽约最好的警察”。",
+      "score": 1,
+      "detail": {
+        "gold": "纽约最好的"
+      }
+    },
+    {
+      "item_id": 112,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "他们对受损建筑物进行了详细的初步调查。",
+      "score": 0,
+      "detail": {
+        "gold": "对受损建筑物进行详细的初步调查"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.275,
+    "ci95": [
+      0.15,
+      0.425
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset uro-bench-SQuAD-zh --backbone meralion-2-gguf --split dev --n 40",
+  "elapsed_s": 16.6
+}

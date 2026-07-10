@@ -1,0 +1,393 @@
+{
+  "stage": "1-directional",
+  "dataset": "voiceassistant-speaking-reasoning",
+  "k_type": "K8",
+  "backbone": "meralion-2-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/voiceassistant-speaking-reasoning/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "Speaking_Reasoning_479",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 1,
+      "detail": {
+        "gold": "no"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_460",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 1,
+      "detail": {
+        "gold": "no"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_573",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The answer is no.",
+      "score": 1,
+      "detail": {
+        "gold": "No"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1109",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 1,
+      "detail": {
+        "gold": "C"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_847",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The correct answer is **(B) 3,150 dollars**.",
+      "score": 1,
+      "detail": {
+        "gold": "D"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1196",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The answer is D.",
+      "score": 0,
+      "detail": {
+        "gold": "B"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_30",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A needle is to sewing as a saw is to cutting.",
+      "score": 1,
+      "detail": {
+        "gold": "A needle is to sewing as a saw is to cutting."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_715",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C distance decay",
+      "score": 1,
+      "detail": {
+        "gold": "C"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_511",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The correct answer is: B. Russian, spherical, ancient, fiberglass, small, brown, sock.",
+      "score": 1,
+      "detail": {
+        "gold": "(A)"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_579",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The answer is yes.",
+      "score": 0,
+      "detail": {
+        "gold": "No"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_730",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_862",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "D"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_587",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The answer is yes.",
+      "score": 1,
+      "detail": {
+        "gold": "Yes"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1037",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The answer is (B) base rate fallacy. \n\nHere's why:\n\n* The friend's statement is based on a perceived pattern of events, but it's likely an overgeneralization. \n* The base rate fallacy occurs when we overestimate the likelihood of an event based on a few instances, rather than considering the overall probability.",
+      "score": 1,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_324",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "20 centimeters",
+      "score": 0,
+      "detail": {
+        "gold": "Marty starts with a ribbon that is one hundred centimeters long. He needs to divide it into four equal parts. To find the length of each part, he takes the total length and divides it by four, which gives twenty-five centimeters for each part. Next, each of these twenty-five-centimeter sections must be further divided into five equal parts. To determine the length of these smaller sections, he takes the length of the larger section and divides it by five, resulting in five centimeters for each smaller section. So the answer is 5."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_223",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The inference is correct and well-supported. The statement that all primates have opposable thumbs is accurate, as this is a defining characteristic of the primate order. Since chimpanzees are classified as primates, it logically follows that they possess opposable thumbs. This conclusion is consistent with biological and evolutionary evidence, making the reasoning valid and supported."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_32",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A map is to location as a compass is to north.",
+      "score": 0,
+      "detail": {
+        "gold": "A compass is to north as a map is to location."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_373",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The moral of the story is that being grumpy is often a sign of sadness and loneliness, and that it's important to be open about our feelings and seek companionship.",
+      "score": 0,
+      "detail": {
+        "gold": "Honestly is the best policy. "
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_576",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The answer is: No.",
+      "score": 0,
+      "detail": {
+        "gold": "Yes"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1182",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "c",
+      "score": 0,
+      "detail": {
+        "gold": "B"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_931",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 1,
+      "detail": {
+        "gold": "C"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_831",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1021",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_336",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "40",
+      "score": 0,
+      "detail": {
+        "gold": "Mico and Marco discovered that the total of their current ages is twenty. In ten years, both Mico and Marco will each be ten years older. This means that ten years will be added to Mico's age and another ten years will be added to Marco's age. Together, this adds up to an additional twenty years to their combined ages. Adding this increase of twenty years to their current total age of twenty results in a new sum of forty. So the answer is 40."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1142",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_338",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Nine.",
+      "score": 0,
+      "detail": {
+        "gold": "Lani started with fifty-five cookies. After eating five of them, she had fifty cookies remaining. She then divided these fifty cookies equally among five jars. By placing the same number of cookies in each jar, there were ten cookies in each one. So the answer is 10."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_350",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The grasshopper was unprepared for winter.",
+      "score": 0,
+      "detail": {
+        "gold": "Be prepared before you enjoy."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_918",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B",
+      "score": 1,
+      "detail": {
+        "gold": "B"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_33",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A radio is to audio as a television is to visuals."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_682",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "C"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_226",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No, the inference is not correct and well supported.",
+      "score": 0,
+      "detail": {
+        "gold": "The inference is not correct or well-supported. The reasoning presented is an example of a hasty generalization, where a broad conclusion (\"every flight will have turbulence\") is drawn from a very limited set of observations (\"the last two times I've flown, there was turbulence\"). Two instances are insufficient to conclude that all flights will have turbulence, as turbulence can vary greatly depending on weather conditions, flight paths, and other factors. A well-supported inference would require more comprehensive evidence or data."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_235",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The inference is incorrect. While it is true that strawberries are fruits, they do not grow on trees. Strawberries are unique in that they belong to a category of fruits called accessory fruits, where the fleshy part we eat develops from parts of the flower other than the ovary. They grow close to the ground on small, low-lying plants. The original statement assumes all fruits grow on trees, which is a generalization and not accurate for all types of fruits. Therefore, the conclusion is wrong because it is based on a flawed assumption."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_596",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The answer is Yes.",
+      "score": 1,
+      "detail": {
+        "gold": "Yes"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_755",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_634",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The answer is C.",
+      "score": 1,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1133",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "C"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_332",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "100",
+      "score": 0,
+      "detail": {
+        "gold": "Start by determining how much hay each sheep requires. Each goat needs five pounds, and each sheep needs three pounds less than twice what a goat needs. Twice the amount for a goat is ten pounds, and subtracting three gives seven pounds per sheep. Next, calculate the total hay needed for all the sheep. With twelve sheep, and each needing seven pounds, multiply these together to get eighty-four pounds of hay for the sheep. Then, calculate the total hay required for the goats. With fifteen goats, and each needing five pounds, multiply these together to get seventy-five pounds of hay for the goats. Finally, combine the two totals by adding eighty-four and seventy-five to find the overall amount of hay Nate needs. So the answer is 159."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_428",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "No"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1104",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "B"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_954",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "A"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.35,
+    "ci95": [
+      0.2,
+      0.5
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset voiceassistant-speaking-reasoning --backbone meralion-2-gguf --split dev --n 40",
+  "elapsed_s": 15.4
+}

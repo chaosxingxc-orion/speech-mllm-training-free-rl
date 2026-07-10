@@ -1,0 +1,573 @@
+{
+  "stage": "1-directional",
+  "dataset": "vocalbench-knowledge",
+  "k_type": "K8",
+  "backbone": "meralion-2-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/vocalbench-knowledge/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "knowledge-1119",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Peru.",
+      "score": 0,
+      "detail": {
+        "gold": "Australia"
+      }
+    },
+    {
+      "item_id": "knowledge-0279",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A disaccharide.",
+      "score": 1,
+      "detail": {
+        "gold": "disaccharide"
+      }
+    },
+    {
+      "item_id": "knowledge-1145",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The United States.",
+      "score": 0,
+      "detail": {
+        "gold": "Nigeria"
+      }
+    },
+    {
+      "item_id": "knowledge-1678",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Isaac Newton.",
+      "score": 1,
+      "detail": {
+        "gold": "Newton"
+      }
+    },
+    {
+      "item_id": "knowledge-1743",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Nuclear fission.",
+      "score": 1,
+      "detail": {
+        "gold": "fission"
+      }
+    },
+    {
+      "item_id": "knowledge-1308",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Arc de Triomphe.",
+      "score": 0,
+      "detail": {
+        "gold": "Les Invalides"
+      }
+    },
+    {
+      "item_id": "knowledge-0275",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Blood is pumped with the heart.",
+      "score": 1,
+      "detail": {
+        "gold": "heart"
+      }
+    },
+    {
+      "item_id": "knowledge-0609",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The small actor who stars as Frank Reynolds in \"It's Always Sunny in Philadelphia\" is Charlie Day.",
+      "score": 0,
+      "detail": {
+        "gold": "Danny DeVito"
+      }
+    },
+    {
+      "item_id": "knowledge-0276",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Favorable traits become more common through natural selection, where organisms with those traits are more likely to survive and reproduce.",
+      "score": 1,
+      "detail": {
+        "gold": "natural selection"
+      }
+    },
+    {
+      "item_id": "knowledge-0872",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Jamaican dollar.",
+      "score": 1,
+      "detail": {
+        "gold": "Jamaican dollar"
+      }
+    },
+    {
+      "item_id": "knowledge-1577",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The man who dreamed of a ladder reaching from Earth to Heaven is Adam.",
+      "score": 0,
+      "detail": {
+        "gold": "Jacob"
+      }
+    },
+    {
+      "item_id": "knowledge-1696",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "There is no information about how many families are known to have been divided into cork.",
+      "score": 0,
+      "detail": {
+        "gold": "three"
+      }
+    },
+    {
+      "item_id": "knowledge-1769",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Pressure",
+      "score": 0,
+      "detail": {
+        "gold": "buoyancy"
+      }
+    },
+    {
+      "item_id": "knowledge-1736",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "radioactive"
+      }
+    },
+    {
+      "item_id": "knowledge-1554",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "\"The Importance of Being Earnest\"",
+      "score": 0,
+      "detail": {
+        "gold": "The History Boys"
+      }
+    },
+    {
+      "item_id": "knowledge-0477",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "France.",
+      "score": 0,
+      "detail": {
+        "gold": "Denmark"
+      }
+    },
+    {
+      "item_id": "knowledge-0348",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A craniotomy is the surgical removal of a portion of the skull.",
+      "score": 1,
+      "detail": {
+        "gold": "Skull"
+      }
+    },
+    {
+      "item_id": "knowledge-0562",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Tom Hanks",
+      "score": 0,
+      "detail": {
+        "gold": "Buster Keaton"
+      }
+    },
+    {
+      "item_id": "knowledge-1353",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The author of \"The Old Curiosity Shop\" is Charles Dickens.",
+      "score": 1,
+      "detail": {
+        "gold": "Charles Dickens"
+      }
+    },
+    {
+      "item_id": "knowledge-0644",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The driver of the limousine at the time of Princess Diana's death was Henri Paul.",
+      "score": 1,
+      "detail": {
+        "gold": "Henri Paul"
+      }
+    },
+    {
+      "item_id": "knowledge-0177",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Chimpanzees.",
+      "score": 0,
+      "detail": {
+        "gold": "Dolphin"
+      }
+    },
+    {
+      "item_id": "knowledge-1532",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "\"The Uncommercial Traveller\"",
+      "score": 0,
+      "detail": {
+        "gold": "Little Dorrit"
+      }
+    },
+    {
+      "item_id": "knowledge-1810",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The lightning rod was invented by Benjamin Franklin.",
+      "score": 1,
+      "detail": {
+        "gold": "Benjamin Franklin"
+      }
+    },
+    {
+      "item_id": "knowledge-1844",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Aristotle.",
+      "score": 1,
+      "detail": {
+        "gold": "Aristotle"
+      }
+    },
+    {
+      "item_id": "knowledge-0278",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A zygote.",
+      "score": 0,
+      "detail": {
+        "gold": "a seed"
+      }
+    },
+    {
+      "item_id": "knowledge-0727",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Alkanes.",
+      "score": 0,
+      "detail": {
+        "gold": "alkyl group"
+      }
+    },
+    {
+      "item_id": "knowledge-1748",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Sound.",
+      "score": 1,
+      "detail": {
+        "gold": "sound"
+      }
+    },
+    {
+      "item_id": "knowledge-0956",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The genus of Blue Gum and Ironbark is *Eucalyptus*.",
+      "score": 1,
+      "detail": {
+        "gold": "Eucalyptus"
+      }
+    },
+    {
+      "item_id": "knowledge-1918",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the name of the first permanent president of Watts?",
+      "score": 0,
+      "detail": {
+        "gold": "European Council"
+      }
+    },
+    {
+      "item_id": "knowledge-1733",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Light is a form of electromagnetic radiation.",
+      "score": 0,
+      "detail": {
+        "gold": "electromagnetic energy"
+      }
+    },
+    {
+      "item_id": "knowledge-0991",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Beijing",
+      "score": 0,
+      "detail": {
+        "gold": "Islamabad"
+      }
+    },
+    {
+      "item_id": "knowledge-0442",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A fruit.",
+      "score": 0,
+      "detail": {
+        "gold": "Apple"
+      }
+    },
+    {
+      "item_id": "knowledge-1698",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The car loses kinetic energy.",
+      "score": 1,
+      "detail": {
+        "gold": "kinetic energy"
+      }
+    },
+    {
+      "item_id": "knowledge-1196",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Japan has a constitutional monarchy.",
+      "score": 1,
+      "detail": {
+        "gold": "Constitutional monarchy"
+      }
+    },
+    {
+      "item_id": "knowledge-0067",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the Great Sphinx of Giza?",
+      "score": 0,
+      "detail": {
+        "gold": "Human"
+      }
+    },
+    {
+      "item_id": "knowledge-1443",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The main character trait of Mr. Mccarber is his love of money.",
+      "score": 0,
+      "detail": {
+        "gold": "Optimism"
+      }
+    },
+    {
+      "item_id": "knowledge-0715",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Covalent bond",
+      "score": 0,
+      "detail": {
+        "gold": "hydrogen bond"
+      }
+    },
+    {
+      "item_id": "knowledge-1833",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Surging hormones will cause idles to have what?",
+      "score": 0,
+      "detail": {
+        "gold": "mood swings"
+      }
+    },
+    {
+      "item_id": "knowledge-1628",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Sherlock Holmes",
+      "score": 1,
+      "detail": {
+        "gold": "Sherlock Holmes"
+      }
+    },
+    {
+      "item_id": "knowledge-0196",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Horny ridges on the jaws serve to help turtles grip and tear food.",
+      "score": 0,
+      "detail": {
+        "gold": "teeth"
+      }
+    },
+    {
+      "item_id": "knowledge-1689",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Bohr model works only for which atom?",
+      "score": 0,
+      "detail": {
+        "gold": "hydrogen"
+      }
+    },
+    {
+      "item_id": "knowledge-0708",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The whey.",
+      "score": 1,
+      "detail": {
+        "gold": "Whey"
+      }
+    },
+    {
+      "item_id": "knowledge-1835",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Smell.",
+      "score": 1,
+      "detail": {
+        "gold": "smell"
+      }
+    },
+    {
+      "item_id": "knowledge-0769",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Ne",
+      "score": 1,
+      "detail": {
+        "gold": "Ne"
+      }
+    },
+    {
+      "item_id": "knowledge-0856",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The best currency to take to Turkey is the Turkish Lira (TRY).",
+      "score": 1,
+      "detail": {
+        "gold": "Turkish lira"
+      }
+    },
+    {
+      "item_id": "knowledge-1720",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The ability to do work.",
+      "score": 0,
+      "detail": {
+        "gold": "energy"
+      }
+    },
+    {
+      "item_id": "knowledge-0594",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The voice of Kit in Night Rider is provided by the actor, **David Hasselhoff**.",
+      "score": 0,
+      "detail": {
+        "gold": "William Daniels"
+      }
+    },
+    {
+      "item_id": "knowledge-0612",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "John Wayne",
+      "score": 0,
+      "detail": {
+        "gold": "Humphrey Bogart"
+      }
+    },
+    {
+      "item_id": "knowledge-0797",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Acetone.",
+      "score": 1,
+      "detail": {
+        "gold": "Acetone"
+      }
+    },
+    {
+      "item_id": "knowledge-1365",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Tyrus.",
+      "score": 0,
+      "detail": {
+        "gold": "Oedipus"
+      }
+    },
+    {
+      "item_id": "knowledge-0051",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Mike Myers",
+      "score": 0,
+      "detail": {
+        "gold": "Marcel Marceau"
+      }
+    },
+    {
+      "item_id": "knowledge-1961",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Richard Wallace is the editor of the Daily News.",
+      "score": 0,
+      "detail": {
+        "gold": "Daily Mirror"
+      }
+    },
+    {
+      "item_id": "knowledge-0397",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is a pikar?",
+      "score": 0,
+      "detail": {
+        "gold": "Pike"
+      }
+    },
+    {
+      "item_id": "knowledge-0389",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Ichthyology is the study of fish.",
+      "score": 1,
+      "detail": {
+        "gold": "Fish"
+      }
+    },
+    {
+      "item_id": "knowledge-0141",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The name of the painter's brother is \"Van Gogh\".",
+      "score": 0,
+      "detail": {
+        "gold": "Theo"
+      }
+    },
+    {
+      "item_id": "knowledge-0677",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Plants use chemical signals to control processes such as growth, development, and responses to environmental stimuli.",
+      "score": 0,
+      "detail": {
+        "gold": "plant hormones"
+      }
+    },
+    {
+      "item_id": "knowledge-0154",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Francis Bacon",
+      "score": 0,
+      "detail": {
+        "gold": "Tom Keating"
+      }
+    },
+    {
+      "item_id": "knowledge-0339",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The earliest post-segmentation velamentous stage of the human embryo is the **gastrula stage**.",
+      "score": 0,
+      "detail": {
+        "gold": "Zygote"
+      }
+    },
+    {
+      "item_id": "knowledge-0444",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The nucleus is contained in the sperm's head.",
+      "score": 1,
+      "detail": {
+        "gold": "head"
+      }
+    },
+    {
+      "item_id": "knowledge-1694",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A convex lens.",
+      "score": 0,
+      "detail": {
+        "gold": "concave lens"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.3833,
+    "ci95": [
+      0.2667,
+      0.5167
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset vocalbench-knowledge --backbone meralion-2-gguf --split test --n 60",
+  "elapsed_s": 23.4
+}

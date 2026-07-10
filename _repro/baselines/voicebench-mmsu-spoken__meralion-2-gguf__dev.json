@@ -1,0 +1,433 @@
+{
+  "stage": "1-directional",
+  "dataset": "voicebench-mmsu-spoken",
+  "k_type": "K8",
+  "backbone": "meralion-2-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/voicebench-mmsu-spoken/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "mmsu-spoken/philosophy/10931",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe natural law fallacy is a specific type of\nOptions:\nA. false analogy\nB. false cause\nC. false criteria\nD. false sign\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. false analogy",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/psychology/2208",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIn classical psychoanalytic theory, a maladaptive behavior that emerges as a compromise between an unconscious impulse and the resulting defense process is called\nOptions:\nA. fixation\nB. projection\nC. symptom\nD. regression\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. fixation",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/psychology/2263",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nNonverbal and primarily nonculturally biased abilities are referred to as:\nOptions:\nA. Crystallized intelligence\nB. Verbal intelligence\nC. Fluid intelligence\nD. Emotional intelligence\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Fluid intelligence",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/engineering/11354",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe bandwidth and cut-off frequency of an antenna are 0.8 megahertz and 44 megahertz  respectively. Calculate the Q-factor of theantenna.\nOptions:\nA. 55\nB. 50\nC. 75\nD. 85\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. 75",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/other/5377",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich of the following is typically associated with having a vasectomy?\nOptions:\nA. inability to maintain an erection\nB. decreased sperm production\nC. reduced rigidity of erections\nD. normal orgasm\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. decreased sperm production",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/philosophy/11107",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nNagel claims that most skeptical arguments:\nOptions:\nA. are a result of a lack of understanding of ordinary standards.\nB. grow from the consistent application of ordinary standards.\nC. are the product of overthinking.\nD. result from misinterpretation of philosophical concepts.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. ...",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/health/6773",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nA quasi species virus such as influenza and HIV has which of the following characteristics?\nOptions:\nA. A very large genome\nB. Only exists in one form or variant\nC. Co-existence of innumerable genetic variants\nD. A stable and unchanging genome\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Co-existence of innumerable genetic variants",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/economics/7406",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nSuppose that the total value of all transactions in the United States is $100,000 and the money supply is $10,000. Calculate the velocity of money.\nOptions:\nA. 2\nB. 15\nC. 10\nD. 8\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. 2",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/physics/9967",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nA dentist holds a concave mirror with radius of curvature 4 centimeters at a distance of 1.5 centimeters from a filling in a tooth. What is the magnification of the image of the filling?\nOptions:\nA. 4 times the size of the object\nB. 8 times the size of the object\nC. 10 times the size of the object\nD. 6 times the size of the object\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. 6 times the size of the object",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/business/757",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThese goods are bought infrequently, used repeatedly, and involve a reasonably high level of consumer risk:\nOptions:\nA. Unsought goods.\nB. Durable goods.\nC. Luxury goods.\nD. Services.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Durable goods.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/health/6224",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIn which of the following positions does a patient lie face down?\nOptions:\nA. Supine\nB. Erect\nC. Trendelenburg\nD. Prone\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Supine",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/other/5308",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nAs of 2019, about what share of electricity came from fossil fuels in the United States?\nOptions:\nA. 33%\nB. 103%\nC. 63%\nD. 93%\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. 63%",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/health/6410",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe main reason given by men and women for their long lasting marriage is that\nOptions:\nA. They are best friends\nB. They always take vacations together\nC. They owe it to their children\nD. They have an arranged marriage\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. They are best friends",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/economics/7443",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich characteristic is likely a part of a monopoly market but not of monopolistic competition?\nOptions:\nA. Possibility of profit in the short run\nB. Many sellers and buyers\nC. Differentiated products\nD. Patents and copyrights\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Possibility of profit in the short run",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/biology/3066",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat function does oxygen serve in the body?\nOptions:\nA. Oxygen acts as a lubricant for joints and muscles.\nB. Oxygen is necessary for the process of cellular respiration.\nC. Oxygen converts glucose directly into energy without any metabolic processes.\nD. Oxygen is used for photosynthesis in cells.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Oxygen is necessary for the process of cellular respiration.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/other/5359",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich of the following Internet-related challenges is most significant in the public relations field?\nOptions:\nA. Overcoming language barriers in global communications\nB. Staying abreast of changing technology\nC. Ensuring security of online client information\nD. Adapting to the rapid advancement of digital marketing tools\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Overcoming language barriers in global communications",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/chemistry/4087",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe solid-state structures of the principal allotropes of elemental boron are made up of which of the following structural units?\nOptions:\nA. B7 heptagons\nB. B10 decagons\nC. B9 nonagons\nD. B12 icosahedra\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. B12 icosahedra",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/engineering/12256",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe frequency range of a commercially broadcast FM signal is 88 to 108 Megahertz, with carrier swing of 125 Kilohertz. Find the percentage modulation of the signal.\nOptions:\nA. 83.3%\nB. 57.1%\nC. 100%\nD. 75%\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. 83.3%",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/health/6518",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow are antibody producing cells stimulated?\nOptions:\nA. Interacting with a virus short peptide\nB. Interacting with a T helper cell.\nC. Interacting with a plasma cell\nD. Interacting with a virus infected cell\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Interacting with a T helper cell.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/business/440",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich of the following is the communication model that depicts information flowing via various media channels, to particular types of people, to whom other members of the audience refer for information and guidance?\nOptions:\nA. Three-step.\nB. One-step.\nC. Multi-step.\nD. Two-step.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Multi-step.",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/business/829",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow can you describe the thinking and outlook of transformational leaders?\nOptions:\nA. Reactive\nB. Strategic\nC. Transactional\nD. Developmental\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Transactional",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/psychology/2622",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich of the following relies on internal resources to cope with a problem?\nOptions:\nA. Emotion-focused coping\nB. Dissonance reduction\nC. Problem-focused coping\nD. Cognitive dissonance\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Problem-focused coping",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/other/5606",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nAs of 2017, the share of global deaths by suicide is about\nOptions:\nA. 2.80%\nB. 5.60%\nC. 9.10%\nD. 1.40%\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. 9.10%",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/philosophy/11202",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nAccording to Altman, justifications of speech codes that take account of which of the following kinds of harm have the best prospects for success?\nOptions:\nA. causal harm\nB. expressive harm\nC. both causal and expressive harm\nD. auxiliary harm\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. both causal and expressive harm",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/philosophy/11243",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat does \"Svetambara\" mean?\nOptions:\nA. \"White-clad\"\nB. \"Clothed\"\nC. \"Dark-clad\"\nD. \"Water-clad\"\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. \"White-clad\"",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/other/5112",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWho was the WNBA's Most Valuable Player of 1999?\nOptions:\nA. Yolanda Griffith\nB. Cynthia Cooper\nC. Dawn Staley\nD. Rebecca Lobo\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Yolanda Griffith",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/business/202",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nAccording to Belbin (1981) an extroverted and enthusiastic person fits with what role?\nOptions:\nA. Problem Solver\nB. Resource investigator\nC. Specialist\nD. Monitor Evaluator\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Resource investigator",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/philosophy/11174",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nArguing that someone couldn't have done something good because she holds a particular position commits the fallacy of\nOptions:\nA. Guilt by association\nB. False dilemma\nC. Reprehensible personality\nD. False dichotomy\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Guilt by association",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/psychology/2039",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nFind the mode or modes of the sample 6, 7, 7, 3, 8, 5, 3, 9.\nOptions:\nA. 3 and 7\nB. 6, 7, and 8\nC. 3 only\nD. 7 only\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. 3 only",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/business/618",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is an employee's preferred ratio between work-related and non-work-related activities which, due to intensification of work and technological shifts, has become a hotly contested issue in recent years?\nOptions:\nA. Work-life balance\nB. Absenteeism\nC. Job satisfaction\nD. Work-health balance\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. work-health balance",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/psychology/2749",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat does research suggest is the major result of breastfeeding an infant?\nOptions:\nA. Stronger infant immunity solely based on the duration of breastfeeding\nB. specific method used in feeding\nC. the attitude the parents have towards the child during feeding time\nD. Predictable sleep patterns established immediately through breastfeeding\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Stronger infant immunity solely based on the duration of breastfeeding",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/economics/7209",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIn dealing with price-setting, there is one important difference between theoligopolist's considerations and those of the monopolist. What is it?\nOptions:\nA. Market demand\nB. Price elasticity\nC. Inter-dependence\nD. Rate of innovation\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. rate of innovation",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/health/6486",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich of the following muscles are derived from the first brachial arch?\nOptions:\nA. The muscles of mastication and mylohyoid\nB. The muscles of mastication\nC. The muscles of mastication, anterior belly of digastric and mylohyoid\nD. The muscles of mastication and anterior belly of digastric\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. The muscles of mastication and anterior belly of digastric",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/economics/7535",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat might happen to the housing construction industry if com-mercial banks are allowed to compete freely with mutual sav-ings banks?\nOptions:\nA. The quality of housing construction would deteriorate\nB. More houses could be bought\nC. The housing industry would slump\nD. Mutual savings banks would become obsolete\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. The quality of housing construction would deteriorate",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/philosophy/10855",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat does Craig say about an actually infinite number of things?\nOptions:\nA. cannot exist\nB. can be physically observed\nC. can be counted one by one\nD. is a concept beyond human comprehension\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. is a concept beyond human comprehension",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/other/5721",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe main factor preventing subsistence economies from advancing economically is the lack of\nOptions:\nA. a healthcare system.\nB. international trade agreements.\nC. a well-connected transportation infrastructure.\nD. internet access.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. internet access.",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/history/4676",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nAustralian and America megafauna were probably wiped out by:\nOptions:\nA. natural disasters such as volcanic eruptions or earthquakes.\nB. both humans and environmental changes.\nC. the spread of invasive plant species which altered their habitat.\nD. a sudden drastic climate change due to global warming.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. both humans and environmental changes.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/business/573",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThese are events when groups of sellers meet collectively with the key purpose of attracting buyers:\nOptions:\nA. Social media campaigns.\nB. Exhibitions.\nC. Sales promotions.\nD. Direct mail campaigns.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Exhibitions.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/health/6581",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich of the following cannot be a substrate for gluconeogenesis?\nOptions:\nA. Palmitic acid\nB. Pyruvate\nC. Galactose\nD. Glycerol\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Palmitic acid",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/economics/7170",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIf the per unit price of labor, a variable resource, increases, it causes which of the following?\nOptions:\nA. A downward shift in MPL.\nB. An upward shift in MC.\nC. A downward shift in AFC.\nD. An upward shift in AVC.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. An upward shift in AVC.",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 1
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.425,
+    "ci95": [
+      0.275,
+      0.575
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset voicebench-mmsu-spoken --backbone meralion-2-gguf --split dev --n 40",
+  "elapsed_s": 15.8
+}

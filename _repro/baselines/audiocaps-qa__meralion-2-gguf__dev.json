@@ -1,0 +1,393 @@
+{
+  "stage": "1-directional",
+  "dataset": "audiocaps-qa",
+  "k_type": "K8",
+  "backbone": "meralion-2-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/audiocaps-qa/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "row1",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The child is crying, and the woman seeks to comfort him."
+      }
+    },
+    {
+      "item_id": "row7",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A thunderstorm is likely being recorded in the audio clip."
+      }
+    },
+    {
+      "item_id": "row11",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The clock ticked around 11 times."
+      }
+    },
+    {
+      "item_id": "row15",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "There are two people speaking in the audio."
+      }
+    },
+    {
+      "item_id": "row16",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Continuous snoring."
+      }
+    },
+    {
+      "item_id": "row24",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The man speaking is likely a politician, comedian, or entertainer, as the crowd's laughter and applause suggest a live performance or public speaking engagement."
+      }
+    },
+    {
+      "item_id": "row38",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the question?",
+      "score": 0,
+      "detail": {
+        "gold": "The man speaking over the intercom is likely a pilot or a military commander giving instructions or updates to his team during a mission or operation."
+      }
+    },
+    {
+      "item_id": "row48",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A bell ringing in a bell tower."
+      }
+    },
+    {
+      "item_id": "row50",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A train."
+      }
+    },
+    {
+      "item_id": "row51",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Birds are chirping."
+      }
+    },
+    {
+      "item_id": "row58",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A man and children."
+      }
+    },
+    {
+      "item_id": "row64",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the question?",
+      "score": 0,
+      "detail": {
+        "gold": "Two females."
+      }
+    },
+    {
+      "item_id": "row69",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "No."
+      }
+    },
+    {
+      "item_id": "row78",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A motorcycle racing or stunt event is likely being recorded in the audio clip."
+      }
+    },
+    {
+      "item_id": "row116",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The sound being recorded in the audio file is the continuous operation of a power tool drill."
+      }
+    },
+    {
+      "item_id": "row147",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A natural outdoor environment, likely a park or a body of water, is likely depicted in the audio recording."
+      }
+    },
+    {
+      "item_id": "row149",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A forest or woodland environment."
+      }
+    },
+    {
+      "item_id": "row166",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The man is speaking at the beginning."
+      }
+    },
+    {
+      "item_id": "row167",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A truck or a large vehicle, likely a semi-truck or a bus, is likely being recorded in this audio clip."
+      }
+    },
+    {
+      "item_id": "row184",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The primary sound or noise present in the audio recording is the sound of the helicopter blades whirring in the wind."
+      }
+    },
+    {
+      "item_id": "row187",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The primary sound heard in the audio recording is the bus engine running."
+      }
+    },
+    {
+      "item_id": "row200",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The main subject of the audio recording is a cat and human interaction."
+      }
+    },
+    {
+      "item_id": "row204",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Four times."
+      }
+    },
+    {
+      "item_id": "row206",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The content of the audio recording likely features a man training a pet."
+      }
+    },
+    {
+      "item_id": "row211",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A mother or caregiver."
+      }
+    },
+    {
+      "item_id": "row213",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "I'm listening.",
+      "score": 0,
+      "detail": {
+        "gold": "A party or a casual talking."
+      }
+    },
+    {
+      "item_id": "row224",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The sound of the aircraft engine in the audio recording before it becomes louder is a faint humming or whirring noise."
+      }
+    },
+    {
+      "item_id": "row227",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A high-frequency hum with banging and clanking sounds is likely produced by a machinery or equipment such as a conveyor belt system, a metalworking lathe, or a heavy-duty industrial drill press."
+      }
+    },
+    {
+      "item_id": "row235",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Electronic beeps."
+      }
+    },
+    {
+      "item_id": "row236",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the question?",
+      "score": 0,
+      "detail": {
+        "gold": "The man is speaking while the engine is idling."
+      }
+    },
+    {
+      "item_id": "row247",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A rollercoaster ride at an amusement park."
+      }
+    },
+    {
+      "item_id": "row258",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The likely purpose of the audio recording is to capture the conversation between the woman and the baby."
+      }
+    },
+    {
+      "item_id": "row259",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Burping."
+      }
+    },
+    {
+      "item_id": "row260",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "We can hear a duck quacking."
+      }
+    },
+    {
+      "item_id": "row265",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A street or a cross road."
+      }
+    },
+    {
+      "item_id": "row268",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the question?",
+      "score": 0,
+      "detail": {
+        "gold": "Water splashing."
+      }
+    },
+    {
+      "item_id": "row269",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The woman is cooking in a pan."
+      }
+    },
+    {
+      "item_id": "row279",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The likely purpose of the plastic switch flipping on and off in the audio recording is to simulate the sound of a rotary phone dial being rotated."
+      }
+    },
+    {
+      "item_id": "row291",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the question?",
+      "score": 0,
+      "detail": {
+        "gold": "Plastic wrapping or packaging material."
+      }
+    },
+    {
+      "item_id": "row306",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A stream or brook."
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.0,
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset audiocaps-qa --backbone meralion-2-gguf --split dev --n 40",
+  "elapsed_s": 13.6
+}

@@ -1,0 +1,573 @@
+{
+  "stage": "1-directional",
+  "dataset": "voiceassistant-listening-speech",
+  "k_type": "K8",
+  "backbone": "meralion-2-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/voiceassistant-listening-speech/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "Listening_Speech_828",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Neutral",
+      "score": 0,
+      "detail": {
+        "gold": "angry"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_892",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The speaker is expressing a neutral feeling.",
+      "score": 1,
+      "detail": {
+        "gold": "neutral"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_345",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Option C.",
+      "score": 0,
+      "detail": {
+        "gold": "[2.59, 2.90]"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_17",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The speaker is a male.",
+      "score": 0,
+      "detail": {
+        "gold": "Man"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_100",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A.",
+      "score": 0,
+      "detail": {
+        "gold": "wake up"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_502",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Listen to the spoken question and answer with a short answer only.",
+      "score": 1,
+      "detail": {
+        "gold": "en"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_287",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The speaker's goal is to get the audience to listen to the spoken question.",
+      "score": 0,
+      "detail": {
+        "gold": "lists_createoradd"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_651",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "teens to twenties"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_786",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Real.",
+      "score": 1,
+      "detail": {
+        "gold": "real"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_271",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Option C: Coffee",
+      "score": 0,
+      "detail": {
+        "gold": "email_sendemail"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_447",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A.",
+      "score": 0,
+      "detail": {
+        "gold": "1"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_303",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Option D.",
+      "score": 0,
+      "detail": {
+        "gold": "[0.53, 0.75]"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_478",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A.",
+      "score": 0,
+      "detail": {
+        "gold": "2"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_639",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The speaker sounds like they are in their 40s.",
+      "score": 0,
+      "detail": {
+        "gold": "teens to twenties"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_380",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Listen to the audio and choose the time segment when the word \"hotel\" is mentioned.",
+      "score": 0,
+      "detail": {
+        "gold": "[0.80, 1.16]"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_495",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Three",
+      "score": 0,
+      "detail": {
+        "gold": "2"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_315",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D.",
+      "score": 0,
+      "detail": {
+        "gold": "[6.21, 6.37]"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_485",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 0,
+      "detail": {
+        "gold": "1"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_58",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The speaker is a woman.",
+      "score": 1,
+      "detail": {
+        "gold": "Man"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_313",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "[3.72, 4.22]"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_851",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "neutral"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_126",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D.",
+      "score": 0,
+      "detail": {
+        "gold": "india's"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_236",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The speaker's motive is to ask about the weather.",
+      "score": 0,
+      "detail": {
+        "gold": "qa_definition"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_7",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The speaker is male.",
+      "score": 1,
+      "detail": {
+        "gold": "male"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_458",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "One.",
+      "score": 0,
+      "detail": {
+        "gold": "2"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_442",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "There is one speaker.",
+      "score": 0,
+      "detail": {
+        "gold": "2"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_794",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A short answer only.",
+      "score": 0,
+      "detail": {
+        "gold": "real"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_788",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Real.",
+      "score": 1,
+      "detail": {
+        "gold": "real"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_75",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Female.",
+      "score": 1,
+      "detail": {
+        "gold": "female"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_609",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "teens to twenties"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_133",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A news.",
+      "score": 0,
+      "detail": {
+        "gold": "cnn"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_528",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "English",
+      "score": 0,
+      "detail": {
+        "gold": "it"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_742",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The answer is \"fake\".",
+      "score": 0,
+      "detail": {
+        "gold": "real"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_118",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The word that means the same as event name is \"meeting\".",
+      "score": 0,
+      "detail": {
+        "gold": "meetings"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_598",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "es"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_717",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "real"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_798",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The accent used by the speaker is fake.",
+      "score": 1,
+      "detail": {
+        "gold": "fake"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_796",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Listen to the spoken question and answer with a short answer only.",
+      "score": 0,
+      "detail": {
+        "gold": "fake"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_777",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Real.",
+      "score": 0,
+      "detail": {
+        "gold": "fake"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_429",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A.",
+      "score": 0,
+      "detail": {
+        "gold": "1"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_223",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The speaker is asking a question about currency.",
+      "score": 0,
+      "detail": {
+        "gold": "qa_currency"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_565",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "en"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_507",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "English",
+      "score": 1,
+      "detail": {
+        "gold": "en"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_450",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "There are three people speaking.",
+      "score": 0,
+      "detail": {
+        "gold": "2"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_872",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A.",
+      "score": 0,
+      "detail": {
+        "gold": "happy"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_898",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "neutral"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_174",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "wife",
+      "score": 0,
+      "detail": {
+        "gold": "mom"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_298",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The speaker is trying to get a cooking recipe.",
+      "score": 0,
+      "detail": {
+        "gold": "iot_hue_lightdim"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_513",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The speaker is using English.",
+      "score": 0,
+      "detail": {
+        "gold": "de"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_412",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "One",
+      "score": 0,
+      "detail": {
+        "gold": "2"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_852",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 0,
+      "detail": {
+        "gold": "happy"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_331",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The word \"sufficient\" appears at 1.02 seconds.",
+      "score": 0,
+      "detail": {
+        "gold": "[0.46, 1.02]"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_586",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Listen to the spoken question and answer with a short answer only.",
+      "score": 1,
+      "detail": {
+        "gold": "en"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_812",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. sad",
+      "score": 0,
+      "detail": {
+        "gold": "angry"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_427",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "One.",
+      "score": 0,
+      "detail": {
+        "gold": "1"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_633",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "thirties to fourties"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_668",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "thirties to fourties"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_642",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "teens to twenties"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_350",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "b",
+      "score": 0,
+      "detail": {
+        "gold": "[5.83, 6.30]"
+      }
+    },
+    {
+      "item_id": "Listening_Speech_37",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The person is female.",
+      "score": 0,
+      "detail": {
+        "gold": "Woman"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.1667,
+    "ci95": [
+      0.0833,
+      0.2667
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset voiceassistant-listening-speech --backbone meralion-2-gguf --split test --n 60",
+  "elapsed_s": 21.9
+}

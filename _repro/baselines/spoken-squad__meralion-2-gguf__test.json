@@ -1,0 +1,633 @@
+{
+  "stage": "1-directional",
+  "dataset": "spoken-squad",
+  "k_type": "K8/K6 (legacy)",
+  "backbone": "meralion-2-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/baselines-spoken-squad/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "spoken-squad#0",
+      "instr": "Which theory justifies imperialism in part?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The purportedly scientific nature of social darwinism and a theory of races formed a supposedly rational justification for imperialism.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#1",
+      "instr": "What kind of cell identifies pathogens when the antibodies on its surface complex with a specific foreign antigen?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "B cells identify pathogens when antibodies on their surface bind to a specific foreign antigen.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#2",
+      "instr": "Where is the airport located?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The Fresno Chandler Executive Airport is located on the west side of the neighborhood.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#3",
+      "instr": "Which Florida city has the biggest population?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Jacksonville is the largest city in Florida by population.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#4",
+      "instr": "How many quadrangles does the Main Quadrangles have?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The Main Quadrangles have six quadrangles.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#5",
+      "instr": "What is the name of the property where the media event was held for Super Bowl 50?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "SAP Center in San Jose.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#6",
+      "instr": "When did French Republicans back building the French empire?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The French Republicans only became supportive of the building of the French empire when Germany started to build its own colonial empire.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#7",
+      "instr": "What show is considered the best drama that the BBC has ever produced?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Doctor Who.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#8",
+      "instr": "Who said, \"Here I stand. I can do no other\"?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Martin Luther.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#9",
+      "instr": "Who was Ralph in charge of being at war with?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Ralph was in charge of defending the marches and warring with the Welsh.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#10",
+      "instr": "What is the main denomination of Christians in Kenya?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The main denomination of Christians in Kenya is the Presbyterian Church of East Africa.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#11",
+      "instr": "What does the capabilities approach look at poverty as a form of?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Poverty is considered a form of capability deprivation.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#12",
+      "instr": "What is the term for closing off rivers that are no longer connected?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Damming.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#13",
+      "instr": "What other location did Apollo 1 test at besides Kennedy Space Center?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "North American.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#14",
+      "instr": "What areas did French recruit natives from?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "French recruits were from tribes in the western portions of the Great Lakes region, including the Huron, Missisauga, Ojibwe, Winnebago, and Potawatomi.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#15",
+      "instr": "What device is used to test the magnetic attractions involved in liquid oxygen?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "A powerful magnet.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#16",
+      "instr": "What sort of continental sculptors are represented in the British Galleries of the V&A?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The audio mentions that Continental sculptors are represented in the British Galleries of the V&A, but does not provide specific names.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#17",
+      "instr": "Who, according to the text, caused Cam Newton to lose the ball during a tackle?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Von Miller.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#18",
+      "instr": "What amount of bird species on earth are found in the Amazon rainforest?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "One in five of all bird species in the world live in the Amazon rainforest.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#19",
+      "instr": "What is the name for a teacher of just one person?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "A tutor.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#20",
+      "instr": "Where was Shirey going to be when Fort Oswego was to be attacked?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The audio does not provide the answer to where Shirey was going to be when Fort Oswego was to be attacked.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#21",
+      "instr": "Where did American troops remain stationed after Saddam's defeat?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "American troops remained stationed in the Kingdom.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#22",
+      "instr": "If Roman numerals were used in the naming of the 50th Super Bowl, which one would have been used?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Roman numerals would have been used to name the 50th Super Bowl.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#23",
+      "instr": "What foreign bodies, which are older than the rocks themselves, occur igneous rocks?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "In sedimentary rocks, inclusions are older than the formation they are found in, and in igneous rocks, xenolites are older than the rocks they are found in.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#24",
+      "instr": "Why is the node requiered to look up \nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The node is required to look up the connection ID in a table to route the packet.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#25",
+      "instr": "What disease did Tesla catch?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Colera.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#26",
+      "instr": "Where did Super Bowl 50 take place?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The game was played at Levi's Stadium in Santa Clara, California.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#27",
+      "instr": "Who recovered the strip ball?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Ward recovered the strip ball.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#28",
+      "instr": "Who founded Woodward Park?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Ralph Woodward.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#29",
+      "instr": "What art historical style was used in the decoration for the northern part of the museum?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The style adopted for the northern part of the museum was Italian Renaissance.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#30",
+      "instr": "Other than the desert city why do many locals and tourists frequent southern California?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Many locals and tourists frequent Southern California for its popular beaches and the desert city of Palm Springs, which is popular for its resort feel and nearby open spaces.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#31",
+      "instr": "What perk did religious leaders, teachers, and doctors get in the Mongol Empire?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Tax exemptions.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#32",
+      "instr": "Who was the creator of NYPD Blue?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Steven Bochco.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#33",
+      "instr": "What was the usual type of school discipline?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Corporal punishment.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#34",
+      "instr": "What did the use of steam engines in farming lead to?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The use of steam engines in farming led to an increase in the land available for cultivation.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#35",
+      "instr": "What are two of its subsystems?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The innate immune system and the adaptive immune system.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#36",
+      "instr": "To where is most of the abalone and lobster caught in Victorian waters shipped?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Most abalone and lobster caught in Victorian waters are exported to Asia.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#37",
+      "instr": "By what means is bulk oxygen shipped?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Bulk oxygen is shipped in specially insulated tankers as a liquid.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#38",
+      "instr": "The merger between ITT and ABC was suspended after a complaint was filed by whom in July 1967?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The merger was suspended after a complaint was filed by the Department of Justice in July 1967.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#39",
+      "instr": "What type of forested areas can be found on the highest terrace?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Pine forest.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#40",
+      "instr": "Which entities were originally concerned with preventing violation of human rights?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The original concern was that member states should be prevented from violating human rights.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#41",
+      "instr": "By the late 19th century, which country had the largest empire ever to exist in the world?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The British Empire.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#42",
+      "instr": "How was the Rhine Gorge formed?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The Rhine Gorge was formed by erosion, where the rate of erosion equaled the uplift in the region, leaving the river at its original level while the surrounding lands rose.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#43",
+      "instr": "Which Germans could understand the language Luther used?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Luther's translation used a variant of German spoken at the Saxon chancery, which was intelligible to both Northern and Southern Germans.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#44",
+      "instr": "By what main attribute are computational problems classified utilizing computational complexity theory? \nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Computational problems are classified according to their inherent difficulty.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#45",
+      "instr": "What were the protesters doing with Christ's counsel?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The protesters were ignoring Christ's counsel to render unto Caesar the things that are Caesar's.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#46",
+      "instr": "In what borough is there a neighborhood called Huguenot?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The Huguenot neighborhood is located in Staten Island, along the New York Harbor.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#47",
+      "instr": "What is the name of the country's longest continuously running student film society?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Dock Films.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#48",
+      "instr": "What provided for the creation of new orders known as \"provisional elder?\"\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The Provisional Elder is a seminary graduate who serves a two-to-three-year term in a full-time appointment after being commissioned.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#49",
+      "instr": "Where was the Archangel Michael shrine located?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The shrine of the Archangel Michael was located at Monte Gargano.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#50",
+      "instr": "The church emphasizes the need to be in supportive ministry of what group?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The church emphasizes the need to be in supportive ministry of all women, regardless of their choice.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#51",
+      "instr": "Taking evidence from witnesses is one of committees' what?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Committee meetings take place on Tuesday, Wednesday, and Thursday mornings when Parliament is sitting.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#52",
+      "instr": "Who are likely participants in creating an overall plan for the financial management of the building construction project?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Mortgage bankers, accountants, and cost engineers are likely participants in creating an overall plan for the financial management of the building construction project.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#53",
+      "instr": "How many items is the University Library home to?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Over two million items.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#54",
+      "instr": "Who has the power to initiate legislation within the European Union?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The European Commission has the initiative to propose legislation during the ordinary legislative procedure.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#55",
+      "instr": "ABC news provides content for radio stations owned by what company?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The company is Citadel Broadcasting.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#56",
+      "instr": "Some of the objects held in the Jameel Gallery of Islamic Art come from which European country?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The United Kingdom.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#57",
+      "instr": "What is one avenue being compensated for by having committees serve such a large role?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The Scottish Parliament's committees play a stronger role than in other parliamentary systems, partly to strengthen the role of backbenchers and partly to compensate for the lack of a revising chamber.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#58",
+      "instr": "How many Pro Bowlers were on the Panthers offense?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Six.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#59",
+      "instr": "Who was the film Charly produced by?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Ralph Nelson directed Charly.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.8,
+    "ci95": [
+      0.7,
+      0.9
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset spoken-squad --backbone meralion-2-gguf --split test --n 60",
+  "elapsed_s": 32.1
+}

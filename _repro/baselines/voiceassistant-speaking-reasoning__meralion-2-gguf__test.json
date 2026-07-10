@@ -1,0 +1,573 @@
+{
+  "stage": "1-directional",
+  "dataset": "voiceassistant-speaking-reasoning",
+  "k_type": "K8",
+  "backbone": "meralion-2-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/voiceassistant-speaking-reasoning/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "Speaking_Reasoning_415",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 1,
+      "detail": {
+        "gold": "Yes"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_514",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The correct answer is: B, cloth, white, ancient, repulsive, car.",
+      "score": 1,
+      "detail": {
+        "gold": "(A)"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_276",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The crops would likely rot and die.",
+      "score": 0,
+      "detail": {
+        "gold": "The crops would likely suffer from excessive moisture, leading to root rot, fungal diseases, and reduced yields."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_348",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Four",
+      "score": 0,
+      "detail": {
+        "gold": "Start by figuring out how many Pomeranians Jana has. We know that one third of the Pomeranians are girls, and there are six Pomeranian girls. Since the six girls represent one third of the Pomeranians, we can determine the total number of Pomeranians by multiplying six by three, which gives eighteen. So Jana has eighteen Pomeranians. \n\nNext, we know that two thirds of Jana's total puppies are Pomeranians. This means the eighteen Pomeranians represent two thirds of her total puppies. To find the total number of puppies, we divide eighteen by two to get nine, and then multiply nine by three. This calculation gives twenty-seven. \n\nSo the answer is 27."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_461",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The answer is no.",
+      "score": 1,
+      "detail": {
+        "gold": "no"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1154",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "D"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_957",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_257",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "I would wait until the rain stopped.",
+      "score": 0,
+      "detail": {
+        "gold": "I would wait until the rain subsides or bring an umbrella if I need to walk immediately."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1083",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Clovis D. Paleo-Indians",
+      "score": 1,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_483",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 1,
+      "detail": {
+        "gold": "no"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_552",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The answer is no.",
+      "score": 0,
+      "detail": {
+        "gold": "Yes"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_211",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No, the inference is not correct. Glass is a non-metal.",
+      "score": 0,
+      "detail": {
+        "gold": "The inference is incorrect and not well-supported. The statement \"all metals conduct electricity\" does not imply that anything that conducts electricity must be a metal. Glass conducting electricity does not automatically classify it as a metal because there are non-metallic materials, such as certain solutions or semiconductors, that can also conduct electricity. Therefore, the reasoning is flawed, as it falsely assumes that conductivity is exclusive to metals."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1024",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 1,
+      "detail": {
+        "gold": "C"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_13",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the relationship between a bee and a nector?",
+      "score": 0,
+      "detail": {
+        "gold": "A bee is to nectar as a spider is to insects."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_153",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The printing press made it possible to mass-produce books, making information more widely available and accessible to a larger audience.",
+      "score": 0,
+      "detail": {
+        "gold": "The printing press was invented by Johannes Gutenberg, not Leonardo da Vinci. It significantly increased the speed and accessibility of book production."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_287",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The game would likely be stopped or postponed.",
+      "score": 0,
+      "detail": {
+        "gold": "The game would likely be suspended or postponed due to unsafe conditions."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_587",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The answer is Yes.",
+      "score": 1,
+      "detail": {
+        "gold": "Yes"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_297",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Writing in a journal every morning could improve mental health and self-reflection by providing a space for processing thoughts and emotions.",
+      "score": 0,
+      "detail": {
+        "gold": "Writing in a journal can improve mental health by providing an outlet for thoughts and emotions, promoting self-awareness and emotional regulation."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_706",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The answer is C.",
+      "score": 0,
+      "detail": {
+        "gold": "D"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_557",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The answer is no.",
+      "score": 0,
+      "detail": {
+        "gold": "Yes"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_250",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "You might improve your knowledge base and vocabulary.",
+      "score": 0,
+      "detail": {
+        "gold": "Daily reading can significantly expand your knowledge and vocabulary, fostering better comprehension skills and cognitive development."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1041",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 1,
+      "detail": {
+        "gold": "C"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_803",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 1,
+      "detail": {
+        "gold": "D"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_898",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "B"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_632",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 1,
+      "detail": {
+        "gold": "C"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_877",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The answer is (b).",
+      "score": 0,
+      "detail": {
+        "gold": "C"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_525",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 1,
+      "detail": {
+        "gold": "(A)"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_5",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A hammer is to nail as a screwdriver is to screw.",
+      "score": 1,
+      "detail": {
+        "gold": "A hammer is to nail as a screwdriver is to screw."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_386",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Be careful and focus on the task at hand.",
+      "score": 0,
+      "detail": {
+        "gold": "Look before you leap."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_470",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 1,
+      "detail": {
+        "gold": "yes"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_60",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Students develop stronger problem-solving skills when they are engaged in project-based learning.",
+      "score": 0,
+      "detail": {
+        "gold": "Project-based learning engages students in real-world challenges, developing critical thinking and problem-solving abilities."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_24",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the relationship between a candle and a battery?",
+      "score": 0,
+      "detail": {
+        "gold": "A candle is to light as a battery is to power."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_940",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_131",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "In a cupboard.",
+      "score": 0,
+      "detail": {
+        "gold": "An unused chess set might be stored in a cupboard."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1122",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "D"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_452",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The answer is no.",
+      "score": 0,
+      "detail": {
+        "gold": "yes"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_362",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Greed can lead to negative consequences.",
+      "score": 0,
+      "detail": {
+        "gold": "Don't be greedy. "
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1084",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_335",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "13",
+      "score": 0,
+      "detail": {
+        "gold": "Raymond is older than Samantha by six years. When Raymond became a father at the age of twenty-three, Samantha was seventeen years old because she is six years younger than Raymond. Currently, Samantha is thirty-one years old. To figure out how many years have passed since Raymond's son was born, subtract seventeen from thirty-one. This gives fourteen years. So the answer is 14."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_828",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The answer is C.",
+      "score": 1,
+      "detail": {
+        "gold": "C"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_449",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 1,
+      "detail": {
+        "gold": "Yes"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_166",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "They visit the Great Barrier Reef for feeding.",
+      "score": 0,
+      "detail": {
+        "gold": "Penguins live in the Southern Hemisphere, primarily in Antarctica and surrounding regions. The Great Barrier Reef is located off the coast of Australia, making such visits geographically impossible."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_542",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B",
+      "score": 1,
+      "detail": {
+        "gold": "(B)"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_657",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "b",
+      "score": 0,
+      "detail": {
+        "gold": "C"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_709",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_133",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The person in the cat tried to construct something.",
+      "score": 0,
+      "detail": {
+        "gold": "The person in the cat accelerated to try to catch up with the man who was trying to escape."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_922",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_985",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The answer is (A) spiritual journey.",
+      "score": 0,
+      "detail": {
+        "gold": "C"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1097",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. Mesopotamia",
+      "score": 1,
+      "detail": {
+        "gold": "D"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_1101",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_937",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "B"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_979",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 0,
+      "detail": {
+        "gold": "C"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_965",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_498",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 1,
+      "detail": {
+        "gold": "no"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_365",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The moral of the story is that it is better to be clever and cunning than to be lazy and foolish.",
+      "score": 0,
+      "detail": {
+        "gold": "Too much attention to danger may cause us to fall victims to it."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_107",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The detective is finding information from witnesses for fun, to get answers, to develop ulcers, or to gain power.",
+      "score": 0,
+      "detail": {
+        "gold": "The detective would be finding information from witnesses to get answers."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_278",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The ice cream would melt and the taste would change.",
+      "score": 0,
+      "detail": {
+        "gold": "The taste would become creamier and slightly sweeter with a richer texture, while still retaining the fruity flavor of strawberries."
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_764",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_623",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "A"
+      }
+    },
+    {
+      "item_id": "Speaking_Reasoning_631",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "B"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.3,
+    "ci95": [
+      0.1833,
+      0.4167
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset voiceassistant-speaking-reasoning --backbone meralion-2-gguf --split test --n 60",
+  "elapsed_s": 22.6
+}

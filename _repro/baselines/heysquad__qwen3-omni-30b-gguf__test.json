@@ -1,0 +1,896 @@
+{
+  "stage": "1-directional",
+  "dataset": "heysquad",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/heysquad/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "571cc6f85efbb31900334de7",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Liquid nitrogen",
+      "score": 1,
+      "detail": {
+        "gold_list": [
+          "liquid nitrogen",
+          "liquid nitrogen",
+          "liquid nitrogen",
+          "liquid nitrogen",
+          "nitrogen"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "57274e145951b619008f87e9",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Galaxy Public School is located in the United States.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "Kathmandu",
+          "Kathmandu",
+          "Kathmandu"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "57264f18f1498d1400e8dbb1",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The first variant of Y pestis entered Europe during the Black Death pandemic in the 14th century.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "through the port of Marseille around November 1347",
+          "the port of Marseille around November 1347",
+          "1347"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "5726b718dd62a815002e8dc2",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Swastika",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "a protest that blocked heavy traffic",
+          "a protest",
+          "a protest"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "57379829c3c5551400e51f40",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "10^25",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "1013",
+          "1013",
+          "1013",
+          "1013"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "572fd264b2c2fd14005684ad",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The template includes the bill's title, number, and the date it was passed by the Scottish Parliament.",
+      "score": 1,
+      "detail": {
+        "gold_list": [
+          "[Date]",
+          "[Date]",
+          "\"The Bill for this Act of the Scottish Parliament was passed by the Parliament on [Date] and received royal assent on [Date]\"."
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "573028fa04bcaa1900d77288",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Somali Civil War",
+      "score": 1,
+      "detail": {
+        "gold_list": [
+          "vicious and destructive",
+          "vicious and destructive",
+          "civil"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "5730b6592461fd1900a9cfcf",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Great Britain",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "The British Empire",
+          "British Empire",
+          "The British",
+          "British",
+          "British"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "5726c5a9f1498d1400e8eac8",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Von Colson and Kamann",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "Überseering BV v Nordic Construction GmbH",
+          "Überseering BV v Nordic Construction GmbH",
+          "Überseering BV v Nordic Construction GmbH"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "5729f1283f37b319004785da",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Small.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "minor",
+          "minor",
+          "minor"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "571c4132dd7acb1400e4c0b1",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Priestley named the gas \"dephlogisticated air\".",
+      "score": 1,
+      "detail": {
+        "gold_list": [
+          "dephlogisticated air",
+          "dephlogisticated air",
+          "dephlogisticated air",
+          "dephlogisticated air",
+          "\"dephlogisticated air"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "572941273f37b319004781ae",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "He said the mistake went in.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "making it seem like climate change is more serious by overstating the impact",
+          "the direction of making it seem like climate change is more serious",
+          "making it seem like climate change is more serious by overstating the impact"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "5730aef38ab72b1400f9c686",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "His father.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "Hamburg merchants and traders",
+          "Hamburg merchants and traders",
+          "Hamburg merchants and traders",
+          "Hamburg merchants and traders"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "5737a84dc3c5551400e51f5c",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Mechanical forces.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "Nonconservative",
+          "Nonconservative forces other than friction",
+          "Nonconservative",
+          "Nonconservative forces"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "57268f2bf1498d1400e8e3c5",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A reduction in the number of people in prison.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "this would have also produced a single constitutional document",
+          "this would have also produced a single constitutional document",
+          "would have also produced a single constitutional document",
+          "this would have also produced a single constitutional document"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "5729f2646aef051400155132",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "1,000 tons",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "90,790 tonnes",
+          "about 90,790",
+          "about 90,790",
+          "90,790 tonnes"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "57293e983f37b3190047818f",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The statement predicted the global surface temperature would increase by 2.5 degrees Celsius by 2100.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "between 1.4 and 5.8 °C above 1990 levels",
+          "1.4 and 5.8 °C",
+          "between 1.4 and 5.8 °C"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "572a142e3f37b319004786bb",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Classical pathway",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "catalytic cascade",
+          "catalytic",
+          "catalytic"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "572a0e0e1d0469140077970b",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The entrepreneur.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "The poor and the middle class",
+          "The poor and the middle class",
+          "poor and the middle class"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "572a058aaf94a219006aa754",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "CYP27B1",
+      "score": 1,
+      "detail": {
+        "gold_list": [
+          "gene CYP27B1",
+          "CYP27B1",
+          "gene CYP27B1"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "573009a004bcaa1900d7704f",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Rhine became borders with Francia in the 5th century.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "6th century",
+          "6th century"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "572a0ce11d046914007796fe",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Listeria monocytogenes",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "Salmonella",
+          "Salmonella",
+          "Salmonella"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "572fd264b2c2fd14005684ac",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Speaker of the House of Commons.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "Supreme Court of the United Kingdom",
+          "Supreme Court of the United Kingdom",
+          "the Supreme Court"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "5729e6313f37b319004785a9",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Miocene.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "the mid-Eocene",
+          "the mid-Eocene",
+          "mid-Eocene"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "57339c16d058e614000b5ec7",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The summer theater was in operation for 10 years.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "1870 to 1939",
+          "1870 to 1939",
+          "1870 to 1939"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "573027d6a23a5019007fcea0",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The INF regime did not harbor anyone prior to 9/11.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "Osama bin Laden",
+          "Osama bin Laden",
+          "Osama bin Laden"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "5726487b5951b619008f6ee0",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Israel",
+      "score": 1,
+      "detail": {
+        "gold_list": [
+          "Israel",
+          "Israel",
+          "Israelis",
+          "the Israelis"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "572fda6fb2c2fd140056850d",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Hare quota",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "quotient",
+          "quotient",
+          "quotient"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "5728d63c4b864d1900164f1c",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Satyagraha",
+      "score": 1,
+      "detail": {
+        "gold_list": [
+          "doctrine of Satyagraha",
+          "Satyagraha",
+          "Satyagraha",
+          "Satyagraha",
+          "Satyagraha"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "57274ca8dd62a815002e9aa5",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Niger",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "India",
+          "India",
+          "India"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "57300bf504bcaa1900d7708b",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Warsaw Pact war plan was a collective military strategy developed by the Soviet Union and its Eastern European allies during the Cold War. Its primary objective was to defend the Eastern Bloc against potential NATO aggression, with a key feature being the doctrine of \"fraternal assistance,\" which justified a swift and massive invasion of any member state that experienced a political shift away from communism. The plan emphasized rapid mobilization and overwhelming force, including the use of nuclear weapons if necessary, to maintain Soviet control over Eastern Europe.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "Seven Days to the River Rhine",
+          "plan for an invasion of Western Europe",
+          "plan for an invasion of Western Europe during the Cold War"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "572949306aef051400154c6b",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Third Assessment Report was published in 2001.",
+      "score": 1,
+      "detail": {
+        "gold_list": [
+          "2001",
+          "2001",
+          "2001"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "572945b11d04691400779231",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The 2001 IPCC report was conservative and underestimated the rate of warming that has since been observed.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "actual temperature rise was near the top end of the range given",
+          "temperature rise was near the top end of the range given",
+          "near the top end of the range given by IPCC's 2001 projection"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "573330444776f4190066075b",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "John Paul II celebrated Mass in Warsaw at Victory Square.",
+      "score": 1,
+      "detail": {
+        "gold_list": [
+          "Victory Square",
+          "Victory Square",
+          "1979"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "573028fa04bcaa1900d77287",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A stable democratic government in Afghanistan.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "justice and prosperity",
+          "justice and prosperity",
+          "justice and prosperity"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "573399b54776f41900660e66",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Many improvements.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "solid economic growth",
+          "solid economic growth",
+          "economic growth"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "573792ee1c456719005744ba",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The new electromagnetic theory was created by using the concept of the ether and the idea that light is an electromagnetic wave.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "quantum mechanics",
+          "quantum mechanics",
+          "quantum mechanics",
+          "the work of leading theoretical physicists"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "572a058aaf94a219006aa755",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B cells",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "dendritic cells, keratinocytes and macrophages",
+          "dendritic cells, keratinocytes and macrophages",
+          "dendritic cells"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "572754fff1498d1400e8f664",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A certificate of occupancy.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "an occupancy permit",
+          "occupancy permit",
+          "an occupancy permit"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "572695285951b619008f774e",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A joint venture",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "Conciliation Committee",
+          "a \"Conciliation Committee\"",
+          "a \"Conciliation Committee\"",
+          "a \"Conciliation Committee\""
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "57302a3aa23a5019007fced2",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Sharia law.",
+      "score": 1,
+      "detail": {
+        "gold_list": [
+          "Sharia",
+          "an idealized and systematized version of conservative tribal village customs",
+          "Sharia"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "5729a3716aef05140015506e",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The sound of bells",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "the movements of nature",
+          "the movements of nature, movements of free and unequal durations",
+          "the movements of nature, movements of free and unequal durations",
+          "the movements of nature, movements of free and unequal durations"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "572fd264b2c2fd14005684ab",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The minimum amount of time before a bill can go into law is 0 days.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "a 4-week period",
+          "a 4-week period",
+          "4-week period"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "572a04d51d046914007796cf",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Adenosine",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "melatonin",
+          "melatonin",
+          "melatonin"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "572a13841d0469140077973b",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The question is unanswerable as it is incomplete.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "Kuznets curve hypothesis",
+          "Kuznets curve hypothesis",
+          "Kuznets curve hypothesis"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "5730bb522461fd1900a9d013",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The exact number is unknown, but historians estimate that approximately 12.5 million Africans were forcibly transported across the Atlantic Ocean during the transatlantic slave trade between the 16th and 19th centuries. Of these, about 10.7 million survived the journey and were sold into slavery in the Americas, including the territory that would become the United States.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "12 to 15 million",
+          "12 to 15 million",
+          "12 to 15 million",
+          "12 to 15 million",
+          "12 to 15 million"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "573796edc3c5551400e51f36",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Nuclear forces are transmitted by mesons.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "as gluons",
+          "as gluons",
+          "as gluons",
+          "as gluons"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "572fdb17b2c2fd1400568521",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Act that sets the term for judging the boundaries of sanity to which individuals wishing to sit on the SP must adhere is the **Insanity Defense Reform Act of 1984**.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "Mental Health (Care and Treatment) (Scotland) Act 2003",
+          "Mental Health (Care and Treatment) (Scotland) Act 2003",
+          "Mental Health (Care and Treatment) (Scotland) Act 2003"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "571cb010dd7acb1400e4c12c",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Carotenoids",
+      "score": 1,
+      "detail": {
+        "gold_list": [
+          "Carotenoids",
+          "Carotenoids",
+          "Carotenoids",
+          "Carotenoids",
+          "Carotenoids"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "57339ad74776f41900660e87",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Warsaw hosts many embassies.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "events and festivals",
+          "events and festivals",
+          "events and festivals"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "5729d44b1d04691400779614",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The audio does not provide an answer to this question.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "over 60 percent",
+          "over 60 percent",
+          "over 60 percent"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "572a0ce11d046914007796ff",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Plasmodium",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "Plasmodium falciparum",
+          "Plasmodium falciparum",
+          "Plasmodium falciparum"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "573368e54776f41900660a56",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Huta Forest",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "Kabaty",
+          "Kabaty Forest",
+          "Kabaty"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "572a10cd6aef051400155223",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Hydrophobic amino acids",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "hydrophilic amino acids",
+          "hydrophilic",
+          "hydrophilic amino acids"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "572659535951b619008f7041",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Compacts",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "power steering",
+          "air conditioning",
+          "air conditioning",
+          "power windows"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "572759665951b619008f8886",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Pierce v. Society of Sisters, 268 U.S. 510 (1925)",
+      "score": 1,
+      "detail": {
+        "gold_list": [
+          "268 U.S. 510",
+          "268 U.S. 510",
+          "268 U.S. 510 (1925)"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "572944e03f37b319004781e4",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "One",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "Ten",
+          "14",
+          "Ten"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "5737a5931c456719005744e7",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Nowhere.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "toward the center of the curving path",
+          "center of the curving path.",
+          "the center of the curving path",
+          "directed toward the center of the curving path"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "572a13841d0469140077973c",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Initial increase",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "first increases",
+          "inequality first increases",
+          "increases"
+        ],
+        "weak_signal": true
+      }
+    },
+    {
+      "item_id": "5729edd56aef051400155113",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "1751",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "1542",
+          "1542",
+          "1542"
+        ],
+        "weak_signal": true
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.2,
+    "ci95": [
+      0.1,
+      0.3
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset heysquad --backbone qwen3-omni-30b-gguf --split test --n 60",
+  "elapsed_s": 425.2
+}

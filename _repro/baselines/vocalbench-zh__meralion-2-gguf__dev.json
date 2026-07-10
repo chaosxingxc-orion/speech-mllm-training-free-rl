@@ -1,0 +1,433 @@
+{
+  "stage": "1-directional",
+  "dataset": "vocalbench-zh",
+  "k_type": "K8/K6 (legacy)",
+  "backbone": "meralion-2-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/baselines-vocalbench-zh/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "vocalbench-zh#0",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "四只乌龟，每只速度是袋鼠的一半，需要多少小时才能完成？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#1",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "阿拉斯加大地的征服者是美国。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#2",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "安尼是位于加拿大魁北克省的城市。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#3",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "有效利用各种资源以实现共同预期目标的活动。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#4",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "清朝第十三代皇帝乾隆皇帝。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#5",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "红血球",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#6",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "是的。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#7",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "2014年",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#8",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "The story of \"圣诞颂歌\" was written by **.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#9",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "2019年",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#10",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "三十二个一元硬币、九十六个五角硬币、一百二十个一元硬币。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#11",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "骨骼肌。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#12",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "植物分类系统中属于植物纲。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#13",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "小齐有二十七只小狗，三分之一的小狗是博美犬，三分之一的博美犬是雌性的，小齐有多少只雌性博美犬？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#14",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "100",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#15",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "导演是史蒂文·斯皮尔伯格。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#16",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "12条",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#17",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "请告诉我您想让我总结的内容。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#18",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "氢。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#19",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "The source of the sound is the \"inner ear\".",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#20",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "克里斯蒂安·多普勒是德国人。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#21",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "美国银行的主分行在哪里？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#22",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "大美山川光耀川剧是在哪个市演出的？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#23",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "游泳运动员。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#24",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "北京。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#25",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "马丽莲梦露主演了《七年之痒》",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#26",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "嫦娥五号探测器于2020年12月17日在中国哪个着陆场着陆？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#27",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "杠杆",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#28",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "维多利亚女王如何影响了苏格兰安东尼领导的妇女选举权运动？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#29",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "汉城",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#30",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "你想要什么？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#31",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "The song is called \"The Sound of Silence\".",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#32",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "二战结束后。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#33",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "胸廓和肩胛骨。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#34",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "是的。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#35",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "Hydrogen.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#36",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "清代。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#37",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "双全",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#38",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "水牌是在唐代由杜诗发明的。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#39",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "The provided text is a snippet of a conversation and does not contain any information that can be used to answer a question.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.05,
+    "ci95": [
+      0.0,
+      0.125
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset vocalbench-zh --backbone meralion-2-gguf --split dev --n 40",
+  "elapsed_s": 17.2
+}

@@ -1,0 +1,633 @@
+{
+  "stage": "1-directional",
+  "dataset": "uro-bench-GaokaoEval",
+  "k_type": "K8",
+  "backbone": "meralion-2-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/uro-bench-GaokaoEval/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": 37,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. In a restaurant\nB. At a bookstore\nC. In a supermarket.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. In a restaurant",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 128,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. On Thursday\nB. On Friday\nC. On Saturday.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. On Friday",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 80,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. English\nB. Physics\nC. Math.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. English",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 109,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Near a train station\nB. Near an airport\nC. Near a highway.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Near a highway.",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 59,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Coffee\nB. Orange juice\nC. Soda.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Orange juice",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 206,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Go shopping\nB. Watch a game\nC. Feed the bulls.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Watch a game",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 256,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Buying a book\nB. Chatting with a friend\nC. Asking the way.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Buying a book",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 2,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. 5 p.m\nB. 11 a.m\nC. 6 p.m.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. 6 p.m.",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 267,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. In an office\nB. At a restaurant\nC. At home.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. At home.",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 117,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Go shopping\nB. Camp in the mountain\nC. Go hiking.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Go hiking.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 166,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Mary\nB. Jack\nC. Jane.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Jane",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 201,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Brown\nB. Black\nC. Blue.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Brown",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 258,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. A dress\nB. A sale\nC. Some shoes.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Some shoes.",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 71,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. John Smith\nB. Chris Watson\nC. Sarah White.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Sarah White.",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 203,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Boss and secretary\nB. Taxi driver and passenger\nC. Driver and conductor.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Taxi driver and passenger",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 119,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. It’s amusing\nB. It’s exciting\nC. It’s disappointing.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. It’s disappointing.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 115,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Nothing\nB. A computer\nC. A cellphone.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Nothing",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 250,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Uninteresting\nB. Very interesting\nC. Too long.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Uninteresting",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 248,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. In a library\nB. In a bookstore\nC. In a classroom.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. In a bookstore",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 60,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. At a restaurant\nB. In the street\nC. At home.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. At home.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 291,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. It’s amusing\nB. It’s exciting\nC. It’s disappointing.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. It’s disappointing.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 23,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. In a food store\nB. In a restaurant\nC. At a vegetable market.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. In a restaurant.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 174,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Fruit\nB. Eggs\nC. Pancakes.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Pancakes.",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 66,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Sweet\nB. Good\nC. Expensive.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Expensive.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 211,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. This afternoon\nB. Tomorrow morning\nC. Tomorrow afternoon.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. tomorrow afternoon",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 162,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Her brother's office\nB. Her own house\nC. The market.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. The market.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 233,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Eat out\nB. Cook dinner\nC. Buy vegetables.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Eat out",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 157,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. A ball\nB. A boy\nC. A hat\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. ...",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 79,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Tired\nB. Hungry\nC. Disappointed.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Tired",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 70,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Rainy\nB. Windy\nC. Sunny\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Rainy",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 127,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Learning communication\nB. Computer science\nC. International trade.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Computer science",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 259,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. The man’s watch\nB. The man’s brother\nC. The man’s birthday.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. The man’s watch",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 223,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. At home\nB. In a hospital\nC. In a hotel.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. At home",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 297,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Some drinks\nB. Some fruit\nC. Some desserts.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. some desserts.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 292,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. The color\nB. The price\nC. The material.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. The color",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 93,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. This Saturday\nB. Next Friday\nC. Next Tuesday.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Next Tuesday.",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 58,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. The woman’s father\nB. The man’s uncle\nC. The man’s father.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. The man’s father.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 173,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Later today\nB. Tomorrow\nC. Right now.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Right now.",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 213,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Having a swim\nB. Taking a bath\nC. Reading an email.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Reading an email.",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 288,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Rainy\nB. Snowy\nC. Sunny.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Sunny.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 170,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. At home\nB. At the man’s office\nC. At a clinic\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. At a clinic",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 236,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. A pizza\nB. A burger\nC. Some dessert.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. ...",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 251,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. On February 5th\nB. On February 10th\nC. On February 15th.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. On February 15th.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 184,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Change it\nB. Buy it\nC. Reject it.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Buy it",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 196,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Excited\nB. Surprised\nC. Annoyed.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Excited",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 222,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Classmates\nB. Colleagues.(同事)\nC. Teacher and student.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Teacher and student.",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 78,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Their living place\nB. Their children\nC. Their hobbies.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Their living place",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 151,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Walking\nB. Driving\nC. Running.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Walking",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 290,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Father and daughter\nB. Friends\nC. husband and wife.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. husband and wife.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 87,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Husband and wife\nB. Waiter and customer\nC. Doctor and patient\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Waiter and customer",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 181,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. The man’s mother\nB. The man’s boss\nC. The man’s colleague.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. The man’s colleague.",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 43,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. In a restaurant\nB. In a hospital\nC. In a shop.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. In a shop.",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": 47,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Have supper\nB. Set the table\nC. Watch the news.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Have supper",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 205,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. At 6 o'clock\nB. At 8 o'clock\nC. At 7 o'clock.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. At 7 o'clock.",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 197,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. In a classroom\nB. In a restaurant\nC. In a bookstore.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. In a bookstore.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 21,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Blue\nB. Pink\nC. Green.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Green.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 159,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Buying a TV\nB. TV channel\nC. Sports meet.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Sports meet.",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 76,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Sunny\nB. Windy\nC. Rainy.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Sunny",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": 225,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Call a taxi\nB. Catch a bus\nC. Take a plane.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Call a taxi",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": 104,
+      "instr": "Listen to the audio and answer the multiple-choice question.\n(question is spoken in the audio)\nOptions:\nA. Over forty\nB. Less than forty\nC. Zero.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Zero.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.5833,
+    "ci95": [
+      0.45,
+      0.7
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset uro-bench-GaokaoEval --backbone meralion-2-gguf --split test --n 60",
+  "elapsed_s": 26.0
+}

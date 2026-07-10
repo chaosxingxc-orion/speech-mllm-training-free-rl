@@ -1,0 +1,393 @@
+{
+  "stage": "1-directional",
+  "dataset": "voicebench-sd-qa",
+  "k_type": "K1",
+  "backbone": "meralion-2-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/voicebench-sd-qa/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "sd-qa/nzl#183",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "There are about 30 species of turtle.",
+      "score": 0,
+      "detail": {
+        "gold": "356 known"
+      }
+    },
+    {
+      "item_id": "sd-qa/aus#421",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The Archbishop of Westminster is Cardinal Vincent Nichols.",
+      "score": 1,
+      "detail": {
+        "gold": "Cardinal Vincent Nichols"
+      }
+    },
+    {
+      "item_id": "sd-qa/ind_n#70",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The United States.",
+      "score": 0,
+      "detail": {
+        "gold": "Soviet Union"
+      }
+    },
+    {
+      "item_id": "sd-qa/zaf#63",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Joko Widodo",
+      "score": 1,
+      "detail": {
+        "gold": "Joko Widodo"
+      }
+    },
+    {
+      "item_id": "sd-qa/kenya#258",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The Guido of Arezzo died in 1499.",
+      "score": 0,
+      "detail": {
+        "gold": "991/992 – after 1033"
+      }
+    },
+    {
+      "item_id": "sd-qa/nga#289",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "1998",
+      "score": 0,
+      "detail": {
+        "gold": "1939"
+      }
+    },
+    {
+      "item_id": "sd-qa/irl#210",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Ford first produced the Mustang in 1964.",
+      "score": 1,
+      "detail": {
+        "gold": "1964"
+      }
+    },
+    {
+      "item_id": "sd-qa/nga#360",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The first ruler in the Palaiologos dynasty of the Byzantine Empire was Constantine XI Palaiologos.",
+      "score": 0,
+      "detail": {
+        "gold": "Michael VIII Palaiologos"
+      }
+    },
+    {
+      "item_id": "sd-qa/ind_s#215",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Overproduction of goods.",
+      "score": 0,
+      "detail": {
+        "gold": "an initial stock market crash that triggered a \"panic sell-off\" of assets"
+      }
+    },
+    {
+      "item_id": "sd-qa/kenya#161",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "1776",
+      "score": 0,
+      "detail": {
+        "gold": "8 December 1991"
+      }
+    },
+    {
+      "item_id": "sd-qa/nga#496",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Al-Qaeda",
+      "score": 1,
+      "detail": {
+        "gold": "al-Qaeda"
+      }
+    },
+    {
+      "item_id": "sd-qa/gbr#241",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "1986",
+      "score": 0,
+      "detail": {
+        "gold": "October 12, 1999"
+      }
+    },
+    {
+      "item_id": "sd-qa/nga#217",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "1918.",
+      "score": 0,
+      "detail": {
+        "gold": "1924"
+      }
+    },
+    {
+      "item_id": "sd-qa/phl#66",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The TV show E.R. first aired in 1994.",
+      "score": 0,
+      "detail": {
+        "gold": "September 19, 1994"
+      }
+    },
+    {
+      "item_id": "sd-qa/ind_s#288",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Many.",
+      "score": 0,
+      "detail": {
+        "gold": "Nine"
+      }
+    },
+    {
+      "item_id": "sd-qa/kenya#339",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The museum opened in 2018.",
+      "score": 0,
+      "detail": {
+        "gold": "1 February 1935"
+      }
+    },
+    {
+      "item_id": "sd-qa/gbr#410",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Boeing was founded in 1916.",
+      "score": 0,
+      "detail": {
+        "gold": "July 15, 1916"
+      }
+    },
+    {
+      "item_id": "sd-qa/kenya#171",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The first opera written is believed to be \"Dafne\" by Jacopo Peri.",
+      "score": 0,
+      "detail": {
+        "gold": "1597"
+      }
+    },
+    {
+      "item_id": "sd-qa/gbr#123",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "1957",
+      "score": 0,
+      "detail": {
+        "gold": "1997"
+      }
+    },
+    {
+      "item_id": "sd-qa/nzl#100",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Theremostats work by sensing the temperature and adjusting the flow of coolant to maintain a desired temperature.",
+      "score": 0,
+      "detail": {
+        "gold": "exerts control by switching heating or cooling devices on or off, or by regulating the flow of a heat transfer fluid as needed, to maintain the correct temperature"
+      }
+    },
+    {
+      "item_id": "sd-qa/aus#510",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Guglielmo Marconi",
+      "score": 1,
+      "detail": {
+        "gold": "Guglielmo Marconi"
+      }
+    },
+    {
+      "item_id": "sd-qa/ind_s#196",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Where did ballet begin?",
+      "score": 0,
+      "detail": {
+        "gold": "Italy"
+      }
+    },
+    {
+      "item_id": "sd-qa/zaf#538",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "When did Jfk make his famous speech?",
+      "score": 0,
+      "detail": {
+        "gold": "January 20, 1961"
+      }
+    },
+    {
+      "item_id": "sd-qa/phl#178",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "100,000 Hz",
+      "score": 0,
+      "detail": {
+        "gold": "20,000Hz"
+      }
+    },
+    {
+      "item_id": "sd-qa/kenya#219",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The story of American Horror Story Murder House takes place in a house in Los Angeles.",
+      "score": 0,
+      "detail": {
+        "gold": "Los Angeles, California"
+      }
+    },
+    {
+      "item_id": "sd-qa/zaf#498",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The question is asking about the development of the first bulletin board system of a computer server.",
+      "score": 0,
+      "detail": {
+        "gold": "Ward Christensen and Randy Suess"
+      }
+    },
+    {
+      "item_id": "sd-qa/ind_n#447",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The Peloponnesian War was won by the Athenians.",
+      "score": 0,
+      "detail": {
+        "gold": "Sparta"
+      }
+    },
+    {
+      "item_id": "sd-qa/kenya#443",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Mike Smith",
+      "score": 0,
+      "detail": {
+        "gold": "Stephen Douglas Kerr"
+      }
+    },
+    {
+      "item_id": "sd-qa/usa#146",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "When was the KHOH TV station established?",
+      "score": 0,
+      "detail": {
+        "gold": "December 15, 1952"
+      }
+    },
+    {
+      "item_id": "sd-qa/phl#249",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "H.D.T.P. stands for High-Density Transport Platform.",
+      "score": 0,
+      "detail": {
+        "gold": "Hypertext Transfer Protocol Secure"
+      }
+    },
+    {
+      "item_id": "sd-qa/nga#328",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The largest city in Cabo Verde is Praia.",
+      "score": 0,
+      "detail": {
+        "gold": "Peshawar"
+      }
+    },
+    {
+      "item_id": "sd-qa/ind_s#497",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Florida.",
+      "score": 0,
+      "detail": {
+        "gold": "1845"
+      }
+    },
+    {
+      "item_id": "sd-qa/irl#91",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "1999",
+      "score": 0,
+      "detail": {
+        "gold": "March 10, 1997"
+      }
+    },
+    {
+      "item_id": "sd-qa/irl#548",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "April 4, 1965"
+      }
+    },
+    {
+      "item_id": "sd-qa/gbr#452",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The first known example of a plow was developed in Mesopotamia.",
+      "score": 0,
+      "detail": {
+        "gold": "Mesopotamia and the Indus valley civilization"
+      }
+    },
+    {
+      "item_id": "sd-qa/ind_n#426",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The deepest point in Lake Bicol is 1,200 feet.",
+      "score": 0,
+      "detail": {
+        "gold": "1,642m"
+      }
+    },
+    {
+      "item_id": "sd-qa/gbr#296",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The Isle of Wight Railway was first constructed in 1846.",
+      "score": 0,
+      "detail": {
+        "gold": "1864"
+      }
+    },
+    {
+      "item_id": "sd-qa/ind_n#243",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The AMC Hornet was out of production in 1977.",
+      "score": 1,
+      "detail": {
+        "gold": "1977"
+      }
+    },
+    {
+      "item_id": "sd-qa/irl#179",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The origin of dialectics is from ancient Greece.",
+      "score": 0,
+      "detail": {
+        "gold": "Greek"
+      }
+    },
+    {
+      "item_id": "sd-qa/ind_s#245",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Clemens Wenzel Napolitano was born on 1980-01-01.",
+      "score": 0,
+      "detail": {
+        "gold": "15 May 1773"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.15,
+    "ci95": [
+      0.05,
+      0.275
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset voicebench-sd-qa --backbone meralion-2-gguf --split dev --n 40",
+  "elapsed_s": 15.0
+}

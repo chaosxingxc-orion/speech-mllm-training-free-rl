@@ -1,0 +1,573 @@
+{
+  "stage": "1-directional",
+  "dataset": "audiocaps-qa",
+  "k_type": "K8",
+  "backbone": "meralion-2-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/audiocaps-qa/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "row4",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the question?",
+      "score": 0,
+      "detail": {
+        "gold": "No, it features pop music."
+      }
+    },
+    {
+      "item_id": "row15",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "There are two people speaking in the audio."
+      }
+    },
+    {
+      "item_id": "row16",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Continuous snoring."
+      }
+    },
+    {
+      "item_id": "row18",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A natural or outdoor environment, likely a forest, stream, or park."
+      }
+    },
+    {
+      "item_id": "row22",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A bathroom or kitchen environment is likely being recorded in the audio clip."
+      }
+    },
+    {
+      "item_id": "row25",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "We can hear sounds of dogs and birds."
+      }
+    },
+    {
+      "item_id": "row36",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A sink or shower drain is the likely source of the sounds described in the audio recording."
+      }
+    },
+    {
+      "item_id": "row41",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A graduation ceremony or a motivational conference."
+      }
+    },
+    {
+      "item_id": "row44",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The bus engine sequence of actions is driving, slowing down, and then accelerating."
+      }
+    },
+    {
+      "item_id": "row49",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 1,
+      "detail": {
+        "gold": "Yes."
+      }
+    },
+    {
+      "item_id": "row50",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A train."
+      }
+    },
+    {
+      "item_id": "row55",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A chaotic and noisy family environment, likely a home or a playground, where children are playing and interacting with each other."
+      }
+    },
+    {
+      "item_id": "row65",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A motorcycle or a motor boat is likely to produce the loud vibrating and revving sounds described in the caption."
+      }
+    },
+    {
+      "item_id": "row74",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "No, the man is not speaking in English."
+      }
+    },
+    {
+      "item_id": "row77",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A dog is likely playing with or trying to get a plastic object, such as a toy or a piece of packaging, that is making the rattling and clanking sounds against a hard surface."
+      }
+    },
+    {
+      "item_id": "row78",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A motorcycle racing or stunt event is likely being recorded in the audio clip."
+      }
+    },
+    {
+      "item_id": "row85",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The industrial or mechanical process being recorded is likely a paint spraying or coating application process."
+      }
+    },
+    {
+      "item_id": "row86",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the question?",
+      "score": 0,
+      "detail": {
+        "gold": "The sound being made by the bell is loud and rapid."
+      }
+    },
+    {
+      "item_id": "row88",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A rain shower."
+      }
+    },
+    {
+      "item_id": "row90",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The primary sound effect present in the audio recording is the crumpling paper noise, and the speaker is a female."
+      }
+    },
+    {
+      "item_id": "row100",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The sequence of events in the audio recording is: the engine revving, followed by powering down."
+      }
+    },
+    {
+      "item_id": "row102",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "No."
+      }
+    },
+    {
+      "item_id": "row108",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A wharf."
+      }
+    },
+    {
+      "item_id": "row121",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "No, the baby is crying."
+      }
+    },
+    {
+      "item_id": "row122",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The speech comes first."
+      }
+    },
+    {
+      "item_id": "row124",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Listen to the spoken question and answer with a short answer only.",
+      "score": 0,
+      "detail": {
+        "gold": "A heavy machinery or industrial equipment, such as a crane, excavator, or bulldozer, is likely being recorded in this audio clip."
+      }
+    },
+    {
+      "item_id": "row132",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A truck or a large vehicle, likely a semi-truck or an 18-wheeler."
+      }
+    },
+    {
+      "item_id": "row142",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the question?",
+      "score": 0,
+      "detail": {
+        "gold": "A submarine communication device or a patient monitor is likely being used in the audio recording."
+      }
+    },
+    {
+      "item_id": "row145",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The woman is frying some food while talking."
+      }
+    },
+    {
+      "item_id": "row146",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "No, we can hear some engine sounds."
+      }
+    },
+    {
+      "item_id": "row148",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "On a farm or in the countryside."
+      }
+    },
+    {
+      "item_id": "row152",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A sound effect or a Foley recording."
+      }
+    },
+    {
+      "item_id": "row154",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The kid's crying is likely caused by frustration or disappointment due to the computer mouse clicks not working as expected."
+      }
+    },
+    {
+      "item_id": "row156",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A metalworking or fabrication activity, such as welding or machining, is likely being recorded in the audio clip."
+      }
+    },
+    {
+      "item_id": "row162",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A peaceful lake or riverbank is likely depicted in this audio recording."
+      }
+    },
+    {
+      "item_id": "row163",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Yes, someone is speaking from a distance."
+      }
+    },
+    {
+      "item_id": "row165",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The sound being recorded in the audio clip is a toilet flushing."
+      }
+    },
+    {
+      "item_id": "row169",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The industrial or mechanical process being recorded is likely a paint spraying or coating application process."
+      }
+    },
+    {
+      "item_id": "row177",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the question?",
+      "score": 0,
+      "detail": {
+        "gold": "The woman in the audio recording is likely frying some food while talking."
+      }
+    },
+    {
+      "item_id": "row185",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "No, the man only spoken one word."
+      }
+    },
+    {
+      "item_id": "row205",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A bell ringing."
+      }
+    },
+    {
+      "item_id": "row220",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The man talking in the audio recording is likely a driver, possibly a truck driver or a delivery person, as the clicking sound and car engine switching gears suggest he is driving a vehicle."
+      }
+    },
+    {
+      "item_id": "row221",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The man is speaking and whistling in the audio recording."
+      }
+    },
+    {
+      "item_id": "row228",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Roosters and hens, a dog, and a man are present in the audio recording."
+      }
+    },
+    {
+      "item_id": "row233",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Listen to the spoken question and answer with a short answer only.",
+      "score": 0,
+      "detail": {
+        "gold": "This is likely to be a field recording from a cargo or a submarine."
+      }
+    },
+    {
+      "item_id": "row250",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the question?",
+      "score": 0,
+      "detail": {
+        "gold": "We can hear a heartbeat sound."
+      }
+    },
+    {
+      "item_id": "row255",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the question?",
+      "score": 0,
+      "detail": {
+        "gold": "The genre of the song is Electronic Hip-Hop."
+      }
+    },
+    {
+      "item_id": "row267",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "An engine running."
+      }
+    },
+    {
+      "item_id": "row270",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The sequence of sounds in the audio recording is a short spray followed by a louder longer spray."
+      }
+    },
+    {
+      "item_id": "row278",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 1,
+      "detail": {
+        "gold": "Yes."
+      }
+    },
+    {
+      "item_id": "row284",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Yes, someone is speaking at the end of the recording."
+      }
+    },
+    {
+      "item_id": "row291",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the question?",
+      "score": 0,
+      "detail": {
+        "gold": "Plastic wrapping or packaging material."
+      }
+    },
+    {
+      "item_id": "row292",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Rainy."
+      }
+    },
+    {
+      "item_id": "row293",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "No, all that can be heard is the sound of the engine."
+      }
+    },
+    {
+      "item_id": "row299",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The audio recording is likely to be a comedy or a humorous clip."
+      }
+    },
+    {
+      "item_id": "row301",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A violent conflict or battle, such as a war or a mass shooting, is likely depicted in the audio recording."
+      }
+    },
+    {
+      "item_id": "row302",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the question?",
+      "score": 0,
+      "detail": {
+        "gold": "The likely purpose of the audio recording is a casual conversation or a social gathering, possibly a phone call or a video chat."
+      }
+    },
+    {
+      "item_id": "row307",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The water is flowing through a pipe."
+      }
+    },
+    {
+      "item_id": "row308",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Meow.",
+      "score": 0,
+      "detail": {
+        "gold": "No, a man is mimicking a cat's meow."
+      }
+    },
+    {
+      "item_id": "row311",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Rainy."
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.0333,
+    "ci95": [
+      0.0,
+      0.0833
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset audiocaps-qa --backbone meralion-2-gguf --split test --n 60",
+  "elapsed_s": 20.7
+}

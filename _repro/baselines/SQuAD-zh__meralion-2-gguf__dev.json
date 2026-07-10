@@ -1,0 +1,433 @@
+{
+  "stage": "1-directional",
+  "dataset": "SQuAD-zh",
+  "k_type": "K8/K6 (legacy)",
+  "backbone": "meralion-2-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/baselines-SQuAD-zh/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "SQuAD-zh#0",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "请问有几个品种特征的狗比纯种狗活多久？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#1",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "首席法官主持参议院。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#2",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "北京什么时候同意从台湾提供援助？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#3",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "警示灯",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#4",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "现代建筑师使用的哲学是后结构主义。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#5",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "请问名单上有多少条？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#6",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "在轴心时代，唯物主义在世界的哪一部分发展？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#7",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "地震发生在四川南部六点一级地震。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#8",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "印度尼西亚政府拥有四所公立理工学院，除此之外还有数百所其他的学院是由私人或其他机构拥有的。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#9",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "印度佛教史可分为五个时期：早期佛教、中后期佛教、晚期佛教、中后期佛教、末期佛教。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#10",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "重轨交通项目。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#11",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "中国政府最初受到赞扬的原因是应对地震的反应。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#12",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "在南欧国家中，西班牙和意大利的山脉中可以找到较凉爽的气候。此外，西班牙北海岸的大西洋气候更加湿润。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#13",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "2013年美国偶像选手在偶像后的职业生涯中仅在美国就积累了超过五千九百万张专辑、12亿首单曲和数字曲目的下载量。请问到2013年为止美国偶像的参赛者们发布了多少张专辑？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#14",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "东德武装部队叫“东德人民军”。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#15",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "二零零八年六月一日。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#16",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "该国西南部沿海平原，主要水系是库伊鲁-简尼亚里河。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#17",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "100",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#18",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "二零零八年，2008年，2008年，2008年，2008年，2008年，2008年，2008年，2008年，2008年，2008年，2008年，2008年，2008年，2008年，2008年，2008年，2008年，2008年，2008年，2008年，2008年，2008年，2008年，2008年，2008年，2008年，2008年，2008年，2008年，2008年，2008年，2008年，200",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#19",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "日本。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#20",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "无国界记者。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#21",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "新佛教。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#22",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "铜升值了。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#23",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "肯尼亚什么时候独立了？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#24",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "请您提供问题。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#25",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "英国广播公司在全英国的收视率是多少？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#26",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "1600年",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#27",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "9世纪。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#28",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "伊拉克语。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#29",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "路灯有助于减少城市犯罪。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#30",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "估计超过七百五十亿美元。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#31",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "经文是秘密传的。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#32",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "一百八十四人。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#33",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "萨斯。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#34",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "冰岛两次获得最高级别",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#35",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "请您提供问题。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#36",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "加拿大武装部队的最新名字是加拿大陆军。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#37",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "一个非政府组织，刚果人权观察组织，说选举的特点是投票率非常低，欺诈和违规行为。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#38",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "纽约市警察局的警官被称为“ NYPD”。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "SQuAD-zh#39",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "他们对受损建筑物进行了详细的初步调查。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.25,
+    "ci95": [
+      0.125,
+      0.4
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset SQuAD-zh --backbone meralion-2-gguf --split dev --n 40",
+  "elapsed_s": 15.7
+}

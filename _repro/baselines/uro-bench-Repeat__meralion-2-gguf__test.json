@@ -1,0 +1,693 @@
+{
+  "stage": "1-directional",
+  "dataset": "uro-bench-Repeat",
+  "k_type": "K1",
+  "backbone": "meralion-2-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/uro-bench-Repeat/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": 112,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.0,
+        "ref": "the olympic games are held every four years bringing together athletes from around the world to compete in a wide range of sports",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 244,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.0,
+        "ref": "being mindful of your mental health and seeking help when needed can improve emotional resilience and overall well being",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 109,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.2307692307692308,
+        "ref": "the arctic ocean is the smallest and shallowest of the world s oceans",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 2,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 2.5714285714285716,
+        "ref": "i love learning new things every day",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 68,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.0588235294117647,
+        "ref": "it s not the years in your life that count it s the life in your years",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 214,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.0,
+        "ref": "autonomous drones are being used for various tasks such as package delivery surveying land and even performing search and rescue missions",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 145,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.0,
+        "ref": "the eiffel tower was originally criticized by some of the top artists and intellectuals of paris when it was first constructed in 1889",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 164,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0357142857142857,
+      "detail": {
+        "wer": 0.9642857142857143,
+        "ref": "the great barrier reef located off the coast of australia is the world s largest coral reef system and is home to a diverse range of marine species",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 251,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.052631578947368474,
+      "detail": {
+        "wer": 0.9473684210526315,
+        "ref": "maintaining a positive attitude and practicing gratitude can have a powerful impact on mental health and overall well being",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 85,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.09523809523809523,
+      "detail": {
+        "wer": 0.9047619047619048,
+        "ref": "the sahara desert is the largest hot desert in the world covering an area roughly the size of the united states",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 35,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.5454545454545454,
+        "ref": "life is what happens when you re busy making other plans",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 174,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.0,
+        "ref": "national parks are protected areas of land that conserve wildlife and natural resources providing spaces for outdoor recreation and education",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 153,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.0,
+        "ref": "the mediterranean sea is bordered by three continents europe asia and africa making it a hub for trade culture and history",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 192,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.04761904761904767,
+      "detail": {
+        "wer": 0.9523809523809523,
+        "ref": "deep learning a more advanced form of machine learning uses neural networks to simulate the way the human brain processes information",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 218,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.0588235294117647,
+        "ref": "sleep is important for overall health as it helps with memory consolidation immune function and cell repair",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 110,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.4545454545454546,
+        "ref": "the scientific name for the northern lights is the aurora borealis",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 66,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.030303030303030276,
+      "detail": {
+        "wer": 0.9696969696969697,
+        "ref": "the purpose of life is not to be happy it is to be useful to be honorable to be compassionate to have it make some difference that you have lived and lived well",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 44,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Sometimes the smallest things take up the most room in your heart.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "sometimes the smallest things take up the most room in your heart",
+        "hyp": "sometimes the smallest things take up the most room in your heart"
+      }
+    },
+    {
+      "item_id": 108,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.5,
+        "ref": "bees communicate with each other through a series of complex dance moves",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 39,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.2142857142857142,
+        "ref": "every day may not be good but there is something good in every day",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 36,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.0,
+        "ref": "strength does not come from what you can do but from overcoming the things you once thought you couldn t",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 127,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.04166666666666663,
+      "detail": {
+        "wer": 0.9583333333333334,
+        "ref": "cricket is a bat and ball sport popular in countries like india england and australia with matches that can last up to five days",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 74,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.1333333333333333,
+        "ref": "the earth rotates on its axis once every 24 hours giving us day and night",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 248,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.045454545454545414,
+      "detail": {
+        "wer": 0.9545454545454546,
+        "ref": "limiting screen time especially before bed can improve sleep quality by reducing exposure to blue light that interferes with the sleep cycle",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 183,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.045454545454545414,
+      "detail": {
+        "wer": 0.9545454545454546,
+        "ref": "the study of sociology helps us understand the structure and dynamics of society examining how people interact and how social institutions function",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 136,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.0,
+        "ref": "the great wall of china is not just a single continuous wall but a series of walls built over several dynasties to protect china from invaders",
+        "hyp": "listen to the audio and repeat exactly what is said word for word"
+      }
+    },
+    {
+      "item_id": 62,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.5454545454545454,
+        "ref": "life is really simple but we insist on making it complicated",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 37,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.3076923076923077,
+        "ref": "the only way to do great work is to love what you do",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 21,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.3846153846153846,
+        "ref": "every day is a new beginning take a deep breath and start again",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 26,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 2.8333333333333335,
+        "ref": "nature is the art of god",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 98,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.125,
+        "ref": "an ostrich s eye is bigger than its brain making it a unique feature among birds",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 41,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.10526315789473684,
+      "detail": {
+        "wer": 0.8947368421052632,
+        "ref": "to be yourself in a world that is constantly trying to make you something else is the greatest accomplishment",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 179,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0714285714285714,
+      "detail": {
+        "wer": 0.9285714285714286,
+        "ref": "the beauty of nature can be found in the smallest details from a single leaf to a vast mountain range reminding us of the world s natural wonders",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 25,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.5454545454545454,
+        "ref": "the journey of a thousand miles begins with a single step",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 58,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.125,
+        "ref": "if you want to go fast go alone if you want to go far go together",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 212,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.040000000000000036,
+      "detail": {
+        "wer": 0.96,
+        "ref": "machine learning in healthcare is being used to predict patient outcomes suggest treatment plans and even assist in robotic surgery improving patient care and efficiency",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 249,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.0,
+        "ref": "managing chronic conditions like diabetes or hypertension with the help of a healthcare provider can prevent complications and improve quality of life",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 215,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.0,
+        "ref": "a balanced diet is crucial for maintaining good health and preventing chronic diseases like heart disease and diabetes",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 117,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.0,
+        "ref": "in baseball a perfect game occurs when a pitcher faces 27 batters and gets them all out without any reaching base",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 119,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.04761904761904767,
+      "detail": {
+        "wer": 0.9523809523809523,
+        "ref": "in ballet 'pointe' refers to a technique in which dancers perform on the tips of their toes requiring strength and flexibility",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 128,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.0,
+        "ref": "the super bowl halftime show is famous for featuring performances by some of the world s most popular musicians and artists",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 194,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.04166666666666663,
+      "detail": {
+        "wer": 0.9583333333333334,
+        "ref": "the potential of advanced technology to revolutionize various industries from healthcare and education to finance and entertainment by automating tasks and providing intelligent insights",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 70,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 2.4285714285714284,
+        "ref": "be yourself everyone else is already taken",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 169,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.04761904761904767,
+      "detail": {
+        "wer": 0.9523809523809523,
+        "ref": "a healthy ecosystem relies on the interdependence of various species with each playing a role in maintaining the balance of nature",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 205,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.040000000000000036,
+      "detail": {
+        "wer": 0.96,
+        "ref": "the use of technology in facial recognition has sparked privacy concerns as it allows for the identification of individuals in public spaces without their consent",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 178,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.040000000000000036,
+      "detail": {
+        "wer": 0.96,
+        "ref": "education systems vary from country to country but they all aim to equip students with the knowledge and skills they need to succeed in life",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 130,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.08695652173913049,
+      "detail": {
+        "wer": 0.9130434782608695,
+        "ref": "in rugby the ball is oval shaped and the sport is known for its physical intensity and unique rules compared to american football",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 76,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.4545454545454546,
+        "ref": "the speed of light is approximately 299 792 kilometers per second",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 60,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "There are no shortcuts to any place worth going.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "there are no shortcuts to any place worth going",
+        "hyp": "there are no shortcuts to any place worth going"
+      }
+    },
+    {
+      "item_id": 43,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Small steps in the right direction can turn out to be the biggest step of your life.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "small steps in the right direction can turn out to be the biggest step of your life",
+        "hyp": "small steps in the right direction can turn out to be the biggest step of your life"
+      }
+    },
+    {
+      "item_id": 150,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.0,
+        "ref": "the taj mahal located in agra india is a stunning white marble mausoleum built by mughal emperor shah jahan in memory of his wife mumtaz mahal",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 87,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.2142857142857142,
+        "ref": "the human brain contains about 86 billion neurons which are responsible for transmitting information",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 177,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.05555555555555558,
+      "detail": {
+        "wer": 0.9444444444444444,
+        "ref": "forests are essential to the health of our planet providing oxygen housing wildlife and regulating the earth's climate",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 198,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.0,
+        "ref": "machine learning is already being used in medical diagnostics where models can analyze medical images and detect diseases like cancer more accurately than some human doctors",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 5,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "It's a beautiful day to start a new project.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "it's a beautiful day to start a new project",
+        "hyp": "it's a beautiful day to start a new project"
+      }
+    },
+    {
+      "item_id": 116,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.04761904761904767,
+      "detail": {
+        "wer": 0.9523809523809523,
+        "ref": "the fifa world cup is held every four years and features 32 national teams competing for the title of world champion",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 121,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.0,
+        "ref": "the piano is a versatile instrument used in many genres of music from classical to jazz and rock",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 93,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.3076923076923077,
+        "ref": "octopuses have three hearts and two of them stop beating when they swim",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 97,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.0666666666666667,
+        "ref": "the giant panda's diet is almost entirely bamboo but it belongs to the carnivore family",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    },
+    {
+      "item_id": 80,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "score": 0.0,
+      "detail": {
+        "wer": 1.0588235294117647,
+        "ref": "lightning is hotter than the surface of the sun reaching temperatures of up to 30 000 kelvins",
+        "hyp": "listen to the audio and repeat exactly what is said word for word output only the repeated text"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.0836,
+    "ci95": [
+      0.0306,
+      0.152
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset uro-bench-Repeat --backbone meralion-2-gguf --split test --n 60",
+  "elapsed_s": 28.7
+}

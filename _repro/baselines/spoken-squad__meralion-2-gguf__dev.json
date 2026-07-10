@@ -1,0 +1,433 @@
+{
+  "stage": "1-directional",
+  "dataset": "spoken-squad",
+  "k_type": "K8/K6 (legacy)",
+  "backbone": "meralion-2-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/baselines-spoken-squad/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "spoken-squad#0",
+      "instr": "What cells are the second arm of the innate immune system?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Innate cells are the second arm of the innate immune system, acting like independent single-celled organisms that identify and eliminate pathogens.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#1",
+      "instr": "Whose pass to Jerricho Cotchery was ruled incomplete?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The pass was ruled incomplete after a replay challenge.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#2",
+      "instr": "What is the highest court in the European Union?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The European Court of Justice is the highest court in the European Union.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#3",
+      "instr": "What church is organized into conferences?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The United Methodist Church is organized into conferences.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#4",
+      "instr": "What was Luther involved in dealing with the minds in Mansfeld?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Luther was involved in a copper mining dispute with the Mansfeld counts, specifically Count Albrecht, over the control of the industry.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#5",
+      "instr": "How many original treaties establishing the EU protected fundamental rights?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "None of the original treaties establishing the European Union mentioned protection for fundamental rights.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#6",
+      "instr": "What did John Wesley originally call the experience of conversion?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "John Wesley originally called this experience the \"new birth\".",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#7",
+      "instr": "What region does use the term 'private schools' to refer to universities?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The term 'private schools' is used to refer to universities in North America.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#8",
+      "instr": "What drama from Aaron Spelling debuted on ABC in the 80s?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "\"Dynasty\" is the drama from Aaron Spelling that debuted on ABC in the 80s.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#9",
+      "instr": "What set the stage for Merits role in NSFNET\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Merit Network was formed in 1966 as the Michigan Educational Research Information Triad to explore computer networking between three of Michigan's public universities.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#10",
+      "instr": "Why would rampant violence prevent people from going to work?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Rampant violence in the area could prevent people from going to work for fear of their lives.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#11",
+      "instr": "Case complexity likelihoods provide variable probabilities of what general measure? \nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The best, worst, and average case complexity refer to three different ways of measuring the time complexity of different inputs of the same size.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#12",
+      "instr": "Since Thoreau was not a well known writer what happened when he was arrested?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The earliest recorded incidents of collective civil disobedience took place during the Roman Empire, when unarmed Jews gathered in the streets to prevent the installation of pagan images in the Temple in Jerusalem.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#13",
+      "instr": "The term Huguenot was originally meant to confer?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The term Huguenot was originally used in derision, and its unclear origins have led to various hypotheses.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#14",
+      "instr": "What alumni was also Obama's campaign adviser?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "David Axelrod, Obama's campaign adviser and top political advisor to President Bill Clinton.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#15",
+      "instr": "An 1821 full size oil sketch of which famous British painting was donated by John Sheepshank's daughter in 1888?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The full-size oil sketch of The Hay Wain.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#16",
+      "instr": "What type of protest falls under civil disobedience without aggression?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Non-violent civil disobedience.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#17",
+      "instr": "What language did Tesla study while in school?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "German, arithmetic, and religion.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#18",
+      "instr": "When did Tesla depart Graz?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "In December 1878, Tesla left Graz and severed all relations with his family to hide the fact that he dropped out of school.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#19",
+      "instr": "Where does the pupil remain while in detention\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The pupil remains in a classroom and does work, writes lines, or sits quietly.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#20",
+      "instr": "Which of ABC's main production facilities is located in Hollywood, CA?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The ABC Television Center, now the Prospect Studios, is located in Hollywood, CA.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#21",
+      "instr": "What choice did French have for surrendering land?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "France chose to surrender its continental North American possessions east of the Mississippi River, but was able to negotiate the retention of Saint-Pierre and Miquelon, two small islands in the Gulf of St. Lawrence, along with fishing rights in the area.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#22",
+      "instr": "What is the most likely effect of breathing oxygen?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The most likely effect of breathing oxygen is a placebo effect, as studies show that enriched O2 mixtures only provide a performance boost during aerobic exercise.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#23",
+      "instr": "What weapons were the Zulus using during the Anglo-Zulu War of 1879?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The Zulus were using arrows, swords, and leather shields during the Anglo-Zulu War of 1879.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#24",
+      "instr": "Fans blame the poor viewership of the late 80's to competition from what show?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Coronation Street.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#25",
+      "instr": "What profession are Cany Ash and Robert Sakula?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Cany Ash and Robert Sakula are architects.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#26",
+      "instr": "Which famous evolutionist was influenced by the book Principles of Geology?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Charles Darwin.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#27",
+      "instr": "What can scales and spring balances measure between two forces by using static equilibrium?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Scales and spring balances measure the static equilibrium between two forces.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#28",
+      "instr": "What book did Martin Luther translate to impact German culture?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The Bible into the vernacular, instead of Latin, had a tremendous impact on the church and German culture.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#29",
+      "instr": "Southern California is second to which island in terms of famous serf breaks?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The Island of Oahu.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#30",
+      "instr": "What does the EU's legitimacy rest on?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The EU's legitimacy rests on the ultimate authority of member states, its factual commitment to human rights, and the democratic will of the people.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#31",
+      "instr": "How many pages was the Kalven Report statement?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The Kalven Report was a two-page statement.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#32",
+      "instr": "What was Joseph Haas arrested for?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Joseph Haas was arrested for allegedly sending an email to the Lebanon, New Hampshire city councilors stating \"Why's up or die?\"",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#33",
+      "instr": "What's the climate like in Newcastle?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The climate in Newcastle is oceanic, with milder winters and cooler summers than other locations at a similar latitude due to the Gulf Stream's warming influence.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#34",
+      "instr": "What role did Michael Oppenheimer have in the IPCC's reports?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Michael Oppenheimer, a long-time IPCC participant and coordinating lead author of the Fifth Assessment Report, acknowledged limitations of the IPCC consensus approach in Science Magazine's \"State of the Planet\" and advocated for smaller, more focused assessments of specific problems instead of large-scale approaches.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#35",
+      "instr": "The earthquake forecast models what features of earthquakes in California?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The USGS models earthquake occurrences in California, including the San Andreas Fault, San Jacinto Fault, Puente Hills Fault, and Elsinore Fault Zone.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#36",
+      "instr": "How many main flows are branched off from the Nederrijn?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Three main flows are branched off from the Nederrijn.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#37",
+      "instr": "Where did Super Bowl 50 take place?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Levi's Stadium in Santa Clara, California.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#38",
+      "instr": "What work of Luther's became popular?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Luther's Bible.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "spoken-squad#39",
+      "instr": "What did Agricola apparently believe about who should be in control  law?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "According to the text, Agricola apparently believed that the law should belong only to the city hall.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.825,
+    "ci95": [
+      0.7,
+      0.925
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset spoken-squad --backbone meralion-2-gguf --split dev --n 40",
+  "elapsed_s": 23.8
+}

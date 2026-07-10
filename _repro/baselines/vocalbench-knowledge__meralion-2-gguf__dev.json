@@ -1,0 +1,393 @@
+{
+  "stage": "1-directional",
+  "dataset": "vocalbench-knowledge",
+  "k_type": "K8",
+  "backbone": "meralion-2-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/vocalbench-knowledge/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "knowledge-0652",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Chandler",
+      "score": 0,
+      "detail": {
+        "gold": "Bing"
+      }
+    },
+    {
+      "item_id": "knowledge-0143",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The musical shows \"Swing Time\" and \"Show Boat\" were composed by George Gershwin.",
+      "score": 0,
+      "detail": {
+        "gold": "Jerome Kern"
+      }
+    },
+    {
+      "item_id": "knowledge-1910",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Sasquatch.",
+      "score": 0,
+      "detail": {
+        "gold": "Bigfoot"
+      }
+    },
+    {
+      "item_id": "knowledge-1243",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Richard Nixon.",
+      "score": 1,
+      "detail": {
+        "gold": "Richard Nixon"
+      }
+    },
+    {
+      "item_id": "knowledge-1187",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "He was from the United States.",
+      "score": 0,
+      "detail": {
+        "gold": "Diamond"
+      }
+    },
+    {
+      "item_id": "knowledge-1124",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Mediterranean Sea.",
+      "score": 1,
+      "detail": {
+        "gold": "Mediterranean Sea"
+      }
+    },
+    {
+      "item_id": "knowledge-0484",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "John Goodman",
+      "score": 0,
+      "detail": {
+        "gold": "Tom Welling"
+      }
+    },
+    {
+      "item_id": "knowledge-0428",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The kidney.",
+      "score": 1,
+      "detail": {
+        "gold": "Kidney"
+      }
+    },
+    {
+      "item_id": "knowledge-1448",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A pound of \"In the Merchant of Venice\".",
+      "score": 0,
+      "detail": {
+        "gold": "Flesh"
+      }
+    },
+    {
+      "item_id": "knowledge-1651",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Johann Sebastian Bach",
+      "score": 0,
+      "detail": {
+        "gold": "Felix Mendelssohn"
+      }
+    },
+    {
+      "item_id": "knowledge-1941",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The US equivalent of the British Army's SAS is the Special Forces Operational Detachment Alpha (SFODA).",
+      "score": 0,
+      "detail": {
+        "gold": "Delta Force"
+      }
+    },
+    {
+      "item_id": "knowledge-0736",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Physics.",
+      "score": 0,
+      "detail": {
+        "gold": "chemistry"
+      }
+    },
+    {
+      "item_id": "knowledge-1463",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Ernest Hemingway.",
+      "score": 0,
+      "detail": {
+        "gold": "Stephen King"
+      }
+    },
+    {
+      "item_id": "knowledge-0613",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "SpongeBob.",
+      "score": 0,
+      "detail": {
+        "gold": "SpongeBob SquarePants"
+      }
+    },
+    {
+      "item_id": "knowledge-0450",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A phenic is a type of creature.",
+      "score": 0,
+      "detail": {
+        "gold": "Fox"
+      }
+    },
+    {
+      "item_id": "knowledge-1684",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Torque.",
+      "score": 1,
+      "detail": {
+        "gold": "torque"
+      }
+    },
+    {
+      "item_id": "knowledge-0218",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Compact bone.",
+      "score": 1,
+      "detail": {
+        "gold": "compact bone"
+      }
+    },
+    {
+      "item_id": "knowledge-0180",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Dolphin",
+      "score": 0,
+      "detail": {
+        "gold": "Sailfish"
+      }
+    },
+    {
+      "item_id": "knowledge-1748",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Sound.",
+      "score": 1,
+      "detail": {
+        "gold": "sound"
+      }
+    },
+    {
+      "item_id": "knowledge-0573",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Weeknd",
+      "score": 0,
+      "detail": {
+        "gold": "Sting"
+      }
+    },
+    {
+      "item_id": "knowledge-1182",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Amelia Earhart.",
+      "score": 1,
+      "detail": {
+        "gold": "Earhart"
+      }
+    },
+    {
+      "item_id": "knowledge-0677",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Plants use chemical signals to control processes such as growth, development, and responses to environmental stimuli.",
+      "score": 0,
+      "detail": {
+        "gold": "plant hormones"
+      }
+    },
+    {
+      "item_id": "knowledge-0309",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What are the two groups of invertebrates based on their development?",
+      "score": 0,
+      "detail": {
+        "gold": "embryos"
+      }
+    },
+    {
+      "item_id": "knowledge-1923",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What is the name of the group?",
+      "score": 0,
+      "detail": {
+        "gold": "Black Panther Party"
+      }
+    },
+    {
+      "item_id": "knowledge-0588",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The TV show is \"The Simpsons\".",
+      "score": 0,
+      "detail": {
+        "gold": "Gilmore Girls"
+      }
+    },
+    {
+      "item_id": "knowledge-0159",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Pruning.",
+      "score": 0,
+      "detail": {
+        "gold": "Topiary"
+      }
+    },
+    {
+      "item_id": "knowledge-1299",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Absalom.",
+      "score": 0,
+      "detail": {
+        "gold": "Jonathan"
+      }
+    },
+    {
+      "item_id": "knowledge-0471",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Pear.",
+      "score": 0,
+      "detail": {
+        "gold": "Apple"
+      }
+    },
+    {
+      "item_id": "knowledge-0163",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "John Constable",
+      "score": 1,
+      "detail": {
+        "gold": "John Constable"
+      }
+    },
+    {
+      "item_id": "knowledge-0358",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Melanin.",
+      "score": 1,
+      "detail": {
+        "gold": "Melanin"
+      }
+    },
+    {
+      "item_id": "knowledge-0628",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "John Ritter.",
+      "score": 0,
+      "detail": {
+        "gold": "Michael Landon"
+      }
+    },
+    {
+      "item_id": "knowledge-1696",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "There is no information about how many families are known to have been divided into cork.",
+      "score": 0,
+      "detail": {
+        "gold": "three"
+      }
+    },
+    {
+      "item_id": "knowledge-1687",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "What structures distinguish Saturn?",
+      "score": 0,
+      "detail": {
+        "gold": "rings"
+      }
+    },
+    {
+      "item_id": "knowledge-0096",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The most famous painting by Edvard Munch is \"The Scream\".",
+      "score": 1,
+      "detail": {
+        "gold": "Scream"
+      }
+    },
+    {
+      "item_id": "knowledge-1229",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A light bulb.",
+      "score": 0,
+      "detail": {
+        "gold": "Linoleum"
+      }
+    },
+    {
+      "item_id": "knowledge-1272",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Abraham Lincoln.",
+      "score": 1,
+      "detail": {
+        "gold": "Abraham Lincoln"
+      }
+    },
+    {
+      "item_id": "knowledge-0132",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Alfred Hitchcock",
+      "score": 0,
+      "detail": {
+        "gold": "Ken Burns"
+      }
+    },
+    {
+      "item_id": "knowledge-0334",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Rennet.",
+      "score": 1,
+      "detail": {
+        "gold": "Rennet"
+      }
+    },
+    {
+      "item_id": "knowledge-1894",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The smallest size is called a \"compact\".",
+      "score": 1,
+      "detail": {
+        "gold": "Compact"
+      }
+    },
+    {
+      "item_id": "knowledge-1764",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Orbits.",
+      "score": 1,
+      "detail": {
+        "gold": "orbits"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.35,
+    "ci95": [
+      0.2,
+      0.5
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset vocalbench-knowledge --backbone meralion-2-gguf --split dev --n 40",
+  "elapsed_s": 14.8
+}

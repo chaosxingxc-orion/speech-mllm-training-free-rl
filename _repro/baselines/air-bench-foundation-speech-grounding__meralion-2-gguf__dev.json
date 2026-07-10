@@ -1,0 +1,433 @@
+{
+  "stage": "1-directional",
+  "dataset": "air-bench-foundation-speech-grounding",
+  "k_type": "K8",
+  "backbone": "meralion-2-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/air-bench-foundation-speech-grounding/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "Speech_Grounding:librispeech:454",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nDetect the point at which 'you're' is spoken.\nOptions:\nA. [0.30, 0.50]\nB. [0.50, 0.60]\nC. [0.50, 0.60]\nD. [1.00, 1.08]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. You're",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:872",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nLocate the segment where 'i' is faintly heard.\nOptions:\nA. [3.65, 3.79]\nB. [0.44, 0.77]\nC. [3.79, 3.98]\nD. [0.77, 1.32]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [3.65, 3.79]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:642",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIn the audio track, when is 'him' first noticed?\nOptions:\nA. [0.59, 0.97]\nB. [0.25, 0.59]\nC. [1.10, 1.24]\nD. [0.97, 1.10]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [0.59, 0.97]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:516",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIn the audio track, when is 'asked' first noticed?\nOptions:\nA. [0.82, 1.09]\nB. [0.58, 0.82]\nC. [1.17, 1.60]\nD. [1.60, 1.66]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [0.82, 1.09]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:600",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nLocate the segment where 'em' appears most frequently.\nOptions:\nA. [1.00, 1.22]\nB. [1.68, 1.87]\nC. [4.08, 4.38]\nD. [3.03, 3.21]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [1.00, 1.22]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:917",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nAt what point in the audio is 'that' clearly audible?\nOptions:\nA. [0.77, 0.92]\nB. [0.51, 0.77]\nC. [0.34, 0.51]\nD. [1.25, 1.34]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. 0.77 to 0.92",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:715",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIn the audio track, when is 'sketches' first noticed?\nOptions:\nA. [1.62, 1.86]\nB. [1.31, 1.57]\nC. [0.29, 0.42]\nD. [0.57, 1.10]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [1.62, 1.86]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:320",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nAt what point in the audio is 'what' clearly audible?\nOptions:\nA. [0.95, 1.12]\nB. [1.92, 2.10]\nC. [0.31, 0.67]\nD. [3.18, 3.32]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [0.95, 1.12]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:333",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhen is 'chair' first heard in the recording?\nOptions:\nA. [1.34, 1.57]\nB. [0.56, 0.87]\nC. [8.93, 9.31]\nD. [8.88, 8.93]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. 8.93, 9.31",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:825",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nSpot the exact moment 'start' appears in the audio.\nOptions:\nA. [1.01, 1.37]\nB. [1.88, 2.02]\nC. [0.56, 0.80]\nD. [0.88, 1.01]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [1.01, 1.37]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:737",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nFind the moment 'around' is clearly audible in the audio.\nOptions:\nA. [3.35, 3.59]\nB. [2.59, 2.88]\nC. [3.65, 3.88]\nD. [4.20, 4.36]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [3.35, 3.59]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:631",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nLocate the segment where 'of' appears most frequently.\nOptions:\nA. [7.52, 7.65]\nB. [1.37, 1.44]\nC. [3.11, 3.17]\nD. [3.55, 3.66]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. ...",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:203",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nFind the duration when 'faces' occurs consecutively in the audio.\nOptions:\nA. [1.81, 1.89]\nB. [0.49, 0.75]\nC. [2.60, 2.72]\nD. [1.36, 1.81]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [1.81, 1.89]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:927",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nLocate the part of the audio where 'which' is expressed.\nOptions:\nA. [0.71, 0.97]\nB. [1.45, 1.91]\nC. [0.59, 0.71]\nD. [0.97, 1.12]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [0.71, 0.97]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:826",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nNote the time interval that includes the mention of 'last'.\nOptions:\nA. [0.75, 1.01]\nB. [1.16, 1.42]\nC. [3.17, 3.51]\nD. [1.16, 1.42]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [0.75, 1.01]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:549",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the timestamp for when 'a' occurs?\nOptions:\nA. [0.55, 0.60]\nB. [1.78, 1.92]\nC. [3.87, 4.00]\nD. [0.97, 1.60]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [0.55, 0.60]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:137",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nPinpoint the exact moment 'well' is repeated in the audio.\nOptions:\nA. [1.83, 1.96]\nB. [0.34, 0.77]\nC. [1.33, 1.49]\nD. [1.74, 1.83]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. 1.83, 1.96",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:922",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nLocate the segment where 'lieutenant' is faintly heard.\nOptions:\nA. [1.12, 1.87]\nB. [0.50, 1.12]\nC. [2.18, 2.50]\nD. [2.11, 2.18]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [1.12, 1.87]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:850",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nFind the moment 'save' is clearly audible in the audio.\nOptions:\nA. [2.04, 2.28]\nB. [4.01, 4.09]\nC. [1.40, 1.78]\nD. [1.23, 1.40]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [2.04, 2.28]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:736",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nFind the duration when 'at' occurs consecutively in the audio.\nOptions:\nA. [1.66, 2.10]\nB. [0.55, 0.72]\nC. [1.05, 1.11]\nD. [1.11, 1.51]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [1.66, 2.10]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:63",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nRecognize the segment where 'madrid' is spoken by the speaker.\nOptions:\nA. [8.75, 9.29]\nB. [1.06, 11.4]\nC. [7.61, 7.75]\nD. [4.86, 5.57]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [8.75, 9.29]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:191",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIdentify the portion of the clip where 'the' is most prominent.\nOptions:\nA. [7.15, 7.65]\nB. [1.03, 1.17]\nC. [5.42, 5.98]\nD. [0.46, 0.53]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. The audio clip starts with the word \"the\" and continues to be prominent throughout the clip.",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:529",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nPinpoint the exact moment 'for' is repeated in the audio.\nOptions:\nA. [0.53, 1.06]\nB. [1.21, 1.44]\nC. [1.44, 1.55]\nD. [1.44, 1.55]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. [1.44, 1.55]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:830",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nFind the duration when 'day' occurs consecutively in the audio.\nOptions:\nA. [3.97, 4.03]\nB. [1.68, 1.79]\nC. [6.91, 7.26]\nD. [0.45, 0.75]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [3.97, 4.03]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:398",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nPinpoint the exact moment 'sufficient' appears.\nOptions:\nA. [1.02, 1.14]\nB. [2.29, 2.71]\nC. [0.46, 1.02]\nD. [1.14, 1.55]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. 1.02, 1.14",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:648",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nListen to this audio clip: when does 'sometimes' occur?\nOptions:\nA. [1.59, 22.1]\nB. [4.12, 4.46]\nC. [6.26, 26.5]\nD. [7.92, 18.5]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [1.59, 22.1]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:465",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHighlight the time when 'refused' is mentioned.\nOptions:\nA. [0.52, 0.76]\nB. [2.00, 2.10]\nC. [2.10, 2.46]\nD. [1.47, 2.00]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [0.52, 0.76]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:194",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nDiscover when 'of' is introduced in the conversation.\nOptions:\nA. [1.56, 1.82]\nB. [4.32, 4.76]\nC. [1.82, 1.89]\nD. [4.87, 5.05]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [1.82, 1.89]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:664",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nAt what time interval does 'no' occur in the audio clip?\nOptions:\nA. [2.57, 12.7]\nB. [3.24, 3.44]\nC. [1.99, 12.1]\nD. [9.20, 9.33]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [2.57, 12.7]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:743",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIdentify when 'out' is heard in the audio.\nOptions:\nA. [2.00, 2.14]\nB. [1.32, 1.49]\nC. [1.65, 1.77]\nD. [2.14, 2.25]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. 2.00, 2.14",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:301",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nAscertain the point at which 'of' enters the discussion.\nOptions:\nA. [2.25, 2.47]\nB. [3.10, 3.52]\nC. [3.72, 3.81]\nD. [2.85, 3.10]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [2.25, 2.47]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:515",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nDetect the point at which 'the' is spoken.\nOptions:\nA. [0.62, 0.73]\nB. [0.28, 0.62]\nC. [1.63, 2.09]\nD. [0.73, 1.30]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. The",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:464",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhen does 'his' occur in the audio?\nOptions:\nA. [0.84, 0.89]\nB. [1.24, 1.42]\nC. [1.82, 2.14]\nD. [1.42, 1.53]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. ...",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:505",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nDetect the point at which 'to' is spoken.\nOptions:\nA. [6.15, 6.67]\nB. [4.32, 4.49]\nC. [5.55, 6.01]\nD. [6.01, 6.15]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [6.15, 6.67]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:767",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the timestamp for when 'what' occurs?\nOptions:\nA. [0.52, 0.67]\nB. [3.01, 3.36]\nC. [4.00, 4.13]\nD. [3.69, 3.84]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [0.52, 0.67]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:175",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nListen for when 'fedosya' is emphasized by the narrator.\nOptions:\nA. [1.90, 2.38]\nB. [1.47, 1.73]\nC. [0.55, 0.63]\nD. [3.02, 3.53]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [1.90, 2.38]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:178",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nEstablish when 'do' is first mentioned in the clip.\nOptions:\nA. [3.08, 3.57]\nB. [4.51, 5.22]\nC. [0.60, 10.8]\nD. [3.57, 3.71]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [3.08, 3.57]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:300",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nDiscover when 'be' is introduced in the conversation.\nOptions:\nA. [2.05, 2.23]\nB. [0.94, 1.19]\nC. [2.23, 2.41]\nD. [1.55, 1.68]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [2.05, 2.23]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:556",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nPinpoint the exact moment 'the' is repeated in the audio.\nOptions:\nA. [5.26, 5.69]\nB. [5.21, 5.26]\nC. [4.43, 4.86]\nD. [4.86, 5.21]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [5.26, 5.69]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Speech_Grounding:librispeech:349",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nRecognize the segment where 'and' is spoken by the speaker.\nOptions:\nA. [1.14, 1.28]\nB. [1.28, 1.78]\nC. [1.95, 2.11]\nD. [1.14, 1.28]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [1.14, 1.28]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.0,
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset air-bench-foundation-speech-grounding --backbone meralion-2-gguf --split dev --n 40",
+  "elapsed_s": 13.5
+}

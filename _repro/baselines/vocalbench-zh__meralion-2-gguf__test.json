@@ -1,0 +1,633 @@
+{
+  "stage": "1-directional",
+  "dataset": "vocalbench-zh",
+  "k_type": "K8/K6 (legacy)",
+  "backbone": "meralion-2-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/baselines-vocalbench-zh/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "vocalbench-zh#0",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "黄埔军校是谁建的？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#1",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "2010年",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#2",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "哈萨克人",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#3",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "社会主义改革的根本目的是为了改善人民生活。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#4",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "嗯。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#5",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "请回答问题。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#6",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "1914年",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#7",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "海马体。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#8",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "弗兰克人。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#9",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "货币形式。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#10",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "唐代诗人关元嘉治世时的年份是公元713年。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#11",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "李小龙的死因是什么？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#12",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "你可以在网上搜索“现有食材制作蛋糕配方”。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#13",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "“亚圣”",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#14",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "小娟拥有的视频游戏数量比小磊的三倍少五个。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#15",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "能量",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#16",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "彩色玻璃窗",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#17",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "尼古拉·科尔尼科夫",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#18",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "骑自行车后，彼得注意到他的心血管健康有所改善。这方面益处的原因可能是什么？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#19",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "有。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#20",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "张靓颖",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#21",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "宋代张三丰创立的武术派别叫太极拳。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#22",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "早起有助于提升我的能量水平。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#23",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "尚未付诸实际行动的公众。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#24",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "1998年",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#25",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "你问的是什么？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#26",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "The answer is **.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#27",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "小田农场有两百亩，小娟农场比它两倍还多一百亩，两个农场一共有多少亩？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#28",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "是的。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#29",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "2005年",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#30",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "阿尼克。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#31",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "100",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#32",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "她本周比上周多买了几盒零食。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#33",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "The answer is: 1000",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#34",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "Listen and answer with a short answer only.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#35",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "法兰西民族英雄。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#36",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "请告诉我您想咨询的专家是谁。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#37",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "小萝卜头是谁？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#38",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "他们每周看四部电影，那么在四周内他们能看多少部电影？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#39",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "在泰姬陵。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#40",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "社会大多数社会公众对组织的基本态度和行为是什么？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#41",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "台北市。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#42",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "小敏每天睡十个小时，工作时间比睡眠时间少两个小时，而且她每天遛狗一个小时，一天中还剩下多少空闲时间？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#43",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "厄尔兹出生在瑞典。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#44",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "小婷每分钟可以剥六只虾，并且在十分钟内可以炒三十只虾。她要花多长时间才能剥并煮九十只虾？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#45",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "地球上最大的哺乳动物是蓝鲸。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#46",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "农历新年。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#47",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "最早出现的是“四种理论”。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#48",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "是的。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#49",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "李白",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#50",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "新西兰使用新西兰元。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#51",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "墨西哥的货币是墨西哥比索。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#52",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "李克强",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#53",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "What is the meaning of the word \"平城经\"?",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#54",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "1901年",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#55",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "李逵",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#56",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "斯宾塞。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#57",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "中外合资经营企业合同纠纷只能适用《中华人民共和国合同法》。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#58",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "咖啡馆在增加户外座位后，顾客数量有所上升，这趋势背后可能的原因是什么？",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    },
+    {
+      "item_id": "vocalbench-zh#59",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "农历五月十五。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.0333,
+    "ci95": [
+      0.0,
+      0.0833
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset vocalbench-zh --backbone meralion-2-gguf --split test --n 60",
+  "elapsed_s": 25.4
+}

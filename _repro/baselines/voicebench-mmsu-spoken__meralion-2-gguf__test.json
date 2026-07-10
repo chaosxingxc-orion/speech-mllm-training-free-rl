@@ -1,0 +1,633 @@
+{
+  "stage": "1-directional",
+  "dataset": "voicebench-mmsu-spoken",
+  "k_type": "K8",
+  "backbone": "meralion-2-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/voicebench-mmsu-spoken/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "mmsu-spoken/health/6062",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich of these factors increases the risk for lung cancer?\nOptions:\nA. Saturated fat\nB. Vitamin D deficiency\nC. Lack of physical activity\nD. High dose ß-carotene supplements\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Saturated fat",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/physics/9426",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIf the frequency of one source of sound is 500 Hertz and a second sound source is 504 Hertz, then when the two waves interfere with each other, the beat frequency will be\nOptions:\nA. 10 Hertz\nB. 4 Hertz\nC. 1,004 Hertz\nD. 504 Hertz\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. 10 Hertz",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/economics/7115",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe price elasticity of demand for a product is greater if\nOptions:\nA. the proportion of the good of the consumer's budget is high.\nB. the number of substitute products is limited.\nC. the product is unique and has no substitutes.\nD. the consumer has a high income.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. the consumer has a high income.",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/health/6146",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich of the following is true regarding the complications of a large goitre?\nOptions:\nA. Dysphagia is an indication for surgery\nB. It causes severe headaches due to increased pressure in the neck area\nC. It causes shortness of breath due to compression of the lungs\nD. It increases the risk of thyroid cancer\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. It increases the risk of thyroid cancer",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/other/5410",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nA $500 par-value convertible debenture is selling at $520. If the conversion ratio is 20, what is the conversion price?\nOptions:\nA. $19.23\nB. $30.00\nC. $25.00\nD. $26.00\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. $19.23",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/other/5354",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich of the following is a formal region?\nOptions:\nA. Dixie\nB. The area influenced by a particular weather system\nC. The Midwest\nD. Pennsylvania\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Dixie",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/psychology/2140",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nAt the outset of group counseling, the therapist should explain char the obligation of the group member to respect confidentiality is\nOptions:\nA. on the “honor system” only\nB. protected by state/provincial laws\nC. less of an issue than it is in individual therapy\nD. mandated by federal law\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. protected by state/provincial laws",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/physics/9302",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe radius of Mars is about half that of Earth; the mass of Mars is about one-tenth that of Earth. Which of the following is closest to the gravitational field at the surface of Mars?\nOptions:\nA. 0.5 Newtons per kilogram\nB. 1 Newtons per kilogram\nC. 2 Newtons per kilogram\nD. 4 Newtons per kilogram\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. 2 Newtons per kilogram",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/law/1485",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHume's attack on natural law is founded on his argument that:\nOptions:\nA. We cannot objectively know what is morally right or wrong.\nB. Natural law is backward-looking.\nC. There is no such thing as a social contract.\nD. Natural law fails to protect the state against attacks.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. We cannot objectively know what is morally right or wrong.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/physics/9095",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nA car starts from rest and reaches a speed of 30 miles per hour in 8 seconds. What is its acceleration?\nOptions:\nA. 6.5 feet per second per second\nB. 6.0 feet per second per second\nC. 5.5 feet per second per second\nD. 4.0 feet per second per second\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. 5.5 feet per second per second",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/chemistry/4124",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat weight of sulfur must combine with aluminum to form 600 pounds of aluminum sulfide?\nOptions:\nA. 300 pounds\nB. 400 pounds\nC. 450 pounds\nD. 384 pounds\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. 450 pounds",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/chemistry/3984",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nUnder which conditions will a real gas most closely behave as an ideal gas?\nOptions:\nA. Low volume and high pressure\nB. Low temperature and low pressure\nC. High temperature and low pressure\nD. High volume and high pressure\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Low temperature and low pressure",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/physics/9322",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe mass of an atom comes mostly from its what? and its volume from its what?\nOptions:\nA. electrons; electrons.\nB. nucleons; electrons.\nC. electrons; nucleons.\nD. electrons; protons.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. electrons; nucleons.",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/biology/3432",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nA change in a neuron membrane potential from +50 millivolts to -70 millivolts is considered\nOptions:\nA. a synapse potential\nB. hyperpolarization\nC. a graded potential\nD. repolarization\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. hyperpolarization",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/biology/3393",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich of the following characteristics is predicted for an early-successional plant community?\nOptions:\nA. High frequency of R-selected species\nB. High diversity of plant species\nC. High ratios of primary production to standing-crop biomass\nD. Low rates of photosynthesis\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. High frequency of R-selected species",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/other/5737",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich of these principles is not an element of the responsibility to protect?\nOptions:\nA. The responsibility to remain sovereign.\nB. The responsibility to refuse.\nC. The responsibility to recognize.\nD. The responsibility to rebuild.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. The responsibility to remain sovereign.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/health/6281",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich of the following is true of the spine?\nOptions:\nA. Schober's test is designed to quantify the flexion of the lumbar spine\nB. The lumbar spine is the upper part of the spine\nC. The spine is incapable of healing after injury\nD. The human spine has 20 vertebrae\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Schober's test is designed to quantify the flexion of the lumbar spine",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/economics/7029",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe appropriate fiscal policy to remedy a recession\nOptions:\nA. calls for the federal government to run a deficit.\nB. calls for the federal government to run a surplus.\nC. is increased taxes and government spending.\nD. is decreased government spending and taxes.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. is decreased government spending and taxes.",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/health/6399",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is a tracheostomy?\nOptions:\nA. An opening in the anterior chest wall.\nB. An opening in the anterior wall of the trachea below the cricoid cartilage.\nC. An opening in the anterior chest wall, above the diaphragm.\nD. An opening in the posterior wall of the esophagus.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. An opening in the anterior wall of the trachea below the cricoid cartilage.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/biology/2937",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich of the following plant cells undergoes programmed cell death to become functional?\nOptions:\nA. Epidermal cell\nB. Stomatal guard cell\nC. Root cap cell\nD. Xylem vessel member\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Stomatal guard cell",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/chemistry/4085",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nOf the following ionic substances, which has the greatest lattice enthalpy?\nOptions:\nA. calcium sulfide\nB. Potassium chloride\nC. Magnesium oxide\nD. Magnesium sulfide\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. Magnesium sulfide",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/economics/7633",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nSuppose real GDP increases. We can conclude without a doubt that\nOptions:\nA. the average wage is higher.\nB. the national debt is lower.\nC. production is higher.\nD. prices are higher.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. production is higher.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/engineering/11581",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe magnetisation and applied field in ferromagnetic materials are related\nOptions:\nA. inversely.\nB. sinusoidally.\nC. non linearly.\nD. logarithmically.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. sinusoidally.",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/health/6291",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich of the following age differences could be, in part, a cohort effect? Differences in\nOptions:\nA. Heart Disease\nB. Alcoholism\nC. Suicide\nD. Diabetes\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Suicide",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/psychology/2776",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nDuring the manic phase of a bipolar disorder, individuals are most likely to experience\nOptions:\nA. extreme fatigue\nB. high self-esteem\nC. memory loss\nD. intense fear and anxiety\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. extreme fatigue",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/economics/7423",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich of the following is NOT a major cost of inflation?\nOptions:\nA. Resources will be misallocated.\nB. Wealth will be redistributed.\nC. Savings will be discouraged.\nD. Real incomes will fall.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. Real incomes will fall.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/business/199",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is based on the idea that customer expectations of the service they will receive shape their perception of the actual service encounter?\nOptions:\nA. Service encounter.\nB. Service action.\nC. Service quality.\nD. Service expectation.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. Service expectation.",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/philosophy/11052",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhen was the first Buddhist temple constructed in Japan?\nOptions:\nA. 325 CE\nB. 119 CE\nC. 451 CE\nD. 596 CE\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. 451 CE",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/history/5034",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich culture, previously-known as the temple-mound builders, based their subsistence primarily on maize and squash agriculture?\nOptions:\nA. Folsom\nB. Ancestral Puebloan\nC. Hohokam\nD. Mississippian\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Hohokam",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/biology/2862",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThis biome has cold winters and is known for its pine forests.\nOptions:\nA. Grassland\nB. Rainforest\nC. Deciduous forests\nD. Chaparral\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. Chaparral",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/biology/3357",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is anoncogene?\nOptions:\nA. Oncogenes are found only in viruses\nB. Oncogenes may cause cells to become cancerous\nC. Oncogenes repair damaged DNA\nD. Oncogenes are produced exclusively by healthy cells\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Oncogenes may cause cells to become cancerous",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/other/5938",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich of the following is LEAST likely to explain low voter turnout for an election?\nOptions:\nA. Voters' lack of knowledge about the candidates\nB. The preclearance provision of the Voting Rights Act\nC. The complexity of the voting process\nD. A large number of independent candidates\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. The preclearance provision of the Voting Rights Act",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/biology/2990",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich describes an African butterfly species that exists in two strikingly different color patterns?\nOptions:\nA. stabilizing selection\nB. disruptive selection\nC. directional selection\nD. artificial selection\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. disruptive selection",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/economics/7591",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow does freedom of choice fit in the capitalist framework?\nOptions:\nA. Capitalism restricts freedom of choice\nB. Freedom of choice opposes the principles of capitalism\nC. Freedom of choice is an essential feature of capitalism\nD. Freedom of choice is irrelevant in capitalism\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Freedom of choice is an essential feature of capitalism",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/business/438",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIn conducting international market research, there are three types of equivalence. Which of the following is NOT one of the equivalences?\nOptions:\nA. Functional equivalence.\nB. Translation equivalence.\nC. Conceptual equivalence.\nD. Market equivalence.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. Market equivalence.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/physics/10127",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nA pitcher can throw a baseball weighing 5 ounces so that it will have a velocity of 96 feet per second. What is its kinetic energy?\nOptions:\nA. 55 Foot-pound\nB. 45 Foot-pound\nC. 60 Foot-pound\nD. 5 Foot-pound\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. 55 Foot-pound",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/other/5160",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nAs of 2019, which of the following had the lowest life expectancy?\nOptions:\nA. Brazil\nB. China\nC. Mexico\nD. Japan\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Mexico",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/biology/3122",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nGene flow between populations results in\nOptions:\nA. a decrease in genetic diversity in the metapopulation\nB. a decrease in the rate of beneficial mutations in the metapopulation\nC. an increase in genetic homogeneity in the metapopulation\nD. a decrease in the likelihood of speciation\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. a decrease in the likelihood of speciation",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/chemistry/4160",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nA certain radioactive material has a half-life of 36 minutes. Starting with 10.00 grams of this material, how many grams will be left after 2 hours?\nOptions:\nA. 0.25 gram\nB. 4.00 grams\nC. 3.33 grams\nD. 1.00 grams\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. 3.33 grams",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/physics/9946",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIn his special theory of relativity, Einstein stated that the laws of physics are\nOptions:\nA. the same only in non-accelerating frames of reference.\nB. the same in all uniformly moving frames of reference.\nC. different in different situations.\nD. the same in all frames of reference.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. the same in all uniformly moving frames of reference.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/physics/9502",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the resistance of a piece ofnichromewire 225 centimeters long with a cross-sectional area of 0.015 square centimeter?\nOptions:\nA. 15 ohms\nB. 1.5 ohms\nC. 2.25 ohms\nD. 50 ohms\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. 1.5 ohms",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/economics/7169",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich function of money best defines $1.25 as the price of a 20-ounce bottle of pop?\nOptions:\nA. Store of value\nB. Medium of exchange\nC. Unit of account\nD. Measure of liquidity\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Medium of exchange",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/physics/9424",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhen an increase in speed doubles the kinetic energy of a moving body its momentum\nOptions:\nA. more than doubles\nB. quadruples\nC. increases but less than doubles\nD. depends on the mass of the object\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. increases but less than doubles",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/physics/9123",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nAccording to Coulomb, a pair of charged particles placed twice as close to each other experience a force\nOptions:\nA. four times as strong\nB. half as strong\nC. one-fourth as strong\nD. inversely proportional to the distance\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. inversely proportional to the distance",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/health/6777",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich one of the following represents a IIIrd cranial nerve palsy and is a neurosurgical emergency?\nOptions:\nA. Oval shaped pupils.\nB. Unilateral non-reactive pupil.\nC. Unilateral fixed dilated pupil.\nD. Unilateral oval shaped pupil.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. Unilateral oval shaped pupil.",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/psychology/2700",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the most automatic of the proposed memory systems?\nOptions:\nA. Semantic memory\nB. Implicit memory\nC. Episodic memory\nD. Working memory\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. Working memory",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/physics/10261",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nA simple and correct way to comprehend satellites orbiting Earth is to view them as\nOptions:\nA. being held up by the magnetic field of the Earth.\nB. beyond the main pull of Earth gravity.\nC. having sufficient tangential velocities to fall around rather than into Earth.\nD. being pushed by solar winds.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. having sufficient tangential velocities to fall around rather than into Earth.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/other/5809",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nAbout how many percent of adolescent males have homosexual experiences during their teenage years?\nOptions:\nA. 80\nB. 50\nC. 10\nD. 40\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. 10",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/philosophy/10810",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nAccording to Epicurus, the wealth required for a good life is:\nOptions:\nA. easily procured.\nB. available only to the educated.\nC. available only to the rich.\nD. obtained only through the accumulation of material possessions.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. easily procured.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/chemistry/3535",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nA 50.0 milliliters sample of 0.0025 molar hydrobromic acid is mixed with 50.0 milliliters of 0.0023 molar potassium hydroxide. What is the pH of the resulting mixture?\nOptions:\nA. 4\nB. 3\nC. 2\nD. 5\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. 3",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/business/594",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nA radio was originally priced at $2.25. This week it was marked up and sold at $2.50. Find the percent of the markup.\nOptions:\nA. 30%\nB. 18%\nC. 20%\nD. 10%\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. 18%",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/history/4782",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nTaphonomy is:\nOptions:\nA. the study of how materials ended up in a particular place.\nB. the study of plant and animal life from a particular period in history.\nC. a systematic classification based on similarities and differences.\nD. a study of the spatial relationships among artifacts, ecofacts, and features.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. a study of the spatial relationships among artifacts, ecofacts, and features.",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/psychology/2563",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIdentify the only construct that is not pertinent to developmental models on intelligence:\nOptions:\nA. Investment theory\nB. Multiple intelligences theory\nC. Primary mental ability theory\nD. Fluid and crystallized intelligence theory\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Investment theory",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/health/6346",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe maternal serum level of alpha-fetoprotein is lower than average in which situation?\nOptions:\nA. Oligohydramnios\nB. Exomphalos\nC. Neural tube defects\nD. Down syndrome\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Neural tube defects",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/philosophy/11094",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nNagel thinks that the core of the absolutist position is that\nOptions:\nA. human persons have a right to life.\nB. the ends justify the means.\nC. the hostility should be directed at its true object.\nD. each person should pursue his or her own happiness.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. each person should pursue his or her own happiness.",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/chemistry/4339",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich is correct about the calcium atom?\nOptions:\nA. All calcium atoms have a mass of 20.078 u\nB. It contains 20 protons and 20 electrons\nC. All atoms of calcium have 20 protons and 40 neutrons\nD. All atoms of calcium have a mass of 40.078 u\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. All calcium atoms have a mass of 20.078 u.",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/other/5483",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe latitude and longitude coordinates of a place are an example of\nOptions:\nA. a nominal location.\nB. an absolute location.\nC. a geographical region.\nD. a topographic location.\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. an absolute location.",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/history/4972",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich of the following is the last to be occupied by human beings?\nOptions:\nA. Madagascar\nB. Australia\nC. Hawaii\nD. New Zealand\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Madagascar",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/philosophy/10934",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nBerkeley asserts that existing and perceiving are?\nOptions:\nA. imaginary\nB. interdependent\nC. both nonexistent\nD. one and the same thing\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. one and the same thing",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "mmsu-spoken/biology/3061",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nAll of the following environmental conditions increase the rate of transpiration from plants EXCEPT\nOptions:\nA. high temperature\nB. high relative humidity\nC. low relative humidity\nD. wind\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. low relative humidity",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.3667,
+    "ci95": [
+      0.25,
+      0.4833
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset voicebench-mmsu-spoken --backbone meralion-2-gguf --split test --n 60",
+  "elapsed_s": 24.1
+}
