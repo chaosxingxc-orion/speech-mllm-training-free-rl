@@ -1,0 +1,20 @@
+# Validity sidecar (RR-009) — does NOT modify m3_crossmodal.json (evidence freeze).
+# Machine-readable status layer; the full ledger entry is docs/claim_ledger.yaml (claim_id: C-M3).
+status: INVALID
+reason: >
+  Input leakage / information-boundary violation. The "new independent signal" injected alongside
+  the audio was the TEST ITEM'S OWN ground-truth text transcript. At deployment the omni model's
+  input is audio-only — a golden transcript does not exist at inference time, and if it did, an
+  omni model would be unnecessary (a text LLM plus an ASR front-end would suffice, negating the
+  point of the omni model). The headline "+22.4% on vocalbench-zh" (and the smaller SQuAD-zh /
+  audio_plus_text gains recorded in this file) reflect the model reading the answer off a smuggled
+  transcript, not a genuine cross-modal capability gain. Same error class as the earlier retracted
+  acoustic-oracle result. Absolutely prohibited from citation as positive evidence (G3 leakage
+  red-team gate, wiki/2026-07-10-research-integrity-forensic-audit.md).
+superseded_by: >
+  wiki/2026-07-05-A-realization-conclusion.md (2026-07-05 owner retraction banner) and the
+  subsequent clean-rerun record set: wiki/2026-07-07-E2-clean-cf-utilization.md and
+  wiki/2026-07-07-E6-final-conclusions-clean.md (2026-07-04/07 clean reruns); see also
+  wiki/2026-07-05-omni-multimodal-memory-design.md for the legitimate (non-leaking) reframing.
+adjudicated_on: 2026-07-11
+source: "docs/claim_ledger.yaml, claim_id C-M3"

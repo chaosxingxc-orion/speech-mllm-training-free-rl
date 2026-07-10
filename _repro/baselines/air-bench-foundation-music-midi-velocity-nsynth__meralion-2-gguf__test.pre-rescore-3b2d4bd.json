@@ -1,0 +1,633 @@
+{
+  "stage": "1-directional",
+  "dataset": "air-bench-foundation-music-midi-velocity-nsynth",
+  "k_type": "K8",
+  "backbone": "meralion-2-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/air-bench-foundation-music-midi-velocity-nsynth/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22754",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThis single note registers as which MIDI velocity?\nOptions:\nA. midi_velocity_100\nB. midi_velocity_75\nC. midi_velocity_25\nD. midi_velocity_50\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_100",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22826",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe note at this timestamp has a MIDI velocity of what?\nOptions:\nA. midi_velocity_25\nB. midi_velocity_100\nC. midi_velocity_75\nD. midi_velocity_50\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. midi_velocity_75",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22760",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe note's loudness equates to which MIDI velocity?\nOptions:\nA. midi_velocity_127\nB. midi_velocity_75\nC. midi_velocity_25\nD. midi_velocity_50\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:21994",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThis note has a MIDI velocity of what number?\nOptions:\nA. midi_velocity_25\nB. midi_velocity_100\nC. midi_velocity_75\nD. midi_velocity_50\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. midi_velocity_75",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22374",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThis single note registers as which MIDI velocity?\nOptions:\nA. midi_velocity_50\nB. midi_velocity_75\nC. midi_velocity_100\nD. midi_velocity_25\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_50",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22246",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI velocity designation for this note is what?\nOptions:\nA. midi_velocity_127\nB. midi_velocity_100\nC. midi_velocity_50\nD. midi_velocity_75\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22314",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat MIDI velocity does this note translate to?\nOptions:\nA. midi_velocity_127\nB. midi_velocity_75\nC. midi_velocity_100\nD. midi_velocity_25\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. midi_velocity_100",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22397",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat MIDI velocity is the note equivalent to?\nOptions:\nA. midi_velocity_50\nB. midi_velocity_100\nC. midi_velocity_127\nD. midi_velocity_75\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:21972",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe sound of this note corresponds to which MIDI velocity?\nOptions:\nA. midi_velocity_127\nB. midi_velocity_100\nC. midi_velocity_25\nD. midi_velocity_50\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22423",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI velocity of this distinct note is what?\nOptions:\nA. midi_velocity_25\nB. midi_velocity_100\nC. midi_velocity_127\nD. midi_velocity_50\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22317",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the MIDI velocity assigned to this musical sound?\nOptions:\nA. midi_velocity_75\nB. midi_velocity_100\nC. midi_velocity_50\nD. midi_velocity_25\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_75",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22611",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nDetermine the MIDI velocity for the note in question.\nOptions:\nA. midi_velocity_127\nB. midi_velocity_75\nC. midi_velocity_25\nD. midi_velocity_50\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:21990",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe single musical note has a MIDI velocity of what?\nOptions:\nA. midi_velocity_100\nB. midi_velocity_25\nC. midi_velocity_127\nD. midi_velocity_75\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22113",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI velocity value for this music note is what?\nOptions:\nA. midi_velocity_50\nB. midi_velocity_75\nC. midi_velocity_25\nD. midi_velocity_127\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22300",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI velocity for the lone note in this music is what?\nOptions:\nA. midi_velocity_25\nB. midi_velocity_127\nC. midi_velocity_50\nD. midi_velocity_75\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_25",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22434",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI velocity that denotes this note is what?\nOptions:\nA. midi_velocity_25\nB. midi_velocity_127\nC. midi_velocity_50\nD. midi_velocity_100\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_25",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22168",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI velocity of this distinct note is what?\nOptions:\nA. midi_velocity_100\nB. midi_velocity_127\nC. midi_velocity_75\nD. midi_velocity_50\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_100",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22527",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat MIDI velocity does this note translate to?\nOptions:\nA. midi_velocity_127\nB. midi_velocity_25\nC. midi_velocity_50\nD. midi_velocity_100\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22411",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nSelect the MIDI velocity that aligns with this note's volume.\nOptions:\nA. midi_velocity_100\nB. midi_velocity_50\nC. midi_velocity_127\nD. midi_velocity_75\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:21930",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI velocity for this note falls at what number?\nOptions:\nA. midi_velocity_25\nB. midi_velocity_127\nC. midi_velocity_50\nD. midi_velocity_100\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_25",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22398",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI velocity for this musical tone is what?\nOptions:\nA. midi_velocity_50\nB. midi_velocity_127\nC. midi_velocity_75\nD. midi_velocity_25\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:21939",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThis single note registers as which MIDI velocity?\nOptions:\nA. midi_velocity_50\nB. midi_velocity_25\nC. midi_velocity_127\nD. midi_velocity_75\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_50",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22805",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI velocity of this note is identified as what?\nOptions:\nA. midi_velocity_50\nB. midi_velocity_75\nC. midi_velocity_100\nD. midi_velocity_127\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22842",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe sound of this note corresponds to which MIDI velocity?\nOptions:\nA. midi_velocity_50\nB. midi_velocity_25\nC. midi_velocity_127\nD. midi_velocity_75\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22824",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI velocity value for this music note is what?\nOptions:\nA. midi_velocity_127\nB. midi_velocity_50\nC. midi_velocity_25\nD. midi_velocity_75\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:21891",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIdentify the MIDI velocity that this note falls under.\nOptions:\nA. midi_velocity_100\nB. midi_velocity_25\nC. midi_velocity_75\nD. midi_velocity_127\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:21879",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the MIDI velocity of this note at the current moment?\nOptions:\nA. midi_velocity_127\nB. midi_velocity_50\nC. midi_velocity_75\nD. midi_velocity_25\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22639",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nDetermine the MIDI velocity for the note in question.\nOptions:\nA. midi_velocity_100\nB. midi_velocity_50\nC. midi_velocity_75\nD. midi_velocity_127\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22348",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the MIDI velocity number for this note's intensity?\nOptions:\nA. midi_velocity_50\nB. midi_velocity_127\nC. midi_velocity_25\nD. midi_velocity_100\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_50",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:21947",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI velocity of this music note is what value?\nOptions:\nA. midi_velocity_127\nB. midi_velocity_75\nC. midi_velocity_100\nD. midi_velocity_25\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. midi_velocity_100",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22763",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThis isolated note's MIDI velocity translates to what?\nOptions:\nA. midi_velocity_50\nB. midi_velocity_127\nC. midi_velocity_75\nD. midi_velocity_25\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_50",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22159",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIdentify the MIDI velocity that this note falls under.\nOptions:\nA. midi_velocity_75\nB. midi_velocity_100\nC. midi_velocity_127\nD. midi_velocity_25\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22506",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI velocity of the note being heard is what?\nOptions:\nA. midi_velocity_127\nB. midi_velocity_50\nC. midi_velocity_25\nD. midi_velocity_75\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:21985",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat MIDI velocity is being represented by this note?\nOptions:\nA. midi_velocity_127\nB. midi_velocity_75\nC. midi_velocity_100\nD. midi_velocity_50\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. midi_velocity_100",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22617",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI velocity of this music note is what value?\nOptions:\nA. midi_velocity_25\nB. midi_velocity_50\nC. midi_velocity_75\nD. midi_velocity_127\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22012",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI velocity of the played note is what?\nOptions:\nA. midi_velocity_50\nB. midi_velocity_100\nC. midi_velocity_75\nD. midi_velocity_127\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:21998",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat MIDI velocity does this note translate to?\nOptions:\nA. midi_velocity_50\nB. midi_velocity_75\nC. midi_velocity_25\nD. midi_velocity_100\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_50",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22125",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe note's loudness equates to which MIDI velocity?\nOptions:\nA. midi_velocity_25\nB. midi_velocity_127\nC. midi_velocity_100\nD. midi_velocity_50\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_25",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22453",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI velocity for this note can be identified as what?\nOptions:\nA. midi_velocity_25\nB. midi_velocity_100\nC. midi_velocity_127\nD. midi_velocity_50\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22542",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI velocity of the note being heard is what?\nOptions:\nA. midi_velocity_50\nB. midi_velocity_127\nC. midi_velocity_25\nD. midi_velocity_75\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_50",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22623",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIdentify the MIDI velocity that matches this note's dynamics.\nOptions:\nA. midi_velocity_75\nB. midi_velocity_127\nC. midi_velocity_25\nD. midi_velocity_100\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_75",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22756",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe sound of this note corresponds to which MIDI velocity?\nOptions:\nA. midi_velocity_25\nB. midi_velocity_50\nC. midi_velocity_100\nD. midi_velocity_75\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_25",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22744",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI velocity for the lone note in this music is what?\nOptions:\nA. midi_velocity_100\nB. midi_velocity_25\nC. midi_velocity_75\nD. midi_velocity_127\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_100",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22026",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the MIDI velocity level of the note played?\nOptions:\nA. midi_velocity_50\nB. midi_velocity_75\nC. midi_velocity_127\nD. midi_velocity_100\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:21889",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI velocity for this note falls at what number?\nOptions:\nA. midi_velocity_127\nB. midi_velocity_25\nC. midi_velocity_50\nD. midi_velocity_100\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22549",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat MIDI velocity does this note translate to?\nOptions:\nA. midi_velocity_100\nB. midi_velocity_50\nC. midi_velocity_25\nD. midi_velocity_127\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22801",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat MIDI velocity is the note equivalent to?\nOptions:\nA. midi_velocity_25\nB. midi_velocity_127\nC. midi_velocity_50\nD. midi_velocity_100\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. midi_velocity_100",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22503",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI velocity of the musical note is identified as what?\nOptions:\nA. midi_velocity_25\nB. midi_velocity_75\nC. midi_velocity_100\nD. midi_velocity_50\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. midi_velocity_100",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22802",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat MIDI velocity does this note's loudness correspond to?\nOptions:\nA. midi_velocity_127\nB. midi_velocity_25\nC. midi_velocity_100\nD. midi_velocity_75\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22237",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI velocity number for the note heard is what?\nOptions:\nA. midi_velocity_50\nB. midi_velocity_100\nC. midi_velocity_25\nD. midi_velocity_75\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_50",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22326",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThis note's volume translates to which MIDI velocity?\nOptions:\nA. midi_velocity_100\nB. midi_velocity_25\nC. midi_velocity_50\nD. midi_velocity_127\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_100",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22447",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nSelect the MIDI velocity that represents this note.\nOptions:\nA. midi_velocity_75\nB. midi_velocity_100\nC. midi_velocity_127\nD. midi_velocity_50\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22848",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the MIDI velocity number for this note's intensity?\nOptions:\nA. midi_velocity_127\nB. midi_velocity_25\nC. midi_velocity_75\nD. midi_velocity_100\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22284",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe sound of this note corresponds to which MIDI velocity?\nOptions:\nA. midi_velocity_100\nB. midi_velocity_75\nC. midi_velocity_50\nD. midi_velocity_25\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_100",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22690",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThis musical note's MIDI velocity is what?\nOptions:\nA. midi_velocity_100\nB. midi_velocity_50\nC. midi_velocity_75\nD. midi_velocity_127\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_100",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22035",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nSelect the MIDI velocity that represents this note.\nOptions:\nA. midi_velocity_75\nB. midi_velocity_50\nC. midi_velocity_127\nD. midi_velocity_100\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. midi_velocity_100",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22631",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThis musical note's MIDI velocity is what?\nOptions:\nA. midi_velocity_75\nB. midi_velocity_127\nC. midi_velocity_25\nD. midi_velocity_50\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_velocity_75",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22820",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThis musical note's MIDI velocity is what?\nOptions:\nA. midi_velocity_100\nB. midi_velocity_50\nC. midi_velocity_75\nD. midi_velocity_127\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22170",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI velocity designation for this note is what?\nOptions:\nA. midi_velocity_25\nB. midi_velocity_100\nC. midi_velocity_127\nD. midi_velocity_50\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Velocity_Analysis:nsynth:22345",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nDetermine the MIDI velocity for the note in question.\nOptions:\nA. midi_velocity_100\nB. midi_velocity_75\nC. midi_velocity_25\nD. midi_velocity_127\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. midi_velocity_127",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.0,
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset air-bench-foundation-music-midi-velocity-nsynth --backbone meralion-2-gguf --split test --n 60",
+  "elapsed_s": 22.8
+}

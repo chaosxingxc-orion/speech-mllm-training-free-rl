@@ -1,0 +1,17 @@
+# Validity sidecar (RR-009) — does NOT modify t7_rag_gate_probe.json (evidence freeze).
+# Machine-readable status layer; the full ledger entry is docs/claim_ledger.yaml (claim_id: C-T7).
+status: INVALID
+reason: >
+  Answer lookup, not knowledge-assisted reasoning. The leakage audit (scripts/t7_leakage_audit.py)
+  showed answer_in_own_KB=1.0 and injected top-k answer-inclusion rate 0.90 — heysquad is
+  SQuAD-type reading comprehension where the "gold" answer is a literal span inside the retrieved
+  context, so the model copies the answer out of the injected passage rather than reasoning over
+  external knowledge. The retrieval query also used the question TEXT, which is unavailable at
+  deployment (the real input is audio) — a second, independent information-boundary violation.
+  The H0_oracle_minus_base = +0.517 figure in this file is not a clean gain. A clean re-run
+  (query from audio, answer scrubbed from the KB) gives clean_H0 = -0.066, a null result.
+  Absolutely prohibited from citation as positive evidence (G3 leakage red-team gate,
+  wiki/2026-07-10-research-integrity-forensic-audit.md).
+superseded_by: "2026-07-07-E6-final-conclusions-clean"
+adjudicated_on: 2026-07-11
+source: "docs/claim_ledger.yaml, claim_id C-T7"

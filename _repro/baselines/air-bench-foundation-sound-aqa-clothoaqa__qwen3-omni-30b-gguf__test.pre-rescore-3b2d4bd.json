@@ -1,0 +1,633 @@
+{
+  "stage": "1-directional",
+  "dataset": "air-bench-foundation-sound-aqa-clothoaqa",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/air-bench-foundation-sound-aqa-clothoaqa/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "Sound_AQA:clothoaqa:14934",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIs this the sound of wood?\nOptions:\nA. voice\nB. slowly\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. no",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15002",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nis a dog barking?\nOptions:\nA. none\nB. women\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. no",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15788",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIs the light roar?\nOptions:\nA. drill\nB. spinner\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. yes",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15231",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are the people doing in the background?\nOptions:\nA. talking\nB. flood\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. talking",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15337",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is heard beeping halfway through?\nOptions:\nA. umbrella\nB. women\nC. yes\nD. car\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. car",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15202",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are they walking on?\nOptions:\nA. grass\nB. driller\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. driller",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15100",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIs this water flowing down a river?\nOptions:\nA. screeching\nB. police\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. no",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15848",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nDoes the pitch of the whistle get higher?\nOptions:\nA. yes\nB. slowly\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. yes",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15698",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIs there distant music?\nOptions:\nA. coin\nB. two\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. no",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15344",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nwhat are the items doing with each other?\nOptions:\nA. cat\nB. clanking\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. clanking",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:14997",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many times does the siren get louder?\nOptions:\nA. band\nB. working\nC. yes\nD. two\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. two",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15825",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIs the sound continuous?\nOptions:\nA. swimming\nB. insect\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. yes",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15017",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHas something been turned on?\nOptions:\nA. band\nB. sparrow\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. yes",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15369",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nwhat is making the high pitch sound?\nOptions:\nA. voice\nB. insect\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. insect",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15762",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the person making an announcement into?\nOptions:\nA. vehicle\nB. drum\nC. intercom\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. intercom",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15053",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIs a person running?\nOptions:\nA. clapping\nB. iron\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. yes",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15744",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nDid a door close?\nOptions:\nA. rainfall\nB. machine\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. yes",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15547",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nwhat type of building where people pay to see animals could this be located in?\nOptions:\nA. zoo\nB. low\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. zoo",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:14918",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIs this in the city?\nOptions:\nA. lock\nB. men\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. no",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15419",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIs this a place to go shopping?\nOptions:\nA. clanking\nB. never\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. no",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15615",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat instrument is being played?\nOptions:\nA. drum\nB. fast\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. drum",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15725",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat animal was chirping?\nOptions:\nA. eight\nB. nine\nC. yes\nD. bird\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. bird",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15827",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat sound is the train making?\nOptions:\nA. intercom\nB. honking\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. honking",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15765",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat animal can be heard?\nOptions:\nA. start\nB. sparrow\nC. yes\nD. owl\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. owl",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15229",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIs there wildlife close?\nOptions:\nA. closet\nB. people\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. yes",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15671",
+      "instr": "Listen to the audio and answer the multiple-choice question.\ndoes it sound like a wooden object is present?\nOptions:\nA. tank\nB. police\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. yes",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15435",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat breed of bird is chirping?\nOptions:\nA. rod\nB. machine\nC. sparrow\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. sparrow",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15047",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is being rolled down?\nOptions:\nA. waves\nB. coin\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. coin",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15770",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are the people doing?\nOptions:\nA. working\nB. door\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. working",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:14974",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIs it a sunny clear day?\nOptions:\nA. dog\nB. iron\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. yes",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15633",
+      "instr": "Listen to the audio and answer the multiple-choice question.\ndoes the sound of the truck remain steady the whole time?\nOptions:\nA. wrench\nB. bell\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. no",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15171",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nhow many times is the tap heard?\nOptions:\nA. running\nB. zero\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. zero",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15453",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many types of animals can be heard making noise ?\nOptions:\nA. motorbike\nB. mixer\nC. three\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. three",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15696",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIs this near water?\nOptions:\nA. siren\nB. twentythree\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. yes",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15075",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is pouring down in the sound?\nOptions:\nA. gas\nB. rain\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. rain",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15687",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nI there more than one person here?\nOptions:\nA. once\nB. rainfall\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. yes",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15630",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many people can be heard singing ?\nOptions:\nA. rainy\nB. bird\nC. one\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. no",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15753",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nDoes it sound like cars are driving?\nOptions:\nA. motorbike\nB. loudspeaker\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. yes",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15197",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIs someone setting silverware against the table?\nOptions:\nA. fireworks\nB. falls\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. no",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:14985",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat was passing nearby?\nOptions:\nA. lock\nB. three\nC. nothing\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. lock",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15661",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the person doing?\nOptions:\nA. cars\nB. snow\nC. walking\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. walking",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15423",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat other sound was heard?\nOptions:\nA. mixer\nB. intercom\nC. yes\nD. bird\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. mixer",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15381",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIs the sound staticky?\nOptions:\nA. honking\nB. sound\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. yes",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15589",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIs something being opened?\nOptions:\nA. grass\nB. stops\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. yes",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15095",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIs the sound staticky?\nOptions:\nA. drill\nB. traffic\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. yes",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15777",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nAre there birds chirping in the background ?\nOptions:\nA. keys\nB. two\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. yes",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15374",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many times is the slapping sound heard?\nOptions:\nA. road\nB. rod\nC. yes\nD. twenty\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. twenty",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15429",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIs someone urinating?\nOptions:\nA. party\nB. short\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. yes",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15854",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nDoes the buzzing intensify?\nOptions:\nA. working\nB. singing\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. yes",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:14897",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIs there a tractor in the background?\nOptions:\nA. crickets\nB. storm\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. no",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15118",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nare horns honking?\nOptions:\nA. door\nB. closet\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. yes",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15840",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat object is sometimes carried by a person to stay dry when this is happening?\nOptions:\nA. loudspeaker\nB. umbrella\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. umbrella",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15411",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIs it a repetitive sound?\nOptions:\nA. birds\nB. mouse\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. yes",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15557",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nAre geese making noise?\nOptions:\nA. flood\nB. seagulls\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. yes",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15569",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nDoes this sound get quieter as the clip goes on?\nOptions:\nA. working\nB. whispering\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. yes",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15445",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere are they?\nOptions:\nA. liquid\nB. road\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. road",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15367",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nAre there many people talking?\nOptions:\nA. twentythree\nB. announcement\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. no",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15675",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIs metal making noise?\nOptions:\nA. never\nB. buzzsaw\nC. yes\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. yes",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15732",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the vehicle moving along?\nOptions:\nA. water\nB. clanging\nC. bike\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. water",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Sound_AQA:clothoaqa:15239",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are they walking in?\nOptions:\nA. radio\nB. twentythree\nC. sand\nD. no\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. sand",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.0,
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset air-bench-foundation-sound-aqa-clothoaqa --backbone qwen3-omni-30b-gguf --split test --n 60",
+  "elapsed_s": 185.9
+}

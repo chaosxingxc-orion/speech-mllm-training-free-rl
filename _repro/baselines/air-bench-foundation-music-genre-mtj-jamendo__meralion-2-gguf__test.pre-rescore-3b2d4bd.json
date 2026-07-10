@@ -1,0 +1,633 @@
+{
+  "stage": "1-directional",
+  "dataset": "air-bench-foundation-music-genre-mtj-jamendo",
+  "k_type": "K8",
+  "backbone": "meralion-2-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/air-bench-foundation-music-genre-mtj-jamendo/sample_manifest.json",
+  "model": "MERaLiON-2-3B GGUF (llama.cpp, -ngl 99)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20754",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich genre does this piece of music represent?\nOptions:\nA. bossanova\nB. pop\nC. world\nD. country\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. world",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20826",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nwhat's the genre of this music?\nOptions:\nA. electronic\nB. indie\nC. hiphop\nD. bossanova\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. electronic",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20760",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat genre of music is featured in this recording?\nOptions:\nA. alternative\nB. electronica\nC. chanson\nD. pop\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. alternative",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:19994",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich music genre does this track seem to be?\nOptions:\nA. idm\nB. latin\nC. triphop\nD. folk\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. triphop",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20374",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat genre of music is featured in this recording?\nOptions:\nA. soundtrack\nB. breakbeat\nC. chanson\nD. blues\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. soundtrack",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20246",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the genre theme of this audio clip?\nOptions:\nA. electronic\nB. triphop\nC. bossanova\nD. easylistening\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. electronic",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20314",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich music genre does this track seem to be?\nOptions:\nA. darkambient\nB. classical\nC. drumnbass\nD. industrial\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. darkambient",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20397",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the musical genre of this song?\nOptions:\nA. electronic\nB. orchestral\nC. instrumentalpop\nD. chillout\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. chillout",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:19972",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the genre theme of this audio clip?\nOptions:\nA. newwave\nB. psychedelic\nC. rock\nD. folk\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. newwave",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20423",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the classification of this music?\nOptions:\nA. minimal\nB. darkambient\nC. electronic\nD. jazz\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. minimal",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20317",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat style of music is this?\nOptions:\nA. rocknroll\nB. chanson\nC. electronic\nD. hiphop\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. electronic",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20611",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the genre tone of this track?\nOptions:\nA. blues\nB. acidjazz\nC. idm\nD. classical\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. idm",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:19990",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the musical genre of this song?\nOptions:\nA. electropop\nB. drumnbass\nC. soundtrack\nD. classical\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. soundtrack",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20113",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow would you label the genre of this track?\nOptions:\nA. metal\nB. soundtrack\nC. triphop\nD. reggae\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. ...",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20300",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow would you define the genre of this music?\nOptions:\nA. hardrock\nB. chillout\nC. rocknroll\nD. industrial\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. hardrock",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20434",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nwhat's the genre of this music?\nOptions:\nA. acidjazz\nB. rnb\nC. celtic\nD. jazz\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. acidjazz",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20168",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat genre of music is featured in this recording?\nOptions:\nA. drumnbass\nB. classical\nC. alternative\nD. industrial\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. drumnbass",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20527",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the classification of this music?\nOptions:\nA. alternative\nB. electronic\nC. easylistening\nD. hardrock\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. electronic",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20411",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich music genre does this track seem to be?\nOptions:\nA. metal\nB. rnb\nC. rap\nD. poprock\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. poprock",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:19930",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat kind of musical genre is this?\nOptions:\nA. celtic\nB. electronic\nC. easylistening\nD. rocknroll\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. celtic",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20398",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich genre does this piece of music represent?\nOptions:\nA. idm\nB. blues\nC. popfolk\nD. electronic\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. electronic",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:19939",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich genre does this piece of music represent?\nOptions:\nA. soundtrack\nB. country\nC. techno\nD. latin\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. soundtrack",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20805",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow would you label the genre of this track?\nOptions:\nA. swing\nB. classical\nC. soul\nD. blues\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. swing",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20842",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the musical theme genre of this song?\nOptions:\nA. classical\nB. soundtrack\nC. funk\nD. chanson\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. classical",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20824",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat family of music does this piece come from?\nOptions:\nA. atmospheric\nB. latin\nC. newage\nD. darkambient\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. darkambient",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:19891",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the genre identity of this music?\nOptions:\nA. darkambient\nB. experimental\nC. rock\nD. house\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. experimental",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:19879",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIn what genre would you place this tune?\nOptions:\nA. house\nB. alternative\nC. reggae\nD. classical\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. house",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20639",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the musical genre of this song?\nOptions:\nA. jazz\nB. progressive\nC. electronic\nD. indie\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. electronic",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20348",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the flavor of music in this recording?\nOptions:\nA. ambient\nB. rap\nC. punkrock\nD. orchestral\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. rap",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:19947",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat genre of music is featured in this recording?\nOptions:\nA. dance\nB. ambient\nC. rnb\nD. funk\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. dance",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20763",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow would you categorize the genre of this music?\nOptions:\nA. newage\nB. techno\nC. orchestral\nD. pop\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. newage",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20159",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich music genre does this track seem to be?\nOptions:\nA. trance\nB. classical\nC. rock\nD. idm\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. trance",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20506",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the genre mood of this music?\nOptions:\nA. minimal\nB. funk\nC. rocknroll\nD. easylistening\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. minimal",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:19985",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the stylistic genre of this track?\nOptions:\nA. popfolk\nB. funk\nC. rock\nD. poprock\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. poprock",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20617",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow would you label the genre of this track?\nOptions:\nA. electropop\nB. pop\nC. progressive\nD. breakbeat\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. electropop",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20012",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich genre would you say this piece of music fits into?\nOptions:\nA. swing\nB. soundtrack\nC. world\nD. punkrock\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. world",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:19998",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat genre vibe does this music give off?\nOptions:\nA. rock\nB. poprock\nC. triphop\nD. electropop\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. rock",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20125",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the genre tone of this track?\nOptions:\nA. experimental\nB. country\nC. electronic\nD. classical\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. electronic",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20453",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the genre signature of this song?\nOptions:\nA. dance\nB. reggae\nC. psychedelic\nD. pop\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. dance",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20542",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat genre of music is featured in this recording?\nOptions:\nA. breakbeat\nB. darkambient\nC. ambient\nD. classical\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. ambient",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20623",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the genre tone of this track?\nOptions:\nA. bossanova\nB. electronic\nC. psychedelic\nD. rap\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. electronic",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20756",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat genre does this musical piece exemplify?\nOptions:\nA. psychedelic\nB. soundtrack\nC. progressive\nD. alternative\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. progressive",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20744",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich genre does this piece of music represent?\nOptions:\nA. swing\nB. rock\nC. easylistening\nD. chanson\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. easylistening",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20026",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich genre would you say this piece of music fits into?\nOptions:\nA. classical\nB. poprock\nC. rocknroll\nD. psychedelic\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. ...",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:19889",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the predominant music genre in this track?\nOptions:\nA. experimental\nB. newwave\nC. progressive\nD. ambient\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. experimental",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20549",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nidentify the music genre of this track.\nOptions:\nA. poprock\nB. world\nC. alternative\nD. funk\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. alternative",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20801",
+      "instr": "Listen to the audio and answer the multiple-choice question.\ntell me the genre of this music piece?\nOptions:\nA. triphop\nB. electronic\nC. hard\nD. ethno\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. electronic",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20503",
+      "instr": "Listen to the audio and answer the multiple-choice question.\ntell me the genre of this music piece?\nOptions:\nA. soundtrack\nB. popfolk\nC. experimental\nD. funk\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. soundtrack",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20802",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat kind of music is playing in this audio?\nOptions:\nA. rocknroll\nB. alternative\nC. country\nD. instrumentalpop\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. instrumentalpop",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20237",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the genre mood of this music?\nOptions:\nA. rock\nB. rnb\nC. easylistening\nD. classical\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. easylistening",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20326",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the stylistic genre of this track?\nOptions:\nA. hardrock\nB. swing\nC. classical\nD. house\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. classical",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20447",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the classification of this music?\nOptions:\nA. hardrock\nB. electronica\nC. rock\nD. psychedelic\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. rock",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20848",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the predominant music genre in this track?\nOptions:\nA. swing\nB. ethno\nC. alternative\nD. rock\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. alternative",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20284",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich musical genre is this composition associated with?\nOptions:\nA. electronica\nB. popfolk\nC. classical\nD. folk\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. folk",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20690",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the classification of this music?\nOptions:\nA. electronic\nB. folk\nC. newwave\nD. soundtrack\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. electronic",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20035",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat genre vibe does this music give off?\nOptions:\nA. acidjazz\nB. electronic\nC. instrumentalpop\nD. country\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. electronic",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20631",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow would you summarize the genre of this music?\nOptions:\nA. classical\nB. latin\nC. drumnbass\nD. darkambient\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. darkambient",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20820",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nspecify the music genre here?\nOptions:\nA. newage\nB. metal\nC. darkambient\nD. techno\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. darkambient",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20170",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich genre does this piece of music represent?\nOptions:\nA. soul\nB. minimal\nC. pop\nD. rap\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. minimal",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20345",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich musical genre is this composition associated with?\nOptions:\nA. classical\nB. breakbeat\nC. minimal\nD. orchestral\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. minimal",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.0,
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset air-bench-foundation-music-genre-mtj-jamendo --backbone meralion-2-gguf --split test --n 60",
+  "elapsed_s": 81.1
+}

@@ -1,0 +1,433 @@
+{
+  "stage": "1-directional",
+  "dataset": "air-bench-foundation-music-midi-pitch-nsynth",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/air-bench-foundation-music-midi-pitch-nsynth/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21187",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe precise MIDI pitch for this note is what?\nOptions:\nA. midi_pitch_40\nB. midi_pitch_97\nC. midi_pitch_80\nD. midi_pitch_67\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_pitch_40",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21040",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nSelect the MIDI pitch that represents this note.\nOptions:\nA. midi_pitch_44\nB. midi_pitch_22\nC. midi_pitch_32\nD. midi_pitch_49\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. midi_pitch_22",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:20991",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe note in this music piece has a MIDI pitch of what?\nOptions:\nA. midi_pitch_23\nB. midi_pitch_90\nC. midi_pitch_21\nD. midi_pitch_53\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. midi_pitch_21",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21168",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThis single note registers as which MIDI pitch?\nOptions:\nA. midi_pitch_57\nB. midi_pitch_65\nC. midi_pitch_92\nD. midi_pitch_14\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. midi_pitch_65",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21467",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the likely MIDI pitch of the note?\nOptions:\nA. midi_pitch_103\nB. midi_pitch_34\nC. midi_pitch_45\nD. midi_pitch_76\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. midi_pitch_34",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21015",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThis isolated note's MIDI pitch translates to what?\nOptions:\nA. midi_pitch_16\nB. midi_pitch_62\nC. midi_pitch_46\nD. midi_pitch_55\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. midi_pitch_55",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21567",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe note at this timestamp has a MIDI pitch of what?\nOptions:\nA. midi_pitch_91\nB. midi_pitch_32\nC. midi_pitch_94\nD. midi_pitch_13\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. midi_pitch_94",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21639",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI pitch associated with this note is what?\nOptions:\nA. midi_pitch_19\nB. midi_pitch_85\nC. midi_pitch_30\nD. midi_pitch_31\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. midi_pitch_31",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21611",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the MIDI pitch of the note in this music?\nOptions:\nA. midi_pitch_88\nB. midi_pitch_66\nC. midi_pitch_53\nD. midi_pitch_84\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. midi_pitch_84",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21535",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nDetermine the MIDI pitch for the note in question.\nOptions:\nA. midi_pitch_9\nB. midi_pitch_83\nC. midi_pitch_93\nD. midi_pitch_67\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. midi_pitch_93",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21436",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThis single note registers as which MIDI pitch?\nOptions:\nA. midi_pitch_36\nB. midi_pitch_51\nC. midi_pitch_35\nD. midi_pitch_47\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. midi_pitch_35",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21626",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThis note has a MIDI pitch of what number?\nOptions:\nA. midi_pitch_40\nB. midi_pitch_45\nC. midi_pitch_100\nD. midi_pitch_107\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. midi_pitch_107",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21401",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the MIDI pitch number for this note's sound?\nOptions:\nA. midi_pitch_41\nB. midi_pitch_53\nC. midi_pitch_30\nD. midi_pitch_35\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. midi_pitch_30",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21795",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI pitch of this note is identified as what?\nOptions:\nA. midi_pitch_104\nB. midi_pitch_101\nC. midi_pitch_75\nD. midi_pitch_21\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. midi_pitch_101",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21527",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe specific MIDI pitch for this note is what?\nOptions:\nA. midi_pitch_72\nB. midi_pitch_59\nC. midi_pitch_50\nD. midi_pitch_92\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_pitch_72",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21411",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI pitch for this musical tone is what?\nOptions:\nA. midi_pitch_69\nB. midi_pitch_78\nC. midi_pitch_66\nD. midi_pitch_19\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_pitch_69",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21765",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI pitch of this distinct note is what?\nOptions:\nA. midi_pitch_116\nB. midi_pitch_51\nC. midi_pitch_20\nD. midi_pitch_34\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. midi_pitch_51",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21404",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThis musical note's MIDI pitch is what?\nOptions:\nA. midi_pitch_76\nB. midi_pitch_55\nC. midi_pitch_67\nD. midi_pitch_24\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. midi_pitch_67",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:20957",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe note in this music piece has a MIDI pitch of what?\nOptions:\nA. midi_pitch_58\nB. midi_pitch_65\nC. midi_pitch_85\nD. midi_pitch_40\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. midi_pitch_65",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21056",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI pitch for this note is determined as what?\nOptions:\nA. midi_pitch_101\nB. midi_pitch_84\nC. midi_pitch_87\nD. midi_pitch_91\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. midi_pitch_87",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21427",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nSelect the MIDI pitch that aligns with this note's sound.\nOptions:\nA. midi_pitch_67\nB. midi_pitch_26\nC. midi_pitch_83\nD. midi_pitch_103\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_pitch_67",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21607",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI pitch associated with this note is what?\nOptions:\nA. midi_pitch_57\nB. midi_pitch_58\nC. midi_pitch_82\nD. midi_pitch_93\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. midi_pitch_82",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21812",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the MIDI pitch level of the note played?\nOptions:\nA. midi_pitch_29\nB. midi_pitch_72\nC. midi_pitch_23\nD. midi_pitch_60\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. midi_pitch_60",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21161",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI pitch of the played note is what?\nOptions:\nA. midi_pitch_33\nB. midi_pitch_87\nC. midi_pitch_50\nD. midi_pitch_80\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_pitch_33",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21343",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThis isolated note's MIDI pitch translates to what?\nOptions:\nA. midi_pitch_77\nB. midi_pitch_23\nC. midi_pitch_28\nD. midi_pitch_69\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. midi_pitch_69",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21628",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI pitch for this musical tone is what?\nOptions:\nA. midi_pitch_84\nB. midi_pitch_26\nC. midi_pitch_28\nD. midi_pitch_89\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_pitch_84",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21066",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI pitch for this musical tone is what?\nOptions:\nA. midi_pitch_48\nB. midi_pitch_90\nC. midi_pitch_22\nD. midi_pitch_26\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. midi_pitch_26",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21435",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI pitch of this music note is what value?\nOptions:\nA. midi_pitch_36\nB. midi_pitch_11\nC. midi_pitch_98\nD. midi_pitch_61\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. midi_pitch_61",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21063",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the MIDI pitch of the note in this music?\nOptions:\nA. midi_pitch_89\nB. midi_pitch_58\nC. midi_pitch_41\nD. midi_pitch_26\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. midi_pitch_89",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21779",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThis note corresponds to what MIDI pitch value?\nOptions:\nA. midi_pitch_33\nB. midi_pitch_60\nC. midi_pitch_82\nD. midi_pitch_71\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. midi_pitch_82",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21684",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe sound of this note corresponds to which MIDI pitch?\nOptions:\nA. midi_pitch_48\nB. midi_pitch_52\nC. midi_pitch_43\nD. midi_pitch_29\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. midi_pitch_43",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21205",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the MIDI pitch assigned to this musical sound?\nOptions:\nA. midi_pitch_91\nB. midi_pitch_97\nC. midi_pitch_42\nD. midi_pitch_98\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. midi_pitch_97",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21302",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI pitch of this music note is what value?\nOptions:\nA. midi_pitch_77\nB. midi_pitch_52\nC. midi_pitch_76\nD. midi_pitch_68\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. midi_pitch_76",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21844",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThis single note registers as which MIDI pitch?\nOptions:\nA. midi_pitch_93\nB. midi_pitch_59\nC. midi_pitch_108\nD. midi_pitch_13\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. midi_pitch_59",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21233",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nSelect the MIDI pitch that represents this note.\nOptions:\nA. midi_pitch_42\nB. midi_pitch_104\nC. midi_pitch_29\nD. midi_pitch_94\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. midi_pitch_104",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21503",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat numerical value is the MIDI pitch for this note?\nOptions:\nA. midi_pitch_57\nB. midi_pitch_23\nC. midi_pitch_61\nD. midi_pitch_102\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. midi_pitch_61",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21358",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI pitch for this note can be identified as what?\nOptions:\nA. midi_pitch_43\nB. midi_pitch_75\nC. midi_pitch_79\nD. midi_pitch_50\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. midi_pitch_79",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21524",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the MIDI pitch number for this note's sound?\nOptions:\nA. midi_pitch_22\nB. midi_pitch_83\nC. midi_pitch_67\nD. midi_pitch_98\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. midi_pitch_67",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:21047",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI pitch that denotes this note is what?\nOptions:\nA. midi_pitch_95\nB. midi_pitch_99\nC. midi_pitch_105\nD. midi_pitch_48\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. midi_pitch_99",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Music_Midi_Pitch_Analysis:nsynth:20978",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe MIDI pitch that denotes this note is what?\nOptions:\nA. midi_pitch_16\nB. midi_pitch_93\nC. midi_pitch_75\nD. midi_pitch_113\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. midi_pitch_93",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.0,
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset air-bench-foundation-music-midi-pitch-nsynth --backbone qwen3-omni-30b-gguf --split dev --n 40",
+  "elapsed_s": 86.1
+}

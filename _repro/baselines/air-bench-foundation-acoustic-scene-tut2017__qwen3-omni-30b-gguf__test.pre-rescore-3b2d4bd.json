@@ -1,0 +1,633 @@
+{
+  "stage": "1-directional",
+  "dataset": "air-bench-foundation-acoustic-scene-tut2017",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/air-bench-foundation-acoustic-scene-tut2017/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14754",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere do the unique sound signatures lead you to believe the recording took place?\nOptions:\nA. metro station\nB. tram\nC. home\nD. train\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. train",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14826",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich of these options aligns with the sound characteristics you hear?\nOptions:\nA. beach\nB. cafe/restaurant\nC. metro station\nD. forest path\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. beach",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14760",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere do the specific sounds heard in the recording typically occur?\nOptions:\nA. grocery store\nB. train\nC. residential area\nD. beach\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. residential area",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:13994",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat scene does the combination of sounds evoke?\nOptions:\nA. tram\nB. grocery store\nC. park\nD. city center\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. tram",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14374",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat setting are you transported to with these sounds?\nOptions:\nA. beach\nB. train\nC. library\nD. car\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. car",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14246",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere might these sounds be commonly encountered?\nOptions:\nA. grocery store\nB. bus\nC. forest path\nD. car\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. car",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14314",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat scenario can you infer from the auditory cues in this sound clip?\nOptions:\nA. forest path\nB. office\nC. library\nD. city center\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. forest path",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14397",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIn what context do these sounds typically occur?\nOptions:\nA. home\nB. tram\nC. residential area\nD. library\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. tram",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:13972",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the likely source of these sounds?\nOptions:\nA. park\nB. car\nC. residential area\nD. library\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. residential area",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14423",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat location does the background noise suggest to you?\nOptions:\nA. metro station\nB. bus\nC. cafe/restaurant\nD. city center\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. bus",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14317",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat backdrop do the sounds in the recording paint for you?\nOptions:\nA. library\nB. park\nC. train\nD. grocery store\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. grocery store",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14611",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich of these locations do the sounds give the impression of being recorded in?\nOptions:\nA. forest path\nB. bus\nC. library\nD. beach\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. library",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:13990",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat type of location do the sounds in the recording hint at?\nOptions:\nA. residential area\nB. city center\nC. forest path\nD. bus\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. city center",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14113",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat surroundings are suggested by the audible background?\nOptions:\nA. metro station\nB. car\nC. home\nD. forest path\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. car",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14300",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere do the sounds in the audio capture seem most at home?\nOptions:\nA. car\nB. park\nC. city center\nD. metro station\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. car",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14434",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIn which of these places would you most expect to hear these sounds?\nOptions:\nA. car\nB. home\nC. city center\nD. bus\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. home",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14168",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere do the specific sounds heard in the recording typically occur?\nOptions:\nA. park\nB. metro station\nC. cafe/restaurant\nD. grocery store\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. metro station",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14527",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat place do you connect with the sound profile in this clip?\nOptions:\nA. train\nB. residential area\nC. beach\nD. cafe/restaurant\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. train",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14411",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat setting corresponds to the audio cues present?\nOptions:\nA. forest path\nB. home\nC. city center\nD. tram\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. tram",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:13930",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich of these options aligns with the sound characteristics you hear?\nOptions:\nA. tram\nB. beach\nC. home\nD. park\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. home",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14398",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat scene does the combination of sounds evoke?\nOptions:\nA. grocery store\nB. metro station\nC. home\nD. tram\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. tram",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:13939",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the likely source of these sounds?\nOptions:\nA. library\nB. home\nC. residential area\nD. bus\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. residential area",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14805",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat location comes to mind with this collection of sounds?\nOptions:\nA. grocery store\nB. home\nC. metro station\nD. car\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. home",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14842",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIn what kind of area do these types of sounds usually arise?\nOptions:\nA. home\nB. office\nC. city center\nD. residential area\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. residential area",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14824",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere do the sounds in the audio capture seem most at home?\nOptions:\nA. metro station\nB. car\nC. beach\nD. home\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. home",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:13891",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIn which of these places would you most expect to hear these sounds?\nOptions:\nA. office\nB. bus\nC. beach\nD. forest path\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. forest path",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:13879",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere do the unique sound signatures lead you to believe the recording took place?\nOptions:\nA. cafe/restaurant\nB. library\nC. beach\nD. grocery store\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. grocery store",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14639",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat environment is being reflected in this sound recording?\nOptions:\nA. library\nB. forest path\nC. metro station\nD. city center\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. library",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14348",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the primary setting indicated by the sounds in the recording?\nOptions:\nA. library\nB. office\nC. city center\nD. car\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. library",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:13947",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat location does the sound atmosphere point to?\nOptions:\nA. city center\nB. grocery store\nC. forest path\nD. library\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. library",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14763",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich place matches the ambient sounds you are hearing?\nOptions:\nA. home\nB. car\nC. park\nD. city center\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. park",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14159",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere is the most probable place these sounds originate from?\nOptions:\nA. car\nB. park\nC. grocery store\nD. office\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. grocery store",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14506",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the setting that comes to mind when listening to this sound?\nOptions:\nA. train\nB. library\nC. beach\nD. tram\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. beach",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:13985",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is your best guess at the setting of this sound clip?\nOptions:\nA. forest path\nB. residential area\nC. library\nD. city center\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. forest path",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14617",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIn what setting do you think this sound was recorded?\nOptions:\nA. park\nB. city center\nC. grocery store\nD. bus\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. bus",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14012",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat setting corresponds to the audio cues present?\nOptions:\nA. residential area\nB. train\nC. home\nD. office\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. home",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:13998",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich of these locations do the sounds give the impression of being recorded in?\nOptions:\nA. home\nB. park\nC. cafe/restaurant\nD. car\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. car",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14125",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the primary setting indicated by the sounds in the recording?\nOptions:\nA. train\nB. metro station\nC. cafe/restaurant\nD. grocery store\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. cafe/restaurant",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14453",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere do the audible clues in this recording lead you to believe it was taken?\nOptions:\nA. cafe/restaurant\nB. city center\nC. home\nD. train\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. train",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14542",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat setting would you deduce from the sound characteristics?\nOptions:\nA. library\nB. forest path\nC. grocery store\nD. tram\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. library",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14623",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat scene does the layered soundscape suggest to you?\nOptions:\nA. beach\nB. city center\nC. metro station\nD. library\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. beach",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14756",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat scene does the layered soundscape suggest to you?\nOptions:\nA. beach\nB. residential area\nC. tram\nD. library\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. tram",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14744",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere does the nature of these sounds transport you?\nOptions:\nA. home\nB. office\nC. bus\nD. car\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. home",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14026",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat scene does the combination of sounds evoke?\nOptions:\nA. forest path\nB. cafe/restaurant\nC. grocery store\nD. tram\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. tram",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:13889",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere is the most probable place these sounds originate from?\nOptions:\nA. cafe/restaurant\nB. office\nC. train\nD. beach\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. train",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14549",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere does the nature of these sounds transport you?\nOptions:\nA. train\nB. grocery store\nC. park\nD. car\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. car",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14801",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat surroundings are suggested by the audible background?\nOptions:\nA. forest path\nB. beach\nC. tram\nD. metro station\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. tram",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14503",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere do the specific sounds heard in the recording typically occur?\nOptions:\nA. residential area\nB. library\nC. metro station\nD. home\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. home",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14802",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere could these sound elements commonly be found?\nOptions:\nA. train\nB. library\nC. forest path\nD. office\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. office",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14237",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat scene is being depicted through these sounds?\nOptions:\nA. grocery store\nB. library\nC. office\nD. city center\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. library",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14326",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat does the sonic environment in the recording suggest?\nOptions:\nA. forest path\nB. library\nC. grocery store\nD. beach\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. beach",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14447",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere do the sounds in the audio capture seem most at home?\nOptions:\nA. residential area\nB. grocery store\nC. bus\nD. city center\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. bus",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14848",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat setting are you transported to with these sounds?\nOptions:\nA. metro station\nB. beach\nC. train\nD. library\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. train",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14284",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat scene does the combination of sounds evoke?\nOptions:\nA. home\nB. office\nC. forest path\nD. tram\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. home",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14690",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat location comes to mind with this collection of sounds?\nOptions:\nA. metro station\nB. home\nC. city center\nD. cafe/restaurant\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. city center",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14035",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat environment is being reflected in this sound recording?\nOptions:\nA. residential area\nB. city center\nC. cafe/restaurant\nD. library\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. cafe/restaurant",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14631",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich of these options aligns with the sound characteristics you hear?\nOptions:\nA. park\nB. residential area\nC. office\nD. home\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. home",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14820",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat setting corresponds to the audio cues present?\nOptions:\nA. home\nB. forest path\nC. office\nD. metro station\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. home",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14170",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere do you believe this audio clip was captured?\nOptions:\nA. car\nB. city center\nC. residential area\nD. cafe/restaurant\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. car",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": null
+      }
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:TUT2017:14345",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the likely source of these sounds?\nOptions:\nA. beach\nB. cafe/restaurant\nC. car\nD. park\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. park",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": null
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.0,
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset air-bench-foundation-acoustic-scene-tut2017 --backbone qwen3-omni-30b-gguf --split test --n 60",
+  "elapsed_s": 155.3
+}
