@@ -57,6 +57,17 @@ MERALION_CTX="${MERALION_CTX:-8192}"
 MERALION_PIDFILE="$DATA/_llama_server_meralion.pid"
 MERALION_LOGFILE="$DATA/_llama_server_meralion.log"
 
+# ---- qwen3-omni-30b-gguf EMBEDDING-mode overlay (step-2 dual-mode serve, wiki/2026-07-10-step2
+# -grid-draft.md §5 item ⑤ "30B embedding server 模式与生成模式的 gpu_session 分时排程") -- SAME
+# GGUF+mmproj as the generate-mode config above, different llama-server flags/port/pidfile/logfile
+# so an embedding-mode resident server is a separate process from the generate-mode one (never
+# simultaneously with it in practice -- GPU RULE is still one-at-a-time; see `serve <key> up
+# --mode` / `window` below). Embedding-mode batch-builds are meant to slot into marathon GAPS, not
+# run alongside a live generate-mode server.
+LLAMA_EMBED_PORT="${LLAMA_EMBED_PORT:-8198}"
+LLAMA_EMBED_PIDFILE="$DATA/_llama_server_qwen3_embed.pid"
+LLAMA_EMBED_LOGFILE="$DATA/_llama_server_qwen3_embed.log"
+
 usage() {
   cat <<EOF
 Usage: $(basename "$0") <command> [args]
@@ -86,20 +97,45 @@ Commands:
                              alias for \`serve qwen3-omni-30b-gguf up\` (same model/port/pidfile).
   with-llama-server down     Stop it via the pidfile: graceful SIGTERM, wait, SIGKILL if it does
                              not exit within 30s. Alias for \`serve qwen3-omni-30b-gguf down\`.
-  serve <model-key> up       Start the resident llama-server for <model-key> (own port + pidfile +
-                             logfile per key, see MODEL KEYS below). No-op if already running.
-                             Multiple DIFFERENT model-keys may have pidfiles at once (e.g. left
-                             over from a previous session) but the GPU RULE (CLAUDE.md: at most ONE
-                             process may use the GPU) means only one should be launched at a time
-                             in practice -- this script does not enforce that beyond the gpu_session
-                             lock itself, so always \`acquire\` first and \`down\` before switching.
-  serve <model-key> down     Stop it via its pidfile (same SIGTERM/wait/SIGKILL semantics as above).
+  serve <model-key> up [--mode generate|embedding]
+                             Start the resident llama-server for <model-key> (own port + pidfile +
+                             logfile per key/mode, see MODEL KEYS below). No-op if already running.
+                             \`--mode\` defaults to \`generate\` (unchanged prior behavior).
+                             \`--mode embedding\` is currently wired for qwen3-omni-30b-gguf ONLY
+                             (same GGUF+mmproj, extra \`--embedding --pooling last\` flags, its own
+                             port/pidfile/logfile -- see LLAMA_EMBED_* below); passing it for any
+                             other model-key dies with a clear error. Multiple DIFFERENT
+                             model-keys/modes may have pidfiles at once (e.g. left over from a
+                             previous session) but the GPU RULE (CLAUDE.md: at most ONE process may
+                             use the GPU) means only one should be launched at a time in practice --
+                             this script does not enforce that beyond the gpu_session lock itself,
+                             so always \`acquire\` first and \`down\` before switching (or use
+                             \`window\` below, which does this for you).
+  serve <model-key> down [--mode generate|embedding]
+                             Stop it via its pidfile (same SIGTERM/wait/SIGKILL semantics as above;
+                             \`--mode\` must match how it was started, so the right pidfile is used).
+  window <owner> <model-key> [--mode generate|embedding] -- <command...>
+                             Queue-friendly helper: acquire the GPU lock as <owner>, \`serve
+                             <model-key> up\` (mode as given), run <command...> to completion
+                             (inheriting this shell's environment), \`serve <model-key> down\`, then
+                             release the lock -- always tearing the server + lock down even if
+                             <command...> fails, and exiting with *its* exit code. Meant so an
+                             embedding batch-build can slot into a gap between wave-1 marathon
+                             cells without any caller hand-managing acquire/serve/release/down
+                             itself. All argument validation (missing owner/model-key/\`--\`/command,
+                             an invalid --mode) happens BEFORE touching the lock or spawning
+                             anything.
 
-MODEL KEYS (for \`serve\`):
-  qwen3-omni-30b-gguf   Qwen3-Omni-30B-A3B-Instruct Q8_0 GGUF, port 8091, -ngl 28 (see LLAMA_* below).
+MODEL KEYS (for \`serve\`/\`window\`):
+  qwen3-omni-30b-gguf   Qwen3-Omni-30B-A3B-Instruct Q8_0 GGUF. generate mode: port 8091, -ngl 28
+                        (see LLAMA_* below). embedding mode: SAME gguf+mmproj, port 8198 (see
+                        LLAMA_EMBED_* below), extra \`--embedding --pooling last\` flags, own
+                        pidfile/logfile so it never collides with a resident generate-mode server.
   meralion-2-gguf       MERaLiON-2-3B GGUF (decoder q8_0 + mmproj f16), port 8197, -ngl 99
-                        (see MERALION_* below). Emits a "<Speaker1>: " turn-prefix in its replies --
-                        callers must strip it before scoring (see run_baseline.py's gen_llamacpp).
+                        (see MERALION_* below). generate mode only (embedding mode dies with a
+                        clear "not wired" error). Emits a "<Speaker1>: " turn-prefix in its
+                        replies -- callers must strip it before scoring (see run_baseline.py's
+                        gen_llamacpp).
 
 Env overrides:
   SPEECHRL_DATA_DIR          data root (default \$HOME/speechrl-data); lock/pidfile/log live under it.
@@ -107,8 +143,11 @@ Env overrides:
   LLAMACPP_DIR                 llama.cpp checkout (default \$HOME/llama.cpp), shared llama-server binary
                                 for every model key.
   LLAMA_MODEL / LLAMA_MMPROJ / LLAMA_HOST / LLAMA_PORT / LLAMA_NGL / LLAMA_CTX / LLAMA_UP_TIMEOUT
-                                qwen3-omni-30b-gguf launch overrides (defaults match
+                                qwen3-omni-30b-gguf generate-mode launch overrides (defaults match
                                 wiki/Inference-Engine-Choice.md).
+  LLAMA_EMBED_PORT / LLAMA_EMBED_PIDFILE / LLAMA_EMBED_LOGFILE
+                                qwen3-omni-30b-gguf embedding-mode overrides (model/mmproj/ngl/ctx
+                                are shared with generate mode via LLAMA_MODEL/LLAMA_MMPROJ/etc.).
   MERALION_MODEL / MERALION_MMPROJ / MERALION_HOST / MERALION_PORT / MERALION_NGL / MERALION_CTX
                                 meralion-2-gguf launch overrides (LLAMA_UP_TIMEOUT is shared).
 EOF
@@ -236,19 +275,37 @@ cmd_assert_idle() {
   echo "GPU idle: 0 compute processes"
 }
 
-# _model_cfg <model-key> -- sets the M_* globals (label/model/mmproj/host/port/ngl/ctx/pidfile/
-# logfile/timeout) for a known model key. One place to add a new GGUF backbone (extend the case).
+# _model_cfg <model-key> [mode] -- sets the M_* globals (label/model/mmproj/host/port/ngl/ctx/
+# pidfile/logfile/timeout/extra-flags) for a known model key + mode. One place to add a new GGUF
+# backbone or mode (extend the case). mode defaults to "generate" (unchanged prior behavior for
+# every existing caller that never passes one).
 _model_cfg() {
   local key="${1:?_model_cfg: missing model-key}"
+  local mode="${2:-generate}"
+  case "$mode" in
+    generate|embedding) ;;
+    *) die "_model_cfg: unknown mode '$mode' for model-key '$key' (expected 'generate' or 'embedding')" ;;
+  esac
+  M_EXTRA_FLAGS=""   # always assigned (set -u) -- overridden below only for qwen3 embedding mode
   case "$key" in
     qwen3-omni-30b-gguf)
-      M_LABEL="Qwen3-Omni-30B"
       M_MODEL="$LLAMA_MODEL"; M_MMPROJ="$LLAMA_MMPROJ"
-      M_HOST="$LLAMA_HOST"; M_PORT="$LLAMA_PORT"
+      M_HOST="$LLAMA_HOST"
       M_NGL="$LLAMA_NGL"; M_CTX="$LLAMA_CTX"
-      M_PIDFILE="$LLAMA_PIDFILE"; M_LOGFILE="$LLAMA_LOGFILE"
+      if [ "$mode" = "embedding" ]; then
+        M_LABEL="Qwen3-Omni-30B (embedding mode)"
+        M_PORT="$LLAMA_EMBED_PORT"
+        M_PIDFILE="$LLAMA_EMBED_PIDFILE"; M_LOGFILE="$LLAMA_EMBED_LOGFILE"
+        M_EXTRA_FLAGS="--embedding --pooling last"
+      else
+        M_LABEL="Qwen3-Omni-30B"
+        M_PORT="$LLAMA_PORT"
+        M_PIDFILE="$LLAMA_PIDFILE"; M_LOGFILE="$LLAMA_LOGFILE"
+      fi
       ;;
     meralion-2-gguf)
+      [ "$mode" = "generate" ] || die "_model_cfg: mode='$mode' is not wired for meralion-2-gguf" \
+        "(embedding mode is qwen3-omni-30b-gguf only for now -- see gpu_session.sh's dual-mode note)"
       M_LABEL="MERaLiON-2"
       M_MODEL="$MERALION_MODEL"; M_MMPROJ="$MERALION_MMPROJ"
       M_HOST="$MERALION_HOST"; M_PORT="$MERALION_PORT"
@@ -260,12 +317,14 @@ _model_cfg() {
   M_UP_TIMEOUT="$LLAMA_UP_TIMEOUT"
 }
 
-# serve_up <model-key> -- generic resident-llama-server launcher, parameterized via _model_cfg.
-# Replaces the old qwen3-only llama_up() (identical polling/pidfile semantics, just not hardcoded
-# to one model) so a second GGUF backbone (meralion-2-gguf) does not need a copy-pasted twin.
+# serve_up <model-key> [mode] -- generic resident-llama-server launcher, parameterized via
+# _model_cfg. Replaces the old qwen3-only llama_up() (identical polling/pidfile semantics, just
+# not hardcoded to one model) so a second GGUF backbone (meralion-2-gguf) or a second MODE
+# (qwen3's embedding overlay) does not need a copy-pasted twin.
 serve_up() {
   local key="${1:?Usage: gpu_session.sh serve <model-key> up}"
-  _model_cfg "$key"
+  local mode="${2:-generate}"
+  _model_cfg "$key" "$mode"
   if [ -f "$M_PIDFILE" ]; then
     local p; p="$(cat "$M_PIDFILE")"
     if pid_alive "$p"; then
@@ -280,14 +339,18 @@ serve_up() {
   [ -f "$M_MMPROJ" ] || die "mmproj GGUF not found: $M_MMPROJ"
   mkdir -p "$DATA"
 
-  echo "starting resident llama-server: $M_LABEL, -ngl $M_NGL -c $M_CTX, $M_HOST:$M_PORT ..."
+  echo "starting resident llama-server: $M_LABEL, -ngl $M_NGL -c $M_CTX, $M_HOST:$M_PORT" \
+       "${M_EXTRA_FLAGS:+(extra flags: $M_EXTRA_FLAGS)} ..."
   # Exact flag shape per scripts/repro_asr_best_of_n_llamacpp.py:16-20 / wiki/Inference-Engine-Choice.md.
+  # $M_EXTRA_FLAGS is intentionally unquoted -- it is either empty (generate mode, vanishes under
+  # word-splitting, no stray arg) or a fixed, space-separated flag string ("--embedding --pooling
+  # last" for qwen3 embedding mode) that must split into separate argv words.
   LD_LIBRARY_PATH="$LLAMACPP_DIR/build/bin${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}" \
     "$LLAMA_BIN" \
       -m "$M_MODEL" \
       --mmproj "$M_MMPROJ" \
       -ngl "$M_NGL" -c "$M_CTX" \
-      --host "$M_HOST" --port "$M_PORT" --no-warmup \
+      --host "$M_HOST" --port "$M_PORT" --no-warmup $M_EXTRA_FLAGS \
       >"$M_LOGFILE" 2>&1 &
   local newpid=$!
   echo "$newpid" > "$M_PIDFILE"
@@ -310,11 +373,13 @@ serve_up() {
   echo "WARN: ($M_LABEL) not confirmed ready after ${M_UP_TIMEOUT}s (pid=$newpid still running - may still be loading; check $M_LOGFILE)" >&2
 }
 
-# serve_down <model-key> -- generic counterpart to serve_up (identical SIGTERM/wait/SIGKILL
-# semantics as the old llama_down()).
+# serve_down <model-key> [mode] -- generic counterpart to serve_up (identical SIGTERM/wait/SIGKILL
+# semantics as the old llama_down()). mode MUST match how it was started -- it selects the pidfile
+# (generate vs. embedding overlay have different pidfiles for qwen3-omni-30b-gguf).
 serve_down() {
   local key="${1:?Usage: gpu_session.sh serve <model-key> down}"
-  _model_cfg "$key"
+  local mode="${2:-generate}"
+  _model_cfg "$key" "$mode"
   if [ ! -f "$M_PIDFILE" ]; then
     echo "no $M_LABEL pidfile ($M_PIDFILE) - nothing to stop"
     return 0
@@ -342,12 +407,25 @@ serve_down() {
 }
 
 cmd_serve() {
-  local key="${1:?Usage: gpu_session.sh serve <model-key> <up|down>}"
-  local action="${2:?Usage: gpu_session.sh serve <model-key> <up|down>}"
+  local usage_msg="Usage: gpu_session.sh serve <model-key> <up|down> [--mode generate|embedding]"
+  local key="${1:?$usage_msg}"
+  local action="${2:?$usage_msg}"
+  shift 2
+  local mode="generate"
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      --mode) mode="${2:?--mode requires a value}"; shift 2 ;;
+      *) echo "$usage_msg" >&2; exit 2 ;;
+    esac
+  done
+  case "$mode" in
+    generate|embedding) ;;
+    *) die "cmd_serve: --mode must be 'generate' or 'embedding' (got '$mode')" ;;
+  esac
   case "$action" in
-    up) serve_up "$key" ;;
-    down) serve_down "$key" ;;
-    *) echo "Usage: gpu_session.sh serve <model-key> <up|down>" >&2; exit 2 ;;
+    up) serve_up "$key" "$mode" ;;
+    down) serve_down "$key" "$mode" ;;
+    *) echo "$usage_msg" >&2; exit 2 ;;
   esac
 }
 
@@ -361,6 +439,46 @@ cmd_with_llama_server() {
   esac
 }
 
+# window <owner> <model-key> [--mode generate|embedding] -- <command...> -- queue-friendly
+# acquire+serve-up+run+serve-down+release helper (see usage()'s longer description). ALL argument
+# validation happens before cmd_acquire/serve_up are ever called, so a malformed invocation never
+# touches the GPU lock or spawns a server.
+cmd_window() {
+  local usage_msg="Usage: gpu_session.sh window <owner> <model-key> [--mode generate|embedding] -- <command...>"
+  local owner="${1:?$usage_msg}"
+  shift
+  local model_key="${1:?$usage_msg}"
+  shift
+  local mode="generate"
+  local saw_dashdash=0
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      --mode) mode="${2:?--mode requires a value}"; shift 2 ;;
+      --) saw_dashdash=1; shift; break ;;
+      *) die "cmd_window: unexpected arg '$1' before '--' ($usage_msg)" ;;
+    esac
+  done
+  [ "$saw_dashdash" -eq 1 ] || die "cmd_window: missing '--' separator before the command ($usage_msg)"
+  case "$mode" in
+    generate|embedding) ;;
+    *) die "cmd_window: --mode must be 'generate' or 'embedding' (got '$mode')" ;;
+  esac
+  [ $# -gt 0 ] || die "cmd_window: no command given after '--' ($usage_msg)"
+
+  echo "[window] acquiring GPU lock as '$owner' ..."
+  cmd_acquire "$owner" --pid "$$"
+  echo "[window] serving '$model_key' (mode=$mode) ..."
+  serve_up "$model_key" "$mode"
+  echo "[window] running: $*"
+  local rc=0
+  "$@" || rc=$?
+  echo "[window] command exited $rc; stopping '$model_key' (mode=$mode) ..."
+  serve_down "$model_key" "$mode"
+  echo "[window] releasing GPU lock '$owner' ..."
+  cmd_release "$owner"
+  exit "$rc"
+}
+
 main() {
   local cmd="${1:-help}"
   if [ $# -gt 0 ]; then shift; fi
@@ -372,6 +490,7 @@ main() {
     assert-idle) cmd_assert_idle ;;
     with-llama-server) cmd_with_llama_server "$@" ;;
     serve) cmd_serve "$@" ;;
+    window) cmd_window "$@" ;;
     help|-h|--help) usage ;;
     *) echo "Unknown command: $cmd" >&2; usage >&2; exit 2 ;;
   esac
