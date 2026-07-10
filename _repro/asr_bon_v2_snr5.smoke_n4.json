@@ -1,0 +1,745 @@
+{
+  "summary": {
+    "problem": "ASR best-of-N v2 (Gate B / G5.1 clean redo) — seed-separated, corpus+macro WER, deployable selector battery",
+    "condition": "snr5",
+    "split": "test.other",
+    "n_utts": 4,
+    "n_skipped": 0,
+    "skipped_ids": [],
+    "pool": 2,
+    "pool_seeds": [
+      1
+    ],
+    "Ns": [
+      1,
+      2
+    ],
+    "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28; audio EXPERIMENTAL upstream)",
+    "greedy": {
+      "corpus_wer": 0.02,
+      "macro_wer": 0.0119
+    },
+    "selectors": {
+      "1": {
+        "oracle": {
+          "label": "ORACLE UPPER BOUND (information-boundary-violating by design: selection uses the reference; NOT deployable)",
+          "corpus_wer": 0.04,
+          "macro_wer": 0.02381,
+          "corpus_delta_vs_greedy_mean": -0.01836,
+          "corpus_delta_vs_greedy_ci95": [
+            -0.04412,
+            0.0
+          ],
+          "corpus_sig": false,
+          "macro_delta_vs_greedy_mean": -0.01232,
+          "macro_delta_vs_greedy_ci95": [
+            -0.03571,
+            0.0
+          ],
+          "macro_sig": false
+        },
+        "mbr": {
+          "label": "DEPLOYABLE",
+          "corpus_wer": 0.04,
+          "macro_wer": 0.02381,
+          "corpus_delta_vs_greedy_mean": -0.01836,
+          "corpus_delta_vs_greedy_ci95": [
+            -0.04412,
+            0.0
+          ],
+          "corpus_sig": false,
+          "macro_delta_vs_greedy_mean": -0.01232,
+          "macro_delta_vs_greedy_ci95": [
+            -0.03571,
+            0.0
+          ],
+          "macro_sig": false
+        },
+        "random": {
+          "label": "DEPLOYABLE",
+          "corpus_wer": 0.04,
+          "macro_wer": 0.02381,
+          "corpus_delta_vs_greedy_mean": -0.01836,
+          "corpus_delta_vs_greedy_ci95": [
+            -0.04412,
+            0.0
+          ],
+          "corpus_sig": false,
+          "macro_delta_vs_greedy_mean": -0.01232,
+          "macro_delta_vs_greedy_ci95": [
+            -0.03571,
+            0.0
+          ],
+          "macro_sig": false
+        },
+        "length": {
+          "label": "DEPLOYABLE",
+          "corpus_wer": 0.04,
+          "macro_wer": 0.02381,
+          "corpus_delta_vs_greedy_mean": -0.01836,
+          "corpus_delta_vs_greedy_ci95": [
+            -0.04412,
+            0.0
+          ],
+          "corpus_sig": false,
+          "macro_delta_vs_greedy_mean": -0.01232,
+          "macro_delta_vs_greedy_ci95": [
+            -0.03571,
+            0.0
+          ],
+          "macro_sig": false
+        },
+        "logprob": {
+          "label": "DEPLOYABLE",
+          "corpus_wer": 0.04,
+          "macro_wer": 0.02381,
+          "corpus_delta_vs_greedy_mean": -0.01836,
+          "corpus_delta_vs_greedy_ci95": [
+            -0.04412,
+            0.0
+          ],
+          "corpus_sig": false,
+          "macro_delta_vs_greedy_mean": -0.01232,
+          "macro_delta_vs_greedy_ci95": [
+            -0.03571,
+            0.0
+          ],
+          "macro_sig": false
+        }
+      },
+      "2": {
+        "oracle": {
+          "label": "ORACLE UPPER BOUND (information-boundary-violating by design: selection uses the reference; NOT deployable)",
+          "corpus_wer": 0.04,
+          "macro_wer": 0.02381,
+          "corpus_delta_vs_greedy_mean": -0.01836,
+          "corpus_delta_vs_greedy_ci95": [
+            -0.04412,
+            0.0
+          ],
+          "corpus_sig": false,
+          "macro_delta_vs_greedy_mean": -0.01232,
+          "macro_delta_vs_greedy_ci95": [
+            -0.03571,
+            0.0
+          ],
+          "macro_sig": false
+        },
+        "mbr": {
+          "label": "DEPLOYABLE",
+          "corpus_wer": 0.04,
+          "macro_wer": 0.02381,
+          "corpus_delta_vs_greedy_mean": -0.01836,
+          "corpus_delta_vs_greedy_ci95": [
+            -0.04412,
+            0.0
+          ],
+          "corpus_sig": false,
+          "macro_delta_vs_greedy_mean": -0.01232,
+          "macro_delta_vs_greedy_ci95": [
+            -0.03571,
+            0.0
+          ],
+          "macro_sig": false
+        },
+        "random": {
+          "label": "DEPLOYABLE",
+          "corpus_wer": 0.04,
+          "macro_wer": 0.02381,
+          "corpus_delta_vs_greedy_mean": -0.01836,
+          "corpus_delta_vs_greedy_ci95": [
+            -0.04412,
+            0.0
+          ],
+          "corpus_sig": false,
+          "macro_delta_vs_greedy_mean": -0.01232,
+          "macro_delta_vs_greedy_ci95": [
+            -0.03571,
+            0.0
+          ],
+          "macro_sig": false
+        },
+        "length": {
+          "label": "DEPLOYABLE",
+          "corpus_wer": 0.04,
+          "macro_wer": 0.02381,
+          "corpus_delta_vs_greedy_mean": -0.01836,
+          "corpus_delta_vs_greedy_ci95": [
+            -0.04412,
+            0.0
+          ],
+          "corpus_sig": false,
+          "macro_delta_vs_greedy_mean": -0.01232,
+          "macro_delta_vs_greedy_ci95": [
+            -0.03571,
+            0.0
+          ],
+          "macro_sig": false
+        },
+        "logprob": {
+          "label": "DEPLOYABLE",
+          "corpus_wer": 0.04,
+          "macro_wer": 0.02381,
+          "corpus_delta_vs_greedy_mean": -0.01836,
+          "corpus_delta_vs_greedy_ci95": [
+            -0.04412,
+            0.0
+          ],
+          "corpus_sig": false,
+          "macro_delta_vs_greedy_mean": -0.01232,
+          "macro_delta_vs_greedy_ci95": [
+            -0.03571,
+            0.0
+          ],
+          "macro_sig": false
+        }
+      }
+    },
+    "active_selectors": [
+      "oracle",
+      "mbr",
+      "random",
+      "length",
+      "logprob"
+    ],
+    "bootstrap": {
+      "method": "hierarchical (resample utterances, then within-utterance resample pool seeds), both with replacement",
+      "reps": 200,
+      "seed": 42
+    },
+    "limitations": {
+      "single_noise_realization_per_condition": "Exactly one additive-noise draw per utterance (NOISE_SEED*100003+utt_idx) is used for the snr5 condition; nested noise replicates (multiple independent noise draws per utterance, forming a third hierarchy level for the bootstrap) are DEFERRED. The hierarchical bootstrap in this artifact resamples utterances and pool-generation seeds only, not noise realizations."
+    },
+    "provenance": {
+      "git": {
+        "sha": "07bbc66d990778cc163733899920baada91e6c20",
+        "dirty": true
+      },
+      "llamacpp_pinned_commit": {
+        "source": "/mnt/d/chao_workspace/exploring-l4-intelligence/scripts/env-setup.sh",
+        "commit": "fdbd6abee20e408de21e90ca77a24cd50a6ea073",
+        "raw_line": "LLAMACPP_COMMIT=\"${LLAMACPP_COMMIT:-fdbd6abee20e408de21e90ca77a24cd50a6ea073}\"  # 2026-06-25, \"tests: synchronize contexts at end of test-thread-safety (#24935)\""
+      },
+      "llama_server_props": {
+        "default_generation_settings": {
+          "params": {
+            "seed": 4294967295,
+            "temperature": 0.800000011920929,
+            "dynatemp_range": 0.0,
+            "dynatemp_exponent": 1.0,
+            "top_k": 40,
+            "top_p": 0.949999988079071,
+            "min_p": 0.05000000074505806,
+            "top_n_sigma": -1.0,
+            "xtc_probability": 0.0,
+            "xtc_threshold": 0.10000000149011612,
+            "typical_p": 1.0,
+            "repeat_last_n": 64,
+            "repeat_penalty": 1.0,
+            "presence_penalty": 0.0,
+            "frequency_penalty": 0.0,
+            "dry_multiplier": 0.0,
+            "dry_base": 1.75,
+            "dry_allowed_length": 2,
+            "dry_penalty_last_n": -1,
+            "mirostat": 0,
+            "mirostat_tau": 5.0,
+            "mirostat_eta": 0.10000000149011612,
+            "max_tokens": -1,
+            "n_predict": -1,
+            "n_keep": 0,
+            "n_discard": 0,
+            "ignore_eos": false,
+            "stream": false,
+            "n_probs": 0,
+            "min_keep": 0,
+            "chat_format": "Content-only",
+            "reasoning_format": "none",
+            "reasoning_in_content": false,
+            "generation_prompt": "",
+            "samplers": [
+              "penalties",
+              "dry",
+              "top_n_sigma",
+              "top_k",
+              "typ_p",
+              "top_p",
+              "min_p",
+              "xtc",
+              "temperature"
+            ],
+            "speculative.types": "none",
+            "timings_per_token": false,
+            "post_sampling_probs": false,
+            "backend_sampling": false,
+            "lora": []
+          },
+          "n_ctx": 8192
+        },
+        "total_slots": 4,
+        "model_alias": "/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data/models/qwen3-omni-30b-a3b-instruct-gguf/Qwen3-Omni-30B-A3B-Instruct-Q8_0.gguf",
+        "model_path": "/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data/models/qwen3-omni-30b-a3b-instruct-gguf/Qwen3-Omni-30B-A3B-Instruct-Q8_0.gguf",
+        "modalities": {
+          "vision": true,
+          "video": true,
+          "audio": true
+        },
+        "media_marker": "<__media_7ZVgaWhdiAT17v0lWBJqAHfAKqBssmzf__>",
+        "endpoint_slots": true,
+        "endpoint_props": false,
+        "endpoint_metrics": false,
+        "ui": true,
+        "ui_settings": {},
+        "chat_template": "{%- if tools %}\n    {{- '<|im_start|>system\\n' }}\n    {%- if messages[0].role == 'system' %}\n        {%- if messages[0].content is string %}\n            {{- messages[0].content }}\n        {%- else %}\n            {%- for content in messages[0].content %}\n                {%- if content.type == 'image' or 'image' in content or 'image_url' in content %}\n                    {{- \"<|vision_start|><|image_pad|><|vision_end|>\" }}\n                {%- elif content.type == 'audio' or 'audio' in content or 'audio_url' in content %}\n                    {{- \"<|audio_start|><|audio_pad|><|audio_end|>\" }}\n                {%- elif content.type == 'video' or 'video' in content %}\n                    {{- \"<|vision_start|><|video_pad|><|vision_end|>\" }}\n                {%- elif content.type == 'text' %}\n                    {{- content.text }}\n                {%- endif %}\n            {%- endfor %}\n        {%- endif %}\n    {%- endif %}\n    {{- '\\n\\n' }}\n    {{- \"# Tools\\n\\nYou may call one or more functions to assist with the user query.\\n\\nYou are provided with function signatures within <tools></tools> XML tags:\\n<tools>\" }}\n    {%- for tool in tools %}\n        {{- \"\\n\" }}\n        {{- tool | tojson }}\n    {%- endfor %}\n    {{- \"\\n</tools>\\n\\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\\n<tool_call>\\n{\\\"name\\\": <function-name>, \\\"arguments\\\": <args-json-object>}\\n</tool_call><|im_end|>\\n\" }}\n{%- else %}\n    {%- if messages[0].role == 'system' %}\n        {%- if messages[0].content is string %}\n            {{- '<|im_start|>system\\n' + messages[0].content + '<|im_end|>\\n' }}\n        {%- else %}\n            {%- for content in messages[0].content %}\n                {%- if content.type == 'image' or 'image' in content or 'image_url' in content %}\n                    {{- '<|im_start|>system\\n' +\"<|vision_start|><|image_pad|><|vision_end|>\"+ '<|im_end|>\\n' }}\n                {%- elif content.type == 'audio' or 'audio' in content or 'audio_url' in content %}\n                    {{- '<|im_start|>system\\n' +\"<|audio_start|><|audio_pad|><|audio_end|>\"+ '<|im_end|>\\n' }}\n                {%- elif content.type == 'video' or 'video' in content %}\n                    {{- '<|im_start|>system\\n' +\"<|vision_start|><|video_pad|><|vision_end|>\"+ '<|im_end|>\\n' }}\n                {%- elif content.type == 'text' %}\n                    {{- '<|im_start|>system\\n' +content.text+ '<|im_end|>\\n' }}\n                {%- endif %}\n            {%- endfor %}\n        {%- endif %}\n    {%- endif %}\n{%- endif %}\n{%- set ns = namespace(multi_step_tool=true, last_query_index=messages|length - 1) %}\n{%- for message in messages[::-1] %}\n    {%- set index = (messages|length - 1) - loop.index0 %}\n    {%- if ns.multi_step_tool and message.role == \"user\" and message.content is string and not(message.content.startswith('<tool_response>') and message.content.endswith('</tool_response>')) %}\n        {%- set ns.multi_step_tool = false %}\n        {%- set ns.last_query_index = index %}\n    {%- endif %}\n{%- endfor %}\n{%- for message in messages %}\n    {%- if message.content is string %}\n        {%- set content = message.content %}\n    {%- else %}\n        {%- set content = namespace(text=\"\") %}\n        {%- for mcontent in message.content %}\n            {%- if mcontent.type == 'image' or 'image' in mcontent or 'image_url' in mcontent %}\n                {%- set content.text = content.text~\"<|vision_start|><|image_pad|><|vision_end|>\" %}\n            {%- elif mcontent.type == 'audio' or 'audio' in mcontent or 'audio_url' in mcontent %}\n                {%- set content.text = content.text~\"<|audio_start|><|audio_pad|><|audio_end|>\" %}\n            {%- elif mcontent.type == 'video' or 'video' in mcontent %}\n                {%- set content.text = content.text~\"<|vision_start|><|video_pad|><|vision_end|>\" %}\n            {%- elif mcontent.type == 'text' %}\n                {%- set content.text = content.text~mcontent.text %}\n            {%- endif %}\n        {%- endfor %}\n        {%- set content = content.text %}\n    {%- endif %}\n    {%- if (message.role == \"user\") or (message.role == \"system\" and not loop.first) %}\n        {{- '<|im_start|>' + message.role + '\\n' + content + '<|im_end|>' + '\\n' }}\n    {%- elif message.role == \"assistant\" %}\n        {%- set reasoning_content = \"\" %}\n        {%- if message.reasoning_content is string %}\n            {%- set reasoning_content = message.reasoning_content %}\n        {%- else %}\n            {%- if '</think>' in content %}\n            {%- set reasoning_content = content.split('</think>')[0].rstrip('\\n').split('<think>')[-1].lstrip('\\n') %}\n            {%- set content = content.split('</think>')[-1].lstrip('\\n') %}\n        {%- endif %}\n    {%- endif %}\n    {%- if loop.index0 > ns.last_query_index %}\n        {%- if loop.last or (not loop.last and reasoning_content) %}\n            {{- '<|im_start|>' + message.role + '\\n<think>\\n' + reasoning_content.strip(\"\\n\") + '\\n</think>\\n\\n' + content.lstrip('\\n') }}\n        {%- else %}\n            {{- '<|im_start|>' + message.role + '\\n' + content }}\n        {%- endif %}\n    {%- else %}\n        {{- '<|im_start|>' + message.role + '\\n' + content }}\n    {%- endif %}\n    {%- if message.tool_calls %}\n        {%- for tool_call in message.tool_calls %}\n            {%- if (loop.first and content) or (not loop.first) %}{{- '\\n' }}{%- endif %}\n            {%- if tool_call.function %}\n                {%- set tool_call = tool_call.function %}\n            {%- endif %}\n            {{- '<tool_call>\\n{\"name\": \"' }}\n            {{- tool_call.name }}\n            {{- '\", \"arguments\": ' }}\n            {%- if tool_call.arguments is string %}\n                {{- tool_call.arguments }}\n            {%- else %}\n                {{- tool_call.arguments | tojson }}\n            {%- endif %}\n            {{- '}\\n</tool_call>' }}\n        {%- endfor %}\n    {%- endif %}\n    {{- '<|im_end|>\\n' }}\n    {%- elif message.role == \"tool\" %}\n        {%- if loop.first or (messages[loop.index0 - 1].role != \"tool\") %}{{- '<|im_start|>user' }}{%- endif %}\n        {{- '\\n<tool_response>\\n' }}\n        {{- content }}\n        {{- '\\n</tool_response>' }}\n        {%- if loop.last or (messages[loop.index0 + 1].role != \"tool\") %}{{- '<|im_end|>\\n' }}{%- endif %}\n    {%- endif %}\n{%- endfor %}\n{%- if add_generation_prompt %}\n    {{- '<|im_start|>assistant\\n' }}\n    {%- if enable_thinking is defined and enable_thinking is false %}{{- '<think>\\n\\n</think>\\n\\n' }}{%- endif %}\n{%- endif %}",
+        "chat_template_caps": {
+          "supports_object_arguments": true,
+          "supports_parallel_tool_calls": true,
+          "supports_preserve_reasoning": true,
+          "supports_string_content": true,
+          "supports_system_role": true,
+          "supports_tool_calls": true,
+          "supports_tools": true,
+          "supports_typed_content": false
+        },
+        "bos_token": "<|im_end|>",
+        "eos_token": "<|im_end|>",
+        "build_info": "b1-fdbd6ab",
+        "is_sleeping": false,
+        "cors_proxy_enabled": false
+      },
+      "model": {
+        "gguf_dir": "/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data/models/qwen3-omni-30b-a3b-instruct-gguf",
+        "files": {
+          "mmproj-Qwen3-Omni-30B-A3B-Instruct-bf16.gguf": {
+            "path": "/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data/models/qwen3-omni-30b-a3b-instruct-gguf/mmproj-Qwen3-Omni-30B-A3B-Instruct-bf16.gguf",
+            "size_bytes": 2207465568
+          },
+          "Qwen3-Omni-30B-A3B-Instruct-Q8_0.gguf": {
+            "path": "/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data/models/qwen3-omni-30b-a3b-instruct-gguf/Qwen3-Omni-30B-A3B-Instruct-Q8_0.gguf",
+            "size_bytes": 32484494336
+          }
+        },
+        "datasets_lock_entry": {
+          "name": "qwen3-omni-30b-a3b-instruct-gguf",
+          "kind": "model",
+          "local_subdir": "models/qwen3-omni-30b-a3b-instruct-gguf",
+          "source": {
+            "kind": "hf-manual",
+            "id": "ggml-org/Qwen3-Omni-30B-A3B-Instruct-GGUF"
+          },
+          "revision": "unknown (no local metadata -- content-fingerprinted)",
+          "status": "COMPLETE",
+          "size_h": "32.3G",
+          "size_bytes": 34691959904,
+          "files": 2,
+          "task": "-",
+          "factor_family": "model",
+          "note": "Q8_0 GGUF + bf16 mmproj for llama.cpp -- the W1 genuine best-of-N engine (30B on 24 GB via -ngl 28); file-selective fetch via scripts/data/fetch-qwen3-omni-gguf.sh (whole-repo pull >110 GB deliberately avoided)"
+        }
+      },
+      "cohort": {
+        "split": "other",
+        "n": 4,
+        "cohort_seed": 20260711,
+        "ids_ordered": [
+          "3538-163624-0014",
+          "3528-168669-0017",
+          "533-131556-0004",
+          "7975-280084-0016"
+        ],
+        "ids_sha256": "8586930183c952ad820afdb0889e7cba4a6c4ca8eeb8efc7284b34f3a840ce38",
+        "hash_method": "sha256 of json.dumps(ids_ordered, ensure_ascii=False), UTF-8"
+      },
+      "condition": "snr5",
+      "snr_db": 5.0,
+      "noise_seed": 20260712,
+      "pool_seeds": [
+        1
+      ],
+      "pool_seed_formula": "seed = pool_seed*100003 + utt_idx*17 + i  (utt_idx=cohort draw index 0-based, i=candidate index 0-based)",
+      "greedy_seed": 0,
+      "greedy_seed_note": "temperature=0.0 (argmax decode) -> seed has no effect on output; recorded for completeness only",
+      "random_selector_seed_base": 424242,
+      "random_selector_seed_formula": "seed = RANDOM_SELECT_SEED + utt_idx*1009 + pool_seed*131 + N*7",
+      "sampling_params": {
+        "temperature_pool": 0.8,
+        "top_p": 0.95,
+        "top_k": 40,
+        "repeat_penalty": 1.0,
+        "max_tokens": 100,
+        "temperature_greedy": 0.0
+      },
+      "env_versions": {
+        "python": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
+        "numpy": "2.2.6",
+        "jiwer": {
+          "version": "4.0.0",
+          "api": "process_words"
+        }
+      },
+      "nboot": 200,
+      "boot_seed": 42,
+      "api_gaps": {
+        "logprobs_available": true,
+        "note": "llama-server returned non-null logprobs/top_logprobs for every stored hypothesis; logprob-confidence selector is ACTIVE."
+      }
+    },
+    "verdict": "condition=snr5 n=4 (skipped 0); greedy corpus WER 0.020 / macro WER 0.012. Selectors active: ['oracle', 'mbr', 'random', 'length', 'logprob'] at N in {1, 2}. See summary.selectors for per-N per-selector corpus/macro WER + hierarchical-bootstrap deltas vs greedy (2000-rep, utterance-then-pool-seed resampling). Oracle is an information-boundary-violating UPPER BOUND, not a deployable result."
+  },
+  "per_utt": [
+    {
+      "id": "3538-163624-0014",
+      "ref": "BUT ALL MEN DIE AND NO BRAVE MAN LETS DEATH FRIGHTEN HIM FROM HIS DESIRE",
+      "greedy": {
+        "hyp": "But all men die, and no brave man lets death frighten him from his desire.",
+        "logprob_mean": -0.005096929520923847,
+        "S": 0,
+        "D": 0,
+        "I": 0,
+        "H": 15,
+        "N": 15,
+        "wer": 0.0
+      },
+      "pools": {
+        "1": [
+          {
+            "hyp": "But all men die, and no brave man lets death frighten him from his desire.",
+            "logprob_mean": -0.004736631351294675,
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "H": 15,
+            "N": 15,
+            "wer": 0.0
+          },
+          {
+            "hyp": "But all men die, and no brave man lets death frighten him from his desire.",
+            "logprob_mean": -0.004736631351294675,
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "H": 15,
+            "N": 15,
+            "wer": 0.0
+          }
+        ]
+      },
+      "selection": {
+        "1": {
+          "1": {
+            "oracle": {
+              "idx": 0,
+              "wer": 0.0
+            },
+            "mbr": {
+              "idx": 0,
+              "wer": 0.0
+            },
+            "random": {
+              "idx": 0,
+              "wer": 0.0
+            },
+            "length": {
+              "idx": 0,
+              "wer": 0.0
+            },
+            "logprob": {
+              "idx": 0,
+              "wer": 0.0
+            }
+          }
+        },
+        "2": {
+          "1": {
+            "oracle": {
+              "idx": 0,
+              "wer": 0.0
+            },
+            "mbr": {
+              "idx": 0,
+              "wer": 0.0
+            },
+            "random": {
+              "idx": 1,
+              "wer": 0.0
+            },
+            "length": {
+              "idx": 0,
+              "wer": 0.0
+            },
+            "logprob": {
+              "idx": 0,
+              "wer": 0.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "3528-168669-0017",
+      "ref": "WILL THAT BE ALL NO",
+      "greedy": {
+        "hyp": "Will that be all? No.",
+        "logprob_mean": -0.013327372084859235,
+        "S": 0,
+        "D": 0,
+        "I": 0,
+        "H": 5,
+        "N": 5,
+        "wer": 0.0
+      },
+      "pools": {
+        "1": [
+          {
+            "hyp": "Will that be all? No.",
+            "logprob_mean": -0.012977087311355717,
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "H": 5,
+            "N": 5,
+            "wer": 0.0
+          },
+          {
+            "hyp": "Will that be all? No.",
+            "logprob_mean": -0.012977087311355717,
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "H": 5,
+            "N": 5,
+            "wer": 0.0
+          }
+        ]
+      },
+      "selection": {
+        "1": {
+          "1": {
+            "oracle": {
+              "idx": 0,
+              "wer": 0.0
+            },
+            "mbr": {
+              "idx": 0,
+              "wer": 0.0
+            },
+            "random": {
+              "idx": 0,
+              "wer": 0.0
+            },
+            "length": {
+              "idx": 0,
+              "wer": 0.0
+            },
+            "logprob": {
+              "idx": 0,
+              "wer": 0.0
+            }
+          }
+        },
+        "2": {
+          "1": {
+            "oracle": {
+              "idx": 0,
+              "wer": 0.0
+            },
+            "mbr": {
+              "idx": 0,
+              "wer": 0.0
+            },
+            "random": {
+              "idx": 1,
+              "wer": 0.0
+            },
+            "length": {
+              "idx": 0,
+              "wer": 0.0
+            },
+            "logprob": {
+              "idx": 0,
+              "wer": 0.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "533-131556-0004",
+      "ref": "I HAVE DONE WELL TO RECORD THEM SO MINUTELY",
+      "greedy": {
+        "hyp": "I have done well to record them so minutely.",
+        "logprob_mean": -0.03267482591862366,
+        "S": 0,
+        "D": 0,
+        "I": 0,
+        "H": 9,
+        "N": 9,
+        "wer": 0.0
+      },
+      "pools": {
+        "1": [
+          {
+            "hyp": "I have done well to record them so minutely.",
+            "logprob_mean": -0.03407147356771626,
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "H": 9,
+            "N": 9,
+            "wer": 0.0
+          },
+          {
+            "hyp": "I have done well to record them so minutely.",
+            "logprob_mean": -0.03407147356771626,
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "H": 9,
+            "N": 9,
+            "wer": 0.0
+          }
+        ]
+      },
+      "selection": {
+        "1": {
+          "1": {
+            "oracle": {
+              "idx": 0,
+              "wer": 0.0
+            },
+            "mbr": {
+              "idx": 0,
+              "wer": 0.0
+            },
+            "random": {
+              "idx": 0,
+              "wer": 0.0
+            },
+            "length": {
+              "idx": 0,
+              "wer": 0.0
+            },
+            "logprob": {
+              "idx": 0,
+              "wer": 0.0
+            }
+          }
+        },
+        "2": {
+          "1": {
+            "oracle": {
+              "idx": 0,
+              "wer": 0.0
+            },
+            "mbr": {
+              "idx": 0,
+              "wer": 0.0
+            },
+            "random": {
+              "idx": 1,
+              "wer": 0.0
+            },
+            "length": {
+              "idx": 0,
+              "wer": 0.0
+            },
+            "logprob": {
+              "idx": 0,
+              "wer": 0.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "7975-280084-0016",
+      "ref": "THE SHUTTERS WERE CLOSED AND THIS CAUSED BUNKER AN INSTANT'S DELAY THAT WAS ALMOST FATAL PITTS CHASED HIM WITH A BULLET",
+      "greedy": {
+        "hyp": "The shutters were closed, and this caused bunker an instant's delay that was almost fatal. Fish chased him with a bullet.",
+        "logprob_mean": -0.12324782344997705,
+        "S": 1,
+        "D": 0,
+        "I": 0,
+        "H": 20,
+        "N": 21,
+        "wer": 0.047619047619047616
+      },
+      "pools": {
+        "1": [
+          {
+            "hyp": "The shutters were closed, and this caused bunker an instant's delay that was almost fatal. Fish chased him with a bolt.",
+            "logprob_mean": -0.13799363839401244,
+            "S": 2,
+            "D": 0,
+            "I": 0,
+            "H": 19,
+            "N": 21,
+            "wer": 0.09523809523809523
+          },
+          {
+            "hyp": "The shutters were closed, and this caused bunker an instant's delay. That was almost fatal. Pitch chased him with a boat.",
+            "logprob_mean": -0.27657749170716023,
+            "S": 2,
+            "D": 0,
+            "I": 0,
+            "H": 19,
+            "N": 21,
+            "wer": 0.09523809523809523
+          }
+        ]
+      },
+      "selection": {
+        "1": {
+          "1": {
+            "oracle": {
+              "idx": 0,
+              "wer": 0.09523809523809523
+            },
+            "mbr": {
+              "idx": 0,
+              "wer": 0.09523809523809523
+            },
+            "random": {
+              "idx": 0,
+              "wer": 0.09523809523809523
+            },
+            "length": {
+              "idx": 0,
+              "wer": 0.09523809523809523
+            },
+            "logprob": {
+              "idx": 0,
+              "wer": 0.09523809523809523
+            }
+          }
+        },
+        "2": {
+          "1": {
+            "oracle": {
+              "idx": 0,
+              "wer": 0.09523809523809523
+            },
+            "mbr": {
+              "idx": 0,
+              "wer": 0.09523809523809523
+            },
+            "random": {
+              "idx": 1,
+              "wer": 0.09523809523809523
+            },
+            "length": {
+              "idx": 0,
+              "wer": 0.09523809523809523
+            },
+            "logprob": {
+              "idx": 0,
+              "wer": 0.09523809523809523
+            }
+          }
+        }
+      }
+    }
+  ],
+  "elapsed_s": 26.0,
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data BON2_CONDITION=snr5 BON2_N=4 BON2_POOL=2 POOL_SEEDS=1 COHORT_SEED=20260711 NOISE_SEED=20260712 python -u scripts/repro_asr_best_of_n_v2.py (llama-server resident on http://127.0.0.1:8091)"
+}
