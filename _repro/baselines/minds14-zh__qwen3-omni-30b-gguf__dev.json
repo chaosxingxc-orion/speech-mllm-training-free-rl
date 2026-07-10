@@ -1,0 +1,433 @@
+{
+  "stage": "1-directional",
+  "dataset": "minds14-zh",
+  "k_type": "K8/K6 (legacy)",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/baselines-minds14-zh/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "minds14-zh#0",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "9. freeze",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#1",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "13. pay_bill",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#2",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "2. app_error",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#3",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "7. cash_deposit",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#4",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "8. direct_debit",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#5",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. business_loan",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#6",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "6. card_issues",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#7",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "4. balance",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#8",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. business_loan",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#9",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "11. joint_account",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#10",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "6. card_issues",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#11",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "2. app_error",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#12",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "1. address",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#13",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "12. latest_transactions",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#14",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "4. balance",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#15",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "10. high_value_payment",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#16",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "8. direct_debit",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#17",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "1. address",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#18",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "13. pay_bill",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#19",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "10. high_value_payment",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#20",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "0. abroad",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#21",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "13. pay_bill",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#22",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "10. high_value_payment",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#23",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "10. high_value_payment",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#24",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "1. address",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#25",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "13. pay_bill",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#26",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "6. card_issues",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#27",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "1. address",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#28",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "7. cash_deposit",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#29",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. business_loan",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#30",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "9. freeze",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#31",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "1. address",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#32",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "11. joint_account",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#33",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "2. app_error",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#34",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "12. latest_transactions",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#35",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "8. direct_debit",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#36",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "7. cash_deposit",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#37",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "12. latest_transactions",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#38",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "3. atm_limit",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    },
+    {
+      "item_id": "minds14-zh#39",
+      "instr": "Listen to the banking request and classify its intent. Choose ONE intent by number.\nIntents:\n0. abroad\n1. address\n2. app_error\n3. atm_limit\n4. balance\n5. business_loan\n6. card_issues\n7. cash_deposit\n8. direct_debit\n9. freeze\n10. high_value_payment\n11. joint_account\n12. latest_transactions\n13. pay_bill\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "1. address",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "slu"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.95,
+    "ci95": [
+      0.875,
+      1.0
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset minds14-zh --backbone qwen3-omni-30b-gguf --split dev --n 40",
+  "elapsed_s": 200.2
+}

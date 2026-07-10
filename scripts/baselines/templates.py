@@ -77,8 +77,12 @@ FLEURS_R_GENDERS = ["MALE", "FEMALE"]  # tsv "gender" column; casing NOT indepen
 #
 # K4 (SER) resolver: dataset_key -> (label_set, lang). uro-bench-UnderEmotion-{en,zh} now resolve
 # HERE (corpus-true, 41/49-way) instead of falling through to meta.get("_label_set") (sample-
-# observed) in build_instruction's K4 branch below. vocalbench-emotion is intentionally NOT listed
-# (task scope; keeps its existing meta["_label_set"]/hardcoded-5-way fallback).
+# observed) in build_instruction's K4 branch below. vocalbench-emotion is deliberately NOT listed
+# here (its label set is small enough that corpus-true == sample-observed, see
+# label_inventories.py's dedicated comment) -- it instead gets its corpus-true
+# VOCALBENCH_EMOTION_EMOTIONS set via meta["_label_set"], populated by
+# run_baseline._load_rows's dedicated branch (2026-07-10 freeze-repair) and consumed by the
+# meta.get("_label_set") fallback in build_instruction's K4 branch below.
 K4_LABEL_SETS: dict[str, tuple[list[str], str]] = {
     "crema-d": (CREMA_D_EMOTIONS, "en"), "meld": (MELD_EMOTIONS, "en"), "esd": (ESD_EMOTIONS, "zh"),
     "csemotions": (CSEMOTIONS_EMOTIONS, "zh"),
@@ -144,12 +148,18 @@ DATASET_KTYPE: dict[str, str] = {
     "csemotions": "K4",
     "uro-bench-UnderEmotion-en": "K4",
     "uro-bench-UnderEmotion-zh": "K4",
-    "vocalbench-emotion": "K4",          # B4-recovery; label set is sample-observed (meta["_label_set"],
-                                          # same "not the full corpus inventory" caveat as UnderEmotion
-                                          # above) UNLESS hardcoded to the verified 5-way angry/happy/
-                                          # neutral/sad/surprised set (vocalbench.py's load_vocalbench_emotion
-                                          # docstring, verified 2026-07-09) -- falls into the same
-                                          # meta.get("_label_set") branch in build_instruction below.
+    "vocalbench-emotion": "K4",          # B4-recovery; label set is meta["_label_set"], populated by
+                                          # run_baseline._load_rows's dedicated vocalbench-emotion
+                                          # branch from label_inventories.VOCALBENCH_EMOTION_EMOTIONS
+                                          # (corpus-true full-pool scan, 500/500 rows, exactly 100
+                                          # each of angry/happy/neutral/sad/surprised) -- falls into
+                                          # the meta.get("_label_set") branch in build_instruction
+                                          # below. 2026-07-10 freeze-repair: before this fix, NO
+                                          # branch populated meta["_label_set"] for this key at all
+                                          # (not even sample-observed), so this fell through to a
+                                          # single fake placeholder option and scored mechanically
+                                          # 0.0 on both wave-2 cells -- see label_inventories.py's
+                                          # module docstring for the full writeup.
     # --- K5: SID/SV -- SCOPED to attribute probes only (see module docstring) ---
     "speech-massive-de-DE-attr": "K5",  # synthetic sub-key: speaker_sex/speaker_age closed-choice probe
     "speech-massive-fr-FR-attr": "K5",  # (same loader as K6/K7, different template/metric pass)
@@ -439,11 +449,33 @@ def build_instruction(dataset_key: str, row: dict) -> str:
             # comment). vocalbench-emotion is NOT in this dict -- falls through below unchanged.
             label_set, lang = K4_LABEL_SETS[dataset_key]
         else:
-            # sample-observed (meta["_label_set"]) or hardcoded fallback for any K4 dataset NOT
-            # covered by a full-pool inventory (task scope: only vocalbench-emotion today) -- see
-            # label_inventories.py module docstring's "Datasets NOT covered here" note.
+            # sample-observed (meta["_label_set"]) fallback for any K4 dataset NOT covered by a
+            # full-pool inventory (task scope: only vocalbench-emotion today, populated by
+            # run_baseline._load_rows's dedicated branch from label_inventories.py's corpus-true
+            # VOCALBENCH_EMOTION_EMOTIONS -- see that module's docstring) -- see label_inventories.py
+            # module docstring's "Datasets NOT covered here" note.
+            #
+            # 2026-07-10 freeze-repair (wave-2 audit): this branch used to silently fall back to a
+            # single FAKE placeholder option (["<observed set unavailable>"]) whenever
+            # meta["_label_set"] was missing/empty. That degenerated the closed-choice prompt to
+            # one bogus option and (paired with metrics.score's matching empty-list fallback, see
+            # its own 2026-07-10 comment) made vocalbench-emotion's dev+test cells score
+            # MECHANICALLY 0.0 regardless of the model's actual reply -- a silent scoring-floor bug,
+            # not a model-quality signal. Raise loudly instead: any FUTURE K4 dataset key added to
+            # DATASET_KTYPE without also being wired into K4_LABEL_SETS or a run_baseline._load_rows
+            # meta["_label_set"] branch must fail FAST at template-build time, not silently produce
+            # an unscoreable prompt that only shows up later as a suspicious 0.0 aggregate.
             lang = "en"
-            label_set = meta.get("_label_set") or (["<observed set unavailable>"])
+            label_set = meta.get("_label_set")
+            if not label_set:
+                raise KeyError(
+                    f"build_instruction: K4 dataset_key={dataset_key!r} has no closed label set -- "
+                    "not in K4_LABEL_SETS (label_inventories.py corpus-true) and meta['_label_set'] "
+                    "is missing/empty (see run_baseline._load_rows's per-dataset branches). Wire "
+                    "one of the two before adding this dataset to the K4 grid; see the "
+                    "2026-07-10 vocalbench-emotion freeze-repair for why a silent single-fake-option "
+                    "fallback is unacceptable here (it scores 0.0 mechanically, not honestly)."
+                )
         return k4_ser(label_set, lang=lang)
 
     if kt == "K5":

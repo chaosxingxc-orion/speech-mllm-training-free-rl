@@ -1,0 +1,520 @@
+{
+  "stage": "1-directional",
+  "dataset": "csemotions",
+  "k_type": "K4",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/csemotions/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "csemotions/shard0_row23",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "A. angry",
+      "score": 1,
+      "detail": {
+        "pred_label": "angry",
+        "gold_label": "angry",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "csemotions/shard0_row109",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "B. fearful",
+      "score": 1,
+      "detail": {
+        "pred_label": "fearful",
+        "gold_label": "fearful",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "csemotions/shard0_row153",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "C. happy",
+      "score": 1,
+      "detail": {
+        "pred_label": "happy",
+        "gold_label": "happy",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "csemotions/shard0_row210",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "D. neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "neutral",
+        "parsed_idx": 3
+      }
+    },
+    {
+      "item_id": "csemotions/shard0_row239",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "F. sad",
+      "score": 1,
+      "detail": {
+        "pred_label": "sad",
+        "gold_label": "sad",
+        "parsed_idx": 5
+      }
+    },
+    {
+      "item_id": "csemotions/shard0_row327",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "A. angry",
+      "score": 1,
+      "detail": {
+        "pred_label": "angry",
+        "gold_label": "angry",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "csemotions/shard1_row2",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "D. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "playfulness",
+        "parsed_idx": 3
+      }
+    },
+    {
+      "item_id": "csemotions/shard1_row210",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "A. angry",
+      "score": 1,
+      "detail": {
+        "pred_label": "angry",
+        "gold_label": "angry",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "csemotions/shard1_row216",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "A. angry",
+      "score": 1,
+      "detail": {
+        "pred_label": "angry",
+        "gold_label": "angry",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "csemotions/shard1_row219",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "A. angry",
+      "score": 1,
+      "detail": {
+        "pred_label": "angry",
+        "gold_label": "angry",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "csemotions/shard1_row284",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "B. fearful",
+      "score": 1,
+      "detail": {
+        "pred_label": "fearful",
+        "gold_label": "fearful",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "csemotions/shard1_row370",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "C. happy",
+      "score": 1,
+      "detail": {
+        "pred_label": "happy",
+        "gold_label": "happy",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "csemotions/shard1_row451",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "E. playfulness",
+      "score": 1,
+      "detail": {
+        "pred_label": "playfulness",
+        "gold_label": "playfulness",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "csemotions/shard2_row70",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "F. sad",
+      "score": 1,
+      "detail": {
+        "pred_label": "sad",
+        "gold_label": "sad",
+        "parsed_idx": 5
+      }
+    },
+    {
+      "item_id": "csemotions/shard3_row86",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "A. angry",
+      "score": 1,
+      "detail": {
+        "pred_label": "angry",
+        "gold_label": "angry",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "csemotions/shard3_row131",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "A. angry",
+      "score": 1,
+      "detail": {
+        "pred_label": "angry",
+        "gold_label": "angry",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "csemotions/shard3_row454",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "F. sad",
+      "score": 1,
+      "detail": {
+        "pred_label": "sad",
+        "gold_label": "sad",
+        "parsed_idx": 5
+      }
+    },
+    {
+      "item_id": "csemotions/shard4_row50",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "B. fearful",
+      "score": 1,
+      "detail": {
+        "pred_label": "fearful",
+        "gold_label": "fearful",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "csemotions/shard4_row328",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "G. surprise",
+      "score": 1,
+      "detail": {
+        "pred_label": "surprise",
+        "gold_label": "surprise",
+        "parsed_idx": 6
+      }
+    },
+    {
+      "item_id": "csemotions/shard4_row375",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "A. angry",
+      "score": 1,
+      "detail": {
+        "pred_label": "angry",
+        "gold_label": "angry",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "csemotions/shard4_row376",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "A. angry",
+      "score": 1,
+      "detail": {
+        "pred_label": "angry",
+        "gold_label": "angry",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "csemotions/shard5_row106",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "E. playfulness",
+      "score": 1,
+      "detail": {
+        "pred_label": "playfulness",
+        "gold_label": "playfulness",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "csemotions/shard5_row133",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "D. neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "neutral",
+        "parsed_idx": 3
+      }
+    },
+    {
+      "item_id": "csemotions/shard5_row230",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "F. sad",
+      "score": 1,
+      "detail": {
+        "pred_label": "sad",
+        "gold_label": "sad",
+        "parsed_idx": 5
+      }
+    },
+    {
+      "item_id": "csemotions/shard5_row235",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "F. sad",
+      "score": 1,
+      "detail": {
+        "pred_label": "sad",
+        "gold_label": "sad",
+        "parsed_idx": 5
+      }
+    },
+    {
+      "item_id": "csemotions/shard5_row386",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "B. fearful",
+      "score": 1,
+      "detail": {
+        "pred_label": "fearful",
+        "gold_label": "fearful",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "csemotions/shard5_row461",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "C. happy",
+      "score": 1,
+      "detail": {
+        "pred_label": "happy",
+        "gold_label": "happy",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "csemotions/shard6_row27",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "D. neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "neutral",
+        "parsed_idx": 3
+      }
+    },
+    {
+      "item_id": "csemotions/shard6_row32",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "D. neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "neutral",
+        "parsed_idx": 3
+      }
+    },
+    {
+      "item_id": "csemotions/shard6_row53",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "D. neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "neutral",
+        "parsed_idx": 3
+      }
+    },
+    {
+      "item_id": "csemotions/shard6_row174",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "A. angry",
+      "score": 1,
+      "detail": {
+        "pred_label": "angry",
+        "gold_label": "angry",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "csemotions/shard6_row255",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "A. angry",
+      "score": 1,
+      "detail": {
+        "pred_label": "angry",
+        "gold_label": "angry",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "csemotions/shard6_row333",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "C. happy",
+      "score": 1,
+      "detail": {
+        "pred_label": "happy",
+        "gold_label": "happy",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "csemotions/shard6_row352",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "C. happy",
+      "score": 1,
+      "detail": {
+        "pred_label": "happy",
+        "gold_label": "happy",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "csemotions/shard6_row515",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "D. neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "neutral",
+        "parsed_idx": 3
+      }
+    },
+    {
+      "item_id": "csemotions/shard7_row39",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "F. sad",
+      "score": 1,
+      "detail": {
+        "pred_label": "sad",
+        "gold_label": "sad",
+        "parsed_idx": 5
+      }
+    },
+    {
+      "item_id": "csemotions/shard7_row68",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "C. happy",
+      "score": 0,
+      "detail": {
+        "pred_label": "happy",
+        "gold_label": "surprise",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "csemotions/shard7_row159",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "A. angry",
+      "score": 1,
+      "detail": {
+        "pred_label": "angry",
+        "gold_label": "angry",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "csemotions/shard7_row353",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "E. playfulness",
+      "score": 1,
+      "detail": {
+        "pred_label": "playfulness",
+        "gold_label": "playfulness",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "csemotions/shard7_row395",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. angry\nB. fearful\nC. happy\nD. neutral\nE. playfulness\nF. sad\nG. surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "G. surprise",
+      "score": 0,
+      "detail": {
+        "pred_label": "surprise",
+        "gold_label": "neutral",
+        "parsed_idx": 6
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.925,
+    "ci95": [
+      0.825,
+      1.0
+    ],
+    "n_scored": 40,
+    "n_total": 40,
+    "macro_f1": {
+      "macro_f1": 0.8748,
+      "per_label": {
+        "angry": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 12
+        },
+        "fearful": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 4
+        },
+        "happy": {
+          "precision": 0.8333,
+          "recall": 1.0,
+          "f1": 0.9091,
+          "support": 5
+        },
+        "neutral": {
+          "precision": 0.8571,
+          "recall": 0.8571,
+          "f1": 0.8571,
+          "support": 7
+        },
+        "playfulness": {
+          "precision": 1.0,
+          "recall": 0.75,
+          "f1": 0.8571,
+          "support": 4
+        },
+        "sad": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 6
+        },
+        "surprise": {
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1": 0.5,
+          "support": 2
+        }
+      }
+    }
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset csemotions --backbone qwen3-omni-30b-gguf --split dev --n 40",
+  "elapsed_s": 110.9
+}

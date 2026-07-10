@@ -1,0 +1,693 @@
+{
+  "stage": "1-directional",
+  "dataset": "speech-massive-fr-FR-attr",
+  "k_type": "K5",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/speech-massive-fr-FR-attr/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "fr-FR/validation/9214@0-0-35",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/13515@0-1-4",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/15379@0-1-16",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Female",
+      "score": 1,
+      "detail": {
+        "pred_label": "Female",
+        "gold_label": "Female",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/1268@0-1-17",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/3768@0-1-36",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Female",
+      "score": 1,
+      "detail": {
+        "pred_label": "Female",
+        "gold_label": "Female",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/3602@0-1-54",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/3402@0-1-93",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/16726@0-2-58",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/112@0-2-70",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Female",
+      "score": 1,
+      "detail": {
+        "pred_label": "Female",
+        "gold_label": "Female",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/15065@0-2-95",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/2272@0-3-52",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/7631@0-3-55",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 0,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Unidentified",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/2112@0-4-23",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Female",
+      "score": 1,
+      "detail": {
+        "pred_label": "Female",
+        "gold_label": "Female",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/7112@0-4-55",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/2538@0-5-6",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Female",
+      "score": 1,
+      "detail": {
+        "pred_label": "Female",
+        "gold_label": "Female",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/3954@0-5-32",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/1211@0-5-55",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Female",
+      "score": 0,
+      "detail": {
+        "pred_label": "Female",
+        "gold_label": "Male",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/1988@0-6-9",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Female",
+      "score": 1,
+      "detail": {
+        "pred_label": "Female",
+        "gold_label": "Female",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/16586@0-6-75",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/6240@0-6-78",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Female",
+      "score": 1,
+      "detail": {
+        "pred_label": "Female",
+        "gold_label": "Female",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/7907@0-6-79",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/1365@0-7-2",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/3439@0-7-24",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Female",
+      "score": 1,
+      "detail": {
+        "pred_label": "Female",
+        "gold_label": "Female",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/10496@0-7-40",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Female",
+      "score": 0,
+      "detail": {
+        "pred_label": "Female",
+        "gold_label": "Unidentified",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/1122@0-7-69",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Female",
+      "score": 1,
+      "detail": {
+        "pred_label": "Female",
+        "gold_label": "Female",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/12888@0-7-92",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/4538@0-7-94",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/13338@0-8-2",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Female",
+      "score": 1,
+      "detail": {
+        "pred_label": "Female",
+        "gold_label": "Female",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/2196@0-8-95",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Female",
+      "score": 1,
+      "detail": {
+        "pred_label": "Female",
+        "gold_label": "Female",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/11712@0-9-64",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Female",
+      "score": 1,
+      "detail": {
+        "pred_label": "Female",
+        "gold_label": "Female",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/16709@0-9-78",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Female",
+      "score": 1,
+      "detail": {
+        "pred_label": "Female",
+        "gold_label": "Female",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/12565@0-9-87",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Female",
+      "score": 1,
+      "detail": {
+        "pred_label": "Female",
+        "gold_label": "Female",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/1948@1-0-18",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Female",
+      "score": 1,
+      "detail": {
+        "pred_label": "Female",
+        "gold_label": "Female",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/3801@1-0-50",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/12828@1-0-71",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Female",
+      "score": 1,
+      "detail": {
+        "pred_label": "Female",
+        "gold_label": "Female",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/2003@1-0-83",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/6183@1-0-94",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Female",
+      "score": 1,
+      "detail": {
+        "pred_label": "Female",
+        "gold_label": "Female",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/617@1-0-98",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/4127@1-1-21",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Female",
+      "score": 1,
+      "detail": {
+        "pred_label": "Female",
+        "gold_label": "Female",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/10058@1-1-40",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/6858@1-1-63",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/16288@1-1-85",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Female",
+      "score": 0,
+      "detail": {
+        "pred_label": "Female",
+        "gold_label": "Male",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/16818@1-1-96",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/11181@1-2-35",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Female",
+      "score": 1,
+      "detail": {
+        "pred_label": "Female",
+        "gold_label": "Female",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/9459@1-2-57",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Female",
+      "score": 1,
+      "detail": {
+        "pred_label": "Female",
+        "gold_label": "Female",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/14827@1-2-68",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/5792@1-2-95",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/9310@1-4-99",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/8315@1-5-28",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/15215@1-5-67",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Female",
+      "score": 1,
+      "detail": {
+        "pred_label": "Female",
+        "gold_label": "Female",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/1839@1-6-22",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/7474@1-6-38",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/9968@1-6-62",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Female",
+      "score": 1,
+      "detail": {
+        "pred_label": "Female",
+        "gold_label": "Female",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/11045@1-8-25",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Female",
+      "score": 1,
+      "detail": {
+        "pred_label": "Female",
+        "gold_label": "Female",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/15033@1-8-86",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Female",
+      "score": 1,
+      "detail": {
+        "pred_label": "Female",
+        "gold_label": "Female",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/13875@1-9-24",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Female",
+      "score": 1,
+      "detail": {
+        "pred_label": "Female",
+        "gold_label": "Female",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/2187@1-9-52",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/11281@1-9-63",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/5746@1-9-75",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "fr-FR/validation/4779@1-9-94",
+      "instr": "Listen to the audio and identify the speaker's sex. Choose exactly ONE option below.\nOptions:\nA. Female\nB. Male\nC. Unidentified\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. Male",
+      "score": 1,
+      "detail": {
+        "pred_label": "Male",
+        "gold_label": "Male",
+        "parsed_idx": 1
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.9333,
+    "ci95": [
+      0.8667,
+      0.9833
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset speech-massive-fr-FR-attr --backbone qwen3-omni-30b-gguf --split test --n 60",
+  "elapsed_s": 124.4
+}

@@ -1,0 +1,190 @@
+{
+  "stage": "1-directional",
+  "dataset": "vocalbench-emotion",
+  "k_type": "K4",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/vocalbench-emotion/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "emotion-266",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-190",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-229",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-291",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-336",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-312",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-481",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-027",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-449",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-044",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-377",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-230",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-090",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-367",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-026",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-296",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-331",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-112",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-195",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-398",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-151",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-194",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-459",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-418",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-081",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-207",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-460",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-107",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-287",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-297",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-251",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-095",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-064",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-490",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-358",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-350",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-353",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-355",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-135",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    },
+    {
+      "item_id": "emotion-091",
+      "error": "AttributeError: 'str' object has no attribute 'get'"
+    }
+  ],
+  "aggregate": {
+    "mean": null,
+    "ci95": null,
+    "n_scored": 0,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset vocalbench-emotion --backbone qwen3-omni-30b-gguf --split dev --n 40",
+  "elapsed_s": 175.5
+}

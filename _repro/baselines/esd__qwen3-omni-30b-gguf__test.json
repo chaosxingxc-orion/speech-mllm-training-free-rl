@@ -1,0 +1,728 @@
+{
+  "stage": "1-directional",
+  "dataset": "esd",
+  "k_type": "K4",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/esd/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "esd/0001_000693",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "C. Neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "Neutral",
+        "gold_label": "Angry",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "esd/0001_000320",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "C. Neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "Neutral",
+        "gold_label": "Neutral",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "esd/0001_000343",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "C. Neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "Neutral",
+        "gold_label": "Neutral",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "esd/0001_000346",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "C. Neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "Neutral",
+        "gold_label": "Neutral",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "esd/0001_001358",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "D. Sad",
+      "score": 1,
+      "detail": {
+        "pred_label": "Sad",
+        "gold_label": "Sad",
+        "parsed_idx": 3
+      }
+    },
+    {
+      "item_id": "esd/0001_001387",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "B. Happy",
+      "score": 0,
+      "detail": {
+        "pred_label": "Happy",
+        "gold_label": "Sad",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "esd/0001_001737",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "B. Happy",
+      "score": 0,
+      "detail": {
+        "pred_label": "Happy",
+        "gold_label": "Surprise",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "esd/0002_001008",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "B. Happy",
+      "score": 1,
+      "detail": {
+        "pred_label": "Happy",
+        "gold_label": "Happy",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "esd/0002_001027",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "B. Happy",
+      "score": 1,
+      "detail": {
+        "pred_label": "Happy",
+        "gold_label": "Happy",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "esd/0002_000300",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "C. Neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "Neutral",
+        "gold_label": "Neutral",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "esd/0002_001380",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "D. Sad",
+      "score": 1,
+      "detail": {
+        "pred_label": "Sad",
+        "gold_label": "Sad",
+        "parsed_idx": 3
+      }
+    },
+    {
+      "item_id": "esd/0002_001387",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "D. Sad",
+      "score": 1,
+      "detail": {
+        "pred_label": "Sad",
+        "gold_label": "Sad",
+        "parsed_idx": 3
+      }
+    },
+    {
+      "item_id": "esd/0003_000667",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "B. Happy",
+      "score": 0,
+      "detail": {
+        "pred_label": "Happy",
+        "gold_label": "Angry",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "esd/0003_000999",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "E. Surprise",
+      "score": 0,
+      "detail": {
+        "pred_label": "Surprise",
+        "gold_label": "Happy",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "esd/0003_000316",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "C. Neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "Neutral",
+        "gold_label": "Neutral",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "esd/0003_001341",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "D. Sad",
+      "score": 1,
+      "detail": {
+        "pred_label": "Sad",
+        "gold_label": "Sad",
+        "parsed_idx": 3
+      }
+    },
+    {
+      "item_id": "esd/0003_001383",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "D. Sad",
+      "score": 1,
+      "detail": {
+        "pred_label": "Sad",
+        "gold_label": "Sad",
+        "parsed_idx": 3
+      }
+    },
+    {
+      "item_id": "esd/0004_000634",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "C. Neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "Neutral",
+        "gold_label": "Angry",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "esd/0004_000636",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "A. Angry",
+      "score": 1,
+      "detail": {
+        "pred_label": "Angry",
+        "gold_label": "Angry",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "esd/0004_001030",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "C. Neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "Neutral",
+        "gold_label": "Happy",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "esd/0004_001038",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "C. Neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "Neutral",
+        "gold_label": "Happy",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "esd/0004_001043",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "C. Neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "Neutral",
+        "gold_label": "Happy",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "esd/0004_000314",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "B. Happy",
+      "score": 0,
+      "detail": {
+        "pred_label": "Happy",
+        "gold_label": "Neutral",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "esd/0004_000340",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "B. Happy",
+      "score": 0,
+      "detail": {
+        "pred_label": "Happy",
+        "gold_label": "Neutral",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "esd/0004_001350",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "C. Neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "Neutral",
+        "gold_label": "Sad",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "esd/0004_001689",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "B. Happy",
+      "score": 0,
+      "detail": {
+        "pred_label": "Happy",
+        "gold_label": "Surprise",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "esd/0004_001720",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "B. Happy",
+      "score": 0,
+      "detail": {
+        "pred_label": "Happy",
+        "gold_label": "Surprise",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "esd/0004_001727",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "A. Angry",
+      "score": 0,
+      "detail": {
+        "pred_label": "Angry",
+        "gold_label": "Surprise",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "esd/0004_001733",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "B. Happy",
+      "score": 0,
+      "detail": {
+        "pred_label": "Happy",
+        "gold_label": "Surprise",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "esd/0005_000294",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "C. Neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "Neutral",
+        "gold_label": "Neutral",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "esd/0005_001382",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "C. Neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "Neutral",
+        "gold_label": "Sad",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "esd/0005_001701",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "B. Happy",
+      "score": 0,
+      "detail": {
+        "pred_label": "Happy",
+        "gold_label": "Surprise",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "esd/0005_001705",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "A. Angry",
+      "score": 0,
+      "detail": {
+        "pred_label": "Angry",
+        "gold_label": "Surprise",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "esd/0006_000677",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "A. Angry",
+      "score": 1,
+      "detail": {
+        "pred_label": "Angry",
+        "gold_label": "Angry",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "esd/0006_001007",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "B. Happy",
+      "score": 1,
+      "detail": {
+        "pred_label": "Happy",
+        "gold_label": "Happy",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "esd/0006_001038",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "A. Angry",
+      "score": 0,
+      "detail": {
+        "pred_label": "Angry",
+        "gold_label": "Happy",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "esd/0006_000290",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "C. Neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "Neutral",
+        "gold_label": "Neutral",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "esd/0006_000306",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "C. Neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "Neutral",
+        "gold_label": "Neutral",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "esd/0006_000331",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "C. Neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "Neutral",
+        "gold_label": "Neutral",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "esd/0006_001341",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "D. Sad",
+      "score": 1,
+      "detail": {
+        "pred_label": "Sad",
+        "gold_label": "Sad",
+        "parsed_idx": 3
+      }
+    },
+    {
+      "item_id": "esd/0006_001364",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "D. Sad",
+      "score": 1,
+      "detail": {
+        "pred_label": "Sad",
+        "gold_label": "Sad",
+        "parsed_idx": 3
+      }
+    },
+    {
+      "item_id": "esd/0006_001707",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "C. Neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "Neutral",
+        "gold_label": "Surprise",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "esd/0006_001745",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "A. Angry",
+      "score": 0,
+      "detail": {
+        "pred_label": "Angry",
+        "gold_label": "Surprise",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "esd/0007_000633",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "C. Neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "Neutral",
+        "gold_label": "Angry",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "esd/0007_000991",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "C. Neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "Neutral",
+        "gold_label": "Happy",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "esd/0007_001013",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "C. Neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "Neutral",
+        "gold_label": "Happy",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "esd/0007_001041",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "B. Happy",
+      "score": 1,
+      "detail": {
+        "pred_label": "Happy",
+        "gold_label": "Happy",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "esd/0007_000313",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "C. Neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "Neutral",
+        "gold_label": "Neutral",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "esd/0008_000304",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "C. Neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "Neutral",
+        "gold_label": "Neutral",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "esd/0008_001359",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "D. Sad",
+      "score": 1,
+      "detail": {
+        "pred_label": "Sad",
+        "gold_label": "Sad",
+        "parsed_idx": 3
+      }
+    },
+    {
+      "item_id": "esd/0008_001687",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "B. Happy",
+      "score": 0,
+      "detail": {
+        "pred_label": "Happy",
+        "gold_label": "Surprise",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "esd/0009_000679",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "C. Neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "Neutral",
+        "gold_label": "Angry",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "esd/0009_000988",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "B. Happy",
+      "score": 1,
+      "detail": {
+        "pred_label": "Happy",
+        "gold_label": "Happy",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "esd/0009_001004",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "B. Happy",
+      "score": 1,
+      "detail": {
+        "pred_label": "Happy",
+        "gold_label": "Happy",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "esd/0010_000681",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "A. Angry",
+      "score": 1,
+      "detail": {
+        "pred_label": "Angry",
+        "gold_label": "Angry",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "esd/0010_000300",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "C. Neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "Neutral",
+        "gold_label": "Neutral",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "esd/0010_001337",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "D. Sad",
+      "score": 1,
+      "detail": {
+        "pred_label": "Sad",
+        "gold_label": "Sad",
+        "parsed_idx": 3
+      }
+    },
+    {
+      "item_id": "esd/0010_001392",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "D. Sad",
+      "score": 1,
+      "detail": {
+        "pred_label": "Sad",
+        "gold_label": "Sad",
+        "parsed_idx": 3
+      }
+    },
+    {
+      "item_id": "esd/0010_001682",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "D. Sad",
+      "score": 0,
+      "detail": {
+        "pred_label": "Sad",
+        "gold_label": "Surprise",
+        "parsed_idx": 3
+      }
+    },
+    {
+      "item_id": "esd/0010_001701",
+      "instr": "请听音频，判断说话人的情绪，从下列选项中选择唯一一项。\n选项：\nA. Angry\nB. Happy\nC. Neutral\nD. Sad\nE. Surprise\n只输出选项字母和名称，例如 'A. ...'。",
+      "reply": "B. Happy",
+      "score": 0,
+      "detail": {
+        "pred_label": "Happy",
+        "gold_label": "Surprise",
+        "parsed_idx": 1
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.5167,
+    "ci95": [
+      0.3833,
+      0.6333
+    ],
+    "n_scored": 60,
+    "n_total": 60,
+    "macro_f1": {
+      "macro_f1": 0.453,
+      "per_label": {
+        "Angry": {
+          "precision": 0.4286,
+          "recall": 0.375,
+          "f1": 0.4,
+          "support": 8
+        },
+        "Happy": {
+          "precision": 0.3529,
+          "recall": 0.4615,
+          "f1": 0.4,
+          "support": 13
+        },
+        "Neutral": {
+          "precision": 0.5,
+          "recall": 0.8571,
+          "f1": 0.6316,
+          "support": 14
+        },
+        "Sad": {
+          "precision": 0.9091,
+          "recall": 0.7692,
+          "f1": 0.8333,
+          "support": 13
+        },
+        "Surprise": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 12
+        }
+      }
+    }
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset esd --backbone qwen3-omni-30b-gguf --split test --n 60",
+  "elapsed_s": 129.0
+}

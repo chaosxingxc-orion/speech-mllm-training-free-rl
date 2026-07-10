@@ -1,0 +1,740 @@
+{
+  "stage": "1-directional",
+  "dataset": "meld",
+  "k_type": "K4",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/meld/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "meld/test/dia5_utt8",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "D. joy",
+      "score": 0,
+      "detail": {
+        "pred_label": "joy",
+        "gold_label": "neutral",
+        "parsed_idx": 3
+      }
+    },
+    {
+      "item_id": "meld/test/dia15_utt1",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "joy",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "meld/test/dia17_utt2",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "neutral",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "meld/test/dia17_utt4",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "C. fear",
+      "score": 0,
+      "detail": {
+        "pred_label": "fear",
+        "gold_label": "disgust",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "meld/test/dia17_utt28",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "F. sadness",
+      "score": 1,
+      "detail": {
+        "pred_label": "sadness",
+        "gold_label": "sadness",
+        "parsed_idx": 5
+      }
+    },
+    {
+      "item_id": "meld/test/dia21_utt5",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "joy",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "meld/test/dia28_utt0",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "neutral",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "meld/test/dia35_utt3",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "neutral",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "meld/test/dia38_utt3",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "D. joy",
+      "score": 1,
+      "detail": {
+        "pred_label": "joy",
+        "gold_label": "joy",
+        "parsed_idx": 3
+      }
+    },
+    {
+      "item_id": "meld/test/dia42_utt3",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "D. joy",
+      "score": 0,
+      "detail": {
+        "pred_label": "joy",
+        "gold_label": "surprise",
+        "parsed_idx": 3
+      }
+    },
+    {
+      "item_id": "meld/test/dia50_utt1",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "neutral",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "meld/test/dia51_utt1",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "G. surprise",
+      "score": 0,
+      "detail": {
+        "pred_label": "surprise",
+        "gold_label": "joy",
+        "parsed_idx": 6
+      }
+    },
+    {
+      "item_id": "meld/test/dia61_utt2",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "surprise",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "meld/test/dia67_utt2",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "neutral",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "meld/test/dia72_utt5",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. anger",
+      "score": 1,
+      "detail": {
+        "pred_label": "anger",
+        "gold_label": "anger",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "meld/test/dia76_utt0",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "D. joy",
+      "score": 0,
+      "detail": {
+        "pred_label": "joy",
+        "gold_label": "neutral",
+        "parsed_idx": 3
+      }
+    },
+    {
+      "item_id": "meld/test/dia78_utt6",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "D. joy",
+      "score": 0,
+      "detail": {
+        "pred_label": "joy",
+        "gold_label": "neutral",
+        "parsed_idx": 3
+      }
+    },
+    {
+      "item_id": "meld/test/dia90_utt3",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "F. sadness",
+      "score": 1,
+      "detail": {
+        "pred_label": "sadness",
+        "gold_label": "sadness",
+        "parsed_idx": 5
+      }
+    },
+    {
+      "item_id": "meld/test/dia98_utt8",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "anger",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "meld/test/dia98_utt10",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "C. fear",
+      "score": 0,
+      "detail": {
+        "pred_label": "fear",
+        "gold_label": "neutral",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "meld/test/dia99_utt2",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "neutral",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "meld/test/dia101_utt2",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. disgust",
+      "score": 0,
+      "detail": {
+        "pred_label": "disgust",
+        "gold_label": "sadness",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "meld/test/dia105_utt2",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. anger",
+      "score": 1,
+      "detail": {
+        "pred_label": "anger",
+        "gold_label": "anger",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "meld/test/dia108_utt6",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "D. joy",
+      "score": 1,
+      "detail": {
+        "pred_label": "joy",
+        "gold_label": "joy",
+        "parsed_idx": 3
+      }
+    },
+    {
+      "item_id": "meld/test/dia112_utt5",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "G. surprise",
+      "score": 0,
+      "detail": {
+        "pred_label": "surprise",
+        "gold_label": "neutral",
+        "parsed_idx": 6
+      }
+    },
+    {
+      "item_id": "meld/test/dia113_utt10",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "anger",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "meld/test/dia113_utt12",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "F. sadness",
+      "score": 0,
+      "detail": {
+        "pred_label": "sadness",
+        "gold_label": "surprise",
+        "parsed_idx": 5
+      }
+    },
+    {
+      "item_id": "meld/test/dia114_utt3",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "neutral",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "meld/test/dia125_utt14",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "G. surprise",
+      "score": 1,
+      "detail": {
+        "pred_label": "surprise",
+        "gold_label": "surprise",
+        "parsed_idx": 6
+      }
+    },
+    {
+      "item_id": "meld/test/dia132_utt8",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "neutral",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "meld/test/dia133_utt12",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "F. sadness",
+      "score": 1,
+      "detail": {
+        "pred_label": "sadness",
+        "gold_label": "sadness",
+        "parsed_idx": 5
+      }
+    },
+    {
+      "item_id": "meld/test/dia134_utt3",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. disgust",
+      "score": 0,
+      "detail": {
+        "pred_label": "disgust",
+        "gold_label": "anger",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "meld/test/dia143_utt4",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "neutral",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "meld/test/dia147_utt0",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. anger",
+      "score": 0,
+      "detail": {
+        "pred_label": "anger",
+        "gold_label": "surprise",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "meld/test/dia151_utt3",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "G. surprise",
+      "score": 0,
+      "detail": {
+        "pred_label": "surprise",
+        "gold_label": "neutral",
+        "parsed_idx": 6
+      }
+    },
+    {
+      "item_id": "meld/test/dia153_utt10",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "joy",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "meld/test/dia154_utt11",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "D. joy",
+      "score": 1,
+      "detail": {
+        "pred_label": "joy",
+        "gold_label": "joy",
+        "parsed_idx": 3
+      }
+    },
+    {
+      "item_id": "meld/test/dia155_utt3",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "G. surprise",
+      "score": 1,
+      "detail": {
+        "pred_label": "surprise",
+        "gold_label": "surprise",
+        "parsed_idx": 6
+      }
+    },
+    {
+      "item_id": "meld/test/dia157_utt3",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "C. fear",
+      "score": 0,
+      "detail": {
+        "pred_label": "fear",
+        "gold_label": "neutral",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "meld/test/dia160_utt7",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "F. sadness",
+      "score": 1,
+      "detail": {
+        "pred_label": "sadness",
+        "gold_label": "sadness",
+        "parsed_idx": 5
+      }
+    },
+    {
+      "item_id": "meld/test/dia164_utt4",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "neutral",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "meld/test/dia167_utt4",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "neutral",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "meld/test/dia167_utt14",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "anger",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "meld/test/dia171_utt4",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "C. fear",
+      "score": 0,
+      "detail": {
+        "pred_label": "fear",
+        "gold_label": "joy",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "meld/test/dia173_utt14",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "F. sadness",
+      "score": 1,
+      "detail": {
+        "pred_label": "sadness",
+        "gold_label": "sadness",
+        "parsed_idx": 5
+      }
+    },
+    {
+      "item_id": "meld/test/dia174_utt13",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "D. joy",
+      "score": 0,
+      "detail": {
+        "pred_label": "joy",
+        "gold_label": "anger",
+        "parsed_idx": 3
+      }
+    },
+    {
+      "item_id": "meld/test/dia177_utt1",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "neutral",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "meld/test/dia205_utt3",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "C. fear",
+      "score": 1,
+      "detail": {
+        "pred_label": "fear",
+        "gold_label": "fear",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "meld/test/dia212_utt1",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "B. disgust",
+      "score": 0,
+      "detail": {
+        "pred_label": "disgust",
+        "gold_label": "neutral",
+        "parsed_idx": 1
+      }
+    },
+    {
+      "item_id": "meld/test/dia217_utt2",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "C. fear",
+      "score": 0,
+      "detail": {
+        "pred_label": "fear",
+        "gold_label": "neutral",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "meld/test/dia228_utt6",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. anger",
+      "score": 0,
+      "detail": {
+        "pred_label": "anger",
+        "gold_label": "neutral",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "meld/test/dia230_utt3",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "neutral",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "meld/test/dia232_utt1",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "neutral",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "meld/test/dia254_utt4",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. anger",
+      "score": 0,
+      "detail": {
+        "pred_label": "anger",
+        "gold_label": "neutral",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "meld/test/dia262_utt1",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "D. joy",
+      "score": 1,
+      "detail": {
+        "pred_label": "joy",
+        "gold_label": "joy",
+        "parsed_idx": 3
+      }
+    },
+    {
+      "item_id": "meld/test/dia266_utt13",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "G. surprise",
+      "score": 1,
+      "detail": {
+        "pred_label": "surprise",
+        "gold_label": "surprise",
+        "parsed_idx": 6
+      }
+    },
+    {
+      "item_id": "meld/test/dia270_utt5",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "neutral",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "meld/test/dia271_utt1",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "neutral",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "meld/test/dia274_utt0",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "neutral",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "meld/test/dia278_utt11",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. joy\nE. neutral\nF. sadness\nG. surprise\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "D. joy",
+      "score": 1,
+      "detail": {
+        "pred_label": "joy",
+        "gold_label": "joy",
+        "parsed_idx": 3
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.55,
+    "ci95": [
+      0.4167,
+      0.6667
+    ],
+    "n_scored": 60,
+    "n_total": 60,
+    "macro_f1": {
+      "macro_f1": 0.4382,
+      "per_label": {
+        "anger": {
+          "precision": 0.4,
+          "recall": 0.2857,
+          "f1": 0.3333,
+          "support": 7
+        },
+        "disgust": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        "fear": {
+          "precision": 0.1667,
+          "recall": 1.0,
+          "f1": 0.2857,
+          "support": 1
+        },
+        "joy": {
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1": 0.5,
+          "support": 10
+        },
+        "neutral": {
+          "precision": 0.7083,
+          "recall": 0.6071,
+          "f1": 0.6538,
+          "support": 28
+        },
+        "sadness": {
+          "precision": 0.8333,
+          "recall": 0.8333,
+          "f1": 0.8333,
+          "support": 6
+        },
+        "surprise": {
+          "precision": 0.5,
+          "recall": 0.4286,
+          "f1": 0.4615,
+          "support": 7
+        }
+      }
+    }
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset meld --backbone qwen3-omni-30b-gguf --split test --n 60",
+  "elapsed_s": 121.7
+}

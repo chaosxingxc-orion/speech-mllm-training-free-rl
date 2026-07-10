@@ -42,6 +42,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))          # script
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # scripts
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "loaders"))
 
+import label_inventories               # noqa: E402  (scripts/baselines/label_inventories.py)
 import metrics                        # noqa: E402
 import templates                      # noqa: E402
 from _common import SLICE_SEED, data_root, freeze_ids  # noqa: E402  (scripts/loaders/_common.py)
@@ -352,6 +353,26 @@ def _load_rows(dataset_key: str, split: str, n: int, seed: int) -> list[dict]:
             r["meta"]["_label_set"] = emos
         return rows
 
+    if dataset_key == "vocalbench-emotion":
+        # 2026-07-10 freeze-repair (wave-2 audit): NO branch here ever populated
+        # meta["_label_set"] for this dataset key before this fix -- it fell straight through to
+        # the generic tail below with no per-dataset post-processing, so templates.build_instruction
+        # rendered a ONE-OPTION prompt ("A. <observed set unavailable>") and metrics.score scored
+        # against an EMPTY label set, making both wave-2 cells (dev/test) mechanically 0.0
+        # regardless of the model's actual reply. Unlike the uro-bench-UnderEmotion branch just
+        # above (sample-observed union from meta["_label_set"] -- later superseded by a corpus-true
+        # templates.K4_LABEL_SETS entry), this uses the corpus-true, full-pool-verified 5-way set
+        # DIRECTLY (label_inventories.VOCALBENCH_EMOTION_EMOTIONS -- 500/500 rows scanned, exactly
+        # 100 each of angry/happy/neutral/sad/surprised, see that module's dedicated comment) since
+        # the whole corpus is small enough that "sample-observed" and "corpus-true" coincide here;
+        # no reason to route this through templates.K4_LABEL_SETS as well (that dict is reserved for
+        # datasets whose label set is used regardless of meta, see templates.py K4 branch) -- see
+        # label_inventories.py's module docstring for the full defect writeup.
+        rows = registry.LOADERS[dataset_key](split="test", n=n, seed=seed)
+        for r in rows:
+            r["meta"]["_label_set"] = label_inventories.VOCALBENCH_EMOTION_EMOTIONS
+        return rows
+
     split_arg = _DEFAULT_SPLIT_OVERRIDE.get(dataset_key, "test")
     return registry.LOADERS[dataset_key](split=split_arg, n=n, seed=seed)
 
@@ -469,6 +490,16 @@ def _synthetic_row(dataset_key: str) -> dict:
         gold = {"lang": "af_za", "transcript": "(n/a)", "gender": "MALE"}
     elif kt == "K4":
         gold = {"emo": "neutral"}
+        if dataset_key not in templates.K4_LABEL_SETS:
+            # vocalbench-emotion is the only K4 grid key that is NOT in templates.K4_LABEL_SETS --
+            # its label set instead comes from meta["_label_set"], populated for real by
+            # run_baseline._load_rows's dedicated branch (2026-07-10 fix, see label_inventories.py's
+            # VOCALBENCH_EMOTION_EMOTIONS). _synthetic_row never calls _load_rows (see this
+            # function's docstring), so a --dry-run preview needs its own synthetic population here
+            # too, or the preview would (again) hit templates.build_instruction's now-loud "missing
+            # label set" raise instead of showing the real 5 options -- exactly the regression this
+            # fix is meant to catch.
+            meta["_label_set"] = label_inventories.VOCALBENCH_EMOTION_EMOTIONS
     elif kt == "K5":
         gold = {"speaker_sex": "Male"}
         meta["_attr"] = "speaker_sex"

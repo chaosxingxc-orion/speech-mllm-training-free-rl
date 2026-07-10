@@ -140,8 +140,18 @@ def _closed_choice_score(gold_label: str, text: str, label_set: list) -> dict:
     return {"score": em, "detail": {"pred_label": pred_label, "gold_label": gold_label, "parsed_idx": idx}}
 
 
-def score_k4_ser(gold: dict, text: str, label_set: list) -> dict:
-    emo = gold.get("emo") or gold.get("emotion")  # crema-d/esd use "emo"; csemotions/meld use "emotion"
+def score_k4_ser(gold, text: str, label_set: list) -> dict:
+    # 2026-07-10 freeze-repair (wave-1 audit): gold can be a bare emotion-label STRING, not a
+    # dict, for vocalbench-emotion (gold=Question_emo, see vocalbench.py's
+    # load_vocalbench_emotion docstring) and uro-bench-UnderEmotion-{en,zh} (gold=the dedicated
+    # "emotion" column, see uro_bench.py's load_underemotion_en/zh gold_col="emotion") -- the
+    # original unconditional gold.get(...) raised "AttributeError: 'str' object has no attribute
+    # 'get'" for every item in those 6 cells (3 datasets x 2 splits), aborting run_one's per-item
+    # try/except BEFORE the model's reply was ever persisted to the result JSON (contrast the K8
+    # gold-key fix in rescore_cells.py, where replies WERE already stored and a pure CPU rescore
+    # was possible) -- these 6 cells need regeneration, not a rescore. crema-d/esd (gold["emo"])
+    # and csemotions/meld (gold["emotion"]) keep their existing dict-gold behavior unchanged.
+    emo = gold if isinstance(gold, str) else (gold.get("emo") or gold.get("emotion"))
     return _closed_choice_score(emo, text, label_set)
 
 
@@ -220,6 +230,7 @@ def aggregate_slot_f1_slurp(pred_by_file: dict[str, dict], data_root: Path, spli
     subprocess call errors) rather than raising -- a Step-1 draft must degrade to "not scored",
     never crash the whole grid run over one dataset's aggregation step.
     """
+    import os
     import subprocess
     import tempfile
 
@@ -238,25 +249,56 @@ def aggregate_slot_f1_slurp(pred_by_file: dict[str, dict], data_root: Path, spli
 
     cmd = [sys.executable, str(evaluate_py), "-g", str(gold_jsonl), "-p", pred_path,
            "--average", "macro", "--table-layout", "tsv"]
+    # 2026-07-10 freeze-repair (wave-1 audit, CPU-phase verification): the vendored SLURP
+    # evaluate.py's own metrics/distance.py calls ``jiwer.wer(truth=..., hypothesis=...)``,
+    # matching jiwer==2.0.0's param names (its own requirements.txt pins exactly that version) --
+    # this repo's SHARED venv carries jiwer 4.0.0 (relied on elsewhere, e.g. this module's own
+    # score_k1_wer/score_k2_cer, both called POSITIONALLY so version-agnostic), whose wer()
+    # renamed that kwarg to "reference", so the CLI subprocess raised TypeError and printed
+    # NOTHING before dying (verified 2026-07-10: score stayed None, stdout was empty). Rather than
+    # downgrading the shared venv project-wide (breaks other jiwer callers) or editing the
+    # vendored, pinned-revision SLURP checkout, an ISOLATED jiwer==2.0.0 (+ its own deps) was
+    # installed once via ``pip install --target <repo>/.venv-compat jiwer==2.0.0`` -- prepended to
+    # ONLY this subprocess's PYTHONPATH below, never touching the caller's own environment/venv.
+    # If that directory doesn't exist (e.g. a fresh box that hasn't run this repair step), the
+    # subprocess simply runs against the ambient venv's jiwer as before and may fail the same way
+    # -- still degrades to score=None per this function's contract, never raises.
+    compat_dir = repo / ".venv-compat"
+    env = dict(os.environ)
+    if compat_dir.is_dir():
+        env["PYTHONPATH"] = str(compat_dir) + os.pathsep + env.get("PYTHONPATH", "")
     try:
         out = subprocess.run(cmd, cwd=str(evaluate_py.parent), capture_output=True, text=True,
-                              timeout=300, check=False)
+                              timeout=300, check=False, env=env)
         stdout = out.stdout
     except Exception as e:  # noqa: BLE001 -- degrade to "not scored", see docstring
         return {"score": None, "detail": {"error": f"{type(e).__name__}: {e}", "cmd": cmd}}
 
-    # evaluate.py prints one or more tsv tables (intent / slot-filling / SLU-F1 sections); pull the
-    # OVERALL row's F-Measure column (tsv layout: "OVERALL\t<P>\t<R>\t<F>\t..."). Best-effort parse,
-    # documented rather than exhaustively validated (this draft does not execute the pipeline).
-    f1 = None
+    # evaluate.py prints 7 tsv tables in a FIXED order (scenario, action, intent, entities [exact
+    # span match], entities distance-word, entities distance-char, SLU F1) -- pull EVERY "OVERALL"
+    # row's F-Measure column (tsv layout: "OVERALL\t<P>\t<R>\t<F>"), not just the last, so a caller
+    # can compare the exact-match convention (entities) against the partial-credit one (SLU F1)
+    # instead of only ever seeing whichever table happens to print last. 2026-07-10 freeze-repair:
+    # originally only the LAST "OVERALL" row (SLU F1) was kept as ``score`` -- unchanged below for
+    # backward compat -- but the exact-match "entities" row is now ALSO surfaced (see
+    # ``entities_exact_f1`` in detail), since that is the convention comparable to the
+    # slue-toolkit-based ``aggregate_slot_f1_slue`` score / the audit's independent cross-check
+    # numbers for the other 2 K7 datasets.
+    _TABLE_ORDER = ("scenario", "action", "intent", "entities_exact", "entities_distance_word",
+                     "entities_distance_char", "slu_f1")
+    overall_f1s = []
     for line in stdout.splitlines():
         cols = line.strip().split("\t")
         if cols and cols[0].strip().upper() == "OVERALL" and len(cols) >= 4:
             try:
-                f1 = float(cols[3])
+                overall_f1s.append(float(cols[3]))
             except ValueError:
-                pass
-    return {"score": f1, "detail": {"raw_stdout_tail": stdout[-2000:], "cmd": cmd, "checker": "slurp-native"}}
+                overall_f1s.append(None)
+    table_f1s = dict(zip(_TABLE_ORDER, overall_f1s))
+    f1 = overall_f1s[-1] if overall_f1s else None  # unchanged meaning: SLU F1 (partial-credit)
+    return {"score": f1, "detail": {"raw_stdout_tail": stdout[-2000:], "cmd": cmd,
+                                     "checker": "slurp-native", "table_f1s": table_f1s,
+                                     "entities_exact_f1": table_f1s.get("entities_exact")}}
 
 
 def aggregate_slot_f1_slue(gold_spans: list[list[tuple]], pred_spans: list[list[tuple]], data_root: Path) -> dict:
@@ -279,9 +321,20 @@ def aggregate_slot_f1_slue(gold_spans: list[list[tuple]], pred_spans: list[list[
         return {"score": None, "detail": {"error": f"{type(e).__name__}: {e}", "repo": str(repo)}}
 
     metrics = get_ner_scores(gold_spans, pred_spans)
-    overall = metrics.get("overall", {})
-    f1 = overall.get("fscore")
-    return {"score": f1, "detail": {"per_label": metrics, "checker": "slue-toolkit get_ner_scores"}}
+    # 2026-07-10 freeze-repair (wave-1 audit): get_ner_scores' ACTUAL return keys are
+    # "overall_micro"/"overall_macro" (see slue_toolkit/eval/eval_utils_ner.py:get_ner_scores) --
+    # there has never been a plain "overall" key, so the original ``.get("overall", {})`` always
+    # fell through to ``{}`` and ``f1`` was always ``None``, for every speech-massive-*-slot cell
+    # -- masked by K7's own "aggregate.mean is always null by design" per-item convention (see
+    # run_baseline.run_one's K7 note), so this never surfaced as a visible crash. ``score`` now
+    # reports the MICRO f1 (matches the audit's "exact-match micro-F1" cross-check convention,
+    # since get_ner_scores' matching is exact (label, phrase) set-intersection, not partial
+    # credit); the macro figure is kept in detail for reference, not silently dropped.
+    overall_micro = metrics.get("overall_micro", {})
+    f1 = overall_micro.get("fscore")
+    return {"score": f1, "detail": {"per_label": metrics, "overall_micro": overall_micro,
+                                     "overall_macro": metrics.get("overall_macro", {}),
+                                     "checker": "slue-toolkit get_ner_scores"}}
 
 
 # ---------------------------------------------------------------------------------------------
@@ -450,12 +503,30 @@ def score(dataset_key: str, row: dict, text: str) -> dict:
     if kt == "K4":
         # Must agree with templates.build_instruction's K4 branch on which label_set was actually
         # SHOWN to the model -- K4_LABEL_SETS first (corpus-true, label_inventories.py; includes
-        # uro-bench-UnderEmotion-{en,zh} as of this fix), else the sample-observed/hardcoded
-        # fallback (vocalbench-emotion only, task scope).
+        # uro-bench-UnderEmotion-{en,zh} as of this fix), else the meta["_label_set"] fallback
+        # (vocalbench-emotion only, task scope; populated by run_baseline._load_rows's dedicated
+        # branch from label_inventories.VOCALBENCH_EMOTION_EMOTIONS, 2026-07-10 freeze-repair).
+        #
+        # 2026-07-10 freeze-repair (wave-2 audit): this used to silently fall back to `[]` (empty
+        # label set) whenever meta["_label_set"] was missing -- score_k4_ser -> _closed_choice_score
+        # can never resolve `match_idx` against an empty list, so every item scored MECHANICALLY 0.0
+        # regardless of the model's actual reply (paired with templates.build_instruction's matching
+        # placeholder-prompt bug, this is exactly what made vocalbench-emotion's dev+test cells
+        # score 0.0 across the board). Raise loudly instead, mirroring templates.build_instruction's
+        # own 2026-07-10 fix -- a missing label set must fail fast and visibly, never silently
+        # degrade into an unscoreable-by-construction cell.
         if dataset_key in templates.K4_LABEL_SETS:
             label_set, _lang = templates.K4_LABEL_SETS[dataset_key]
         else:
-            label_set = meta.get("_label_set") or []
+            label_set = meta.get("_label_set")
+            if not label_set:
+                raise KeyError(
+                    f"metrics.score: K4 dataset_key={dataset_key!r} has no closed label set to "
+                    "score against -- not in templates.K4_LABEL_SETS and meta['_label_set'] is "
+                    "missing/empty (see run_baseline._load_rows's per-dataset branches). Must match "
+                    "templates.build_instruction's K4 branch, which raises the same way -- see the "
+                    "2026-07-10 vocalbench-emotion freeze-repair."
+                )
         return score_k4_ser(gold, text, label_set)
     if kt == "K5":
         # Per-locale corpus-true label_set (must match templates.build_instruction's K5 branch --

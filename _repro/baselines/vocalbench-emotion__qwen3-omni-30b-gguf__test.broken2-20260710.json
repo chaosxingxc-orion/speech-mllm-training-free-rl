@@ -1,0 +1,728 @@
+{
+  "stage": "1-directional",
+  "dataset": "vocalbench-emotion",
+  "k_type": "K4",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/vocalbench-emotion/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "emotion-104",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. ...",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "happy",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-455",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Disappointed",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "neutral",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-176",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Excited",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "happy",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-433",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Helpless",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "neutral",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-213",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Sad",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "sad",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-121",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Excited",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "happy",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-324",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Confused",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "surprised",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-401",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Fearful",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "neutral",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-328",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Confused",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "surprised",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-067",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Regret",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "angry",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-122",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Happy",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "happy",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-364",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. <observed set unavailable>",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "surprised",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-437",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. ...",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "neutral",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-205",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Disheartened",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "sad",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-173",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. ...",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "happy",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-132",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Happy",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "happy",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-079",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A.",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "angry",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-459",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A.",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "neutral",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-314",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Shocked",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "surprised",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-400",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. <observed set unavailable>",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "neutral",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-325",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A.",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "surprised",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-289",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Sad",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "sad",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-082",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Frustrated",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "angry",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-188",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A.",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "happy",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-297",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Sad",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "sad",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-374",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. <observed set unavailable>",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "surprised",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-228",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A.",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "sad",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-232",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Sad",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "sad",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-164",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Happy",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "happy",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-226",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A.",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "sad",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-371",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. <observed set unavailable>",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "surprised",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-197",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. <observed set unavailable>",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "happy",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-238",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Sad",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "sad",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-316",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Surprise",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "surprised",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-097",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Confused",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "angry",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-020",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Indignant",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "angry",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-267",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A.",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "sad",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-152",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Joyful",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "happy",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-186",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A.",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "happy",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-162",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A.",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "happy",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-292",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Sad",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "sad",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-310",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. <observed set unavailable>",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "surprised",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-352",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Concerned",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "surprised",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-357",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Excited",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "surprised",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-359",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. <observed set unavailable>",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "surprised",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-308",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Concerned",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "surprised",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-137",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. <observed set unavailable>",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "happy",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-275",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Discouraged",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "sad",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-191",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Excited",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "happy",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-447",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Sad",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "neutral",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-028",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Frustrated",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "angry",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-140",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. <observed set unavailable>",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "happy",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-391",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Confused",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "surprised",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-255",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Sad",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "sad",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-066",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Indignant",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "angry",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-059",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A.",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "angry",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-075",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Frustrated",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "angry",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-404",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. Fearful",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "neutral",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-069",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A.",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "angry",
+        "parsed_idx": -1
+      }
+    },
+    {
+      "item_id": "emotion-477",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. <observed set unavailable>\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. <observed set unavailable>",
+      "score": 0,
+      "detail": {
+        "pred_label": null,
+        "gold_label": "neutral",
+        "parsed_idx": -1
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.0,
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "n_scored": 60,
+    "n_total": 60,
+    "macro_f1": {
+      "macro_f1": 0.0,
+      "per_label": {
+        "angry": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 10
+        },
+        "happy": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 15
+        },
+        "neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 9
+        },
+        "sad": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 12
+        },
+        "surprised": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 14
+        }
+      }
+    }
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset vocalbench-emotion --backbone qwen3-omni-30b-gguf --split test --n 60",
+  "elapsed_s": 172.8
+}

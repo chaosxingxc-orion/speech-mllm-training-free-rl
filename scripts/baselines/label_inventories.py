@@ -42,10 +42,26 @@ block directly above each constant.
 
 Datasets NOT covered here (task scope: slurp, speech-massive fr-FR/de-DE, uro-bench
 UnderEmotion-en/-zh only) keep the EXISTING sample-observed (``meta["_label_set"]``) or hardcoded
-fallback in templates.py/metrics.py unchanged -- e.g. ``vocalbench-emotion``'s
-``meta["_label_set"]``/hardcoded 5-way set. See templates.py's K4/K5/K6/K7 branches in
+fallback in templates.py/metrics.py unchanged. See templates.py's K4/K5/K6/K7 branches in
 ``build_instruction`` (and the mirrored branches in ``metrics.score``) for exactly how this
 module's constants take priority over that fallback, dataset-key by dataset-key.
+
+2026-07-10 freeze-repair (wave-2 audit, ``vocalbench-emotion``): this dataset was NOT covered
+above, and unlike slurp/speech-massive/uro-bench-UnderEmotion (all of which at least had a
+sample-observed ``meta["_label_set"]`` populated by ``run_baseline._load_rows``), NO branch in
+``_load_rows`` ever populated ``meta["_label_set"]`` for ``vocalbench-emotion`` at all -- it fell
+straight through to the generic ``registry.LOADERS[dataset_key](split="test", ...)`` tail of
+``_load_rows`` with no per-dataset post-processing. Effect: ``templates.build_instruction``'s K4
+fallback (``meta.get("_label_set") or ["<observed set unavailable>"]``) rendered a ONE-OPTION
+closed-choice prompt ("A. <observed set unavailable>") for every item, and ``metrics.score``'s
+matching fallback (``meta.get("_label_set") or []``) scored against an EMPTY label set -- so
+``score_k4_ser`` -> ``_closed_choice_score`` could never resolve ``match_idx`` (gold label is never
+IN an empty list), making BOTH wave-2 ``vocalbench-emotion`` cells (dev n=40, test n=60) score
+MECHANICALLY 0.0 regardless of the model's actual reply. See ``run_baseline._load_rows``'s new
+``vocalbench-emotion`` branch (2026-07-10) for the fix -- it now populates
+``meta["_label_set"] = VOCALBENCH_EMOTION_EMOTIONS`` (below) on every row, exactly the pattern the
+uro-bench-UnderEmotion branch already used before ITS labels were promoted to a corpus-true
+``K4_LABEL_SETS`` entry.
 """
 from __future__ import annotations
 
@@ -427,4 +443,31 @@ URO_BENCH_UNDEREMOTION_ZH_EMOTIONS = [
     '压力大', '后悔', '困惑', '困惑的', '坚韧的', '失望', '失望的', '宽慰的', '快乐', '怀念的', '恼火', '惊讶', '惊讶的', '愉快',
     '感激', '感激的', '担忧的', '无助的', '有压力', '松了口气', '沮丧', '沮丧的', '渴望', '满足', '满足的', '烦恼', '焦虑的', '疲倦',
     '疲惫', '精疲力尽的', '绝望的', '缺乏动力的', '自豪', '自豪的', '遗憾', '震惊', '顺从',
+]
+
+
+# -----------------------------------------------------------------------------------------------
+# vocalbench-emotion -- Question_emo set (whole parquet, no sampling)
+# -----------------------------------------------------------------------------------------------
+
+
+# VOCALBENCH_EMOTION_EMOTIONS -- 5 labels, corpus-true full-pool scan (2026-07-10 freeze-repair,
+# wave-2 audit -- see module docstring's dedicated note above for how this dataset was completely
+# unwired before this fix, not merely sample-observed-vs-full-pool undercovered like the other
+# entries in this module).
+# source: datasets/vocalbench/parquet/emotion.parquet (rec['Question_emo'])
+# rows scanned: 500 (datasets/vocalbench/parquet/emotion.parquet, the WHOLE (only) 'test' split --
+# see scripts/loaders/vocalbench.py's load_vocalbench_emotion / _require_test_split)
+# silent-miss evidence: N/A in the usual sense -- this is a small, fully-populated 5-way vocabulary
+# (100 rows/label out of 500, verified below), not a long-tail distribution a 40/60-row sample
+# could plausibly under-cover; the CURRENT frozen dev(n=40)/test(n=60) draws' gold-label union is
+# in fact already the full 5/5 (see the per-item "gold_label" values recorded in the pre-fix
+# _repro/baselines/vocalbench-emotion__*__{dev,test}.json -- angry/happy/neutral/sad/surprised all
+# present in both splits). The actual defect this fixes is categorically different: NO branch in
+# run_baseline._load_rows ever populated meta["_label_set"] for this dataset key AT ALL (see module
+# docstring) -- the model was never shown any real options, not merely a truncated set.
+# per-label counts (exact, exhaustive):
+# angry=100 happy=100 neutral=100 sad=100 surprised=100
+VOCALBENCH_EMOTION_EMOTIONS = [
+    'angry', 'happy', 'neutral', 'sad', 'surprised',
 ]
