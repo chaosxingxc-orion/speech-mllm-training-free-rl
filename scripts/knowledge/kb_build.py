@@ -9,6 +9,13 @@ reading-comprehension passage pools, but AUDIO is the primary, multimodal key.
         records = [{ 'key_audio_ref': <wav path>,  'value': <payload>, 'from_item_id': <id> }, ...]
                or [{ 'key_text': <text key>,        'value': <payload>, 'from_item_id': <id> }, ...]  # legacy
 
+    Step-2 schema evolution (2026-07-10; additive, optional per-record): each record may also carry
+    ``key_granularity`` ('utterance' default | 'word' | 'segment'), ``parent_ref`` (parent
+    utterance's ``kid``, for child/segment keys), ``start_s``/``end_s`` (child span offset within
+    the parent utterance), and ``grain`` ('knowledge' | 'memory' | 'exemplar' | None). Omitted
+    fields default exactly as ``kb_schema.KnowledgeValue`` does, so callers that don't need
+    granularity/grain tagging are unaffected.
+
 Leakage audit runs on the VALUES (value-side Information-Boundary Guard): if a value contains an eval
 gold, the source is flagged; ``scrub=True`` strips golds from values before persisting.
 
@@ -61,7 +68,7 @@ def build_source(
     )
 
     # --- collect keys + values (dedup by (key_ref, value)) ---
-    seen, key_refs, values, from_ids = set(), [], [], []
+    seen, key_refs, values, from_ids, grains = set(), [], [], [], []
     key_field = "key_audio_ref" if key_modality == "audio" else "key_text"
     for r in records:
         kref, val = r.get(key_field), r.get("value", "")
@@ -74,6 +81,13 @@ def build_source(
         key_refs.append(kref)
         values.append(val)
         from_ids.append(r.get("from_item_id"))
+        grains.append({
+            "key_granularity": r.get("key_granularity", "utterance"),
+            "parent_ref": r.get("parent_ref"),
+            "start_s": r.get("start_s"),
+            "end_s": r.get("end_s"),
+            "grain": r.get("grain"),
+        })
 
     # --- value-side leakage audit (does a stored value contain an eval gold?) ---
     audit, leakage_ok = {}, None
@@ -119,7 +133,7 @@ def build_source(
 
     # --- write the VALUE store (payload), row-aligned to the key index ---
     with open(d / "values.jsonl", "w", encoding="utf-8") as fh:
-        for i, (kref, val, fid) in enumerate(zip(key_refs, values, from_ids)):
+        for i, (kref, val, fid, g) in enumerate(zip(key_refs, values, from_ids, grains)):
             kv = KnowledgeValue(
                 row=i,
                 kid=entry_id(source, str(kref), val),
@@ -135,6 +149,11 @@ def build_source(
                     "from_item_id": fid,
                     "leakage_checked": leakage_ok,
                 },
+                key_granularity=g["key_granularity"],
+                parent_ref=g["parent_ref"],
+                start_s=g["start_s"],
+                end_s=g["end_s"],
+                grain=g["grain"],
             )
             fh.write(kv.to_json() + "\n")
 

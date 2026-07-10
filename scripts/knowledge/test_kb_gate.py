@@ -4,13 +4,19 @@ Pure-python, fully OFFLINE (``embedder='logmel-stats'`` — no GPU/network, no o
 against a TMP ``SPEECHRL_KB_DIR`` that this script creates itself if the caller didn't set one — it
 NEVER falls through to the real ``E:/speechrl-knowledge`` default (see the safety assert in ``main``).
 
-Three cases (mirrors kb_build.build_source / kb_retrieve.load_source's enforcement gates):
+Four cases (mirrors kb_build.build_source / kb_retrieve.load_source's enforcement gates, plus the
+Step-2 schema evolution's backward-compatibility contract):
   1. A LEAKAGE-verdict source cannot be BUILT without ``force_persist=True`` (raises
      ``kb_schema.KBLeakageError``; nothing is persisted) — and building it with the flag DOES persist,
      stamped ``manifest.forced=True``.
   2. That (unclean, forced) source cannot be LOADED without ``allow_unclean=True`` (raises
      ``KBLeakageError``) — and loading it with the flag DOES succeed.
   3. A CLEAN source (post-scrub) builds and loads normally, with NEITHER escape-hatch flag.
+  4. Step-2 schema round-trip: ``KnowledgeValue`` -> ``to_json`` -> ``from_json`` preserves the new
+     ``key_granularity``/``parent_ref``/``start_s``/``end_s``/``grain`` fields exactly; a pre-2026-07-10
+     JSON line (none of those keys present) still loads via ``from_json`` with the documented
+     defaults; and ``kb_build.build_source`` plumbs per-record granularity/grain through to the
+     persisted ``values.jsonl`` end-to-end.
 
 Run (WSL venv; tmp dir explicit so this NEVER touches the real KB):
     SPEECHRL_KB_DIR=$(mktemp -d) python -u scripts/knowledge/test_kb_gate.py
@@ -80,7 +86,7 @@ def main() -> int:
 
     import kb_build
     import kb_retrieve
-    from kb_schema import KBLeakageError, list_sources
+    from kb_schema import KBLeakageError, list_sources, load_values
 
     results: dict[str, bool] = {}
 
@@ -146,6 +152,65 @@ def main() -> int:
         check(
             "load_source(CLEAN) loads without allow_unclean",
             src_clean is not None and src_clean["index"].n == len(records),
+            results,
+        )
+
+        # ---- case 4: Step-2 schema evolution — round-trip of the new fields ----
+        from kb_schema import KnowledgeValue
+
+        kv = KnowledgeValue(
+            row=0, kid="src:abc123", source="src", key_modality="audio", value_type="transcript",
+            value="hello world", key_audio_ref="/tmp/x.wav",
+            provenance={"dataset": "d", "revision": None, "build_seed": 0, "from_item_id": "i0",
+                        "leakage_checked": True},
+            key_granularity="word", parent_ref="src:parent000", start_s=1.25, end_s=1.80,
+            grain="memory",
+        )
+        kv2 = KnowledgeValue.from_json(kv.to_json())
+        check(
+            "KnowledgeValue round-trip preserves new fields exactly",
+            (kv2.key_granularity, kv2.parent_ref, kv2.start_s, kv2.end_s, kv2.grain)
+            == ("word", "src:parent000", 1.25, 1.80, "memory"),
+            results,
+        )
+
+        # a pre-2026-07-10 line: none of the Step-2 keys present in the JSON at all
+        old_line = json.dumps({
+            "row": 0, "kid": "src:old1", "source": "src", "key_modality": "audio",
+            "value_type": "transcript", "value": "legacy row", "key_audio_ref": "/tmp/y.wav",
+            "provenance": {"dataset": "d", "revision": None, "build_seed": 0, "from_item_id": "i1",
+                           "leakage_checked": True},
+        })
+        kv_old = KnowledgeValue.from_json(old_line)
+        check(
+            "pre-Step-2 (no new keys) JSON line loads with documented defaults",
+            (kv_old.key_granularity, kv_old.parent_ref, kv_old.start_s, kv_old.end_s, kv_old.grain)
+            == ("utterance", None, None, None, None),
+            results,
+        )
+
+        # end-to-end: kb_build.build_source plumbs per-record granularity/grain through
+        parent_records = _records(wavdir, n=3)
+        for i, r in enumerate(parent_records):
+            r["grain"] = "exemplar"
+            r["key_granularity"] = "segment"
+            r["parent_ref"] = f"gate_schema_evo:parent{i}"
+            r["start_s"] = 0.0
+            r["end_s"] = 0.4
+        m_schema = kb_build.build_source(
+            "gate_schema_evo", "synthetic", None, parent_records,
+            key_modality="audio", value_type="text-fact", embedder="logmel-stats",
+            audit_golds=[f"banana{i}" for i in range(len(parent_records))], scrub=True,
+            note="gate-test Step-2 schema evolution",
+        )
+        persisted = load_values("gate_schema_evo")
+        check(
+            "kb_build.build_source plumbs key_granularity/parent_ref/span/grain to values.jsonl",
+            len(persisted) == len(parent_records)
+            and all(v.key_granularity == "segment" and v.grain == "exemplar"
+                    and v.start_s == 0.0 and v.end_s == 0.4
+                    and v.parent_ref == f"gate_schema_evo:parent{i}"
+                    for i, v in enumerate(persisted)),
             results,
         )
 

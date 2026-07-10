@@ -32,6 +32,19 @@ KEY_MODALITIES = ("audio", "text")  # audio = primary (multimodal); text = legac
 # VALUE type — what the stored payload IS (the "other modality / label / transcript").
 VALUE_TYPES = ("transcript", "translation", "labels", "intent", "answer", "text-fact", "other-modal")
 
+# Step-2 schema evolution (2026-07-10; wiki/2026-07-09-q1q2-embedder-granularity-decision-memo.md
+# S2.5 + wiki/2026-07-10-step2-grid-draft.md S2/S5). KEY_GRANULARITIES tags what span of audio a
+# key row was embedded from — 'utterance' (the Stage-1 default, unchanged), 'word' (CLAR-style
+# word-boundary keys for ASR hard-sample memory, K1/K2), or 'segment' (sub-utterance span keys for
+# SLU-slot two-level retrieval, K6/K7). VALUE_GRAINS tags what KIND of thing a value payload IS in
+# the knowledge/skill/memory taxonomy (wiki 2026-07-06-capability-taxonomy...): 'knowledge' (a
+# general fact/label — the pre-existing implicit default), 'memory' (a specific recalled instance,
+# e.g. an ASR hard-sample correction), or 'exemplar' (a few-shot demonstration item, e.g. an
+# intent/slot-tagged reference utterance). ``None`` (the default) preserves the pre-2026-07-10
+# untagged behavior exactly — this is purely additive.
+KEY_GRANULARITIES = ("utterance", "word", "segment")
+VALUE_GRAINS = ("knowledge", "memory", "exemplar")
+
 
 class KBLeakageError(RuntimeError):
     """Raised by the Information-Boundary Guard enforcement gate.
@@ -46,7 +59,29 @@ class KBLeakageError(RuntimeError):
 
 @dataclass(frozen=True)
 class KnowledgeValue:
-    """One row of the value store — the payload retrieved when its key matches."""
+    """One row of the value store — the payload retrieved when its key matches.
+
+    Step-2 additive fields (2026-07-10; all default to the pre-existing untagged behavior, so every
+    values.jsonl written before this change loads unmodified — see ``from_json``):
+
+    ``key_granularity`` — what span of audio this row's KEY embedding was built from. Default
+    ``'utterance'`` (the only granularity ever used before this change). ``'word'``/``'segment'``
+    keys are CHILD keys of a parent utterance-level row (see ``parent_ref``/``start_s``/``end_s``).
+
+    ``parent_ref`` — for a child (word/segment) key, the ``kid`` of its parent utterance-level
+    ``KnowledgeValue`` in the SAME source (traceability: which utterance this sub-span came from).
+    ``None`` for utterance-level rows (the default — nothing points to a parent).
+
+    ``start_s`` / ``end_s`` — the child key's span offset in seconds within the parent utterance's
+    audio (nullable; only meaningful when ``key_granularity != 'utterance'``).
+
+    ``grain`` — the VALUE's role in the knowledge/skill/memory taxonomy (wiki
+    2026-07-06-capability-taxonomy-knowledge-skill-memory.md): ``'knowledge'`` (general fact/label),
+    ``'memory'`` (a specific recalled instance, e.g. an ASR hard-sample correction), ``'exemplar'``
+    (a few-shot demonstration item), or ``None`` (untagged — the default, preserves prior behavior;
+    NOT the same as ``'knowledge'`` — callers that need a grain-aware split must treat ``None`` as
+    "not yet classified", not silently treat it as knowledge-grain).
+    """
 
     row: int  # aligns to keys.npy row and the ANN index id
     kid: str  # stable content-addressed id
@@ -56,12 +91,22 @@ class KnowledgeValue:
     value: str  # the stored knowledge (transcript / label / answer / fact / other-modal ref)
     key_audio_ref: str | None = None  # the audio whose embedding is the key (traceability)
     provenance: dict = field(default_factory=dict)  # {dataset, revision, build_seed, from_item_id, leakage_checked}
+    key_granularity: str = "utterance"  # one of KEY_GRANULARITIES
+    parent_ref: str | None = None  # parent utterance-level KnowledgeValue.kid, for child keys
+    start_s: float | None = None  # child key span start (s) within the parent utterance's audio
+    end_s: float | None = None  # child key span end (s) within the parent utterance's audio
+    grain: str | None = None  # one of VALUE_GRAINS, or None (untagged)
 
     def to_json(self) -> str:
         return json.dumps(asdict(self), ensure_ascii=False)
 
     @staticmethod
     def from_json(line: str) -> "KnowledgeValue":
+        """Backward-compatible: a pre-2026-07-10 values.jsonl line has none of the Step-2 fields
+        in its JSON — the dataclass defaults (``key_granularity='utterance'``, ``parent_ref=None``,
+        ``start_s=None``, ``end_s=None``, ``grain=None``) fill in automatically since
+        ``KnowledgeValue(**d)`` only requires the keys actually present in ``d``.
+        """
         return KnowledgeValue(**json.loads(line))
 
 
