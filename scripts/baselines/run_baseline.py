@@ -50,6 +50,10 @@ import templates                      # noqa: E402
 from _common import (                 # noqa: E402  (scripts/loaders/_common.py)
     POOL_RECONSTRUCTION_SEED, SLICE_SEED, data_root, freeze_ids, load_snapshot_ids,
 )
+from group_key import group_key_of    # noqa: E402  (scripts/loaders/group_key.py, ticket #26 --
+# group-split design doc wiki/2026-07-11-group-split-statistics-design.md §2.5. Only used below to
+# PERSIST group_id per per_item entry going forward -- nothing in this file reads it back yet
+# (the group-disjoint redraw / cluster bootstrap wiring is a separate, owner-gated step).
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 GPU_SESSION_SH = REPO_ROOT / "scripts" / "gpu_session.sh"
@@ -541,16 +545,29 @@ def _run_item(dataset_key: str, backbone: str, row: dict, item_seed: int) -> dic
     task brief item 1). Factored out unchanged from the old inline loop body so scoring is byte-for-
     byte identical either way -- only the SCHEDULING differs, never the per-item semantics (one bad
     item's exception is caught here and turned into an ``{"item_id","error"}`` entry, exactly as the
-    old inline ``try/except`` did, never sinking the whole cell)."""
+    old inline ``try/except`` did, never sinking the whole cell).
+
+    2026-07-11 (ticket #26, group-split design doc §2.5, "group labels aren't stored today"):
+    every returned entry ALSO carries ``"group_id"`` (``group_key_of(dataset_key, row)`` -- a str,
+    or None for a G-SOURCE/G-NONE dataset, see ``scripts/loaders/group_key.py``). Computed OUTSIDE
+    the generation/scoring try/except (a pure function over already-loaded ``row`` data, no model
+    call) but itself guarded so a bug in ``group_key_of`` can never sink a cell's scoring -- worst
+    case ``group_id`` silently degrades to None, exactly the honest "no group" signal a G-NONE
+    dataset would produce anyway. This is purely ADDITIVE (new dict key); nothing today reads it
+    back, so every existing consumer of a per_item entry is unaffected."""
+    try:
+        group_id = group_key_of(dataset_key, row)
+    except Exception:  # noqa: BLE001 -- group_id is provenance, never allowed to sink a cell
+        group_id = None
     try:
         instr = templates.build_instruction(dataset_key, row)
         text = generate(backbone, row["wav"], instr, seed=item_seed)
         result = metrics.score(dataset_key, row, text)
     except Exception as e:  # noqa: BLE001 -- one bad item must not sink the whole cell
         return {"item_id": row.get("meta", {}).get("item_id"),
-                "error": f"{type(e).__name__}: {str(e)[:200]}"}
+                "error": f"{type(e).__name__}: {str(e)[:200]}", "group_id": group_id}
     return {"item_id": row["meta"]["item_id"], "instr": instr, "reply": text,
-            "score": result["score"], "detail": result["detail"]}
+            "score": result["score"], "detail": result["detail"], "group_id": group_id}
 
 
 def run_one(dataset_key: str, backbone: str, split: str, n: int | None, parallel: int = 1,

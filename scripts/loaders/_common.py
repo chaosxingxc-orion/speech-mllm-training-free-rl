@@ -265,3 +265,131 @@ def draw_disjoint(
         "n_test": len(test_ids), "n_dev": len(dev_ids),
         "shortfall": shortfall,
     }
+
+
+# ---------------------------------------------------------------------------------------------
+# 2026-07-11 group-split + cluster-bootstrap redesign (ticket #26, QUESTION-INDEPENDENT machinery
+# only -- design doc wiki/2026-07-11-group-split-statistics-design.md §2.2). Added BESIDE
+# ``draw_disjoint`` above (kept unchanged, for backward replay of the non-locked cells) --
+# ``draw_disjoint_grouped`` is NOT wired into any runner yet: no caller in this repo invokes it,
+# the locked-test-seed / access-controlled manifest machinery the design doc sketches (§2.1/§2.3,
+# ``locked_split.py``, ``_repro/LOCKED_HOLDOUT/``) does NOT exist, and no rerun has happened --
+# those are owner-gated steps (design doc §5's five open questions), not this ticket's scope.
+# ---------------------------------------------------------------------------------------------
+
+def draw_disjoint_grouped(
+    items: list,
+    group_key_fn: Callable[[dict], "str | None"],
+    n_test: int = 60,
+    n_dev: int = 40,
+    seed: int = SLICE_SEED,
+) -> dict:
+    """Group-disjoint (test, dev) draw over ``items`` -- ALL items of a group land on the SAME
+    side (design doc §2.2, audit finding #1: item-level disjointness lets two items of the same
+    group -- speaker/session/dialogue/source-question-family/clip -- land on opposite sides, so
+    "test" isn't actually independent of "dev" when items correlate within a group).
+
+    ``items`` is a list of loader ``Row``s (``{"wav", "gold", "meta"}`` with
+    ``meta["item_id"]`` set) -- or a synthetic test double shaped the same way. ``group_key_fn`` is
+    typically ``functools.partial(scripts.loaders.group_key.group_key_of, dataset_key)`` -- any
+    callable ``item -> str | None``. Returning ``None`` for an item means "no group finer than the
+    whole dataset" (G-NONE, see that module); this function then treats the item as its OWN
+    singleton group (keyed by its ``item_id``), so a G-NONE dataset transparently degrades to the
+    OLD item-level behavior with NO special-casing by the caller -- exactly mirroring
+    ``draw_disjoint``'s semantics for that case (design doc: "the *same* function yields item-level
+    splits for [G-NONE datasets] with no special-casing").
+
+    Algorithm (design doc §2.2, adapted here to a ``group_key_fn`` callable instead of a
+    precomputed ``group_of`` dict, and a single ``seed`` instead of separate seed_test/seed_dev --
+    two internal RNGs are derived from it: ``seed`` for the TEST draw, ``seed + 1`` for the DEV
+    draw, mirroring ``draw_disjoint``'s own TEST_SEED/DEV_SEED offset convention above). Uses a
+    plain caller-supplied ``seed`` (default ``SLICE_SEED``) -- this module does NOT reference the
+    design doc's proposed locked-holdout seed (no such constant exists yet; see the block comment
+    above):
+      1. ``group_of[item_id] = group_key_fn(item) or item_id`` (singleton fallback); invert into
+         ``groups: {group_id: [item_ids]}``; sort group ids for a stable enumeration order.
+      2. ``rng_test = default_rng(seed)``; permute the group-id list; greedily add WHOLE groups to
+         ``test`` until the item count first reaches ``n_test`` (accept the overshoot from the
+         last group rather than ever splitting a group).
+      3. Remove the chosen test groups; ``rng_dev = default_rng(seed + 1)`` permutes the REMAINING
+         groups; greedily fill ``dev`` to ``n_dev`` items the same way.
+      4. Small-pool handling mirrors ``draw_disjoint``'s proportional 60/40 fallback when whole
+         groups can't hit ``n_test + n_dev`` -- recorded in ``shortfall``. A single group already
+         at/above ``n_test`` alone is flagged ``oversized_group`` (that cell is then effectively
+         one-cluster -- item-level bootstrap, caveat; design doc §2.2 step 5).
+
+    Returns:
+        {"test_ids", "dev_ids": list[str], "test_groups", "dev_groups": list[str],
+         "n_groups_total": int, "n_test", "n_dev": int (actual drawn counts),
+         "group_disjoint_verified": bool, "shortfall": dict | None,
+         "oversized_group": str | None, "fallback_item_level": bool} -- the last key is True iff
+        EVERY item's ``group_key_fn`` returned None (a G-NONE dataset), i.e. every "group" is a
+        singleton and this call is equivalent to a plain item-level ``draw_disjoint``.
+    """
+    import numpy as np
+
+    def _item_id(it: dict) -> str:
+        return it["meta"]["item_id"]
+
+    group_of: dict = {}
+    any_real_group = False
+    for it in items:
+        iid = _item_id(it)
+        gk = group_key_fn(it)
+        if gk is not None:
+            any_real_group = True
+        group_of[iid] = gk if gk is not None else iid
+
+    groups: dict = {}
+    for iid, gid in group_of.items():
+        groups.setdefault(gid, []).append(iid)
+    group_ids = sorted(groups.keys())
+    n_groups_total = len(group_ids)
+
+    def _greedy_fill(candidate_group_ids: list, target_n: int) -> tuple:
+        """Whole-groups-only greedy fill: returns (chosen_group_ids, chosen_item_ids)."""
+        chosen_groups, chosen_items = [], []
+        for gid in candidate_group_ids:
+            if len(chosen_items) >= target_n:
+                break
+            chosen_groups.append(gid)
+            chosen_items.extend(groups[gid])
+        return chosen_groups, chosen_items
+
+    total_items = sum(len(v) for v in groups.values())
+    requested_test, requested_dev = n_test, n_dev
+    shortfall = None
+
+    oversized_group = next((gid for gid in group_ids if len(groups[gid]) >= n_test), None)
+
+    if total_items < n_test + n_dev:
+        ratio_test = n_test / (n_test + n_dev)
+        n_test = max(1, min(total_items, int(round(total_items * ratio_test))))
+        n_dev = total_items - n_test
+        shortfall = {
+            "requested_test": requested_test, "requested_dev": requested_dev,
+            "effective_test": n_test, "effective_dev": n_dev, "pool_size": total_items,
+            "n_groups_total": n_groups_total,
+        }
+
+    rng_test = np.random.default_rng(seed)
+    perm_test = [group_ids[i] for i in rng_test.permutation(len(group_ids))]
+    test_groups, test_ids = _greedy_fill(perm_test, n_test)
+
+    test_group_set = set(test_groups)
+    remaining_group_ids = [g for g in group_ids if g not in test_group_set]
+    rng_dev = np.random.default_rng(seed + 1)
+    perm_dev = ([remaining_group_ids[i] for i in rng_dev.permutation(len(remaining_group_ids))]
+                if remaining_group_ids else [])
+    dev_groups, dev_ids = _greedy_fill(perm_dev, n_dev)
+
+    return {
+        "test_ids": test_ids, "dev_ids": dev_ids,
+        "test_groups": test_groups, "dev_groups": dev_groups,
+        "n_groups_total": n_groups_total,
+        "n_test": len(test_ids), "n_dev": len(dev_ids),
+        "group_disjoint_verified": len(test_group_set & set(dev_groups)) == 0,
+        "shortfall": shortfall,
+        "oversized_group": oversized_group,
+        "fallback_item_level": not any_real_group,
+    }
