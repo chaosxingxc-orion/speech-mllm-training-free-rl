@@ -150,9 +150,10 @@ for bb in "${BACKBONES[@]}"; do
   [ "$failed" != "?" ] && TOTAL_FAILED=$((TOTAL_FAILED + failed))
 
   if [ "$status" -ne 0 ]; then
-    echo "ERROR: wave1_cells.py --backbone $bb exited $status (failed=$failed cells) -- see $LOG" >&2
-    echo "=== wave1 ABORTED after backbone=$bb: totals so far ran=$TOTAL_RAN skipped=$TOTAL_SKIPPED failed=$TOTAL_FAILED ===" >&2
-    exit "$status"
+    # 2026-07-10 policy fix: per-cell failures must NOT block the remaining backbones
+    # (postmortem: 2 heysquad loader-convention failures aborted the whole MERaLiON phase).
+    # Record and continue; the final exit code below still reports total failures.
+    echo "WARN: wave1_cells.py --backbone $bb exited $status (failed=$failed cells) -- continuing to next backbone; see $LOG" >&2
   fi
   echo "=== wave1: backbone=$bb done, GPU released ==="
 done

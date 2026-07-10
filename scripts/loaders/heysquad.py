@@ -79,6 +79,14 @@ def load_heysquad(split: str = "validation", n: int | None = None, seed: int = S
     import numpy as np
     import pyarrow.parquet as pq
 
+    # 2026-07-10 convention fix: the wave-1 scheduler (and every sibling loader) passes
+    # split='dev'|'test' as SLICING DIRECTIVES over the single public-gold pool. heysquad's
+    # only such pool is 'validation', so dev/test are aliases for validation here — the
+    # dev-vs-test distinction is carried entirely by the caller's (n, seed) draw
+    # (run_baseline uses SLICE_SEED for dev and TEST_SEED for test). 'train' stays out of
+    # scope per the module docstring.
+    if split in ("dev", "test"):
+        split = "validation"
     if split != "validation":
         raise NotImplementedError(
             f"heysquad: split={split!r} not wired up -- only 'validation' ships a public-gold "
