@@ -1,0 +1,756 @@
+{
+  "stage": "1-directional",
+  "dataset": "fleurs-r",
+  "k_type": "K3",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "test",
+  "n_requested": 60,
+  "seed": 20261705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/fleurs-r/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20261705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "af_za:159",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: af_za\nGender: MALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "afza",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "af_za:1377",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: de_ch\nGender: MALE",
+      "score": 0,
+      "detail": {
+        "lang_em": 0,
+        "gender_em": 1,
+        "lang_pred": "dech",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "af_za:465",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: af_za\nGender: MALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "afza",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "af_za:1345",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: af_za\nGender: MALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "afza",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "af_za:290",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: af_za\nGender: MALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "afza",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "am_et:1990",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: am_et\nGender: FEMALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "amet",
+        "gender_pred": "female"
+      }
+    },
+    {
+      "item_id": "am_et:1772",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: am_et\nGender: FEMALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "amet",
+        "gender_pred": "female"
+      }
+    },
+    {
+      "item_id": "am_et:1830",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: am_et\nGender: FEMALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "amet",
+        "gender_pred": "female"
+      }
+    },
+    {
+      "item_id": "am_et:1955",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: ar_eg\nGender: FEMALE",
+      "score": 0,
+      "detail": {
+        "lang_em": 0,
+        "gender_em": 1,
+        "lang_pred": "areg",
+        "gender_pred": "female"
+      }
+    },
+    {
+      "item_id": "am_et:1973",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: am_et\nGender: FEMALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "amet",
+        "gender_pred": "female"
+      }
+    },
+    {
+      "item_id": "ar_eg:1668",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: ar_eg\nGender: FEMALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "areg",
+        "gender_pred": "female"
+      }
+    },
+    {
+      "item_id": "ar_eg:1938",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: ar_eg\nGender: FEMALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "areg",
+        "gender_pred": "female"
+      }
+    },
+    {
+      "item_id": "ar_eg:1890",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: ar_eg\nGender: FEMALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "areg",
+        "gender_pred": "female"
+      }
+    },
+    {
+      "item_id": "ar_eg:1783",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: ar_eg\nGender: FEMALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "areg",
+        "gender_pred": "female"
+      }
+    },
+    {
+      "item_id": "ar_eg:1686",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: ar_eg\nGender: FEMALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "areg",
+        "gender_pred": "female"
+      }
+    },
+    {
+      "item_id": "as_in:1870",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: bn_in\nGender: MALE",
+      "score": 0,
+      "detail": {
+        "lang_em": 0,
+        "gender_em": 1,
+        "lang_pred": "bnin",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "as_in:1893",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: bn_in\nGender: MALE",
+      "score": 0,
+      "detail": {
+        "lang_em": 0,
+        "gender_em": 1,
+        "lang_pred": "bnin",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "as_in:1902",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: bn_in\nGender: MALE",
+      "score": 0,
+      "detail": {
+        "lang_em": 0,
+        "gender_em": 1,
+        "lang_pred": "bnin",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "as_in:1681",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: bn_in\nGender: MALE",
+      "score": 0,
+      "detail": {
+        "lang_em": 0,
+        "gender_em": 1,
+        "lang_pred": "bnin",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "as_in:2001",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: bn_in\nGender: MALE",
+      "score": 0,
+      "detail": {
+        "lang_em": 0,
+        "gender_em": 1,
+        "lang_pred": "bnin",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "ast_es:1694",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: ca_es\nGender: MALE",
+      "score": 0,
+      "detail": {
+        "lang_em": 0,
+        "gender_em": 1,
+        "lang_pred": "caes",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "ast_es:1689",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: ca_es\nGender: MALE",
+      "score": 0,
+      "detail": {
+        "lang_em": 0,
+        "gender_em": 1,
+        "lang_pred": "caes",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "ast_es:1946",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: ca_es\nGender: MALE",
+      "score": 0,
+      "detail": {
+        "lang_em": 0,
+        "gender_em": 1,
+        "lang_pred": "caes",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "ast_es:1752",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: ast_es\nGender: MALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "astes",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "ast_es:1878",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: ast_es\nGender: MALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "astes",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "az_az:1666",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: az_az\nGender: MALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "azaz",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "az_az:1991",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: az_az\nGender: MALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "azaz",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "az_az:1715",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: az_az\nGender: MALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "azaz",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "az_az:2004",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: az_az\nGender: MALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "azaz",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "az_az:1949",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: az_az\nGender: MALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "azaz",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "be_by:1887",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: uk_ua\nGender: FEMALE",
+      "score": 0,
+      "detail": {
+        "lang_em": 0,
+        "gender_em": 1,
+        "lang_pred": "ukua",
+        "gender_pred": "female"
+      }
+    },
+    {
+      "item_id": "be_by:1891",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: bn_in\nGender: FEMALE",
+      "score": 0,
+      "detail": {
+        "lang_em": 0,
+        "gender_em": 1,
+        "lang_pred": "bnin",
+        "gender_pred": "female"
+      }
+    },
+    {
+      "item_id": "be_by:1856",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: uk_ua\nGender: FEMALE",
+      "score": 0,
+      "detail": {
+        "lang_em": 0,
+        "gender_em": 1,
+        "lang_pred": "ukua",
+        "gender_pred": "female"
+      }
+    },
+    {
+      "item_id": "be_by:1868",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: uk_ua\nGender: FEMALE",
+      "score": 0,
+      "detail": {
+        "lang_em": 0,
+        "gender_em": 1,
+        "lang_pred": "ukua",
+        "gender_pred": "female"
+      }
+    },
+    {
+      "item_id": "be_by:1783",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: ru_ru\nGender: FEMALE",
+      "score": 0,
+      "detail": {
+        "lang_em": 0,
+        "gender_em": 1,
+        "lang_pred": "ruru",
+        "gender_pred": "female"
+      }
+    },
+    {
+      "item_id": "bg_bg:1688",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: bg_bg\nGender: FEMALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "bgbg",
+        "gender_pred": "female"
+      }
+    },
+    {
+      "item_id": "bg_bg:1907",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: bg_bg\nGender: MALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "bgbg",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "bg_bg:1916",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: bg_bg\nGender: FEMALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "bgbg",
+        "gender_pred": "female"
+      }
+    },
+    {
+      "item_id": "bg_bg:1874",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: bg_bg\nGender: FEMALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "bgbg",
+        "gender_pred": "female"
+      }
+    },
+    {
+      "item_id": "bg_bg:1881",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: bg_bg\nGender: FEMALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "bgbg",
+        "gender_pred": "female"
+      }
+    },
+    {
+      "item_id": "bn_in:1968",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: bn_in\nGender: MALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "bnin",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "bn_in:1683",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: bn_in\nGender: MALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "bnin",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "bn_in:1933",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: bn_in\nGender: MALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "bnin",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "bn_in:1729",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: bn_in\nGender: MALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "bnin",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "bn_in:1982",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: bn_in\nGender: MALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "bnin",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "bs_ba:1684",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: bs_ba\nGender: MALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "bsba",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "bs_ba:1829",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: bs_ba\nGender: MALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "bsba",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "bs_ba:1719",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: sl_si\nGender: MALE",
+      "score": 0,
+      "detail": {
+        "lang_em": 0,
+        "gender_em": 1,
+        "lang_pred": "slsi",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "bs_ba:1990",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: bs_ba\nGender: FEMALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "bsba",
+        "gender_pred": "female"
+      }
+    },
+    {
+      "item_id": "bs_ba:1933",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: bs_ba\nGender: MALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "bsba",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "ca_es:1718",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: ca_es\nGender: FEMALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "caes",
+        "gender_pred": "female"
+      }
+    },
+    {
+      "item_id": "ca_es:1983",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: ca_es\nGender: FEMALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "caes",
+        "gender_pred": "female"
+      }
+    },
+    {
+      "item_id": "ca_es:1963",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: ca_es\nGender: FEMALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "caes",
+        "gender_pred": "female"
+      }
+    },
+    {
+      "item_id": "ca_es:1957",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: ca_es\nGender: FEMALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "caes",
+        "gender_pred": "female"
+      }
+    },
+    {
+      "item_id": "ca_es:1750",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: ast_es\nGender: FEMALE",
+      "score": 0,
+      "detail": {
+        "lang_em": 0,
+        "gender_em": 1,
+        "lang_pred": "astes",
+        "gender_pred": "female"
+      }
+    },
+    {
+      "item_id": "ceb_ph:1874",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: ceb_ph\nGender: MALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "cebph",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "ceb_ph:1817",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: ceb_ph\nGender: MALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "cebph",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "ceb_ph:1887",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: ceb_ph\nGender: MALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "cebph",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "ceb_ph:1998",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: ceb_ph\nGender: MALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "cebph",
+        "gender_pred": "male"
+      }
+    },
+    {
+      "item_id": "ceb_ph:1980",
+      "instr": "Listen to the audio. First identify its language from this closed list of language codes (answer with exactly one code): af_za, am_et, ar_eg, as_in, ast_es, az_az, be_by, bg_bg, bn_in, bs_ba, ca_es, ceb_ph. Then identify the speaker's gender (MALE or FEMALE). Answer on two lines, exactly in this format:\nLanguage: <code>\nGender: <MALE or FEMALE>",
+      "reply": "Language: ceb_ph\nGender: MALE",
+      "score": 1,
+      "detail": {
+        "lang_em": 1,
+        "gender_em": 1,
+        "lang_pred": "cebph",
+        "gender_pred": "male"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.7167,
+    "ci95": [
+      0.6,
+      0.8333
+    ],
+    "n_scored": 60,
+    "n_total": 60
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset fleurs-r --backbone qwen3-omni-30b-gguf --split test --n 60 --parallel 4",
+  "elapsed_s": 150.4
+}

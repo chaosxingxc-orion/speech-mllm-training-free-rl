@@ -76,9 +76,16 @@ REPAIR_REASON = (
     "run_baseline.run_one -- every K7 cell's aggregate was {mean:null, n_scored:0, ...} with no "
     "corpus-level F1 (FREEZE_SHEET.md's own 'wired but NOT executed' caveat). This repass "
     "recomputes corpus-level slot-F1 from the ALREADY-STORED per-item parsed_slots + rows "
-    "re-derived via run_baseline._load_rows(dataset, split, n_requested, seed) -- NO "
-    "regeneration. See k7_slot_repass.py's module docstring for the exact_match_micro_f1 vs "
-    "slurp_slu_f1_partial_credit distinction and the phrase-normalization convention used."
+    "re-derived via row-reconstruction (see _rows_for below) -- NO regeneration. See "
+    "k7_slot_repass.py's module docstring for the exact_match_micro_f1 vs "
+    "slurp_slu_f1_partial_credit distinction and the phrase-normalization convention used. "
+    "2026-07-10 dev/test disjoint-redraw follow-up (Decision-Log 续10): also re-invoked after "
+    "scripts/baselines/redraw_cells.py regenerates a K7 cell against its frozen disjoint slice -- "
+    "row reconstruction (_rows_for) now branches on the STORED cell's own \"slice_mode\" field, "
+    "using run_baseline._load_rows_disjoint(dataset, split) for slice_mode=='disjoint' cells "
+    "(reads the SAME frozen baselines-<dataset>-disjoint-{dev,test} manifest the generation pass "
+    "itself read) instead of the original _load_rows(dataset, split, n_requested, seed) path -- "
+    "still zero regeneration either way, just a different (already-frozen) row source."
 )
 
 # The 6 stored K7 cells as of this repair (qwen3-omni-30b-gguf only -- meralion-2-gguf's K7 cells
@@ -95,6 +102,24 @@ K7_CELLS: list[tuple[str, str, str]] = [
 
 def cell_path(dataset: str, backbone: str, split: str, baselines_dir: Path = BASELINES_DIR) -> Path:
     return baselines_dir / f"{dataset}__{backbone}__{split}.json"
+
+
+def _rows_for(data: dict) -> list[dict]:
+    """Re-derive the rows a K7 cell's generation pass actually used -- branches on the STORED
+    cell's own ``"slice_mode"`` field (2026-07-10 disjoint-redraw follow-up, see REPAIR_REASON
+    above). A cell generated before the redraw task (or any ``"seeded"``-slice cell) has no
+    ``"slice_mode"`` key at all (older result JSONs predate that field) or the literal string
+    ``"seeded"`` -- both reconstruct via the ORIGINAL ``run_baseline._load_rows(dataset, split,
+    n_requested, seed)`` call, byte-for-byte unchanged from before this function existed. A cell
+    with ``"slice_mode": "disjoint"`` instead reconstructs via
+    ``run_baseline._load_rows_disjoint(dataset, split)`` -- the SAME frozen
+    ``baselines-<dataset>-disjoint-{dev,test}`` manifest ``redraw_cells.py``'s generation pass
+    itself read, so a repass's rows are provably the exact rows that pass used, exactly like the
+    non-disjoint path's own reuse guarantee (see module docstring)."""
+    dataset_key, split = data["dataset"], data["split"]
+    if data.get("slice_mode") == "disjoint":
+        return rb._load_rows_disjoint(dataset_key, split)
+    return rb._load_rows(dataset_key, split, data["n_requested"], data["seed"])
 
 
 def _norm_phrase(s) -> str:
@@ -147,9 +172,7 @@ def _bio_free_spans(tokens: list[str], labels: list[str]) -> list[tuple[str, str
 
 
 def _recompute_slurp_slot(data: dict) -> dict:
-    dataset_key, split = data["dataset"], data["split"]
-    n, seed = data["n_requested"], data["seed"]
-    rows = rb._load_rows(dataset_key, split, n, seed)          # reuse, not reimplement
+    rows = _rows_for(data)          # reuse, not reimplement -- branches seeded vs disjoint
     row_by_id = {r["meta"]["item_id"]: r for r in rows}
 
     pred_by_file: dict[str, dict] = {}
@@ -188,9 +211,7 @@ def _recompute_slurp_slot(data: dict) -> dict:
 
 
 def _recompute_speech_massive_slot(data: dict) -> dict:
-    dataset_key, split = data["dataset"], data["split"]
-    n, seed = data["n_requested"], data["seed"]
-    rows = rb._load_rows(dataset_key, split, n, seed)          # reuse, not reimplement
+    rows = _rows_for(data)          # reuse, not reimplement -- branches seeded vs disjoint
     row_by_id = {r["meta"]["item_id"]: r for r in rows}
 
     gold_spans, pred_spans = [], []

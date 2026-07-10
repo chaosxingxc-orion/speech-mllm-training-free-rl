@@ -1,0 +1,732 @@
+{
+  "stage": "1-directional",
+  "dataset": "audio2tool",
+  "k_type": "K10",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "seeded",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/audio2tool/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "tier1_direct|24",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- setLightState(setLightState(deviceId: String, state: OnOff))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "```json\n{\"tool_call\": {\"name\": \"setLightState\", \"arguments\": {\"deviceId\": \"light-123\", \"state\": \"OnOff\"}}\n```",
+      "score": 0,
+      "detail": {
+        "pred_name": null,
+        "pred_args": {},
+        "gold_name": "setLighting",
+        "gold_args": {},
+        "gold_expected_raw": "setLighting()",
+        "name_match": false,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|114",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- setBrightness(setBrightness(deviceId: String, level: Int))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "```json\n{\"tool_call\": {\"name\": \"setBrightness\", \"arguments\": {\"deviceId\": \"device123\", \"level\": 75}}}\n```",
+      "score": 1,
+      "detail": {
+        "pred_name": "setBrightness",
+        "pred_args": {
+          "deviceId": "device123",
+          "level": 75
+        },
+        "gold_name": "setBrightness",
+        "gold_args": {},
+        "gold_expected_raw": "setBrightness()",
+        "name_match": true,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|159",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- setColor(setColor(deviceId: String, color: HsbColor))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "```json\n{\"tool_call\": {\"name\": \"setColor\", \"arguments\": {\"deviceId\": \"device123\", \"color\": {\"hue\": 240, \"saturation\": 100, \"brightness\": 100}}}\n```",
+      "score": 0,
+      "detail": {
+        "pred_name": null,
+        "pred_args": {},
+        "gold_name": "setColor",
+        "gold_args": {},
+        "gold_expected_raw": "setColor()",
+        "name_match": false,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|218",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- setColorTemperature(setColorTemperature(deviceId: String, kelvin: Int))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "```json\n{\"tool_call\": {\"name\": \"setColorTemperature\", \"arguments\": {\"deviceId\": \"light_1\", \"kelvin\": 3000}}}\n```",
+      "score": 1,
+      "detail": {
+        "pred_name": "setColorTemperature",
+        "pred_args": {
+          "deviceId": "light_1",
+          "kelvin": 3000
+        },
+        "gold_name": "setColorTemperature",
+        "gold_args": {},
+        "gold_expected_raw": "setColorTemperature()",
+        "name_match": true,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|248",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- setAdaptiveLighting(setAdaptiveLighting(deviceId: String, enabled: Boolean))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "```json\n{\"tool_call\": {\"name\": \"setAdaptiveLighting\", \"arguments\": {\"deviceId\": \"light_123\", \"enabled\": true}}}\n```",
+      "score": 1,
+      "detail": {
+        "pred_name": "setAdaptiveLighting",
+        "pred_args": {
+          "deviceId": "light_123",
+          "enabled": true
+        },
+        "gold_name": "setAdaptiveLighting",
+        "gold_args": {},
+        "gold_expected_raw": "setAdaptiveLighting()",
+        "name_match": true,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|338",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- rampBrightness(rampBrightness(deviceId: String, targetLevel: Int, duration: Time))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "```json\n{\"tool_call\": {\"name\": \"rampBrightness\", \"arguments\": {\"deviceId\": \"light_1\", \"targetLevel\": 100, \"duration\": \"30s\"}}}\n```",
+      "score": 1,
+      "detail": {
+        "pred_name": "rampBrightness",
+        "pred_args": {
+          "deviceId": "light_1",
+          "targetLevel": 100,
+          "duration": "30s"
+        },
+        "gold_name": "rampBrightness",
+        "gold_args": {},
+        "gold_expected_raw": "rampBrightness()",
+        "name_match": true,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|539",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- setFanMode(setFanMode(deviceId: String, mode: FanMode, speed: Int?))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "```json\n{\"tool_call\": {\"name\": \"setFanMode\", \"arguments\": {\"deviceId\": \"fan_123\", \"mode\": \"auto\", \"speed\": null}}\n```",
+      "score": 0,
+      "detail": {
+        "pred_name": null,
+        "pred_args": {},
+        "gold_name": "setFanMode",
+        "gold_args": {},
+        "gold_expected_raw": "setFanMode()",
+        "name_match": false,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|755",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- armSecuritySystem(armSecuritySystem(mode: SecurityMode))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "```json\n{\"tool_call\": {\"name\": \"armSecuritySystem\", \"arguments\": {\"mode\": \"away\"}}}\n```",
+      "score": 0,
+      "detail": {
+        "pred_name": "armSecuritySystem",
+        "pred_args": {
+          "mode": "away"
+        },
+        "gold_name": "setSecurityMode",
+        "gold_args": {},
+        "gold_expected_raw": "setSecurityMode()",
+        "name_match": false,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|760",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- armSecuritySystem(armSecuritySystem(mode: SecurityMode))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "```json\n{\"tool_call\": {\"name\": \"armSecuritySystem\", \"arguments\": {\"mode\": \"SECURITY_MODE_HOME\"}}}\n```",
+      "score": 0,
+      "detail": {
+        "pred_name": "armSecuritySystem",
+        "pred_args": {
+          "mode": "SECURITY_MODE_HOME"
+        },
+        "gold_name": "setSecurityMode",
+        "gold_args": {},
+        "gold_expected_raw": "setSecurityMode()",
+        "name_match": false,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|763",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- armSecuritySystem(armSecuritySystem(mode: SecurityMode))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "```json\n{\"tool_call\": {\"name\": \"armSecuritySystem\", \"arguments\": {\"mode\": \"Home\"}}}\n```",
+      "score": 0,
+      "detail": {
+        "pred_name": "armSecuritySystem",
+        "pred_args": {
+          "mode": "Home"
+        },
+        "gold_name": "setSecurityMode",
+        "gold_args": {},
+        "gold_expected_raw": "setSecurityMode()",
+        "name_match": false,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|831",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- getCameraStream(getCameraStream(deviceId: String, protocol: StreamProto))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "```json\n{\"tool_call\": {\"name\": \"getCameraStream\", \"arguments\": {\"deviceId\": \"camera_1\", \"protocol\": \"rtsp\"}}\n```",
+      "score": 0,
+      "detail": {
+        "pred_name": null,
+        "pred_args": {},
+        "gold_name": "getCameraStream",
+        "gold_args": {},
+        "gold_expected_raw": "getCameraStream()",
+        "name_match": false,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|920",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- setGarageDoor(setGarageDoor(deviceId: String, state: OpenClose))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "{\"tool_call\": {\"name\": \"setGarageDoor\", \"arguments\": {\"deviceId\": \"garage1\", \"state\": \"closed\"}}}",
+      "score": 1,
+      "detail": {
+        "pred_name": "setGarageDoor",
+        "pred_args": {
+          "deviceId": "garage1",
+          "state": "closed"
+        },
+        "gold_name": "setGarageDoor",
+        "gold_args": {},
+        "gold_expected_raw": "setGarageDoor()",
+        "name_match": true,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|1003",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- playMedia(playMedia(deviceId: String, query: String, source: Service?))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "```json\n{\"tool_call\": {\"name\": \"playMedia\", \"arguments\": {\"query\": \"music\", \"source\": \"Spotify\"}}\n```",
+      "score": 0,
+      "detail": {
+        "pred_name": null,
+        "pred_args": {},
+        "gold_name": "playMedia",
+        "gold_args": {},
+        "gold_expected_raw": "playMedia()",
+        "name_match": false,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|1146",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- castContent(castContent(sourceUrl: String, targetDeviceId: String))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "```json\n{\"tool_call\": {\"name\": \"castContent\", \"arguments\": {\"sourceUrl\": \"show_url\", \"targetDeviceId\": \"telly_device_id\"}}}\n```",
+      "score": 1,
+      "detail": {
+        "pred_name": "castContent",
+        "pred_args": {
+          "sourceUrl": "show_url",
+          "targetDeviceId": "telly_device_id"
+        },
+        "gold_name": "castContent",
+        "gold_args": {},
+        "gold_expected_raw": "castContent()",
+        "name_match": true,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|1699",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- activateScene(activateScene(sceneId: String))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "```json\n{\"tool_call\": {\"name\": \"activateScene\", \"arguments\": {\"sceneId\": \"morning-routine\"}}}\n```",
+      "score": 1,
+      "detail": {
+        "pred_name": "activateScene",
+        "pred_args": {
+          "sceneId": "morning-routine"
+        },
+        "gold_name": "activateScene",
+        "gold_args": {},
+        "gold_expected_raw": "activateScene()",
+        "name_match": true,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|1746",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- broadcastMessage(broadcastMessage(message: String, targetRooms: List<String>?))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "```json\n{\"tool_call\": {\"name\": \"broadcastMessage\", \"arguments\": {\"message\": \"Dinner is ready!\", \"targetRooms\": null}}}\n```",
+      "score": 1,
+      "detail": {
+        "pred_name": "broadcastMessage",
+        "pred_args": {
+          "message": "Dinner is ready!",
+          "targetRooms": null
+        },
+        "gold_name": "broadcastMessage",
+        "gold_args": {},
+        "gold_expected_raw": "broadcastMessage()",
+        "name_match": true,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|2079",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- getFilterLife(getFilterLife(deviceId: String))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "```json\n{\"tool_call\": {\"name\": \"getFilterLife\", \"arguments\": {\"deviceId\": \"filter_12345\"}}}\n```",
+      "score": 1,
+      "detail": {
+        "pred_name": "getFilterLife",
+        "pred_args": {
+          "deviceId": "filter_12345"
+        },
+        "gold_name": "getFilterLife",
+        "gold_args": {},
+        "gold_expected_raw": "getFilterLife()",
+        "name_match": true,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|2199",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- getThermostatState(getThermostatState(deviceId: String))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "```json\n{\"tool_call\": {\"name\": \"getThermostatState\", \"arguments\": {\"deviceId\": \"thermostat_123\"}}}\n```",
+      "score": 1,
+      "detail": {
+        "pred_name": "getThermostatState",
+        "pred_args": {
+          "deviceId": "thermostat_123"
+        },
+        "gold_name": "getThermostatState",
+        "gold_args": {},
+        "gold_expected_raw": "getThermostatState()",
+        "name_match": true,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|2486",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- updateFirmware(updateFirmware(deviceId: String))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "```json\n{\"tool_call\": {\"name\": \"updateFirmware\", \"arguments\": {\"deviceId\": \"all_devices\"}}}\n```",
+      "score": 1,
+      "detail": {
+        "pred_name": "updateFirmware",
+        "pred_args": {
+          "deviceId": "all_devices"
+        },
+        "gold_name": "updateFirmware",
+        "gold_args": {},
+        "gold_expected_raw": "updateFirmware()",
+        "name_match": true,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|2534",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- calibrateThermostat(calibrateThermostat(deviceId: String, offset: Float))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "{\"tool_call\": {\"name\": \"calibrateThermostat\", \"arguments\": {\"deviceId\": \"thermostat-123\", \"offset\": 0.0}}}",
+      "score": 1,
+      "detail": {
+        "pred_name": "calibrateThermostat",
+        "pred_args": {
+          "deviceId": "thermostat-123",
+          "offset": 0.0
+        },
+        "gold_name": "calibrateThermostat",
+        "gold_args": {},
+        "gold_expected_raw": "calibrateThermostat()",
+        "name_match": true,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|2535",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- calibrateThermostat(calibrateThermostat(deviceId: String, offset: Float))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "{\"tool_call\": {\"name\": \"calibrateThermostat\", \"arguments\": {\"deviceId\": \"thermostat-123\", \"offset\": 0.5}}}",
+      "score": 1,
+      "detail": {
+        "pred_name": "calibrateThermostat",
+        "pred_args": {
+          "deviceId": "thermostat-123",
+          "offset": 0.5
+        },
+        "gold_name": "calibrateThermostat",
+        "gold_args": {},
+        "gold_expected_raw": "calibrateThermostat()",
+        "name_match": true,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|2793",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- setSecurityMode(setSecurityMode(mode: SecurityState))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "```json\n{\"tool_call\": {\"name\": \"setSecurityMode\", \"arguments\": {\"mode\": \"ALARM\"}}}\n```",
+      "score": 0,
+      "detail": {
+        "pred_name": "setSecurityMode",
+        "pred_args": {
+          "mode": "ALARM"
+        },
+        "gold_name": "setSecurityMode",
+        "gold_args": {
+          "mode": "Armed_Away"
+        },
+        "gold_expected_raw": "setSecurityMode()",
+        "name_match": true,
+        "args_match": false
+      }
+    },
+    {
+      "item_id": "tier1_direct|2822",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- streamCamera(streamCamera(deviceId: String))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "```json\n{\"tool_call\": {\"name\": \"streamCamera\", \"arguments\": {\"deviceId\": \"front_door_cam\"}}}\n```",
+      "score": 1,
+      "detail": {
+        "pred_name": "streamCamera",
+        "pred_args": {
+          "deviceId": "front_door_cam"
+        },
+        "gold_name": "streamCamera",
+        "gold_args": {},
+        "gold_expected_raw": "streamCamera()",
+        "name_match": true,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|2921",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- findMyDevice(findMyDevice())\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "```json\n{\"tool_call\": {\"name\": \"findMyDevice\", \"arguments\": {}}}\n```",
+      "score": 1,
+      "detail": {
+        "pred_name": "findMyDevice",
+        "pred_args": {},
+        "gold_name": "findMyDevice",
+        "gold_args": {},
+        "gold_expected_raw": "findMyDevice()",
+        "name_match": true,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|2926",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- findMyDevice(findMyDevice())\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "```json\n{\"tool_call\": {\"name\": \"findMyDevice\", \"arguments\": {}}}\n```",
+      "score": 1,
+      "detail": {
+        "pred_name": "findMyDevice",
+        "pred_args": {},
+        "gold_name": "findMyDevice",
+        "gold_args": {},
+        "gold_expected_raw": "findMyDevice()",
+        "name_match": true,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|3083",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- setGroupLightState(setGroupLightState(groupId: String, state: OnOff, level: Int?, color: HexCode?))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "```json\n{\"tool_call\": {\"name\": \"setGroupLightState\", \"arguments\": {\"groupId\": \"living_room\", \"state\": \"OnOff.ON\", \"level\": null, \"color\": null}}}\n```",
+      "score": 1,
+      "detail": {
+        "pred_name": "setGroupLightState",
+        "pred_args": {
+          "groupId": "living_room",
+          "state": "OnOff.ON",
+          "level": null,
+          "color": null
+        },
+        "gold_name": "setGroupLightState",
+        "gold_args": {},
+        "gold_expected_raw": "setGroupLightState()",
+        "name_match": true,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|3159",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- setThermostatSchedule(setThermostatSchedule(deviceId: String, schedule: Map))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "{\"tool_call\": {\"name\": \"setThermostatSchedule\", \"arguments\": {\"deviceId\": \"thermostat_123\", \"schedule\": {\"monday\": {\"morning\": \"20°C\", \"evening\": \"18°C\"}, \"tuesday\": {\"morning\": \"20°C\", \"evening\": \"18°C\"}, \"wednesday\": {\"morning\": \"20°C\", \"evening\": \"18°C\"}, \"thursday\": {\"morning\": \"20°C\", \"evening\": \"18°C\"}, \"friday\": {\"morning\": \"20°C\", \"evening\": \"18°C\"}, \"saturday\": {\"morning\": \"20°C\", \"evening\": \"18°C\"}, \"sunday\": {\"morning\": \"20°C\", \"evening\": \"18°C\"}}}}}",
+      "score": 1,
+      "detail": {
+        "pred_name": "setThermostatSchedule",
+        "pred_args": {
+          "deviceId": "thermostat_123",
+          "schedule": {
+            "monday": {
+              "morning": "20°C",
+              "evening": "18°C"
+            },
+            "tuesday": {
+              "morning": "20°C",
+              "evening": "18°C"
+            },
+            "wednesday": {
+              "morning": "20°C",
+              "evening": "18°C"
+            },
+            "thursday": {
+              "morning": "20°C",
+              "evening": "18°C"
+            },
+            "friday": {
+              "morning": "20°C",
+              "evening": "18°C"
+            },
+            "saturday": {
+              "morning": "20°C",
+              "evening": "18°C"
+            },
+            "sunday": {
+              "morning": "20°C",
+              "evening": "18°C"
+            }
+          }
+        },
+        "gold_name": "setThermostatSchedule",
+        "gold_args": {},
+        "gold_expected_raw": "setThermostatSchedule()",
+        "name_match": true,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|3249",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- getActivitySummary(getActivitySummary(period: TimeFrame))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "{\"tool_call\": {\"name\": \"getActivitySummary\", \"arguments\": {\"period\": \"TimeFrame\"}}}",
+      "score": 1,
+      "detail": {
+        "pred_name": "getActivitySummary",
+        "pred_args": {
+          "period": "TimeFrame"
+        },
+        "gold_name": "getActivitySummary",
+        "gold_args": {},
+        "gold_expected_raw": "getActivitySummary()",
+        "name_match": true,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|3253",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- getActivitySummary(getActivitySummary(period: TimeFrame))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "```json\n{\"tool_call\": {\"name\": \"getActivitySummary\", \"arguments\": {\"period\": \"today\"}}}\n```",
+      "score": 1,
+      "detail": {
+        "pred_name": "getActivitySummary",
+        "pred_args": {
+          "period": "today"
+        },
+        "gold_name": "getActivitySummary",
+        "gold_args": {},
+        "gold_expected_raw": "getActivitySummary()",
+        "name_match": true,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|3275",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- getActivitySummary(getActivitySummary(period: TimeFrame))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "```json\n{\"tool_call\": {\"name\": \"getActivitySummary\", \"arguments\": {\"period\": \"today\"}}\n```",
+      "score": 0,
+      "detail": {
+        "pred_name": null,
+        "pred_args": {},
+        "gold_name": "getActivitySummary",
+        "gold_args": {},
+        "gold_expected_raw": "getActivitySummary()",
+        "name_match": false,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|3400",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- setDoNotDisturb(setDoNotDisturb(enabled: Boolean, mode: DNDMode))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "```json\n{\"tool_call\": {\"name\": \"setDoNotDisturb\", \"arguments\": {\"enabled\": true, \"mode\": \"ALWAYS\"}}\n```",
+      "score": 0,
+      "detail": {
+        "pred_name": null,
+        "pred_args": {},
+        "gold_name": "setDoNotDisturb",
+        "gold_args": {},
+        "gold_expected_raw": "setDoNotDisturb()",
+        "name_match": false,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|3484",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- findPairedPhone(findPairedPhone())\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "{\"tool_call\": {\"name\": \"findPairedPhone\", \"arguments\": {}}}",
+      "score": 1,
+      "detail": {
+        "pred_name": "findPairedPhone",
+        "pred_args": {},
+        "gold_name": "findPairedPhone",
+        "gold_args": {},
+        "gold_expected_raw": "findPairedPhone()",
+        "name_match": true,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|3564",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- installApp(installApp(appName: String))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "```json\n{\"tool_call\": {\"name\": \"installApp\", \"arguments\": {\"appName\": \"MyApp\"}}\n```",
+      "score": 0,
+      "detail": {
+        "pred_name": null,
+        "pred_args": {},
+        "gold_name": "installApp",
+        "gold_args": {},
+        "gold_expected_raw": "installApp()",
+        "name_match": false,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|3583",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- installApp(installApp(appName: String))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "```json\n{\"tool_call\": {\"name\": \"installApp\", \"arguments\": {\"appName\": \"My Wrist Thingy App\"}}}\n```",
+      "score": 1,
+      "detail": {
+        "pred_name": "installApp",
+        "pred_args": {
+          "appName": "My Wrist Thingy App"
+        },
+        "gold_name": "installApp",
+        "gold_args": {},
+        "gold_expected_raw": "installApp()",
+        "name_match": true,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|3752",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- stopWorkout(stopWorkout())\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "{\"tool_call\": {\"name\": \"stopWorkout\", \"arguments\": {}}}",
+      "score": 1,
+      "detail": {
+        "pred_name": "stopWorkout",
+        "pred_args": {},
+        "gold_name": "stopWorkout",
+        "gold_args": {},
+        "gold_expected_raw": "stopWorkout()",
+        "name_match": true,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|3797",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- getSleepSummary(getSleepSummary(period: TimeFrame))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "```json\n{\"tool_call\": {\"name\": \"getSleepSummary\", \"arguments\": {\"period\": \"last_night\"}}\n```",
+      "score": 0,
+      "detail": {
+        "pred_name": null,
+        "pred_args": {},
+        "gold_name": "getSleepSummary",
+        "gold_args": {},
+        "gold_expected_raw": "getSleepSummary()",
+        "name_match": false,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|3827",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- getSleepSummary(getSleepSummary(period: TimeFrame))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "{\"tool_call\": {\"name\": \"getSleepSummary\", \"arguments\": {\"period\": \"last_week\"}}}",
+      "score": 1,
+      "detail": {
+        "pred_name": "getSleepSummary",
+        "pred_args": {
+          "period": "last_week"
+        },
+        "gold_name": "getSleepSummary",
+        "gold_args": {},
+        "gold_expected_raw": "getSleepSummary()",
+        "name_match": true,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|3921",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- getHRV(getHRV(period: TimeFrame))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "```json\n{\"tool_call\": {\"name\": \"getHRV\", \"arguments\": {\"period\": \"TimeFrame\"}}\n```",
+      "score": 0,
+      "detail": {
+        "pred_name": null,
+        "pred_args": {},
+        "gold_name": "getHRV",
+        "gold_args": {},
+        "gold_expected_raw": "getHRV()",
+        "name_match": false,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|4121",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- cancelNavigation(cancelNavigation())\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "{\"tool_call\": {\"name\": \"cancelNavigation\", \"arguments\": {}}}",
+      "score": 1,
+      "detail": {
+        "pred_name": "cancelNavigation",
+        "pred_args": {},
+        "gold_name": "cancelNavigation",
+        "gold_args": {},
+        "gold_expected_raw": "cancelNavigation()",
+        "name_match": true,
+        "args_match": true
+      }
+    },
+    {
+      "item_id": "tier1_direct|4165",
+      "instr": "Listen to the spoken request. Choose the single best matching tool call from this registry:\n- getDoorStatus(getDoorStatus(door: DoorLocation))\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"tool_call\": {\"name\": \"<tool name>\", \"arguments\": {...}}}",
+      "reply": "{\"tool_call\": {\"name\": \"getDoorStatus\", \"arguments\": {\"door\": \"frontDoor\"}}}",
+      "score": 1,
+      "detail": {
+        "pred_name": "getDoorStatus",
+        "pred_args": {
+          "door": "frontDoor"
+        },
+        "gold_name": "getDoorStatus",
+        "gold_args": {},
+        "gold_expected_raw": "getDoorStatus()",
+        "name_match": true,
+        "args_match": true
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.65,
+    "ci95": [
+      0.5,
+      0.8
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset audio2tool --backbone qwen3-omni-30b-gguf --split dev --n 40 --parallel 4",
+  "elapsed_s": 516.9
+}

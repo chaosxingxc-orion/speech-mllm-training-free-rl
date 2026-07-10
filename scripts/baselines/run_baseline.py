@@ -30,6 +30,7 @@ from __future__ import annotations
 
 import argparse
 import base64
+import contextlib
 import json
 import os
 import subprocess
@@ -45,7 +46,9 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(
 import label_inventories               # noqa: E402  (scripts/baselines/label_inventories.py)
 import metrics                        # noqa: E402
 import templates                      # noqa: E402
-from _common import SLICE_SEED, data_root, freeze_ids  # noqa: E402  (scripts/loaders/_common.py)
+from _common import (                 # noqa: E402  (scripts/loaders/_common.py)
+    POOL_RECONSTRUCTION_SEED, SLICE_SEED, data_root, freeze_ids, load_snapshot_ids,
+)
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 GPU_SESSION_SH = REPO_ROOT / "scripts" / "gpu_session.sh"
@@ -72,6 +75,11 @@ BACKBONES: dict[str, dict] = {
         "gpu_session_name": "baselines-qwen3-omni-30b",
         "model_tag": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
         "note": "resident via `scripts/gpu_session.sh serve qwen3-omni-30b-gguf up` (p2_baselines.gen pattern).",
+        # 2026-07-10 wave-3 batched-inference: env vars gpu_session.sh's serve_up reads to build
+        # THIS backbone's llama-server command line (see its LLAMA_NP/LLAMA_CACHE_RAM) -- read back
+        # here (server_slot_config_for) so a result JSON's sampling_params reports the server config
+        # actually used, not a guess. See that function's docstring.
+        "np_env": "LLAMA_NP", "cache_ram_env": "LLAMA_CACHE_RAM",
     },
     "meralion-2-gguf": {
         "kind": "llamacpp",
@@ -85,6 +93,7 @@ BACKBONES: dict[str, dict] = {
                  "emits a literal '<Speaker1>: ' turn-prefix on every reply (G1-verified quirk, not "
                  "part of the answer) -- stripped in `generate()` below via `strip_prefix` BEFORE the "
                  "text ever reaches `metrics.score`, so no scorer needs to know about it."),
+        "np_env": "MERALION_NP", "cache_ram_env": "MERALION_CACHE_RAM",  # see qwen3 entry's comment above
     },
     # --- minicpm-o-4.5 / moss-audio-8b / nemotron: REMOVED from the active roster -------------
     # Owner ruling 2026-07-09 (双底座定稿, "the two-backbone roster is final"): Stage-1 waves 1-3
@@ -146,6 +155,28 @@ def sampling_params_for(backbone: str) -> dict:
 
         base.update(p2.sampling_defaults())  # top_p / top_k / repeat_penalty, pinned 2026-07-09
     return base
+
+
+def server_slot_config_for(backbone: str) -> dict:
+    """The llama-server ``-np``/``--cache-ram`` values ACTUALLY used to start `backbone`'s resident
+    server -- for RECORDING in a result JSON's ``sampling_params`` (2026-07-10 wave-3 batched-
+    inference task brief item 1), never for building a request itself (that's per-item, unrelated to
+    the server's own launch flags).
+
+    Sourced from the SAME env vars ``gpu_session.sh``'s ``serve_up``/``_model_cfg`` read to build
+    that backbone's llama-server command line (``BACKBONES[backbone]["np_env"]``/``"cache_ram_env"``)
+    -- NOT queried over HTTP -- so this is guaranteed to reflect the exact flags the resident server
+    was (or will be) launched with, not an independent guess that could drift from reality. Defaults
+    ("-1"/"8192") match both llama-server's own compiled defaults AND gpu_session.sh's own defaults
+    for these two env vars, so a caller that never touched them (every wave-1/wave-2 cell run before
+    this task, all sequential / ``--parallel`` 1) is unaffected and reports the same values it always
+    implicitly ran with.
+    """
+    cfg = BACKBONES[backbone]
+    if cfg["kind"] != "llamacpp":
+        return {"server_slots": None, "cache_ram_mib": None}
+    return {"server_slots": int(os.environ.get(cfg["np_env"], "-1")),
+            "cache_ram_mib": int(os.environ.get(cfg["cache_ram_env"], "8192"))}
 
 
 def gen_llamacpp(base_url: str, wav_path: str, instruction: str, seed: int, temp: float = 0.0,
@@ -299,27 +330,46 @@ def _observed_label_set(rows: list[dict], key_fn) -> list[str]:
     return sorted(seen)
 
 
-def _load_rows(dataset_key: str, split: str, n: int, seed: int) -> list[dict]:
+def _maybe_restrict(rows: list[dict], restrict_ids: set | None) -> list[dict]:
+    """Filter ``rows`` down to ``meta.item_id in restrict_ids`` (pool order preserved); no-op when
+    ``restrict_ids`` is None. 2026-07-10 dev/test disjoint-redraw task: applied INSIDE ``_load_rows``
+    (right after each branch's loader call, BEFORE that branch's label-set computation) rather than
+    after ``_load_rows`` returns, so a ``--slice disjoint`` cell's sample-observed label sets
+    (slurp/speech-massive intents, -slot types, UnderEmotion emotions -- see
+    ``_observed_label_set``'s docstring) are computed over exactly the frozen slice's rows, same as
+    a seeded cell computes them over its own drawn rows. Without this, the disjoint path's
+    ``n=None`` full-pool fetch would silently swap every sample-observed label set for a full-pool
+    one -- changing the PROMPT, when the redraw must change only the SLICE."""
+    if restrict_ids is None:
+        return rows
+    return [r for r in rows if r["meta"]["item_id"] in restrict_ids]
+
+
+def _load_rows(dataset_key: str, split: str, n: int, seed: int,
+               restrict_ids: set | None = None) -> list[dict]:
     if dataset_key in templates.LEGACY_DATASETS:
-        return _legacy_rows(dataset_key, n, seed)
+        return _maybe_restrict(_legacy_rows(dataset_key, n, seed), restrict_ids)
 
     if dataset_key in _SEED_TTS_LANG:
         from seed_tts_eval import load_seed_tts_eval
-        return load_seed_tts_eval(split=_SEED_TTS_LANG[dataset_key], n=n, seed=seed)
+        return _maybe_restrict(load_seed_tts_eval(split=_SEED_TTS_LANG[dataset_key], n=n, seed=seed),
+                               restrict_ids)
 
     import registry  # scripts/loaders/registry.py
 
     if dataset_key.endswith("-attr"):
         base_key = dataset_key[: -len("-attr")]
         attr = "speaker_sex"  # K5 Step-1 scope = speech-massive speaker_sex/speaker_age only
-        rows = registry.LOADERS[base_key](split="validation", n=n, seed=seed)
+        rows = _maybe_restrict(registry.LOADERS[base_key](split="validation", n=n, seed=seed), restrict_ids)
         for r in rows:
             r["meta"]["_attr"] = attr
         return rows
 
     if dataset_key.endswith("-slot"):
         base_key = dataset_key[: -len("-slot")]
-        rows = registry.LOADERS[base_key](split="test" if base_key == "slurp" else "validation", n=n, seed=seed)
+        rows = _maybe_restrict(
+            registry.LOADERS[base_key](split="test" if base_key == "slurp" else "validation", n=n, seed=seed),
+            restrict_ids)
         if base_key == "slurp":
             label_set = _observed_label_set(rows, lambda r: None)  # slurp slot types are per-entity;
             # populate from gold["entities"][*]["type"] across the sample instead of a scalar key:
@@ -333,21 +383,21 @@ def _load_rows(dataset_key: str, split: str, n: int, seed: int) -> list[dict]:
         return rows
 
     if dataset_key in ("slurp",):
-        rows = registry.LOADERS[dataset_key](split="test", n=n, seed=seed)
+        rows = _maybe_restrict(registry.LOADERS[dataset_key](split="test", n=n, seed=seed), restrict_ids)
         intents = _observed_label_set(rows, lambda r: r["gold"].get("intent"))
         for r in rows:
             r["meta"]["_label_set"] = intents
         return rows
 
     if dataset_key in ("speech-massive-de-DE", "speech-massive-fr-FR"):
-        rows = registry.LOADERS[dataset_key](split="validation", n=n, seed=seed)
+        rows = _maybe_restrict(registry.LOADERS[dataset_key](split="validation", n=n, seed=seed), restrict_ids)
         intents = _observed_label_set(rows, lambda r: r["gold"].get("intent_str"))
         for r in rows:
             r["meta"]["_label_set"] = intents
         return rows
 
     if dataset_key in ("uro-bench-UnderEmotion-en", "uro-bench-UnderEmotion-zh"):
-        rows = registry.LOADERS[dataset_key](split="test", n=n, seed=seed)
+        rows = _maybe_restrict(registry.LOADERS[dataset_key](split="test", n=n, seed=seed), restrict_ids)
         emos = _observed_label_set(rows, lambda r: r.get("gold"))
         for r in rows:
             r["meta"]["_label_set"] = emos
@@ -368,13 +418,95 @@ def _load_rows(dataset_key: str, split: str, n: int, seed: int) -> list[dict]:
         # no reason to route this through templates.K4_LABEL_SETS as well (that dict is reserved for
         # datasets whose label set is used regardless of meta, see templates.py K4 branch) -- see
         # label_inventories.py's module docstring for the full defect writeup.
-        rows = registry.LOADERS[dataset_key](split="test", n=n, seed=seed)
+        rows = _maybe_restrict(registry.LOADERS[dataset_key](split="test", n=n, seed=seed), restrict_ids)
         for r in rows:
             r["meta"]["_label_set"] = label_inventories.VOCALBENCH_EMOTION_EMOTIONS
         return rows
 
     split_arg = _DEFAULT_SPLIT_OVERRIDE.get(dataset_key, "test")
-    return registry.LOADERS[dataset_key](split=split_arg, n=n, seed=seed)
+    return _maybe_restrict(registry.LOADERS[dataset_key](split=split_arg, n=n, seed=seed), restrict_ids)
+
+
+# ---------------------------------------------------------------------------------------------
+# disjoint-slice support (2026-07-10 dev/test disjoint-redraw task, owner ruling Decision-Log
+# 续10) -- reads the FROZEN item-id manifests scripts/baselines/redraw.py writes, instead of
+# re-drawing dev/test independently from DEV_SEED/TEST_SEED (the very thing that caused the
+# overlap in the first place, see that module's docstring). Gated behind --slice disjoint /
+# slice_mode="disjoint" below; --slice seeded (the default) is 100% unchanged prior behavior.
+# ---------------------------------------------------------------------------------------------
+
+def _disjoint_manifest_name(dataset_key: str, split: str) -> str:
+    return f"baselines-{dataset_key}-disjoint-{split}"
+
+
+@contextlib.contextmanager
+def _suppress_loader_snapshot_writes():
+    """No-op ``kb_snapshot.freeze_snapshot`` for the duration of the ``with`` block.
+
+    2026-07-10 dev/test disjoint-redraw task: ``_load_rows_disjoint``'s full-pool refetch runs
+    the REAL loaders (audio materialization included -- unlike ``redraw.py``'s metadata-only
+    stub), and every loader (plus ``_legacy_rows`` above) unconditionally calls
+    ``_common.freeze_ids`` under its OWN usual experiment name at the end of a load. Left alone,
+    a ``--slice disjoint`` cell would therefore overwrite e.g. ``snapshots/aishell-1/`` (the OLD,
+    task-brief-protected manifest name) with a full-pool 7176-id list as a side effect of merely
+    READING the pool. Patching ``kb_snapshot.freeze_snapshot`` (one module attribute) suppresses
+    every such write at the single choke point both ``freeze_ids`` and any direct caller resolve
+    at call time -- the disjoint slice's OWN authoritative record is the
+    ``baselines-<dataset>-disjoint-{dev,test}`` manifest redraw.py already froze, plus the result
+    JSON's per_item list; there is nothing worth writing here.
+    """
+    here = os.path.dirname(os.path.abspath(__file__))                   # scripts/baselines
+    knowledge_dir = os.path.join(os.path.dirname(here), "knowledge")    # scripts/knowledge
+    if knowledge_dir not in sys.path:
+        sys.path.insert(0, knowledge_dir)
+    import kb_snapshot
+
+    orig = kb_snapshot.freeze_snapshot
+    kb_snapshot.freeze_snapshot = lambda *a, **kw: \
+        "<suppressed during --slice disjoint pool refetch, see run_baseline._suppress_loader_snapshot_writes>"
+    try:
+        yield
+    finally:
+        kb_snapshot.freeze_snapshot = orig
+
+
+def _load_rows_disjoint(dataset_key: str, split: str) -> list[dict]:
+    """Load ``dataset_key``/``split`` rows from the FROZEN disjoint manifest rather than a fresh
+    DEV_SEED/TEST_SEED draw. Re-fetches the SAME full natural pool ``redraw.py`` froze the
+    manifest against (``_load_rows(dataset_key, split, n=None, seed=POOL_RECONSTRUCTION_SEED)`` --
+    same seed constant, see its docstring on why that must match exactly for the 7 legacy
+    p2_baselines datasets' fetch-position-based item ids), restricted to exactly the frozen
+    item_ids (``restrict_ids`` is applied INSIDE ``_load_rows``, before label-set computation --
+    see ``_maybe_restrict``'s docstring), then reordered to the manifest's own
+    (already-disjoint-drawn) order.
+
+    Raises if any frozen id is missing from the fresh pool refetch (pool drift since the manifest
+    was frozen -- e.g. the underlying dataset file changed on disk) rather than silently returning
+    a different/smaller slice than what was frozen.
+
+    KNOWN COST (accepted, 2026-07-10): unlike redraw.py's metadata-only pool scan, this refetch
+    runs the loaders for REAL, so bytes-embedding loaders (aishell-1, mmsu, spoken-squad, ...)
+    materialize wav files for their ENTIRE pool on the first disjoint cell per dataset -- a
+    one-time per-dataset cache fill (wav_from_bytes/_wav_from_bytes cache by key; the second
+    split's cell and every later rerun/Phase-A pass hit the cache for free). Filtering before
+    materialization would require editing every loader's internals; not worth it for a one-time
+    cost.
+    """
+    manifest_name = _disjoint_manifest_name(dataset_key, split)
+    frozen_ids = load_snapshot_ids(manifest_name)
+    frozen_set = set(frozen_ids)
+    with _suppress_loader_snapshot_writes():
+        rows = _load_rows(dataset_key, split, n=None, seed=POOL_RECONSTRUCTION_SEED,
+                          restrict_ids=frozen_set)
+    by_id = {r["meta"]["item_id"]: r for r in rows}
+    missing = [i for i in frozen_ids if i not in by_id]
+    if missing:
+        raise RuntimeError(
+            f"{dataset_key}/{split}: {len(missing)}/{len(frozen_ids)} frozen id(s) from "
+            f"{manifest_name!r} not found in a fresh full-pool refetch (first few: {missing[:5]}) "
+            "-- pool drift since redraw.py froze this manifest?"
+        )
+    return [by_id[i] for i in frozen_ids]
 
 
 # ---------------------------------------------------------------------------------------------
@@ -401,33 +533,94 @@ def paired_bootstrap(scores: list, nboot: int = NBOOT, seed: int = SLICE_SEED):
 # per-cell runner
 # ---------------------------------------------------------------------------------------------
 
-def run_one(dataset_key: str, backbone: str, split: str, n: int | None) -> dict:
-    seed = DEV_SEED if split == "dev" else TEST_SEED
-    n = n if n is not None else (DEV_N if split == "dev" else TEST_N)
+def _run_item(dataset_key: str, backbone: str, row: dict, item_seed: int) -> dict:
+    """Build the instruction, generate, and score exactly ONE row -- the per-item unit of work
+    shared by both of ``run_one``'s scheduling paths below (sequential ``for`` loop when
+    ``parallel<=1``, ``ThreadPoolExecutor`` when ``parallel>1``, 2026-07-10 wave-3 batched-inference
+    task brief item 1). Factored out unchanged from the old inline loop body so scoring is byte-for-
+    byte identical either way -- only the SCHEDULING differs, never the per-item semantics (one bad
+    item's exception is caught here and turned into an ``{"item_id","error"}`` entry, exactly as the
+    old inline ``try/except`` did, never sinking the whole cell)."""
+    try:
+        instr = templates.build_instruction(dataset_key, row)
+        text = generate(backbone, row["wav"], instr, seed=item_seed)
+        result = metrics.score(dataset_key, row, text)
+    except Exception as e:  # noqa: BLE001 -- one bad item must not sink the whole cell
+        return {"item_id": row.get("meta", {}).get("item_id"),
+                "error": f"{type(e).__name__}: {str(e)[:200]}"}
+    return {"item_id": row["meta"]["item_id"], "instr": instr, "reply": text,
+            "score": result["score"], "detail": result["detail"]}
+
+
+def run_one(dataset_key: str, backbone: str, split: str, n: int | None, parallel: int = 1,
+            slice_mode: str = "seeded") -> dict:
+    """Run one (dataset, backbone, split) cell.
+
+    ``slice_mode`` (2026-07-10 dev/test disjoint-redraw task, owner ruling Decision-Log 续10):
+    ``"seeded"`` (default) is the ORIGINAL, unchanged behavior -- draw ``n`` rows via
+    ``DEV_SEED``/``TEST_SEED`` (independently of the other split, which is exactly what caused
+    dev/test overlap). ``"disjoint"`` instead loads the frozen, genuinely-disjoint id slice
+    ``scripts/baselines/redraw.py`` produced (see ``_load_rows_disjoint``) -- ``n`` is then IGNORED
+    (any caller-supplied override is meaningless once the slice is frozen) and the cell's actual
+    row count comes from the manifest itself (may be < DEV_N/TEST_N for a small-pool dataset that
+    hit ``draw_disjoint``'s proportional-shortfall path).
+
+    ``parallel`` (2026-07-10, wave-3 batched-inference task brief item 1): default 1 reproduces the
+    ORIGINAL sequential ``for`` loop byte-for-byte (every wave-1/wave-2 caller, unaffected). ``>1``
+    dispatches each item as an INDEPENDENT HTTP request to the resident llama-server via
+    ``concurrent.futures.ThreadPoolExecutor`` -- valid because each request is its own isolated
+    generation call (no shared mutable state across items); results are reassembled in the
+    ORIGINAL row-index order regardless of HTTP completion order, so ``per_item``/aggregate output
+    is identical in content and order to a sequential run, only faster wall-clock. Per-item
+    try/except semantics are unchanged either way (see ``_run_item``). Owner-approved smoke verdict
+    backing this (2026-07-10): server ``-np 4 -c 16384``, mtmd-compatible, 0/24 greedy flips vs
+    sequential, VRAM ~20.9GB, 1.75x wall-clock speedup at K=4 (no prompt-cache reuse). ``parallel``
+    should not exceed the resident server's own ``-np`` slot count (see
+    ``server_slot_config_for``) -- oversubscribing just queues extra requests server-side.
+    """
+    seed = DEV_SEED if split == "dev" else TEST_SEED  # still used for the generation seed offset
+    # (item_seed = seed + i, below) + result-JSON provenance even in slice_mode="disjoint" -- only
+    # WHICH ROWS get loaded changes between the two slice modes, not the per-item generation seed.
 
     assert_gpu_session_held(BACKBONES[backbone].get("gpu_session_name", backbone))
 
-    rows = _load_rows(dataset_key, split, n, seed)
+    if slice_mode == "disjoint":
+        rows = _load_rows_disjoint(dataset_key, split)
+        n = len(rows)  # frozen manifest's actual count (may be < DEV_N/TEST_N, see draw_disjoint
+        # shortfall handling) overrides any caller-supplied --n, which would be meaningless once
+        # the slice is already frozen.
+    elif slice_mode == "seeded":
+        n = n if n is not None else (DEV_N if split == "dev" else TEST_N)
+        rows = _load_rows(dataset_key, split, n, seed)
+    else:
+        raise ValueError(f"run_one: unknown slice_mode {slice_mode!r} (expected 'seeded' or 'disjoint')")
+
     kt = templates.k_type_of(dataset_key) if dataset_key not in templates.LEGACY_DATASETS else "K8/K6 (legacy)"
 
-    per_item, scores = [], []
     t0 = time.time()
-    for i, row in enumerate(rows):
-        try:
-            instr = templates.build_instruction(dataset_key, row)
-            text = generate(backbone, row["wav"], instr, seed=seed + i)
-            result = metrics.score(dataset_key, row, text)
-        except Exception as e:  # noqa: BLE001 -- one bad item must not sink the whole cell
-            per_item.append({"item_id": row.get("meta", {}).get("item_id"),
-                              "error": f"{type(e).__name__}: {str(e)[:200]}"})
-            continue
-        per_item.append({"item_id": row["meta"]["item_id"], "instr": instr, "reply": text,
-                          "score": result["score"], "detail": result["detail"]})
-        scores.append(result["score"])
-        if (i + 1) % 20 == 0:
-            print(f"  [{dataset_key}/{backbone}/{split} {i+1}/{len(rows)}] "
-                  f"({time.time()-t0:.0f}s)", flush=True)
+    if parallel <= 1:
+        per_item = []
+        for i, row in enumerate(rows):
+            per_item.append(_run_item(dataset_key, backbone, row, seed + i))
+            if (i + 1) % 20 == 0:
+                print(f"  [{dataset_key}/{backbone}/{split} {i+1}/{len(rows)}] "
+                      f"({time.time()-t0:.0f}s)", flush=True)
+    else:
+        import concurrent.futures
 
+        per_item = [None] * len(rows)
+        n_done = 0
+        with concurrent.futures.ThreadPoolExecutor(max_workers=parallel) as ex:
+            futs = {ex.submit(_run_item, dataset_key, backbone, row, seed + i): i
+                    for i, row in enumerate(rows)}
+            for fut in concurrent.futures.as_completed(futs):
+                per_item[futs[fut]] = fut.result()
+                n_done += 1
+                if n_done % 20 == 0:
+                    print(f"  [{dataset_key}/{backbone}/{split} {n_done}/{len(rows)} parallel={parallel}] "
+                          f"({time.time()-t0:.0f}s)", flush=True)
+
+    scores = [it["score"] for it in per_item if "score" in it]  # error-only entries have no "score" key
     numeric = [s for s in scores if isinstance(s, (int, float))]
     mean = round(sum(numeric) / len(numeric), 4) if numeric else None
     ci = paired_bootstrap(numeric, seed=seed) if numeric else None
@@ -440,17 +633,30 @@ def run_one(dataset_key: str, backbone: str, split: str, n: int | None) -> dict:
     if kt == "K7":
         aggregate["note"] = "K7 per-item score is always None; run a separate aggregate_slot_f1_* pass over parsed_slots."
 
-    snapshot_ref = f"SPEECHRL_KB_DIR/snapshots/baselines-{dataset_key}/sample_manifest.json" \
-        if dataset_key in templates.LEGACY_DATASETS else \
-        f"SPEECHRL_KB_DIR/snapshots/{dataset_key}/sample_manifest.json"
+    if slice_mode == "disjoint":
+        snapshot_ref = f"SPEECHRL_KB_DIR/snapshots/{_disjoint_manifest_name(dataset_key, split)}/sample_manifest.json"
+    else:
+        snapshot_ref = f"SPEECHRL_KB_DIR/snapshots/baselines-{dataset_key}/sample_manifest.json" \
+            if dataset_key in templates.LEGACY_DATASETS else \
+            f"SPEECHRL_KB_DIR/snapshots/{dataset_key}/sample_manifest.json"
 
     out = {
         "stage": "1-directional",
         "dataset": dataset_key, "k_type": kt, "backbone": backbone, "split": split,
+        "slice_mode": slice_mode,
         "n_requested": n, "seed": seed,
         "sample_manifest": snapshot_ref,
         "model": BACKBONES[backbone]["model_tag"],
-        "sampling_params": {"greedy_seed_base": seed, **sampling_params_for(backbone)},
+        "sampling_params": {
+            "greedy_seed_base": seed, **sampling_params_for(backbone),
+            # 2026-07-10 wave-3 batched-inference task brief item 1: n_parallel is the CLIENT-side
+            # concurrent-request count this run_one() call used (1 = unchanged sequential);
+            # server_slots/cache_ram_mib are the resident llama-server's OWN -np/--cache-ram launch
+            # flags, read back from the exact env vars gpu_session.sh used to start it (see
+            # server_slot_config_for) -- not independently re-measured, so they reflect the serve
+            # config actually in effect, not a guess.
+            "n_parallel": parallel, **server_slot_config_for(backbone),
+        },
         "boundary": ("audio-only input + fixed task-definition text (label set / MCQ options / "
                      "tool registry / JSON schema); no golden transcript/answer/intent ever placed "
                      "in the prompt -- see templates.py module docstring's Information-Boundary-Guard note."),
@@ -459,7 +665,10 @@ def run_one(dataset_key: str, backbone: str, split: str, n: int | None) -> dict:
         "reproduce": (
             "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data "
             "SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py "
-            f"--dataset {dataset_key} --backbone {backbone} --split {split} --n {n}"
+            f"--dataset {dataset_key} --backbone {backbone} --split {split}"
+            + (f" --n {n}" if slice_mode != "disjoint" else "")
+            + (f" --parallel {parallel}" if parallel != 1 else "")
+            + (" --slice disjoint" if slice_mode == "disjoint" else "")
         ),
         "elapsed_s": round(time.time() - t0, 1),
     }
@@ -513,9 +722,24 @@ def _synthetic_row(dataset_key: str) -> dict:
     return {"wav": "(n/a)", "gold": gold, "meta": meta}
 
 
-def dry_run(datasets: list[str], backbones: list[str], splits: list[str]) -> None:
+def _disjoint_n_preview(dk: str, split: str) -> str:
+    """CPU-metadata-only preview of a frozen disjoint manifest's actual row count -- reads
+    ``load_snapshot_ids`` (a plain JSON read) ONLY, never a loader/pool reconstruction, so
+    --dry-run --slice disjoint stays a true zero-model/zero-heavy-IO preview (2026-07-10 dev/test
+    disjoint-redraw task, verify step: "--dry-run of run_baseline --slice disjoint ... rendering
+    the right item count")."""
+    try:
+        n = len(load_snapshot_ids(_disjoint_manifest_name(dk, split)))
+        return str(n)
+    except Exception as e:  # noqa: BLE001 -- dry-run must never crash on a not-yet-redrawn dataset
+        return f"<no disjoint manifest: {type(e).__name__}>"
+
+
+def dry_run(datasets: list[str], backbones: list[str], splits: list[str],
+            slice_mode: str = "seeded") -> None:
     print(f"=== Stage-1 Step-1 baseline grid: {len(datasets)} datasets x {len(backbones)} backbones "
-          f"x {len(splits)} splits = {len(datasets) * len(backbones) * len(splits)} cells ===\n")
+          f"x {len(splits)} splits = {len(datasets) * len(backbones) * len(splits)} cells "
+          f"[slice_mode={slice_mode}] ===\n")
     for dk in datasets:
         kt = "legacy" if dk in templates.LEGACY_DATASETS else templates.k_type_of(dk)
         try:
@@ -523,7 +747,10 @@ def dry_run(datasets: list[str], backbones: list[str], splits: list[str]) -> Non
             preview = instr.replace("\n", " \\n ")[:100]
         except Exception as e:  # noqa: BLE001 -- dry-run must never crash on one bad template
             preview = f"<template error: {type(e).__name__}: {e}>"
-        n_dev, n_test = DEV_N, TEST_N
+        if slice_mode == "disjoint":
+            n_dev, n_test = _disjoint_n_preview(dk, "dev"), _disjoint_n_preview(dk, "test")
+        else:
+            n_dev, n_test = DEV_N, TEST_N
         print(f"{dk:45s} [{kt:>4s}]  dev(n={n_dev}) test(n={n_test})  backbones={','.join(backbones)}")
         print(f"    template preview: {preview}...")
     print(f"\nexcluded from grid (K5 zero-shot-SID scoping, see templates.py): {sorted(templates.K5_EXCLUDED_SID)}")
@@ -544,20 +771,35 @@ def main() -> None:
     ap.add_argument("--split", default="test", choices=["dev", "test"])
     ap.add_argument("--n", type=int, default=None, help="override the frozen DEV_N/TEST_N for this run")
     ap.add_argument("--dry-run", action="store_true", help="list the grid + template previews; no model calls")
+    # 2026-07-10 wave-3 batched-inference task brief item 1: default 1 = unchanged sequential loop
+    # (every wave-1/wave-2 invocation, byte-for-byte identical to before this flag existed). >1 uses
+    # concurrent.futures.ThreadPoolExecutor over items -- see run_one's docstring for the owner-
+    # approved smoke verdict this is based on. Should not exceed the resident server's own -np slot
+    # count (gpu_session.sh's LLAMA_NP/MERALION_NP; see server_slot_config_for).
+    ap.add_argument("--parallel", type=int, default=1,
+                     help="client-side concurrent HTTP requests per cell (default 1 = sequential)")
+    # 2026-07-10 dev/test disjoint-redraw task (owner ruling Decision-Log 续10): "seeded" (default)
+    # is the ORIGINAL DEV_SEED/TEST_SEED-independent-draw behavior, byte-for-byte unchanged for
+    # every wave-1/wave-2/Phase-A caller that never passes --slice. "disjoint" loads the frozen,
+    # genuinely-disjoint slice scripts/baselines/redraw.py produced -- see run_one's docstring.
+    ap.add_argument("--slice", dest="slice_mode", default="seeded", choices=["seeded", "disjoint"],
+                     help="'seeded' (default, unchanged) or 'disjoint' (frozen redraw.py manifest, "
+                          "see that module + run_one's docstring)")
     args = ap.parse_args()
 
     datasets = _all_dataset_keys() if args.dataset == "ALL" else [args.dataset]
     backbones = list(BACKBONES.keys()) if args.backbone == "ALL" else [args.backbone]
 
     if args.dry_run:
-        dry_run(datasets, backbones, [args.split])
+        dry_run(datasets, backbones, [args.split], slice_mode=args.slice_mode)
         return
 
     for dk in datasets:
         for bb in backbones:
-            print(f"=== running {dk} / {bb} / {args.split} ===", flush=True)
+            print(f"=== running {dk} / {bb} / {args.split} [slice={args.slice_mode}] ===", flush=True)
             try:
-                result = run_one(dk, bb, args.split, args.n)
+                result = run_one(dk, bb, args.split, args.n, parallel=args.parallel,
+                                  slice_mode=args.slice_mode)
             except Exception as e:
                 print(f"  !! {dk}/{bb}/{args.split} FAILED: {type(e).__name__}: {e}", flush=True)
                 continue

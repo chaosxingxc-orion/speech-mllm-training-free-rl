@@ -414,13 +414,31 @@ def score_k10_tool_call(gold: dict, text: str) -> dict:
         except (json.JSONDecodeError, AttributeError):
             pass
     expected = gold.get("expected_tool_call") or {}
-    gold_name = expected.get("name") or expected.get("tool_name")
-    gold_args = gold.get("extracted_params") or expected.get("arguments") or {}
+    # 2026-07-10 wave-3 repair (K10's FIRST real use; per-item-sample inspection per the wave-3
+    # task brief): audio2tool's actual gold shape for "expected_tool_call" is a CALL-EXPRESSION
+    # STRING, e.g. "setLighting()" -- verified 4292/4292 str (zero dicts) in a full scan of
+    # tier1_direct.json (the only tier on the Step-1 grid, loader default). The original
+    # unconditional expected.get("name") therefore raised "AttributeError: 'str' object has no
+    # attribute 'get'" for EVERY item -- inside run_baseline._run_item's per-item try/except and
+    # AFTER generation, so the audio2tool dev cell burned its full GPU pass, discarded every
+    # reply, and wrote n_scored=0/40 (same failure signature as the wave-1 K4 str-gold incident:
+    # cells need REGENERATION, not a rescore, because the replies never reached the result JSON).
+    # The dict branch is kept for generality; the parsed gold name is the text before "(" (matches
+    # the corpus's own top-level "tool_name" field). "extracted_params" (a dict, the canonical
+    # per-item argument gold -- 128/4292 non-empty in tier1_direct) is unchanged as the args gold;
+    # the raw expected string is surfaced in detail for auditability.
+    if isinstance(expected, str):
+        m_name = re.match(r"\s*([\w.]+)\s*\(", expected)
+        gold_name = m_name.group(1) if m_name else (expected.strip() or None)
+    else:
+        gold_name = expected.get("name") or expected.get("tool_name")
+    gold_args = gold.get("extracted_params") or (expected.get("arguments") if isinstance(expected, dict) else None) or {}
     name_match = bool(pred_name) and bool(gold_name) and norm(pred_name) == norm(gold_name)
     args_match = all(norm(str(pred_args.get(k, ""))) == norm(str(v)) for k, v in gold_args.items()) if gold_args else True
     em = int(name_match and args_match)
     return {"score": em, "detail": {"pred_name": pred_name, "pred_args": pred_args,
                                      "gold_name": gold_name, "gold_args": gold_args,
+                                     "gold_expected_raw": expected if isinstance(expected, str) else None,
                                      "name_match": name_match, "args_match": args_match}}
 
 

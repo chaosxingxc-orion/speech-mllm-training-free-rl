@@ -1,0 +1,2218 @@
+{
+  "stage": "1-directional",
+  "dataset": "voicebench-ifeval",
+  "k_type": "K11",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "seeded",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/voicebench-ifeval/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "2517",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "guiding young voices with grace,  \nher passion lifts every soul—  \nsinging is life.",
+      "score": 1.0,
+      "detail": {
+        "passes": [
+          true
+        ],
+        "all_pass": true,
+        "instruction_id_list": [
+          "change_case:english_lowercase"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "1658",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "\"John Doe  \n(555) 123-4567 | johndoe@email.com | LinkedIn: linkedin.com/in/johndoe | GitHub: github.com/johndoe | City, State  \n\nEDUCATION  \nBachelor of Science in Computer Science  \nUniversity of Technology, City, State  \nExpected Graduation: May 2026  \nGPA: 3.7/4.0  \nRelevant Coursework: Data Structures, Algorithms, Object-Oriented Programming, Web Development, Database Systems  \n\nTECHNICAL SKILLS  \nProgramming Languages: Python, Java, C++  \nWeb Technologies: HTML, CSS, JavaScript  \nTools & Platforms: Git, Visual Studio Code, IntelliJ IDEA, Jupyter Notebook  \nDatabases: MySQL, SQLite  \n\nPROJECTS  \nPersonal Portfolio Website – Python, HTML, CSS  \n- Developed a responsive personal portfolio website using Python Flask and HTML/CSS to showcase academic projects and skills.  \n-",
+      "score": 0.5,
+      "detail": {
+        "passes": [
+          false,
+          true
+        ],
+        "all_pass": false,
+        "instruction_id_list": [
+          "startend:quotation",
+          "keywords:existence"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          },
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": [
+              "python",
+              "java"
+            ],
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "3224",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "Write an interesting riddle that uses math notation. First repeat the request word for word without change, then give your answer. Do not say any word before repeating the request.\n\nWrite an interesting riddle that uses math notation. First repeat the request word for word without change, then give your answer. Do not say any word before repeating the request.\n\nI am a number that is the sum of all integers from 1 to n, but I am also the square of another number. What am I?\n\nAnswer: 36. It is the sum of integers from 1 to 8 (1+2+3+...+8 = 36), and it is also the square of 6 (6² = 36).",
+      "score": 1.0,
+      "detail": {
+        "passes": [
+          true
+        ],
+        "all_pass": true,
+        "instruction_id_list": [
+          "combination:repeat_prompt"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": "Write an interesting riddle that uses math notation.",
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "343",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "Introducing TrustVault – the digital trust infrastructure for the modern age. In today’s hyper-connected world, trust is the most valuable currency, yet it’s also the most fragile. Whether you're a freelancer seeking your first client, a startup raising funds, or an individual sharing personal information online, establishing credibility is a time-consuming, often unreliable process. TrustVault solves this by offering a secure, blockchain-verified digital identity and reputation platform that empowers individuals and businesses to build, verify, and share trust seamlessly across the internet.\n\nAt its core, TrustVault is a decentralized trust network that aggregates verifiable data points – including professional credentials, transaction history, peer endorsements, and behavioral analytics – into a single, tamper-proof digital profile. Unlike traditional social proof systems that rely on vanity metrics or centralized gatekeepers, TrustVault uses zero-knowledge proofs and decentralized identifiers (DIDs) to ensure privacy and authenticity. Users control what they share, and every verification is cryptographically secured, making it impossible",
+      "score": 0.0,
+      "detail": {
+        "passes": [
+          false
+        ],
+        "all_pass": false,
+        "instruction_id_list": [
+          "length_constraints:number_words"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": "at least",
+            "num_words": 300,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "1251",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "Beneath the sun's unblinking gaze, where golden light is spun,  \nStands the eucalyptus, tall and proud, a sentinel of dawn.  \nIts silver bark peels back like secrets from the past,  \nRevealing smooth, pale skin that whispers of the vast.  \nA forest of green, a canopy that breathes the sky,  \nIts leaves, like emerald coins, catch every ray and sigh.  \n\nOh, eucalyptus, you are beauty in the form of trees,  \nWith every branch a story, every root a mystery.  \nYour leaves, so narrow, lance-like, shimmer in the breeze,  \nAnd scent the air with menthol dreams, a cool and cleansing breeze.  \nThey rustle like a thousand secrets, soft and low,  \nA lullaby for weary hearts, a balm for all who know.  \n\nYou rise from Australia's soil, where ancient lands are old,  \nYet grace",
+      "score": 0.0,
+      "detail": {
+        "passes": [
+          false
+        ],
+        "all_pass": false,
+        "instruction_id_list": [
+          "length_constraints:number_words"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": "at least",
+            "num_words": 350,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "2239",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "\"I cast my hatred into the blazing fire.\"",
+      "score": 1.0,
+      "detail": {
+        "passes": [
+          true
+        ],
+        "all_pass": true,
+        "instruction_id_list": [
+          "startend:quotation"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "1237",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "Alright, listen up, foodies and snack warriors! If you're tired of the same old pizza and sad salad combos, I've got the *ultimate* upgrade for your taste buds: **Buena Onda**, the *only* restaurant in town serving *real* Argentinian vibes and even better food. 🌎🔥\n\nLet me break it down for you:\n\n*   **The Food:** Imagine juicy, perfectly grilled *asado* (that's Argentinian BBQ, genius!) that makes your taste buds do the tango. Or *empanadas* so flaky and filled with spicy beef or chicken that you'll forget your phone exists. And don't even get me started on the *dulce de leche* – it's basically liquid gold for your soul. Seriously, it's like they bottled sunshine and caramel.\n\n*   **The Vibe:** Forget boring booths. Buena Onda has that *cool*, relaxed energy. It's where",
+      "score": 1.0,
+      "detail": {
+        "passes": [
+          true,
+          true
+        ],
+        "all_pass": true,
+        "instruction_id_list": [
+          "detectable_format:number_highlighted_sections",
+          "keywords:existence"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": 3,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          },
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": [
+              "Argentinian"
+            ],
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "2532",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "\"Hey [Friend's Name],\n\nI hope you're doing well! I wanted to share something personal with you—something that's been on my mind lately. You know how we always talk about our feelings and stuff, right? Well, I've been thinking about what triggers me, and I realized it's not just one thing but a few patterns that really get under my skin.\n\nFor starters, I get really frustrated when people talk over me or don't seem to listen. It's like my thoughts don't matter, and that can really make me feel invisible. Also, I'm not a fan of last-minute changes or being kept in the dark about plans. I like to know what's going on so I can mentally prepare, you know?\n\nAnd honestly, I get triggered when people are dismissive of my emotions. Like, if I'm having a tough day and someone says, 'Oh, it's not a big deal,' it just makes me feel worse. I need empathy,",
+      "score": 0.0,
+      "detail": {
+        "passes": [
+          false
+        ],
+        "all_pass": false,
+        "instruction_id_list": [
+          "startend:quotation"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "2303",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "\"Okay, so you know how our solar system has two main parts? The inner solar system is where we live—Earth, Mars, Venus, and Mercury. Then there's the outer solar system, which is like the wild frontier with Jupiter, Saturn, Uranus, and Neptune. The big difference? The inner planets are small, rocky, and relatively close to the Sun. The outer planets are huge gas giants or ice giants, and they're way farther out. This distance means they get much less sunlight, so they're super cold. The inner planets have solid surfaces you could theoretically stand on, but the outer planets are mostly swirling gases and liquids with no real ground. That makes them pretty inhospitable for life as we know it. But here's the cool part: even though the outer planets themselves probably don't host life, their moons might! Take Europa, one of Jupiter's moons—it's thought to have a massive ocean beneath its icy crust. That ocean could be warm",
+      "score": 0.0,
+      "detail": {
+        "passes": [
+          false,
+          false
+        ],
+        "all_pass": false,
+        "instruction_id_list": [
+          "startend:quotation",
+          "length_constraints:number_sentences"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          },
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": "at least",
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": 17,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "1531",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "<h2>Proposal: Enhancing Quality of Life for People with Disabilities through Inclusive Urban Design and Assistive Technology</h2>\n\n<p><strong>Project Title:</strong> <em>Project Atlantis: Reimagining Accessibility in Modern Society</em></p>\n\n<p><strong>Principal Investigator:</strong> Dr. Elena Constable, Professor of Disability Studies and Urban Innovation, Institute of Inclusive Futures</p>\n\n<p><strong>Abstract:</strong></p>\n\n<p>In this interdisciplinary research initiative, we propose <em>Project Atlantis</em>—a visionary effort to holistically improve the quality of life for people with disabilities through the integration of inclusive urban design, emerging assistive technologies, and community-centered policy development. Named after the mythical city of Atlantis, symbolizing a lost utopia of harmony and innovation, this project aims to rebuild societal infrastructure with equity and dignity at its core.</p>\n\n<p>Our approach is inspired by the legacy of John Constable, the",
+      "score": 1.0,
+      "detail": {
+        "passes": [
+          true
+        ],
+        "all_pass": true,
+        "instruction_id_list": [
+          "keywords:existence"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": [
+              "atlantis",
+              "constable"
+            ],
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "2250",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "Always begin by reading your car seat and vehicle owner's manuals thoroughly. These guides contain vital information about proper installation methods, weight and height limits, and compatibility with your specific car model. Understanding the instructions beforehand helps prevent mistakes and ensures your child's safety from day one. Pay special attention to whether your car seat should be installed using the vehicle's seat belts or the LATCH system, as each has specific steps and limitations.\n\nMake sure the car seat is installed tightly and securely. A properly installed seat should not move more than one inch side to side or front to back at the belt path. Use a firm hand to test the stability after installation. If you're using a rear-facing seat, ensure the recline angle is correct—most seats come with built-in level indicators or adjustable feet to help you achieve this. For forward-facing seats, double-check that the harness straps are at or below your child's shoulders.\n\nChoose the safest seating position for your child. The back seat, especially the center",
+      "score": 0.0,
+      "detail": {
+        "passes": [
+          false
+        ],
+        "all_pass": false,
+        "instruction_id_list": [
+          "length_constraints:nth_paragraph_first_word"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": 4,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": "elm",
+            "nth_paragraph": 4,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "3041",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "Imagine a world where managing a chronic illness doesn’t mean sacrificing independence or peace of mind. That’s the reality we’re building at ChronoCare, a startup that connects patients with vetted, compassionate in-home caregivers tailored to their unique medical needs. We use smart matching algorithms and real-time health tracking to ensure seamless, personalized care. With ChronoCare, families gain peace of mind, and patients gain the dignity of aging or healing at home.  \n\n- **We reduce hospital readmissions by 40% through proactive, human-centered care coordination.**",
+      "score": 1.0,
+      "detail": {
+        "passes": [
+          true,
+          true
+        ],
+        "all_pass": true,
+        "instruction_id_list": [
+          "length_constraints:number_sentences",
+          "detectable_format:number_bullet_lists"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": "less than",
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": 7,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          },
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": 1
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "2041",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "Hey Jake,\n\nI hope this email finds you in great spirits and good health. It’s been way too long since we last caught up properly, and I’ve been meaning to write to you for ages. Life has been a whirlwind lately, but I finally found a moment to sit down and share what’s been going on. I’ve been thinking about our old days—remember how we used to dream about traveling the world and doing something amazing? Well, I’m happy to say that some of those dreams are starting to come true. I’ve been doing a lot of traveling lately, and I can’t even begin to describe how incredible it’s been. I’ve been to places I never thought I’d see, and the experiences have been nothing short of life-changing. I’ve been staying in some of the most luxurious accommodations you can imagine—places that look like they belong in a movie. I’ve even had the chance to dine with some fascinating people from all over the world. I’ve",
+      "score": 0.5,
+      "detail": {
+        "passes": [
+          false,
+          true
+        ],
+        "all_pass": false,
+        "instruction_id_list": [
+          "length_constraints:number_sentences",
+          "keywords:forbidden_words"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": "at least",
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": 40,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          },
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": [
+              "rich",
+              "money"
+            ],
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "281",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "\"Why don't XML programmers play hide and seek? Because good luck hiding when everything is so well-documented!\"",
+      "score": 1.0,
+      "detail": {
+        "passes": [
+          true
+        ],
+        "all_pass": true,
+        "instruction_id_list": [
+          "startend:quotation"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "3753",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "My answer is yes.",
+      "score": 1.0,
+      "detail": {
+        "passes": [
+          true
+        ],
+        "all_pass": true,
+        "instruction_id_list": [
+          "detectable_format:constrained_response"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "1322",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "<<Kotlin vs Java>>\n\nKotlin and Java are both programming languages that run on the Java Virtual Machine (JVM), making them interoperable. However, they differ significantly in syntax, features, and development philosophy. Here's a breakdown of the pros and cons of each:\n\n**Kotlin Pros:**\n\n1. **Concise Syntax**: Kotlin reduces boilerplate code significantly. For example, data classes require no explicit getter/setter methods.\n2. **Null Safety**: Kotlin has built-in null safety, reducing the risk of `NullPointerException` at runtime.\n3. **Modern Language Features**: Kotlin supports functional programming features like lambdas, higher-order functions, and extension functions.\n4. **Interoperability with Java**: Kotlin works seamlessly with existing Java codebases, allowing gradual migration.\n5. **Android Development**: Kotlin is officially supported by Google for Android development and is now the preferred language for new projects.\n6. **Coroutines**: Kotlin provides built-in support for asynchronous programming via cor",
+      "score": 1.0,
+      "detail": {
+        "passes": [
+          true
+        ],
+        "all_pass": true,
+        "instruction_id_list": [
+          "detectable_format:title"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "2139",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "(Verse)  \nOh, the moonlight's a siren, she's calling me low,  \nWith a rhythm that hums where the city winds blow.  \nI'm chasing a dream that's been buried in stone,  \nBut I'll find my way back to the root of my own.  \n\n(Chorus)  \nRate me high, love, in your midnight parade,  \nI'm a gypsy heart with a soul full of shade.  \nFrom the top of the hill to the root of the tree,  \nYou're the only one who can set me free.",
+      "score": 0.5,
+      "detail": {
+        "passes": [
+          true,
+          false
+        ],
+        "all_pass": false,
+        "instruction_id_list": [
+          "length_constraints:number_sentences",
+          "keywords:existence"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": "at least",
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": 3,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          },
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": [
+              "rate",
+              "rte"
+            ],
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "2941",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "Introducing the Snack-Attack Sock!  \nIt’s not your average footy gear,  \nIt hides treats inside its fold—  \nA surprise for every toe!  \nYou’ll never guess what’s in there,  \nA candy bar or pickle spear?  \nJust slip it on and watch the fun begin!  \n\n***  \n\nNo need to beg or plead for snacks,  \nThis sock’s got all your favorites tucked!  \nIt’s magic, really, not a lie,  \nIt makes your toes go “Whee!” and “Hi!”  \nYou’ll never run out of munchies,  \nEven when you’re doing crunchies!  \nIt’s snack time, every single day!  \n\n***  \n\nIt’s not a shoe, it’s not a glove,  \nBut it’s the best thing you’ll ever shove  \nInto your drawer or backpack,  \nSo you can snack without a lack!  \nIt’s comfy, stretchy, soft, and cool,  \nAnd smells like chocolate",
+      "score": 0.0,
+      "detail": {
+        "passes": [
+          false
+        ],
+        "all_pass": false,
+        "instruction_id_list": [
+          "length_constraints:number_paragraphs"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": 6,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "1880",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "Ukrainian morphology showcases a complex, rich system of word formation and inflection. As a Slavic language, it features six cases, three genders, and two numbers. Nouns, adjectives, and pronouns change form according to case, number, and gender. Verbs conjugate for person, number, tense, aspect, and mood. Ukrainian morphology is synthetic, relying heavily on suffixes and prefixes to convey grammatical meaning. The language preserves many archaic features, including dual number in some dialects. Case endings are crucial for sentence structure, as word order is relatively flexible. Ukrainian uses a Cyrillic alphabet, with letters like 'ц', 'ч', 'щ' contributing to its unique sound system. Morphological consistency ensures clarity and precision. Students of Ukrainian must master declensions and conjugations, which can be challenging but rewarding. The language's morphology reflects its historical development and cultural identity.",
+      "score": 0.5,
+      "detail": {
+        "passes": [
+          false,
+          true
+        ],
+        "all_pass": false,
+        "instruction_id_list": [
+          "keywords:letter_frequency",
+          "length_constraints:number_words"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": "at least",
+            "letter": "c",
+            "let_frequency": 60,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          },
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": "less than",
+            "num_words": 201,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "3198",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "[Your Name]  \n[Your Address]  \n[City, State, ZIP Code]  \n[Email Address]  \n[Date]  \n\nHiring Manager  \n[Company Name]  \n[Company Address]  \n[City, State, ZIP Code]  \n\nDear Hiring Manager,  \n\nI am excited to apply for the [Job Title] position at [Company Name]. With my background in [your field or relevant experience], I am confident in my ability to contribute effectively to your team and support the continued success of your organization.  \n\nThroughout my career, I have developed strong skills in [mention 1–2 key skills relevant to the job], which I believe align well with the requirements of this role. In my previous position at [Previous Company], I [briefly describe a relevant achievement or responsibility]. This experience has equipped me with the ability to [mention a relevant outcome or skill], and I am eager to bring this expertise to [Company Name].  \n\nWhat draws me to your company is your",
+      "score": 0.0,
+      "detail": {
+        "passes": [
+          false
+        ],
+        "all_pass": false,
+        "instruction_id_list": [
+          "startend:end_checker"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": "Call me at 631-481-4867",
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "1645",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "I AM A NAME THAT MEANS \"SHIELD OF GOD\" AND IS OFTEN USED FOR BOYS.",
+      "score": 1.0,
+      "detail": {
+        "passes": [
+          true
+        ],
+        "all_pass": true,
+        "instruction_id_list": [
+          "change_case:english_capital"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "3323",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "A sculpted bust portraying a bearded gentleman with a mustache",
+      "score": 1.0,
+      "detail": {
+        "passes": [
+          true
+        ],
+        "all_pass": true,
+        "instruction_id_list": [
+          "punctuation:no_comma"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "2324",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "I am a mother of many but I do not give birth. I am found on a coast where the fog often drifts. I am not a creature but I am part of the sea. I am not a tree but I am part of the forest. I am not a person but I am part of the land. I am not a rock but I am part of the shore. I am not a wave but I am part of the ocean. I am not a bird but I am part of the sky. I am not a fish but I am part of the water. I am not a flower but I am part of the earth. I am not a star but I am part of the night. I am not a dream but I am part of the imagination. I am not a story but I am part of the memory. I am not a song but I am part of the music. I am not a painting but I am part of the art. I am not a book",
+      "score": 1.0,
+      "detail": {
+        "passes": [
+          true
+        ],
+        "all_pass": true,
+        "instruction_id_list": [
+          "punctuation:no_comma"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "3156",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "[Your Name]  \n[Your Address]  \n[City, State, ZIP Code]  \n[Email Address]  \n[Phone Number]  \n[Date]  \n\nCustomer Service Department  \n[Company Name]  \n[Company Address]  \n[City, State, ZIP Code]  \n\nSubject: Formal Request for Refund – Order #[Your Order Number]  \n\nDear Customer Service Team,  \n\nI am writing to formally request a full refund for a product I purchased from your company on [Date of Purchase], under Order #[Your Order Number]. Unfortunately, the item I received is completely unusable due to [briefly describe the issue, e.g., \"a manufacturing defect\" or \"failure to function as advertised\"].  \n\nAs a loyal customer who once trusted your brand, I am deeply disappointed by this experience. I expected a product that met the standards associated with your brand reputation, but instead, I received something that does not work and cannot be used for its intended purpose.  \n\nAccording to your stated return",
+      "score": 0.0,
+      "detail": {
+        "passes": [
+          false
+        ],
+        "all_pass": false,
+        "instruction_id_list": [
+          "keywords:existence"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": [
+              "trust",
+              "brand",
+              "customer",
+              "law",
+              "policy",
+              "unusable"
+            ],
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "2591",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "```json\n{\n  \"characterName\": \"Thaelen the Unbroken\",\n  \"race\": \"Half-Orc\",\n  \"class\": \"Fighter\",\n  \"level\": 5,\n  \"background\": \"Soldier\",\n  \"alignment\": \"Lawful Neutral\",\n  \"experiencePoints\": 12500,\n  \"abilityScores\": {\n    \"strength\": 17,\n    \"dexterity\": 13,\n    \"constitution\": 15,\n    \"intelligence\": 10,\n    \"wisdom\": 12,\n    \"charisma\": 8\n  },\n  \"proficiencyBonus\": 3,\n  \"hitPoints\": 42,\n  \"armorClass\": 17,\n  \"speed\": 30,\n  \"hitDice\": \"1d10\",\n  \"savingThrows\": {\n    \"strength\": true,\n    \"dexterity\": false,\n    \"constitution\": true,",
+      "score": 0.0,
+      "detail": {
+        "passes": [
+          false,
+          false
+        ],
+        "all_pass": false,
+        "instruction_id_list": [
+          "detectable_format:json_format",
+          "keywords:existence"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          },
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": [
+              "medalist",
+              "theta"
+            ],
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "371",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "```json\n{\n  \"riddle\": \"I unlock what's locked and open what's closed. I turn in the hands of those who need me the most. What am I?\"\n}\n```",
+      "score": 1.0,
+      "detail": {
+        "passes": [
+          true,
+          true
+        ],
+        "all_pass": true,
+        "instruction_id_list": [
+          "detectable_format:json_format",
+          "keywords:forbidden_words"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          },
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": [
+              "key"
+            ],
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "3439",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>25 Limericks About Bill</title>\n  <style>\n    body {\n      font-family: 'Georgia', serif;\n      background-color: #f9f9f9;\n      color: #333;\n      margin: 0;\n      padding: 0;\n    }\n    header {\n      background-color: #4CAF50;\n      color: white;\n      text-align: center;\n      padding: 2rem 0;\n    }\n    h1 {\n      margin: 0;\n      font-size: 2.5rem;\n    }\n    .container {\n      max-width: 900px;\n      margin: 2rem auto;\n      padding: 2rem;\n      background-color: white;",
+      "score": 0.0,
+      "detail": {
+        "passes": [
+          false
+        ],
+        "all_pass": false,
+        "instruction_id_list": [
+          "keywords:existence"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": [
+              "bill",
+              "economist",
+              "jurgen"
+            ],
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "2084",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "Alright everyone, let's talk about what would happen if someone ingested 100 grams of pure caffeine. First, let's understand what a dose really means. A dose is the specific amount of a substance that's taken at one time. In the case of caffeine, the typical dose in a cup of coffee is about 95 milligrams, which is safe for most people.\n\nNow, 100 grams is equal to 100,000 milligrams. That's more than a thousand times the amount of caffeine in a regular cup of coffee. So, we're talking about an extremely high dose. When someone takes such a massive dose of caffeine, it overwhelms the body's systems.\n\nCaffeine affects the central nervous system, and at normal doses, it helps people feel more alert. But at this extreme dose, it can cause serious health problems. The body can't process that much caffeine quickly enough, and it starts to interfere with normal heart",
+      "score": 1.0,
+      "detail": {
+        "passes": [
+          true,
+          true
+        ],
+        "all_pass": true,
+        "instruction_id_list": [
+          "keywords:frequency",
+          "keywords:forbidden_words"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": "at least",
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": "dose",
+            "frequency": 5,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          },
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": [
+              "die"
+            ],
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "260",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "Refinery Operator with 5 years in chemical industry. Skilled in process control and safety. Trusted by friends and colleagues. Worked with Hanson on optimization projects. Reliable, detail-oriented, and team-focused.",
+      "score": 1.0,
+      "detail": {
+        "passes": [
+          true,
+          true
+        ],
+        "all_pass": true,
+        "instruction_id_list": [
+          "keywords:existence",
+          "length_constraints:number_words"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": [
+              "friends",
+              "hanson"
+            ],
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          },
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": "less than",
+            "num_words": 50,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "2829",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "\"According to the story, the man traveled from Saskatoon to Helsinki to buy a piano because he was told that the piano he wanted was only available in Helsinki. He believed it was a unique or rare instrument that could not be found elsewhere, prompting him to make the long journey to purchase it.\"",
+      "score": 1.0,
+      "detail": {
+        "passes": [
+          true
+        ],
+        "all_pass": true,
+        "instruction_id_list": [
+          "startend:quotation"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "1813",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "CHOOSE A CENTRAL THEME, LIKE INDEPENDENCE OR GROWTH. USE SPECIFIC EXAMPLES. REFLECT ON EMOTIONS AND LESSONS. MAINTAIN A CONSISTENT TONE. EDIT FOR CLARITY AND CONCISENESS.",
+      "score": 1.0,
+      "detail": {
+        "passes": [
+          true,
+          true
+        ],
+        "all_pass": true,
+        "instruction_id_list": [
+          "change_case:english_capital",
+          "length_constraints:number_words"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          },
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": "less than",
+            "num_words": 31,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "3434",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "first names are more than just labels; they are the initial brushstrokes of identity, the first word in a person's story. from the moment a child is introduced to the world, their name becomes a vessel for expectations, affection, and sometimes, pressure. it is a cultural artifact, shaped by heritage, language, and societal norms, often carrying the weight of ancestors and the hopes of parents. a name can be a bridge to tradition or a rebellion against it, a simple sound that can evoke warmth or discomfort depending on context.\n\njasper is a name that conjures images of earthy tones and quiet strength. it originates from the gemstone, a symbol of protection and healing, and has journeyed through centuries to become a modern choice for parents seeking something both classic and distinctive. unlike names that trend wildly with the seasons, jasper maintains a steady presence, neither too common nor too obscure. its enduring appeal lies in its simplicity and the subtle dignity it carries, a reminder that some",
+      "score": 0.5,
+      "detail": {
+        "passes": [
+          true,
+          false
+        ],
+        "all_pass": false,
+        "instruction_id_list": [
+          "change_case:english_lowercase",
+          "length_constraints:nth_paragraph_first_word"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          },
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": 3,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": "jasper",
+            "nth_paragraph": 2,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "3089",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "In a quiet suburban neighborhood, a ginger cat named Miso lived with his family in a cozy two-story home. *He loved the warmth of the sun on his fur* and the sound of children laughing in the yard. One stormy night, a sudden flood swept through the area, separating Miso from his family. *He ran through the dark streets, heart pounding*, searching for familiar scents and voices. Days passed, and Miso grew thinner, surviving on scraps from trash cans. *He missed the softness of his favorite blanket* and the gentle voice of his owner. One evening, he found shelter beneath a porch where a kind elderly woman named Clara lived. *She noticed him immediately*, her eyes filled with compassion. Clara offered him food and a warm spot by the fire. *Miso hesitated at first*, unsure of this new kindness. But slowly, he began to trust her. *He learned to purr again*, a sound he hadn’t made in weeks",
+      "score": 0.3333333333333333,
+      "detail": {
+        "passes": [
+          false,
+          false,
+          true
+        ],
+        "all_pass": false,
+        "instruction_id_list": [
+          "detectable_format:number_highlighted_sections",
+          "length_constraints:number_sentences",
+          "length_constraints:number_sentences"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": 8,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          },
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": "at least",
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": 40,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          },
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": "less than",
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": 61,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "3380",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "job description: cliffor blue employee\n\nwe are seeking a reliable and attentive employee to join our team at cliffor blue. the ideal candidate will work at the cash register and also monitor shelves for stock levels. this role requires strong people skills and the ability to interact positively with customers and coworkers.\n\nkey responsibilities:\n- operate the cash register accurately and efficiently during customer transactions\n- greet customers and provide excellent service using strong people skills\n- monitor inventory levels and report low stock items promptly\n- restock shelves as needed to maintain a clean and organized store\n- assist with basic cleaning and store maintenance tasks\n\nrequirements:\n- ability to work in a fast-paced environment\n- good communication and people skills\n- basic math and cash handling skills\n- willingness to learn and follow store procedures\n\nthis position is ideal for someone who values teamwork, has strong attention to detail, and enjoys using their skills to support both customers and store operations.",
+      "score": 1.0,
+      "detail": {
+        "passes": [
+          true,
+          true
+        ],
+        "all_pass": true,
+        "instruction_id_list": [
+          "change_case:english_lowercase",
+          "keywords:existence"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          },
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": [
+              "people",
+              "skills"
+            ],
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "209",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "**The Best Way to Get a Good Night’s Sleep: A Holistic Approach to Restful Nights**\n\nIn today’s fast-paced world, getting a good night’s sleep often feels like a luxury rather than a necessity. Yet, sleep is one of the most critical pillars of health, influencing everything from mood and cognitive function to immune strength and long-term disease prevention. So, what’s the best way to ensure you’re getting the restorative sleep your body craves? The answer lies not in a single magic trick, but in a holistic approach that combines habits, environment, and mindfulness.\n\nFirst and foremost, consistency is key. Going to bed and waking up at the same time every day—even on weekends—helps regulate your body’s internal clock, or circadian rhythm. This consistency trains your body to naturally feel sleepy at night and alert during the day. Aim for 7–9 hours of sleep per night, depending on your individual needs.\n\nYour sleep environment also plays a pivotal role.",
+      "score": 0.0,
+      "detail": {
+        "passes": [
+          false
+        ],
+        "all_pass": false,
+        "instruction_id_list": [
+          "length_constraints:number_words"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": "at least",
+            "num_words": 400,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "3079",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "Dear Awesome Sixth Graders,\n\n1. **The Great Snack Conspiracy**: I have uncovered evidence that the vending machine in the cafeteria is plotting against us. It only dispenses mystery snacks that taste like regret and existential dread. We must unite and demand better options—like actual chocolate.\n\n2. **The Homework Hierarchy**: I’ve studied the ancient scrolls of math homework and discovered a secret rule: if you do your homework before 8 PM, you get to keep your soul. After 8 PM? You become a zombie. Please, do your homework early. Your future self will thank you.\n\n3. **The Bathroom Break Code**: There is a secret handshake for bathroom breaks. If you don’t know it, you’ll be stuck in line forever. I’ll teach it to you if you promise not to use it for pranks. (But if you do, I’ll pretend I don’t know.)\n\n4. **The Art Supplies Rebellion**: Yesterday, someone used my favorite glitter glue",
+      "score": 0.0,
+      "detail": {
+        "passes": [
+          false
+        ],
+        "all_pass": false,
+        "instruction_id_list": [
+          "startend:end_checker"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": "Is there anything else I can help with?",
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "2304",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "My fellow Americans, and especially to the incredible mothers who raise our children with strength, love, and unwavering dedication—today, I want to speak to you about something unexpected: a movie float from the film *It*, and what it reveals about the spirit of the 1950s.\n\nNow, I know what you might be thinking—“Mr. President, why are you talking about a horror movie?” But hear me out. In the 1990 film adaptation of Stephen King’s *It*, there’s a scene where the children encounter a grotesque, clown-like figure on a carnival float. It’s terrifying, yes—but beneath the surface, that float is a powerful symbol of the 1950s, a decade that shaped so much of who we are today.\n\nThe 1950s were a time of great promise and profound contradictions. Families moved to the suburbs, children played outside until the streetlights came on, and television brought",
+      "score": 0.0,
+      "detail": {
+        "passes": [
+          false
+        ],
+        "all_pass": false,
+        "instruction_id_list": [
+          "detectable_content:number_placeholders"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": 1,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "3263",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "Yes, \"Zhang\" is a Chinese name. It is one of the most common surnames in China, derived from the Chinese character 张 (pinyin: Zhāng). It can also be used as a given name, though less frequently than as a surname.\n\n******\nOther names similar to \"Zhang\" in sound or pronunciation include:\n- Chang (a variant romanization of the same Chinese surname)\n- Jang (a Korean romanization of the same character)\n- Zhang (a common alternative spelling)\n- Zhan (another variant of the same character, used in different contexts)\n- Zhang (a phonetic variant in some dialects)",
+      "score": 1.0,
+      "detail": {
+        "passes": [
+          true
+        ],
+        "all_pass": true,
+        "instruction_id_list": [
+          "combination:two_responses"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "3709",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "\"Unleash the zest of life with Rhapsody – a vibrant burst of citrus that dances on the skin like morning sunlight on a lemon grove. With every spritz, experience a wave of energy and elegance that captures the essence of effortless charm. Whether you're stepping into the day or making a grand entrance, Rhapsody is your signature of confidence and style. Let the citrus notes lift your spirit and leave a trail of unforgettable impressions. Rhapsody – where every moment becomes a celebration.\"",
+      "score": 1.0,
+      "detail": {
+        "passes": [
+          true,
+          true
+        ],
+        "all_pass": true,
+        "instruction_id_list": [
+          "startend:quotation",
+          "keywords:forbidden_words"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          },
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": [
+              "perfume",
+              "fresh",
+              "good"
+            ],
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    },
+    {
+      "item_id": "2918",
+      "instr": "Listen to the spoken instruction and respond, following it exactly.",
+      "reply": "**Essay Rubric for Teenagers**\n\n**1. Content and Ideas (25 points)**\n- **Excellent (21–25 points):** The essay presents original, thoughtful, and well-developed ideas. The main point is clear and supported with relevant examples and evidence.\n- **Good (16–20 points):** Ideas are mostly clear and relevant, with some development. May lack depth or include minor tangents.\n- **Fair (11–15 points):** Ideas are vague or underdeveloped. Some content may be off-topic or repetitive.\n- **Needs Improvement (0–10 points):** Ideas are unclear, missing, or poorly supported. Essay lacks focus.\n\n**2. Organization and Structure (20 points)**\n- **Excellent (17–20 points):** Essay has a clear structure with an introduction, body paragraphs, and conclusion. Ideas flow logically and transitions are smooth.\n- **Good (13–1",
+      "score": 0.0,
+      "detail": {
+        "passes": [
+          false
+        ],
+        "all_pass": false,
+        "instruction_id_list": [
+          "combination:two_responses"
+        ],
+        "kwargs": [
+          {
+            "num_placeholders": null,
+            "capital_relation": null,
+            "capital_frequency": null,
+            "keywords": null,
+            "relation": null,
+            "num_words": null,
+            "let_relation": null,
+            "letter": null,
+            "let_frequency": null,
+            "section_spliter": null,
+            "num_sections": null,
+            "end_phrase": null,
+            "forbidden_words": null,
+            "keyword": null,
+            "frequency": null,
+            "postscript_marker": null,
+            "num_highlights": null,
+            "num_paragraphs": null,
+            "num_sentences": null,
+            "prompt_to_repeat": null,
+            "first_word": null,
+            "nth_paragraph": null,
+            "num_bullets": null
+          }
+        ]
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.5708,
+    "ci95": [
+      0.425,
+      0.7125
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset voicebench-ifeval --backbone qwen3-omni-30b-gguf --split dev --n 40 --parallel 4",
+  "elapsed_s": 375.5
+}

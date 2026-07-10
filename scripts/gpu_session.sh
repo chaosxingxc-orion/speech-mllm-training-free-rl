@@ -43,6 +43,16 @@ LLAMA_HOST="${LLAMA_HOST:-127.0.0.1}"
 LLAMA_PORT="${LLAMA_PORT:-8091}"
 LLAMA_NGL="${LLAMA_NGL:-28}"
 LLAMA_CTX="${LLAMA_CTX:-8192}"
+# -np/--cache-ram (2026-07-10, wave-3 batched-inference task brief item 2): server slot count and
+# KV-cache-reuse RAM budget, EXPLICIT now (previously never passed, so llama-server's own compiled
+# defaults applied implicitly: -np=-1 "auto", --cache-ram=8192 MiB "on"). Defaults below reproduce
+# those exact prior values -- wave-1/wave-2 (sequential, --parallel 1) are UNAFFECTED. Wave-3's
+# batched cells override via run_wave3.sh: LLAMA_NP=4 LLAMA_CTX=16384 (owner-approved smoke verdict:
+# mtmd-compatible, 0/24 greedy flips vs sequential, VRAM ~20.9GB, 1.75x wall-clock at K=4 no-cache).
+# --cache-ram is left at its default (still ON) per that same smoke -- greedy determinism is
+# unaffected and repeated-prefix cache wins are free, so there is no reason to disable it here.
+LLAMA_NP="${LLAMA_NP:--1}"
+LLAMA_CACHE_RAM="${LLAMA_CACHE_RAM:-8192}"
 LLAMA_PIDFILE="$DATA/_llama_server.pid"
 LLAMA_LOGFILE="$DATA/_llama_server.log"
 
@@ -54,6 +64,12 @@ MERALION_HOST="${MERALION_HOST:-127.0.0.1}"
 MERALION_PORT="${MERALION_PORT:-8197}"
 MERALION_NGL="${MERALION_NGL:-99}"          # MERaLiON-2-3B is small enough to fit fully on-GPU
 MERALION_CTX="${MERALION_CTX:-8192}"
+# -np/--cache-ram overrides for meralion-2-gguf -- same 2026-07-10 wave-3 rationale as LLAMA_NP/
+# LLAMA_CACHE_RAM above; defaults reproduce the prior (never-explicitly-passed) behavior. Wave-3's
+# frozen cell list is qwen3-omni-30b-gguf only (see wave3_cells.py), so these stay at their
+# unchanged defaults in practice today, but are wired symmetrically for a future meralion wave.
+MERALION_NP="${MERALION_NP:--1}"
+MERALION_CACHE_RAM="${MERALION_CACHE_RAM:-8192}"
 MERALION_PIDFILE="$DATA/_llama_server_meralion.pid"
 MERALION_LOGFILE="$DATA/_llama_server_meralion.log"
 
@@ -145,11 +161,20 @@ Env overrides:
   LLAMA_MODEL / LLAMA_MMPROJ / LLAMA_HOST / LLAMA_PORT / LLAMA_NGL / LLAMA_CTX / LLAMA_UP_TIMEOUT
                                 qwen3-omni-30b-gguf generate-mode launch overrides (defaults match
                                 wiki/Inference-Engine-Choice.md).
+  LLAMA_NP / LLAMA_CACHE_RAM    qwen3-omni-30b-gguf -np (server slot count, default -1 auto) /
+                                --cache-ram (KV-cache-reuse budget MiB, default 8192) overrides.
+                                2026-07-10 wave-3 batched inference sets LLAMA_NP=4 LLAMA_CTX=16384
+                                (see run_wave3.sh) -- defaults reproduce the prior implicit
+                                llama-server behavior for every wave-1/wave-2 (sequential) caller.
   LLAMA_EMBED_PORT / LLAMA_EMBED_PIDFILE / LLAMA_EMBED_LOGFILE
                                 qwen3-omni-30b-gguf embedding-mode overrides (model/mmproj/ngl/ctx
                                 are shared with generate mode via LLAMA_MODEL/LLAMA_MMPROJ/etc.).
   MERALION_MODEL / MERALION_MMPROJ / MERALION_HOST / MERALION_PORT / MERALION_NGL / MERALION_CTX
                                 meralion-2-gguf launch overrides (LLAMA_UP_TIMEOUT is shared).
+  MERALION_NP / MERALION_CACHE_RAM
+                                meralion-2-gguf -np / --cache-ram overrides (same defaults/rationale
+                                as LLAMA_NP/LLAMA_CACHE_RAM above; unused by wave-3's frozen cell
+                                list today, wired symmetrically for a future meralion wave).
 EOF
 }
 
@@ -292,6 +317,7 @@ _model_cfg() {
       M_MODEL="$LLAMA_MODEL"; M_MMPROJ="$LLAMA_MMPROJ"
       M_HOST="$LLAMA_HOST"
       M_NGL="$LLAMA_NGL"; M_CTX="$LLAMA_CTX"
+      M_NP="$LLAMA_NP"; M_CACHE_RAM="$LLAMA_CACHE_RAM"
       if [ "$mode" = "embedding" ]; then
         M_LABEL="Qwen3-Omni-30B (embedding mode)"
         M_PORT="$LLAMA_EMBED_PORT"
@@ -310,6 +336,7 @@ _model_cfg() {
       M_MODEL="$MERALION_MODEL"; M_MMPROJ="$MERALION_MMPROJ"
       M_HOST="$MERALION_HOST"; M_PORT="$MERALION_PORT"
       M_NGL="$MERALION_NGL"; M_CTX="$MERALION_CTX"
+      M_NP="$MERALION_NP"; M_CACHE_RAM="$MERALION_CACHE_RAM"
       M_PIDFILE="$MERALION_PIDFILE"; M_LOGFILE="$MERALION_LOGFILE"
       ;;
     *) die "unknown model-key '$key' (known: qwen3-omni-30b-gguf, meralion-2-gguf)" ;;
@@ -339,17 +366,21 @@ serve_up() {
   [ -f "$M_MMPROJ" ] || die "mmproj GGUF not found: $M_MMPROJ"
   mkdir -p "$DATA"
 
-  echo "starting resident llama-server: $M_LABEL, -ngl $M_NGL -c $M_CTX, $M_HOST:$M_PORT" \
+  echo "starting resident llama-server: $M_LABEL, -ngl $M_NGL -c $M_CTX -np $M_NP --cache-ram $M_CACHE_RAM, $M_HOST:$M_PORT" \
        "${M_EXTRA_FLAGS:+(extra flags: $M_EXTRA_FLAGS)} ..."
   # Exact flag shape per scripts/repro_asr_best_of_n_llamacpp.py:16-20 / wiki/Inference-Engine-Choice.md.
   # $M_EXTRA_FLAGS is intentionally unquoted -- it is either empty (generate mode, vanishes under
   # word-splitting, no stray arg) or a fixed, space-separated flag string ("--embedding --pooling
   # last" for qwen3 embedding mode) that must split into separate argv words.
+  # -np/--cache-ram (2026-07-10, wave-3 batched-inference task brief item 2): now ALWAYS explicit
+  # (see M_NP/M_CACHE_RAM in _model_cfg) -- default -1/8192 reproduce the previously-implicit
+  # llama-server compiled defaults exactly, so wave-1/wave-2 (sequential) behavior is unchanged;
+  # run_wave3.sh overrides via LLAMA_NP=4 LLAMA_CTX=16384 for its batched (--parallel 4) cells.
   LD_LIBRARY_PATH="$LLAMACPP_DIR/build/bin${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}" \
     "$LLAMA_BIN" \
       -m "$M_MODEL" \
       --mmproj "$M_MMPROJ" \
-      -ngl "$M_NGL" -c "$M_CTX" \
+      -ngl "$M_NGL" -c "$M_CTX" -np "$M_NP" --cache-ram "$M_CACHE_RAM" \
       --host "$M_HOST" --port "$M_PORT" --no-warmup $M_EXTRA_FLAGS \
       >"$M_LOGFILE" 2>&1 &
   local newpid=$!
