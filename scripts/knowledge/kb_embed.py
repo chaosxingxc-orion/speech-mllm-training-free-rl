@@ -459,6 +459,15 @@ _LOADER_FNS = {
     "lco-3b": lambda wp, device="cpu": _llama_server_embed(wp, server_env="LCO3B_EMBED_SERVER"),
     "lco-7b": lambda wp, device="cpu": _llama_server_embed(wp, server_env="LCO7B_EMBED_SERVER"),
     "qwen3-omni-own": lambda wp, device="cpu": _llama_server_embed(wp, server_env="QWEN3OMNI_EMBED_SERVER"),
+    # 2026-07-11 (G2 control-arm prep, CPU embedder-smoke finding): "omni-embed-nemotron" is an
+    # EMBEDDERS metadata key (the step-2 NC-license contrast arm -- run_mock.EMBEDDERS and
+    # kb_batch_build.CONTENT_KEY_EMBEDDERS both enumerate it) but was never dispatchable here:
+    # embed_audio only reached _omni_embed via the LEGACY "omni-embed" tier name, so a real
+    # kb_batch_build.build_one("omni-embed-nemotron", ...) build (or a kb_retrieve query against a
+    # source whose embedder_token is "omni-embed-nemotron") raised the "no reliable semantic audio
+    # embedder available" RuntimeError. Wire the registry token to the SAME official
+    # encode_document path the legacy name uses.
+    "omni-embed-nemotron": lambda wp, device="cpu": _omni_embed(wp, device=device),
 }
 
 

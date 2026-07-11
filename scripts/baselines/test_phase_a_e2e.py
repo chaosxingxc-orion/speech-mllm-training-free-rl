@@ -1,6 +1,8 @@
 """scripts/baselines/test_phase_a_e2e.py — ticket #25 Priority-4 (i)+(j): fake-model E2E over ALL
 35 Phase-A arms against ONE tiny synthetic dataset, plus a CPU-real ('logmel-stats') smoke over 2
-arms with a stub generator.
+arms with a stub generator, plus (2026-07-12, Proposal-R prereg §5/§10 item 8, G2 gate) the 4
+mechanism-control arms (no-retrieval/random-retrieval/oracle-retrieval/gold-transcript) -- 39 total
+arms must go green.
 
 Pure-python-reachable, fully OFFLINE and GPU-free:
   - a tmp ``SPEECHRL_KB_DIR`` (never the real ``E:/speechrl-knowledge`` -- same safety pattern as
@@ -13,6 +15,10 @@ Pure-python-reachable, fully OFFLINE and GPU-free:
   - ``run_mock.generate_mock`` (and therefore ``_asr_transcribe``/``_hyde_generate``, which call it)
     is monkeypatched to a fake generator -- no HTTP call to a resident backbone server.
   - ``run_baseline.assert_gpu_session_held`` is monkeypatched to a no-op -- no GPU lock check.
+  - test k (control arms) TEMPORARILY overrides ``registry.LOADERS["squtr"]``/``["heysquad"]`` with
+    fake loaders (restored in ``finally``) and ``run_mock._squtr_corpus_text`` with an in-memory
+    fake corpus, so ``control-oracle-retrieval``'s real per-dataset dispatch branches run without
+    ever touching squtr's real (multi-GB) zip or heysquad's real parquet shards.
 
 Run:
     python -u scripts/baselines/test_phase_a_e2e.py
@@ -320,6 +326,221 @@ def test_cpu_live_logmel_stats_smoke(results: dict) -> None:
             print(f"  CPU-live arm {label!r} errors: {errors}")
 
 
+# ---------------------------------------------------------------------------------------------
+# fake rows shaped like squtr's/heysquad's real Row contracts -- just enough for
+# run_mock._oracle_hits_squtr/_oracle_hits_heysquad's REAL dispatch branches to run, without ever
+# touching squtr's real (multi-GB) zip or heysquad's real parquet shards.
+# ---------------------------------------------------------------------------------------------
+
+def _fake_squtr_rows(wavdir: str, prefix: str, n: int, freq0: float, docids: list[str]) -> list[dict]:
+    rows = []
+    for i in range(n):
+        wav = os.path.join(wavdir, f"{prefix}_{i}.wav")
+        _make_wav(wav, freq=freq0 + 11 * i)
+        rows.append({
+            "wav": wav,
+            "gold": [{"corpus_id": docids[i % len(docids)], "score": 1}],  # score>0 == qrels-positive
+            "meta": {"item_id": f"{prefix}-{i}", "subset": "fiqa",
+                     "text": f"fake spoken squtr query {prefix} number {i}"},
+        })
+    return rows
+
+
+def _fake_heysquad_rows(wavdir: str, prefix: str, n: int, freq0: float) -> list[dict]:
+    """``context`` deliberately CONTAINS the gold answer verbatim -- mirrors heysquad's own real
+    LEAKAGE WARNING (heysquad.py) so control-oracle-retrieval's scrub+CLEAN-audit path and
+    control-gold-transcript's UNSCRUBBED path are both exercised for real, not against inert text.
+    """
+    rows = []
+    for i in range(n):
+        wav = os.path.join(wavdir, f"{prefix}_{i}.wav")
+        _make_wav(wav, freq=freq0 + 11 * i)
+        answer = f"answer{i}"
+        context = f"This is a fake SQuAD passage about topic {i}. The correct answer is {answer}, right here."
+        rows.append({
+            "wav": wav,
+            "gold": [answer],
+            "meta": {"item_id": f"{prefix}-{i}", "context": context},
+        })
+    return rows
+
+
+_FAKE_SQUTR_CORPUS = {
+    "docA": "Fake corpus passage A: widgets are small mechanical parts used inside gadgets.",
+    "docB": "Fake corpus passage B: gadgets are electronic devices that use widgets internally.",
+}
+
+
+def _fake_squtr_corpus_text(subset: str, docids: list) -> dict:
+    return {d: _FAKE_SQUTR_CORPUS[d] for d in docids if d in _FAKE_SQUTR_CORPUS}
+
+
+# ---------------------------------------------------------------------------------------------
+# test k: fake-model E2E over the 4 Proposal-R prereg mechanism-control arms (wiki/2026-07-11-
+# proposal-R-prereg-draft.md §5/§10 item 8) -- no-retrieval / random-retrieval / oracle-retrieval /
+# gold-transcript. Each runs through the REAL run_mock.run_one_mock (not a bare unit call of the
+# helper functions), mirroring test_e2e_all_arms's own style, reusing the SAME module-level fake
+# embedder/generator/no-GPU-check monkeypatches that function already installed.
+# ---------------------------------------------------------------------------------------------
+
+def test_e2e_control_arms(results: dict) -> None:
+    import dataclasses
+
+    import kb_batch_build as kbb
+    import registry
+    import run_mock as rm
+    import templates
+
+    control_status: dict[str, dict] = {}
+
+    def _run_control(dataset_key: str, cfg, n: int) -> dict:
+        try:
+            r = rm.run_one_mock(dataset_key, cfg, "dev", n)
+            errors = [it.get("error") for it in r["per_item"] if "error" in it]
+            has_retrieved = all("retrieved" in it for it in r["per_item"] if "error" not in it)
+            return {"ok": not errors and has_retrieved, "errors": errors, "result": r}
+        except Exception as e:  # noqa: BLE001 -- record, don't abort the sweep
+            return {"ok": False, "errors": [f"{type(e).__name__}: {e}"], "result": None}
+
+    # --- control-no-retrieval / control-random-retrieval: a plain fake dataset (neither control
+    # needs a dataset-specific oracle notion) ---
+    templates.DATASET_KTYPE.setdefault("fake_e2e_ctrl", "K8")
+    wavdir = tempfile.mkdtemp(prefix="phase_a_ctrl_wav_")
+    ctrl_eval_rows = _fake_rows(wavdir, "ctrl-eval", 3, freq0=260.0)
+    ctrl_build_rows = _fake_rows(wavdir, "ctrl-build", 6, freq0=520.0)
+    ctrl_eval_ids = [r["meta"]["item_id"] for r in ctrl_eval_rows]
+
+    def fake_loader_ctrl(split: str = "dev", n: int | None = None, seed: int = 0):
+        return list(ctrl_eval_rows) if n == len(ctrl_eval_rows) else list(ctrl_build_rows)
+
+    registry.LOADERS["fake_e2e_ctrl"] = fake_loader_ctrl
+    kbb.build_one("glap", "fake_e2e_ctrl", "dev", value_spec="text", key_org="single-utt",
+                  value_org="knowledge-passage", n=len(ctrl_build_rows), seed=1,
+                  eval_manifest=ctrl_eval_ids)
+
+    base_cfg = dataclasses.replace(rm.REF_CONFIG, embedder="glap", key_org="single-utt",
+                                    value_org="knowledge-passage")
+
+    no_retr_cfg = dataclasses.replace(base_cfg, control="control-no-retrieval")
+    no_retr = _run_control("fake_e2e_ctrl", no_retr_cfg, len(ctrl_eval_rows))
+    no_retr_empty = no_retr["ok"] and all(
+        it.get("n_retrieved") == 0 for it in no_retr["result"]["per_item"] if "error" not in it
+    )
+    control_status["control-no-retrieval"] = {
+        "ok": bool(no_retr["ok"] and no_retr_empty), "errors": no_retr["errors"],
+    }
+
+    rand_cfg = dataclasses.replace(base_cfg, control="control-random-retrieval")
+    rand = _run_control("fake_e2e_ctrl", rand_cfg, len(ctrl_eval_rows))
+    rand_no_sim = rand["ok"] and all(
+        all(h["sim"] is None for h in it["retrieved"])
+        for it in rand["result"]["per_item"] if "error" not in it
+    )
+    control_status["control-random-retrieval"] = {
+        "ok": bool(rand["ok"] and rand_no_sim), "errors": rand["errors"],
+    }
+
+    # --- control-oracle-retrieval: real squtr/heysquad dispatch branches, via TEMPORARILY faked
+    # registry entries (restored in `finally`) -- no real squtr zip / heysquad parquet touched.
+    orig_squtr_loader = registry.LOADERS.get("squtr")
+    orig_heysquad_loader = registry.LOADERS.get("heysquad")
+    orig_squtr_corpus_text = rm._squtr_corpus_text
+    squtr_wavdir = tempfile.mkdtemp(prefix="phase_a_ctrl_squtr_wav_")
+    heysquad_wavdir = tempfile.mkdtemp(prefix="phase_a_ctrl_heysquad_wav_")
+    squtr_eval_rows = _fake_squtr_rows(squtr_wavdir, "squtr-eval", 2, freq0=310.0, docids=["docA", "docB"])
+    heysquad_eval_rows = _fake_heysquad_rows(heysquad_wavdir, "heysquad-eval", 2, freq0=610.0)
+
+    def fake_squtr_loader(split: str = "test", n: int | None = None, seed: int = 0):
+        return list(squtr_eval_rows)
+
+    def fake_heysquad_loader(split: str = "validation", n: int | None = None, seed: int = 0):
+        return list(heysquad_eval_rows)
+
+    oracle_cfg = dataclasses.replace(base_cfg, control="control-oracle-retrieval")
+    try:
+        registry.LOADERS["squtr"] = fake_squtr_loader
+        registry.LOADERS["heysquad"] = fake_heysquad_loader
+        rm._squtr_corpus_text = _fake_squtr_corpus_text
+
+        squtr_oracle = _run_control("squtr", oracle_cfg, len(squtr_eval_rows))
+        squtr_oracle_texts_ok = squtr_oracle["ok"] and all(
+            it["retrieved"] and any(t in it["retrieved"][0]["text"] for t in _FAKE_SQUTR_CORPUS.values())
+            for it in squtr_oracle["result"]["per_item"] if "error" not in it
+        )
+
+        heysquad_oracle = _run_control("heysquad", oracle_cfg, len(heysquad_eval_rows))
+        heysquad_answers = [f"answer{i}" for i in range(len(heysquad_eval_rows))]
+        heysquad_oracle_scrubbed = heysquad_oracle["ok"] and all(
+            it["retrieved"] and not any(a in it["retrieved"][0]["text"] for a in heysquad_answers)
+            for it in heysquad_oracle["result"]["per_item"] if "error" not in it
+        )
+
+        # negative check: a dataset with NO documented oracle notion must raise a clear (never
+        # guessed) error -- not counted as one of the 4 control PASS/FAIL rows, an extra assurance.
+        oracle_unsupported = _run_control("fake_e2e_ctrl", oracle_cfg, len(ctrl_eval_rows))
+        oracle_unsupported_raises = bool(oracle_unsupported["errors"]) and all(
+            "no documented oracle-retrieval notion" in (e or "") for e in oracle_unsupported["errors"]
+        )
+
+        # control-gold-transcript (heysquad): reuses the SAME fake heysquad loader -- still active
+        # inside this try block -- to inject the UNSCRUBBED context (the deliberate IB-violation,
+        # contrasted against oracle-retrieval's scrubbed heysquad text just above).
+        gold_cfg = dataclasses.replace(base_cfg, control="control-gold-transcript")
+        heysquad_gold = _run_control("heysquad", gold_cfg, len(heysquad_eval_rows))
+
+        # control-gold-transcript (squtr): a row with NO meta['context'] must inject the item's
+        # own GOLD HUMAN TRANSCRIPT (meta['text'] -- _gold_content_for_control's 2nd preference,
+        # the prereg's "gold human transcript"), never the qrels-dict flatten.
+        squtr_gold = _run_control("squtr", gold_cfg, len(squtr_eval_rows))
+        squtr_gold_is_transcript = squtr_gold["ok"] and all(
+            it["retrieved"] and "fake spoken squtr query" in it["retrieved"][0]["text"]
+            and "corpus_id" not in it["retrieved"][0]["text"]
+            for it in squtr_gold["result"]["per_item"] if "error" not in it
+        )
+    finally:
+        if orig_squtr_loader is not None:
+            registry.LOADERS["squtr"] = orig_squtr_loader
+        else:
+            registry.LOADERS.pop("squtr", None)
+        if orig_heysquad_loader is not None:
+            registry.LOADERS["heysquad"] = orig_heysquad_loader
+        else:
+            registry.LOADERS.pop("heysquad", None)
+        rm._squtr_corpus_text = orig_squtr_corpus_text
+
+    control_status["control-oracle-retrieval"] = {
+        "ok": bool(squtr_oracle["ok"] and squtr_oracle_texts_ok
+                   and heysquad_oracle["ok"] and heysquad_oracle_scrubbed),
+        "errors": squtr_oracle["errors"] + heysquad_oracle["errors"],
+    }
+    results["control-oracle-retrieval: unsupported dataset raises a clear (non-guessing) error"] = (
+        oracle_unsupported_raises
+    )
+
+    heysquad_gold_unscrubbed = heysquad_gold["ok"] and all(
+        it["retrieved"] and any(a in it["retrieved"][0]["text"] for a in heysquad_answers)
+        for it in heysquad_gold["result"]["per_item"] if "error" not in it
+    )
+    heysquad_gold_boundary_label = (
+        heysquad_gold["ok"] and "ORACLE UPPER BOUND" in heysquad_gold["result"]["boundary"]
+        and "information-boundary-violating" in heysquad_gold["result"]["boundary"]
+    )
+    control_status["control-gold-transcript"] = {
+        "ok": bool(heysquad_gold["ok"] and heysquad_gold_unscrubbed and heysquad_gold_boundary_label
+                   and squtr_gold["ok"] and squtr_gold_is_transcript),
+        "errors": heysquad_gold["errors"] + squtr_gold["errors"],
+    }
+
+    n_fail = sum(0 if v["ok"] else 1 for v in control_status.values())
+    results["all 4 control arms produce a clean, end-to-end result"] = (n_fail == 0)
+
+    print("\n-- per-control-arm fake-E2E status --")
+    for name, v in control_status.items():
+        status = "PASS" if v["ok"] else "FAIL"
+        extra = f" errors={v['errors'][:2]}" if not v["ok"] else ""
+        print(f"  [{status}] {name:30s}{extra}")
+
+
 def main() -> int:
     _ensure_tmp_kb_dir()
     print(f"[test_phase_a_e2e] SPEECHRL_KB_DIR={os.environ['SPEECHRL_KB_DIR']} (tmp -- never the real KB)")
@@ -327,6 +548,7 @@ def main() -> int:
     results: dict[str, bool] = {}
     test_e2e_all_arms(results)
     test_cpu_live_logmel_stats_smoke(results)
+    test_e2e_control_arms(results)
 
     print("\n=== PHASE-A E2E TEST ===")
     for k, v in results.items():

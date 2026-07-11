@@ -72,6 +72,18 @@ these by monkeypatching the specific function that would talk to the server
     passage's sentences by lexical overlap with the instruction and keeps the top 50%, tagged
     ``[compressed-lite]`` so it's never mistaken for real LLMLingua-2 output.
 
+**Mechanism-control arms** (2026-07-12, Proposal-R prereg §5/§10 item 8 --
+``wiki/2026-07-11-proposal-R-prereg-draft.md``): 4 controls the causal ladder needs that are NOT
+among the 35 exploratory arms above -- ``CONTROL_ARMS``, gated by ``MockConfig.control`` (``None``
+for every one of the 35 arms; never crossed with them). ``control-no-retrieval`` / ``control-
+random-retrieval`` / ``control-oracle-retrieval`` / ``control-gold-transcript`` each replace ONLY
+``run_one_mock``'s retrieval stage (``apply_control``) -- delivery/generate/score are unchanged, so
+a control cell's result JSON has the exact same shape as an exploratory one. ``control-gold-
+transcript`` is the ONE deliberately information-boundary-VIOLATING arm (injects the item's own
+gold transcript/passage UNSCRUBBED) -- its result JSON's ``boundary`` field always carries the
+"ORACLE UPPER BOUND (information-boundary-violating by design ...)" label (see
+``_CONTROL_BOUNDARY``), never a deployable claim.
+
 Lazy-import discipline (CLAUDE.md): ``kb_retrieve``/``kb_schema``/``p2_baselines`` stay inside the
 functions that need them; ``import run_mock`` alone (and every ``--dry-run`` path) never touches
 the data root, the KB store, or a model/GPU.
@@ -183,6 +195,38 @@ DELIVERY_MODES = [
 
 
 # ---------------------------------------------------------------------------------------------
+# mechanism-control arms (2026-07-12, Proposal-R prereg §5/§10 item 8 --
+# wiki/2026-07-11-proposal-R-prereg-draft.md). FOUR controls the causal ladder needs that are NOT
+# part of the 35 exploratory arms above (own-ASR cascade and long-context-stuffing already exist,
+# as a query_construction arm and a retrieval.kind arm respectively -- see that doc's §5 table).
+# Kept in a SEPARATE registry (``CONTROL_ARMS``) and gated by ``MockConfig.control`` (default
+# ``None`` == "one of the 35 exploratory arms above, unaffected by this addition") -- never crossed
+# with the 35 exploratory arms: ``build_phase_a_arms``/``build_phase_a_cells`` never sets this
+# field, so the Phase-A 35-arm x 4-dataset schedule (140 dev cells) is completely unchanged.
+# ---------------------------------------------------------------------------------------------
+CONTROL_ARMS = (
+    "control-no-retrieval",       # frozen generator, audio-only + fixed task prompt, NO KB injection
+                                    # at all (= the Step-1 run_baseline cell) -- H1/H3 baseline comparator.
+    "control-random-retrieval",     # same pipeline, k passages drawn UNIFORMLY AT RANDOM from the
+                                      # SAME (CLEAN) source pool, never by similarity -- H2 comparator /
+                                      # feeds the retrieval-lever-dead kill.
+    "control-oracle-retrieval",       # inject the dataset-NATIVE gold-relevant passage(s): squtr =
+                                        # qrels-positive corpus docs; heysquad = the gold SQuAD passage,
+                                        # POST-SCRUB (kb_audit.scrub_golds, same gate every KB source
+                                        # goes through) -- H3 comparator / bottleneck-not-retrieval kill.
+    "control-gold-transcript",          # UPPER BOUND ONLY: the item's own gold transcript/passage,
+                                          # UNSCRUBBED -- deliberately information-boundary-violating
+                                          # (prereg §5/§11); never a deployable claim.
+)
+
+CONTROL_RANDOM_K = 3  # task brief: "seeded uniform draw of k=3 passages"
+
+# Datasets with a documented, dataset-NATIVE oracle-retrieval notion (see _oracle_retrieval_hits
+# below). Any dataset_key not in this tuple raises a clear RuntimeError rather than guessing.
+ORACLE_RETRIEVAL_DATASETS = ("squtr", "heysquad")
+
+
+# ---------------------------------------------------------------------------------------------
 # MockConfig -- the object under comparison. Frozen (immutable): a run's whole behavior is fixed by
 # one MockConfig value, never mutated mid-sweep.
 # ---------------------------------------------------------------------------------------------
@@ -203,6 +247,11 @@ class MockConfig:
     query_construction: str
     delivery: str
     backbone: str = "qwen3-omni-30b-gguf"
+    # 2026-07-12: mechanism-control arm token (one of CONTROL_ARMS), or None for every one of the
+    # 35 exploratory arms above (the pre-existing default/only behavior). When set, run_one_mock's
+    # retrieval STAGE is replaced by apply_control -- every other stage (delivery/generate/score)
+    # is unchanged, so a control cell's result JSON has the exact same shape as an exploratory one.
+    control: str | None = None
 
 
 # §1 ref-config verbatim: GLAP / single-utt key / knowledge-passage value / dense top-3 cosine /
@@ -256,6 +305,8 @@ def validate_mock_config(cfg: MockConfig) -> None:
         errs.append(f"delivery={cfg.delivery!r} not in {DELIVERY_MODES}")
     if cfg.backbone not in rb.BACKBONES:
         errs.append(f"backbone={cfg.backbone!r} not in {sorted(rb.BACKBONES)}")
+    if cfg.control is not None and cfg.control not in CONTROL_ARMS:
+        errs.append(f"control={cfg.control!r} not in {CONTROL_ARMS} (or None)")
     if errs:
         raise ValueError("validate_mock_config: " + "; ".join(errs))
 
@@ -858,6 +909,207 @@ def _record_retrieved(hits: list[dict], source: str) -> list[dict]:
 
 
 # ---------------------------------------------------------------------------------------------
+# mechanism-control arms -- retrieval-stage implementations (Proposal-R prereg §5/§10 item 8).
+# Each returns a hits-shaped list (``{"value": KnowledgeValue, "sim": float | None}``) -- the SAME
+# shape ``apply_retrieval_kind`` produces -- so ``render_delivery``/``_record_retrieved``/
+# ``_exclude_own_item`` downstream are completely unchanged; a control arm only replaces the
+# retrieval STAGE, never delivery/generation/scoring. ``sim`` is ``None`` whenever there is no
+# genuine similarity score (a uniform draw, or a dataset-native/gold passage picked without any
+# cosine ranking) -- never a fabricated number that could be mistaken for a real cosine value.
+# ---------------------------------------------------------------------------------------------
+
+def _random_retrieval_hits(source_obj: dict, seed: int, k: int = CONTROL_RANDOM_K) -> list[dict]:
+    """control-random-retrieval: a SEEDED uniform draw of ``k`` passages from the SAME source's
+    value store, bypassing similarity/query-embedding entirely (prereg §5 H2 comparator: "same
+    pipeline, k passages drawn uniformly at random from the CLEAN pool, not by similarity"). Own-
+    item exclusion is applied by the SAME ``_exclude_own_item`` call every other arm goes through
+    (``run_one_mock``), not duplicated here.
+    """
+    import numpy as np
+
+    values = source_obj["values"]
+    if not values:
+        return []
+    rng = np.random.default_rng(seed)
+    n = min(k, len(values))
+    chosen = rng.choice(len(values), size=n, replace=False)
+    return [{"value": values[int(i)], "sim": None} for i in chosen]
+
+
+_SQUTR_CORPUS_CACHE: dict[str, dict[str, str]] = {}  # subset -> {docid: text}, cached per-process
+
+
+def _squtr_corpus_text(subset: str, docids: list[str]) -> dict[str, str]:
+    """Lazily loads+caches (per subset, per process) squtr's ``corpus.jsonl`` and returns
+    ``{docid: text}`` for exactly the requested ids -- avoids paying the full multi-million-row
+    corpus.jsonl cost more than once per subset per process. Reuses squtr.py's own (module-private
+    but stable) zip/member helpers rather than re-implementing the zip layout -- same convention as
+    this module's other lazy cross-module reuses (``rb._load_rows``, ``kb_inject``)."""
+    cache = _SQUTR_CORPUS_CACHE.setdefault(subset, {})
+    missing = [d for d in docids if d not in cache]
+    if missing:
+        import zipfile
+
+        import squtr  # lazy; scripts/loaders
+
+        want = set(missing)
+        with zipfile.ZipFile(squtr._zip_path()) as zf:
+            corpus = squtr._read_jsonl_member(zf, f"{squtr._subset_prefix(subset)}/corpus.jsonl")
+        for doc in corpus:
+            if doc["_id"] in want:
+                cache[doc["_id"]] = str(doc.get("text") or doc.get("title") or "")
+    return {d: cache[d] for d in docids if d in cache}
+
+
+def _oracle_hits_squtr(row: dict, source: str, k: int = 3) -> list[dict]:
+    """control-oracle-retrieval / squtr: the native qrels-POSITIVE (``score > 0``) corpus
+    document(s) for this query -- the DATASET's OWN relevance judgments, not a KB-similarity guess.
+    Never scrubbed: squtr's qrels are relevance judgments over a text corpus, not an answer-bearing
+    passage that contains the item's own gold verbatim the way heysquad's ``context`` does."""
+    from kb_schema import KnowledgeValue
+
+    meta = row.get("meta", {}) or {}
+    gold = row.get("gold") or []
+    docids = [g["corpus_id"] for g in gold if int(g.get("score", 0) or 0) > 0]
+    if not docids:
+        return []
+    subset = meta.get("subset", "fiqa")
+    texts = _squtr_corpus_text(subset, docids[:k])
+    return [
+        {"value": KnowledgeValue(
+            row=-1, kid=f"{source}:oracle:{d}", source=source, key_modality="audio",
+            value_type="text-fact", value=texts[d],
+            provenance={"from_item_id": meta.get("item_id"), "oracle_docid": d}),
+         "sim": None}
+        for d in docids[:k] if d in texts
+    ]
+
+
+def _oracle_hits_heysquad(row: dict, source: str) -> list[dict]:
+    """control-oracle-retrieval / heysquad: the gold SQuAD passage (``meta['context']``) AFTER
+    scrubbing the item's own gold answer(s) out of it (``kb_audit.scrub_golds`` -- the SAME scrub
+    every heysquad KB source already goes through, ``kb_batch_build.build_one``'s ``scrub=True``).
+    Raises if the scrub does not reach a CLEAN verdict (``kb_audit.audit_texts``) -- an "oracle"
+    passage that still leaks the answer is answer-lookup, not a legitimate relevance upper bound
+    (contrast ``control-gold-transcript``, which injects the SAME field UNSCRUBBED on purpose)."""
+    import kb_audit
+    from kb_schema import KnowledgeValue
+
+    meta = row.get("meta", {}) or {}
+    context = meta.get("context")
+    if not context:
+        return []
+    golds = row.get("gold") or []
+    scrubbed = kb_audit.scrub_golds([context], golds)[0]
+    audit = kb_audit.audit_texts([scrubbed], golds)
+    if audit["verdict"] != "CLEAN":
+        raise RuntimeError(
+            f"_oracle_hits_heysquad: post-scrub audit verdict={audit['verdict']!r} (not CLEAN) for "
+            f"item {meta.get('item_id')!r} -- refusing to serve a leaking 'oracle' passage."
+        )
+    return [{"value": KnowledgeValue(
+        row=-1, kid=f"{source}:oracle:{meta.get('item_id')}", source=source, key_modality="audio",
+        value_type="text-fact", value=scrubbed,
+        provenance={"from_item_id": meta.get("item_id")}), "sim": None}]
+
+
+def _oracle_retrieval_hits(dataset_key: str, row: dict, source: str) -> list[dict]:
+    if dataset_key == "squtr":
+        return _oracle_hits_squtr(row, source)
+    if dataset_key == "heysquad":
+        return _oracle_hits_heysquad(row, source)
+    raise RuntimeError(
+        f"control-oracle-retrieval: {dataset_key!r} has no documented oracle-retrieval notion "
+        f"wired (only {ORACLE_RETRIEVAL_DATASETS} -- see run_mock._oracle_retrieval_hits). Add a "
+        "dataset-specific branch before using this control on a new dataset; never silently guess."
+    )
+
+
+def _gold_content_for_control(row: dict) -> str:
+    """The item's own gold transcript/passage, best-effort, in preference order: (1) the QA gold
+    PASSAGE (``meta['context']``, e.g. heysquad -- contains the answer verbatim by construction,
+    the strongest injection upper bound); (2) the GOLD HUMAN TRANSCRIPT of the item's own audio
+    (``meta['text']`` -- the loader-Row reference-transcript convention, e.g. squtr's query text;
+    the prereg §5 "gold human transcript", removing the ASR bottleneck); (3) a flattened form of
+    the item's own ``gold`` field (reuses ``kb_batch_build._gold_string`` -- the SAME flattening
+    convention every other gold-touching helper in this repo already uses)."""
+    meta = row.get("meta", {}) or {}
+    if meta.get("context"):
+        return str(meta["context"])
+    if meta.get("text"):
+        return str(meta["text"])
+    import kb_batch_build as kbb  # lazy; scripts/knowledge
+
+    return kbb._gold_string(row.get("gold"))
+
+
+def _gold_transcript_hits(row: dict, source: str) -> list[dict]:
+    """control-gold-transcript: inject the item's own gold transcript/passage UNSCRUBBED --
+    deliberately information-boundary-VIOLATING (contrast control-oracle-retrieval's heysquad
+    branch, which scrubs). UPPER BOUND ONLY -- never a deployable claim (prereg §5/§11); see
+    ``_CONTROL_BOUNDARY['control-gold-transcript']`` for the exact label this arm's result JSON
+    carries (mirrors ``repro_asr_best_of_n_v2.py``'s oracle-selector label convention)."""
+    from kb_schema import KnowledgeValue
+
+    meta = row.get("meta", {}) or {}
+    content = _gold_content_for_control(row)
+    if not content.strip():
+        return []
+    return [{"value": KnowledgeValue(
+        row=-1, kid=f"{source}:gold-transcript:{meta.get('item_id')}", source=source,
+        key_modality="audio", value_type="text-fact", value=content,
+        provenance={"from_item_id": meta.get("item_id")}), "sim": None}]
+
+
+def apply_control(control: str, dataset_key: str, row: dict, source_obj: dict | None, source: str,
+                   seed: int) -> list[dict]:
+    """Dispatch for the 4 mechanism-control arms -- returns a hits-shaped list, see this section's
+    module comment. ``source_obj`` is only used (and only required) by
+    ``'control-random-retrieval'``; the other 3 controls never touch a built KB source.
+    """
+    if control == "control-no-retrieval":
+        return []  # no KB injection at all -- the Step-1 run_baseline-equivalent cell
+    if control == "control-random-retrieval":
+        if source_obj is None:
+            raise RuntimeError(
+                "control-random-retrieval needs a real KB source_obj (the SAME pool it draws "
+                "uniformly from) -- not available from --dry-run / an unbuilt source."
+            )
+        return _random_retrieval_hits(source_obj, seed=seed)
+    if control == "control-oracle-retrieval":
+        return _oracle_retrieval_hits(dataset_key, row, source)
+    if control == "control-gold-transcript":
+        return _gold_transcript_hits(row, source)
+    raise ValueError(f"apply_control: unknown control {control!r} (expected one of {CONTROL_ARMS})")
+
+
+_CONTROL_BOUNDARY = {
+    "control-no-retrieval": (
+        "audio-only input + fixed task-definition text, NO KB injection at all (Step-1 "
+        "run_baseline-equivalent cell) -- prereg control arm 'no-retrieval' (H1/H3 baseline "
+        "comparator, wiki/2026-07-11-proposal-R-prereg-draft.md §5)."
+    ),
+    "control-random-retrieval": (
+        "audio-only input + fixed task-definition text + a SEEDED UNIFORM draw of k passages from "
+        "the same KB source (never ranked by similarity) -- prereg control arm 'random-retrieval' "
+        "(H2 comparator / retrieval-lever-dead kill, §5)."
+    ),
+    "control-oracle-retrieval": (
+        "audio-only input + fixed task-definition text + the dataset-NATIVE gold-relevant "
+        "passage(s) (squtr: qrels-positive corpus docs; heysquad: gold passage POST-SCRUB) -- "
+        "prereg control arm 'oracle-retrieval' (H3 comparator / bottleneck-not-retrieval kill, ρ "
+        "denominator, §5). Distinct from 'gold-transcript' below: this passage IS scrubbed."
+    ),
+    "control-gold-transcript": (
+        "ORACLE UPPER BOUND (information-boundary-violating by design: the injected passage is "
+        "the item's OWN gold transcript/passage, UNSCRUBBED; NOT deployable) -- prereg control arm "
+        "'gold-transcript' (§5/§11: upper-bound ONLY, ASR-penalty ceiling, never a deployable "
+        "claim). Mirrors repro_asr_best_of_n_v2.py's oracle-selector label convention verbatim."
+    ),
+}
+
+
+# ---------------------------------------------------------------------------------------------
 # result paths (separate namespace from run_baseline's _repro/baselines/ -- never collides with
 # the concurrently-running wave-1 marathon's own output files).
 # ---------------------------------------------------------------------------------------------
@@ -893,8 +1145,15 @@ def run_one_mock(dataset_key: str, cfg: MockConfig, split: str, n: int | None) -
     rows = rb._load_rows(dataset_key, split, n, seed)
     kt = templates.k_type_of(dataset_key) if dataset_key not in templates.LEGACY_DATASETS else "K8/K6 (legacy)"
 
+    control = cfg.control
     source = source_name_for(dataset_key, cfg)
-    source_obj = _load_kb_source(source)
+    # 2026-07-12: only the exploratory pipeline and 'control-random-retrieval' (draws from "the
+    # SAME source", per its own definition) need a real built KB source open -- 'control-no-
+    # retrieval'/'control-oracle-retrieval'/'control-gold-transcript' never touch the built KB at
+    # all (dataset-native qrels/context or the row's own gold instead), so a control-arm cell can
+    # run before that dataset's KB source even exists.
+    needs_kb_source = control is None or control == "control-random-retrieval"
+    source_obj = _load_kb_source(source) if needs_kb_source else None
     candidate_k = _candidate_pool_k(cfg.retrieval)
 
     per_item, scores = [], []
@@ -902,17 +1161,29 @@ def run_one_mock(dataset_key: str, cfg: MockConfig, split: str, n: int | None) -
     for i, row in enumerate(rows):
         item_id = row.get("meta", {}).get("item_id")
         try:
-            qkind, query_val = build_query(cfg, dataset_key, row, seed=seed + i)
-            raw_hits = _retrieve_by_qkind(source_obj, qkind, query_val, topk=candidate_k)
-            # P3g: own-item exclusion BEFORE the retrieval-kind's own top-k/threshold narrowing, so
-            # a self-hit never silently eats one of the final k slots.
-            raw_hits = _exclude_own_item(raw_hits, item_id)
-            hits = apply_retrieval_kind(raw_hits, cfg.retrieval, source_obj=source_obj,
-                                         query_val=query_val, row=row)
+            if control is not None:
+                hits = apply_control(control, dataset_key, row, source_obj, source, seed=seed + i)
+            else:
+                qkind, query_val = build_query(cfg, dataset_key, row, seed=seed + i)
+                raw_hits = _retrieve_by_qkind(source_obj, qkind, query_val, topk=candidate_k)
+                # P3g: own-item exclusion BEFORE the retrieval-kind's own top-k/threshold
+                # narrowing, so a self-hit never silently eats one of the final k slots.
+                raw_hits = _exclude_own_item(raw_hits, item_id)
+                hits = apply_retrieval_kind(raw_hits, cfg.retrieval, source_obj=source_obj,
+                                             query_val=query_val, row=row)
             # P3g (belt-and-suspenders): two-stage/hybrid-bm25-dense-rrf/ircot-2hop can pull hits
             # from BEYOND the pre-filtered raw_hits candidate pool (full-corpus BM25 scan, a 2nd
             # hop, cluster members) -- re-exclude the current item's own id from the FINAL list too.
-            hits = _exclude_own_item(hits, item_id)
+            # 2026-07-12: control-oracle-retrieval/control-gold-transcript are EXEMPT from this
+            # exclusion -- unlike the exploratory arms/control-random-retrieval (which retrieve
+            # from a SEPARATE build pool, where a self-hit would be an accidental leakage bug),
+            # these two controls' entire point is to hand back content genuinely "of"/"for" the
+            # CURRENT item (the query's own gold-relevant passage / its own gold transcript) --
+            # apply_control already stamps provenance.from_item_id = this item's own id for
+            # exactly that reason (traceability), so excluding it here would silently zero out
+            # both controls' injected content on every single item.
+            if control in (None, "control-random-retrieval"):
+                hits = _exclude_own_item(hits, item_id)
             base_instr = templates.build_instruction(dataset_key, row)
             payload = render_delivery(cfg, hits, base_instr)
             text = generate_mock(cfg, row["wav"], payload, seed=seed + i)
@@ -937,6 +1208,24 @@ def run_one_mock(dataset_key: str, cfg: MockConfig, split: str, n: int | None) -
     mean = round(sum(numeric) / len(numeric), 4) if numeric else None
     ci = rb.paired_bootstrap(numeric, seed=seed) if numeric else None
 
+    # ticket #25 P4 / 2026-07-12 control-arm extension: dataset_revision/manifest_hash resolve from
+    # the KB SOURCE this cell actually queried (source_obj["manifest"]) when one was loaded; a
+    # control arm that never opens a built KB source (no-retrieval/oracle-retrieval/gold-transcript)
+    # has no such manifest to report -- stays None, mirroring run_baseline.write_result's own "no KB
+    # source involved" convention (never fabricated).
+    if source_obj is not None:
+        dataset_revision, manifest_hash = source_obj["manifest"].revision, source_obj["manifest"].build_hash
+    else:
+        dataset_revision, manifest_hash = None, None
+
+    boundary = _CONTROL_BOUNDARY[control] if control else (
+        "audio-only input + fixed task-definition text + retrieved KB values (never the "
+        "current item's own gold) delivered via a FIXED, pre-registered pipeline -- embedder / "
+        "key_org / value_org / retrieval / query_construction / delivery are all pinned per "
+        "mock_config for the WHOLE cell, no per-item adaptive branching. See "
+        "templates.py's Information-Boundary-Guard note and assert_no_adaptive_logic above."
+    )
+
     return {
         "stage": "2-mock-pregrid-directional",
         "dataset": dataset_key, "k_type": kt, "backbone": cfg.backbone, "split": split,
@@ -945,20 +1234,9 @@ def run_one_mock(dataset_key: str, cfg: MockConfig, split: str, n: int | None) -
         "source": source,
         "model": rb.BACKBONES[cfg.backbone]["model_tag"],
         "sampling_params": {"greedy_seed_base": seed, **rb.sampling_params_for(cfg.backbone)},
-        "boundary": (
-            "audio-only input + fixed task-definition text + retrieved KB values (never the "
-            "current item's own gold) delivered via a FIXED, pre-registered pipeline -- embedder / "
-            "key_org / value_org / retrieval / query_construction / delivery are all pinned per "
-            "mock_config for the WHOLE cell, no per-item adaptive branching. See "
-            "templates.py's Information-Boundary-Guard note and assert_no_adaptive_logic above."
-        ),
-        # ticket #25 P4: shared provenance block -- dataset_revision/manifest_hash resolved from
-        # the KB SOURCE this cell actually queried (source_obj["manifest"]), since that IS "the
-        # dataset" a mock cell is evaluated against (unlike a plain Stage-1 baseline cell).
+        "boundary": boundary,
         "provenance": provenance.collect_provenance(
-            rb.REPO_ROOT,
-            dataset_revision=source_obj["manifest"].revision,
-            manifest_hash=source_obj["manifest"].build_hash,
+            rb.REPO_ROOT, dataset_revision=dataset_revision, manifest_hash=manifest_hash,
         ),
         "per_item": per_item,
         "aggregate": {"mean": mean, "ci95": ci, "n_scored": len(numeric), "n_total": len(rows)},
@@ -967,7 +1245,7 @@ def run_one_mock(dataset_key: str, cfg: MockConfig, split: str, n: int | None) -
             f"--backbone {cfg.backbone} --embedder {cfg.embedder} --key-org {cfg.key_org} "
             f"--value-org {cfg.value_org} --retrieval-kind {cfg.retrieval.kind} "
             f"--retrieval-k {cfg.retrieval.k} --query-construction {cfg.query_construction} "
-            f"--delivery {cfg.delivery}"
+            f"--delivery {cfg.delivery}" + (f" --control {control}" if control else "")
         ),
         "elapsed_s": round(time.time() - t0, 1),
     }
@@ -1024,6 +1302,25 @@ def dry_run_mock(dataset_key: str, cfg: MockConfig, split: str = "dev") -> None:
     row = rb._synthetic_row(dataset_key)
     base_instr = templates.build_instruction(dataset_key, row)
 
+    if cfg.control is not None:
+        # 2026-07-12: a control arm bypasses build_query/apply_retrieval_kind entirely (see
+        # apply_control) -- preview it with its own 5-stage summary instead of the generic
+        # retrieval-kind/query-construction preview below, which would otherwise describe machinery
+        # this arm never actually calls.
+        print(f"=== mock pipeline plan: {dataset_key} [{kt}] split={split} backbone={cfg.backbone} "
+              f"CONTROL={cfg.control!r} ===")
+        print(f"  source (nominal -- see apply_control, may be unused by this control): {source}")
+        print(f"  1. loader rows   : rb._load_rows({dataset_key!r}, {split!r}, n, seed)")
+        print(f"  2. control       : apply_control({cfg.control!r}, ...) -- bypasses "
+              "build_query/apply_retrieval_kind entirely; see run_mock.CONTROL_ARMS")
+        print(f"  3. inject        : render_delivery(cfg, hits, base_instr) (same as every "
+              "exploratory arm)")
+        print(f"  4. generate      : generate_mock(backbone={cfg.backbone!r}, ...)")
+        print(f"  5. metric        : metrics.score({dataset_key!r}, row, text)")
+        print(f"  boundary         : {_CONTROL_BOUNDARY[cfg.control]}")
+        print(f"  mock_config: {asdict(cfg)}")
+        return
+
     synthetic_hits = _synthetic_hits(cfg.retrieval.k)
     try:
         posted = apply_retrieval_kind(synthetic_hits, cfg.retrieval)
@@ -1078,6 +1375,7 @@ def _cfg_from_args(args: argparse.Namespace) -> MockConfig:
         retrieval=RetrievalConfig(kind=args.retrieval_kind, k=args.retrieval_k,
                                    threshold=args.retrieval_threshold),
         query_construction=args.query_construction, delivery=args.delivery, backbone=args.backbone,
+        control=args.control,
     )
 
 
@@ -1095,6 +1393,9 @@ def main() -> None:
     ap.add_argument("--retrieval-threshold", type=float, default=REF_CONFIG.retrieval.threshold)
     ap.add_argument("--query-construction", default=REF_CONFIG.query_construction, choices=QUERY_CONSTRUCTIONS)
     ap.add_argument("--delivery", default=REF_CONFIG.delivery, choices=DELIVERY_MODES)
+    ap.add_argument("--control", default=None, choices=CONTROL_ARMS,
+                     help="run a Proposal-R prereg mechanism-control arm instead of one of the 35 "
+                          "exploratory arms (§5/§10 item 8) -- replaces the retrieval stage only")
     ap.add_argument("--dry-run", action="store_true", help="render the pipeline plan; no model/KB/GPU calls")
     args = ap.parse_args()
 
