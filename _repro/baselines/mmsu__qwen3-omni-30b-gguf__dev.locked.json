@@ -1,0 +1,1152 @@
+{
+  "stage": "1-directional",
+  "dataset": "mmsu",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 100,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/mmsu.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": "0.11.0"
+    }
+  },
+  "per_item": [
+    {
+      "item_id": "syllable_perception_09c465fe-a8b3-4c73-ae3e-02a3da925478",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. six-syllable words\nB. two-syllable words\nC. three-syllable words\nD. one-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. one-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_165596dd-8822-4242-a9c7-fb7a1c7816ff",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. two-syllable words\nB. three-syllable words\nC. one-syllable words\nD. four-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. three-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_1a9b86be-329c-47d9-85ba-73c5c242205a",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. two-syllable words\nB. one-syllable words\nC. three-syllable words\nD. five-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. three-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_1b914764-8d96-4cff-afb8-87f93ccd93da",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. four-syllable words\nB. two-syllable words\nC. five-syllable words\nD. six-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. two-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_1b9b3fd3-b9d7-44ff-bb32-3e05c2b60639",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. three-syllable words\nB. two-syllable words\nC. one-syllable words\nD. five-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. one-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_1b9cf6cb-9996-48cd-b312-ad83a3df7a10",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. four-syllable words\nB. three-syllable words\nC. one-syllable words\nD. five-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. five-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_1d1b71f1-7d45-4d99-9320-72b083a37a2e",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. two-syllable words\nB. four-syllable words\nC. six-syllable words\nD. five-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. four-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 0
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_1d4189ef-eae6-4e72-aa22-6a6e385d4783",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. four-syllable words\nB. two-syllable words\nC. six-syllable words\nD. five-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. five-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_1dbfc4a6-1a54-4dbe-9543-5ee6c858e5e2",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. two-syllable words\nB. three-syllable words\nC. one-syllable words\nD. four-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. one-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_1dcfce6c-1036-4664-b7ef-c3f087a17b97",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. six-syllable words\nB. two-syllable words\nC. four-syllable words\nD. three-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. three-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_1f2c8834-e242-44e8-8642-93a7e09f9ce1",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. three-syllable words\nB. six-syllable words\nC. one-syllable words\nD. two-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. two-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_1faf51ee-5ca1-4676-a846-6d98ad975fb7",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. five-syllable words\nB. three-syllable words\nC. two-syllable words\nD. one-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. one-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_20cabaa0-7ea1-465f-a898-7ddb7ebc3e4a",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. one-syllable words\nB. four-syllable words\nC. two-syllable words\nD. five-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. one-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_261cc424-9088-46ca-8d04-4e12356fed9a",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. six-syllable words\nB. five-syllable words\nC. three-syllable words\nD. one-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. three-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_27f8b052-e617-4b21-9a41-9c40e1011f14",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. five-syllable words\nB. six-syllable words\nC. four-syllable words\nD. two-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. four-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 3
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_290c6ac9-b880-484f-8574-87e555036e39",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. three-syllable words\nB. five-syllable words\nC. one-syllable words\nD. two-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. two-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_2cdf27f4-ed25-4569-8dc4-019e53fd4d12",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. one-syllable words\nB. six-syllable words\nC. three-syllable words\nD. four-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. three-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_2e4649d0-617d-4c83-b45b-de0d1576e91e",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. six-syllable words\nB. four-syllable words\nC. three-syllable words\nD. one-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. one-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_30cbaa85-748a-46e0-950a-0afcc0246070",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. three-syllable words\nB. five-syllable words\nC. four-syllable words\nD. two-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. four-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_326ce178-51da-434d-a519-7aee037c2367",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. five-syllable words\nB. four-syllable words\nC. one-syllable words\nD. two-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. two-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_35633630-35e6-40c5-85dc-21889d376d62",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. five-syllable words\nB. two-syllable words\nC. six-syllable words\nD. three-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. six-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_356e258f-3d8f-4463-921c-ab3f4b35be88",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. six-syllable words\nB. three-syllable words\nC. four-syllable words\nD. two-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. four-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_3bda2ea4-2778-45f0-af41-dbaa420f55b3",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. one-syllable words\nB. four-syllable words\nC. two-syllable words\nD. five-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. two-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_42d3b584-70c4-40c1-b171-6d270f13ebec",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. four-syllable words\nB. three-syllable words\nC. five-syllable words\nD. one-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. five-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_42ed6a3d-08a0-4dd9-96fd-f1a4e46786a0",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. five-syllable words\nB. four-syllable words\nC. one-syllable words\nD. two-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. two-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_4521402c-081c-4981-b022-80009341ed81",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. two-syllable words\nB. three-syllable words\nC. six-syllable words\nD. five-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. two-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_4eb910ca-dce7-424f-a265-d84d2d29be19",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. six-syllable words\nB. three-syllable words\nC. two-syllable words\nD. four-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. four-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 1
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_51614534-a596-4fc6-9127-6274361dd281",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. six-syllable words\nB. one-syllable words\nC. three-syllable words\nD. two-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. three-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_52c72d78-569b-446f-8ebe-8ee17eaa9fd9",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. five-syllable words\nB. two-syllable words\nC. one-syllable words\nD. three-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. one-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_56261ce6-d8df-4e5d-b584-d95b7144ad25",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. six-syllable words\nB. two-syllable words\nC. three-syllable words\nD. one-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. one-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 1
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_57209ecd-3bc2-4d55-952a-293f6157cdd0",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. six-syllable words\nB. three-syllable words\nC. four-syllable words\nD. one-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. four-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_58ac0ffa-7c59-4f31-8b34-ed9987144ff7",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. five-syllable words\nB. four-syllable words\nC. six-syllable words\nD. one-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. one-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_58e0e613-b838-4cfb-9215-98025e10d1cb",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. three-syllable words\nB. six-syllable words\nC. two-syllable words\nD. five-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. five-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 1
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_59f7bd6d-1c1f-43c4-a71e-5d7bbd31a545",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. one-syllable words\nB. four-syllable words\nC. six-syllable words\nD. three-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. one-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_6684f62a-6248-4b0a-b8dc-605ada7f2037",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. five-syllable words\nB. one-syllable words\nC. two-syllable words\nD. four-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. two-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 3
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_67f9bdb6-3098-4e88-a54b-a2846eea18d3",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. five-syllable words\nB. four-syllable words\nC. one-syllable words\nD. three-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. one-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_6bbb8fe0-aadf-45a1-871d-19810205c191",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. three-syllable words\nB. one-syllable words\nC. five-syllable words\nD. four-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. one-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_70aade24-ea30-473e-9961-dd956dc2ec10",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. seven-syllable words\nB. two-syllable words\nC. four-syllable words\nD. six-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. six-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_73be0ccc-7c8a-429f-8be0-a4683de0c02f",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. two-syllable words\nB. four-syllable words\nC. five-syllable words\nD. six-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. five-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_7527026b-802a-43d2-b4d3-1de295a3fb08",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. three-syllable words\nB. four-syllable words\nC. one-syllable words\nD. two-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. one-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 3
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_75cb1deb-7ace-4897-81ff-14c1681cec93",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. four-syllable words\nB. six-syllable words\nC. one-syllable words\nD. three-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. one-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_781319ce-da06-47b5-9fdd-505c7eb1ba9c",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. six-syllable words\nB. two-syllable words\nC. three-syllable words\nD. one-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. three-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_7839c9af-992a-421f-8388-f0e97940a76d",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. five-syllable words\nB. one-syllable words\nC. four-syllable words\nD. six-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. four-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_795f8cad-2962-4b70-8b12-ce13cea06a9d",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. five-syllable words\nB. four-syllable words\nC. two-syllable words\nD. three-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. five-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 1
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_797b33d1-85e0-4d38-9dda-1b5ac579d5a4",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. two-syllable words\nB. three-syllable words\nC. six-syllable words\nD. one-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. one-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_7d97ffb2-df19-440f-be86-d12d28bbfe1d",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. one-syllable words\nB. four-syllable words\nC. five-syllable words\nD. three-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. five-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_7f5273ee-de96-43d9-9a71-4925477c47e2",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. five-syllable words\nB. one-syllable words\nC. three-syllable words\nD. two-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. three-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_8034773e-08f1-4416-9e3c-6ab2cefb084f",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. two-syllable words\nB. five-syllable words\nC. three-syllable words\nD. four-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. four-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 1
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_82c253d5-616a-4958-ad9a-a31fc6e8ba84",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. three-syllable words\nB. one-syllable words\nC. four-syllable words\nD. two-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. two-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_84020a7b-0297-451d-b121-5ed373de6af1",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. five-syllable words\nB. seven-syllable words\nC. six-syllable words\nD. four-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. six-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_922044c1-1ad2-421a-8dcf-3168c3a3854a",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. five-syllable words\nB. four-syllable words\nC. three-syllable words\nD. two-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. five-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_954ea0c2-27c3-4d70-b6f6-d0665b8cd5ee",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. five-syllable words\nB. four-syllable words\nC. one-syllable words\nD. two-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. one-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_9e12b908-b12c-4a62-931a-84254da069a9",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. four-syllable words\nB. six-syllable words\nC. two-syllable words\nD. seven-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. seven-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_9ea6fd69-3d59-45c3-a37d-82b674232ac2",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. three-syllable words\nB. one-syllable words\nC. five-syllable words\nD. six-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. five-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_a2074901-a180-4df2-a2d9-8402d270af2a",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. three-syllable words\nB. four-syllable words\nC. one-syllable words\nD. five-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. one-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_a3159e2e-c537-415c-a1e1-43fe8fb18c72",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. five-syllable words\nB. four-syllable words\nC. one-syllable words\nD. two-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. one-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 3
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_a38e4ba7-3c09-4d4f-bb7d-c94dd41cc06a",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. one-syllable words\nB. three-syllable words\nC. six-syllable words\nD. five-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. three-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_a7701a3d-a22f-4903-9f08-c97bff456bd0",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. three-syllable words\nB. one-syllable words\nC. four-syllable words\nD. five-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. four-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_ad65143c-6b2b-4404-a881-52bbe4979201",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. three-syllable words\nB. one-syllable words\nC. two-syllable words\nD. six-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. six-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_ada614b0-c90a-4366-8071-34cdc40ede77",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. two-syllable words\nB. four-syllable words\nC. three-syllable words\nD. six-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. six-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_af89a21e-065f-457c-b67f-0abf435d5e83",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. two-syllable words\nB. three-syllable words\nC. six-syllable words\nD. five-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. five-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_b04efa14-4e8d-454b-a080-cc4fae66be07",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. four-syllable words\nB. three-syllable words\nC. six-syllable words\nD. one-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. six-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_b092f600-b3c1-402b-991c-ed1fbe8d5dfb",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. one-syllable words\nB. six-syllable words\nC. four-syllable words\nD. two-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. two-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_b86fb3ca-e2e5-4647-af66-b2a67c1b43d0",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. one-syllable words\nB. four-syllable words\nC. three-syllable words\nD. five-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. three-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_bc141c62-4d21-4797-a477-87c63547c8de",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. six-syllable words\nB. five-syllable words\nC. three-syllable words\nD. four-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. three-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_bd989f60-4a60-4ed9-8bed-ddfae50342d9",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. five-syllable words\nB. four-syllable words\nC. two-syllable words\nD. six-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. six-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_be3d9410-297c-4d16-b871-8b86c6ee4487",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. two-syllable words\nB. four-syllable words\nC. six-syllable words\nD. one-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. six-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_c06a6e3c-5cf3-495b-aab3-3f51b4611128",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. three-syllable words\nB. five-syllable words\nC. one-syllable words\nD. two-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. two-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_c0eb52dd-1b7b-4613-b398-aeaea4bb50e8",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. two-syllable words\nB. one-syllable words\nC. four-syllable words\nD. five-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. five-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_c169550f-bae4-4d28-85f8-46d4547e5349",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. four-syllable words\nB. three-syllable words\nC. two-syllable words\nD. six-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. two-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_c28b24cb-a93c-4b57-b511-c0dd63e522dc",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. one-syllable words\nB. three-syllable words\nC. two-syllable words\nD. five-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. one-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_c7135ca8-9624-44fa-82eb-53a28ed697d6",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. four-syllable words\nB. three-syllable words\nC. six-syllable words\nD. five-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. four-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 1
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_c764be40-b933-4ec1-ae3d-eb1d44b85e54",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. two-syllable words\nB. six-syllable words\nC. three-syllable words\nD. five-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. three-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_c8fa0f42-cec6-4cc2-8067-974afc2ed1e7",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. two-syllable words\nB. three-syllable words\nC. six-syllable words\nD. five-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. three-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_ca4910bc-7c5f-47d8-b659-4309c9d9323d",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. two-syllable words\nB. three-syllable words\nC. six-syllable words\nD. five-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. six-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_cf67b52b-e25f-454d-9844-8bc32d68e34b",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. four-syllable words\nB. three-syllable words\nC. one-syllable words\nD. five-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. one-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_cff67b8a-6417-493b-a767-b2f67cc41493",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. six-syllable words\nB. four-syllable words\nC. three-syllable words\nD. two-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. two-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_d2fb53d3-f23c-4028-a4d1-53a97dff8519",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. five-syllable words\nB. one-syllable words\nC. three-syllable words\nD. six-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. three-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_d6a38ff9-fc53-42a8-a28d-272ffb1cfb72",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. three-syllable words\nB. two-syllable words\nC. four-syllable words\nD. one-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. four-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_d8e80193-c3b5-4197-a6b6-9d8851c94581",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. one-syllable words\nB. six-syllable words\nC. four-syllable words\nD. two-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. six-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_d9367e44-fef8-4a24-b43a-ac5852db98dc",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. two-syllable words\nB. five-syllable words\nC. four-syllable words\nD. three-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. three-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_dc8d5f45-b4db-4cf9-a55b-5b56cb7d4ae7",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. four-syllable words\nB. six-syllable words\nC. two-syllable words\nD. five-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. four-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_dd0e5331-a642-481c-ac5f-d1b000c518a1",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. one-syllable words\nB. six-syllable words\nC. three-syllable words\nD. five-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. five-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_de44671a-d944-4e06-bc68-a9c56236deeb",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. four-syllable words\nB. one-syllable words\nC. two-syllable words\nD. five-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. five-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_e65da141-8c00-4f57-b7ae-22651675cf0d",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. one-syllable words\nB. five-syllable words\nC. eight-syllable words\nD. three-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. eight-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_ea49c455-6a55-43cd-943a-b4b1e1a6161c",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. four-syllable words\nB. three-syllable words\nC. six-syllable words\nD. one-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. six-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_eab3a9ce-160c-408c-92dd-25176020d99d",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. four-syllable words\nB. five-syllable words\nC. six-syllable words\nD. three-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. six-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_ef25761b-f38a-4746-ae13-76fffb78e69e",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. four-syllable words\nB. three-syllable words\nC. two-syllable words\nD. six-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. two-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_f2851f1b-da67-4be6-9f0d-002f8fcb845b",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. six-syllable words\nB. three-syllable words\nC. two-syllable words\nD. five-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. two-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_f44b2d95-4c0e-47a3-9541-3d69f37d7948",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. four-syllable words\nB. five-syllable words\nC. one-syllable words\nD. two-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. four-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_f5575f13-833a-4100-a1a1-fbac75791c46",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. two-syllable words\nB. three-syllable words\nC. four-syllable words\nD. one-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. one-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_f5c1b662-0ef5-4725-b5c2-be048796cc60",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. four-syllable words\nB. five-syllable words\nC. two-syllable words\nD. three-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. three-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_f5e4171a-a184-49b3-bb19-e686fb9d2c83",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. one-syllable words\nB. two-syllable words\nC. six-syllable words\nD. three-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. three-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_faae9068-07b4-4ee2-b2c7-d718e059f602",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. six-syllable words\nB. two-syllable words\nC. three-syllable words\nD. five-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. three-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_fcd948db-43cb-40d9-8a4f-efcb934c5ae0",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. three-syllable words\nB. one-syllable words\nC. five-syllable words\nD. four-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. one-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_fd4d2e0c-cefb-4c8f-8d73-fdb310738ec7",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. one-syllable words\nB. two-syllable words\nC. three-syllable words\nD. five-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. one-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_fd7741b2-f883-489e-8e7e-0e3a6edadf91",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. five-syllable words\nB. four-syllable words\nC. six-syllable words\nD. two-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. six-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_fd92fb74-7a23-411a-9c8e-d8ec98c80e58",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. three-syllable words\nB. six-syllable words\nC. two-syllable words\nD. five-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. five-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_fec2c160-6c68-479a-bfa9-ad1757ee9b4b",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. five-syllable words\nB. three-syllable words\nC. six-syllable words\nD. four-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. six-syllable words",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "syllable_perception"
+    },
+    {
+      "item_id": "syllable_perception_ff9a6eca-8e1e-4daa-bd27-ff53ce62b484",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many syllables are in the word you heard?\nOptions:\nA. six-syllable words\nB. two-syllable words\nC. one-syllable words\nD. five-syllable words\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. five-syllable words",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      },
+      "group_id": "syllable_perception"
+    }
+  ],
+  "aggregate": {
+    "mean": 0.6,
+    "ci95": [
+      0.5,
+      0.7
+    ],
+    "n_scored": 100,
+    "n_total": 100
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset mmsu --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 84.8
+}

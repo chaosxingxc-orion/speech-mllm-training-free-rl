@@ -1,0 +1,452 @@
+{
+  "stage": "1-directional",
+  "dataset": "uro-bench-MuChoEval-en",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/uro-bench-MuChoEval-en.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": "0.11.0"
+    }
+  },
+  "per_item": [
+    {
+      "item_id": 30,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A. Hand percussion",
+      "score": 1,
+      "detail": {
+        "gold": "Hand percussion"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 240,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A. Female voice",
+      "score": 1,
+      "detail": {
+        "gold": "Female voice"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 247,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. To encourage dancing",
+      "score": 1,
+      "detail": {
+        "gold": "To encourage dancing"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 133,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Pop music ballad",
+      "score": 1,
+      "detail": {
+        "gold": "Pop music ballad"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 257,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Overdriven",
+      "score": 1,
+      "detail": {
+        "gold": "Overdriven"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 59,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A. Tambourine",
+      "score": 0,
+      "detail": {
+        "gold": "Shaker"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 46,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Acoustic guitar strumming",
+      "score": 1,
+      "detail": {
+        "gold": "Acoustic guitar strumming"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 205,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Adventure video game",
+      "score": 1,
+      "detail": {
+        "gold": "Adventure video game"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 13,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Ethereal vocalization",
+      "score": 1,
+      "detail": {
+        "gold": "Ethereal vocalization"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 136,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Tabla",
+      "score": 1,
+      "detail": {
+        "gold": "Tabla"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 220,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Reggaeton",
+      "score": 1,
+      "detail": {
+        "gold": "Reggaeton"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 250,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. Lower key",
+      "score": 0,
+      "detail": {
+        "gold": "Higher key"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 302,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Emotional and soulful",
+      "score": 1,
+      "detail": {
+        "gold": "Emotional and soulful"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 275,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. Intense and captivating",
+      "score": 0,
+      "detail": {
+        "gold": "Vibrant and energetic"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 139,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A. accordion",
+      "score": 1,
+      "detail": {
+        "gold": "Accordion"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 48,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Mellow and soft",
+      "score": 1,
+      "detail": {
+        "gold": "Mellow and soft"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 221,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A. Latin urban",
+      "score": 1,
+      "detail": {
+        "gold": "Latin Urban"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 245,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. Electro pop, synth pop",
+      "score": 0,
+      "detail": {
+        "gold": "Electro Pop/Synth Pop"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 51,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Meditative, peaceful",
+      "score": 0,
+      "detail": {
+        "gold": "Meditative/Peaceful"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 253,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Slow pop",
+      "score": 1,
+      "detail": {
+        "gold": "Slow pop"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 226,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A. A child's voice",
+      "score": 1,
+      "detail": {
+        "gold": "A child's voice"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 45,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. Celebration",
+      "score": 1,
+      "detail": {
+        "gold": "Celebration"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 28,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. Emotional, addictive, and euphoric",
+      "score": 1,
+      "detail": {
+        "gold": "Emotional, addictive, and euphoric"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 42,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Song",
+      "score": 0,
+      "detail": {
+        "gold": "Minor chord composition"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 23,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. Oriental pop",
+      "score": 0,
+      "detail": {
+        "gold": "Oriental/pop"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 29,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Trumpets",
+      "score": 1,
+      "detail": {
+        "gold": "Trumpets"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 174,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Fast-paced rhythmic singing",
+      "score": 1,
+      "detail": {
+        "gold": "Fast-paced rhythmic singing"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 255,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Pedal steel guitar",
+      "score": 1,
+      "detail": {
+        "gold": "Pedal steel guitar"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 256,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Programmed percussion",
+      "score": 1,
+      "detail": {
+        "gold": "Programmed percussion"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 130,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Foreign language",
+      "score": 1,
+      "detail": {
+        "gold": "Foreign language"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 104,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Keyboard",
+      "score": 1,
+      "detail": {
+        "gold": "Keyboard"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 216,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A. The vocal delivery is rapped/sung",
+      "score": 0,
+      "detail": {
+        "gold": "Autotune"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 181,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. Strumming open chords",
+      "score": 1,
+      "detail": {
+        "gold": "Strumming open chords"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 177,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Male backing vocals",
+      "score": 1,
+      "detail": {
+        "gold": "Male backing vocals"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 237,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A. Tribal",
+      "score": 1,
+      "detail": {
+        "gold": "Tribal"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 195,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Male voice",
+      "score": 1,
+      "detail": {
+        "gold": "Male voice"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 26,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Black gospel",
+      "score": 1,
+      "detail": {
+        "gold": "Black gospel"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 293,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. Country, folk, pop",
+      "score": 0,
+      "detail": {
+        "gold": "Country/Folk pop"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 299,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A. Steel drums",
+      "score": 1,
+      "detail": {
+        "gold": "Steel drums"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 311,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Hip hop or rap",
+      "score": 0,
+      "detail": {
+        "gold": "Hip-hop or rap"
+      },
+      "group_id": null
+    }
+  ],
+  "aggregate": {
+    "mean": 0.75,
+    "ci95": [
+      0.6,
+      0.875
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset uro-bench-MuChoEval-en --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 175.4
+}

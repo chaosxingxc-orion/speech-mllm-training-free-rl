@@ -1,0 +1,670 @@
+{
+  "stage": "1-directional",
+  "dataset": "heysquad",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/heysquad.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": "0.11.0"
+    }
+  },
+  "per_item": [
+    {
+      "item_id": "5732b6b5328d981900602024",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "1.2 million",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "2.666 million",
+          "2.666 million",
+          "2.666 million"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "251afb786b81cf56"
+    },
+    {
+      "item_id": "5732b6b5328d981900602025",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Third",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "9th",
+          "9th",
+          "9th"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "251afb786b81cf56"
+    },
+    {
+      "item_id": "572a1dbb3f37b319004786f5",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "They are shared by all members of the group.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "by everyone",
+          "by everyone"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "f7b09c631edae75d"
+    },
+    {
+      "item_id": "572a1dbb3f37b319004786f6",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Those with lower incomes often unable to manage unexpected expenses.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "their finances",
+          "finances",
+          "finances"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "f7b09c631edae75d"
+    },
+    {
+      "item_id": "572a1dbb3f37b319004786f7",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Conspicuous consumption",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "aspirational consumption",
+          "aspirational consumption",
+          "aspirational consumption"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "f7b09c631edae75d"
+    },
+    {
+      "item_id": "572a1dbb3f37b319004786f8",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Purchasing luxury goods.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "taking on debt",
+          "taking on debt",
+          "taking on debt"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "f7b09c631edae75d"
+    },
+    {
+      "item_id": "572a1dbb3f37b319004786f9",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Bankruptcy",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "economic instability",
+          "greater inequality and potential economic instability",
+          "greater inequality and potential economic instability"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "f7b09c631edae75d"
+    },
+    {
+      "item_id": "572a1a5c6aef051400155284",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Investments in education and infrastructure.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "special efforts",
+          "special efforts",
+          "special efforts"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "6400a497924b2e7a"
+    },
+    {
+      "item_id": "572a1a5c6aef051400155285",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The growth elasticity of poverty can depend on the initial level of poverty.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "existing level of inequality",
+          "existing level of inequality",
+          "existing level of inequality"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "6400a497924b2e7a"
+    },
+    {
+      "item_id": "572a1a5c6aef051400155286",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Economic growth.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "reduction",
+          "halve poverty",
+          "halve poverty"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "6400a497924b2e7a"
+    },
+    {
+      "item_id": "572a1a5c6aef051400155287",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The United Nations",
+      "score": 1,
+      "detail": {
+        "gold_list": [
+          "the United Nations",
+          "United Nations",
+          "United Nations"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "6400a497924b2e7a"
+    },
+    {
+      "item_id": "572a1a5c6aef051400155288",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Economic growth isn't sufficient for progress on poverty.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "reducing poverty",
+          "reducing poverty",
+          "reducing poverty"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "6400a497924b2e7a"
+    },
+    {
+      "item_id": "57294baaaf94a219006aa26c",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Worldwatch Institute",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "Science Magazine",
+          "Science Magazine",
+          "Science Magazine's"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "c64cc6ec9fb0b510"
+    },
+    {
+      "item_id": "57294baaaf94a219006aa26d",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "He advocated for international control of nuclear energy.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "concurring, smaller assessments of special problems",
+          "smaller assessments of special problems instead of the large scale approach",
+          "concurring, smaller assessments of special problems"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "c64cc6ec9fb0b510"
+    },
+    {
+      "item_id": "572659535951b619008f7041",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Compacts",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "power steering",
+          "air conditioning",
+          "air conditioning",
+          "power windows"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "bcc5e06353b3fb9d"
+    },
+    {
+      "item_id": "572659535951b619008f7042",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Lexus",
+      "score": 1,
+      "detail": {
+        "gold_list": [
+          "Lexus",
+          "Lexus",
+          "Lexus",
+          "Acura",
+          "Lexus"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "bcc5e06353b3fb9d"
+    },
+    {
+      "item_id": "57274beff1498d1400e8f5e5",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "UPSEE",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "CBSE",
+          "CBSE",
+          "CBSE"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "1196a2ac80b407d8"
+    },
+    {
+      "item_id": "57274beff1498d1400e8f5e6",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "There are 46 examination boards in India.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "30",
+          "30",
+          "30"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "1196a2ac80b407d8"
+    },
+    {
+      "item_id": "57274beff1498d1400e8f5e7",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "UGC",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "union government",
+          "the union government",
+          "union government"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "1196a2ac80b407d8"
+    },
+    {
+      "item_id": "5730bd00069b5314008322d7",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Constantinople",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "Istanbul",
+          "Istanbul",
+          "Istanbul",
+          "Istanbul",
+          "Istanbul"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "fbdef0a0d6770992"
+    },
+    {
+      "item_id": "5730bd00069b5314008322d9",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Ottoman Empire allied with the Central Powers, primarily Germany and Austria-Hungary, in World War I.",
+      "score": 1,
+      "detail": {
+        "gold_list": [
+          "Germany",
+          "Germany",
+          "Germany",
+          "Germany",
+          "Germany"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "fbdef0a0d6770992"
+    },
+    {
+      "item_id": "5730bd00069b5314008322da",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Turkey",
+      "score": 1,
+      "detail": {
+        "gold_list": [
+          "Turkey",
+          "Turkey",
+          "Turkey",
+          "Turkey",
+          "Turkey"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "fbdef0a0d6770992"
+    },
+    {
+      "item_id": "5730bd00069b5314008322db",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The fall of the Ottoman Empire.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "World War I",
+          "creation of modern Balkan and Middle Eastern states",
+          "the creation of modern Balkan and Middle Eastern states",
+          "creation of modern Balkan and Middle Eastern states",
+          "creation of modern Balkan and Middle Eastern states"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "fbdef0a0d6770992"
+    },
+    {
+      "item_id": "57274971708984140094dbbe",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Loretto Normanhurst is a school in Sydney, Australia.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "girls",
+          "girls",
+          "girls"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "13d80da78e5ad9b2"
+    },
+    {
+      "item_id": "573383d0d058e614000b5c36",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The FSO Polonez.",
+      "score": 1,
+      "detail": {
+        "gold_list": [
+          "Polonez",
+          "125p",
+          "Polonez"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "923aa0e20249b205"
+    },
+    {
+      "item_id": "573383d0d058e614000b5c37",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Daewoo",
+      "score": 1,
+      "detail": {
+        "gold_list": [
+          "Daewoo",
+          "Daewoo",
+          "Daewoo"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "923aa0e20249b205"
+    },
+    {
+      "item_id": "573383d0d058e614000b5c38",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The company.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "AvtoZAZ",
+          "AvtoZAZ",
+          "AvtoZAZ"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "923aa0e20249b205"
+    },
+    {
+      "item_id": "573383d0d058e614000b5c39",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes, the license to build this type of car expired in two thousand and eleven.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "Chevrolet Aveo",
+          "Aveo",
+          "Aveo"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "923aa0e20249b205"
+    },
+    {
+      "item_id": "5734025d4776f419006616c5",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Pitt's plan called for amphibious attacks.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "three major offensive actions involving large numbers of regular troops",
+          "three major offensive actions",
+          "three major offensive actions",
+          "three major offensive actions",
+          "three major offensive actions"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "748a48ba875da18e"
+    },
+    {
+      "item_id": "5734025d4776f419006616c6",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "One",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "Two of the expeditions were successful, with Fort Duquesne and Louisbourg",
+          "Two",
+          "Two",
+          "Two",
+          "Two"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "748a48ba875da18e"
+    },
+    {
+      "item_id": "572fbf21a23a5019007fc93a",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The question is unanswerable as it lacks context about which map is being referred to.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "the Queen",
+          "the Queen",
+          "the Queen"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "26828d25f958f3c6"
+    },
+    {
+      "item_id": "572fbf21a23a5019007fc93b",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A case.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "a glass case suspended from the lid",
+          "glass case",
+          "a glass case"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "26828d25f958f3c6"
+    },
+    {
+      "item_id": "5729f8516aef05140015516c",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Pathogens",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "microbes",
+          "microbes",
+          "microbes"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "de786daa902829d0"
+    },
+    {
+      "item_id": "5729f8516aef05140015516d",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "IgG",
+      "score": 1,
+      "detail": {
+        "gold_list": [
+          "IgG",
+          "IgG",
+          "IgG"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "de786daa902829d0"
+    },
+    {
+      "item_id": "5729f8516aef05140015516e",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Breast milk",
+      "score": 1,
+      "detail": {
+        "gold_list": [
+          "Breast milk or colostrum",
+          "Breast milk",
+          "Breast milk or colostrum"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "de786daa902829d0"
+    },
+    {
+      "item_id": "5729f8516aef05140015516f",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Passive immunity",
+      "score": 1,
+      "detail": {
+        "gold_list": [
+          "passive immunity",
+          "passive",
+          "passive immunity"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "de786daa902829d0"
+    },
+    {
+      "item_id": "57268f2bf1498d1400e8e3c4",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The reform of the electoral system was attempted following the Nice Treaty.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "there was an attempt to reform the constitutional law of the European Union and make it more transparent",
+          "an attempt to reform the constitutional law of the European Union and make it more transparent",
+          "there was an attempt to reform the constitutional law of the European Union and make it more transparent",
+          "an attempt to reform the constitutional law of the European Union and make it more transparent"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "33ea0ac7097f3755"
+    },
+    {
+      "item_id": "57268f2bf1498d1400e8e3c5",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The attempted reform was projected to increase the number of people in prison.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "this would have also produced a single constitutional document",
+          "this would have also produced a single constitutional document",
+          "would have also produced a single constitutional document",
+          "this would have also produced a single constitutional document"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "33ea0ac7097f3755"
+    },
+    {
+      "item_id": "57268f2bf1498d1400e8e3c6",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The reform was never implemented.",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "the referendum in France and the referendum in the Netherlands",
+          "the referendum in France and the referendum in the Netherlands",
+          "the referendum in France and the referendum in the Netherlands",
+          "the referendum in France and the referendum in the Netherlands"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "33ea0ac7097f3755"
+    },
+    {
+      "item_id": "57268f2bf1498d1400e8e3c7",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Lisbon Treaty",
+      "score": 0,
+      "detail": {
+        "gold_list": [
+          "the Lisbon Treaty",
+          "the Lisbon Treaty",
+          "the Lisbon Treaty",
+          "the Lisbon Treaty"
+        ],
+        "weak_signal": true
+      },
+      "group_id": "33ea0ac7097f3755"
+    }
+  ],
+  "aggregate": {
+    "mean": 0.225,
+    "ci95": [
+      0.1,
+      0.35
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset heysquad --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 65.3
+}

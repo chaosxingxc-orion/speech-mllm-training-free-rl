@@ -1,0 +1,452 @@
+{
+  "stage": "1-directional",
+  "dataset": "voiceassistant-listening-sound",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/voiceassistant-listening-sound.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": "0.11.0"
+    }
+  },
+  "per_item": [
+    {
+      "item_id": "Listening_Sound_249",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 0,
+      "detail": {
+        "gold": "metro station"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_117",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "Cough"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_5",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "[0.01, 9.99]"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_256",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. A subway station",
+      "score": 1,
+      "detail": {
+        "gold": "subway station"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_228",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "crowded indoor"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_229",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. A metro station",
+      "score": 0,
+      "detail": {
+        "gold": "grocery store"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_320",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A. Buzzing",
+      "score": 1,
+      "detail": {
+        "gold": "buzzing"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_17",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 0,
+      "detail": {
+        "gold": "[1.15, 2.65]"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_19",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B",
+      "score": 0,
+      "detail": {
+        "gold": "[7.87, 9.07]"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_322",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Option B, shaving.",
+      "score": 0,
+      "detail": {
+        "gold": "to shave"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_121",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Throat clearing",
+      "score": 0,
+      "detail": {
+        "gold": "Sneeze"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_296",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B",
+      "score": 0,
+      "detail": {
+        "gold": "subway"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_375",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "no"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_239",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "train"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_202",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "forest path"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_340",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. A rabbit",
+      "score": 0,
+      "detail": {
+        "gold": "fox"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_220",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 0,
+      "detail": {
+        "gold": "residential area"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_114",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Cough",
+      "score": 0,
+      "detail": {
+        "gold": "Throat clearing"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_310",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Yes",
+      "score": 0,
+      "detail": {
+        "gold": "no"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_212",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B",
+      "score": 0,
+      "detail": {
+        "gold": "park"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_8",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Option D",
+      "score": 0,
+      "detail": {
+        "gold": "[7.99, 8.89]"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_81",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "[0.0, 8.66]"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_341",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "no"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_392",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "no"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_177",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D. A cough",
+      "score": 0,
+      "detail": {
+        "gold": "Laughter"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_305",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Option A, driving.",
+      "score": 0,
+      "detail": {
+        "gold": "no"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_335",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "yes"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_188",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. Throat clearing",
+      "score": 0,
+      "detail": {
+        "gold": "Sigh"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_286",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D, an elevator",
+      "score": 0,
+      "detail": {
+        "gold": "car"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_240",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "grocery store"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_39",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Option D",
+      "score": 0,
+      "detail": {
+        "gold": "[1.3, 3.6]"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_21",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Option B, from 2.17 seconds to 7.44 seconds.",
+      "score": 0,
+      "detail": {
+        "gold": "[0.0, 10.0]"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_161",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A. A sigh",
+      "score": 1,
+      "detail": {
+        "gold": "Sigh"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_111",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B. A sneeze",
+      "score": 0,
+      "detail": {
+        "gold": "Sigh"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_198",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A. sneeze",
+      "score": 0,
+      "detail": {
+        "gold": "Laughter"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_190",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A. Cough",
+      "score": 0,
+      "detail": {
+        "gold": "Sigh"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_77",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "[7.52, 7.87]"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_329",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. Yes",
+      "score": 1,
+      "detail": {
+        "gold": "yes"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_254",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "residential area"
+      },
+      "group_id": "Listening/Sound"
+    },
+    {
+      "item_id": "Listening_Sound_107",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C. A sniff",
+      "score": 0,
+      "detail": {
+        "gold": "Throat clearing"
+      },
+      "group_id": "Listening/Sound"
+    }
+  ],
+  "aggregate": {
+    "mean": 0.1,
+    "ci95": [
+      0.025,
+      0.2
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset voiceassistant-listening-sound --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 90.3
+}

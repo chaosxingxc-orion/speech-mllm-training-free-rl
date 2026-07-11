@@ -1,0 +1,492 @@
+{
+  "stage": "1-directional",
+  "dataset": "big-bench-audio",
+  "k_type": "K8/K6 (legacy)",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/big-bench-audio.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": "0.11.0"
+    }
+  },
+  "per_item": [
+    {
+      "item_id": "big-bench-audio#705",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Valid",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#431",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#519",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#440",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#446",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#757",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Valid",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#622",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#959",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Valid",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#923",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Valid",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#902",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "4",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#423",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "8",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#781",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#507",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "7",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#608",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Valid",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#913",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#869",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Valid",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#655",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Invalid",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#566",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Invalid",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#486",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "11",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#889",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#442",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#733",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#897",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#435",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#882",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "8",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#317",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "4",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#910",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "14",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#688",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Valid",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#667",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#345",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Valid",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#142",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#243",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "12",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#92",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#960",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Valid",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#698",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#264",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Valid",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#170",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#717",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#528",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "big-bench-audio#933",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Valid",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    }
+  ],
+  "aggregate": {
+    "mean": 0.625,
+    "ci95": [
+      0.475,
+      0.775
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset big-bench-audio --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 130.4
+}

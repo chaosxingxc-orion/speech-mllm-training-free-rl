@@ -1,0 +1,438 @@
+{
+  "stage": "1-directional",
+  "dataset": "air-bench-foundation-music-instruments-mtj-jamendo",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/air-bench-foundation-music-instruments-mtj-jamendo.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": null
+    }
+  },
+  "per_item": [
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18546",
+      "instr": "Listen to the audio and answer the multiple-choice question.\ndetect the main instrument that defines this track.\nOptions:\nA. classicalguitar\nB. drummachine\nC. saxophone\nD. piano\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. piano",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18242",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the signature instrument in this piece of music?\nOptions:\nA. orchestra\nB. beat\nC. organ\nD. synthesizer\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. synthesizer",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18339",
+      "error": "HTTPError: HTTP Error 400: Bad Request",
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18252",
+      "error": "HTTPError: HTTP Error 400: Bad Request",
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18258",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the primary source of sound in this music track?\nOptions:\nA. rhodes\nB. harp\nC. orchestra\nD. synthesizer\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. rhodes",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18603",
+      "error": "HTTPError: HTTP Error 400: Bad Request",
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18454",
+      "error": "HTTPError: HTTP Error 400: Bad Request",
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18827",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat instrument is the hero of this musical piece?\nOptions:\nA. piano\nB. trumpet\nC. saxophone\nD. drums\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. piano",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18788",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich instrument is the focal point of this musical piece?\nOptions:\nA. pad\nB. orchestra\nC. trumpet\nD. electricpiano\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. electricpiano",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18765",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the key instrument played in this music piece?\nOptions:\nA. computer\nB. orchestra\nC. piano\nD. electricguitar\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. computer",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18233",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich instrument is the main contributor to this sound?\nOptions:\nA. beat\nB. classicalguitar\nC. pipeorgan\nD. bass\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. beat",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18630",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat instrument is most prominent in this piece?\nOptions:\nA. pipeorgan\nB. pad\nC. strings\nD. acousticguitar\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. pad",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18326",
+      "error": "HTTPError: HTTP Error 400: Bad Request",
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18438",
+      "instr": "Listen to the audio and answer the multiple-choice question.\ntell me the dominant instrument in this composition?\nOptions:\nA. orchestra\nB. synthesizer\nC. pad\nD. guitar\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. orchestra",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18777",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat instrument is the base of this musical piece?\nOptions:\nA. sampler\nB. drums\nC. drummachine\nD. harp\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. harp",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18727",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the chief instrument you hear in this piece of music?\nOptions:\nA. guitar\nB. acousticguitar\nC. electricguitar\nD. brass\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. electricguitar",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18490",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich instrument is the driving force behind this piece?\nOptions:\nA. clarinet\nB. violin\nC. pad\nD. piano\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. piano",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18391",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the most pivotal instrument in this music piece?\nOptions:\nA. piano\nB. electricguitar\nC. brass\nD. voice\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. piano",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18302",
+      "error": "HTTPError: HTTP Error 400: Bad Request",
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18749",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat instrument is the keystone of this musical piece?\nOptions:\nA. piano\nB. harmonica\nC. flute\nD. saxophone\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. piano",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18254",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich instrument is the focal point of this musical piece?\nOptions:\nA. orchestra\nB. flute\nC. synthesizer\nD. guitar\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. guitar",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18577",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat instrument is the lead in this musical composition?\nOptions:\nA. piano\nB. computer\nC. voice\nD. clarinet\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. piano",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18758",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat instrument is most prominent in this piece?\nOptions:\nA. trumpet\nB. classicalguitar\nC. guitar\nD. pipeorgan\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. guitar",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18246",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich instrument is the driving force behind this piece?\nOptions:\nA. accordion\nB. horn\nC. piano\nD. clarinet\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. piano",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18742",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat instrument is the keystone of this musical piece?\nOptions:\nA. piano\nB. trumpet\nC. strings\nD. flute\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. piano",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18115",
+      "error": "HTTPError: HTTP Error 400: Bad Request",
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18774",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat instrument is primarily responsible for the melody in this track?\nOptions:\nA. piano\nB. rhodes\nC. orchestra\nD. bell\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. rhodes",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18526",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nspecify the instrument that's most featured in this track.\nOptions:\nA. bass\nB. harp\nC. piano\nD. horn\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. harp",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18503",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat instrument is the foundation of this musical number?\nOptions:\nA. percussion\nB. piano\nC. trumpet\nD. sampler\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. piano",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18146",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich instrument is the focal point of this musical piece?\nOptions:\nA. strings\nB. violin\nC. orchestra\nD. accordion\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. orchestra",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:17921",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich instrument is the bedrock of this composition?\nOptions:\nA. trumpet\nB. guitar\nC. classicalguitar\nD. orchestra\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. guitar",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18033",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the instrumental focus of this piece of music?\nOptions:\nA. rhodes\nB. accordion\nC. electricguitar\nD. synthesizer\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. synthesizer",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18784",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the most significant instrument in this music piece?\nOptions:\nA. bell\nB. violin\nC. percussion\nD. acousticguitar\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. bell",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18829",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nidentify the primary instrument in this musical piece?\nOptions:\nA. horn\nB. strings\nC. piano\nD. violin\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. piano",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18537",
+      "error": "HTTPError: HTTP Error 400: Bad Request",
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18056",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat instrument is the foundation of this musical number?\nOptions:\nA. guitar\nB. accordion\nC. bell\nD. strings\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. guitar",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:17952",
+      "error": "HTTPError: HTTP Error 400: Bad Request",
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18559",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the leading instrument featured in this track?\nOptions:\nA. acousticguitar\nB. saxophone\nC. sampler\nD. rhodes\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. saxophone",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18349",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the most significant instrument in this music piece?\nOptions:\nA. guitar\nB. harp\nC. voice\nD. flute\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. guitar",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:MTJ-Jamendo:18799",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the central instrument in this piece of music?\nOptions:\nA. synthesizer\nB. bell\nC. violin\nD. strings\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. synthesizer",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    }
+  ],
+  "aggregate": {
+    "mean": 0.9032,
+    "ci95": [
+      0.7742,
+      1.0
+    ],
+    "n_scored": 31,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset air-bench-foundation-music-instruments-mtj-jamendo --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 616.9
+}

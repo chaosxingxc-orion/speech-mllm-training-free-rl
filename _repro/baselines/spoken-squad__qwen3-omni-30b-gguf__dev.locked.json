@@ -1,0 +1,492 @@
+{
+  "stage": "1-directional",
+  "dataset": "spoken-squad",
+  "k_type": "K8/K6 (legacy)",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/spoken-squad.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": "0.11.0"
+    }
+  },
+  "per_item": [
+    {
+      "item_id": "spoken-squad#2718",
+      "instr": "What is the only form kinetic energy can change into?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Potential energy",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#1223",
+      "instr": "What area in modern-day Canada received Huguenot immigrants?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Quebec",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#3113",
+      "instr": "The term imperialism has been applied to western countries, and which eastern county?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Japanese",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#5308",
+      "instr": "What would type of studying would require a teacher to take on a supervisor role?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Extracurricular activities",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#4340",
+      "instr": "What does oxidative phosphorylation do?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Generate ATP energy.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#1485",
+      "instr": "What is the vast disparities in wealth attributed to by Socialists?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The private ownership of the means of production by a class of owners.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#4798",
+      "instr": "Who are the un-elected subordinates of member state governments?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Commissioners",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#4119",
+      "instr": "How is the opening of the Grainger Market documented in the Laing Art Gallery?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The Laing Art Gallery has a painting of the opening event.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#2887",
+      "instr": "What did NASA name the series seeking up to 30 more flights to Earth's orbit?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Apollo Extension Series",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#902",
+      "instr": "What is the primary purpose of chloroplasts?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "To conduct photosynthesis.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#4293",
+      "instr": "What organization runs the satellite that measured dust that landed on the Amazon?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "NASA",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#4135",
+      "instr": "How many ways did Luther justify his opposition to revolt?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Three",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#3922",
+      "instr": "What Western was a flagship program for ABC around 1954?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The Lone Ranger",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#5135",
+      "instr": "Where did France focus its efforts to rebuild its empire?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "North and West Africa, as well as Southeast Asia.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#2168",
+      "instr": "The V&A is looking to open a branded gallery in which city in Scotland?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Dundee",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#139",
+      "instr": "What did the Apple system assign automatically \nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Addresses",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#423",
+      "instr": "Who sets the work agenda and allocates time in the chamber?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The Parliamentary Bureau.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#2768",
+      "instr": "A replica of what landmark was present at Super Bowl Opening Night?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Golden Gate Bridge",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#2703",
+      "instr": "What popular phrase is associated with the Doctor Who series?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Hiding behind or watching from behind the sofa.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#429",
+      "instr": "How much can Ctenophores eat in one day?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Ten times their own weight.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#3970",
+      "instr": "What does a high tide risk near lands? \nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Strong tidal currents could tear huge areas of land into the sea.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#1636",
+      "instr": "Who decides who gets to address the members of Parliament to share their thoughts on issues of faith?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The presiding officer.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#2834",
+      "instr": "As a result of a compromise, about how many Chinese schools became National Type schools?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Over 60",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#5337",
+      "instr": "Some people describe what between individuals or groups as imperialism or colonialism?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Internal strife",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#4054",
+      "instr": "what did tesla attribute skin damage to?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Ozone generated in contact with the skin and to a lesser extent by nitrous acid.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#4809",
+      "instr": "What was Thoreau's punishment for not paying his taxes?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Imprisonment",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#2427",
+      "instr": "What nationality is the band Coldplay?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "British",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#3910",
+      "instr": "Where do scientists think all of the plagues originated from?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "China",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#1848",
+      "instr": "What type of destination is the area around Grey's Monument?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Shopping destination",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#1905",
+      "instr": "What happened to Tesla's funding once the war begun?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "He lost the funding he was receiving from his patents in European countries.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#1865",
+      "instr": "In which cardinal direction from Los Angeles is San Diego?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "South",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#3198",
+      "instr": "From whom were the movement that Eliot followed derived?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "William Ellery Channing and Ralph Waldo Emerson",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#2356",
+      "instr": "Where did the residents of Antioch flee to?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "To the north.",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#702",
+      "instr": "What is the oncorhynchus also called?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Chum salmon",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#1567",
+      "instr": "Why was the Dutch lawyer who moved to Belgium while advising a client in a social society case told he couldn't continue?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Because Dutch law said only people established in the Netherlands could give legal advice.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#4006",
+      "instr": "An algorithm for X which reduces to C would us to do what?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Solve any problem in C.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#4201",
+      "instr": "What publication did Philip Howard work for?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "The Times",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#2396",
+      "instr": "Whose 1758 portrait by François Boucher was part of Jones bequest?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Madame de Pompadour",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#4371",
+      "instr": "What do conservative researchers fell should be a measure of inequality?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "Consumption.",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "spoken-squad#3675",
+      "instr": "From what military branch did Mueller recruit managers from?\nAnswer the question above based on the audio, with a short answer only.",
+      "reply": "United States Air Force",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    }
+  ],
+  "aggregate": {
+    "mean": 0.85,
+    "ci95": [
+      0.725,
+      0.95
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset spoken-squad --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 374.4
+}

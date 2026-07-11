@@ -1,0 +1,452 @@
+{
+  "stage": "1-directional",
+  "dataset": "uro-bench-MLC",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/uro-bench-MLC.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": "0.11.0"
+    }
+  },
+  "per_item": [
+    {
+      "item_id": 169,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "It depends on your car's fuel efficiency and total fuel tank capacity.",
+      "score": 0,
+      "detail": {
+        "gold": "You have less than half a tank left."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 16,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Thomas Edison",
+      "score": 0,
+      "detail": {
+        "gold": "The light bulb was invented by Thomas Edison."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 174,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "\"Which door would the other guard say leads to danger?\"",
+      "score": 0,
+      "detail": {
+        "gold": "Ask either guard, 'If I were to ask the other guard which door leads to safety, what would they say?' Then choose the opposite door."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 138,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Milk, meat, and leather.",
+      "score": 0,
+      "detail": {
+        "gold": "Cows are raised for milk, meat, and leather."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 52,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "48",
+      "score": 0,
+      "detail": {
+        "gold": "Eight times six equals forty-eight."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 148,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Max barks.",
+      "score": 0,
+      "detail": {
+        "gold": "We can conclude that Max barks."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 146,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 0,
+      "detail": {
+        "gold": "No, we cannot say that all fruits are apples."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 73,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "28",
+      "score": 0,
+      "detail": {
+        "gold": "Fourteen times two equals twenty-eight."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 156,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Your cousin is the shortest.",
+      "score": 1,
+      "detail": {
+        "gold": "Your cousin is the shortest."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 136,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "They are known for their sharp teeth and excellent hunting abilities.",
+      "score": 0,
+      "detail": {
+        "gold": "Sharks are known for their sharp teeth and excellent hunting abilities."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 79,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Four.",
+      "score": 0,
+      "detail": {
+        "gold": "Twelve divided by three equals four."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 100,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Off the coast of Australia.",
+      "score": 0,
+      "detail": {
+        "gold": "The Great Barrier Reef is located off the coast of Australia."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 31,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Biodiversity refers to the variety of life on Earth, including the diversity of species, ecosystems, and genetic variation within species.",
+      "score": 0,
+      "detail": {
+        "gold": "Biodiversity refers to the variety of life on Earth, including different species, ecosystems, and genetic diversity."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 21,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Rome",
+      "score": 0,
+      "detail": {
+        "gold": "The capital of Italy is Rome."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 53,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Eight.",
+      "score": 0,
+      "detail": {
+        "gold": "Fifty-six divided by seven equals eight."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 122,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "To score more points than the opponent.",
+      "score": 0,
+      "detail": {
+        "gold": "The main goal of a basketball game is to score more points than the opponent."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 2,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Paris",
+      "score": 0,
+      "detail": {
+        "gold": "Sure! The capital of France is Paris."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 54,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Nine.",
+      "score": 0,
+      "detail": {
+        "gold": "Three squared is nine."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 109,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Pumps blood through the body, circulating oxygen and nutrients to the organs.",
+      "score": 0,
+      "detail": {
+        "gold": "The human heart pumps blood through the body."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 144,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 0,
+      "detail": {
+        "gold": "No, penguins cannot fly."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 118,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Pacific Ocean.",
+      "score": 0,
+      "detail": {
+        "gold": "The Pacific Ocean is the largest ocean on Earth."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 102,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Venus",
+      "score": 0,
+      "detail": {
+        "gold": "Venus is the hottest planet in our solar system."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 63,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "6",
+      "score": 0,
+      "detail": {
+        "gold": "Forty-eight divided by eight equals six."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 126,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "It can increase alertness but may also cause jitteriness or difficulty sleeping if consumed in excess.",
+      "score": 0,
+      "detail": {
+        "gold": "Caffeine can increase alertness and may cause jitteriness."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 91,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "William Shakespeare",
+      "score": 0,
+      "detail": {
+        "gold": "William Shakespeare wrote 'Romeo and Juliet'."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 153,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Under a tree.",
+      "score": 0,
+      "detail": {
+        "gold": "You should go to the shade."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 152,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Yes, we can conclude that the apple is sour."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 87,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "4",
+      "score": 0,
+      "detail": {
+        "gold": "Twenty-eight divided by seven equals four."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 11,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The national flower of Japan is the cherry blossom.",
+      "score": 0,
+      "detail": {
+        "gold": "The national flower of Japan is the cherry blossom, also known as sakura."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 127,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Paris",
+      "score": 0,
+      "detail": {
+        "gold": "The Eiffel Tower is located in Paris."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 9,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Mars",
+      "score": 0,
+      "detail": {
+        "gold": "Sure! Mars is known as the Red Planet because of its reddish appearance."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 17,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The blue whale.",
+      "score": 0,
+      "detail": {
+        "gold": "The largest animal in the world is the blue whale."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 28,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Atlantic Ocean",
+      "score": 0,
+      "detail": {
+        "gold": "The Bermuda Triangle is located in the Atlantic Ocean."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 41,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "O",
+      "score": 0,
+      "detail": {
+        "gold": "The chemical symbol for oxygen is O."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 26,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Ice hockey.",
+      "score": 0,
+      "detail": {
+        "gold": "The national sport of Canada is lacrosse, though ice hockey is also very popular."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 23,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Elephant",
+      "score": 0,
+      "detail": {
+        "gold": "The largest land mammal is the African elephant."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 147,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "$60",
+      "score": 0,
+      "detail": {
+        "gold": "They cost $60 together."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 123,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Watermelon",
+      "score": 0,
+      "detail": {
+        "gold": "Watermelon is often eaten in summer."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 165,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Seek shelter.",
+      "score": 0,
+      "detail": {
+        "gold": "You should find shelter or stay inside."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 76,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "42",
+      "score": 0,
+      "detail": {
+        "gold": "Fifteen plus twenty-seven equals forty-two."
+      },
+      "group_id": null
+    }
+  ],
+  "aggregate": {
+    "mean": 0.025,
+    "ci95": [
+      0.0,
+      0.075
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset uro-bench-MLC --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 74.1
+}

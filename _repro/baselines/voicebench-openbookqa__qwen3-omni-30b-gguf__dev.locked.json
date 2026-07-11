@@ -1,0 +1,492 @@
+{
+  "stage": "1-directional",
+  "dataset": "voicebench-openbookqa",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/voicebench-openbookqa.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": "0.11.0"
+    }
+  },
+  "per_item": [
+    {
+      "item_id": "openbookqa#387",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nTo change an object's shape\nOptions:\nA. rip off a corner portion\nB. lay it flat on a table\nC. color the edges of it\nD. add a piece of tape to it\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. rip off a corner portion",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#189",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nMoon phases\nOptions:\nA. change the moon into cheese\nB. alter the way the moon's facade looks\nC. change moon lakes into vapor\nD. cause lunar eclipse every day\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. alter the way the moon's facade looks",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#267",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nA field begins to bloom and blossom and plants need to be pollinated. In order to spread seeds, plants will most rely on\nOptions:\nA. pythons\nB. salmon\nC. robins\nD. craters\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. robins",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#45",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nSome berries may be eaten by\nOptions:\nA. a bear or person\nB. a bear or shark\nC. a bear or lion\nD. a bear or wolf\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. a bear or person",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#110",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat does someone do when creating music?\nOptions:\nA. hit a toy baseball with a bat\nB. shake a baby rattle with your hand\nC. bang the wall with your fist\nD. pluck the strings of a fingerboard with your fingers\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. pluck the strings of a fingerboard with your fingers",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#357",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWater conservation could be a survival tactic in\nOptions:\nA. The Appalachian Mountains\nB. New York City\nC. The Amazon\nD. The Gobi Desert\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. The Gobi Desert",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#48",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nTo improve health, what is a good strategy?\nOptions:\nA. high risk lifestyle\nB. restaurant food\nC. business trip\nD. a spa trip\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. a spa trip",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#376",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nAcid can be used to make a new\nOptions:\nA. light\nB. substance\nC. electricity\nD. sound\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. substance",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#279",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe special tissues in plants that transport minerals throughout the plant are similar to\nOptions:\nA. a wick\nB. a funnel\nC. a knife\nD. a whisk\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. a wick",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#304",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhy might a polar bear grow white hair?\nOptions:\nA. look fancy\nB. random\nC. blend in\nD. stand out\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. blend in",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#150",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich object conducts electricity?\nOptions:\nA. Window\nB. Rubik's Cube\nC. Ship Anchor\nD. Boulder\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Ship Anchor",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#194",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nA person is considering various organs, and is looking at which ones will be most muscular. A contender for most muscular is\nOptions:\nA. the lungs\nB. the kidney\nC. the heart\nD. the liver\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. the heart",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#292",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nA sailor needs to navigate to the shore, and does this by\nOptions:\nA. closing the sails quickly\nB. setting out to sea\nC. making an adjustment to the rudder\nD. taking the afternoon off\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. making an adjustment to the rudder",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#220",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWax can be used similarly to\nOptions:\nA. wood\nB. rubber\nC. water\nD. metal\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. rubber",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#405",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nAn incandescent bulb's filament produces similar light as an LED bulb, but more\nOptions:\nA. white light\nB. conversion\nC. heat\nD. sound\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. heat",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#295",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIf a bird is a carnivore, then it is likely a\nOptions:\nA. prey\nB. predator\nC. herbivore\nD. canary\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. predator",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#318",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe respiratory system works by\nOptions:\nA. directing oxygen from lungs to other organs\nB. pushing air through lungs\nC. moving air in a room\nD. making air quality better\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. pushing air through lungs",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#135",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIf a battery in an electromagnet is active, then what will happen to a nail in that electromagnet?\nOptions:\nA. it loses its magnetization\nB. it loses its charge\nC. it may become magnetized\nD. it gains a charge\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. it may become magnetized",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#37",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is different about birth in humans and chickens?\nOptions:\nA. Mother\nB. Fertilization\nC. Father\nD. the hard shell\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. the hard shell",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#208",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nDuring landslides there is often a lot of\nOptions:\nA. air\nB. mud\nC. snow\nD. wind\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. mud",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#93",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich animal is considered a predator?\nOptions:\nA. ant\nB. snake\nC. elephant\nD. giraffe\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. snake",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#138",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nMedicine is used to cure but can cause people to have allergic reactions such as\nOptions:\nA. spider bites\nB. vomiting\nC. placebo effect\nD. dance fever\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. vomiting",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#61",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nA bat flew through the sky without hitting anything due to which of these?\nOptions:\nA. rainy sky to fly in\nB. fast truck to drive\nC. a car with gasoline\nD. surfaces to reflect sound off\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. surfaces to reflect sound off",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#265",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nBuilding new areas to dispose of refuse may lead to\nOptions:\nA. community concerns over environmental impact\nB. better air and soil quality\nC. higher value on land parcels\nD. improvement in water supply\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. community concerns over environmental impact",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#407",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nCarbohydrates are made of sugar, which means that a diabetic would need to exhibit care in consuming\nOptions:\nA. broccoli\nB. meat\nC. celery\nD. toast\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. toast",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#125",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIt takes more water to fill a bathtub than a\nOptions:\nA. lake\nB. pool\nC. stomach\nD. holding tank\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. stomach",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#363",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhen a city tears down a park in a city, the park\nOptions:\nA. is removed\nB. is renewed\nC. is retrieved\nD. is restored\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. is removed",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#212",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nEvaporation of water can lead to\nOptions:\nA. waterfalls\nB. blizzards\nC. earthquakes\nD. hot springs\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. blizzards",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#245",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe nimbleness of this animal is a key adaption that allows it to escape attacks from predators:\nOptions:\nA. the butterfly\nB. the sloth\nC. the praying mantis\nD. the antelope\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. the antelope",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#114",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe force exerted on an object and distance traveled have what kind of relationship?\nOptions:\nA. reverse\nB. inverse\nC. equal\nD. direct\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. inverse",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#426",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThe light that appears dimmest is\nOptions:\nA. the light in the hall\nB. a light in the room\nC. a star outside the window\nD. a streetlight outside the window\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. a star outside the window",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#148",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nwhy do tadpoles change into frogs?\nOptions:\nA. tadpoles change to different animals\nB. tadpoles are really just fish\nC. they are young frogs still growing\nD. none of these\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. they are young frogs still growing",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#223",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nTurbines churning seawater can be used to produce what?\nOptions:\nA. a charge for appliances\nB. large quantities of soup\nC. large schools of fish\nD. creating some sharp cheese\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. a charge for appliances",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#20",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nOverpopulation can cause\nOptions:\nA. More fresh water for people to drink\nB. Lower Life Expectancy in Countries\nC. More food for more people\nD. More space for places to people to live\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Lower Life Expectancy in Countries",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#200",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nPhloem moves things around a plant similar to how\nOptions:\nA. blood moves in a body\nB. leaves move in the wind\nC. water moves in a system\nD. cars move on a street\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. blood moves in a body",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#300",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nThere are less hummingbirds by this house than before because of\nOptions:\nA. a feeder at this house\nB. the birds no longer like feeders\nC. the size of the feeder\nD. a feeder at another house\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. a feeder at another house",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#306",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nA food that is a source of heat is\nOptions:\nA. ramen\nB. salad\nC. ice cream\nD. sushi\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. ramen",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#121",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the formula of the substance which best helps plants grow\nOptions:\nA. N H four\nB. C four H four\nC. C O two\nD. H two O\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. C O two",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#294",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIn order to catch a rabbit, a predator must be\nOptions:\nA. big\nB. quick\nC. slow\nD. small\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. quick",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "openbookqa#105",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nInherited characteristics\nOptions:\nA. include mice being able to navigate a maze\nB. include learning to sit on command\nC. include dolphins doing tricks for their trainers\nD. include spots on a ladybug\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. include spots on a ladybug",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    }
+  ],
+  "aggregate": {
+    "mean": 0.925,
+    "ci95": [
+      0.825,
+      1.0
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset voicebench-openbookqa --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 144.2
+}

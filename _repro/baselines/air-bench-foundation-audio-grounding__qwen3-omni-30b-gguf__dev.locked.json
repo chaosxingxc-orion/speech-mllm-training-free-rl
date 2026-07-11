@@ -1,0 +1,492 @@
+{
+  "stage": "1-directional",
+  "dataset": "air-bench-foundation-audio-grounding",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/air-bench-foundation-audio-grounding.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": null
+    }
+  },
+  "per_item": [
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11582",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIn what time spans is 'honk their horns' completely audible in this recording?\nOptions:\nA. [2.65, 3.74]\nB. [0.9, 6.33]\nC. [1.92, 9.42]\nD. [2.61, 9.66]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [2.65, 3.74]",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11062",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow long in seconds does 'an aircraft engine approaches' last from start to end?\nOptions:\nA. [0.0, 10.02]\nB. [1.09, 1.63]\nC. [4.52, 5.07]\nD. [5.66, 6.29]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [0.0, 10.02]",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11497",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow long in seconds does 'water splashing' last from start to end?\nOptions:\nA. [0.0, 10.0]\nB. [0.0, 10.0]\nC. [0.0, 2.19]\nD. [3.5, 4.09]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. [0.0, 10.0]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11718",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nAt which time markers does 'running occurs' fully unfold in the sound?\nOptions:\nA. [3.15, 8.38]\nB. [0.11, 1.48]\nC. [2.15, 8.71]\nD. [2.82, 4.9]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [3.15, 8.38]",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11317",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nProvide the start and end times of 'a siren whales' within this audio.\nOptions:\nA. [0.02, 10.01]\nB. [0.36, 2.48]\nC. [0.64, 2.86]\nD. [2.05, 8.11]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [0.02, 10.01]",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11065",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIdentify the occurrences of 'animals whimper' along with their time frames.\nOptions:\nA. [0.5, 1.03]\nB. [0.0, 10.02]\nC. [5.84, 10.02]\nD. [2.08, 2.83]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. [5.84, 10.02]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11856",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nDetermine the full durations of 'an engine hums' in the audio file.\nOptions:\nA. [0.0, 10.0]\nB. [0.0, 0.34]\nC. [2.11, 3.36]\nD. [4.22, 5.24]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [0.0, 10.0]",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11125",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nDefine the time intervals that fully contain 'lots of dogs barking' in this sound.\nOptions:\nA. [0.25, 10.0]\nB. [2.67, 6.67]\nC. [3.23, 8.2]\nD. [3.62, 9.01]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [0.25, 10.0]",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11506",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many seconds does 'vehicle engine noise' span in each occurrence?\nOptions:\nA. [0.0, 0.93]\nB. [3.3, 4.04]\nC. [0.0, 10.02]\nD. [5.62, 7.31]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. [0.0, 10.02]",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11542",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nProvide the start and end times of 'multiple dogs bark' within this audio.\nOptions:\nA. [0.0, 10.0]\nB. [0.0, 10.0]\nC. [0.58, 4.68]\nD. [4.5, 4.9]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. [0.0, 10.0]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11019",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat second marks correspond to the entire span of 'a train passing by blaring its horn'?\nOptions:\nA. [5.38, 9.8]\nB. [3.57, 5.1]\nC. [1.5, 3.63]\nD. [8.24, 9.45]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [5.38, 9.8]",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11039",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIn what segments can 'a man talks very briefly' be heard from start to finish?\nOptions:\nA. [0.52, 6.16]\nB. [8.55, 10.02]\nC. [7.52, 7.87]\nD. [1.44, 2.94]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. [7.52, 7.87]",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11352",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nProvide the start and end times of 'wind blows' within this audio.\nOptions:\nA. [0.0, 2.03]\nB. [0.0, 10.01]\nC. [5.61, 7.31]\nD. [8.82, 10.0]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. [0.0, 10.01]",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11614",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nCapture the timeline where 'car accelerating at high speed' is fully included in the sound.\nOptions:\nA. [0.0, 10.0]\nB. [0.0, 0.87]\nC. [2.88, 7.89]\nD. [5.97, 9.55]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. [2.88, 7.89]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11461",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are the boundaries in seconds for each 'a large vehicle engine is idling' presence?\nOptions:\nA. [1.4, 3.95]\nB. [0.01, 9.05]\nC. [5.85, 6.9]\nD. [2.4, 2.81]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. [0.01, 9.05]",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11337",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nAt what seconds do the full iterations of 'a music is played' start and end?\nOptions:\nA. [0.0, 10.0]\nB. [6.56, 7.57]\nC. [8.96, 9.49]\nD. [0.0, 0.78]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [0.0, 10.0]",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11340",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nLocate every segment where 'a train horn sounds' is completely audible.\nOptions:\nA. [2.42, 5.68]\nB. [0.26, 5.44]\nC. [1.16, 6.79]\nD. [4.3, 8.33]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [2.42, 5.68]",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11348",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat second marks correspond to the entire span of 'sounding the siren'?\nOptions:\nA. [0.0, 10.0]\nB. [3.65, 8.4]\nC. [3.8, 8.51]\nD. [5.49, 8.76]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. [3.8, 8.51]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11479",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nProvide the start and end times of 'barks' within this audio.\nOptions:\nA. [7.11, 8.46]\nB. [1.46, 3.64]\nC. [4.16, 4.73]\nD. [5.76, 9.86]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. [5.76, 9.86]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:10980",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are the precise second intervals of 'a woman speaking' in this clip?\nOptions:\nA. [0.13, 2.13]\nB. [4.62, 5.69]\nC. [7.14, 8.55]\nD. [4.76, 5.72]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. [4.62, 5.69]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11407",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat time segments delineate the presence of 'a vehicles accelerate quickly'?\nOptions:\nA. [0.0, 4.73]\nB. [6.19, 8.43]\nC. [0.39, 5.01]\nD. [2.77, 7.51]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [0.0, 4.73]",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11375",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nAt which seconds does 'a woman speaking' fully register in the sound?\nOptions:\nA. [0.16, 3.19]\nB. [3.41, 10.0]\nC. [4.32, 8.64]\nD. [0.96, 1.48]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [0.16, 3.19]",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11467",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere does 'a dog barks' appear from beginning to end in the sound?\nOptions:\nA. [0.11, 0.66]\nB. [0.0, 0.18]\nC. [0.78, 1.56]\nD. [3.33, 10.0]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. [0.0, 0.18]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11410",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nDefine the time intervals that fully contain 'a man laughs' in this sound.\nOptions:\nA. [0.32, 0.86]\nB. [0.0, 6.27]\nC. [7.15, 7.58]\nD. [8.54, 10.0]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. [7.15, 7.58]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11346",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are the precise second intervals of 'ambulance emergency siren' in this clip?\nOptions:\nA. [0.0, 9.76]\nB. [0.46, 8.48]\nC. [2.86, 8.9]\nD. [3.1, 9.48]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [0.0, 9.76]",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11524",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are the precise second intervals of 'train horn beeping' in this clip?\nOptions:\nA. [0.0, 5.26]\nB. [5.57, 10.0]\nC. [2.81, 5.98]\nD. [3.15, 6.63]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [0.0, 5.26]",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11329",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nAt which seconds does 'honk' fully register in the sound?\nOptions:\nA. [0.0, 3.56]\nB. [1.34, 3.02]\nC. [2.5, 8.85]\nD. [2.58, 9.22]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [0.0, 3.56]",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11253",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere is 'a cat meows once' found in its entirety within the audio's timeline?\nOptions:\nA. [0.0, 0.77]\nB. [1.54, 2.87]\nC. [3.42, 3.66]\nD. [5.55, 6.27]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. [3.42, 3.66]",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11368",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere is 'wind blows loudly nearby' found in its entirety within the audio's timeline?\nOptions:\nA. [0.82, 9.41]\nB. [1.17, 3.93]\nC. [5.69, 6.2]\nD. [6.95, 9.4]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [0.82, 9.41]",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11476",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are the comprehensive timeframes of 'roaring' in this clip?\nOptions:\nA. [0.08, 1.81]\nB. [3.61, 4.46]\nC. [2.83, 8.42]\nD. [8.51, 8.95]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. [2.83, 8.42]",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11028",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIdentify the occurrences of 'another man speaking' along with their time frames.\nOptions:\nA. [7.97, 10.01]\nB. [0.23, 2.2]\nC. [3.27, 5.16]\nD. [6.4, 7.11]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [7.97, 10.01]",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11469",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow long does 'a woman laughs' last each time it appears in the audio?\nOptions:\nA. [1.39, 4.03]\nB. [4.62, 5.46]\nC. [6.54, 8.52]\nD. [4.13, 4.85]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. [6.54, 8.52]",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11394",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat timestamps mark the full occurrences of 'a steady heavy rain is falling'?\nOptions:\nA. [0.0, 10.02]\nB. [1.42, 1.85]\nC. [5.41, 6.8]\nD. [7.39, 8.27]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [0.0, 10.02]",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11529",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nAt what timestamps does the complete 'an engine is idling' occur?\nOptions:\nA. [0.0, 10.0]\nB. [2.86, 4.54]\nC. [2.97, 6.82]\nD. [4.54, 9.17]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [0.0, 10.0]",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11695",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIdentify the periods when 'a child speaks' fully resonates in the sound.\nOptions:\nA. [0.0, 0.77]\nB. [1.93, 4.19]\nC. [5.69, 7.88]\nD. [2.96, 4.04]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. [1.93, 4.19]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11611",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nProvide the start and end times of 'an animal barks' within this audio.\nOptions:\nA. [1.85, 2.42]\nB. [1.81, 4.35]\nC. [0.0, 0.43]\nD. [1.32, 1.87]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [1.85, 2.42]",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11360",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nAt what time points is 'whine' fully present in the recording?\nOptions:\nA. [1.13, 2.02]\nB. [0.03, 4.79]\nC. [0.29, 8.63]\nD. [4.31, 9.16]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. [0.29, 8.63]",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:10989",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIdentify the periods when 'birds chirp' fully resonates in the sound.\nOptions:\nA. [7.35, 10.0]\nB. [1.42, 1.65]\nC. [3.64, 5.12]\nD. [8.48, 8.78]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [7.35, 10.0]",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:10981",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are the distinct time ranges of 'heavy winds blow against it' within the audio?\nOptions:\nA. [0.0, 10.0]\nB. [0.38, 7.81]\nC. [2.23, 9.38]\nD. [4.32, 9.57]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. [0.0, 10.0]",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Audio_Grounding:AudioGrounding:11645",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow many seconds does each full presence of 'wind blowing' cover?\nOptions:\nA. [0.0, 1.38]\nB. [3.07, 5.84]\nC. [0.01, 10.0]\nD. [0.97, 5.82]\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. [0.01, 10.0]",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    }
+  ],
+  "aggregate": {
+    "mean": 0.725,
+    "ci95": [
+      0.575,
+      0.85
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset air-bench-foundation-audio-grounding --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 96.3
+}

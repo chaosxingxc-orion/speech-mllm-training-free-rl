@@ -1,0 +1,452 @@
+{
+  "stage": "1-directional",
+  "dataset": "uro-bench-SQuAD-zh",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/uro-bench-SQuAD-zh.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": "0.11.0"
+    }
+  },
+  "per_item": [
+    {
+      "item_id": 112,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "对受损建筑物进行详细的初步调查。",
+      "score": 1,
+      "detail": {
+        "gold": "对受损建筑物进行详细的初步调查"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 34,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "32所",
+      "score": 1,
+      "detail": {
+        "gold": "32"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 139,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "国家公园管理局",
+      "score": 1,
+      "detail": {
+        "gold": "国家公园管理局"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 90,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "超过七百五十亿美元",
+      "score": 0,
+      "detail": {
+        "gold": "750亿美元"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 119,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "5月25日",
+      "score": 1,
+      "detail": {
+        "gold": "5月25日"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 135,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "音频中没有提及埃菲尔铁塔的横幅现在挂在哪里。",
+      "score": 0,
+      "detail": {
+        "gold": "圣母院大教堂"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 109,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "铜",
+      "score": 1,
+      "detail": {
+        "gold": "铜"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 147,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "太阳能",
+      "score": 1,
+      "detail": {
+        "gold": "太阳能"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 52,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "宣传局",
+      "score": 1,
+      "detail": {
+        "gold": "宣传局"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 126,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "1000万元",
+      "score": 1,
+      "detail": {
+        "gold": "1000万元"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 152,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "程序计数器",
+      "score": 1,
+      "detail": {
+        "gold": "程序计数器"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 93,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "6月1日",
+      "score": 1,
+      "detail": {
+        "gold": "6月1日"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 136,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "忠诚",
+      "score": 1,
+      "detail": {
+        "gold": "忠诚。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 153,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "拉杰帕斯",
+      "score": 1,
+      "detail": {
+        "gold": "拉杰帕斯"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 74,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "国家救灾委员会",
+      "score": 1,
+      "detail": {
+        "gold": "国家救灾委员会"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 148,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "国际能源署",
+      "score": 1,
+      "detail": {
+        "gold": "国际能源署"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 12,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "4860多万美元",
+      "score": 1,
+      "detail": {
+        "gold": "4860多万美元"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 23,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "唯物主义是哲学一元论的一种形式，认为物质是自然界的基本物质，一切现象，包括精神现象和意识，都与物质的相互作用是一致的。",
+      "score": 1,
+      "detail": {
+        "gold": "哲学一元论的一种形式"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 133,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "慈济基金会",
+      "score": 1,
+      "detail": {
+        "gold": "慈济基金会"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 118,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "二十世纪八十年代以后",
+      "score": 0,
+      "detail": {
+        "gold": "20世纪80年代以后"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 131,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "1997年",
+      "score": 1,
+      "detail": {
+        "gold": "1997"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 15,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "在西班牙和意大利的山脉中。",
+      "score": 1,
+      "detail": {
+        "gold": "西班牙和意大利的山脉"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 27,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "2013年",
+      "score": 1,
+      "detail": {
+        "gold": "2013"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 72,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "善良的保护者",
+      "score": 1,
+      "detail": {
+        "gold": "善良的保护者。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 73,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "大西洋气候",
+      "score": 1,
+      "detail": {
+        "gold": "大西洋气候"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 20,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "轮回",
+      "score": 1,
+      "detail": {
+        "gold": "轮回"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 141,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "第七条",
+      "score": 1,
+      "detail": {
+        "gold": "第七条"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 76,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "森林",
+      "score": 1,
+      "detail": {
+        "gold": "森林"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 100,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "加拿大军队",
+      "score": 1,
+      "detail": {
+        "gold": "加拿大军队"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 113,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "水力发电机",
+      "score": 1,
+      "detail": {
+        "gold": "水力发电机"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 69,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "1963年9月20日",
+      "score": 1,
+      "detail": {
+        "gold": "1963年9月20日"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 37,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "中国",
+      "score": 1,
+      "detail": {
+        "gold": "中国"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 78,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "美联社",
+      "score": 1,
+      "detail": {
+        "gold": "美联社"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 68,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "亚历山大大帝",
+      "score": 1,
+      "detail": {
+        "gold": "亚历山大大帝"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 31,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "东德",
+      "score": 1,
+      "detail": {
+        "gold": "东德"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 108,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "1630年",
+      "score": 1,
+      "detail": {
+        "gold": "1630"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 120,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "阳光",
+      "score": 1,
+      "detail": {
+        "gold": "阳光"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 103,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "港务局巴士总站",
+      "score": 1,
+      "detail": {
+        "gold": "港务局巴士总站"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 18,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "全国人民军",
+      "score": 1,
+      "detail": {
+        "gold": "全国人民军"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 44,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "欧亚大陆。",
+      "score": 1,
+      "detail": {
+        "gold": "欧亚大陆"
+      },
+      "group_id": null
+    }
+  ],
+  "aggregate": {
+    "mean": 0.925,
+    "ci95": [
+      0.825,
+      1.0
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset uro-bench-SQuAD-zh --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 128.9
+}

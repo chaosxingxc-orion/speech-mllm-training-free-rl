@@ -1,0 +1,492 @@
+{
+  "stage": "1-directional",
+  "dataset": "air-bench-foundation-sound-aqa-avqa",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/air-bench-foundation-sound-aqa-avqa.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": null
+    }
+  },
+  "per_item": [
+    {
+      "item_id": "Sound_AQA:avqa:16488",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are the main sources of sound in this video?\nOptions:\nA. rope skipping\nB. thunder\nC. hail\nD. The sound of rain·\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. The sound of rain·",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 2
+      },
+      "group_id": "46546"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16122",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's driving in the video?\nOptions:\nA. automobile\nB. truck\nC. metro\nD. bus\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. metro",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "28595"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16212",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere did the video take place?\nOptions:\nA. seaside\nB. seabed\nC. at sea\nD. Grassland\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. at sea",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "34384"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16308",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat animal makes a sound in the video?\nOptions:\nA. planing\nB. mosquito\nC. honeybee\nD. Ants\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. honeybee",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "29159"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16835",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat animal is in the video?\nOptions:\nA. rowboat\nB. penguin\nC. cockcrow\nD. artillery\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. penguin",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": "29765"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16093",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere is the bird in the video?\nOptions:\nA. aquatic\nB. In the birdcage\nC. In the grass\nD. on the tree\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. on the tree",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 1
+      },
+      "group_id": "49472"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16792",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere does the video take place?\nOptions:\nA. highway\nB. toilet\nC. On the viaduct\nD. Mountain path\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. highway",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": "40513"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16111",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are the people doing in this video?\nOptions:\nA. machine\nB. live broadcast\nC. speak\nD. skiing\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. speak",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "6906"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16110",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are the people doing in the video?\nOptions:\nA. Competition Cuju\nB. Play football in the game\nC. Match boxing\nD. Play volleyball in the match\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. Play volleyball in the match",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": "60614"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16555",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is shown in the video?\nOptions:\nA. pool\nB. Bathtub\nC. Shower\nD. closestool\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. closestool",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": "59578"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:15939",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat animal appears in the video?\nOptions:\nA. fox\nB. dog\nC. wolf\nD. rabbit\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. dog",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": "28329"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16173",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere is the dog in the video?\nOptions:\nA. In the kennel\nB. on the tree\nC. In the basket\nD. In the basket\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. In the basket",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      },
+      "group_id": "51242"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16436",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat animal is in the video?\nOptions:\nA. dog\nB. cat\nC. chipmunks\nD. fox\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. chipmunks",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      },
+      "group_id": "33555"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:15922",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the main sound source of the video?\nOptions:\nA. aircraft\nB. metro\nC. bus\nD. train\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. train",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 1
+      },
+      "group_id": "39850"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16250",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is shown in the video?\nOptions:\nA. Weaving on loom\nB. The photo is developed by the developing machine\nC. Printer printing\nD. Answer the fax\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Printer printing",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "60251"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16043",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the main sound source in this video?\nOptions:\nA. Motorcycle engine noise\nB. Clapping sound\nC. Car engine noise\nD. Lift canvas\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Motorcycle engine noise",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": "57933"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16591",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are the main sources of sound in this video?\nOptions:\nA. sliding door\nB. gun\nC. aircraft\nD. truck\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. aircraft",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "43524"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16072",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat animal appears in the video?\nOptions:\nA. cheetah\nB. black bear\nC. lion\nD. tiger\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. cheetah",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 2
+      },
+      "group_id": "37382"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16616",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the main source of sound in the video?\nOptions:\nA. automobile\nB. train\nC. motorcycle\nD. ship\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. train",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": "3231"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16100",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is shown in the video?\nOptions:\nA. Toilet flush\nB. The toilet is clogged.\nC. Sewer flushing\nD. The sound of car wheels turning\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Toilet flush",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": "58939"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16352",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the main sound source of the video?\nOptions:\nA. train\nB. motorcycle\nC. motorboat\nD. Bus\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. Bus",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      },
+      "group_id": "29330"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16379",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat happened to the video?\nOptions:\nA. pump\nB. Volcanic explosion\nC. tsunami\nD. sand storm\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. sand storm",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 1
+      },
+      "group_id": "48123"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16300",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is shown in the video?\nOptions:\nA. Mop for water\nB. Sweep the floor with a broom\nC. Garbage robot mopping\nD. Cleaning garbage with vacuum cleaner\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. Cleaning garbage with vacuum cleaner",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": "59174"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16596",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the main sound source of the video?\nOptions:\nA. cat\nB. dove\nC. Toys\nD. bird\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. bird",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 2
+      },
+      "group_id": "28711"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16594",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are the people doing in the video?\nOptions:\nA. play golf\nB. play tennis\nC. shuttlecock\nD. Play baseball\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. play golf",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": "58625"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16654",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat happened in the video?\nOptions:\nA. Water splashing\nB. snow\nC. take a shower\nD. get wet in the rain\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Water splashing",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": "23110"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16152",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is shown in the video?\nOptions:\nA. Excavator loading\nB. Tractor repair\nC. Earth lifting by crane\nD. Motorcycle start\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Excavator loading",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": "60020"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16432",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are the people in the video doing?\nOptions:\nA. roller coaster running\nB. Roller-skating\nC. skating\nD. skiing\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. skiing",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": "45203"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16346",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the weather in the video?\nOptions:\nA. overcast\nB. a sunny day\nC. cloudy\nD. rain\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. a sunny day",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": "43885"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16315",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the main sound source of the video?\nOptions:\nA. seabed\nB. in the air\nC. aquatic\nD. beach\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. aquatic",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "24618"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:15940",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's running in the video?\nOptions:\nA. horse\nB. cattle\nC. sheep\nD. donkey\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. cattle",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": "1297"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16674",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the main sound source of the video?\nOptions:\nA. horn\nB. mock bird\nC. toy chicks\nD. Playing flute\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. toy chicks",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "19001"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16709",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the main sound source in this video?\nOptions:\nA. Fire fighting\nB. Roasted sweet potato\nC. The oven exploded\nD. The crackle of a fire\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. The crackle of a fire",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": "60452"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:15923",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat animal is in the video?\nOptions:\nA. lion\nB. dog\nC. wolf\nD. tiger\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. lion",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": "7056"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16687",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat animal is in the video?\nOptions:\nA. cat\nB. sheep\nC. dog\nD. rabbit\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. cat",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": "4581"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16191",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat animal is in the video?\nOptions:\nA. cattle\nB. horse\nC. sheep\nD. donkey\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. cattle",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": "20415"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16423",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat are the people doing in the video?\nOptions:\nA. sailing\nB. Hold your breath\nC. diving\nD. Catching fish\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. diving",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": "14861"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16344",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere did the video take place?\nOptions:\nA. square\nB. In the forest\nC. toilet\nD. grassland\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. In the forest",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": "47170"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16314",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat animal appears in the video?\nOptions:\nA. cattle\nB. horse\nC. sheep\nD. donkey\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. cattle",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": "3506"
+    },
+    {
+      "item_id": "Sound_AQA:avqa:16695",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the main sound source in this video?\nOptions:\nA. Car whistle\nB. The sound of car driving\nC. Sound of motorcycle running\nD. The sound of ship engine\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. The sound of car driving",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": "60989"
+    }
+  ],
+  "aggregate": {
+    "mean": 0.775,
+    "ci95": [
+      0.65,
+      0.9
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset air-bench-foundation-sound-aqa-avqa --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 100.7
+}

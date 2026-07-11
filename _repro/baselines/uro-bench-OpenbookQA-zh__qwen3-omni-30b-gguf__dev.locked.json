@@ -1,0 +1,492 @@
+{
+  "stage": "1-directional",
+  "dataset": "uro-bench-OpenbookQA-zh",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/uro-bench-OpenbookQA-zh.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": "0.11.0"
+    }
+  },
+  "per_item": [
+    {
+      "item_id": 76,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 干燥\nB. 干旱\nC. 阳光\nD. 暴雨\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "D. 暴雨",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 83,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 假磁铁\nB. 气味\nC. 相同电荷\nD. 阳光\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "C. 相同电荷",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 118,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 蚂蚁通过光合作用获取食物\nB. 狗通过光合作用获取食物\nC. 大猩猩通过光合作用获取食物\nD. 棕榈树通过光合作用获取食物\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "D. 棕榈树通过光合作用获取食物",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 134,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 蜗牛\nB. 军舰鸟\nC. 乌龟\nD. 树懒\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "B. 军舰鸟",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 101,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 骑自行车\nB. 滑雪\nC. 开车\nD. 步行\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "C. 开车",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 174,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 星星\nB. 独角兽\nC. 黑洞\nD. 玉米\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "D. 玉米",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 133,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 鲨鱼用鳃在水下游泳的时间比人类长\nB. 人类用鳃从水中提取碳\nC. 鲨鱼用鳃从水中提取碳\nD. 鲨鱼在水下无法找到氧气\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "C. 鲨鱼用鳃从水中提取碳",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 117,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 在健身房\nB. 在桑拿房\nC. 在冰箱里\nD. 在游泳池\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "C. 在冰箱里",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 152,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 冰茶\nB. 水\nC. 姜汁汽水\nD. 草莓牛奶\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "C. 姜汁汽水",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 137,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 狗\nB. 酸奶\nC. 猫\nD. 水\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "B. 酸奶",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 124,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 潺潺的小溪\nB. 汹涌的河流\nC. 静止的池塘\nD. 微风\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "B. 汹涌的河流",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 158,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 无变化\nB. 保持不变\nC. 减少\nD. 增加\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "D. 增加",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 60,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 廉价的泥土\nB. 风\nC. 地面矿物质\nD. 脏衣服\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "A. 廉价的泥土",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 16,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 煤炭\nB. 汽水瓶\nC. 汽油\nD. 石油\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "B. 汽水瓶",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 63,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 鸡\nB. 猎鹰\nC. 狐猴\nD. 鹰\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "C. 狐猴",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 98,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 获得额外金钱\nB. 车笑\nC. 鹿微笑\nD. 轮胎磨损\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "D. 轮胎磨损",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 29,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 鸟类\nB. 电脑\nC. 泥土\nD. 金属\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "A. 鸟类",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 159,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 季节性风暴\nB. 年度洪水\nC. 自然森林火灾\nD. 砍伐森林\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "D. 砍伐森林",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 145,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 猫舔毛\nB. 耳机掉进水坑\nC. 冰雹从天而降\nD. 冰镇饮料上形成水珠\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "D. 冰镇饮料上形成水珠",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 31,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 温度升高\nB. 清洗它\nC. 它的味道\nD. 以上都不是\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "A. 温度升高",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 52,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 加拿大北部\nB. 俄罗斯北部\nC. 巴西雨林\nD. 撒哈拉沙漠\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "D. 撒哈拉沙漠",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 127,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 地毯\nB. 发电厂\nC. 电视\nD. 卫星\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "B. 发电厂",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 147,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 汽水罐\nB. 狗粮\nC. 棒球帽\nD. 中提琴\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "D. 中提琴",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 62,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 猫\nB. 狗\nC. 树蛙\nD. 老鼠\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "C. 树蛙",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 72,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 冰块\nB. 咖啡\nC. 冰棒\nD. 冰淇淋\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "B. 咖啡",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 21,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 每天吃一次饭的人\nB. 整天禁食的人\nC. 只喝水的人\nD. 每天吃三次饭的人\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "D. 每天吃三次饭的人",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 119,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 吃虫子\nB. 形成完美的辫子\nC. 勒死人\nD. 破坏硬物\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "C. 勒死人",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 9,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 冲两次马桶\nB. 使用限流器\nC. 更频繁地短途驾驶\nD. 使用更昂贵的纸张\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "B. 使用限流器",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 2,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 小猫\nB. 狼崽\nC. 狐狸崽\nD. 狗崽\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "B. 狼崽",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 54,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 将胡萝卜和豌豆排在一起种植\nB. 一季种豌豆，下一季种胡萝卜\nC. 在一片田地里种植不同类型的玉米\nD. 在作物之间翻耕土壤\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "B. 一季种豌豆，下一季种胡萝卜",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 53,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 它自行发展\nB. 飓风\nC. 企业的行为\nD. 一群鸟\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "C. 企业的行为",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 163,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 人类从青少年变为成年人\nB. 人类从儿童变为青少年\nC. 人类从青少年变为儿童\nD. 人类从婴儿变为幼儿\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "C. 人类从青少年变为儿童",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 108,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 汽车\nB. 海洋\nC. 冰川\nD. 风暴\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "A. 汽车",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 17,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 岩石\nB. 塑料食物\nC. 金属\nD. 营养\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "D. 营养",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 102,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 牙龈\nB. 股骨\nC. 皮肤\nD. 狐猴\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "B. 股骨",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 136,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 奔跑\nB. 死亡\nC. 出生\nD. 飞行\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "C. 出生",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 79,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 动物雕像\nB. 猫科动物\nC. 灭绝物种\nD. 人类\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "D. 人类",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 161,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 一只脑死亡的青蛙在泥里\nB. 一只青蛙在泥里小睡一小时\nC. 一只青蛙在泥里埋几个月\nD. 一只青蛙在泥里睡一晚\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "C. 一只青蛙在泥里埋几个月",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 125,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 更多的雨伞\nB. 伐木\nC. 更多的树木\nD. 更高的树木\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "B. 伐木",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 97,
+      "instr": "请听音频并回答下列选择题。\n(question is spoken in the audio)\n选项：\nA. 布兰妮可以通过站在阳光下获得矿物质\nB. 泰德可以通过站在阳光下获得卡路里\nC. 杰夫可以从阳光中获得蛋白质\nD. 凯莉可以通过吸收阳光获得维生素\n只输出选项字母和内容，例如 'A. ...'。",
+      "reply": "D. 凯莉可以通过吸收阳光获得维生素",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    }
+  ],
+  "aggregate": {
+    "mean": 0.875,
+    "ci95": [
+      0.775,
+      0.975
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset uro-bench-OpenbookQA-zh --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 113.3
+}

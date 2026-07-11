@@ -1,0 +1,2802 @@
+{
+  "stage": "1-directional",
+  "dataset": "voicebench-bbh",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 250,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/voicebench-bbh.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": "0.11.0"
+    }
+  },
+  "per_item": [
+    {
+      "item_id": "bbh_hyperbaton_1",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_10",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_100",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_101",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_102",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_103",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_104",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_105",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_106",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_107",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_108",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_109",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_11",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_110",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_111",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_112",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_113",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_114",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_115",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_116",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_117",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_118",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_119",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_12",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_120",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_121",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_122",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "No",
+      "score": 0,
+      "detail": {
+        "pred": "no",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_123",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_124",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_125",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_126",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_127",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_128",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_129",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_13",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_130",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_131",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_132",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_133",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_134",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_135",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_136",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_137",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_138",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_139",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_14",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_140",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_141",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_142",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_143",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_144",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "No",
+      "score": 0,
+      "detail": {
+        "pred": "no",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_145",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_146",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_147",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_148",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_149",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_15",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_150",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_151",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_152",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_153",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_154",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_155",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_156",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_157",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_158",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_159",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_16",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_160",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_161",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_162",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_163",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_164",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_165",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_166",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_167",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_168",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "No",
+      "score": 0,
+      "detail": {
+        "pred": "no",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_169",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_17",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_170",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_171",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_172",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_173",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_174",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_175",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_176",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_177",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_178",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_179",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_18",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_180",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_181",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_182",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_183",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_184",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_185",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_186",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_187",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_188",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_189",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_19",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_190",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_191",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_192",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_193",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_194",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_195",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_196",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_197",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_198",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_199",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_2",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_20",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_200",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_201",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_202",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_203",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_204",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_205",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_206",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_207",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_208",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_209",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_21",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_210",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_211",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_212",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_213",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_214",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_215",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_216",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_217",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_218",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_219",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_22",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_220",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_221",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_222",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_223",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_224",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_225",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_226",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_227",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_228",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_229",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_23",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_230",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "No",
+      "score": 0,
+      "detail": {
+        "pred": "no",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_231",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_232",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_233",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_234",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_235",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_236",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_237",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_238",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_239",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_24",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_240",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_241",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_242",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_243",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_244",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_245",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_246",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_247",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_248",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_249",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_25",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_250",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_26",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_27",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_28",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_29",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_3",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_30",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_31",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_32",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_33",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_34",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_35",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_36",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_37",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_38",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_39",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_4",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_40",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_41",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_42",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_43",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_44",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_45",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_46",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_47",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_48",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_49",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_5",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_50",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_51",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_52",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_53",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_54",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_55",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_56",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_57",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_58",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_59",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_6",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_60",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_61",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_62",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_63",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_64",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_65",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_66",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_67",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_68",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_69",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_7",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_70",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_71",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_72",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_73",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_74",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_75",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_76",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_77",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_78",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_79",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_8",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_80",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_81",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_82",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_83",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_84",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_85",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_86",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_87",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_88",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_89",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_9",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_90",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_91",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_92",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_93",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_94",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_95",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_96",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_97",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_98",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "No",
+      "score": 0,
+      "detail": {
+        "pred": "no",
+        "gold": "b"
+      },
+      "group_id": "bbh_hyperbaton"
+    },
+    {
+      "item_id": "bbh_hyperbaton_99",
+      "instr": "Listen to the audio and answer with exactly one word: Yes or No.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "pred": "yes",
+        "gold": "a"
+      },
+      "group_id": "bbh_hyperbaton"
+    }
+  ],
+  "aggregate": {
+    "mean": 0.0,
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "n_scored": 250,
+    "n_total": 250
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset voicebench-bbh --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 862.9
+}

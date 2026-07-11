@@ -1,0 +1,393 @@
+{
+  "stage": "1-directional",
+  "dataset": "uro-bench-MLC",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/uro-bench-MLC/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": 83,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "8",
+      "score": 0,
+      "detail": {
+        "gold": "Forty-eight divided by six equals eight."
+      }
+    },
+    {
+      "item_id": 175,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Pick a fruit from the box labeled \"Both\". Since all labels are wrong, this box must contain only apples or only oranges. Suppose you pick an apple. Then this box is the \"Apples\" box. The box labeled \"Oranges\" cannot be oranges (since labels are wrong), and it cannot be apples (already identified), so it must be \"Both\". The remaining box is \"Oranges\".",
+      "score": 0,
+      "detail": {
+        "gold": "Pick a fruit from the box labeled 'both.' Since all the boxes are mislabeled, the box must either contain only apples or only oranges. If you pick an apple, this box contains only apples. Then, you can correctly label the other boxes."
+      }
+    },
+    {
+      "item_id": 37,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "J.K. Rowling",
+      "score": 0,
+      "detail": {
+        "gold": "The author of 'Harry Potter' is J.K. Rowling."
+      }
+    },
+    {
+      "item_id": 57,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "4",
+      "score": 0,
+      "detail": {
+        "gold": "The remainder when twenty-nine is divided by five is four."
+      }
+    },
+    {
+      "item_id": 134,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Strong bones and overall health.",
+      "score": 0,
+      "detail": {
+        "gold": "Vitamin D is essential for strong bones and overall health."
+      }
+    },
+    {
+      "item_id": 32,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "11",
+      "score": 0,
+      "detail": {
+        "gold": "A soccer team has 11 players on the field at a time."
+      }
+    },
+    {
+      "item_id": 47,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "An apple.",
+      "score": 0,
+      "detail": {
+        "gold": "An apple is often said to keep the doctor away."
+      }
+    },
+    {
+      "item_id": 12,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The largest desert in the world is the Antarctic Desert.",
+      "score": 0,
+      "detail": {
+        "gold": "The largest desert in the world is the Sahara Desert, located in northern Africa."
+      }
+    },
+    {
+      "item_id": 67,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "5",
+      "score": 0,
+      "detail": {
+        "gold": "Forty-five divided by nine equals five."
+      }
+    },
+    {
+      "item_id": 148,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Max barks.",
+      "score": 0,
+      "detail": {
+        "gold": "We can conclude that Max barks."
+      }
+    },
+    {
+      "item_id": 167,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "11",
+      "score": 0,
+      "detail": {
+        "gold": "The other number is 11."
+      }
+    },
+    {
+      "item_id": 18,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "299,792,458 meters per second.",
+      "score": 0,
+      "detail": {
+        "gold": "The speed of light is approximately 299,792 kilometers per second."
+      }
+    },
+    {
+      "item_id": 40,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Football.",
+      "score": 0,
+      "detail": {
+        "gold": "Soccer, or football as it's known in most countries, is the most popular sport in the world."
+      }
+    },
+    {
+      "item_id": 130,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Flexibility, reduce stress, and enhance overall well-being.",
+      "score": 0,
+      "detail": {
+        "gold": "Yoga improves flexibility, reduces stress, and enhances overall well-being."
+      }
+    },
+    {
+      "item_id": 162,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "5",
+      "score": 0,
+      "detail": {
+        "gold": "The other number is 5."
+      }
+    },
+    {
+      "item_id": 86,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "92",
+      "score": 0,
+      "detail": {
+        "gold": "Sixty-seven plus twenty-five equals ninety-two."
+      }
+    },
+    {
+      "item_id": 135,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "He wrote tragedies and comedies.",
+      "score": 0,
+      "detail": {
+        "gold": "Shakespeare wrote tragedies and comedies."
+      }
+    },
+    {
+      "item_id": 24,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Au",
+      "score": 0,
+      "detail": {
+        "gold": "The chemical symbol for gold is Au."
+      }
+    },
+    {
+      "item_id": 144,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 0,
+      "detail": {
+        "gold": "No, penguins cannot fly."
+      }
+    },
+    {
+      "item_id": 141,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Bill",
+      "score": 0,
+      "detail": {
+        "gold": "Bill is the youngest."
+      }
+    },
+    {
+      "item_id": 54,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Nine.",
+      "score": 0,
+      "detail": {
+        "gold": "Three squared is nine."
+      }
+    },
+    {
+      "item_id": 31,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Biodiversity refers to the variety of life in the world or a particular habitat or ecosystem.",
+      "score": 0,
+      "detail": {
+        "gold": "Biodiversity refers to the variety of life on Earth, including different species, ecosystems, and genetic diversity."
+      }
+    },
+    {
+      "item_id": 111,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Watermelon",
+      "score": 0,
+      "detail": {
+        "gold": "Watermelon contains a lot of water."
+      }
+    },
+    {
+      "item_id": 152,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Yes, we can conclude that the apple is sour."
+      }
+    },
+    {
+      "item_id": 147,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "$60",
+      "score": 0,
+      "detail": {
+        "gold": "They cost $60 together."
+      }
+    },
+    {
+      "item_id": 82,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "28",
+      "score": 0,
+      "detail": {
+        "gold": "Twenty-eight plus twenty-two equals fifty."
+      }
+    },
+    {
+      "item_id": 25,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Neil Armstrong",
+      "score": 0,
+      "detail": {
+        "gold": "Neil Armstrong was the first man to walk on the moon in 1969."
+      }
+    },
+    {
+      "item_id": 133,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Vitamins A and C.",
+      "score": 0,
+      "detail": {
+        "gold": "Watermelons are rich in vitamins A and C."
+      }
+    },
+    {
+      "item_id": 132,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A vast array of marine life, including fish, sharks, and sea turtles.",
+      "score": 0,
+      "detail": {
+        "gold": "The Great Barrier Reef is home to a vast array of marine life."
+      }
+    },
+    {
+      "item_id": 44,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Andes.",
+      "score": 0,
+      "detail": {
+        "gold": "The longest mountain range in the world is the Andes."
+      }
+    },
+    {
+      "item_id": 28,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Atlantic Ocean",
+      "score": 0,
+      "detail": {
+        "gold": "The Bermuda Triangle is located in the Atlantic Ocean."
+      }
+    },
+    {
+      "item_id": 49,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Amazon River.",
+      "score": 0,
+      "detail": {
+        "gold": "The longest river in South America is the Amazon River."
+      }
+    },
+    {
+      "item_id": 41,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "O",
+      "score": 0,
+      "detail": {
+        "gold": "The chemical symbol for oxygen is O."
+      }
+    },
+    {
+      "item_id": 91,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "William Shakespeare",
+      "score": 0,
+      "detail": {
+        "gold": "William Shakespeare wrote 'Romeo and Juliet'."
+      }
+    },
+    {
+      "item_id": 79,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Four.",
+      "score": 0,
+      "detail": {
+        "gold": "Twelve divided by three equals four."
+      }
+    },
+    {
+      "item_id": 124,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "8,848 meters above sea level.",
+      "score": 0,
+      "detail": {
+        "gold": "Mount Everest stands at 8,848 meters."
+      }
+    },
+    {
+      "item_id": 94,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The United States declared independence on July 4, 1776.",
+      "score": 1,
+      "detail": {
+        "gold": "The United States declared independence on July 4, 1776."
+      }
+    },
+    {
+      "item_id": 85,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "4",
+      "score": 0,
+      "detail": {
+        "gold": "Thirty-six divided by nine equals four."
+      }
+    },
+    {
+      "item_id": 23,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Elephant",
+      "score": 0,
+      "detail": {
+        "gold": "The largest land mammal is the African elephant."
+      }
+    },
+    {
+      "item_id": 128,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Mona Lisa is considered famous because it is a masterpiece by Leonardo da Vinci, renowned for its enigmatic smile, innovative painting techniques, and historical significance.",
+      "score": 0,
+      "detail": {
+        "gold": "The Mona Lisa is considered famous for its mysterious smile."
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.025,
+    "ci95": [
+      0.0,
+      0.075
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset uro-bench-MLC --backbone qwen3-omni-30b-gguf --split dev --n 40",
+  "elapsed_s": 77.6
+}

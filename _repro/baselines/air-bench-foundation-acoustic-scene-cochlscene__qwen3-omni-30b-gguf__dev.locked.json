@@ -1,0 +1,492 @@
+{
+  "stage": "1-directional",
+  "dataset": "air-bench-foundation-acoustic-scene-cochlscene",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/air-bench-foundation-acoustic-scene-cochlscene.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": null
+    }
+  },
+  "per_item": [
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13546",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nFrom the sound, where do you picture this recording was made?\nOptions:\nA. car\nB. kitchen\nC. residential area\nD. bus\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. kitchen",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13242",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere do the sounds in the audio capture seem most at home?\nOptions:\nA. restroom\nB. elevator\nC. kitchen\nD. residential area\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. kitchen",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13339",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat setting would you deduce from the sound characteristics?\nOptions:\nA. street\nB. car\nC. restroom\nD. cafe\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. restroom",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13252",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich of these environments do you associate with the recorded sounds?\nOptions:\nA. subway\nB. park\nC. kitchen\nD. cafe\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. subway",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13258",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere do the audible clues in this recording lead you to believe it was taken?\nOptions:\nA. cafe\nB. street\nC. kitchen\nD. crowded indoor\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. street",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13603",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere could these sound elements commonly be found?\nOptions:\nA. elevator\nB. kitchen\nC. restroom\nD. subway station\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. restroom",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13454",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere do the unique sound signatures lead you to believe the recording took place?\nOptions:\nA. restroom\nB. street\nC. cafe\nD. car\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. restroom",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13827",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere do the unique sound signatures lead you to believe the recording took place?\nOptions:\nA. restaurant\nB. car\nC. park\nD. elevator\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. elevator",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13788",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere does the acoustic environment place you?\nOptions:\nA. subway station\nB. street\nC. residential area\nD. bus\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. bus",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13765",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere does the acoustic environment place you?\nOptions:\nA. subway\nB. elevator\nC. kitchen\nD. park\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. subway",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13233",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat backdrop do the sounds in the recording paint for you?\nOptions:\nA. residential area\nB. crowded indoor\nC. cafe\nD. bus\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. crowded indoor",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13630",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat surroundings are suggested by the audible background?\nOptions:\nA. park\nB. kitchen\nC. residential area\nD. restaurant\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. residential area",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13326",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere do the specific sounds heard in the recording typically occur?\nOptions:\nA. car\nB. residential area\nC. street\nD. restroom\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. restroom",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13438",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is your best guess at the setting of this sound clip?\nOptions:\nA. restaurant\nB. car\nC. kitchen\nD. cafe\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. car",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13777",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat venue are the sounds indicative of?\nOptions:\nA. street\nB. restroom\nC. bus\nD. restaurant\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. restaurant",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13727",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich of these options aligns with the sound characteristics you hear?\nOptions:\nA. park\nB. subway station\nC. street\nD. residential area\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. street",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13490",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere do you believe this audio clip was captured?\nOptions:\nA. car\nB. restroom\nC. kitchen\nD. residential area\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. car",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13391",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere could these sound elements commonly be found?\nOptions:\nA. crowded indoor\nB. subway\nC. kitchen\nD. park\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. subway",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13302",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat scenery does the ambient sound reflect?\nOptions:\nA. subway station\nB. residential area\nC. subway\nD. kitchen\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. subway",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13749",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat place do you connect with the sound profile in this clip?\nOptions:\nA. restroom\nB. crowded indoor\nC. subway\nD. subway station\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. restroom",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13254",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat scene does the layered soundscape suggest to you?\nOptions:\nA. subway\nB. restroom\nC. elevator\nD. street\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. elevator",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13577",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat location comes to mind with this collection of sounds?\nOptions:\nA. bus\nB. subway station\nC. car\nD. restroom\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. car",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13758",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat scene is being depicted through these sounds?\nOptions:\nA. elevator\nB. subway station\nC. crowded indoor\nD. street\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. crowded indoor",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13246",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat scenery does the ambient sound reflect?\nOptions:\nA. restroom\nB. car\nC. cafe\nD. subway\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. subway",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13742",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat scene does the layered soundscape suggest to you?\nOptions:\nA. street\nB. residential area\nC. elevator\nD. crowded indoor\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. elevator",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13115",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the setting that comes to mind when listening to this sound?\nOptions:\nA. car\nB. subway station\nC. subway\nD. cafe\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. subway",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13774",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere do the unique sound signatures lead you to believe the recording took place?\nOptions:\nA. car\nB. subway station\nC. cafe\nD. bus\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. subway station",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13526",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere do you believe this audio clip was captured?\nOptions:\nA. restaurant\nB. park\nC. bus\nD. restroom\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. bus",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13503",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat scenario can you infer from the auditory cues in this sound clip?\nOptions:\nA. subway\nB. kitchen\nC. elevator\nD. residential area\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. elevator",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13146",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat venue do these sounds most likely represent?\nOptions:\nA. restroom\nB. park\nC. street\nD. cafe\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. street",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:12921",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nFrom the sound, where do you picture this recording was made?\nOptions:\nA. kitchen\nB. subway station\nC. residential area\nD. subway\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. subway",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13033",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhere does the acoustic environment place you?\nOptions:\nA. park\nB. car\nC. restroom\nD. street\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. restroom",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13784",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIn what setting do you think this sound was recorded?\nOptions:\nA. crowded indoor\nB. kitchen\nC. elevator\nD. residential area\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. elevator",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13829",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich location seems to match the sonic landscape?\nOptions:\nA. subway station\nB. street\nC. crowded indoor\nD. park\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. crowded indoor",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13537",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat setting are you transported to with these sounds?\nOptions:\nA. elevator\nB. street\nC. subway station\nD. restroom\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. subway station",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13056",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat environment is being reflected in this sound recording?\nOptions:\nA. park\nB. residential area\nC. elevator\nD. kitchen\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. elevator",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:12952",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat scene does the layered soundscape suggest to you?\nOptions:\nA. restaurant\nB. restroom\nC. park\nD. crowded indoor\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. crowded indoor",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13559",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat place do the acoustic elements in this sound recording belong to?\nOptions:\nA. restaurant\nB. park\nC. kitchen\nD. street\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. park",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13349",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat backdrop do the sounds in the recording paint for you?\nOptions:\nA. restaurant\nB. subway\nC. kitchen\nD. cafe\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. kitchen",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Acoustic_Scene_Classification:CochlScene:13799",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nFrom the sound, where do you picture this recording was made?\nOptions:\nA. subway\nB. park\nC. cafe\nD. restroom\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. subway",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    }
+  ],
+  "aggregate": {
+    "mean": 0.675,
+    "ci95": [
+      0.525,
+      0.825
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset air-bench-foundation-acoustic-scene-cochlscene --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 75.7
+}

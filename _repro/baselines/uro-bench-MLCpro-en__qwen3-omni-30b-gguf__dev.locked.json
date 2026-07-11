@@ -1,0 +1,412 @@
+{
+  "stage": "1-directional",
+  "dataset": "uro-bench-MLCpro-en",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 36,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/uro-bench-MLCpro-en.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": "0.11.0"
+    }
+  },
+  "per_item": [
+    {
+      "item_id": 65,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The main layers of the Earth are the crust, the mantle, and the core.",
+      "score": 0,
+      "detail": {
+        "gold": "The Earth has four main layers: the crust, the mantle, the outer core, and the inner core. The crust is the outermost layer, the mantle is below it, the outer core is liquid, and the inner core is solid."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 13,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "480",
+      "score": 0,
+      "detail": {
+        "gold": "The largest value is 480, because 60 times 8 equals 480, and it is less than 500."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 20,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Chemical equilibrium is the state in a reversible reaction where the rates of the forward and reverse reactions are equal, resulting in no net change in the concentrations of reactants and products.\n\nLe Chatelier's principle states that if a system at equilibrium is disturbed by a change in concentration, temperature, or pressure, the system will shift its equilibrium position to counteract the disturbance. For example:\n\n- Increasing reactant concentration shifts equilibrium toward products.\n- Increasing pressure (for gaseous reactions) shifts equilibrium toward the side with fewer moles of gas.\n- Increasing temperature shifts equilibrium toward the endothermic direction.\n\nThus, Le Chatelier's principle can be used to predict and manipulate the equilibrium position of a reaction.",
+      "score": 0,
+      "detail": {
+        "gold": "Chemical equilibrium refers to the state in a closed system where the rates of the forward and reverse reactions are equal, and the concentrations remain unchanged. According to Le Chatelier's Principle, if a system at equilibrium is disturbed by changes in concentration, temperature, or pressure, the system will adjust to counteract the disturbance. For example, increasing the concentration of reactants will shift the reaction toward the production of more products."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 26,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "120",
+      "score": 0,
+      "detail": {
+        "gold": "The number of ways to arrange 5 distinct books is 5 factorial, which is 5 times 4 times 3 times 2 times 1, so 120."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 5,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "72",
+      "score": 0,
+      "detail": {
+        "gold": "The least common multiple of 18 and 24 is 72."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 73,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Renaissance fostered a spirit of inquiry, revived classical knowledge, and promoted humanism, which encouraged observation and experimentation, laying the intellectual foundation for the Scientific Revolution and the development of modern science.",
+      "score": 0,
+      "detail": {
+        "gold": "The Renaissance led to a shift in thinking, emphasizing observation, experimentation, and empirical evidence. This period saw the rise of key figures like Copernicus and Galileo, whose work laid the foundation for modern physics and astronomy."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 81,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Fermentation processes contribute to the development of flavors in food by breaking down complex molecules into simpler compounds, such as acids, alcohols, and esters, which create the characteristic sour, tangy, or savory tastes and aromas found in foods like yogurt, cheese, soy sauce, and sauerkraut.",
+      "score": 0,
+      "detail": {
+        "gold": "Fermentation is a process where microorganisms like yeast and bacteria break down sugars, producing alcohol or acids. These by-products contribute to the development of unique flavors in foods like cheese, wine, and sourdough bread by enhancing taste complexity and adding a distinct tang."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 83,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Altitude affects athletic performance primarily by reducing the amount of available oxygen, which can impair endurance and aerobic capacity.",
+      "score": 0,
+      "detail": {
+        "gold": "At high altitudes, the lower oxygen levels can impair athletic performance by reducing the oxygen available for muscle function. Athletes may experience reduced endurance, slower recovery, and increased fatigue. However, training at high altitudes can increase the body’s red blood cell count, improving oxygen delivery and performance at lower altitudes, a process known as acclimatization."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 44,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "-6",
+      "score": 0,
+      "detail": {
+        "gold": "The determinant of the matrix is -2."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 68,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Big Bang Theory is the prevailing cosmological model explaining that the universe began as a singularity approximately 13.8 billion years ago and has been expanding ever since.",
+      "score": 0,
+      "detail": {
+        "gold": "The Big Bang theory suggests that the universe began as an extremely hot and dense point, about 13.8 billion years ago, and has been expanding ever since. This expansion explains the observed redshift of galaxies and the cosmic background radiation."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 41,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "120",
+      "score": 0,
+      "detail": {
+        "gold": "There are 120 ways to select 3 objects from a set of 10."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 63,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Vaccines work by introducing a harmless part of a pathogen, like a dead or weakened virus, or just its genetic material, to train your immune system. This way, your body learns to recognize and fight the real thing faster and more effectively if you're ever exposed to it in the future.",
+      "score": 0,
+      "detail": {
+        "gold": "Vaccines work by introducing a small, harmless piece of a virus or bacteria into the body. This stimulates the immune system to recognize and remember the pathogen, so if the body encounters it again, it can fight it off more effectively."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 3,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The factors of 72 are 1, 2, 3, 4, 6, 8, 9, 12, 18, 24, 36, and 72.",
+      "score": 1,
+      "detail": {
+        "gold": "The factors of 72 are 1, 2, 3, 4, 6, 8, 9, 12, 18, 24, 36, and 72."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 75,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Baroque period (1600–1750) featured complex, ornate music with counterpoint and basso continuo, while the Classical period (1750–1820) emphasized clarity, balance, and form, such as sonata-allegro structure.",
+      "score": 0,
+      "detail": {
+        "gold": "Baroque music, like Bach and Handel, is characterized by ornamentation, complexity, and emotional intensity. Classical music, represented by Mozart and Beethoven, is marked by balance, clarity, and formal structure, with an emphasis on melody and harmonies."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 62,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A virus is not considered a living organism and requires a host cell to replicate, while a bacterium is a single-celled living organism that can reproduce independently.",
+      "score": 0,
+      "detail": {
+        "gold": "Viruses are much smaller than bacteria and cannot survive or reproduce on their own. They need a host cell to reproduce. Bacteria, on the other hand, are single-celled organisms that can live independently and reproduce on their own."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 8,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "9",
+      "score": 0,
+      "detail": {
+        "gold": "200 has 12 factors: 1, 2, 4, 5, 8, 10, 20, 25, 40, 50, 100, and 200."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 27,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "0",
+      "score": 0,
+      "detail": {
+        "gold": "As x approaches infinity, the limit of 1 divided by x is zero."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 87,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Food miles measure the distance food travels from production to consumption. High food miles typically mean more transportation, leading to greater fuel use and greenhouse gas emissions, which negatively impacts sustainability.",
+      "score": 0,
+      "detail": {
+        "gold": "The concept of 'food miles' refers to the distance food travels from production to consumption. The longer the distance, the more energy and resources are required for transportation, contributing to carbon emissions and environmental degradation. Reducing food miles by supporting local food systems can lower environmental impacts and promote more sustainable agriculture."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 71,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Impressionism focuses on capturing light, color, and fleeting moments with loose brushwork, while realism aims to depict subjects truthfully and accurately, without idealization or stylization.",
+      "score": 0,
+      "detail": {
+        "gold": "Impressionism focuses on capturing fleeting moments and the effects of light, often using loose brushwork and vibrant colors. Realism, on the other hand, aims to depict scenes as they truly are, focusing on accuracy and everyday subjects without idealization."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 39,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The solutions are x = 2 and x = -7.",
+      "score": 0,
+      "detail": {
+        "gold": "The solutions for x are approximately 2.79 and -7.79."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 33,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "4989600",
+      "score": 0,
+      "detail": {
+        "gold": "There are 277,200 ways to arrange the letters in the word 'mathematics'."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 51,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A black hole forms when a massive star collapses at the end of its life.",
+      "score": 0,
+      "detail": {
+        "gold": "A black hole forms when a massive star collapses under its own gravity, after it has exhausted its nuclear fuel. The collapse leads to a singularity, a point where the density becomes infinitely large and the gravitational pull is so strong that not even light can escape."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 30,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "25.13 units",
+      "score": 0,
+      "detail": {
+        "gold": "The circumference of a circle is 2 pi times the radius. So, 2 pi times 4 equals 8 pi, or about 25.13 units."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 66,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A compass works by using Earth's magnetic field to align its needle, which is magnetized, so that one end points toward the magnetic North Pole.",
+      "score": 0,
+      "detail": {
+        "gold": "A compass works by using a magnetized needle that aligns itself with Earth's magnetic field. The needle points to the magnetic north, which allows us to find direction."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 64,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The greenhouse effect is the process by which greenhouse gases in Earth's atmosphere trap heat, warming the planet. It is important because it makes Earth habitable; without it, the planet would be too cold for life.",
+      "score": 0,
+      "detail": {
+        "gold": "The greenhouse effect is a natural process where certain gases in the atmosphere trap heat from the sun, keeping the Earth warm enough to support life. However, human activities, like burning fossil fuels, are increasing these gases, contributing to global warming."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 23,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "6x + 5",
+      "score": 0,
+      "detail": {
+        "gold": "The derivative of 3x squared plus 5x is 6x plus 5."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 42,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "268.08",
+      "score": 0,
+      "detail": {
+        "gold": "The volume of the sphere is approximately 268.08 cubic units."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 52,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The role of mitochondria in a cell is to produce energy in the form of ATP through cellular respiration.",
+      "score": 0,
+      "detail": {
+        "gold": "Mitochondria are often referred to as the powerhouses of the cell because they generate most of the cell's supply of adenosine triphosphate (ATP), which is used as a source of chemical energy. They also play a role in regulating the cell's metabolism and energy balance."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 53,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The sky appears blue during the day due to Rayleigh scattering of sunlight by the atmosphere.",
+      "score": 0,
+      "detail": {
+        "gold": "The sky appears blue because of a phenomenon called Rayleigh scattering. When sunlight enters Earth's atmosphere, the shorter wavelengths of light, like blue and violet, are scattered in all directions by the gases in the air. Our eyes are more sensitive to blue light, so the sky looks blue."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 12,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "36",
+      "score": 0,
+      "detail": {
+        "gold": "The least common multiple of 9 and 12 is 36."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 88,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Earthquakes, volcanoes, mountain building, and ocean basin formation.",
+      "score": 0,
+      "detail": {
+        "gold": "Plate tectonics explains the movement of Earth's lithosphere, which is divided into large plates that float on the semi-fluid asthenosphere. This movement leads to the formation of mountains, earthquakes, and volcanic activity. Over millions of years, plate tectonics has shaped the planet's continents, ocean basins, and geological features."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 40,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The integral of the function two x plus three with respect to x is x squared plus three x plus C.",
+      "score": 0,
+      "detail": {
+        "gold": "The integral of the function is x squared plus 3x plus a constant of integration."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 31,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The roots of the equation are x = 2 and x = 4.",
+      "score": 0,
+      "detail": {
+        "gold": "The roots of the equation are x equals 4 and x equals 2."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 69,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Some metals rust because they react with oxygen and water in the air to form metal oxides.",
+      "score": 0,
+      "detail": {
+        "gold": "Metals rust when they react with oxygen and water in the environment, forming compounds like iron oxide. This process is called oxidation, and it weakens the metal over time."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 77,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The hippocampus plays a crucial role in the formation of new long-term memories and spatial navigation.",
+      "score": 0,
+      "detail": {
+        "gold": "The hippocampus is a region of the brain involved in forming new memories. It helps convert short-term memories into long-term ones and is also essential for spatial navigation and emotional processing."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 11,
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "35",
+      "score": 0,
+      "detail": {
+        "gold": "It can be divided by at least 35, because the least common multiple of 5 and 7 is 35."
+      },
+      "group_id": null
+    }
+  ],
+  "aggregate": {
+    "mean": 0.0278,
+    "ci95": [
+      0.0,
+      0.0833
+    ],
+    "n_scored": 36,
+    "n_total": 36
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset uro-bench-MLCpro-en --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 66.6
+}

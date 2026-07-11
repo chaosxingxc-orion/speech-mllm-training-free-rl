@@ -11,3 +11,4 @@ Do not read `test_ids` for arm selection, prompt search, threshold tuning, N*-bu
 reward-model calibration — see `README.md`.
 
 <!-- append new entries below this line -->
+- 2026-07-11T12:25:34Z | ALL 65 dataset keys | locked-dev-rerun agent (group-aware locked-DEV baseline rerun, driver: scripts/baselines/run_locked_rerun.sh --split dev, commit b4707fe) | dev_ids read for dev-half baseline scoring (65 dev cells -> *__qwen3-omni-30b-gguf__dev.locked.json, ran=50+15 checkpoint-skipped, failed=0); test_ids NOT read (only len() counts via census); test half remains single-consumer reserved for the final confirmatory pass

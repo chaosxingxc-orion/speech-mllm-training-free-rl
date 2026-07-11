@@ -1,0 +1,393 @@
+{
+  "stage": "1-directional",
+  "dataset": "vocalbench-reasoning",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/vocalbench-reasoning/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "reasoning-315",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Chemistry lab",
+      "score": 0,
+      "detail": {
+        "gold": "A person would light alcohol on fire to observe the reaction in a chemistry lab."
+      }
+    },
+    {
+      "item_id": "reasoning-168",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "In a cupboard.",
+      "score": 0,
+      "detail": {
+        "gold": "An unused chess set might be stored in a cupboard."
+      }
+    },
+    {
+      "item_id": "reasoning-119",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Project-based learning requires students to identify problems, research solutions, collaborate, and apply knowledge in real-world contexts, which actively develops and strengthens their problem-solving skills.",
+      "score": 0,
+      "detail": {
+        "gold": "Project-based learning engages students in real-world challenges, developing critical thinking and problem-solving abilities."
+      }
+    },
+    {
+      "item_id": "reasoning-296",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Fall asleep",
+      "score": 0,
+      "detail": {
+        "gold": "You might fall asleep."
+      }
+    },
+    {
+      "item_id": "reasoning-595",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A chemical reaction would occur, producing carbon dioxide gas, water, and sodium acetate.",
+      "score": 0,
+      "detail": {
+        "gold": "It would cause a chemical reaction, producing bubbles of carbon dioxide."
+      }
+    },
+    {
+      "item_id": "reasoning-143",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "GPS navigation requires the phone's processor, radio, and screen to work harder, all of which consume more battery power.",
+      "score": 0,
+      "detail": {
+        "gold": "GPS navigation uses the phone’s location services, which continuously run in the background and consume significant amounts of battery power."
+      }
+    },
+    {
+      "item_id": "reasoning-695",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "120",
+      "score": 0,
+      "detail": {
+        "gold": "Lily made fifty friends at her new school. Amy, on the other hand, made twenty more friends than Lily, which means Amy made seventy friends. To find out how many friends they have together, we add Lily's fifty friends to Amy's seventy friends. This gives a total of one hundred twenty friends. So the answer is 120."
+      }
+    },
+    {
+      "item_id": "reasoning-767",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "9",
+      "score": 0,
+      "detail": {
+        "gold": "Chatty prepared three dozen eggs. Since a dozen means twelve, three dozen equals thirty-six eggs in total. She has four children, and all of them are supposed to receive the same number of eggs. To figure out how many eggs each child gets, we divide the total number of eggs by the number of children. Dividing thirty-six eggs by four children gives nine eggs for each child. So the answer is 9."
+      }
+    },
+    {
+      "item_id": "reasoning-739",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "20 miles",
+      "score": 0,
+      "detail": {
+        "gold": "Matteo traveled at a speed of fifty-five miles per hour for a duration of four hours. To find the total distance he covered, we multiply his speed by the time he traveled, which gives us two hundred twenty miles. Shandy, on the other hand, traveled at a speed of forty-five miles per hour for ten hours. To calculate her total distance, we multiply her speed by the time she traveled, resulting in four hundred fifty miles. To determine how many more miles Shandy drove compared to Matteo, we subtract Matteo's distance from Shandy's distance. This subtraction results in two hundred thirty miles. So the answer is 230."
+      }
+    },
+    {
+      "item_id": "reasoning-663",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "25.5",
+      "score": 0,
+      "detail": {
+        "gold": "Amber ran a total of eight miles. Micah ran three and a half times the distance that Amber ran, which comes out to twenty-eight miles. To find out how many miles Ahito ran, we take the total distance of fifty-two miles and subtract the distances run by Amber and Micah. This leaves us with sixteen miles for Ahito. So the answer is 16."
+      }
+    },
+    {
+      "item_id": "reasoning-564",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "There would be massive overcrowding and chaos at airports worldwide.",
+      "score": 0,
+      "detail": {
+        "gold": "Airports would experience extreme overcrowding, long delays, and potential operational breakdowns."
+      }
+    },
+    {
+      "item_id": "reasoning-754",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "400",
+      "score": 0,
+      "detail": {
+        "gold": "Start by letting the number of queen bees be represented by a variable. The number of baby bees is said to be twice the number of queen bees, and the number of worker bees is twice the number of baby bees. Adding up all the bees, we get the total number in the hive. Combining all these groups gives us seven times the number of queen bees, which equals seven hundred. Dividing seven hundred by seven tells us there are one hundred queen bees. Since the number of worker bees is four times the number of queen bees, multiplying one hundred by four gives us four hundred worker bees. So the answer is 400."
+      }
+    },
+    {
+      "item_id": "reasoning-529",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The email might go to the spam folder, or your friend might not open it.",
+      "score": 0,
+      "detail": {
+        "gold": "The email might still be delivered, but your friend may see it as less important or overlook it due to the missing subject, which helps in identifying the email's content quickly."
+      }
+    },
+    {
+      "item_id": "reasoning-923",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The moral is that things that initially seem frightening or intimidating often turn out to be gentle and manageable upon closer acquaintance.",
+      "score": 0,
+      "detail": {
+        "gold": "Use serves to overcome dread. "
+      }
+    },
+    {
+      "item_id": "reasoning-655",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "62",
+      "score": 0,
+      "detail": {
+        "gold": "Start by figuring out how many pennies make up one third of the total pennies in the cup. Since the cup contains nine thousand three hundred pennies, dividing that number into three equal parts gives three thousand one hundred pennies in each part. Next, to find how many pennies are in two thirds of the cup, take the amount in one third and multiply it by two. This results in six thousand two hundred pennies. Now, to determine the dollar amount, recall that one dollar equals one hundred pennies. Divide the total number of pennies in the stack by one hundred, which gives sixty-two dollars. So the answer is 62."
+      }
+    },
+    {
+      "item_id": "reasoning-539",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "They might lose their homes.",
+      "score": 0,
+      "detail": {
+        "gold": "If the sea level rose significantly, animals that live on the beach would likely lose their habitats, forcing them to migrate to higher ground or adapt to new environments. Some may not survive the change."
+      }
+    },
+    {
+      "item_id": "reasoning-893",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "10 inches",
+      "score": 0,
+      "detail": {
+        "gold": "Jane started with a beanstalk that was three inches tall after the first week. By the second week, the beanstalk doubled in height, making it six inches tall. Then, during the third week, the beanstalk grew an additional four inches, bringing its total height to ten inches. So the answer is 10."
+      }
+    },
+    {
+      "item_id": "reasoning-532",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "They would live in the ocean.",
+      "score": 0,
+      "detail": {
+        "gold": "Fish would primarily live in oceans and seas if there were no rivers or lakes."
+      }
+    },
+    {
+      "item_id": "reasoning-085",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Author readings attract new customers and increase overall store traffic.",
+      "score": 0,
+      "detail": {
+        "gold": "Author readings attract fans and readers interested in meeting writers and discussing books, driving up store visits."
+      }
+    },
+    {
+      "item_id": "reasoning-184",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A person who does not have immortality is called a mortal. Someone described as dying is referred to as dying. A person who has died is considered dead.",
+      "score": 1,
+      "detail": {
+        "gold": "A person who does not have immortality is called a mortal."
+      }
+    },
+    {
+      "item_id": "reasoning-555",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Split it in half.",
+      "score": 0,
+      "detail": {
+        "gold": "Break the cookie in half and share it equally."
+      }
+    },
+    {
+      "item_id": "reasoning-735",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "93,000",
+      "score": 0,
+      "detail": {
+        "gold": "First, figure out how many posts all the members make in a single day. Since there are one thousand members and each member creates three posts daily, the group generates three thousand posts every day. Next, consider that March has thirty-one days. To find the total number of posts for the entire month, multiply the number of posts made in one day by the number of days in March. This results in ninety-three thousand posts for the month. So the answer is 93000."
+      }
+    },
+    {
+      "item_id": "reasoning-940",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Don't be greedy.",
+      "score": 0,
+      "detail": {
+        "gold": "Be patient. "
+      }
+    },
+    {
+      "item_id": "reasoning-289",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "To safely extinguish any unexpected fires caused by combustible mixtures used in experiments.",
+      "score": 0,
+      "detail": {
+        "gold": "They kept a fire extinguisher in the chemistry lab, as well as in most businesses, classrooms, or public buildings, to safely handle any potential fires that could arise from working with combustible mixtures during experiments."
+      }
+    },
+    {
+      "item_id": "reasoning-471",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes, the inference is correct and well-supported.",
+      "score": 0,
+      "detail": {
+        "gold": "The inference is correct and well-supported because the statement provides a consistent pattern: every time the bus was missed, the person arrived late to work. This suggests a logical connection between missing the bus and being late for work, making the inference reasonable based on the evidence provided. While it does not establish causation with absolute certainty, it is a valid conclusion given the information available."
+      }
+    },
+    {
+      "item_id": "reasoning-756",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "26",
+      "score": 0,
+      "detail": {
+        "gold": "Grandma Jones baked 5 apple pies, each cut into 8 pieces, making a total of 40 pieces. At the end of the evening, 14 pieces were left. So, the guests took 26 pieces of pie. The answer is 26."
+      }
+    },
+    {
+      "item_id": "reasoning-194",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A performance.",
+      "score": 0,
+      "detail": {
+        "gold": "Performing a type of singing, acting, feat, or an act is called an act."
+      }
+    },
+    {
+      "item_id": "reasoning-563",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The water in lakes and rivers could become polluted, leading to excessive plant growth and harming aquatic life.",
+      "score": 0,
+      "detail": {
+        "gold": "Excessive fertilizer use can lead to nutrient runoff, causing algae blooms in lakes and rivers, which deplete oxygen levels and harm aquatic life."
+      }
+    },
+    {
+      "item_id": "reasoning-191",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Skateboard",
+      "score": 0,
+      "detail": {
+        "gold": "Kids skateboard to avoid boredom on a ramp."
+      }
+    },
+    {
+      "item_id": "reasoning-907",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "True honor and dignity are earned through strength and courage, not merely granted or assumed.",
+      "score": 0,
+      "detail": {
+        "gold": "It matters little if those who are inferior to us in merit should be like us in outside appearances. "
+      }
+    },
+    {
+      "item_id": "reasoning-812",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "9",
+      "score": 0,
+      "detail": {
+        "gold": "Jackson starts by figuring out how many rows he can plant with the red tulips. Since he has thirty-six red tulips and each row holds six of them, he will be able to plant six rows of red tulips. Next, he calculates the rows for the blue tulips. With twenty-four blue tulips and eight in each row, he finds that he can plant three rows of blue tulips. To find the total number of rows, he adds the rows of red tulips and the rows of blue tulips together. This gives him a total of nine rows. So the answer is 9."
+      }
+    },
+    {
+      "item_id": "reasoning-333",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Bowling alley",
+      "score": 0,
+      "detail": {
+        "gold": "You throw a ball at pins at a bowling alley."
+      }
+    },
+    {
+      "item_id": "reasoning-430",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes, the inference is correct and well-supported.",
+      "score": 0,
+      "detail": {
+        "gold": "The inference is correct and well-supported. The reasoning follows logically from the given premises: the statement \"all reptiles are cold-blooded\" establishes a universal rule, and since snakes are classified as reptiles, it necessarily follows that snakes must also be cold-blooded. This aligns with the principles of deductive reasoning, where if the premises are true, the conclusion must also be true. Therefore, the answer is right."
+      }
+    },
+    {
+      "item_id": "reasoning-972",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The moral is that one should not trust the enemy, even if they seem to be making peace.",
+      "score": 0,
+      "detail": {
+        "gold": "Do not give up friends for foes."
+      }
+    },
+    {
+      "item_id": "reasoning-361",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The invention of the compass did not lead to the discovery of electricity.",
+      "score": 0,
+      "detail": {
+        "gold": "The invention of the compass helped with navigation, while the discovery of electricity occurred independently and much later."
+      }
+    },
+    {
+      "item_id": "reasoning-631",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "20 hours",
+      "score": 0,
+      "detail": {
+        "gold": "First, figure out how many days it would take one person to paint an entire house. Since one person can paint half a house in five days, it would take them twice as long to paint the whole house, which is ten days. Next, consider that if five people are working together, they can complete the task five times faster than one person. This means the time required would be ten divided by five, which equals two days. Finally, since there are twenty-four hours in a day, multiply two days by twenty-four hours to find the total time in hours. This gives forty-eight hours for five people to paint the whole house. So the answer is 48."
+      }
+    },
+    {
+      "item_id": "reasoning-486",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 0,
+      "detail": {
+        "gold": "The inference is incorrect and not well-supported because it assumes a causal relationship between wearing lucky socks and the team's victory based solely on correlation. This is a logical fallacy known as \"post hoc ergo propter hoc\" (after this, therefore because of this). Just because two events occur together does not mean that one causes the other. There could be many other factors influencing the team's performance, and the socks are likely coincidental rather than causal. Proper evidence would require a controlled study or more rigorous analysis to establish a causal link, which is lacking in this case"
+      }
+    },
+    {
+      "item_id": "reasoning-652",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "270",
+      "score": 0,
+      "detail": {
+        "gold": "Maddison starts with five boxes, and each box contains fifty marbles. To find out how many marbles are in all the boxes combined, we multiply the number of boxes by the number of marbles in each box. This gives us two hundred fifty marbles from the boxes. Then, she receives twenty more marbles from her friend. To find the total number of marbles she has now, we add the two hundred fifty marbles from the boxes to the twenty marbles she received. This gives us a total of two hundred seventy marbles. So the answer is 270."
+      }
+    },
+    {
+      "item_id": "reasoning-175",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Apartment building",
+      "score": 0,
+      "detail": {
+        "gold": "You could find hundreds of thousands of homes in a neighborhood within a city or town."
+      }
+    },
+    {
+      "item_id": "reasoning-106",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The picnic tables provided a convenient place for families to eat and relax.",
+      "score": 0,
+      "detail": {
+        "gold": "Picnic tables provide comfortable seating for outdoor gatherings, encouraging families to spend leisure time in the park."
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.025,
+    "ci95": [
+      0.0,
+      0.075
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset vocalbench-reasoning --backbone qwen3-omni-30b-gguf --split dev --n 40",
+  "elapsed_s": 103.0
+}

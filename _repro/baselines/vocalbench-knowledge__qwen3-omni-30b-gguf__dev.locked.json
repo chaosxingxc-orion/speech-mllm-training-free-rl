@@ -1,0 +1,852 @@
+{
+  "stage": "1-directional",
+  "dataset": "vocalbench-knowledge",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 80,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/vocalbench-knowledge.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": "0.11.0"
+    }
+  },
+  "per_item": [
+    {
+      "item_id": "knowledge-0000",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Leonardo da Vinci",
+      "score": 1,
+      "detail": {
+        "gold": "Leonardo da Vinci"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0001",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Vincent van Gogh",
+      "score": 1,
+      "detail": {
+        "gold": "Vincent van Gogh"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0003",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Toy Story",
+      "score": 1,
+      "detail": {
+        "gold": "Toy Story"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0168",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Peregrine falcon",
+      "score": 1,
+      "detail": {
+        "gold": "Peregrine falcon"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0169",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The blue whale.",
+      "score": 1,
+      "detail": {
+        "gold": "Blue Whale"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0170",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Ribosome",
+      "score": 1,
+      "detail": {
+        "gold": "Ribosome"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0171",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Biology",
+      "score": 1,
+      "detail": {
+        "gold": "Biology"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0172",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Adaptation",
+      "score": 0,
+      "detail": {
+        "gold": "Evolution"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0173",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Inflammation",
+      "score": 1,
+      "detail": {
+        "gold": "Inflammation"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0174",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Cockroach",
+      "score": 1,
+      "detail": {
+        "gold": "Cockroach"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0175",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The box jellyfish.",
+      "score": 1,
+      "detail": {
+        "gold": "Box jellyfish"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0176",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Zebra",
+      "score": 1,
+      "detail": {
+        "gold": "Zebra"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0177",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Dolphin",
+      "score": 1,
+      "detail": {
+        "gold": "Dolphin"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0178",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Five",
+      "score": 1,
+      "detail": {
+        "gold": "Five"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0179",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Skin",
+      "score": 1,
+      "detail": {
+        "gold": "Skin"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0180",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Dolphin",
+      "score": 0,
+      "detail": {
+        "gold": "Sailfish"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0181",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The ostrich.",
+      "score": 1,
+      "detail": {
+        "gold": "Ostrich"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0182",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Four",
+      "score": 0,
+      "detail": {
+        "gold": "Two"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0183",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Peregrine falcon",
+      "score": 1,
+      "detail": {
+        "gold": "Peregrine falcon"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0184",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Pruritus",
+      "score": 1,
+      "detail": {
+        "gold": "Pruritus"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0447",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Cellular respiration",
+      "score": 1,
+      "detail": {
+        "gold": "Cellular respiration"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0478",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The guitar is called the \"Experience.\"",
+      "score": 0,
+      "detail": {
+        "gold": "Fender Stratocaster"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0479",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Richard Hatch",
+      "score": 1,
+      "detail": {
+        "gold": "Richard Hatch"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0481",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Mark Hamill",
+      "score": 1,
+      "detail": {
+        "gold": "Mark Hamill"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0483",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Mark Ruffalo",
+      "score": 1,
+      "detail": {
+        "gold": "Mark Ruffalo"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0484",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Tom Welling",
+      "score": 1,
+      "detail": {
+        "gold": "Tom Welling"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0485",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Jaws",
+      "score": 1,
+      "detail": {
+        "gold": "Jaws"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0486",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Leonardo DiCaprio",
+      "score": 1,
+      "detail": {
+        "gold": "Leonardo DiCaprio"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0487",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Tom Brady",
+      "score": 1,
+      "detail": {
+        "gold": "Tom Brady"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0588",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Gilmore Girls",
+      "score": 1,
+      "detail": {
+        "gold": "Gilmore Girls"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0595",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Michael Keaton",
+      "score": 1,
+      "detail": {
+        "gold": "Michael Keaton"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0624",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Rod Laver",
+      "score": 0,
+      "detail": {
+        "gold": "Steffi Graf"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0655",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Kelly Clarkson",
+      "score": 1,
+      "detail": {
+        "gold": "Kelly Clarkson"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0670",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Hydrogen",
+      "score": 1,
+      "detail": {
+        "gold": "Hydrogen"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0671",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "He",
+      "score": 1,
+      "detail": {
+        "gold": "He"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0672",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Hydrogen",
+      "score": 1,
+      "detail": {
+        "gold": "Hydrogen"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0673",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "K",
+      "score": 1,
+      "detail": {
+        "gold": "K"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0674",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Sn",
+      "score": 1,
+      "detail": {
+        "gold": "Sn"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0675",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "O",
+      "score": 1,
+      "detail": {
+        "gold": "O"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0676",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Chocolate",
+      "score": 1,
+      "detail": {
+        "gold": "Chocolate"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0713",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Li",
+      "score": 1,
+      "detail": {
+        "gold": "Li"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0732",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Th",
+      "score": 1,
+      "detail": {
+        "gold": "Th"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0734",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B",
+      "score": 1,
+      "detail": {
+        "gold": "B"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0740",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Be",
+      "score": 1,
+      "detail": {
+        "gold": "Be"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0742",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "F",
+      "score": 1,
+      "detail": {
+        "gold": "F"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0750",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Fr",
+      "score": 1,
+      "detail": {
+        "gold": "Fr"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0762",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Ca",
+      "score": 1,
+      "detail": {
+        "gold": "Ca"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0769",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Ne",
+      "score": 1,
+      "detail": {
+        "gold": "Ne"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0792",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "S",
+      "score": 1,
+      "detail": {
+        "gold": "S"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0812",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Po",
+      "score": 1,
+      "detail": {
+        "gold": "Po"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0841",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Si",
+      "score": 1,
+      "detail": {
+        "gold": "Si"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0846",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The currency used in Japan is the Japanese Yen.",
+      "score": 1,
+      "detail": {
+        "gold": "Yen"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0848",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The currency used in Canada is the Canadian Dollar (CAD).",
+      "score": 1,
+      "detail": {
+        "gold": "Canadian dollar"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0928",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Denali",
+      "score": 1,
+      "detail": {
+        "gold": "Denali"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0929",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Sicily",
+      "score": 1,
+      "detail": {
+        "gold": "Sicily"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0930",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Venice",
+      "score": 1,
+      "detail": {
+        "gold": "Venice"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0931",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Beijing",
+      "score": 1,
+      "detail": {
+        "gold": "Beijing"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0932",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Madrid",
+      "score": 1,
+      "detail": {
+        "gold": "Madrid"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0933",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Rabat",
+      "score": 1,
+      "detail": {
+        "gold": "Rabat"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-0934",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Mexico City",
+      "score": 1,
+      "detail": {
+        "gold": "Mexico City"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-1181",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Joseph Stalin",
+      "score": 1,
+      "detail": {
+        "gold": "Joseph Stalin"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-1182",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Amelia Earhart",
+      "score": 1,
+      "detail": {
+        "gold": "Earhart"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-1183",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Treaty of Versailles.",
+      "score": 1,
+      "detail": {
+        "gold": "Versailles"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-1184",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Khufu",
+      "score": 1,
+      "detail": {
+        "gold": "Khufu"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-1185",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "New Orleans",
+      "score": 1,
+      "detail": {
+        "gold": "New Orleans"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-1186",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Battle of Waterloo.",
+      "score": 1,
+      "detail": {
+        "gold": "Battle of Waterloo"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-1326",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Harper Lee",
+      "score": 1,
+      "detail": {
+        "gold": "Harper Lee"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-1327",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Jane Austen",
+      "score": 1,
+      "detail": {
+        "gold": "Jane Austen"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-1328",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "William Shakespeare",
+      "score": 1,
+      "detail": {
+        "gold": "shakespeare"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-1330",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Hobbits live in holes in the ground called \"smials.\"",
+      "score": 0,
+      "detail": {
+        "gold": "Shire"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-1331",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Edgar Allan Poe",
+      "score": 1,
+      "detail": {
+        "gold": "Edgar Allan Poe"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-1647",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Who",
+      "score": 0,
+      "detail": {
+        "gold": "Led Zeppelin"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-1677",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Jupiter",
+      "score": 1,
+      "detail": {
+        "gold": "Jupiter"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-1678",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Isaac Newton",
+      "score": 1,
+      "detail": {
+        "gold": "Newton"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-1679",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Four",
+      "score": 1,
+      "detail": {
+        "gold": "Four"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-1872",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "New York City",
+      "score": 1,
+      "detail": {
+        "gold": "New York"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-1873",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "9",
+      "score": 0,
+      "detail": {
+        "gold": "Nine"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-1874",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The FIFA World Cup.",
+      "score": 1,
+      "detail": {
+        "gold": "World Cup"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-1875",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Nadia Comăneci",
+      "score": 0,
+      "detail": {
+        "gold": "Simone Biles"
+      },
+      "group_id": "llamaq-test"
+    },
+    {
+      "item_id": "knowledge-1876",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Bill Belichick",
+      "score": 1,
+      "detail": {
+        "gold": "Bill Belichick"
+      },
+      "group_id": "llamaq-test"
+    }
+  ],
+  "aggregate": {
+    "mean": 0.8875,
+    "ci95": [
+      0.8125,
+      0.95
+    ],
+    "n_scored": 80,
+    "n_total": 80
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset vocalbench-knowledge --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 101.8
+}

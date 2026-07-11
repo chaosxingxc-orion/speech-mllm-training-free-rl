@@ -1,0 +1,393 @@
+{
+  "stage": "1-directional",
+  "dataset": "uro-bench-APE-zh",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/uro-bench-APE-zh/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": 37,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "2400个字",
+      "score": 1,
+      "detail": {
+        "gold": "2400个字"
+      }
+    },
+    {
+      "item_id": 40,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "8只",
+      "score": 0,
+      "detail": {
+        "gold": "3只"
+      }
+    },
+    {
+      "item_id": 34,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "12小时",
+      "score": 0,
+      "detail": {
+        "gold": "11小时"
+      }
+    },
+    {
+      "item_id": 144,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "1090米",
+      "score": 1,
+      "detail": {
+        "gold": "1090米"
+      }
+    },
+    {
+      "item_id": 119,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "1900",
+      "score": 0,
+      "detail": {
+        "gold": "1900件"
+      }
+    },
+    {
+      "item_id": 86,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "49人",
+      "score": 1,
+      "detail": {
+        "gold": "49人"
+      }
+    },
+    {
+      "item_id": 103,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "翠菊贵一些，贵2元。",
+      "score": 0,
+      "detail": {
+        "gold": "兰花更贵一些，贵12元"
+      }
+    },
+    {
+      "item_id": 44,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "10秒",
+      "score": 0,
+      "detail": {
+        "gold": "40秒"
+      }
+    },
+    {
+      "item_id": 147,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "50立方米",
+      "score": 0,
+      "detail": {
+        "gold": "一共要挖走50方土"
+      }
+    },
+    {
+      "item_id": 124,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "3支",
+      "score": 0,
+      "detail": {
+        "gold": "还可以买4只"
+      }
+    },
+    {
+      "item_id": 133,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "6",
+      "score": 0,
+      "detail": {
+        "gold": "要切11刀"
+      }
+    },
+    {
+      "item_id": 115,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "14",
+      "score": 0,
+      "detail": {
+        "gold": "一堆拿走9个橘子给二堆，两堆橘子数量相同"
+      }
+    },
+    {
+      "item_id": 159,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "10吨",
+      "score": 0,
+      "detail": {
+        "gold": "61吨"
+      }
+    },
+    {
+      "item_id": 49,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "4950元",
+      "score": 0,
+      "detail": {
+        "gold": "5250元"
+      }
+    },
+    {
+      "item_id": 80,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "171",
+      "score": 0,
+      "detail": {
+        "gold": "183件"
+      }
+    },
+    {
+      "item_id": 12,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "2人",
+      "score": 0,
+      "detail": {
+        "gold": "实际每辆车比计划多坐12人"
+      }
+    },
+    {
+      "item_id": 31,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "0.21米",
+      "score": 0,
+      "detail": {
+        "gold": "0.45米"
+      }
+    },
+    {
+      "item_id": 47,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "150",
+      "score": 0,
+      "detail": {
+        "gold": "平均每小时生产零件180个"
+      }
+    },
+    {
+      "item_id": 179,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "99%",
+      "score": 0,
+      "detail": {
+        "gold": "79/80，也就是百分之98.75"
+      }
+    },
+    {
+      "item_id": 143,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "13.4",
+      "score": 0,
+      "detail": {
+        "gold": "乙队每天开凿13.4米"
+      }
+    },
+    {
+      "item_id": 151,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "0.6元",
+      "score": 0,
+      "detail": {
+        "gold": "平均每个鸡蛋0.6元"
+      }
+    },
+    {
+      "item_id": 18,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "50",
+      "score": 0,
+      "detail": {
+        "gold": "50平方厘米"
+      }
+    },
+    {
+      "item_id": 166,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "40",
+      "score": 0,
+      "detail": {
+        "gold": "有20种选法"
+      }
+    },
+    {
+      "item_id": 182,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "64",
+      "score": 0,
+      "detail": {
+        "gold": "64只兔子"
+      }
+    },
+    {
+      "item_id": 174,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "80页",
+      "score": 1,
+      "detail": {
+        "gold": "80页"
+      }
+    },
+    {
+      "item_id": 118,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "646.5米",
+      "score": 1,
+      "detail": {
+        "gold": "646.5米"
+      }
+    },
+    {
+      "item_id": 152,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "26平方分米",
+      "score": 0,
+      "detail": {
+        "gold": "52平方分米"
+      }
+    },
+    {
+      "item_id": 145,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "15页",
+      "score": 0,
+      "detail": {
+        "gold": "18页"
+      }
+    },
+    {
+      "item_id": 165,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "1975元",
+      "score": 0,
+      "detail": {
+        "gold": "2880元"
+      }
+    },
+    {
+      "item_id": 32,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "15",
+      "score": 0,
+      "detail": {
+        "gold": "25天"
+      }
+    },
+    {
+      "item_id": 24,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "384页",
+      "score": 1,
+      "detail": {
+        "gold": "384页"
+      }
+    },
+    {
+      "item_id": 57,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "12公顷",
+      "score": 0,
+      "detail": {
+        "gold": "9公顷"
+      }
+    },
+    {
+      "item_id": 51,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "180千米",
+      "score": 1,
+      "detail": {
+        "gold": "180千米"
+      }
+    },
+    {
+      "item_id": 117,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "72米",
+      "score": 0,
+      "detail": {
+        "gold": "32米"
+      }
+    },
+    {
+      "item_id": 25,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "3",
+      "score": 0,
+      "detail": {
+        "gold": "3倍"
+      }
+    },
+    {
+      "item_id": 158,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "96",
+      "score": 0,
+      "detail": {
+        "gold": "96颗"
+      }
+    },
+    {
+      "item_id": 108,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "6000",
+      "score": 0,
+      "detail": {
+        "gold": "6000本书"
+      }
+    },
+    {
+      "item_id": 22,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "20元",
+      "score": 0,
+      "detail": {
+        "gold": "这本书的进价是96/5元，也就是19.2元"
+      }
+    },
+    {
+      "item_id": 59,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "80%",
+      "score": 0,
+      "detail": {
+        "gold": "正确率是4/5，也就是百分之八十"
+      }
+    },
+    {
+      "item_id": 28,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "5岁",
+      "score": 0,
+      "detail": {
+        "gold": "还是5岁"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.175,
+    "ci95": [
+      0.075,
+      0.3
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset uro-bench-APE-zh --backbone qwen3-omni-30b-gguf --split dev --n 40",
+  "elapsed_s": 90.2
+}

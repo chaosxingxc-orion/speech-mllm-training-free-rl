@@ -1,0 +1,492 @@
+{
+  "stage": "1-directional",
+  "dataset": "voicebench-sd-qa",
+  "k_type": "K1",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 44,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/voicebench-sd-qa.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": "0.11.0"
+    }
+  },
+  "per_item": [
+    {
+      "item_id": "sd-qa/aus#55",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The Omo River is approximately 700 kilometers (435 miles) long.",
+      "score": 0,
+      "detail": {
+        "gold": "760 kilometers"
+      },
+      "group_id": "55"
+    },
+    {
+      "item_id": "sd-qa/gbr#55",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The Omo River is approximately 700 kilometers (435 miles) long.",
+      "score": 0,
+      "detail": {
+        "gold": "760 kilometers"
+      },
+      "group_id": "55"
+    },
+    {
+      "item_id": "sd-qa/ind_n#55",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The Omo River is approximately 700 kilometers (435 miles) long.",
+      "score": 0,
+      "detail": {
+        "gold": "760 kilometers"
+      },
+      "group_id": "55"
+    },
+    {
+      "item_id": "sd-qa/ind_s#55",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The Omo River is approximately 700 kilometers (435 miles) long.",
+      "score": 0,
+      "detail": {
+        "gold": "760 kilometers"
+      },
+      "group_id": "55"
+    },
+    {
+      "item_id": "sd-qa/irl#55",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The Omo River is approximately 700 kilometers (435 miles) long.",
+      "score": 0,
+      "detail": {
+        "gold": "760 kilometers"
+      },
+      "group_id": "55"
+    },
+    {
+      "item_id": "sd-qa/kenya#55",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The Omo River is approximately 700 kilometers (435 miles) long.",
+      "score": 0,
+      "detail": {
+        "gold": "760 kilometers"
+      },
+      "group_id": "55"
+    },
+    {
+      "item_id": "sd-qa/nga#55",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The Omo River is approximately 700 kilometers (435 miles) long.",
+      "score": 0,
+      "detail": {
+        "gold": "760 kilometers"
+      },
+      "group_id": "55"
+    },
+    {
+      "item_id": "sd-qa/nzl#55",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The Amur River is approximately 2,824 miles (4,547 kilometers) long.",
+      "score": 0,
+      "detail": {
+        "gold": "760 kilometers"
+      },
+      "group_id": "55"
+    },
+    {
+      "item_id": "sd-qa/phl#55",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The Omo River is approximately 700 kilometers (435 miles) long.",
+      "score": 0,
+      "detail": {
+        "gold": "760 kilometers"
+      },
+      "group_id": "55"
+    },
+    {
+      "item_id": "sd-qa/usa#55",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The Omo River is approximately 700 kilometers (435 miles) long.",
+      "score": 0,
+      "detail": {
+        "gold": "760 kilometers"
+      },
+      "group_id": "55"
+    },
+    {
+      "item_id": "sd-qa/zaf#55",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "The Omur river is 120 kilometers long.",
+      "score": 0,
+      "detail": {
+        "gold": "760 kilometers"
+      },
+      "group_id": "55"
+    },
+    {
+      "item_id": "sd-qa/aus#345",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Bactrian camel",
+      "score": 1,
+      "detail": {
+        "gold": "Bactrian camel"
+      },
+      "group_id": "345"
+    },
+    {
+      "item_id": "sd-qa/gbr#345",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Bactrian camel",
+      "score": 1,
+      "detail": {
+        "gold": "Bactrian camel"
+      },
+      "group_id": "345"
+    },
+    {
+      "item_id": "sd-qa/ind_n#345",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Dromedary camel",
+      "score": 0,
+      "detail": {
+        "gold": "Bactrian camel"
+      },
+      "group_id": "345"
+    },
+    {
+      "item_id": "sd-qa/ind_s#345",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Bactrian camel",
+      "score": 1,
+      "detail": {
+        "gold": "Bactrian camel"
+      },
+      "group_id": "345"
+    },
+    {
+      "item_id": "sd-qa/irl#345",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Bactrian camel",
+      "score": 1,
+      "detail": {
+        "gold": "Bactrian camel"
+      },
+      "group_id": "345"
+    },
+    {
+      "item_id": "sd-qa/kenya#345",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Bactrian camel",
+      "score": 1,
+      "detail": {
+        "gold": "Bactrian camel"
+      },
+      "group_id": "345"
+    },
+    {
+      "item_id": "sd-qa/nga#345",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Bactrian camel",
+      "score": 1,
+      "detail": {
+        "gold": "Bactrian camel"
+      },
+      "group_id": "345"
+    },
+    {
+      "item_id": "sd-qa/nzl#345",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Bactrian camel",
+      "score": 1,
+      "detail": {
+        "gold": "Bactrian camel"
+      },
+      "group_id": "345"
+    },
+    {
+      "item_id": "sd-qa/phl#345",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Bactrian camel",
+      "score": 1,
+      "detail": {
+        "gold": "Bactrian camel"
+      },
+      "group_id": "345"
+    },
+    {
+      "item_id": "sd-qa/usa#345",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Bactrian camel",
+      "score": 1,
+      "detail": {
+        "gold": "Bactrian camel"
+      },
+      "group_id": "345"
+    },
+    {
+      "item_id": "sd-qa/zaf#345",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Bactrian camel",
+      "score": 1,
+      "detail": {
+        "gold": "Bactrian camel"
+      },
+      "group_id": "345"
+    },
+    {
+      "item_id": "sd-qa/aus#376",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Japan",
+      "score": 0,
+      "detail": {
+        "gold": "Shiga Prefecture"
+      },
+      "group_id": "376"
+    },
+    {
+      "item_id": "sd-qa/gbr#376",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Katsura Hashino is from Japan.",
+      "score": 0,
+      "detail": {
+        "gold": "Shiga Prefecture"
+      },
+      "group_id": "376"
+    },
+    {
+      "item_id": "sd-qa/ind_n#376",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Japan",
+      "score": 0,
+      "detail": {
+        "gold": "Shiga Prefecture"
+      },
+      "group_id": "376"
+    },
+    {
+      "item_id": "sd-qa/ind_s#376",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Japan",
+      "score": 0,
+      "detail": {
+        "gold": "Shiga Prefecture"
+      },
+      "group_id": "376"
+    },
+    {
+      "item_id": "sd-qa/irl#376",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Japan",
+      "score": 0,
+      "detail": {
+        "gold": "Shiga Prefecture"
+      },
+      "group_id": "376"
+    },
+    {
+      "item_id": "sd-qa/kenya#376",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Japan",
+      "score": 0,
+      "detail": {
+        "gold": "Shiga Prefecture"
+      },
+      "group_id": "376"
+    },
+    {
+      "item_id": "sd-qa/nga#376",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Katsura Hoshino is from Japan.",
+      "score": 0,
+      "detail": {
+        "gold": "Shiga Prefecture"
+      },
+      "group_id": "376"
+    },
+    {
+      "item_id": "sd-qa/nzl#376",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Japan",
+      "score": 0,
+      "detail": {
+        "gold": "Shiga Prefecture"
+      },
+      "group_id": "376"
+    },
+    {
+      "item_id": "sd-qa/phl#376",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Japan",
+      "score": 0,
+      "detail": {
+        "gold": "Shiga Prefecture"
+      },
+      "group_id": "376"
+    },
+    {
+      "item_id": "sd-qa/usa#376",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Japan",
+      "score": 0,
+      "detail": {
+        "gold": "Shiga Prefecture"
+      },
+      "group_id": "376"
+    },
+    {
+      "item_id": "sd-qa/zaf#376",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "Katsura Hoshino is from Japan.",
+      "score": 0,
+      "detail": {
+        "gold": "Shiga Prefecture"
+      },
+      "group_id": "376"
+    },
+    {
+      "item_id": "sd-qa/aus#122",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "How big can a thresher get?",
+      "score": 0,
+      "detail": {
+        "gold": "6.1 metres"
+      },
+      "group_id": "122"
+    },
+    {
+      "item_id": "sd-qa/gbr#122",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "A thresher shark can get up to 20 feet long.",
+      "score": 0,
+      "detail": {
+        "gold": "6.1 metres"
+      },
+      "group_id": "122"
+    },
+    {
+      "item_id": "sd-qa/ind_n#122",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "A treasure can be as big as a mountain.",
+      "score": 0,
+      "detail": {
+        "gold": "6.1 metres"
+      },
+      "group_id": "122"
+    },
+    {
+      "item_id": "sd-qa/ind_s#122",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "A thresher can get up to 12 feet long.",
+      "score": 0,
+      "detail": {
+        "gold": "6.1 metres"
+      },
+      "group_id": "122"
+    },
+    {
+      "item_id": "sd-qa/irl#122",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "A thresher can get up to 12 feet long.",
+      "score": 0,
+      "detail": {
+        "gold": "6.1 metres"
+      },
+      "group_id": "122"
+    },
+    {
+      "item_id": "sd-qa/kenya#122",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "A thresha can get up to 10 feet long.",
+      "score": 0,
+      "detail": {
+        "gold": "6.1 metres"
+      },
+      "group_id": "122"
+    },
+    {
+      "item_id": "sd-qa/nga#122",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "A tresha can get as big as a small car.",
+      "score": 0,
+      "detail": {
+        "gold": "6.1 metres"
+      },
+      "group_id": "122"
+    },
+    {
+      "item_id": "sd-qa/nzl#122",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "A thresher can get up to 6 feet long.",
+      "score": 0,
+      "detail": {
+        "gold": "6.1 metres"
+      },
+      "group_id": "122"
+    },
+    {
+      "item_id": "sd-qa/phl#122",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "A flasher can get as big as a human hand.",
+      "score": 0,
+      "detail": {
+        "gold": "6.1 metres"
+      },
+      "group_id": "122"
+    },
+    {
+      "item_id": "sd-qa/usa#122",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "How big can a thresher get?",
+      "score": 0,
+      "detail": {
+        "gold": "6.1 metres"
+      },
+      "group_id": "122"
+    },
+    {
+      "item_id": "sd-qa/zaf#122",
+      "instr": "Listen to the spoken question and answer it with a short answer only, in English.",
+      "reply": "A treasure can get as big as the imagination allows.",
+      "score": 0,
+      "detail": {
+        "gold": "6.1 metres"
+      },
+      "group_id": "122"
+    }
+  ],
+  "aggregate": {
+    "mean": 0.2273,
+    "ci95": [
+      0.1136,
+      0.3636
+    ],
+    "n_scored": 44,
+    "n_total": 44
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset voicebench-sd-qa --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 67.2
+}

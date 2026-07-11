@@ -1,0 +1,492 @@
+{
+  "stage": "1-directional",
+  "dataset": "SQuAD-zh",
+  "k_type": "K8/K6 (legacy)",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/SQuAD-zh.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": null
+    }
+  },
+  "per_item": [
+    {
+      "item_id": "SQuAD-zh#61",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "装饰产品",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#128",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "根据音频内容，无法回答刚果石油收入分配不均的具体方面。音频只提到“石油收入分配不均”这一事实，但未说明是哪些方面的不均。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#86",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "利用非成像光学原理。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#41",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "超过230件。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#68",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "4860多万美元",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#82",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "许多建筑无法抵御地震的各种原因。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#59",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "纽约岛民队和纽约游骑兵队。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#93",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "罗马式",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#144",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "轮回",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#74",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "iPod的普及。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#98",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "亚历山大大帝",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#44",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "太阳能",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#83",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "串联重复序列和散布重复序列。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#99",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "慈济基金会",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#27",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "九世纪",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#94",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "纽瓦克",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#108",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "南方",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#118",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "6月1日",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#80",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "宣传局",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#67",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "精神疾病",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#79",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "教皇乌尔班八世",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#110",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "第二天晚上",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#121",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "后来的遗传学研究。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#25",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "超过30%",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#26",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "1630年",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#115",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "布莱恩·邓克尔曼",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#88",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "使用前四代产品附带的电源适配器充电。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#29",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "城市犯罪",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#50",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "2013年",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#62",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "东德",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#22",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "铜",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#130",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "环球音乐集团",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#30",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "超过七百五十亿美元",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#21",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "新佛教",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#125",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "保存页面功能",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#58",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "格雷死亡案的抗议者。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#69",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "2050年",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#53",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "3730万",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#113",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "150人",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "SQuAD-zh#137",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "日耳曼人",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    }
+  ],
+  "aggregate": {
+    "mean": 0.85,
+    "ci95": [
+      0.725,
+      0.95
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset SQuAD-zh --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 132.1
+}

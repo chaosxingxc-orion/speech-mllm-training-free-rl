@@ -1,0 +1,446 @@
+{
+  "stage": "1-directional",
+  "dataset": "air-bench-foundation-music-instruments-nsynth",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/air-bench-foundation-music-instruments-nsynth/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17187",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nname the instrument that's at the helm of this track.\nOptions:\nA. string\nB. guitar\nC. keyboard\nD. vocal\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. keyboard",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17040",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich instrument is the mainstay of this composition?\nOptions:\nA. guitar\nB. mallet\nC. bass\nD. flute\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. mallet",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:16991",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the most significant instrument in this music piece?\nOptions:\nA. guitar\nB. brass\nC. string\nD. flute\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. flute",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17168",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the most pivotal instrument in this music piece?\nOptions:\nA. flute\nB. organ\nC. bass\nD. string\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. string",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17467",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich instrument takes the lead role in this composition?\nOptions:\nA. reed\nB. vocal\nC. organ\nD. bass\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. bass",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17015",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich instrument is the bedrock of this composition?\nOptions:\nA. string\nB. reed\nC. organ\nD. vocal\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. organ",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17567",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich instrument is the star of this musical piece?\nOptions:\nA. keyboard\nB. mallet\nC. bass\nD. flute\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. bass",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17639",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich instrument is the core of this composition?\nOptions:\nA. vocal\nB. mallet\nC. reed\nD. string\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. string",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17611",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nidentify the primary instrument in this musical piece?\nOptions:\nA. bass\nB. guitar\nC. keyboard\nD. organ\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. keyboard",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17535",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the major instrument you can hear in this music?\nOptions:\nA. brass\nB. flute\nC. organ\nD. bass\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. bass",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17436",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat instrument is the linchpin of this musical piece?\nOptions:\nA. keyboard\nB. string\nC. mallet\nD. organ\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. organ",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17626",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich instrument is the star of this musical piece?\nOptions:\nA. organ\nB. brass\nC. vocal\nD. keyboard\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. organ",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17401",
+      "instr": "Listen to the audio and answer the multiple-choice question.\ntell me the dominant instrument in this composition?\nOptions:\nA. keyboard\nB. reed\nC. bass\nD. guitar\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. keyboard",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17795",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich instrument is the mainstay of this composition?\nOptions:\nA. brass\nB. guitar\nC. organ\nD. string\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. organ",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17527",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat instrument carries the main theme in this track?\nOptions:\nA. flute\nB. reed\nC. organ\nD. brass\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. reed",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17411",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the most influential instrument in this piece of music?\nOptions:\nA. vocal\nB. reed\nC. keyboard\nD. guitar\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. guitar",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17765",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the instrumental focus of this piece of music?\nOptions:\nA. reed\nB. bass\nC. vocal\nD. brass\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. bass",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17404",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich instrument takes the lead role in this composition?\nOptions:\nA. brass\nB. flute\nC. vocal\nD. string\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. brass",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:16957",
+      "instr": "Listen to the audio and answer the multiple-choice question.\ndiscern the principal instrument in this tune.\nOptions:\nA. reed\nB. brass\nC. vocal\nD. bass\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. brass",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17056",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich instrument takes the lead role in this composition?\nOptions:\nA. guitar\nB. bass\nC. organ\nD. keyboard\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. keyboard",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17427",
+      "instr": "Listen to the audio and answer the multiple-choice question.\npinpoint the instrument that stands out in this track.\nOptions:\nA. brass\nB. organ\nC. vocal\nD. reed\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. brass",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17607",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the most influential instrument in this piece of music?\nOptions:\nA. reed\nB. flute\nC. brass\nD. organ\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. reed",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17812",
+      "instr": "Listen to the audio and answer the multiple-choice question.\ntell me the dominant instrument in this composition?\nOptions:\nA. keyboard\nB. flute\nC. string\nD. brass\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. flute",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17161",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat instrument is the hero of this musical piece?\nOptions:\nA. vocal\nB. flute\nC. keyboard\nD. mallet\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. flute",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17343",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat instrument is the base of this musical piece?\nOptions:\nA. flute\nB. brass\nC. mallet\nD. guitar\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. brass",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17628",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich instrument is the pillar of this composition?\nOptions:\nA. organ\nB. mallet\nC. vocal\nD. bass\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. mallet",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17066",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the most noticeable instrument in this composition?\nOptions:\nA. flute\nB. bass\nC. keyboard\nD. brass\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. bass",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17435",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat instrument is the linchpin of this musical piece?\nOptions:\nA. guitar\nB. bass\nC. string\nD. keyboard\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. bass",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17063",
+      "instr": "Listen to the audio and answer the multiple-choice question.\npinpoint the instrument that stands out in this track.\nOptions:\nA. reed\nB. bass\nC. keyboard\nD. guitar\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. reed",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17779",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the foremost instrument used in this musical number?\nOptions:\nA. keyboard\nB. brass\nC. vocal\nD. reed\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. brass",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17684",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the most significant instrument in this music piece?\nOptions:\nA. flute\nB. organ\nC. bass\nD. guitar\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. flute",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17205",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich instrument is the main contributor to this sound?\nOptions:\nA. string\nB. organ\nC. keyboard\nD. flute\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. organ",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17302",
+      "instr": "Listen to the audio and answer the multiple-choice question.\ndetect the main instrument that defines this track.\nOptions:\nA. flute\nB. keyboard\nC. bass\nD. mallet\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. mallet",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17844",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the signature instrument in this piece of music?\nOptions:\nA. mallet\nB. reed\nC. bass\nD. flute\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. mallet",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17233",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nname the instrument that's at the helm of this track.\nOptions:\nA. organ\nB. brass\nC. mallet\nD. reed\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. reed",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17503",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich instrument is the mainstay of this composition?\nOptions:\nA. string\nB. organ\nC. reed\nD. guitar\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. reed",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17358",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat instrument is the anchor of this musical track?\nOptions:\nA. reed\nB. mallet\nC. keyboard\nD. brass\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. brass",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17524",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nidentify the primary instrument in this musical piece?\nOptions:\nA. organ\nB. flute\nC. mallet\nD. brass\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. mallet",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:17047",
+      "instr": "Listen to the audio and answer the multiple-choice question.\ndetect the main instrument that defines this track.\nOptions:\nA. keyboard\nB. organ\nC. mallet\nD. reed\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. mallet",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      }
+    },
+    {
+      "item_id": "Music_Instruments_Classfication:nsynth:16978",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the central instrument in this piece of music?\nOptions:\nA. flute\nB. bass\nC. keyboard\nD. mallet\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. mallet",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 1
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.475,
+    "ci95": [
+      0.325,
+      0.625
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset air-bench-foundation-music-instruments-nsynth --backbone qwen3-omni-30b-gguf --split dev --n 40",
+  "elapsed_s": 72.0,
+  "rescored": {
+    "date": "2026-07-10",
+    "reason": "gold-key mismatch (wave-1 audit): K8's dict-gold branch only accepted key \"answer\", but air-bench-foundation's own gold dict uses \"answer_gt\" (56 cells, 14 datasets x 2 backbones x 2 splits); uro-bench-OpenbookQA-zh's target_text embeds \"<letter>. <text>\" rather than a bare letter, which score_k8_mcq's gold_idx resolution didn't parse (4 cells). Both fixed in metrics.py (score_k8_mcq + the K8 dispatcher's dict-gold branch) -- see that file's own 2026-07-10 freeze-repair comments. This is a RESCORE ONLY: per-item scores + the cell aggregate were recomputed from the ALREADY-STORED model replies (no regeneration) via the fixed metrics.score and run_baseline.paired_bootstrap, unchanged.",
+    "original_aggregate": {
+      "mean": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n_scored": 40,
+      "n_total": 40
+    }
+  }
+}

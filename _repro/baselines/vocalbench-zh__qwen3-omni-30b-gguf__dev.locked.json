@@ -1,0 +1,492 @@
+{
+  "stage": "1-directional",
+  "dataset": "vocalbench-zh",
+  "k_type": "K8/K6 (legacy)",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/vocalbench-zh.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": "0.11.0"
+    }
+  },
+  "per_item": [
+    {
+      "item_id": "vocalbench-zh#2969",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "当然可以。从强大网络安全的益处角度，它能有效保护个人隐私与企业数据，增强用户对数字服务的信任，保障业务连续性，降低运营风险，并为创新提供安全的环境，从而推动数字经济的健康发展。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#1408",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "大昭寺",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#4048",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "土",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#4087",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "木星",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#3888",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "不正确。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#3197",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "齐王",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#2482",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "古巴",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#3390",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "1988",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#3157",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "酒石酸",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#1849",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "杜甫",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#2756",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "正面",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#2148",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "科罗拉多州",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#3357",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "纽约时报",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#212",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "分类学",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#1591",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "马耳他",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#2356",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "当然可以。以下是一个仅需鸡蛋、面粉、糖和牛奶的简单基础蛋糕配方：\n\n**材料：**\n- 鸡蛋 3 个\n- 面粉 100 克\n- 糖 80 克\n- 牛奶 60 毫升\n\n**做法：**\n1. 将鸡蛋和糖打发至颜色变浅、体积膨胀。\n2. 加入牛奶搅拌均匀。\n3. 筛入面粉，轻轻翻拌至无颗粒。\n4. 倒入抹油的模具，放入预热至 170°C 的烤箱，烤约 30 分钟。\n\n根据你的食材调整比例即可。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#1097",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "6",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#1494",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "存在时代矛盾，不可能真实发生。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#342",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "请提供您希望我解释的“同一概念”的具体内容。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#3538",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "冷凝",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#3116",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "《随想录》",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#4168",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "新泽西州",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#3088",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "当然可以。中央处理器（CPU）是计算机的“大脑”，它的主要作用是执行指令和处理数据。具体来说，CPU负责：\n\n1. **取指令**：从内存中读取程序指令。\n2. **解码指令**：理解指令要做什么。\n3. **执行指令**：进行算术运算、逻辑运算、数据移动等操作。\n4. **写回结果**：将运算结果存回内存或寄存器。\n\nCPU通过高速时钟信号协调这些步骤，每秒可执行数十亿次操作，是决定计算机运行速度的关键部件。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#1445",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "白马寺",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#1082",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "卡西姆·艾敏参与创办了爱资哈尔大学。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#2464",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "陆游",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#3163",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "下降",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#3896",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "不正确。依据不充分。因为并非所有树木冬天都会落叶，例如松树等常绿树种就不会落叶。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#3977",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "琼中抽水蓄能电站",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#3927",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "惠安",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#1975",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "100摄氏度",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#2067",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "宙斯",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#1389",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "利马",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#1415",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "王延政",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#239",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "错误。丝绸之路主要连接中国与欧洲、中亚等地，不涉及澳大利亚。",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#3801",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "1919年",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#240",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "第三届",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#3760",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "胸导管常注入左静脉角。",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#706",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "古希腊三贤",
+      "score": 1,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "vocalbench-zh#1617",
+      "instr": "Listen and answer with a short answer only.",
+      "reply": "晶",
+      "score": 0,
+      "detail": {
+        "reused": "p2_baselines.reward",
+        "task": "qa"
+      },
+      "group_id": null
+    }
+  ],
+  "aggregate": {
+    "mean": 0.45,
+    "ci95": [
+      0.3,
+      0.6
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset vocalbench-zh --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 91.6
+}

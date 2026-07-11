@@ -1,0 +1,452 @@
+{
+  "stage": "1-directional",
+  "dataset": "audiocaps-qa",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/audiocaps-qa.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": null
+    }
+  },
+  "per_item": [
+    {
+      "item_id": "row50",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "gold": "A train."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row43",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "We have from ASP, we have the ASP Key Defender, which is a very nice Kubaton and pepper spray unit, which is the ASP Key Defender.",
+      "score": 0,
+      "detail": {
+        "gold": "A male is speaking."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row33",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "gold": "A wetland or a forest near a body of water."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row81",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The pill is only effective during the first trimester.",
+      "score": 0,
+      "detail": {
+        "gold": "It could be a speech or an academic lecture."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row144",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Sheep",
+      "score": 1,
+      "detail": {
+        "gold": "Sheep."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row97",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Train",
+      "score": 0,
+      "detail": {
+        "gold": "The sound being heard in the audio recording is the blowing of a horn and the ringing of a bell from a train."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row270",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The sequence of sounds in the audio recording is a short spray followed by a louder longer spray."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row139",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The type of weather described is a stormy weather with thunder and a gentle rain."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row109",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "gold": "A car is accelerating quickly and taking a sharp turn."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row175",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "gold": "The likely context of the audio recording is a child playing with a toy, such as a squeaky ball or a bouncy toy, while a man is speaking in the background."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row136",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "This mini panda bun with pink bow, red bow, and blue bow.",
+      "score": 0,
+      "detail": {
+        "gold": "The girl is speaking and opening plastic wrapping."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row125",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "啊，即系我哋睇嘅，即系。",
+      "score": 0,
+      "detail": {
+        "gold": "An indoor environment with a street outside."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row68",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "gold": "A police or ambulance emergency is likely occurring in the audio recording."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row299",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "gold": "The audio recording is likely to be a comedy or a humorous clip."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row218",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Who is this?",
+      "score": 0,
+      "detail": {
+        "gold": "No, they are chatting over the telephone."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row248",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No problem.",
+      "score": 0,
+      "detail": {
+        "gold": "Yes."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row171",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Chirping sounds of birds are present in the audio recording."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row261",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The sound being heard in the audio recording is the bus's horn."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row195",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "gold": "No, it is quiet at the end."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row5",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "gold": "The sound of the vehicle engine is revving numerous times then running idle."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row41",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Thank you.",
+      "score": 0,
+      "detail": {
+        "gold": "A graduation ceremony or a motivational conference."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row52",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "gold": "The stormy sea."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row14",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "We can hear some animal sound."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row123",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Crying baby.",
+      "score": 0,
+      "detail": {
+        "gold": "The sound being recorded in the audio clip is an infant crying."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row165",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The sound being recorded in the audio clip is a toilet flushing."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row118",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "No."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row124",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "A heavy machinery or industrial equipment, such as a crane, excavator, or bulldozer, is likely being recorded in this audio clip."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row48",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "gold": "A bell ringing in a bell tower."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row99",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "gold": "A chainsaw or a drill is being used."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row281",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "gold": "A subway train."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row283",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "gold": "A farm or rural area."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row141",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "gold": "A crowd murmus."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row205",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "gold": "A bell ringing."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row22",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "gold": "A bathroom or kitchen environment is likely being recorded in the audio clip."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row300",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "gold": "No, it just honks once."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row150",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "The man is opening a zip."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row257",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Snoring",
+      "score": 0,
+      "detail": {
+        "gold": "Loud snoring."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row121",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Laughter",
+      "score": 0,
+      "detail": {
+        "gold": "No, the baby is crying."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row73",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No",
+      "score": 0,
+      "detail": {
+        "gold": "No, it decreases at the end."
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "row86",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes",
+      "score": 0,
+      "detail": {
+        "gold": "The sound being made by the bell is loud and rapid."
+      },
+      "group_id": null
+    }
+  ],
+  "aggregate": {
+    "mean": 0.025,
+    "ci95": [
+      0.0,
+      0.075
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset audiocaps-qa --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 75.4
+}

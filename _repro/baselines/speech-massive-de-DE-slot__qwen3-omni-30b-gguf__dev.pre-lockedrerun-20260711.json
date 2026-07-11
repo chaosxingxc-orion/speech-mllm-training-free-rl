@@ -1,0 +1,602 @@
+{
+  "stage": "1-directional",
+  "dataset": "speech-massive-de-DE-slot",
+  "k_type": "K7",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/speech-massive-de-DE-slot/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "de-DE/validation/15921@0-0-11",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\n  \"slots\": [\n    {\n      \"type\": \"email_address\",\n      \"value\": \"e.rosser@gmx.de\"\n    },\n    {\n      \"type\": \"person\",\n      \"value\": \"emily rosser\"\n    }\n  ]\n}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [
+          {
+            "type": "email_address",
+            "value": "e.rosser@gmx.de"
+          },
+          {
+            "type": "person",
+            "value": "emily rosser"
+          }
+        ],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/5404@0-0-53",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": [{\"type\": \"house_place\", \"value\": \"Küche\"}]}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [
+          {
+            "type": "house_place",
+            "value": "Küche"
+          }
+        ],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/2144@0-0-74",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": [{\"type\": \"personal_info\", \"value\": \"Geburtsdatum\"}]}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [
+          {
+            "type": "personal_info",
+            "value": "Geburtsdatum"
+          }
+        ],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/4339@0-1-2",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": [{\"type\": \"device_type\", \"value\": \"Internet\"}]}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [
+          {
+            "type": "device_type",
+            "value": "Internet"
+          }
+        ],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/2095@0-1-16",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": []}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/6009@0-1-59",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": [{\"type\": \"food_type\", \"value\": \"chinesisches Essen\"}]}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [
+          {
+            "type": "food_type",
+            "value": "chinesisches Essen"
+          }
+        ],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/10162@0-2-54",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": [{\"type\": \"food_type\", \"value\": \"Truthahnfleischbällchen\"}]}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [
+          {
+            "type": "food_type",
+            "value": "Truthahnfleischbällchen"
+          }
+        ],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/11079@0-3-53",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": [{\"type\": \"list_name\", \"value\": \"eine Liste\"}]}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [
+          {
+            "type": "list_name",
+            "value": "eine Liste"
+          }
+        ],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/15541@0-3-57",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": [{\"type\": \"business_name\", \"value\": \"Domino's\"}]}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [
+          {
+            "type": "business_name",
+            "value": "Domino's"
+          }
+        ],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/16580@0-3-58",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": [{\"type\": \"email_address\", \"value\": \"die neue E-Mail-Adresse von Thomas\"}, {\"type\": \"person\", \"value\": \"Thomas\"}]}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [
+          {
+            "type": "email_address",
+            "value": "die neue E-Mail-Adresse von Thomas"
+          },
+          {
+            "type": "person",
+            "value": "Thomas"
+          }
+        ],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/7445@0-3-92",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": []}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/14731@0-4-33",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": [{\"type\": \"weather_descriptor\", \"value\": \"Erdbebenvorhersage\"}]}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [
+          {
+            "type": "weather_descriptor",
+            "value": "Erdbebenvorhersage"
+          }
+        ],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/3296@0-4-73",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": [{\"type\": \"food_type\", \"value\": \"chinesische\"}]}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [
+          {
+            "type": "food_type",
+            "value": "chinesische"
+          }
+        ],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/11440@0-5-39",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "{\"slots\": []}",
+      "score": null,
+      "detail": {
+        "parsed_slots": [],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/2246@0-8-0",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": [{\"type\": \"device_type\", \"value\": \"Wandschranklicht\"}]}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [
+          {
+            "type": "device_type",
+            "value": "Wandschranklicht"
+          }
+        ],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/11305@0-8-20",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": [{\"type\": \"podcast_name\", \"value\": \"Reason Podcast\"}]}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [
+          {
+            "type": "podcast_name",
+            "value": "Reason Podcast"
+          }
+        ],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/14218@0-9-83",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": []}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/5609@1-0-17",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": [{\"type\": \"alarm_type\", \"value\": \"Wecker\"}]}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [
+          {
+            "type": "alarm_type",
+            "value": "Wecker"
+          }
+        ],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/14888@1-1-52",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": []}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/9996@1-1-72",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": [{\"type\": \"food_type\", \"value\": \"Essen\"}]}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [
+          {
+            "type": "food_type",
+            "value": "Essen"
+          }
+        ],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/13029@1-1-83",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": []}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/8372@1-3-3",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": [{\"type\": \"time\", \"value\": \"morgen\"}]}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [
+          {
+            "type": "time",
+            "value": "morgen"
+          }
+        ],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/8602@1-3-9",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": [{\"type\": \"date\", \"value\": \"1. Januar\"}]}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [
+          {
+            "type": "date",
+            "value": "1. Januar"
+          }
+        ],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/13382@1-3-61",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": [{\"type\": \"person\", \"value\": \"konrad adenauer\"}]}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [
+          {
+            "type": "person",
+            "value": "konrad adenauer"
+          }
+        ],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/8873@1-3-62",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": [{\"type\": \"meal_type\", \"value\": \"Abendessen\"}, {\"type\": \"timeofday\", \"value\": \"Donnerstag\"}]}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [
+          {
+            "type": "meal_type",
+            "value": "Abendessen"
+          },
+          {
+            "type": "timeofday",
+            "value": "Donnerstag"
+          }
+        ],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/13100@1-4-31",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "{\"slots\": []}",
+      "score": null,
+      "detail": {
+        "parsed_slots": [],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/3166@1-4-76",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "{\"slots\": [{\"type\": \"media_type\", \"value\": \"Lied\"}]}",
+      "score": null,
+      "detail": {
+        "parsed_slots": [
+          {
+            "type": "media_type",
+            "value": "Lied"
+          }
+        ],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/4867@1-5-7",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": [{\"type\": \"food_type\", \"value\": \"chinesisches Omelett\"}]}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [
+          {
+            "type": "food_type",
+            "value": "chinesisches Omelett"
+          }
+        ],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/13499@1-5-10",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": [{\"type\": \"definition_word\", \"value\": \"dieses Wort\"}]}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [
+          {
+            "type": "definition_word",
+            "value": "dieses Wort"
+          }
+        ],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/11906@1-5-27",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": []}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/1599@1-5-86",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": [{\"type\": \"device_type\", \"value\": \"Roomba\"}]}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [
+          {
+            "type": "device_type",
+            "value": "Roomba"
+          }
+        ],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/9489@1-6-22",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "{\"slots\": [{\"type\": \"media_type\", \"value\": \"Radio Musikprogramme\"}]}",
+      "score": null,
+      "detail": {
+        "parsed_slots": [
+          {
+            "type": "media_type",
+            "value": "Radio Musikprogramme"
+          }
+        ],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/7920@1-6-70",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": []}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/14301@1-6-78",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "{\"slots\": []}",
+      "score": null,
+      "detail": {
+        "parsed_slots": [],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/6771@1-7-45",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": [{\"type\": \"event_name\", \"value\": \"Treffen mit Charlotte\"}]}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [
+          {
+            "type": "event_name",
+            "value": "Treffen mit Charlotte"
+          }
+        ],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/13224@1-7-76",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "{\"slots\": [{\"type\": \"person\", \"value\": \"Sarah Connor\"}]}",
+      "score": null,
+      "detail": {
+        "parsed_slots": [
+          {
+            "type": "person",
+            "value": "Sarah Connor"
+          }
+        ],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/12877@1-7-85",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": [{\"type\": \"transport_type\", \"value\": \"Taxi\"}]}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [
+          {
+            "type": "transport_type",
+            "value": "Taxi"
+          }
+        ],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/6779@1-8-36",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "{\"slots\": [{\"type\": \"timeofday\", \"value\": \"morgen\"}]}",
+      "score": null,
+      "detail": {
+        "parsed_slots": [
+          {
+            "type": "timeofday",
+            "value": "morgen"
+          }
+        ],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/15174@1-9-15",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "```json\n{\"slots\": [{\"type\": \"app_name\", \"value\": \"Facebook\"}]}\n```",
+      "score": null,
+      "detail": {
+        "parsed_slots": [
+          {
+            "type": "app_name",
+            "value": "Facebook"
+          }
+        ],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    },
+    {
+      "item_id": "de-DE/validation/17102@1-9-36",
+      "instr": "Listen to the audio and extract its slots. Slot types MUST come from this closed list:\nalarm_type, app_name, artist_name, audiobook_author, audiobook_name, business_name, business_type, change_amount, coffee_type, color_type, cooking_type, currency_name, date, definition_word, device_type, drink_type, email_address, email_folder, event_name, food_type, game_name, game_type, general_frequency, house_place, ingredient, joke_type, list_name, meal_type, media_type, movie_name, movie_type, music_descriptor, music_genre, news_topic, order_type, person, personal_info, place_name, player_setting, playlist_name, podcast_descriptor, podcast_name, radio_name, relation, song_name, sport_type, time, time_zone, timeofday, transport_agency, transport_name, transport_type, weather_descriptor\nOutput STRICT JSON only, no other text, in this exact schema:\n{\"slots\": [{\"type\": \"<one of the closed slot types>\", \"value\": \"<exact span from the audio>\"}]}\nIf there are no slots, output {\"slots\": []}.",
+      "reply": "{\"slots\": []}",
+      "score": null,
+      "detail": {
+        "parsed_slots": [],
+        "note": "K7 is corpus-level; see aggregate_slot_f1_*"
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": null,
+    "slot_f1": {
+      "exact_match_micro_f1": 0.24657534246575344,
+      "exact_match_macro_f1": 0.18333333333333335,
+      "checker": "slue-toolkit get_ner_scores"
+    },
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset speech-massive-de-DE-slot --backbone qwen3-omni-30b-gguf --split dev --n 40",
+  "elapsed_s": 116.0,
+  "rescored": {
+    "date": "2026-07-10",
+    "reason": "K7 CPU aggregation repass (wave-1 audit): metrics.aggregate_slot_f1_slurp / aggregate_slot_f1_slue were wired (see metrics.py) but never actually invoked by run_baseline.run_one -- every K7 cell's aggregate was {mean:null, n_scored:0, ...} with no corpus-level F1 (FREEZE_SHEET.md's own 'wired but NOT executed' caveat). This repass recomputes corpus-level slot-F1 from the ALREADY-STORED per-item parsed_slots + rows re-derived via run_baseline._load_rows(dataset, split, n_requested, seed) -- NO regeneration. See k7_slot_repass.py's module docstring for the exact_match_micro_f1 vs slurp_slu_f1_partial_credit distinction and the phrase-normalization convention used.",
+    "original_aggregate": {
+      "mean": null,
+      "ci95": null,
+      "n_scored": 0,
+      "n_total": 40,
+      "note": "K7 per-item score is always None; run a separate aggregate_slot_f1_* pass over parsed_slots."
+    }
+  }
+}

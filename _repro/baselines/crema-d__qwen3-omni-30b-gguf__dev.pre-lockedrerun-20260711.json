@@ -1,0 +1,514 @@
+{
+  "stage": "1-directional",
+  "dataset": "crema-d",
+  "k_type": "K4",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "SPEECHRL_KB_DIR/snapshots/crema-d/sample_manifest.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "per_item": [
+    {
+      "item_id": "crema-d/1001_IWL_ANG_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "anger",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1003_IEO_SAD_MD",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "sad",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1003_TSI_SAD_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "sad",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1004_WSI_FEA_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "fear",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1005_ITS_ANG_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "anger",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1007_IOM_HAP_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "happy",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1011_IWL_HAP_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "happy",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1015_IWL_HAP_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "happy",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1015_TIE_FEA_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "fear",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1015_TSI_DIS_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "disgust",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1017_TAI_NEU_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "neutral",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1020_IOM_NEU_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "neutral",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1022_IWW_NEU_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "neutral",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1025_TIE_NEU_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "neutral",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1037_IEO_DIS_HI",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "A. anger",
+      "score": 0,
+      "detail": {
+        "pred_label": "anger",
+        "gold_label": "disgust",
+        "parsed_idx": 0
+      }
+    },
+    {
+      "item_id": "crema-d/1037_TIE_NEU_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "neutral",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1044_WSI_ANG_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "anger",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1047_IEO_DIS_LO",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "disgust",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1053_IEO_SAD_LO",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "sad",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1054_IEO_DIS_HI",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "disgust",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1054_TSI_SAD_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "sad",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1060_IWL_FEA_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "fear",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1063_ITH_SAD_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "sad",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1063_IWL_FEA_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "fear",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1066_IEO_DIS_HI",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "disgust",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1068_ITH_HAP_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "happy",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1069_IEO_HAP_HI",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "C. fear",
+      "score": 0,
+      "detail": {
+        "pred_label": "fear",
+        "gold_label": "happy",
+        "parsed_idx": 2
+      }
+    },
+    {
+      "item_id": "crema-d/1069_IOM_DIS_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "disgust",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1070_IWW_HAP_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "happy",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1073_IEO_SAD_MD",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "sad",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1074_ITH_FEA_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "fear",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1076_WSI_NEU_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "neutral",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1077_IOM_NEU_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 1,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "neutral",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1079_MTI_HAP_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "D. happy",
+      "score": 1,
+      "detail": {
+        "pred_label": "happy",
+        "gold_label": "happy",
+        "parsed_idx": 3
+      }
+    },
+    {
+      "item_id": "crema-d/1081_DFA_ANG_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "anger",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1081_IEO_ANG_LO",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "anger",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1083_ITS_DIS_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "disgust",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1086_TIE_DIS_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "disgust",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1087_IWL_SAD_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "sad",
+        "parsed_idx": 4
+      }
+    },
+    {
+      "item_id": "crema-d/1091_IWW_HAP_XX",
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\nA. anger\nB. disgust\nC. fear\nD. happy\nE. neutral\nF. sad\nAnswer with only the option letter and label, e.g. 'A. ...'.",
+      "reply": "E. neutral",
+      "score": 0,
+      "detail": {
+        "pred_label": "neutral",
+        "gold_label": "happy",
+        "parsed_idx": 4
+      }
+    }
+  ],
+  "aggregate": {
+    "mean": 0.2,
+    "ci95": [
+      0.075,
+      0.325
+    ],
+    "n_scored": 40,
+    "n_total": 40,
+    "macro_f1": {
+      "macro_f1": 0.0901,
+      "per_label": {
+        "anger": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 5
+        },
+        "disgust": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 8
+        },
+        "fear": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 5
+        },
+        "happy": {
+          "precision": 1.0,
+          "recall": 0.125,
+          "f1": 0.2222,
+          "support": 8
+        },
+        "neutral": {
+          "precision": 0.1892,
+          "recall": 1.0,
+          "f1": 0.3182,
+          "support": 7
+        },
+        "sad": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 7
+        }
+      }
+    }
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset crema-d --backbone qwen3-omni-30b-gguf --split dev --n 40",
+  "elapsed_s": 77.4
+}

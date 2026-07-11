@@ -1,0 +1,532 @@
+{
+  "stage": "1-directional",
+  "dataset": "seed-tts-eval-en",
+  "k_type": "K1",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/seed-tts-eval-en.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": "0.11.0"
+    }
+  },
+  "per_item": [
+    {
+      "item_id": "common_voice_en_17736608-common_voice_en_17736610",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "I was told by my instructor to use a nichrome wire to burn metal solids.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "i was told by my instructor to use a nichrome wire to burn metal solids",
+        "hyp": "i was told by my instructor to use a nichrome wire to burn metal solids"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_25014861-common_voice_en_25014862",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The resulting wave interference pattern is the basis of diffraction analysis.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the resulting wave interference pattern is the basis of diffraction analysis",
+        "hyp": "the resulting wave interference pattern is the basis of diffraction analysis"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_23750957-common_voice_en_23750960",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The Faculty Board for Teacher Education is also responsible for educational research.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the faculty board for teacher education is also responsible for educational research",
+        "hyp": "the faculty board for teacher education is also responsible for educational research"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_25563964-common_voice_en_25563960",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "He also purchased land to further his orange and grape growing capacity.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "he also purchased land to further his orange and grape growing capacity",
+        "hyp": "he also purchased land to further his orange and grape growing capacity"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_18962809-common_voice_en_18962813",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Wind River Carrier Grade Linux also runs on Sun's hypervisor.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "wind river carrier grade linux also runs on sun's hypervisor",
+        "hyp": "wind river carrier grade linux also runs on sun's hypervisor"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_33907-common_voice_en_33906",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "A guy with sunglasses and a backpack pointing towards the sky.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "a guy with sunglasses and a backpack pointing towards the sky",
+        "hyp": "a guy with sunglasses and a backpack pointing towards the sky"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_28064064-common_voice_en_28064058",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The blueprints for the new airport and container port had already been drawn.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the blueprints for the new airport and container port had already been drawn",
+        "hyp": "the blueprints for the new airport and container port had already been drawn"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_25035745-common_voice_en_25035747",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "This was not always so: even after the forgery was debunked.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "this was not always so even after the forgery was debunked",
+        "hyp": "this was not always so even after the forgery was debunked"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_93674-common_voice_en_93675",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "I have already described the appearance of that colossal bulk, which was imbedded in the ground.",
+      "score": 0.9375,
+      "detail": {
+        "wer": 0.0625,
+        "ref": "i have already described the appearance of that colossal bulk which was embedded in the ground",
+        "hyp": "i have already described the appearance of that colossal bulk which was imbedded in the ground"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_19741922-common_voice_en_19741926",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Writing tools and scratch paper may not be brought to the testing site.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "writing tools and scratch paper may not be brought to the testing site",
+        "hyp": "writing tools and scratch paper may not be brought to the testing site"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_19254683-common_voice_en_19254685",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "In the banking environment at that time, the merger was inevitable.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "in the banking environment at that time the merger was inevitable",
+        "hyp": "in the banking environment at that time the merger was inevitable"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_19622969-common_voice_en_19622970",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The woman kisses his head and says, \"Happy Halloween, dear.\"",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the woman kisses his head and says happy halloween dear",
+        "hyp": "the woman kisses his head and says happy halloween dear"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_27015814-common_voice_en_27015815",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Spring described the offer as 'irresistible' and the appointment proved very successful.",
+      "score": 0.9166666666666666,
+      "detail": {
+        "wer": 0.08333333333333333,
+        "ref": "spring described the offer as irresistible and the appointment proved very successful",
+        "hyp": "spring described the offer as 'irresistible' and the appointment proved very successful"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_652024-common_voice_en_652023",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "For the first time, I started to see that it was possible to become productive.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "for the first time i started to see that it was possible to become productive",
+        "hyp": "for the first time i started to see that it was possible to become productive"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_18944281-common_voice_en_18944280",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "She would always carry the flags of Spain and Puerto Rico wherever she went.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "she would always carry the flags of spain and puerto rico wherever she went",
+        "hyp": "she would always carry the flags of spain and puerto rico wherever she went"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_537766-common_voice_en_537767",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The newspaper articles had prepared everyone for the reception of the idea.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the newspaper articles had prepared everyone for the reception of the idea",
+        "hyp": "the newspaper articles had prepared everyone for the reception of the idea"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_20888046-common_voice_en_20888051",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "This marked the official beginning of the university as it is today.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "this marked the official beginning of the university as it is today",
+        "hyp": "this marked the official beginning of the university as it is today"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_19724475-common_voice_en_19724484",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Mitchell Stephens has published a small miniseries magazine entitled \"\"How Idle Are You\"\".\"",
+      "score": 0.7857142857142857,
+      "detail": {
+        "wer": 0.21428571428571427,
+        "ref": "mitchell stevens has published a small mini series magazine entitled how idle are you",
+        "hyp": "mitchell stephens has published a small miniseries magazine entitled how idle are you"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_17429166-common_voice_en_17429168",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "When he was in hospital, the nurse took an X-ray photograph of his arm.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "when he was in hospital the nurse took an x ray photograph of his arm",
+        "hyp": "when he was in hospital the nurse took an x ray photograph of his arm"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_597578-common_voice_en_597583",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Strip down the rig until you know exactly where the error is located.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "strip down the rig until you know exactly where the error is located",
+        "hyp": "strip down the rig until you know exactly where the error is located"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_17271507-common_voice_en_17271509",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Take this pill twice daily, once in the morning and once at bedtime.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "take this pill twice daily once in the morning and once at bedtime",
+        "hyp": "take this pill twice daily once in the morning and once at bedtime"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_28485171-common_voice_en_28485174",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "This was the first major battle of the Gallic Wars.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "this was the first major battle of the gallic wars",
+        "hyp": "this was the first major battle of the gallic wars"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_19791537-common_voice_en_19791538",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Luther and Cody Dickinson's father was the Memphis musician and record producer Jim Dickinson.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "luther and cody dickinson's father was the memphis musician and record producer jim dickinson",
+        "hyp": "luther and cody dickinson's father was the memphis musician and record producer jim dickinson"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_508059-common_voice_en_508057",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "It was only when I got this close to it that the strangeness of it was at all evident to me.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "it was only when i got this close to it that the strangeness of it was at all evident to me",
+        "hyp": "it was only when i got this close to it that the strangeness of it was at all evident to me"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_485101-common_voice_en_485100",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "But it sounds like it won't be fixed until the consumer version, which doesn't have a release date yet.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "but it sounds like it won't be fixed until the consumer version which doesn't have a release date yet",
+        "hyp": "but it sounds like it won't be fixed until the consumer version which doesn't have a release date yet"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_615162-common_voice_en_615158",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Neutralize all the enemies behind the barricades with your taser.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "neutralize all the enemies behind the barricades with your taser",
+        "hyp": "neutralize all the enemies behind the barricades with your taser"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_25563964-common_voice_en_25564015",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "He also purchased land to further his orange and grape growing capacity.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "he also purchased land to further his orange and grape growing capacity",
+        "hyp": "he also purchased land to further his orange and grape growing capacity"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_20235009-common_voice_en_20235010",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Except for Larry, each Koopaling was named after a specific person.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "except for larry each koopaling was named after a specific person",
+        "hyp": "except for larry each koopaling was named after a specific person"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_19622969-common_voice_en_19622971",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The woman kisses his head and says, \"Happy Halloween, dear.\"",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the woman kisses his head and says happy halloween dear",
+        "hyp": "the woman kisses his head and says happy halloween dear"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_18466098-common_voice_en_18466096",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "A club acquaintance, and a mere one at that.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "a club acquaintance and a mere one at that",
+        "hyp": "a club acquaintance and a mere one at that"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_17451108-common_voice_en_17451109",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Nora finds herself ugly because she has pimples.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "nora finds herself ugly because she has pimples",
+        "hyp": "nora finds herself ugly because she has pimples"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_22793454-common_voice_en_22793458",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "She was overjoyed by taking part on these projects.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "she was overjoyed by taking part on these projects",
+        "hyp": "she was overjoyed by taking part on these projects"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_17817002-common_voice_en_17817003",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Two hundred years after founding, the town got the right to mint its own coin.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "two hundred years after founding the town got the right to mint its own coin",
+        "hyp": "two hundred years after founding the town got the right to mint its own coin"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_17281385-common_voice_en_17281393",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The hotel gives some complimentary water bottles to drink.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the hotel gives some complimentary water bottles to drink",
+        "hyp": "the hotel gives some complimentary water bottles to drink"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_18012457-common_voice_en_18012464",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The music, while technically a waltz, sounded more like a drunken tuba player falling into the orchestra's percussion section.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the music while technically a waltz sounded more like a drunken tuba player falling into the orchestra's percussion section",
+        "hyp": "the music while technically a waltz sounded more like a drunken tuba player falling into the orchestra's percussion section"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_24912752-common_voice_en_24913161",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Some ideas discussed during that chat eventually made it into Quake's future public releases.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "some ideas discussed during that chat eventually made it into quake's future public releases",
+        "hyp": "some ideas discussed during that chat eventually made it into quake's future public releases"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_19665909-common_voice_en_19665910",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "The body pushes the air down, and the air pushes the body upward.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the body pushes the air down and the air pushes the body upward",
+        "hyp": "the body pushes the air down and the air pushes the body upward"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_75329-common_voice_en_75332",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "I would have won the junior Olympics if not for those meddling kids.",
+      "score": 0.9230769230769231,
+      "detail": {
+        "wer": 0.07692307692307693,
+        "ref": "i would have won the junior olympics if not for those medaling kids",
+        "hyp": "i would have won the junior olympics if not for those meddling kids"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_24518104-common_voice_en_24518109",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Sweezy received the Bronze Star for his role in the war.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "sweezy received the bronze star for his role in the war",
+        "hyp": "sweezy received the bronze star for his role in the war"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "common_voice_en_20337838-common_voice_en_20337841",
+      "instr": "Transcribe the spoken audio verbatim, in English. Output only the transcript, with no extra commentary.",
+      "reply": "Previously an attorney, Corona left the profession to pursue a career in music.",
+      "score": 0.9230769230769231,
+      "detail": {
+        "wer": 0.07692307692307693,
+        "ref": "previously an attorney korona left the profession to pursue a career in music",
+        "hyp": "previously an attorney corona left the profession to pursue a career in music"
+      },
+      "group_id": null
+    }
+  ],
+  "aggregate": {
+    "mean": 0.9872,
+    "ci95": [
+      0.9733,
+      0.9979
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset seed-tts-eval-en --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 73.1
+}

@@ -1,0 +1,444 @@
+{
+  "stage": "1-directional",
+  "dataset": "air-bench-foundation-music-mood-mtj-jamendo",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/air-bench-foundation-music-mood-mtj-jamendo.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": null
+    }
+  },
+  "per_item": [
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24360",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the prevailing mood theme of this music?\nOptions:\nA. film\nB. sexy\nC. movie\nD. emotional\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. emotional",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24056",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the sentiment echoed by this music?\nOptions:\nA. film\nB. cool\nC. soundscape\nD. sport\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. soundscape",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24153",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat impression of mood does this music convey?\nOptions:\nA. deep\nB. emotional\nC. fast\nD. christmas\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. christmas",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24066",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the expressive mood tone of this soundtrack?\nOptions:\nA. motivational\nB. advertising\nC. christmas\nD. commercial\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. christmas",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24072",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat feeling does this score seem to express?\nOptions:\nA. christmas\nB. trailer\nC. sad\nD. commercial\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. sad",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24417",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat emotional landscape does this music paint?\nOptions:\nA. uplifting\nB. heavy\nC. summer\nD. sexy\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. sexy",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24268",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow does this musical piece serve as a mood enhancer?\nOptions:\nA. action\nB. slow\nC. travel\nD. upbeat\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. action",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24641",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the emotional tone of this melody?\nOptions:\nA. soft\nB. upbeat\nC. relaxing\nD. emotional\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. emotional",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24602",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow does this music reflect a particular mood?\nOptions:\nA. movie\nB. fun\nC. relaxing\nD. commercial\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. relaxing",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24579",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow does this melody play with the listener's emotions?\nOptions:\nA. holiday\nB. drama\nC. trailer\nD. love\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. drama",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24047",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the central mood theme portrayed in this music?\nOptions:\nA. dream\nB. movie\nC. motivational\nD. powerful\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. dream",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24444",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat emotional landscape does this music paint?\nOptions:\nA. christmas\nB. energetic\nC. cool\nD. calm\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. calm",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24140",
+      "error": "HTTPError: HTTP Error 400: Bad Request",
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24252",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the emotional essence of this musical work?\nOptions:\nA. epic\nB. nature\nC. action\nD. relaxing\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. relaxing",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24591",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow does this music set a mood for its context?\nOptions:\nA. cool\nB. heavy\nC. adventure\nD. christmas\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. christmas",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24541",
+      "error": "HTTPError: HTTP Error 400: Bad Request",
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24304",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat impression of mood does this music convey?\nOptions:\nA. background\nB. inspiring\nC. emotional\nD. trailer\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. emotional",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24205",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat feeling does the tempo and rhythm of this music suggest?\nOptions:\nA. emotional\nB. nature\nC. calm\nD. background\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. calm",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24116",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the sentiment echoed by this music?\nOptions:\nA. commercial\nB. sad\nC. advertising\nD. positive\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. sad",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24563",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat character of mood does this music embody?\nOptions:\nA. film\nB. action\nC. heavy\nD. advertising\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. advertising",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24068",
+      "error": "HTTPError: HTTP Error 400: Bad Request",
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24391",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nIn terms of mood, what does this music suggest?\nOptions:\nA. groovy\nB. uplifting\nC. advertising\nD. christmas\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. christmas",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24572",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the prevailing mood theme of this music?\nOptions:\nA. soundscape\nB. summer\nC. trailer\nD. ballad\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. summer",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24060",
+      "error": "HTTPError: HTTP Error 400: Bad Request",
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24556",
+      "error": "HTTPError: HTTP Error 400: Bad Request",
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:23929",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat underlying theme of emotion is present in this music?\nOptions:\nA. slow\nB. motivational\nC. corporate\nD. deep\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. deep",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24588",
+      "error": "HTTPError: HTTP Error 400: Bad Request",
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24340",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat mood does this music set for its audience?\nOptions:\nA. slow\nB. happy\nC. space\nD. relaxing\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. relaxing",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24317",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat mood does the musical structure of this piece express?\nOptions:\nA. slow\nB. children\nC. summer\nD. deep\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. summer",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:23960",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat mood does this composition seem to encapsulate?\nOptions:\nA. soundscape\nB. happy\nC. heavy\nD. sad\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. heavy",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:23735",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat underlying theme of emotion is present in this music?\nOptions:\nA. energetic\nB. meditative\nC. travel\nD. deep\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. energetic",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:23847",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the sentiment echoed by this music?\nOptions:\nA. dream\nB. sport\nC. cool\nD. powerful\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. powerful",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24598",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow does this music affect the listener's mood?\nOptions:\nA. love\nB. powerful\nC. game\nD. calm\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. powerful",
+      "score": 0,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24643",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat mood does the orchestration of this music imply?\nOptions:\nA. children\nB. background\nC. uplifting\nD. summer\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. uplifting",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24351",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat feeling does the tempo and rhythm of this music suggest?\nOptions:\nA. energetic\nB. film\nC. retro\nD. dark\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. dark",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:23870",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the mood resonance of this musical selection?\nOptions:\nA. fast\nB. slow\nC. calm\nD. relaxing\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. relaxing",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:23766",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the predominant mood signature of this music?\nOptions:\nA. space\nB. action\nC. funny\nD. relaxing\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. funny",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24373",
+      "error": "HTTPError: HTTP Error 400: Bad Request",
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24163",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat is the emotional essence of this musical work?\nOptions:\nA. christmas\nB. heavy\nC. sexy\nD. happy\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. heavy",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Mood_Recognition:MTJ-Jamendo:24613",
+      "error": "HTTPError: HTTP Error 400: Bad Request",
+      "group_id": null
+    }
+  ],
+  "aggregate": {
+    "mean": 0.5938,
+    "ci95": [
+      0.4062,
+      0.75
+    ],
+    "n_scored": 32,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset air-bench-foundation-music-mood-mtj-jamendo --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 670.2
+}

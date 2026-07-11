@@ -1,0 +1,452 @@
+{
+  "stage": "1-directional",
+  "dataset": "voiceassistant-listening-general",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/voiceassistant-listening-general.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": "0.11.0"
+    }
+  },
+  "per_item": [
+    {
+      "item_id": "Listening_General_105",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Pesticide",
+      "score": 0,
+      "detail": {
+        "gold": "A window."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_52",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 1,
+      "detail": {
+        "gold": "Yes"
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_789",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Copper",
+      "score": 1,
+      "detail": {
+        "gold": "Copper."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_624",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A lone figure stands on a windswept cliff, the vast ocean roaring below. The deep, resonant hum of the wind through the rocks is a constant, low thrum. Suddenly, a sharp, high-pitched shriek cuts through the air, like a gull in distress. The figure flinches, then slowly raises a hand to their ear, listening intently. The wind howls again, a mournful sound that seems to echo the piercing shriek, creating a dissonant harmony of the wild.",
+      "score": 0,
+      "detail": {
+        "gold": "The audio captures the essence of a bustling urban park. A person is taking a leisurely walk, their phone in hand, capturing the vibrant scenes of their surroundings. With each step, the wind whispers through the trees, a soft but constant companion to their solitary stroll. The serene silence of the park is occasionally punctuated by distant vehicles, hinting at the city's pulse beyond the tranquility. Suddenly, the peacefulness heightens as a low-flying jet rumbles across the sky, a brief interruption that makes the heart flutter with its intensity. Moments later, the harmonic rhythm of life resumes, and an airplane can be heard in the distance, a reminder of the interconnected world outside the park. Despite these interruptions, the wind remains a steadfast presence, an auditory brushstroke across the canvas of urban life."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_434",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 1,
+      "detail": {
+        "gold": "No"
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_156",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Stop and wait.",
+      "score": 0,
+      "detail": {
+        "gold": "Stand clear of the roadway and remain vigilant."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_113",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "1",
+      "score": 0,
+      "detail": {
+        "gold": "A group of people."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_636",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The rhythmic *thump-thump-thump* of the helicopter's rotors began as a distant hum, steadily growing louder. Maya froze, her hand hovering over the phone. The sound filled the valley, a mechanical heartbeat shaking the very air. She knew the chopper was searching for her, the fugitive. As it roared directly overhead, the deafening noise was a physical force, drowning out her own frantic breathing. In that moment of overwhelming sound, she saw it: the small, blinking light on the chopper's belly, not a search beacon, but a tiny, blinking red light from her own abandoned emergency beacon, still active. The chopper wasn't hunting her; it was her lifeline, drawn to her signal. The sound resolved her panic into desperate hope.",
+      "score": 0,
+      "detail": {
+        "gold": "In the scorching heat of the Mojave Desert, a young couple, Mia and Alex, were on their last gallons of gas. An empty highway stretched before them, and their car's engine began coughing. They stopped, panic setting in as they realized they were alone, miles from civilization. In the silence, they heard it—a distant rumble growing louder, a plane approaching. The sound sparked a glimmer of hope. Using the hood of the car as a canvas, Mia quickly arranged rocks to spell 'HELP' on the reflective surface. As the aircraft got closer, its shadow briefly engulfed them, and the sound was deafening. It flew past, the world quieting down again, and they were left in despair. Then, miraculously, the plane circled back. It tipped its wings in recognition and flew off towards the horizon. Hours later, the unmistakable sound of a helicopter grew from the same direction the plane had disappeared, and a rescue team touched down. The plane's passage, which had seemed like just another layer of their misery, had become their salvation."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_60",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "It makes me feel calm and peaceful.",
+      "score": 0,
+      "detail": {
+        "gold": "Mystical, calming, and relaxing."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_15",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Piano",
+      "score": 0,
+      "detail": {
+        "gold": "electric guitar, drums, bass, keyboard"
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_400",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The speaker was responsible for the introduction of the first radar system in the Danish Navy.",
+      "score": 0,
+      "detail": {
+        "gold": "The transition from sail to early steam power."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_415",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The speaker is likely a teacher or lecturer introducing a comparative topic in a biology or ecology class.",
+      "score": 0,
+      "detail": {
+        "gold": "The speaker's purpose could be to educate or inform the audience about ecological differences driven by temperature variation in different biomes."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_501",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The music uses a raw, slightly distorted electric guitar with slow, melancholic arpeggios to immediately establish a feeling of sorrow. This is layered over a subtle, low-frequency hum, suggesting a vast, empty space and amplifying the sense of isolation. The recording's lo-fi quality, with gentle tape hiss, adds a nostalgic texture, as if recalling a faded memory. The guitar's reverb creates a cavernous atmosphere, making the grief feel immense and echoing. Together, these elements build a soundscape where the clear, emotional guitar melody cuts through the hazy background, representing a poignant memory surfacing through time. The combination of intimate, personal instrumentation with a vast, lonely soundscape effectively conveys both the depth of grief and the bittersweet ache of nostalgia.",
+      "score": 0,
+      "detail": {
+        "gold": "The music in the audio employs a range of sonic textures to evoke a sense of grief and nostalgia, essential for the film's sad scene. The ambient street noises serve as a backdrop, grounding the scene in a real-world context that listeners can relate to, thus enhancing the emotional weight. The poor audio quality is not just a technical characteristic but a deliberate choice that adds to the scene's authenticity, evoking a sense of distance or past memories that have degraded over time, much like an old, worn-out vinyl record. The medium tempo of the piece mirrors the heartbeat of someone in distress, generating a connection with the listener's own physiological responses to sadness. Guitar strumming rhythm, often associated with intimate and personal music experiences, underscores the individuality of grief. This acoustic element provides a melodic and harmonic foundation that resonates with the storyline, amplifying the melancholic atmosphere. Together, these elements orchestrate a symphony of sorrow, where the listener is not just an observer but an emotional participant in the scene."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_733",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A quiet, dimly lit room like a study or library.",
+      "score": 0,
+      "detail": {
+        "gold": "An old school bar in Texas, potentially a saloon."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_785",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The road is too narrow.",
+      "score": 0,
+      "detail": {
+        "gold": "Due to the broken bridge."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_344",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The speaker does not state what could have changed the outcome of the Vietnam War.",
+      "score": 0,
+      "detail": {
+        "gold": "Having the technology that we have now."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_590",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The piece's unsettling, dissonant strings create immediate dread. A sudden, jarring metallic screech acts as a violent jump-scare. This is followed by a low, guttural growl that evokes a monstrous presence. The final, distorted scream is the sound of pure terror, leaving the listener feeling violated and unsafe.",
+      "score": 0,
+      "detail": {
+        "gold": "The audio piece in question employs a multitude of elements that synergize to evoke a sense of unease suitable for a horror movie nightmare sequence. The devotional intensity of the group chant, rooted in Yoruba, Candomble, and Santeria religious practices, brings with it an air of the unfamiliar for many listeners, leveraging the element of the uncanny to create discomfort. The percussive elements are key: their intertwined syncopations produce complex rhythms that can be disorienting, contributing to a feeling of chaos and loss of control that is emblematic of a nightmare. This disarray is further amplified by the cacophony of multiple voices in a 'pandemonium' effect; it can overload the senses, making it difficult for the listener to focus on a singular element, inducing anxiety and fear. Moreover, the contrasts between the solemn purpose of the chant and its contextual reimagining in a horror scenario twist the sacred into something foreboding. Overall, the layering of voices and percussive sounds crafted to engender a sense of pandemonium ensures the music segment's effectiveness in a horror setting."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_20",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "No"
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_13",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "Yes, especially for a drama movie or TV show."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_224",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "He said her job was boring.",
+      "score": 0,
+      "detail": {
+        "gold": "She taught at Xinjiang University prior to her detention."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_498",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Confusion",
+      "score": 0,
+      "detail": {
+        "gold": "Sadness."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_296",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Yes.",
+      "score": 0,
+      "detail": {
+        "gold": "No"
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_48",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Electronic",
+      "score": 0,
+      "detail": {
+        "gold": "minimal techno"
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_577",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A lone violin plays a mournful, repetitive melody over a bed of low, pulsing drones. This creates a tense, melancholic atmosphere. In a short film, this music could underscore a scene where a character, alone in a dimly lit room, slowly discovers a hidden letter. The music's somber, unresolved quality would amplify the weight of the revelation, making the audience feel the character's growing sorrow and isolation. The mix of the fragile, human violin and the cold, electronic drone could symbolize the clash between personal memory and an impersonal, overwhelming past, deepening the emotional impact of the story's turning point.",
+      "score": 0,
+      "detail": {
+        "gold": "The music's intimate vocals suggest a personal or close-up moment in a short film, possibly signifying a protagonist's introspective scene. The melody from the electric guitar and the synth could underscore a character's emotional journey or epiphany, fitting for a narrative turning point or climax. The punchy kick and groovy bass guitar add a sense of movement or progression in the story, ideal for a montage or a sequence showing the passage of time. The overall easygoing yet melancholic vibe lends itself to a story with bittersweet undertones, perhaps about reminiscence, lost love, or hopeful longing. The noisy snare and claps at the end, followed by the short snare roll, could signal a character's decision or resolution, effectively wrapping up the scene or transition to the next. This combination crafts an evocative backdrop for a film scene where characters grapple with nuanced emotions amidst life's complexities."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_158",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A man.",
+      "score": 0,
+      "detail": {
+        "gold": "An orchestra."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_640",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A lone figure crouches in a derelict subway tunnel, the only sound the frantic *tick-tock* of a stolen watch. Each metallic *tick* is a countdown to the approaching patrol. The relentless, precise noise amplifies the suffocating tension, each second a hammer blow against the silence. It’s not just time passing; it’s the cold, unfeeling mechanism of their impending capture, driving the desperate need to move before the final *tick* echoes into the void.",
+      "score": 0,
+      "detail": {
+        "gold": "In the dimly lit workshop, the relentless scrape of metal on metal resonated through the air, a sure sign that the Master was deep in his craft. The repetitive sound, punctuated by the occasional muffled thud, was not merely background noise; it was the heartbeat of creation, as a once bland sheet of metal was painstakingly transformed into a magnificent sword. Each pass of the file, each moment of friction, stripped away imperfections, imbuing the blade with a deadly grace. The atmosphere was thick with tension, for this was no ordinary weapon; it was destined for a warrior on a quest that would decide the fate of the kingdom. And so, in the echoes of metal being born anew, a tale of valor and battle was sharpened alongside the sword in the Master's hands."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_266",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Object-oriented programming and functional programming.",
+      "score": 0,
+      "detail": {
+        "gold": "The elements of functional, logic programming, and constraint programming integration."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_761",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "2",
+      "score": 0,
+      "detail": {
+        "gold": "Three platforms."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_465",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Male",
+      "score": 0,
+      "detail": {
+        "gold": "Female."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_586",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "This music creates a tense, oppressive atmosphere, perfect for a suspenseful game level. The low, sustained drones establish a constant, unsettling dread, making the player feel vulnerable. The sparse, echoing piano notes act as a haunting motif, suggesting a forgotten past or a lurking threat. The sudden, sharp percussive hits serve as jarring punctuation, mimicking a character's heartbeat or a sudden, unseen danger, effectively startling the player and increasing tension. The overall sparse arrangement leaves unsettling silences, amplifying the feeling of isolation and anticipation. This dynamic soundscape directly affects gameplay by building suspense, making the player more alert and cautious, and heightening the impact of any sudden in-game events.",
+      "score": 0,
+      "detail": {
+        "gold": "The music in the audio establishes a tense and ominous atmosphere, fitting for a suspenseful video game level. The use of a drum groove passing through a low pass filter creates an evolving sense of urgency, mimicking the feeling of danger that is slowly unveiling as the pass filter opens up. This could represent the increasing threat level in the game as players progress. Synthesizer pads add to the eerie, otherworldly ambiance with a simple, repetitive melody that echoes in the lower register with haunting overtones, suggesting an inescapable loop or a puzzle the player has to solve. The pulsating synth sounds panned to both sides of the speaker provide a surreal, disorientating experience, potentially making players feel on edge as if something could jump out at any moment. The pitched-down male voice, further processed with effects, may signify a narrative element or a character presence within the game, adding a layer of mystery or dread. Its distorted quality can lead to an unsettling feeling among players, increasing the dark, dangerous atmosphere indicated by the medium-tempo music. Overall, the sonic elements work together to enhance the thrilling and apprehensive mood conducive to a scary video game scenario."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_309",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The first person responded by saying that they also hate restaurants.",
+      "score": 0,
+      "detail": {
+        "gold": "The first person reacted by saying 'wow yeah'."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_766",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The music creates a suspenseful and mysterious mood.",
+      "score": 0,
+      "detail": {
+        "gold": "The atmosphere is profound and calming."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_574",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The music's gentle, flowing instrumental melody, likely played on a piano or keyboard, creates a calm and reflective mood. The high-quality, clean sound with subtle reverb enhances this feeling, making the piece sound spacious and serene. Together, these elements are designed to evoke feelings of peace, introspection, and gentle melancholy. The artist likely aimed to create a soothing and emotionally resonant atmosphere, perfect for relaxation or quiet contemplation.",
+      "score": 0,
+      "detail": {
+        "gold": "The music segment, characterized by its Enka genre and consisting of a steel guitar solo, mellow bell chords, and sustained melodies from strings and brass, exudes an emotional, heartfelt, and passionate atmosphere. The use of a steel guitar, which is known for its expressive bending and vibrato, contributes significantly to the emotional depth of the piece, often invoking a sense of nostalgia or longing. The mellow bell chord progression adds a tender and intimate layer to the music, further intensifying the emotional impact. Sustained strings and brass melodies can create a feeling of yearning or sorrow, which are typical of Enka music, a genre deeply rooted in expressing the complexities of human emotion. Furthermore, the recording's low quality and mono sound add an element of authenticity and rawness to the piece, potentially transporting the listener to a time or place reminiscent of the past. This blend of a heartfelt composition with a noisy, unrefined audio quality might be an artistic choice to evoke a more personal and genuine connection with the listener. It's as if the artist wanted the audience to experience the music as if it were a live performance, with all its imperfections, thereby enhancing the emotive storytelling inherent in the piece."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_271",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A train is moving on the tracks.",
+      "score": 0,
+      "detail": {
+        "gold": "The man is possibly engaging in an activity which requires water and interaction with a hard surface, therefore washing and/or preparing food may be appropriate to the scenario."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_505",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A single clean electric guitar creates a dreamy, mellow feeling through its smooth, sustained notes and gentle reverb. This spacious, atmospheric sound evokes intimacy and introspection, free from the aggression of distortion. In a film, this music instantly signals a shift from reality, perfectly underscoring a dream or flashback. It establishes a nostalgic, tender, or wistful mood, making the scene feel like a cherished, hazy memory.",
+      "score": 0,
+      "detail": {
+        "gold": "The use of a single clean sounding electric guitar in the piece is central to creating a dreamy and mellow atmosphere. First, the 'clean' quality of the sound, devoid of distortion or heavy effects, allows for clarity and a sense of purity in the tone, fitting for evoking a sense of reverie or introspection. The guitar solo, played gently, eschews aggressive shredding or rapid sequences often found in rock, leaning instead on melody and a soothing tempo that allows the listener to drift along with the music comfortably. The notes of the guitar can linger and resonate, filling the soundscape and enveloping the listener in a sort of musical embrace. The progressive nature of the piece might also introduce subtle variations and complexities that engage the listener without overwhelming them, appropriate for sequences in visual media that are meant to suggest altered states of consciousness like dreams or flashbacks. This piece could underscore the emotional tone of such scenes, complementing the visual imagery with an auditory landscape that enhances the viewer's immersion and connection to the on-screen narrative."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_510",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The music would perfectly score a quiet, intimate scene in a cozy, old-world setting. Imagine a small, dimly lit tea room in Kyoto, tucked away from the city's bustle. Rain gently taps against the paper windows, blurring the view of a traditional Japanese garden. An elderly tea master, his movements slow and deliberate, prepares a bowl of matcha for a single, contemplative guest. The soft, melancholic melody of a koto and shakuhachi flute drifts from a hidden speaker, its gentle, flowing notes mirroring the serene ritual. The air is filled with the scent of green tea and aged wood. This is a moment of profound peace and quiet reflection, a timeless pause where the outside world fades away, leaving only the shared, wordless understanding between the master and guest, and the beautiful, poignant music that underscores the stillness.",
+      "score": 0,
+      "detail": {
+        "gold": "The music in the audio evokes a bustling, yet laid-back atmosphere of a beachfront café during a warm summer evening. Patrons, adorned in light, colorful attire, savor cool, fruity beverages and share stories of their day's adventures. The marimba’s lead melody imparts a tropical vibe, mirroring the playful dance of palm leaves in the ocean breeze. An acoustic piano's jazzy chords cascade around the conversations, adding a sophisticated touch to the casual setting. The upright bass provides a grounded, soft backdrop that blends seamlessly with the distant murmurs of the sea and the rhythmic lapping of waves against the shore. The latin grooves supplied by the acoustic elements infuse the space with a sense of cultural richness, inviting the mix of locals and tourists to sway gently in their seats. As the music's uplifting energy fills the space, it subtly heightens the sense of connection among the café dwellers. This scene is completed by the natural panning of the instruments, animating the atmosphere with a vibrant, yet intimate acoustic environment. The song is not the center of attention but enriches the ambiance, much like an unobtrusive soundtrack to an evening filled with laughter, conversation, and the simple joy of relaxation."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_388",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The speaker's tone of voice.",
+      "score": 0,
+      "detail": {
+        "gold": "The humiliation experienced."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_61",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The children's laughter adds a layer of innocence and joy, contrasting with the deep, ominous drone to create a sense of unsettling mystery.",
+      "score": 0,
+      "detail": {
+        "gold": "The children's laughter is likely included to convey a sense of innocence, joy, and spontaneity, reinforcing the music's theme of family enjoyment."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_239",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The man.",
+      "score": 0,
+      "detail": {
+        "gold": "A male in his thirties."
+      },
+      "group_id": "Listening/General"
+    },
+    {
+      "item_id": "Listening_General_76",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A sound engineer can use equalization (EQ) to adjust frequencies, compression to control dynamics, and panning to position instruments in the stereo field.",
+      "score": 0,
+      "detail": {
+        "gold": "A sound engineer could apply noise reduction techniques, equalization to bring out the instrumental frequencies, and potentially re-record certain elements with better audio quality."
+      },
+      "group_id": "Listening/General"
+    }
+  ],
+  "aggregate": {
+    "mean": 0.075,
+    "ci95": [
+      0.0,
+      0.175
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset voiceassistant-listening-general --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 115.0
+}

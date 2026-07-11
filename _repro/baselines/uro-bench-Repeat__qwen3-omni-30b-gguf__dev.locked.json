@@ -1,0 +1,532 @@
+{
+  "stage": "1-directional",
+  "dataset": "uro-bench-Repeat",
+  "k_type": "K1",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/uro-bench-Repeat.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": "0.11.0"
+    }
+  },
+  "per_item": [
+    {
+      "item_id": 184,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "The world's oceans cover about seventy one percent of the earth's surface, and are home to a vast array of marine life, many of which are still undiscovered.",
+      "score": 0.75,
+      "detail": {
+        "wer": 0.25,
+        "ref": "the world s oceans cover about 71 of the earth s surface and are home to a vast array of marine life many of which are still undiscovered",
+        "hyp": "the world's oceans cover about seventy one percent of the earth's surface and are home to a vast array of marine life many of which are still undiscovered"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 93,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Octopuses have three hearts and two of them stop beating when they swim.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "octopuses have three hearts and two of them stop beating when they swim",
+        "hyp": "octopuses have three hearts and two of them stop beating when they swim"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 23,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "The moonlight illuminates the darkest of nights.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the moonlight illuminates the darkest of nights",
+        "hyp": "the moonlight illuminates the darkest of nights"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 238,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "A pacting a flu shot annually helps reduce the risk of contracting influenza and spreading it to others.",
+      "score": 0.8823529411764706,
+      "detail": {
+        "wer": 0.11764705882352941,
+        "ref": "getting a flu shot annually helps reduce the risk of contracting influenza and spreading it to others",
+        "hyp": "a pacting a flu shot annually helps reduce the risk of contracting influenza and spreading it to others"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 148,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Pasta is a staple food in Italian cuisine, made from wheat and water, and it comes in many shapes and sizes, from spaghetti to ravioli.",
+      "score": 0.9615384615384616,
+      "detail": {
+        "wer": 0.038461538461538464,
+        "ref": "pasta is a staple food in italian cuisine made from durum wheat and water and it comes in many shapes and sizes from spaghetti to ravioli",
+        "hyp": "pasta is a staple food in italian cuisine made from wheat and water and it comes in many shapes and sizes from spaghetti to ravioli"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 135,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me. Sushi is a traditional Japanese dish consisting of vinegared rice, often served with raw fish, vegetables, or seaweed.",
+      "score": 0.7777777777777778,
+      "detail": {
+        "wer": 0.2222222222222222,
+        "ref": "sushi is a traditional japanese dish consisting of vinegared rice often served with raw fish vegetables or seaweed",
+        "hyp": "please repeat after me sushi is a traditional japanese dish consisting of vinegared rice often served with raw fish vegetables or seaweed"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 143,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me. The Mediterranean diet is known for its health benefits, focusing on fresh fruits, vegetables, whole grains, and healthy fats like olive oil.",
+      "score": 0.8181818181818181,
+      "detail": {
+        "wer": 0.18181818181818182,
+        "ref": "the mediterranean diet is known for its health benefits focusing on fresh fruits vegetables whole grains and healthy fats like olive oil",
+        "hyp": "please repeat after me the mediterranean diet is known for its health benefits focusing on fresh fruits vegetables whole grains and healthy fats like olive oil"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 140,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Chocolate is made from cacao beans, and has been enjoyed for centuries in different forms, from solid bars to hot drinks.",
+      "score": 0.9545454545454546,
+      "detail": {
+        "wer": 0.045454545454545456,
+        "ref": "chocolate is made from cacao beans and it has been enjoyed for centuries in different forms from solid bars to hot drinks",
+        "hyp": "chocolate is made from cacao beans and has been enjoyed for centuries in different forms from solid bars to hot drinks"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 63,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "In the end, we will remember not the words of our enemies, but the silence of our friends.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "in the end we will remember not the words of our enemies but the silence of our friends",
+        "hyp": "in the end we will remember not the words of our enemies but the silence of our friends"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 206,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "One of the most significant goals of artificial general intelligence is to create machines that can perform any intellectual task that a human can do.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "one of the most significant goals of artificial general intelligence is to create machines that can perform any intellectual task that a human can do",
+        "hyp": "one of the most significant goals of artificial general intelligence is to create machines that can perform any intellectual task that a human can do"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 122,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me. The Renaissance was a cultural movement in Europe from the fourteenth to the seventeenth century known for a revival of art, literature, and science.",
+      "score": 0.7083333333333333,
+      "detail": {
+        "wer": 0.2916666666666667,
+        "ref": "the 'renaissance' was a cultural movement in europe from the 14th to the 17th century known for a revival of art literature and science",
+        "hyp": "please repeat after me the renaissance was a cultural movement in europe from the fourteenth to the seventeenth century known for a revival of art literature and science"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 149,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Oktoberfest is a traditional German festival held annually in Munich, known for its beer, folk music, and Bavarian culture.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "oktoberfest is a traditional german festival held annually in munich known for its beer folk music and bavarian culture",
+        "hyp": "oktoberfest is a traditional german festival held annually in munich known for its beer folk music and bavarian culture"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 124,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "The Sistine Chapel located in Vatican City is famous for its ceiling painted by Michelangelo, depicting scenes from the Bible.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the sistine chapel located in vatican city is famous for its ceiling painted by michelangelo depicting scenes from the bible",
+        "hyp": "the sistine chapel located in vatican city is famous for its ceiling painted by michelangelo depicting scenes from the bible"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 125,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me, the World Series is the championship series of Major League Baseball, played annually between the American League and National League champions.",
+      "score": 0.8095238095238095,
+      "detail": {
+        "wer": 0.19047619047619047,
+        "ref": "the world series is the championship series of major league baseball played annually between the american league and national league champions",
+        "hyp": "please repeat after me the world series is the championship series of major league baseball played annually between the american league and national league champions"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 110,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me, the scientific name for the northern lights is the aurora borealis.",
+      "score": 0.6363636363636364,
+      "detail": {
+        "wer": 0.36363636363636365,
+        "ref": "the scientific name for the northern lights is the aurora borealis",
+        "hyp": "please repeat after me the scientific name for the northern lights is the aurora borealis"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 41,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me, To be yourself in a world that is constantly trying to make you something else, is the greatest accomplishment.",
+      "score": 0.7894736842105263,
+      "detail": {
+        "wer": 0.21052631578947367,
+        "ref": "to be yourself in a world that is constantly trying to make you something else is the greatest accomplishment",
+        "hyp": "please repeat after me to be yourself in a world that is constantly trying to make you something else is the greatest accomplishment"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 52,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me: Time is money. Time is money.",
+      "score": 0.0,
+      "detail": {
+        "wer": 2.3333333333333335,
+        "ref": "time is money",
+        "hyp": "please repeat after me time is money time is money"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 27,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Every challenge is an opportunity to learn and grow.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "every challenge is an opportunity to learn and grow",
+        "hyp": "every challenge is an opportunity to learn and grow"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 195,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Self driving cars use a combination of sensors, machine learning algorithms, and real time data to navigate roads and make decisions without human input.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "self driving cars use a combination of sensors machine learning algorithms and real time data to navigate roads and make decisions without human input",
+        "hyp": "self driving cars use a combination of sensors machine learning algorithms and real time data to navigate roads and make decisions without human input"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 111,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me, Duxer is the most popular sport in the world, with over four billion fans across the globe.",
+      "score": 0.6470588235294117,
+      "detail": {
+        "wer": 0.35294117647058826,
+        "ref": "soccer is the most popular sport in the world with over 4 billion fans across the globe",
+        "hyp": "please repeat after me duxer is the most popular sport in the world with over four billion fans across the globe"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 26,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me: \"Nature is the art of God.\"",
+      "score": 0.33333333333333337,
+      "detail": {
+        "wer": 0.6666666666666666,
+        "ref": "nature is the art of god",
+        "hyp": "please repeat after me nature is the art of god"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 204,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Tech technology in gaming is used to create smarter non playable characters that adapt to the player's actions, providing a more immersive and challenging experience.",
+      "score": 0.8846153846153846,
+      "detail": {
+        "wer": 0.11538461538461539,
+        "ref": "advanced technology in gaming is used to create smarter non playable characters that adapt to the player s actions providing a more immersive and challenging experience",
+        "hyp": "tech technology in gaming is used to create smarter non playable characters that adapt to the player's actions providing a more immersive and challenging experience"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 153,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "The Mediterranean Sea is bordered by three continents, Europe, Asia and Africa, making it a hub for trade, culture and history.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "the mediterranean sea is bordered by three continents europe asia and africa making it a hub for trade culture and history",
+        "hyp": "the mediterranean sea is bordered by three continents europe asia and africa making it a hub for trade culture and history"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 54,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Success is the sum of small efforts, repeated day in and day out.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "success is the sum of small efforts repeated day in and day out",
+        "hyp": "success is the sum of small efforts repeated day in and day out"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 13,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me, the sound of rain is soothing to the soul.",
+      "score": 0.5555555555555556,
+      "detail": {
+        "wer": 0.4444444444444444,
+        "ref": "the sound of rain is soothing to the soul",
+        "hyp": "please repeat after me the sound of rain is soothing to the soul"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 136,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me. The Great Wall of China is not just a single continuous wall, but a series of walls built over several dynasties to protect China from invaders.",
+      "score": 0.8461538461538461,
+      "detail": {
+        "wer": 0.15384615384615385,
+        "ref": "the great wall of china is not just a single continuous wall but a series of walls built over several dynasties to protect china from invaders",
+        "hyp": "please repeat after me the great wall of china is not just a single continuous wall but a series of walls built over several dynasties to protect china from invaders"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 236,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me, staying active as you age helps maintain muscle strength, flexibility and bone density, improving overall quality of life.",
+      "score": 0.7777777777777778,
+      "detail": {
+        "wer": 0.2222222222222222,
+        "ref": "staying active as you age helps maintain muscle strength flexibility and bone density improving overall quality of life",
+        "hyp": "please repeat after me staying active as you age helps maintain muscle strength flexibility and bone density improving overall quality of life"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 208,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me. The rise of automation in the workplace has led to debates about the future of work, with concerns about job automation and a need for reskilling the workforce.",
+      "score": 0.8214285714285714,
+      "detail": {
+        "wer": 0.17857142857142858,
+        "ref": "the rise of automation in the workplace has led to debates about the future of work with concerns about job automation and the need for reskilling the workforce",
+        "hyp": "please repeat after me the rise of automation in the workplace has led to debates about the future of work with concerns about job automation and a need for reskilling the workforce"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 120,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "The Tour de France is one of the most prestigious cycling races in the world, held annually in France, covering over two thousand miles.",
+      "score": 0.9166666666666666,
+      "detail": {
+        "wer": 0.08333333333333333,
+        "ref": "the tour de france is one of the most prestigious cycling races in the world held annually in france covering over 2 000 miles",
+        "hyp": "the tour de france is one of the most prestigious cycling races in the world held annually in france covering over two thousand miles"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 252,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me, being active throughout the day, even through small activities like walking or taking the stairs, can improve health and boost energy levels.",
+      "score": 0.8181818181818181,
+      "detail": {
+        "wer": 0.18181818181818182,
+        "ref": "being active throughout the day even through small activities like walking or taking the stairs can improve health and boost energy levels",
+        "hyp": "please repeat after me being active throughout the day even through small activities like walking or taking the stairs can improve health and boost energy levels"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 177,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Forests are essential to the health of our planet, providing oxygen, housing wildlife, and regulating the earth's climate.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "forests are essential to the health of our planet providing oxygen housing wildlife and regulating the earth's climate",
+        "hyp": "forests are essential to the health of our planet providing oxygen housing wildlife and regulating the earth's climate"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 29,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me. A journey of a thousand miles begins with a single step.",
+      "score": 0.6363636363636364,
+      "detail": {
+        "wer": 0.36363636363636365,
+        "ref": "a journey of a thousand miles begins with a single step",
+        "hyp": "please repeat after me a journey of a thousand miles begins with a single step"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 100,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me. The longest river in the world is the Nile, stretching over four thousand one hundred miles.",
+      "score": 0.4285714285714286,
+      "detail": {
+        "wer": 0.5714285714285714,
+        "ref": "the longest river in the world is the nile stretching over 4 100 miles",
+        "hyp": "please repeat after me the longest river in the world is the nile stretching over four thousand one hundred miles"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 224,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me. Consuming too much sugar can lead to weight gain, increase the risk of diabetes, and harm dental health.",
+      "score": 0.7777777777777778,
+      "detail": {
+        "wer": 0.2222222222222222,
+        "ref": "consuming too much sugar can lead to weight gain increase the risk of diabetes and harm dental health",
+        "hyp": "please repeat after me consuming too much sugar can lead to weight gain increase the risk of diabetes and harm dental health"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 2,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me, I love learning new things every day.",
+      "score": 0.4285714285714286,
+      "detail": {
+        "wer": 0.5714285714285714,
+        "ref": "i love learning new things every day",
+        "hyp": "please repeat after me i love learning new things every day"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 87,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me, the human brain contains about eighty six billion neurons, which responsible for transmitting information.",
+      "score": 0.5,
+      "detail": {
+        "wer": 0.5,
+        "ref": "the human brain contains about 86 billion neurons which are responsible for transmitting information",
+        "hyp": "please repeat after me the human brain contains about eighty six billion neurons which responsible for transmitting information"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 179,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me. The beauty of nature can be found in the smallest details, from a single leaf to a vast mountain range, reminding us of the world's natural wonders.",
+      "score": 0.7857142857142857,
+      "detail": {
+        "wer": 0.21428571428571427,
+        "ref": "the beauty of nature can be found in the smallest details from a single leaf to a vast mountain range reminding us of the world s natural wonders",
+        "hyp": "please repeat after me the beauty of nature can be found in the smallest details from a single leaf to a vast mountain range reminding us of the world's natural wonders"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 226,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Hand hygiene is one of the simplest and most effective ways to reduce the transmission of illnesses.",
+      "score": 1.0,
+      "detail": {
+        "wer": 0.0,
+        "ref": "hand hygiene is one of the simplest and most effective ways to reduce the transmission of illnesses",
+        "hyp": "hand hygiene is one of the simplest and most effective ways to reduce the transmission of illnesses"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 47,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me, Your life does not get better by chance. It gets better by change.",
+      "score": 0.6923076923076923,
+      "detail": {
+        "wer": 0.3076923076923077,
+        "ref": "your life does not get better by chance it gets better by change",
+        "hyp": "please repeat after me your life does not get better by chance it gets better by change"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 115,
+      "instr": "Listen to the audio and repeat exactly what is said, word for word. Output only the repeated text.",
+      "reply": "Please repeat after me. Michael Jordan is considered one of the greatest basketball players of all time, winning six NBA championships with the Chicago Bulls.",
+      "score": 0.8095238095238095,
+      "detail": {
+        "wer": 0.19047619047619047,
+        "ref": "michael jordan is considered one of the greatest basketball players of all time winning six nba championships with the chicago bulls",
+        "hyp": "please repeat after me michael jordan is considered one of the greatest basketball players of all time winning six nba championships with the chicago bulls"
+      },
+      "group_id": null
+    }
+  ],
+  "aggregate": {
+    "mean": 0.7937,
+    "ci95": [
+      0.7225,
+      0.8573
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset uro-bench-Repeat --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 95.6
+}

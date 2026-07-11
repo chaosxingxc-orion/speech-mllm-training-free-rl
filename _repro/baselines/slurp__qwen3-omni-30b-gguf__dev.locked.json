@@ -1,0 +1,734 @@
+{
+  "stage": "1-directional",
+  "dataset": "slurp",
+  "k_type": "K6",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 62,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/slurp.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": "0.11.0"
+    }
+  },
+  "per_item": [
+    {
+      "item_id": 3,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. audio_volume_mute",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 5
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 189,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. audio_volume_mute",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 5
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 258,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "68. query",
+      "score": 0,
+      "detail": {
+        "matched_by": "containment",
+        "gold_intent": "audio_volume_up"
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 261,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. audio_volume_mute",
+      "score": 0,
+      "detail": {
+        "matched_by": "containment",
+        "gold_intent": "audio_volume_up"
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 315,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "3. alarm_remove",
+      "score": 0,
+      "detail": {
+        "matched_by": "containment",
+        "gold_intent": "audio_volume_mute"
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 317,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "31. greet",
+      "score": 0,
+      "detail": {
+        "matched_by": "containment",
+        "gold_intent": "audio_volume_mute"
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 443,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "7. audio_volume_up",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 7
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 608,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. audio_volume_mute",
+      "score": 0,
+      "detail": {
+        "matched_by": "containment",
+        "gold_intent": "audio_volume_up"
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 751,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. audio_volume_mute",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 5
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 804,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "58. play_music",
+      "score": 0,
+      "detail": {
+        "matched_by": "containment",
+        "gold_intent": "audio_volume_mute"
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 1048,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. audio_volume_mute",
+      "score": 0,
+      "detail": {
+        "matched_by": "containment",
+        "gold_intent": "audio_volume_down"
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 1065,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "6. audio_volume_mute",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 6
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 1300,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "3. alarm_set",
+      "score": 0,
+      "detail": {
+        "matched_by": "containment",
+        "gold_intent": "audio_volume_up"
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 1352,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "4. audio_volume_down",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 4
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 1374,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "7. audio_volume_up",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 7
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 1509,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "3. alarm_set",
+      "score": 0,
+      "detail": {
+        "matched_by": "containment",
+        "gold_intent": "audio_volume_mute"
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 1510,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. audio_volume_mute",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 5
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 1630,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "7. audio_volume_up",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 7
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 1639,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "4. audio_volume_down",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 4
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 1640,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "7. audio_volume_up",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 7
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 1715,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "4. audio_volume_down",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 4
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 2205,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "3. alarm_set",
+      "score": 0,
+      "detail": {
+        "matched_by": "containment",
+        "gold_intent": "audio_volume_mute"
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 2206,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. audio_volume_mute",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 5
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 2207,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. audio_volume_mute",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 5
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 2795,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. audio_volume_mute",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 5
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 2796,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. audio_volume_mute",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 5
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 3175,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. audio_volume_mute",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 5
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 3349,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "49. locations",
+      "score": 0,
+      "detail": {
+        "matched_by": "containment",
+        "gold_intent": "audio_volume_up"
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 3460,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "19. datetime_query",
+      "score": 0,
+      "detail": {
+        "matched_by": "containment",
+        "gold_intent": "audio_volume_mute"
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 3474,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "4. audio_volume_down",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 4
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 3486,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. audio_volume_mute",
+      "score": 0,
+      "detail": {
+        "matched_by": "containment",
+        "gold_intent": "audio_volume_down"
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 3581,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. audio_volume_mute",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 5
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 3582,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. audio_volume_mute",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 5
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 3590,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. audio_volume_mute",
+      "score": 0,
+      "detail": {
+        "matched_by": "containment",
+        "gold_intent": "audio_volume_up"
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 3809,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "4. audio_volume_down",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 4
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 3812,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. audio_volume_mute",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 5
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 3837,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "50. music",
+      "score": 0,
+      "detail": {
+        "matched_by": "containment",
+        "gold_intent": "audio_volume_mute"
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 3838,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. audio_volume_mute",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 5
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 4090,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "7. audio_volume_up",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 7
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 4155,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "6. audio_volume_down",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 6
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 4166,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "7. audio_volume_up",
+      "score": 0,
+      "detail": {
+        "matched_by": "containment",
+        "gold_intent": "audio_volume_other"
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 4241,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. audio_volume_mute",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 5
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 4638,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "4. audio_volume_down",
+      "score": 0,
+      "detail": {
+        "matched_by": "containment",
+        "gold_intent": "audio_volume_other"
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 4653,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. audio_volume_mute",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 5
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 4659,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. audio_volume_mute",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 5
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 4702,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. audio_volume_mute",
+      "score": 0,
+      "detail": {
+        "matched_by": "containment",
+        "gold_intent": "audio_volume_up"
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 4831,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "7. audio_volume_up",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 7
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 4833,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "58. play_music",
+      "score": 0,
+      "detail": {
+        "matched_by": "containment",
+        "gold_intent": "audio_volume_mute"
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 4854,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. audio_volume_mute",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 5
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 4994,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. audio_volume_mute",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 5
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 5219,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "4. audio_volume_down",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 4
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 5221,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. audio_volume_mute",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 5
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 5481,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "4. audio_volume_down",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 4
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 5525,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. audio_volume_mute",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 5
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 5550,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. audio_volume_mute",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 5
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 5579,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. audio_volume_mute",
+      "score": 0,
+      "detail": {
+        "matched_by": "containment",
+        "gold_intent": "audio_volume_other"
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 5611,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "4. audio_volume_down",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 4
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 5812,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "54. music_settings",
+      "score": 0,
+      "detail": {
+        "matched_by": "containment",
+        "gold_intent": "audio_volume_other"
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 5823,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "4. audio_volume_down",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 4
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 5958,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. audio_volume_mute",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 5
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 6064,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "3. alarm_set",
+      "score": 0,
+      "detail": {
+        "matched_by": "containment",
+        "gold_intent": "audio_volume_mute"
+      },
+      "group_id": "audio"
+    },
+    {
+      "item_id": 6166,
+      "instr": "Listen to the audio and classify the speaker's intent. Choose exactly ONE intent by number.\nIntents:\n0. addcontact\n1. alarm_query\n2. alarm_remove\n3. alarm_set\n4. audio_volume_down\n5. audio_volume_mute\n6. audio_volume_other\n7. audio_volume_up\n8. calendar_query\n9. calendar_remove\n10. calendar_set\n11. cleaning\n12. coffee\n13. convert\n14. cooking_query\n15. cooking_recipe\n16. createoradd\n17. currency\n18. datetime_convert\n19. datetime_query\n20. definition\n21. email_addcontact\n22. email_query\n23. email_querycontact\n24. email_sendemail\n25. events\n26. factoid\n27. game\n28. general_greet\n29. general_joke\n30. general_quirky\n31. greet\n32. hue_lightdim\n33. hue_lightoff\n34. hue_lightup\n35. iot_cleaning\n36. iot_coffee\n37. iot_hue_lightchange\n38. iot_hue_lightdim\n39. iot_hue_lightoff\n40. iot_hue_lighton\n41. iot_hue_lightup\n42. iot_wemo_off\n43. iot_wemo_on\n44. joke\n45. likeness\n46. lists_createoradd\n47. lists_query\n48. lists_remove\n49. locations\n50. music\n51. music_dislikeness\n52. music_likeness\n53. music_query\n54. music_settings\n55. news_query\n56. play_audiobook\n57. play_game\n58. play_music\n59. play_podcasts\n60. play_radio\n61. podcasts\n62. post\n63. qa_currency\n64. qa_definition\n65. qa_factoid\n66. qa_maths\n67. qa_stock\n68. query\n69. querycontact\n70. quirky\n71. radio\n72. recommendation_events\n73. recommendation_locations\n74. recommendation_movies\n75. remove\n76. sendemail\n77. set\n78. settings\n79. social_post\n80. social_query\n81. takeaway_order\n82. takeaway_query\n83. ticket\n84. traffic\n85. transport_query\n86. transport_taxi\n87. transport_ticket\n88. transport_traffic\n89. volume_other\n90. weather_query\n91. wemo_off\n92. wemo_on\nAnswer with only the intent number and name, e.g. '4. balance'.",
+      "reply": "5. audio_volume_mute",
+      "score": 1,
+      "detail": {
+        "matched_by": "index",
+        "gold_idx": 5
+      },
+      "group_id": "audio"
+    }
+  ],
+  "aggregate": {
+    "mean": 0.6452,
+    "ci95": [
+      0.5161,
+      0.7581
+    ],
+    "n_scored": 62,
+    "n_total": 62
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset slurp --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 168.9
+}

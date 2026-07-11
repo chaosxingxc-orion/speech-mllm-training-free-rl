@@ -1,0 +1,452 @@
+{
+  "stage": "1-directional",
+  "dataset": "uro-bench-MLC-zh",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/uro-bench-MLC-zh.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": "0.11.0"
+    }
+  },
+  "per_item": [
+    {
+      "item_id": 108,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "3",
+      "score": 0,
+      "detail": {
+        "gold": "九除以三是三。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 89,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "因为过了保质期的食物可能会变质，产生有害物质，食用后可能引起食物中毒，危害身体健康。",
+      "score": 0,
+      "detail": {
+        "gold": "过期的食物可能会对健康造成危害。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 117,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "不能喝。",
+      "score": 0,
+      "detail": {
+        "gold": "变酸的牛奶不建议再喝，它可能已经滋生细菌，喝了会影响肠胃健康。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 33,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "11",
+      "score": 0,
+      "detail": {
+        "gold": "车上有十一个人。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 122,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "是的，夏天喝冰水容易刺激肠胃，导致消化不良、腹痛或腹泻等问题。",
+      "score": 0,
+      "detail": {
+        "gold": "是的，夏天喝冰水可能会刺激胃肠道，导致腹痛或者消化不良，最好喝常温水。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 144,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "为了在发生碰撞或急刹车时，防止驾乘人员因惯性而被甩出车外或撞到车内硬物，从而减轻伤害，保护生命安全。",
+      "score": 0,
+      "detail": {
+        "gold": "安全带可以有效减少事故发生时的伤害，保护你免受撞击的危险。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 113,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "可以将牛奶放入冰箱冷藏。",
+      "score": 0,
+      "detail": {
+        "gold": "把牛奶放进玻璃瓶或者不透明的容器里，并存放在冰箱最冷的地方，可以延长保质期。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 86,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "因为雨水在地面形成了一层水膜，减小了物体与地面之间的摩擦力。",
+      "score": 0,
+      "detail": {
+        "gold": "因为水会降低地面的摩擦力，容易打滑。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 138,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "3",
+      "score": 0,
+      "detail": {
+        "gold": "还剩三个。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 102,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "因为夏天天气炎热，多吃清凉的食物可以帮助身体降温，补充水分和营养，预防中暑和上火。",
+      "score": 0,
+      "detail": {
+        "gold": "清凉食物能帮助身体降温，缓解暑热。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 73,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "3个",
+      "score": 0,
+      "detail": {
+        "gold": "还剩下三个气球。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 9,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "因为睡前吃东西会增加肠胃负担，影响消化和睡眠质量，还可能导致体重增加。",
+      "score": 0,
+      "detail": {
+        "gold": "临睡前吃晚餐容易导致胃肠负担加重，影响消化，甚至可能导致失眠或胃食管反流。最好在睡前两到三小时进食晚餐。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 11,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "因为强酸或强碱会腐蚀厨房中常见的金属厨具和铝制品。",
+      "score": 0,
+      "detail": {
+        "gold": "强酸性或强碱性清洁剂可能会损坏厨房表面，且对皮肤和呼吸系统有刺激性，使用时需特别小心，最好选择温和的清洁剂。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 25,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "50",
+      "score": 0,
+      "detail": {
+        "gold": "小吴还有五十个硬币。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 68,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "因为经过一夜的睡眠，身体会流失水分，血液会变得粘稠，喝一杯水可以补充水分，稀释血液，促进新陈代谢，帮助身体排毒。",
+      "score": 0,
+      "detail": {
+        "gold": "早晨起床后喝水可以帮助身体补充一夜失去的水分，促进新陈代谢。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 52,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "因为阳光直射会提高食物温度，加速其腐败变质。",
+      "score": 0,
+      "detail": {
+        "gold": "阳光会加速食物中的营养成分降解，导致食物腐败。比如，蔬菜和水果在阳光下会失去维生素C，容易变质。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 18,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "18",
+      "score": 0,
+      "detail": {
+        "gold": "还剩下十八个鸡蛋。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 103,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "24",
+      "score": 0,
+      "detail": {
+        "gold": "八乘以三是二十四。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 76,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "因为烈日下长时间暴晒容易导致中暑、脱水、晒伤，甚至引发热射病等严重健康问题。",
+      "score": 0,
+      "detail": {
+        "gold": "因为紫外线会伤害皮肤，可能会中暑。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 72,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "14",
+      "score": 0,
+      "detail": {
+        "gold": "七乘以二是十四。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 91,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "为了保障自身和他人的安全。",
+      "score": 0,
+      "detail": {
+        "gold": "遵守交通规则可以保障自己和他人的安全。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 98,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "15元",
+      "score": 0,
+      "detail": {
+        "gold": "你还剩下十五块钱。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 19,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "因为水遇到热油会迅速汽化，体积急剧膨胀，导致油滴飞溅，容易烫伤人。",
+      "score": 0,
+      "detail": {
+        "gold": "因为水遇到热油会迅速蒸发，可能会溅出烫伤人。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 74,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "因为关灯睡觉有助于身体分泌褪黑素，从而促进睡眠。",
+      "score": 0,
+      "detail": {
+        "gold": "因为黑暗环境有助于分泌褪黑素，让人更容易入睡。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 30,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "52个星期",
+      "score": 0,
+      "detail": {
+        "gold": "一年大约有五十二个星期。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 145,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "5",
+      "score": 0,
+      "detail": {
+        "gold": "十五除以三是五。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 84,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "4",
+      "score": 0,
+      "detail": {
+        "gold": "九减五是四。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 139,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "8",
+      "score": 0,
+      "detail": {
+        "gold": "小明现在有八个苹果。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 37,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "8",
+      "score": 0,
+      "detail": {
+        "gold": "两辆车一共有八个轮子。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 77,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "3",
+      "score": 0,
+      "detail": {
+        "gold": "十二除以四是三。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 15,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "喝牛奶。",
+      "score": 0,
+      "detail": {
+        "gold": "你可以喝点牛奶，牛奶中的脂肪可以帮助中和辣椒中的辣味。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 44,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "因为肥皂能有效去除手上的细菌和污垢。",
+      "score": 0,
+      "detail": {
+        "gold": "肥皂能有效清除手上的细菌和污垢。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 36,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "是",
+      "score": 0,
+      "detail": {
+        "gold": "不一定，医生可以是任何人。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 69,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "5",
+      "score": 0,
+      "detail": {
+        "gold": "十除以二是五。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 100,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "15岁",
+      "score": 0,
+      "detail": {
+        "gold": "儿子现在十五岁。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 5,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "12",
+      "score": 0,
+      "detail": {
+        "gold": "小王还有十二个弹珠。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 3,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "4",
+      "score": 0,
+      "detail": {
+        "gold": "六减二是四。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 39,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "不是。",
+      "score": 0,
+      "detail": {
+        "gold": "并不是所有水果和蔬菜都适合放冰箱，比如香蕉、番茄等就最好放在常温下。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 96,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "小明",
+      "score": 0,
+      "detail": {
+        "gold": "小明最高。"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 31,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "因为高温会增加身体负担，导致出汗过多、脱水和电解质流失，从而使人感到疲劳。",
+      "score": 0,
+      "detail": {
+        "gold": "高温和湿度会使身体更难散热，导致体温上升，进而引发疲劳。高温下长时间暴露在阳光下还可能引发中暑。"
+      },
+      "group_id": null
+    }
+  ],
+  "aggregate": {
+    "mean": 0.0,
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset uro-bench-MLC-zh --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 60.5
+}

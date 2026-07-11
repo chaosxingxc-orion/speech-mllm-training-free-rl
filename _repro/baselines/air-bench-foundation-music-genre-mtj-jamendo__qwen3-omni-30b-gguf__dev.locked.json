@@ -1,0 +1,450 @@
+{
+  "stage": "1-directional",
+  "dataset": "air-bench-foundation-music-genre-mtj-jamendo",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/air-bench-foundation-music-genre-mtj-jamendo.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": null
+    }
+  },
+  "per_item": [
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20546",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the genre identity of this music?\nOptions:\nA. swing\nB. pop\nC. world\nD. electronic\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. electronic",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20242",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the flavor of music in this recording?\nOptions:\nA. drumnbass\nB. hard\nC. progressive\nD. pop\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. pop",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20339",
+      "instr": "Listen to the audio and answer the multiple-choice question.\npinpoint the music genre of this piece?\nOptions:\nA. electronic\nB. punkrock\nC. blues\nD. electronica\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. electronica",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20252",
+      "error": "HTTPError: HTTP Error 400: Bad Request",
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20258",
+      "instr": "Listen to the audio and answer the multiple-choice question.\ndetect the genre of this music?\nOptions:\nA. bossanova\nB. jazz\nC. electronic\nD. atmospheric\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. jazz",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20603",
+      "error": "HTTPError: HTTP Error 400: Bad Request",
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20454",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nidentify the music genre of this track.\nOptions:\nA. blues\nB. latin\nC. progressive\nD. classical\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. progressive",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20827",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow would you define the genre of this music?\nOptions:\nA. electronic\nB. classical\nC. orchestral\nD. funk\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. classical",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20788",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the genre mood of this music?\nOptions:\nA. classical\nB. newage\nC. industrial\nD. bossanova\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. classical",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20765",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich genre realm does this music belong to?\nOptions:\nA. orchestral\nB. electronica\nC. electropop\nD. reggae\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. reggae",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20233",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the genre signature of this song?\nOptions:\nA. soundtrack\nB. newage\nC. atmospheric\nD. chillout\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. soundtrack",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20630",
+      "error": "HTTPError: HTTP Error 400: Bad Request",
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20326",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the stylistic genre of this track?\nOptions:\nA. hardrock\nB. swing\nC. classical\nD. house\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. classical",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20438",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the genre signature of this song?\nOptions:\nA. soul\nB. industrial\nC. easylistening\nD. instrumentalpop\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. easylistening",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20777",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nspecify the music genre here?\nOptions:\nA. chanson\nB. electropop\nC. jazz\nD. pop\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. pop",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20727",
+      "error": "HTTPError: HTTP Error 400: Bad Request",
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20490",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the sound genre of this audio clip?\nOptions:\nA. pop\nB. ethno\nC. hiphop\nD. electronic\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. electronic",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20391",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the genre identity of this music?\nOptions:\nA. rocknroll\nB. electronic\nC. instrumentalpop\nD. jazz\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. electronic",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20302",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich genre box does this track tick?\nOptions:\nA. bossanova\nB. rocknroll\nC. classical\nD. industrial\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. classical",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20749",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat genre vibe does this music give off?\nOptions:\nA. indie\nB. pop\nC. metal\nD. alternative\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. metal",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20254",
+      "error": "HTTPError: HTTP Error 400: Bad Request",
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20577",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat kind of music is playing in this audio?\nOptions:\nA. classical\nB. popfolk\nC. metal\nD. hiphop\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. classical",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20758",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the genre atmosphere of this piece?\nOptions:\nA. techno\nB. rnb\nC. classical\nD. reggae\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. classical",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20246",
+      "error": "HTTPError: HTTP Error 400: Bad Request",
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20742",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the genre mood of this music?\nOptions:\nA. blues\nB. breakbeat\nC. electronic\nD. rock\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. rock",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20115",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow would you describe the music genre here?\nOptions:\nA. rock\nB. triphop\nC. punkrock\nD. breakbeat\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. rock",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20774",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow would you summarize the genre of this music?\nOptions:\nA. progressive\nB. hiphop\nC. dance\nD. celtic\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. hiphop",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20526",
+      "error": "HTTPError: HTTP Error 400: Bad Request",
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20503",
+      "instr": "Listen to the audio and answer the multiple-choice question.\ntell me the genre of this music piece?\nOptions:\nA. soundtrack\nB. popfolk\nC. experimental\nD. funk\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. soundtrack",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20146",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow would you categorize the genre of this music?\nOptions:\nA. electronic\nB. techno\nC. breakbeat\nD. poprock\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. breakbeat",
+      "score": 0,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:19921",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat style of music is this?\nOptions:\nA. instrumentalpop\nB. minimal\nC. triphop\nD. funk\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. funk",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20033",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nwhat's the genre of this music?\nOptions:\nA. chanson\nB. classical\nC. techno\nD. hiphop\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. classical",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20784",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat kind of music is playing in this audio?\nOptions:\nA. folk\nB. soundtrack\nC. psychedelic\nD. progressive\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. soundtrack",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20829",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nassess the music genre of this recording?\nOptions:\nA. jazz\nB. chillout\nC. classical\nD. rocknroll\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. classical",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20537",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the genre atmosphere of this piece?\nOptions:\nA. popfolk\nB. soundtrack\nC. atmospheric\nD. minimal\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. soundtrack",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20056",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the genre mood of this music?\nOptions:\nA. instrumentalpop\nB. ambient\nC. industrial\nD. newage\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. newage",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:19952",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nassess the music genre of this recording?\nOptions:\nA. trance\nB. rock\nC. classical\nD. newwave\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. newwave",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20559",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the sound genre of this audio clip?\nOptions:\nA. rnb\nB. chanson\nC. darkambient\nD. classical\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. classical",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20349",
+      "instr": "Listen to the audio and answer the multiple-choice question.\npinpoint the music genre of this piece?\nOptions:\nA. folk\nB. electronic\nC. popfolk\nD. funk\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. electronic",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:MTJ-Jamendo:20799",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow would you categorize the genre of this music?\nOptions:\nA. electronic\nB. classical\nC. blues\nD. rnb\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. rnb",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      },
+      "group_id": null
+    }
+  ],
+  "aggregate": {
+    "mean": 0.7879,
+    "ci95": [
+      0.6364,
+      0.9091
+    ],
+    "n_scored": 33,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset air-bench-foundation-music-genre-mtj-jamendo --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 757.8
+}

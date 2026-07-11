@@ -1,0 +1,452 @@
+{
+  "stage": "1-directional",
+  "dataset": "voiceassistant-speaking-reasoning",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/voiceassistant-speaking-reasoning.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": "0.11.0"
+    }
+  },
+  "per_item": [
+    {
+      "item_id": "Speaking_Reasoning_132",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "You are at a restaurant.",
+      "score": 0,
+      "detail": {
+        "gold": "You are at a restaurant if you've paid to get a pizza."
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_514",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Let's analyze the adjectives in each sentence and apply the standard English adjective order.\n\nThe typical order of adjectives in English is:\n\n1. **Opinion** (e.g., repulsive)\n2. **Size** (e.g., small, large)\n3. **Age** (e.g., ancient)\n4. **Shape** (e.g., round)\n5. **Color** (e.g., white)\n6. **Origin** (e.g., French)\n7. **Material** (e.g., cloth)\n8. **Purpose** (e.g., cooking)\n9. **Noun**\n\nNow, let's look at the adjectives in the options:\n\n- **repulsive** → opinion\n- **ancient** → age\n- **white** → color\n- **cloth** → material\n\nSo, the correct order should be:\n\n**Opinion → Age → Color → Material → Noun**\n\nThat gives us: **repulsive ancient white cloth car",
+      "score": 1,
+      "detail": {
+        "gold": "(A)"
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_993",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 1,
+      "detail": {
+        "gold": "C"
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_185",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Marie Curie did not assist Albert Einstein in developing the theory of relativity.",
+      "score": 0,
+      "detail": {
+        "gold": "Marie Curie conducted her pioneering work on radioactivity in the early 20th century, while Albert Einstein developed his theory of relativity independently around the same time period but without direct collaboration."
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_1074",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "A"
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_570",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Let's analyze the statements step by step.\n\nWe have five people: Leta, Millicent, Rashida, Maybelle, and Shonda.\n\nEach person either always tells the truth or always lies.\n\nLet’s denote:\n- T = tells the truth\n- L = lies\n\nWe are given:\n\n1. Leta lies. → So Leta is a liar.\n2. Millicent says: \"Leta tells the truth.\"\n3. Rashida says: \"Millicent lies.\"\n4. Maybelle says: \"Rashida tells the truth.\"\n5. Shonda says: \"Maybelle lies.\"\n\nWe are to determine: Does Shonda tell the truth?\n\nStart with statement 1: \"Leta lies.\" So Leta is a liar.\n\nNow look at statement 2: Millicent says \"Leta tells the truth.\"\n\nBut we know Leta lies, so \"Leta tells the truth\" is false.\n\nSo Millicent",
+      "score": 1,
+      "detail": {
+        "gold": "No"
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_1079",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 1,
+      "detail": {
+        "gold": "D"
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_1038",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 1,
+      "detail": {
+        "gold": "D"
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_916",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 1,
+      "detail": {
+        "gold": "C"
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_796",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 1,
+      "detail": {
+        "gold": "C"
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_1151",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "B"
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_670",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 1,
+      "detail": {
+        "gold": "C"
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_5",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Screw",
+      "score": 0,
+      "detail": {
+        "gold": "A hammer is to nail as a screwdriver is to screw."
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_617",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "B"
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_410",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The answer is no.",
+      "score": 0,
+      "detail": {
+        "gold": "Yes"
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_927",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 1,
+      "detail": {
+        "gold": "C"
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_1114",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 1,
+      "detail": {
+        "gold": "D"
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_968",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 0,
+      "detail": {
+        "gold": "D"
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_135",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Newsstand",
+      "score": 0,
+      "detail": {
+        "gold": "You can buy a magazine, paper, or gum at a newsstand."
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_451",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Let's analyze the sentence step by step:\n\n1. \"Bryce Harper\" is a real person — he is a professional baseball player.\n2. \"Hit\" is a verb commonly used in baseball to describe when a batter makes contact with the ball.\n3. \"Back shoulder fade\" is a term used in baseball to describe a type of pitch that moves away from a right-handed batter (toward the back shoulder) and fades, often making it difficult to hit.\n4. However, the phrase \"hit back shoulder fade\" is grammatically and semantically awkward. In baseball terminology, a batter does not \"hit\" a \"fade\" — rather, a pitcher throws a pitch that \"fades\" or \"moves\" on the back shoulder.\n5. The correct phrasing would be something like \"The pitcher threw a back shoulder fade\" or \"The batter swung at a back shoulder fade.\"\n6. Saying \"Bryce Harper hit back shoulder fade\" incorrectly implies that Harper",
+      "score": 1,
+      "detail": {
+        "gold": "no"
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_735",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B",
+      "score": 0,
+      "detail": {
+        "gold": "C"
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_237",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "No.",
+      "score": 0,
+      "detail": {
+        "gold": "The inference is not correct or well-supported. Just because the last three books read were thrillers does not logically imply that all books are thrillers. This conclusion is an example of a hasty generalization, where a broad claim is made based on a limited sample size. To make such a sweeping statement about all books, one would need comprehensive evidence covering all possible books, which is not provided in this case."
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_267",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A decrease in property taxes might increase home ownership by making housing more affordable and increasing the attractiveness of buying a home.",
+      "score": 0,
+      "detail": {
+        "gold": "Lower property taxes could make homeownership more affordable, potentially increasing demand for homes and stimulating the real estate market."
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_473",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The answer is no.",
+      "score": 1,
+      "detail": {
+        "gold": "no"
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_319",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "15",
+      "score": 0,
+      "detail": {
+        "gold": "Start by letting the number of losses be represented by a variable. The number of wins is described as eight more than the number of losses. Adding the number of losses and wins together gives the total number of games played, which is twenty-two. This means if you take twice the number of losses and add eight, it equals twenty-two. Subtract eight from twenty-two to get fourteen, which represents twice the number of losses. Dividing fourteen by two gives seven, which is the number of losses. To find the number of wins, subtract the seven losses from the total number of games, which results in fifteen. So the answer is 15."
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_368",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The moral is that people often only appreciate or respond to something when it benefits them directly.",
+      "score": 0,
+      "detail": {
+        "gold": "When you are in a man's power, you must do as he bids you. "
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_910",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B",
+      "score": 1,
+      "detail": {
+        "gold": "B"
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_991",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 0,
+      "detail": {
+        "gold": "B"
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_158",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "The Emancipation Proclamation did not abolish slavery globally. It only freed enslaved people in Confederate states during the American Civil War, and its impact was limited to the United States.",
+      "score": 0,
+      "detail": {
+        "gold": "The Emancipation Proclamation only freed slaves in Confederate states during the Civil War; global abolition required various national laws and international efforts."
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_24",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Power",
+      "score": 0,
+      "detail": {
+        "gold": "A candle is to light as a battery is to power."
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_712",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B",
+      "score": 1,
+      "detail": {
+        "gold": "B"
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_1143",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 0,
+      "detail": {
+        "gold": "C"
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_1121",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "D",
+      "score": 1,
+      "detail": {
+        "gold": "D"
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_337",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "26",
+      "score": 0,
+      "detail": {
+        "gold": "Brett is currently fourteen years old. In four years, his sister Angela will be three times as old as Brett is right now. To find out how old Angela is at this moment, we first determine how old she will be in four years. Since three times Brett's current age is forty-two, that means Angela will be forty-two in four years. To find her current age, we subtract four from forty-two, which gives thirty-eight. So the answer is 38."
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_251",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "They would lose their homes and food sources, leading to starvation and population decline.",
+      "score": 0,
+      "detail": {
+        "gold": "Without trees, many forest animals would lose their habitat, food sources, and shelter, leading to a decline in their populations or forcing them to migrate."
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_405",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Let's break down the instructions step by step:\n\n1. Start at a point (let's call it the origin).\n2. Always face forward.\n3. Take 7 steps forward: you are now 7 steps ahead of the starting point.\n4. Take 3 steps backward: you are now 7 - 3 = 4 steps ahead.\n5. Take 4 steps backward: you are now 4 - 4 = 0 steps ahead.\n\nSo, you end up exactly at the starting point.\n\nThe answer is yes.",
+      "score": 1,
+      "detail": {
+        "gold": "Yes"
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_685",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "C",
+      "score": 1,
+      "detail": {
+        "gold": "C"
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_939",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "B",
+      "score": 1,
+      "detail": {
+        "gold": "B"
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_519",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "Let's analyze the adjectives in each sentence and apply the standard English adjective order.\n\nThe typical order of adjectives in English is:\n\n1. Opinion  \n2. Size  \n3. Age  \n4. Shape  \n5. Color  \n6. Origin  \n7. Material  \n8. Purpose / Type  \n\nNow, let's look at the adjectives in the sentence:\n\n- \"enormous\" → size  \n- \"pyramidal\" → shape  \n- \"white\" → color  \n- \"Indonesian\" → origin  \n- \"glass\" → material  \n- \"smoking\" → purpose / type (describes what the cat is doing)\n\nSo, the correct order should follow the standard sequence:\n\nSize → Shape → Color → Origin → Material → Purpose\n\nBut wait — \"smoking\" is a verb-ing form describing the action, so it's a participle, not a typical adjective. However, in this context, it's used as a descriptive modifier for the cat",
+      "score": 1,
+      "detail": {
+        "gold": "(A)"
+      },
+      "group_id": "Speaking/Reasoning"
+    },
+    {
+      "item_id": "Speaking_Reasoning_814",
+      "instr": "Listen to the spoken question and answer with a short answer only.",
+      "reply": "A",
+      "score": 1,
+      "detail": {
+        "gold": "A"
+      },
+      "group_id": "Speaking/Reasoning"
+    }
+  ],
+  "aggregate": {
+    "mean": 0.5,
+    "ci95": [
+      0.35,
+      0.65
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset voiceassistant-speaking-reasoning --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 146.0
+}

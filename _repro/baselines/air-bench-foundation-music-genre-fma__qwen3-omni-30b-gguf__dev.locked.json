@@ -1,0 +1,492 @@
+{
+  "stage": "1-directional",
+  "dataset": "air-bench-foundation-music-genre-fma",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/air-bench-foundation-music-genre-fma.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": null
+    }
+  },
+  "per_item": [
+    {
+      "item_id": "Music_Genre_Recognition:fma:19546",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich genre realm does this music belong to?\nOptions:\nA. International\nB. Pop\nC. Rock\nD. Classical\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Rock",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19242",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the genre atmosphere of this piece?\nOptions:\nA. Country\nB. Electronic\nC. Experimental\nD. Instrumental\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Electronic",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19339",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the genre feel of this track?\nOptions:\nA. Country\nB. Experimental\nC. Rock\nD. Pop\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Rock",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19252",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the genre mood of this music?\nOptions:\nA. Experimental\nB. International\nC. Instrumental\nD. Jazz\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Experimental",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19258",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat kind of genre is this music associated with?\nOptions:\nA. Pop\nB. Experimental\nC. International\nD. Instrumental\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. Instrumental",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19603",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat musical category does this song belong to?\nOptions:\nA. Classical\nB. Hip-Hop\nC. Country\nD. Experimental\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. Experimental",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19454",
+      "instr": "Listen to the audio and answer the multiple-choice question.\npinpoint the music genre of this piece?\nOptions:\nA. Jazz\nB. International\nC. Instrumental\nD. Experimental\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. International",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19827",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the predominant music genre in this track?\nOptions:\nA. International\nB. Experimental\nC. Pop\nD. Country\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Experimental",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19788",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat genre does this tune fall under?\nOptions:\nA. Rock\nB. International\nC. Classical\nD. Instrumental\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Rock",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19765",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich genre would you say this piece of music fits into?\nOptions:\nA. Pop\nB. Jazz\nC. Hip-Hop\nD. Instrumental\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Hip-Hop",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19233",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow would you interpret the genre of this song?\nOptions:\nA. Jazz\nB. Classical\nC. Hip-Hop\nD. Country\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Hip-Hop",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19630",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat genre does this musical piece exemplify?\nOptions:\nA. Instrumental\nB. Rock\nC. Hip-Hop\nD. Folk\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Instrumental",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19326",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the genre mood of this music?\nOptions:\nA. International\nB. Rock\nC. Electronic\nD. Pop\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Electronic",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19438",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow would you summarize the genre of this music?\nOptions:\nA. International\nB. Rock\nC. Hip-Hop\nD. Classical\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Hip-Hop",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19777",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nclassify the genre of this music?\nOptions:\nA. Rock\nB. Jazz\nC. Classical\nD. Hip-Hop\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. Hip-Hop",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19727",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow would you define the genre of this music?\nOptions:\nA. Electronic\nB. International\nC. Hip-Hop\nD. Rock\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Hip-Hop",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19490",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nwhat's the genre of this music?\nOptions:\nA. Hip-Hop\nB. Jazz\nC. Classical\nD. Instrumental\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Hip-Hop",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19391",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat family of music does this piece come from?\nOptions:\nA. Instrumental\nB. Rock\nC. Electronic\nD. Experimental\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. Experimental",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19302",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the musical classification of this piece?\nOptions:\nA. Hip-Hop\nB. Jazz\nC. Experimental\nD. Instrumental\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Hip-Hop",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19749",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the stylistic genre of this track?\nOptions:\nA. Electronic\nB. Pop\nC. Instrumental\nD. Folk\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Electronic",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19254",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the genre essence of this musical piece?\nOptions:\nA. Jazz\nB. Instrumental\nC. Classical\nD. Rock\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Instrumental",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19577",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat genre does this tune fall under?\nOptions:\nA. Country\nB. Instrumental\nC. Rock\nD. Hip-Hop\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Country",
+      "score": 0,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19758",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the type of music we're listening to here?\nOptions:\nA. Jazz\nB. Electronic\nC. Folk\nD. Hip-Hop\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Electronic",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19246",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the predominant music genre in this track?\nOptions:\nA. Classical\nB. Rock\nC. Folk\nD. Experimental\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. Experimental",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19742",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the genre essence of this musical piece?\nOptions:\nA. Folk\nB. Experimental\nC. Instrumental\nD. Electronic\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Experimental",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19115",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the stylistic genre of this track?\nOptions:\nA. Pop\nB. Hip-Hop\nC. International\nD. Jazz\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Hip-Hop",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19774",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat genre does this musical piece exemplify?\nOptions:\nA. Hip-Hop\nB. Classical\nC. Instrumental\nD. Electronic\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. Electronic",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19526",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat style of music is this?\nOptions:\nA. Jazz\nB. Pop\nC. Electronic\nD. International\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Electronic",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19503",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat genre vibe does this music give off?\nOptions:\nA. Electronic\nB. Jazz\nC. Classical\nD. International\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Electronic",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19146",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nHow would you interpret the genre of this song?\nOptions:\nA. Jazz\nB. Hip-Hop\nC. Rock\nD. Pop\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Rock",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:18921",
+      "instr": "Listen to the audio and answer the multiple-choice question.\ntell me the genre of this music piece?\nOptions:\nA. Classical\nB. Electronic\nC. Folk\nD. Rock\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Electronic",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19033",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat genre does this tune fall under?\nOptions:\nA. Jazz\nB. International\nC. Hip-Hop\nD. Rock\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Hip-Hop",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19784",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the musical style represented in this clip?\nOptions:\nA. Pop\nB. International\nC. Electronic\nD. Instrumental\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Electronic",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19829",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the type of music we're listening to here?\nOptions:\nA. Classical\nB. Folk\nC. Electronic\nD. Instrumental\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Electronic",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19537",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the genre signature of this song?\nOptions:\nA. Instrumental\nB. Pop\nC. Hip-Hop\nD. Experimental\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Hip-Hop",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19056",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat's the stylistic genre of this track?\nOptions:\nA. Pop\nB. Hip-Hop\nC. International\nD. Experimental\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "B. Hip-Hop",
+      "score": 1,
+      "detail": {
+        "pred_idx": 1,
+        "gold_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:18952",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhich genre does this piece of music represent?\nOptions:\nA. Country\nB. Electronic\nC. Folk\nD. Pop\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "C. Folk",
+      "score": 1,
+      "detail": {
+        "pred_idx": 2,
+        "gold_idx": 2
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19559",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat kind of genre is this music associated with?\nOptions:\nA. Folk\nB. Jazz\nC. Classical\nD. Pop\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "A. Folk",
+      "score": 1,
+      "detail": {
+        "pred_idx": 0,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19349",
+      "instr": "Listen to the audio and answer the multiple-choice question.\npinpoint the music genre of this piece?\nOptions:\nA. Pop\nB. Classical\nC. International\nD. Folk\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. Folk",
+      "score": 0,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": "Music_Genre_Recognition:fma:19799",
+      "instr": "Listen to the audio and answer the multiple-choice question.\nWhat genre does this tune fall under?\nOptions:\nA. Pop\nB. International\nC. Folk\nD. Hip-Hop\nAnswer with only the option letter and text, e.g. 'A. ...'.",
+      "reply": "D. Hip-Hop",
+      "score": 1,
+      "detail": {
+        "pred_idx": 3,
+        "gold_idx": 3
+      },
+      "group_id": null
+    }
+  ],
+  "aggregate": {
+    "mean": 0.85,
+    "ci95": [
+      0.725,
+      0.95
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset air-bench-foundation-music-genre-fma --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 176.1
+}

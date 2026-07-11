@@ -1,0 +1,657 @@
+{
+  "stage": "1-directional",
+  "dataset": "uro-bench-UnderEmotion-en",
+  "k_type": "K4",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/uro-bench-UnderEmotion-en.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": "0.11.0"
+    }
+  },
+  "per_item": [
+    {
+      "item_id": 117,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "5. Content",
+      "score": 0,
+      "detail": {
+        "pred_label": "Content",
+        "gold_label": "happy",
+        "parsed_idx": 5
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 40,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "30. Shocked",
+      "score": 0,
+      "detail": {
+        "pred_label": "Shocked",
+        "gold_label": "Amazed",
+        "parsed_idx": 30
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 114,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "36. angry",
+      "score": 1,
+      "detail": {
+        "pred_label": "angry",
+        "gold_label": "angry",
+        "parsed_idx": 36
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 18,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "11. Frustrated",
+      "score": 1,
+      "detail": {
+        "pred_label": "Frustrated",
+        "gold_label": "Frustrated",
+        "parsed_idx": 11
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 11,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "11. Frustrated",
+      "score": 1,
+      "detail": {
+        "pred_label": "Frustrated",
+        "gold_label": "Frustrated",
+        "parsed_idx": 11
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 82,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "11. Frustrated",
+      "score": 0,
+      "detail": {
+        "pred_label": "Frustrated",
+        "gold_label": "happy",
+        "parsed_idx": 11
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 120,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "9. Excited",
+      "score": 0,
+      "detail": {
+        "pred_label": "Excited",
+        "gold_label": "happy",
+        "parsed_idx": 9
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 94,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "37. fearful",
+      "score": 1,
+      "detail": {
+        "pred_label": "fearful",
+        "gold_label": "fearful",
+        "parsed_idx": 37
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 9,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "11. Frustrated",
+      "score": 0,
+      "detail": {
+        "pred_label": "Frustrated",
+        "gold_label": "Annoyed",
+        "parsed_idx": 11
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 33,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "30. Shocked",
+      "score": 0,
+      "detail": {
+        "pred_label": "Shocked",
+        "gold_label": "Surprised",
+        "parsed_idx": 30
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 129,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "39. sad",
+      "score": 1,
+      "detail": {
+        "pred_label": "sad",
+        "gold_label": "sad",
+        "parsed_idx": 39
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 102,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "36. angry",
+      "score": 1,
+      "detail": {
+        "pred_label": "angry",
+        "gold_label": "angry",
+        "parsed_idx": 36
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 108,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "36. angry",
+      "score": 1,
+      "detail": {
+        "pred_label": "angry",
+        "gold_label": "angry",
+        "parsed_idx": 36
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 76,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "39. sad",
+      "score": 1,
+      "detail": {
+        "pred_label": "sad",
+        "gold_label": "sad",
+        "parsed_idx": 39
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 41,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "25. Proud",
+      "score": 1,
+      "detail": {
+        "pred_label": "Proud",
+        "gold_label": "Proud",
+        "parsed_idx": 25
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 19,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "4. Confused",
+      "score": 0,
+      "detail": {
+        "pred_label": "Confused",
+        "gold_label": "Overwhelmed",
+        "parsed_idx": 4
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 59,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "18. Inadequate",
+      "score": 1,
+      "detail": {
+        "pred_label": "Inadequate",
+        "gold_label": "Inadequate",
+        "parsed_idx": 18
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 89,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "34. Uncertain",
+      "score": 0,
+      "detail": {
+        "pred_label": "Uncertain",
+        "gold_label": "surprised",
+        "parsed_idx": 34
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 75,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "36. angry",
+      "score": 1,
+      "detail": {
+        "pred_label": "angry",
+        "gold_label": "angry",
+        "parsed_idx": 36
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 87,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "1. Annoyed",
+      "score": 0,
+      "detail": {
+        "pred_label": "Annoyed",
+        "gold_label": "surprised",
+        "parsed_idx": 1
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 13,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "32. Surprised",
+      "score": 1,
+      "detail": {
+        "pred_label": "Surprised",
+        "gold_label": "Surprised",
+        "parsed_idx": 32
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 53,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "28. Resigned",
+      "score": 0,
+      "detail": {
+        "pred_label": "Resigned",
+        "gold_label": "Resilient",
+        "parsed_idx": 28
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 101,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "32. Surprised",
+      "score": 1,
+      "detail": {
+        "pred_label": "Surprised",
+        "gold_label": "surprised",
+        "parsed_idx": 32
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 8,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "11. Frustrated",
+      "score": 0,
+      "detail": {
+        "pred_label": "Frustrated",
+        "gold_label": "Tired",
+        "parsed_idx": 11
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 3,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "6. Disappointed",
+      "score": 0,
+      "detail": {
+        "pred_label": "Disappointed",
+        "gold_label": "Surprised",
+        "parsed_idx": 6
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 42,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "9. Excited",
+      "score": 0,
+      "detail": {
+        "pred_label": "Excited",
+        "gold_label": "Optimistic",
+        "parsed_idx": 9
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 36,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "19. Indifferent",
+      "score": 1,
+      "detail": {
+        "pred_label": "Indifferent",
+        "gold_label": "Indifferent",
+        "parsed_idx": 19
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 72,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "11. Frustrated",
+      "score": 0,
+      "detail": {
+        "pred_label": "Frustrated",
+        "gold_label": "happy",
+        "parsed_idx": 11
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 39,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "13. Happy",
+      "score": 0,
+      "detail": {
+        "pred_label": "Happy",
+        "gold_label": "Content",
+        "parsed_idx": 13
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 30,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "11. Frustrated",
+      "score": 0,
+      "detail": {
+        "pred_label": "Frustrated",
+        "gold_label": "Irritated",
+        "parsed_idx": 11
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 88,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "37. fearful",
+      "score": 1,
+      "detail": {
+        "pred_label": "fearful",
+        "gold_label": "fearful",
+        "parsed_idx": 37
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 74,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "37. fearful",
+      "score": 1,
+      "detail": {
+        "pred_label": "fearful",
+        "gold_label": "fearful",
+        "parsed_idx": 37
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 119,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "36. angry",
+      "score": 0,
+      "detail": {
+        "pred_label": "angry",
+        "gold_label": "happy",
+        "parsed_idx": 36
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 12,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "11. Frustrated",
+      "score": 0,
+      "detail": {
+        "pred_label": "Frustrated",
+        "gold_label": "Annoyed",
+        "parsed_idx": 11
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 106,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "9. Excited",
+      "score": 0,
+      "detail": {
+        "pred_label": "Excited",
+        "gold_label": "happy",
+        "parsed_idx": 9
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 66,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "25. Proud",
+      "score": 0,
+      "detail": {
+        "pred_label": "Proud",
+        "gold_label": "Hopeful",
+        "parsed_idx": 25
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 125,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "20. Irritated",
+      "score": 0,
+      "detail": {
+        "pred_label": "Irritated",
+        "gold_label": "happy",
+        "parsed_idx": 20
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 5,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "0. Amazed",
+      "score": 0,
+      "detail": {
+        "pred_label": "Amazed",
+        "gold_label": "Excited",
+        "parsed_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 63,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "0. Amazed",
+      "score": 0,
+      "detail": {
+        "pred_label": "Amazed",
+        "gold_label": "Proud",
+        "parsed_idx": 0
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 109,
+      "instr": "Listen to the audio and classify the speaker's emotion. Choose exactly ONE option below.\nOptions:\n0. Amazed\n1. Annoyed\n2. Anxious\n3. Apprehensive\n4. Confused\n5. Content\n6. Disappointed\n7. Distrustful\n8. Eager\n9. Excited\n10. Exhausted\n11. Frustrated\n12. Grateful\n13. Happy\n14. Helpless\n15. Hopeful\n16. Hopeless\n17. Impatient\n18. Inadequate\n19. Indifferent\n20. Irritated\n21. Joyful\n22. Nostalgic\n23. Optimistic\n24. Overwhelmed\n25. Proud\n26. Regretful\n27. Relieved\n28. Resigned\n29. Resilient\n30. Shocked\n31. Stressed\n32. Surprised\n33. Tired\n34. Uncertain\n35. Unmotivated\n36. angry\n37. fearful\n38. happy\n39. sad\n40. surprised\nAnswer with only the option number and label, e.g. '4. ...'.",
+      "reply": "32. Surprised",
+      "score": 1,
+      "detail": {
+        "pred_label": "Surprised",
+        "gold_label": "surprised",
+        "parsed_idx": 32
+      },
+      "group_id": null
+    }
+  ],
+  "aggregate": {
+    "mean": 0.425,
+    "ci95": [
+      0.275,
+      0.575
+    ],
+    "n_scored": 40,
+    "n_total": 40,
+    "macro_f1": {
+      "macro_f1": 0.3061,
+      "per_label": {
+        "Amazed": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        "Annoyed": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        },
+        "Content": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        "Excited": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        "Frustrated": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4,
+          "support": 2
+        },
+        "Hopeful": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        "Inadequate": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        "Indifferent": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        "Irritated": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        "Optimistic": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        "Overwhelmed": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        "Proud": {
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1": 0.5,
+          "support": 2
+        },
+        "Resilient": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        "Surprised": {
+          "precision": 0.3333,
+          "recall": 0.3333,
+          "f1": 0.3333,
+          "support": 3
+        },
+        "Tired": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        "angry": {
+          "precision": 0.8,
+          "recall": 1.0,
+          "f1": 0.8889,
+          "support": 4
+        },
+        "fearful": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 3
+        },
+        "happy": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 7
+        },
+        "sad": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        },
+        "surprised": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 4
+        }
+      }
+    }
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset uro-bench-UnderEmotion-en --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 87.0
+}

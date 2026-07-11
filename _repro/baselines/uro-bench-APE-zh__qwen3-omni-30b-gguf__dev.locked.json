@@ -1,0 +1,452 @@
+{
+  "stage": "1-directional",
+  "dataset": "uro-bench-APE-zh",
+  "k_type": "K8",
+  "backbone": "qwen3-omni-30b-gguf",
+  "split": "dev",
+  "slice_mode": "locked-group",
+  "n_requested": 40,
+  "seed": 20260705,
+  "sample_manifest": "_repro/LOCKED_HOLDOUT/uro-bench-APE-zh.json",
+  "model": "qwen3-omni-30b-a3b-instruct Q8_0 GGUF (llama.cpp, -ngl 28)",
+  "sampling_params": {
+    "greedy_seed_base": 20260705,
+    "temperature": 0.0,
+    "max_tokens": 200,
+    "top_p": 0.95,
+    "top_k": 40,
+    "repeat_penalty": 1.0,
+    "n_parallel": 4,
+    "server_slots": 4,
+    "cache_ram_mib": 8192
+  },
+  "boundary": "audio-only input + fixed task-definition text (label set / MCQ options / tool registry / JSON schema); no golden transcript/answer/intent ever placed in the prompt -- see templates.py module docstring's Information-Boundary-Guard note.",
+  "provenance": {
+    "git_sha": "fc9e17c6df8b",
+    "git_dirty": true,
+    "engine_build_id": null,
+    "dataset_revision": null,
+    "manifest_hash": null,
+    "env_versions": {
+      "python": "3.12.3",
+      "numpy": "2.2.6",
+      "torch": null,
+      "transformers": null,
+      "sklearn": null,
+      "librosa": "0.11.0"
+    }
+  },
+  "per_item": [
+    {
+      "item_id": 63,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "48",
+      "score": 0,
+      "detail": {
+        "gold": "48根"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 100,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "1.716千米",
+      "score": 1,
+      "detail": {
+        "gold": "1.716千米"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 164,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "0.3米",
+      "score": 1,
+      "detail": {
+        "gold": "0.3米"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 68,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "3150",
+      "score": 0,
+      "detail": {
+        "gold": "收入是3150元"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 52,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "八分之五",
+      "score": 0,
+      "detail": {
+        "gold": "一共吃了这个月饼的八分之五，也就是5/8"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 29,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "17.2米",
+      "score": 1,
+      "detail": {
+        "gold": "17.2米"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 125,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "16厘米",
+      "score": 0,
+      "detail": {
+        "gold": "27厘米"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 162,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "25%",
+      "score": 0,
+      "detail": {
+        "gold": "1/4，也就是百分之25"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 90,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "1.25元",
+      "score": 1,
+      "detail": {
+        "gold": "1.25元"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 117,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "72米",
+      "score": 0,
+      "detail": {
+        "gold": "32米"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 31,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "0.21米",
+      "score": 0,
+      "detail": {
+        "gold": "0.45米"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 141,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "40",
+      "score": 0,
+      "detail": {
+        "gold": "40个"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 127,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "94米",
+      "score": 0,
+      "detail": {
+        "gold": "106米"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 115,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "14",
+      "score": 0,
+      "detail": {
+        "gold": "一堆拿走9个橘子给二堆，两堆橘子数量相同"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 147,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "50立方米",
+      "score": 0,
+      "detail": {
+        "gold": "一共要挖走50方土"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 102,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "39122元",
+      "score": 0,
+      "detail": {
+        "gold": "38122元"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 16,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "40米",
+      "score": 0,
+      "detail": {
+        "gold": "400米"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 171,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "16",
+      "score": 0,
+      "detail": {
+        "gold": "16张"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 159,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "10吨",
+      "score": 0,
+      "detail": {
+        "gold": "61吨"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 165,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "2075元",
+      "score": 0,
+      "detail": {
+        "gold": "2880元"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 172,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "4",
+      "score": 0,
+      "detail": {
+        "gold": "4个人"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 130,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "0",
+      "score": 0,
+      "detail": {
+        "gold": "是26"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 53,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "8条",
+      "score": 0,
+      "detail": {
+        "gold": "现在金鱼的条数减少了8条"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 112,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "3700平方米",
+      "score": 0,
+      "detail": {
+        "gold": "1820平方米"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 153,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "800",
+      "score": 0,
+      "detail": {
+        "gold": "800根"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 62,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "男生多，多16人。",
+      "score": 0,
+      "detail": {
+        "gold": "现在是男生多，多30人"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 76,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "70千米",
+      "score": 0,
+      "detail": {
+        "gold": "卡车每小时运行90千米"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 21,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "111份",
+      "score": 0,
+      "detail": {
+        "gold": "一共卖了74张报纸"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 190,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "110米",
+      "score": 1,
+      "detail": {
+        "gold": "110米"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 9,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "131棵",
+      "score": 0,
+      "detail": {
+        "gold": "还剩431颗"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 2,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "150人",
+      "score": 0,
+      "detail": {
+        "gold": "五年级去了150人"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 81,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "17",
+      "score": 0,
+      "detail": {
+        "gold": "是53"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 82,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "6000",
+      "score": 0,
+      "detail": {
+        "gold": "6000元"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 72,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "900",
+      "score": 0,
+      "detail": {
+        "gold": "1000人"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 17,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "16",
+      "score": 0,
+      "detail": {
+        "gold": "16平方分米"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 148,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "280",
+      "score": 0,
+      "detail": {
+        "gold": "316页"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 183,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "10",
+      "score": 0,
+      "detail": {
+        "gold": "10次"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 60,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "30",
+      "score": 0,
+      "detail": {
+        "gold": "30种不同车票"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 166,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "40",
+      "score": 0,
+      "detail": {
+        "gold": "有20种选法"
+      },
+      "group_id": null
+    },
+    {
+      "item_id": 54,
+      "instr": "请听音频中的问题，并给出简短回答，只输出答案。",
+      "reply": "6276万元",
+      "score": 1,
+      "detail": {
+        "gold": "6276万元"
+      },
+      "group_id": null
+    }
+  ],
+  "aggregate": {
+    "mean": 0.15,
+    "ci95": [
+      0.05,
+      0.275
+    ],
+    "n_scored": 40,
+    "n_total": 40
+  },
+  "reproduce": "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py --dataset uro-bench-APE-zh --backbone qwen3-omni-30b-gguf --split dev --parallel 4 --slice locked-group",
+  "elapsed_s": 86.4
+}

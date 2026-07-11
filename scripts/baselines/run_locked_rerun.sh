@@ -106,7 +106,10 @@ gpu_acquire_polite() {
 }
 
 BB="qwen3-omni-30b-gguf"   # the locked-rerun task's ONLY backbone (see locked_rerun_cells.py module docstring)
-NAME="locked-rerun"
+# 2026-07-11 (dev-half rerun task): overridable via LOCKED_RERUN_NAME so a dev-only invocation can
+# acquire the GPU lock under a distinct, self-describing owner string (e.g. "locked-dev-rerun") for
+# sibling-session clarity -- default unchanged, so every existing/future full-scope caller is unaffected.
+NAME="${LOCKED_RERUN_NAME:-locked-rerun}"
 
 # extract_field LINE KEY -- pulls "key=value" out of a space-separated LOCKED_RERUN_SUMMARY line
 # (see locked_rerun_cells.py's run_all). Plain parameter-expansion parsing, no PCRE dependency.
