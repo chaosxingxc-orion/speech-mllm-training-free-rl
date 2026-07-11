@@ -1,0 +1,252 @@
+{
+  "experiment": "ASR best-of-N v2, snr5 -- noise-realization replication (noise1 vs noise2)",
+  "noise1": {
+    "label": "noise1 (NOISE_SEED=20260712, verified)",
+    "artifact": "/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data/_repro/asr_bon_v2_snr5.json",
+    "noise_seed": 20260712,
+    "n_utts": 96,
+    "n_skipped": 0,
+    "greedy": {
+      "corpus_wer": 0.09727,
+      "macro_wer": 0.11131
+    },
+    "oracle_at_8": {
+      "label": "ORACLE UPPER BOUND (information-boundary-violating by design: selection uses the reference; NOT deployable)",
+      "corpus_wer": 0.06357,
+      "macro_wer": 0.07604,
+      "corpus_delta_vs_greedy_mean": 0.03362,
+      "corpus_delta_vs_greedy_ci95": [
+        0.02347,
+        0.04531
+      ],
+      "corpus_sig": true,
+      "macro_delta_vs_greedy_mean": 0.03528,
+      "macro_delta_vs_greedy_ci95": [
+        0.0234,
+        0.05002
+      ],
+      "macro_sig": true
+    },
+    "logprob_at_8": {
+      "label": "DEPLOYABLE",
+      "corpus_wer": 0.08907,
+      "macro_wer": 0.10491,
+      "corpus_delta_vs_greedy_mean": 0.0081,
+      "corpus_delta_vs_greedy_ci95": [
+        0.00053,
+        0.01613
+      ],
+      "corpus_sig": true,
+      "macro_delta_vs_greedy_mean": 0.00631,
+      "macro_delta_vs_greedy_ci95": [
+        -0.00047,
+        0.01372
+      ],
+      "macro_sig": false
+    },
+    "active_selectors": [
+      "oracle",
+      "mbr",
+      "random",
+      "length",
+      "logprob"
+    ],
+    "holm_over_4_deployable_selectors_N8": {
+      "alpha": 0.05,
+      "nboot": 2000,
+      "boot_seed": 42,
+      "rows": [
+        {
+          "selector": "mbr",
+          "corpus_delta_vs_greedy_mean": 0.00484,
+          "corpus_delta_vs_greedy_ci95": [
+            -0.00225,
+            0.01214
+          ],
+          "corpus_sig_(artifact_ci)": false,
+          "raw_bootstrap_p": 0.199,
+          "holm_adjusted_p": 0.398,
+          "holm_reject_at_alpha_0.05": false
+        },
+        {
+          "selector": "random",
+          "corpus_delta_vs_greedy_mean": -0.00597,
+          "corpus_delta_vs_greedy_ci95": [
+            -0.01594,
+            0.00395
+          ],
+          "corpus_sig_(artifact_ci)": false,
+          "raw_bootstrap_p": 0.241,
+          "holm_adjusted_p": 0.398,
+          "holm_reject_at_alpha_0.05": false
+        },
+        {
+          "selector": "length",
+          "corpus_delta_vs_greedy_mean": -0.01156,
+          "corpus_delta_vs_greedy_ci95": [
+            -0.0264,
+            0.00224
+          ],
+          "corpus_sig_(artifact_ci)": false,
+          "raw_bootstrap_p": 0.104,
+          "holm_adjusted_p": 0.312,
+          "holm_reject_at_alpha_0.05": false
+        },
+        {
+          "selector": "logprob",
+          "corpus_delta_vs_greedy_mean": 0.0081,
+          "corpus_delta_vs_greedy_ci95": [
+            0.00053,
+            0.01613
+          ],
+          "corpus_sig_(artifact_ci)": true,
+          "raw_bootstrap_p": 0.037,
+          "holm_adjusted_p": 0.148,
+          "holm_reject_at_alpha_0.05": false
+        }
+      ],
+      "survivors": []
+    }
+  },
+  "noise2": {
+    "label": "noise2 (NOISE_SEED=20260713, this hardening chain)",
+    "artifact": "/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data/_repro/asr_bon_v2_snr5_noise2.json",
+    "noise_seed": 20260713,
+    "n_utts": 96,
+    "n_skipped": 0,
+    "greedy": {
+      "corpus_wer": 0.10164,
+      "macro_wer": 0.13297
+    },
+    "oracle_at_8": {
+      "label": "ORACLE UPPER BOUND (information-boundary-violating by design: selection uses the reference; NOT deployable)",
+      "corpus_wer": 0.07013,
+      "macro_wer": 0.08996,
+      "corpus_delta_vs_greedy_mean": 0.03159,
+      "corpus_delta_vs_greedy_ci95": [
+        0.02223,
+        0.04176
+      ],
+      "corpus_sig": true,
+      "macro_delta_vs_greedy_mean": 0.04293,
+      "macro_delta_vs_greedy_ci95": [
+        0.02653,
+        0.06229
+      ],
+      "macro_sig": true
+    },
+    "logprob_at_8": {
+      "label": "DEPLOYABLE",
+      "corpus_wer": 0.09162,
+      "macro_wer": 0.11804,
+      "corpus_delta_vs_greedy_mean": 0.01003,
+      "corpus_delta_vs_greedy_ci95": [
+        0.00339,
+        0.01768
+      ],
+      "corpus_sig": true,
+      "macro_delta_vs_greedy_mean": 0.01468,
+      "macro_delta_vs_greedy_ci95": [
+        0.00404,
+        0.02756
+      ],
+      "macro_sig": true
+    },
+    "active_selectors": [
+      "oracle",
+      "mbr",
+      "random",
+      "length",
+      "logprob"
+    ],
+    "holm_over_4_deployable_selectors_N8": {
+      "alpha": 0.05,
+      "nboot": 2000,
+      "boot_seed": 42,
+      "rows": [
+        {
+          "selector": "mbr",
+          "corpus_delta_vs_greedy_mean": 0.00556,
+          "corpus_delta_vs_greedy_ci95": [
+            -0.00174,
+            0.01338
+          ],
+          "corpus_sig_(artifact_ci)": false,
+          "raw_bootstrap_p": 0.137,
+          "holm_adjusted_p": 0.274,
+          "holm_reject_at_alpha_0.05": false
+        },
+        {
+          "selector": "random",
+          "corpus_delta_vs_greedy_mean": -0.00354,
+          "corpus_delta_vs_greedy_ci95": [
+            -0.01225,
+            0.00523
+          ],
+          "corpus_sig_(artifact_ci)": false,
+          "raw_bootstrap_p": 0.44,
+          "holm_adjusted_p": 0.44,
+          "holm_reject_at_alpha_0.05": false
+        },
+        {
+          "selector": "length",
+          "corpus_delta_vs_greedy_mean": -0.01588,
+          "corpus_delta_vs_greedy_ci95": [
+            -0.0268,
+            -0.00531
+          ],
+          "corpus_sig_(artifact_ci)": false,
+          "raw_bootstrap_p": 0.003,
+          "holm_adjusted_p": 0.012,
+          "holm_reject_at_alpha_0.05": true
+        },
+        {
+          "selector": "logprob",
+          "corpus_delta_vs_greedy_mean": 0.01003,
+          "corpus_delta_vs_greedy_ci95": [
+            0.00339,
+            0.01768
+          ],
+          "corpus_sig_(artifact_ci)": true,
+          "raw_bootstrap_p": 0.005,
+          "holm_adjusted_p": 0.015,
+          "holm_reject_at_alpha_0.05": true
+        }
+      ],
+      "survivors": [
+        "length",
+        "logprob"
+      ]
+    }
+  },
+  "greedy_corpus_wer_noise1_vs_noise2": [
+    0.09727,
+    0.10164
+  ],
+  "oracle_at_8_delta_noise1_vs_noise2": {
+    "noise1": 0.03362,
+    "noise2": 0.03159,
+    "noise1_ci95": [
+      0.02347,
+      0.04531
+    ],
+    "noise2_ci95": [
+      0.02223,
+      0.04176
+    ]
+  },
+  "logprob_at_8_delta_noise1_vs_noise2": {
+    "noise1": 0.0081,
+    "noise2": 0.01003,
+    "noise1_ci95": [
+      0.00053,
+      0.01613
+    ],
+    "noise2_ci95": [
+      0.00339,
+      0.01768
+    ]
+  },
+  "logprob_deployable_signal_replicates_under_second_noise_draw": true,
+  "generated_at_utc": "2026-07-11T08:25:56Z"
+}
