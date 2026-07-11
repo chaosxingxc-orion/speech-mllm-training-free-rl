@@ -1,0 +1,124 @@
+{
+  "problem": "best-of-N coverage: empirical bridge for the Lean theorem TfrlProofs.Coverage (oracle miss = (1-p)^N, coverage = 1-(1-p)^N)",
+  "lean_module": "proofs/tfrl/TfrlProofs/Coverage.lean",
+  "operator": "decode.best_of_n (argmax reward) / select_oracle_idx (argmin WER) over the repro_asr_best_of_n_v2.py pool-generation loop (lines 524-531)",
+  "parity_vector": {
+    "p": "1/4",
+    "N": 3,
+    "miss_probability": "27/64",
+    "coverage": "37/64",
+    "miss_equals_27_64": true,
+    "coverage_equals_37_64": true,
+    "lean_mirror": "TfrlProofs.Coverage: `example : missProb (1/4) 3 = 27/64` and `coverageProb (1/4) 3 = 37/64` (norm_num)"
+  },
+  "Ns": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "definitions": {
+    "p_hat": "per utterance: fraction of the 24 stored pool candidates whose WER is STRICTLY less than the greedy (temp=0) decode's WER",
+    "predicted_coverage_N": "mean over utterances of 1 - (1 - p_hat_u)^N",
+    "observed_coverage_N": "mean over utterances of [ mean over the 3 pool seeds of 1{ min WER of the pool's first N candidates < greedy WER } ]"
+  },
+  "conditions": {
+    "snr5": {
+      "artifact": "/mnt/d/chao_workspace/exploring-l4-intelligence/projects/speech-mllm-training-free-rl/_repro/asr_bon_v2_snr5.json",
+      "artifact_sha256": "19a7e1464309bab8468c8a75f4cd587ac6416b178d3502ac7494b0b3649e0ea5",
+      "n_utts_used": 96,
+      "candidates_per_utt": [
+        24
+      ],
+      "pool_seeds": [
+        "1",
+        "2",
+        "3"
+      ],
+      "greedy_wer": {
+        "corpus": 0.09727,
+        "macro": 0.11131
+      },
+      "p_hat_mean": 0.13455,
+      "p_hat_min": 0.0,
+      "p_hat_max": 0.875,
+      "coverage_by_N": {
+        "1": {
+          "predicted_coverage": 0.13455,
+          "observed_coverage": 0.13889,
+          "gap_pred_minus_obs": -0.00434
+        },
+        "2": {
+          "predicted_coverage": 0.20725,
+          "observed_coverage": 0.22222,
+          "gap_pred_minus_obs": -0.01497
+        },
+        "4": {
+          "predicted_coverage": 0.2849,
+          "observed_coverage": 0.29861,
+          "gap_pred_minus_obs": -0.01371
+        },
+        "8": {
+          "predicted_coverage": 0.34943,
+          "observed_coverage": 0.36111,
+          "gap_pred_minus_obs": -0.01169
+        }
+      },
+      "max_abs_gap": 0.01497,
+      "mean_signed_gap_pred_minus_obs": -0.01118,
+      "iid_adequacy_note": "The prediction uses a PER-UTTERANCE p_hat, so between-utterance difficulty heterogeneity is already absorbed; gap_pred_minus_obs therefore measures only the WITHIN-utterance / within-pool departure from conditional independence among the temp=0.8 draws (which share the prompt+audio). Empirically that departure is small: max |gap| = 0.01497, mean signed gap = -0.01118 across N in [1, 2, 4, 8]. The residual is mostly slightly NEGATIVE (observed coverage marginally EXCEEDS the i.i.d. prediction), i.e. the within-pool draws behave close to conditionally independent — with enough sampling diversity that best-of-N does a touch better than i.i.d., NOT the strong positive clustering that would make predicted over-state observed. Conclusion: the i.i.d. Bernoulli coverage model 1-(1-p)^N (Lean `missProb`/`coverageProb`) is an adequate operator-level description of the stored pools to within ~1-2.5 coverage points at every N in both conditions."
+    },
+    "clean": {
+      "artifact": "/mnt/d/chao_workspace/exploring-l4-intelligence/projects/speech-mllm-training-free-rl/_repro/asr_bon_v2_clean.json",
+      "artifact_sha256": "27591fb96f3b0bc262d38e28b5e57a5a09fbe8119647ecba28c553402d5e1a0d",
+      "n_utts_used": 96,
+      "candidates_per_utt": [
+        24
+      ],
+      "pool_seeds": [
+        "1",
+        "2",
+        "3"
+      ],
+      "greedy_wer": {
+        "corpus": 0.05792,
+        "macro": 0.0671
+      },
+      "p_hat_mean": 0.07509,
+      "p_hat_min": 0.0,
+      "p_hat_max": 0.625,
+      "coverage_by_N": {
+        "1": {
+          "predicted_coverage": 0.07509,
+          "observed_coverage": 0.07639,
+          "gap_pred_minus_obs": -0.0013
+        },
+        "2": {
+          "predicted_coverage": 0.12126,
+          "observed_coverage": 0.11806,
+          "gap_pred_minus_obs": 0.0032
+        },
+        "4": {
+          "predicted_coverage": 0.17306,
+          "observed_coverage": 0.19792,
+          "gap_pred_minus_obs": -0.02486
+        },
+        "8": {
+          "predicted_coverage": 0.21837,
+          "observed_coverage": 0.22569,
+          "gap_pred_minus_obs": -0.00733
+        }
+      },
+      "max_abs_gap": 0.02486,
+      "mean_signed_gap_pred_minus_obs": -0.00757,
+      "iid_adequacy_note": "The prediction uses a PER-UTTERANCE p_hat, so between-utterance difficulty heterogeneity is already absorbed; gap_pred_minus_obs therefore measures only the WITHIN-utterance / within-pool departure from conditional independence among the temp=0.8 draws (which share the prompt+audio). Empirically that departure is small: max |gap| = 0.02486, mean signed gap = -0.00757 across N in [1, 2, 4, 8]. The residual is mostly slightly NEGATIVE (observed coverage marginally EXCEEDS the i.i.d. prediction), i.e. the within-pool draws behave close to conditionally independent — with enough sampling diversity that best-of-N does a touch better than i.i.d., NOT the strong positive clustering that would make predicted over-state observed. Conclusion: the i.i.d. Bernoulli coverage model 1-(1-p)^N (Lean `missProb`/`coverageProb`) is an adequate operator-level description of the stored pools to within ~1-2.5 coverage points at every N in both conditions."
+    }
+  },
+  "provenance": {
+    "git": {
+      "sha": "28d8f0dd6fb8a60f37f804cd62a81d8ea01d1377",
+      "dirty": true
+    },
+    "python": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]"
+  }
+}
