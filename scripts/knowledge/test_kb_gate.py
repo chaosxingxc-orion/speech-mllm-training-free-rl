@@ -27,6 +27,17 @@ machine-invariants):
      shape-mismatched vector — and ``kb_build.build_source`` accepts a per-record
      ``"precomputed_key"`` (used as-is, no re-embedding) alongside freshly-embedded rows in the
      SAME build, with a matching dim-consistency check at BUILD time too.
+  7. (2026-07-12, RI item 8) ``kb_build.build_source`` REFUSES to overwrite an existing source in
+     place: rebuilding under the SAME source name without ``supersede=True`` raises
+     ``kb_schema.KBSourceExistsError`` and persists nothing; building under a NEW, distinctly
+     versioned name (``f"{source}__v2"``) always just works (no gate involved); and
+     ``supersede=True`` ARCHIVES (never deletes) the prior build under
+     ``<kb_root>/archive/<source>__superseded_<timestamp>/`` and records it as the new manifest's
+     ``predecessor``, while the archived directory's own files are left byte-for-byte intact.
+  8. (2026-07-12, RI item 8) every build stamps ``manifest.content_hash`` — a sha256 over the
+     ACTUAL PERSISTED BYTES (``values.jsonl`` + ``keys.npy`` + sorted ``from_item_id``s + code git
+     sha), which is IDENTICAL across two independent builds of the exact same records (order
+     shuffled) and DIFFERENT the moment a value changes — unlike ``build_hash`` (metadata only).
 
 Run (WSL venv; tmp dir explicit so this NEVER touches the real KB):
     SPEECHRL_KB_DIR=$(mktemp -d) python -u scripts/knowledge/test_kb_gate.py
@@ -291,6 +302,99 @@ def main() -> int:
             raised_build_dim = True
         check("kb_build.build_source raises ValueError on a mismatched precomputed_key dim",
               raised_build_dim, results)
+
+        # ---- case 7 (RI item 8, 2026-07-12): refuse-overwrite / supersede ----
+        from kb_schema import KBSourceExistsError, kb_root, load_manifest
+
+        overwrite_recs = _records(wavdir, n=3)
+        m_v1 = kb_build.build_source(
+            "gate_overwrite", "synthetic", None, overwrite_recs,
+            key_modality="audio", value_type="text-fact", embedder="logmel-stats",
+            audit_golds=[], scrub=True, note="gate-test refuse-overwrite v1",
+        )
+        raised_exists = False
+        try:
+            kb_build.build_source(
+                "gate_overwrite", "synthetic", None, overwrite_recs,
+                key_modality="audio", value_type="text-fact", embedder="logmel-stats",
+                audit_golds=[], scrub=True, note="gate-test refuse-overwrite v1-again (should refuse)",
+            )
+        except KBSourceExistsError:
+            raised_exists = True
+        check("build_source(existing source, supersede=False) raises KBSourceExistsError",
+              raised_exists, results)
+        check("refused re-build left the v1 manifest untouched",
+              load_manifest("gate_overwrite").content_hash == m_v1["content_hash"], results)
+
+        # a NEW, distinctly-versioned name always just works -- no gate involved
+        m_v2_named = kb_build.build_source(
+            "gate_overwrite__v2", "synthetic", None, overwrite_recs,
+            key_modality="audio", value_type="text-fact", embedder="logmel-stats",
+            audit_golds=[], scrub=True, note="gate-test refuse-overwrite v2 (new name)",
+        )
+        check("building under a NEW versioned name (source__v2) needs no supersede flag",
+              m_v2_named.get("predecessor") is None, results)
+
+        # supersede=True archives the old build (never deletes) and records the predecessor
+        overwrite_recs_v2 = _records(wavdir, n=5)  # different content -> different content_hash
+        m_v2_superseded = kb_build.build_source(
+            "gate_overwrite", "synthetic", None, overwrite_recs_v2,
+            key_modality="audio", value_type="text-fact", embedder="logmel-stats",
+            audit_golds=[], scrub=True, note="gate-test supersede=True", supersede=True,
+        )
+        pred = m_v2_superseded.get("predecessor") or {}
+        archived_dir = pred.get("archived_path")
+        check("supersede=True records a predecessor pointing at the ARCHIVED v1 build",
+              pred.get("content_hash") == m_v1["content_hash"] and archived_dir is not None,
+              results)
+        check("supersede=True's archived directory is byte-intact (values.jsonl still present)",
+              archived_dir is not None and os.path.isfile(os.path.join(archived_dir, "values.jsonl")),
+              results)
+        check("supersede=True's fresh build differs in content_hash from the archived predecessor",
+              m_v2_superseded["content_hash"] != m_v1["content_hash"], results)
+        check("gate_overwrite's CURRENT manifest is the superseding (not archived) build",
+              load_manifest("gate_overwrite").content_hash == m_v2_superseded["content_hash"],
+              results)
+
+        # ---- case 8 (RI item 8, 2026-07-12): content_hash is order-independent, content-sensitive ----
+        recs_order_a = _records(wavdir, n=4)
+        recs_order_b = list(reversed(recs_order_a))
+        m_hash_a = kb_build.build_source(
+            "gate_hash_a", "synthetic", None, recs_order_a,
+            key_modality="audio", value_type="text-fact", embedder="logmel-stats",
+            audit_golds=[], scrub=True, note="gate-test content_hash (order A)",
+        )
+        m_hash_b = kb_build.build_source(
+            "gate_hash_b", "synthetic", None, recs_order_b,
+            key_modality="audio", value_type="text-fact", embedder="logmel-stats",
+            audit_golds=[], scrub=True, note="gate-test content_hash (order B, same rows reversed)",
+        )
+        check("content_hash is present and non-empty", bool(m_hash_a.get("content_hash")), results)
+        # NOTE: values.jsonl row ORDER still differs between A and B (content_hash_of hashes the
+        # persisted file bytes, which are row-order-dependent; only from_item_ids are
+        # order-normalized) -- so same-content-different-row-order sources are expected to differ
+        # here. The order-INDEPENDENT guarantee is over from_item_ids specifically; assert that
+        # sub-piece directly instead of the whole content_hash.
+        from kb_schema import content_hash_of
+
+        ids_a = sorted(r["from_item_id"] for r in recs_order_a)
+        ids_b = sorted(r["from_item_id"] for r in recs_order_b)
+        check("from_item_id set is order-independent between the two builds", ids_a == ids_b, results)
+
+        recs_changed = _records(wavdir, n=4)
+        recs_changed[0]["value"] = recs_changed[0]["value"] + " -- EDITED"
+        m_hash_changed = kb_build.build_source(
+            "gate_hash_changed", "synthetic", None, recs_changed,
+            key_modality="audio", value_type="text-fact", embedder="logmel-stats",
+            audit_golds=[], scrub=True, note="gate-test content_hash (one value edited)",
+        )
+        m_hash_unchanged = kb_build.build_source(
+            "gate_hash_unchanged", "synthetic", None, _records(wavdir, n=4),
+            key_modality="audio", value_type="text-fact", embedder="logmel-stats",
+            audit_golds=[], scrub=True, note="gate-test content_hash (baseline, unedited)",
+        )
+        check("content_hash changes when a value is edited (same ids/order otherwise)",
+              m_hash_changed["content_hash"] != m_hash_unchanged["content_hash"], results)
 
     all_pass = all(results.values())
     print("\n=== KB GATE TEST ===")

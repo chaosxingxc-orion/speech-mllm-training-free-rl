@@ -333,16 +333,46 @@ def _modelscope_sv_embed(name: str, wav_paths, device: str = "cpu"):
     ModelScope's own ``speaker-verification`` pipeline (native to the ``configuration.json`` these
     checkpoints ship, NOT FunASR). Needs 3 tiny pure-python deps beyond modelscope itself
     (``addict``, ``simplejson``, ``sortedcontainers`` -- installed this session, together < 1 MB).
+
+    16 kHz REQUIREMENT (2026-07-11, G2 CPU smoke + Phase-A KB build): the pipeline resamples any
+    non-16 kHz input via ``torchaudio.sox_effects``, which this box's torchaudio build LACKS
+    (AttributeError mid-call). Pre-resampling to 16 kHz mono here (librosa -> temp wav) skips that
+    broken path entirely -- the fix the G2 CPU-smoke session validated (its ``smoke_sv_16k.py``:
+    both embedders PASS on 16 kHz input), now applied at the one shared entry point instead of
+    being every caller's job.
     """
+    import os as _os
+    import shutil
+    import tempfile
+
+    import librosa
     import numpy as np
+    import soundfile as sf
     from modelscope.pipelines import pipeline
 
     d = _model_dir(name)
     sv = pipeline(task="speaker-verification", model=d, device=device)
     embs = []
-    for p in wav_paths:
-        out = sv([p], output_emb=True)
-        embs.append(np.asarray(out["embs"][0], dtype="float32"))
+    tmpdir = None
+    try:
+        for i, p in enumerate(wav_paths):
+            if librosa.get_samplerate(p) == 16000:
+                p16 = p
+            else:
+                if tmpdir is None:
+                    tmpdir = tempfile.mkdtemp(prefix=f"kbembed_{name}_16k_")
+                y, _sr = librosa.load(p, sr=16000, mono=True)
+                p16 = _os.path.join(tmpdir, f"sv16k_{i}.wav")
+                sf.write(p16, y, 16000)
+            out = sv([p16], output_emb=True)
+            embs.append(np.asarray(out["embs"][0], dtype="float32"))
+    finally:
+        # Clean up the resampled-16kHz scratch dir (if one was created) -- the original diff left
+        # this leaking one temp dir per _modelscope_sv_embed call/embedder; cleaned up 2026-07-12
+        # (RI item 7 pre-commit review) so a batch build over many non-16kHz sources doesn't
+        # accumulate temp directories.
+        if tmpdir is not None:
+            shutil.rmtree(tmpdir, ignore_errors=True)
     return f"{name}:{MODEL_DIRNAMES[name]}", _l2(np.stack(embs))
 
 
@@ -425,13 +455,14 @@ def _llama_server_embed(wav_paths, server_env: str, base_url: str | None = None,
     embs = []
     for p in wav_paths:
         b64 = base64.b64encode(open(p, "rb").read()).decode()
-        payload = {
-            "content": [
-                {"type": "text", "text": media_marker},
-                {"type": "input_audio", "input_audio": {"data": b64, "format": "wav"}},
-            ],
-        }
-        req = urllib.request.Request(url + "/embedding", data=json.dumps(payload).encode(),
+        # Payload shape FIXED 2026-07-11 (Phase-A step-1 live smoke): llama-server's /embeddings
+        # endpoint rejects OpenAI-chat-style content parts ({"type": "input_audio", ...}) with a
+        # 500 ('"prompt" elements must be a string, ... or a JSON object containing a prompt
+        # string'). The shape its server.cpp actually accepts for multimodal embedding -- and the
+        # one the 2026-07-09 G2 smoke that confirmed dim=2048 live actually used (embed_flow.sh)
+        # -- is {"prompt_string": <media_marker>, "multimodal_data": [<b64>]}.
+        payload = {"content": [{"prompt_string": media_marker, "multimodal_data": [b64]}]}
+        req = urllib.request.Request(url + "/embeddings", data=json.dumps(payload).encode(),
                                       headers={"Content-Type": "application/json"})
         with urllib.request.urlopen(req, timeout=timeout) as r:
             out = json.loads(r.read().decode())
@@ -501,9 +532,21 @@ def _clap_embed(wav_paths):
     embs = []
     B = 16
     for i in range(0, len(audios), B):
-        inp = proc(audios=audios[i : i + B], sampling_rate=48000, return_tensors="pt")
+        # transformers renamed ClapProcessor's `audios=` kwarg to `audio=` (newer versions RAISE
+        # ValueError on the legacy name; older versions don't know the new one) -- try the new name
+        # first, fall back to the legacy kwarg (2026-07-11, Phase-A KB build hit the ValueError
+        # live on this box's transformers version).
+        try:
+            inp = proc(audio=audios[i : i + B], sampling_rate=48000, return_tensors="pt")
+        except (TypeError, ValueError):
+            inp = proc(audios=audios[i : i + B], sampling_rate=48000, return_tensors="pt")
         with torch.no_grad():
-            embs.append(model.get_audio_features(**inp).cpu().numpy())
+            out = model.get_audio_features(**inp)
+        # transformers >= 5 returns BaseModelOutputWithPooling whose pooler_output IS the
+        # L2-normalized projected audio embedding (modeling_clap.py get_audio_features, verified
+        # live on 5.12.1); older versions returned the tensor directly. Handle both.
+        feats = out.pooler_output if hasattr(out, "pooler_output") else out
+        embs.append(feats.cpu().numpy())
     return f"clap:{CLAP_MODEL}", _l2(np.concatenate(embs, axis=0).astype("float32"))
 
 
@@ -548,6 +591,68 @@ def _omni_embed_query(texts, device: str = "cpu"):
     m = _omni_model(device)
     embs = m.encode_query(list(texts), convert_to_numpy=True, normalize_embeddings=True)
     return f"omni-embed:{OMNI_EMBED_DIRNAME}", _l2(np.asarray(embs, dtype="float32"))
+
+
+def _omni_embed_document_text(texts, device: str = "cpu"):
+    """omni-embed-nemotron-3b's ``encode_document`` DOCUMENT side, over TEXT documents (2026-07-12,
+    RI item 9) — the model's official multimodal input contract accepts ``{"text": ...}`` (as well
+    as ``{"audio": ...}``/``{"video": ...}``; see the model card's usage example), so this is the
+    SAME API/space ``_omni_embed`` uses for audio KEYS, just fed pure text instead. Backs
+    ``kb_batch_build.build_squtr_corpus_source``'s TEXT-KEYED corpus-document build (squtr's
+    corpus documents ship as text only — there is no audio for a corpus document, only for
+    queries). Reachable via ``embed_text(embedder='omni-embed-nemotron')`` — a DIFFERENT registry
+    token from ``embedder='omni-embed'`` (which is the QUERY side, ``_omni_embed_query`` above);
+    this is the DOCUMENT/key side, matching the token ``_LOADER_FNS['omni-embed-nemotron']`` already
+    uses for the audio-key path, so a manifest's ``embedder_token`` is the same string regardless of
+    whether the KEY happened to be audio or text.
+    """
+    import numpy as np
+
+    m = _omni_model(device)
+    docs = [{"text": t} for t in texts]
+    embs = m.encode_document(docs, convert_to_numpy=True, normalize_embeddings=True)
+    return f"omni-embed-nemotron:{OMNI_EMBED_DIRNAME}", _l2(np.asarray(embs, dtype="float32"))
+
+
+def _glap_embed_text(texts, source_lang: str = "eng_Latn", device: str = "cpu"):
+    """GLAP's native ``encode_text`` — GLAP (mispeech/GLAP) is a JOINT audio-text model (like CLAP),
+    not audio-only: its ``GlapModel.encode_text(text, source_lang=...)`` (see
+    ``modeling_glap.py``) lands text in the SAME 1024-d cosine space as ``_glap_embed``'s
+    ``encode_audio`` (verified 2026-07-12, RI item 9 — the model ships an NLLB-family tokenizer +
+    a dedicated ``SonarTextEncoder`` + ``text_proj`` head precisely for this). CPU-capable, no GPU
+    server needed. ``source_lang`` follows GLAP's NLLB-style language codes (e.g. ``"eng_Latn"``
+    for English, ``"zho_Hans"`` for simplified Chinese) — pick per the text's actual language;
+    GLAP does NOT auto-detect it. Backs ``kb_batch_build.build_squtr_corpus_source``'s TEXT-KEYED
+    corpus-document build for the ``'glap'`` embedder arm. Reachable via
+    ``embed_text(embedder='glap', source_lang=...)``.
+    """
+    import numpy as np
+    import torch
+    from transformers import AutoModel
+
+    model = AutoModel.from_pretrained(_model_dir("glap"), trust_remote_code=True).to(device).eval()
+    with torch.no_grad():
+        e = model.encode_text(list(texts), source_lang=source_lang)
+    return "glap:GLAP", _l2(e.cpu().numpy().astype("float32"))
+
+
+# Embedders with a genuine TEXT-embedding path wired into `embed_text` (2026-07-12, RI item 9) --
+# used by `build_squtr_corpus_source` to decide ARM-BLOCKED-cross-modal for an embedder that has
+# none. Does NOT include lco-3b/7b/qwen3-omni-own: those are GPU-server embedders (needs_server) --
+# whether they COULD embed text is a separate question from whether a server is up this session;
+# callers should check `kb_embed.EMBEDDERS[x]["needs_server"]` for that, not this set.
+TEXT_KEY_CAPABLE = {"glap", "omni-embed-nemotron", "omni-embed", "minilm", "auto"}
+
+
+def can_embed_text(embedder: str) -> bool:
+    """Whether ``embedder`` has a genuine TEXT-embedding path wired into ``embed_text`` (2026-07-12,
+    RI item 9) — i.e. can key/embed a TEXT document with it, as opposed to needing an unavailable
+    GPU server (a separate concern; see ``TEXT_KEY_CAPABLE``'s docstring note) or having no text
+    tower at all (e.g. wavlm/eres2netv2/campplus/emotion2vec*/dasheng/clsp/sense/sensevoice-small
+    and, in THIS repo's current wiring, clap — CLAP's own model does have a text tower upstream,
+    but it is not wired into ``embed_text`` here; out of scope for this pass).
+    """
+    return embedder in TEXT_KEY_CAPABLE
 
 
 # ---------------------------------------------------------------------------------------------
@@ -684,7 +789,7 @@ def embed_audio(wav_paths, embedder: str = "auto", device: str = "cpu"):
     )
 
 
-def embed_text(texts, embedder: str = "auto", device: str = "cpu"):
+def embed_text(texts, embedder: str = "auto", device: str = "cpu", source_lang: str = "eng_Latn"):
     """TEXT embedder. Returns (name, matrix, fitted_or_None).
 
     ``'auto'`` (default, UNCHANGED): the legacy TEXT-KEYED tier — MiniLM -> TF-IDF. ``embedder=
@@ -692,11 +797,28 @@ def embed_text(texts, embedder: str = "auto", device: str = "cpu"):
     ``encode_query`` (``_omni_embed_query``), landing them in the SAME 2048-d space as
     ``embed_audio``'s omni-embed-built audio keys — for cross-modal (text query -> audio-keyed KB)
     retrieval. Not part of ``'auto'`` and has no ``fitted`` vectorizer (returns ``None`` for it).
+
+    ``embedder='omni-embed-nemotron'`` (2026-07-12, RI item 9) is the DOCUMENT side of that same
+    asymmetric API (``_omni_embed_document_text``, ``encode_document`` over ``{"text": ...}``) —
+    for keying a TEXT corpus (e.g. ``build_squtr_corpus_source``'s corpus documents), as opposed to
+    ``'omni-embed'`` which is the query side. ``embedder='glap'`` (2026-07-12) routes through
+    GLAP's native joint audio-text space (``_glap_embed_text``, ``encode_text``) — pass
+    ``source_lang`` (NLLB-style code, e.g. ``"eng_Latn"``/``"zho_Hans"``) matching the text's
+    actual language; GLAP does not auto-detect it. See ``can_embed_text``/``TEXT_KEY_CAPABLE`` for
+    which embedder tokens have a text path wired at all.
     """
     import numpy as np
 
     if embedder == "omni-embed":
         name, kb = _omni_embed_query(texts, device=device)
+        return name, kb, None
+
+    if embedder == "omni-embed-nemotron":
+        name, kb = _omni_embed_document_text(texts, device=device)
+        return name, kb, None
+
+    if embedder == "glap":
+        name, kb = _glap_embed_text(texts, source_lang=source_lang, device=device)
         return name, kb, None
 
     if embedder in ("auto", "minilm"):

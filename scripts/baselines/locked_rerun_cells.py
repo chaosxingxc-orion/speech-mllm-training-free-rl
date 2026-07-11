@@ -69,7 +69,36 @@ def locked_dataset_keys() -> list[str]:
     if not LOCKED_DIR.is_dir():
         return []
     return sorted(p.stem for p in LOCKED_DIR.glob("*.json")
-                  if p.stem not in ("README", "ACCESS_LOG"))
+                  if p.stem not in ("README", "ACCESS_LOG", "_counts"))
+
+
+_COUNTS_PATH = LOCKED_DIR / "_counts.json"
+
+
+def _load_counts() -> dict:
+    """Load the count-only sidecar (RI item 5, 2026-07-12; forensic finding 续15 P0-2).
+
+    Reads ONLY ``_counts.json`` -- a small file containing exclusively integer ``n_test``/``n_dev``
+    counts per dataset key, no plaintext ``test_ids``/``dev_ids`` of any kind. This is the fix for
+    the prior ``print_census`` behaviour, which opened every per-dataset manifest and computed
+    ``len(manifest["test_ids"/"dev_ids"])`` -- that DOES materialize the plaintext id list into
+    memory to take its length, contradicting this directory's ACCESS_LOG.md's former claim that
+    census reads never touch ``test_ids`` (see the 2026-07-12 ACCESS_LOG correction entry).
+
+    ``_counts.json`` is generated ONCE (and only regenerated, as a fresh logged read, if
+    ``locked_split.py`` produces new/changed manifests) by
+    ``scripts/baselines/gen_locked_holdout_counts.py`` -- this function never falls back to
+    opening a per-dataset manifest itself; a missing sidecar is a loud error, not a silent
+    fallback that would reintroduce the very read this fix removes.
+    """
+    if not _COUNTS_PATH.exists():
+        raise RuntimeError(
+            f"{_COUNTS_PATH} is missing -- run "
+            "`python scripts/baselines/gen_locked_holdout_counts.py` once first (RI item 5: the "
+            "census must never open a per-dataset LOCKED_HOLDOUT manifest's test_ids/dev_ids "
+            "directly; see that script's docstring)."
+        )
+    return json.loads(_COUNTS_PATH.read_text(encoding="utf-8"))["counts"]
 
 
 def plain_result_path(dataset: str, split: str) -> Path:
@@ -137,13 +166,11 @@ def print_census(parallel: int = 4) -> None:
         print(f"  {dk:45s} {'  '.join(parts)}")
 
     total_n = 0
+    counts = _load_counts()  # RI item 5: count-only sidecar, never opens test_ids/dev_ids directly
     for dk, sp in cells:
         if rep[(dk, sp)][0]:
-            try:
-                manifest = json.loads((LOCKED_DIR / f"{dk}.json").read_text(encoding="utf-8"))
-                total_n += len(manifest.get("test_ids" if sp == "test" else "dev_ids", []))
-            except (OSError, json.JSONDecodeError):
-                pass
+            c = counts.get(dk, {})
+            total_n += c.get("n_test" if sp == "test" else "n_dev", 0) or 0
     secs_seq = total_n * GEN_TIME_S
     secs_batch = secs_seq / BATCH_SPEEDUP if parallel > 1 else secs_seq
     print(f"\nTOTAL: {n_run} cell(s) need a run, {n_skip} cell(s) skip, of {len(cells)}.")

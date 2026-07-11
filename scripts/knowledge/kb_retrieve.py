@@ -9,6 +9,18 @@ re-embedding the corpus. Query flow: embed query AUDIO -> ANN search over key in
 ``kb_schema.KBLeakageError`` unless the final verdict is ``CLEAN`` (an unaudited source, verdict
 ``None``, is treated as NOT admissible either — audit silence is not a clean bill). The escape hatch
 is ``allow_unclean=True`` (PoC/debug only), which logs a loud warning on every load.
+
+**Known follow-up (2026-07-12, RI item 9)**: ``_query_embedder`` below picks the query embedder from
+``manifest.key_modality`` alone, which is fine while key_modality always matched the EXPECTED query
+modality (audio-keyed sources queried by audio; legacy text-keyed sources queried by text). That
+assumption breaks for ``kb_batch_build.build_squtr_corpus_source``'s new TEXT-keyed corpus sources,
+whose intended query side is CROSS-MODAL for omni-family embedders (an AUDIO query against these
+TEXT keys, via the same asymmetric encode_query/encode_document space) — ``_query_embedder`` would
+currently route such a source's queries through its text branch regardless of the caller's actual
+query modality. Not fixed in this pass (out of RI item 9's scope) — a caller needing cross-modal
+querying against a text-keyed omni source should call ``kb_embed.embed_audio(queries,
+embedder=manifest.embedder_token)`` directly rather than via ``load_source(...)["embed_query"]``
+until this is wired.
 """
 from __future__ import annotations
 

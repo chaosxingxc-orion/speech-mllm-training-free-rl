@@ -57,6 +57,16 @@ class KBLeakageError(RuntimeError):
     """
 
 
+class KBSourceExistsError(RuntimeError):
+    """Raised by ``kb_build.build_source`` (2026-07-12, RI item 8) when ``source`` already has a
+    persisted build (an existing ``manifest.json`` under its ``source_dir``) and the caller did not
+    pass ``supersede=True``. Fixes the prior silent in-place-overwrite behaviour (forensic finding
+    续15: "KB build_hash 不含内容+原位覆盖"). The caller's two ways out: build under a NEW,
+    distinctly-versioned ``source`` name (e.g. ``f"{source}__v2"``), or pass ``supersede=True``
+    to archive (never delete) the existing build and record it as this build's ``predecessor``.
+    """
+
+
 @dataclass(frozen=True)
 class KnowledgeValue:
     """One row of the value store — the payload retrieved when its key matches.
@@ -156,6 +166,19 @@ class SourceManifest:
     forced: bool = False  # True iff persisted despite a LEAKAGE verdict via force_persist=True
     embedder_token: str | None = None  # registry token for query-time re-embedding (see docstring)
     pool_split: str | None = None  # loader split this source's records were drawn from
+    # 2026-07-12 (RI mechanical remediation item 8; forensic finding 续15: "KB build_hash 不含内容
+    # +原位覆盖" -- build_hash above is a pure METADATA fingerprint (dataset/embedder/seed/n_entries
+    # as strings) and is IDENTICAL for two builds that differ only in actual byte content (e.g. a
+    # re-embed after a code fix, or silent corruption) -- it cannot detect content drift, and
+    # kb_build.build_source used to overwrite an existing source dir in place with no record of
+    # what was there before. content_hash fixes the detection gap; predecessor + refuse-overwrite
+    # (see kb_build.build_source) fix the in-place-overwrite gap.
+    content_hash: str | None = None  # sha256(values.jsonl bytes + keys.npy bytes + sorted
+    # from_item_ids + code_git_sha) -- see `content_hash_of` below. None only for a source built by
+    # a pre-2026-07-12 kb_build (backward-compatible default).
+    predecessor: dict | None = None  # {"source": ..., "content_hash": ..., "archived_path": ...,
+    # "superseded_at": ...} if this build superseded (via --supersede, archived not deleted) an
+    # earlier build under the SAME source name; None for a source that never superseded anything.
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -165,6 +188,42 @@ def build_hash(dataset, revision, key_modality, value_type, embedder, build_seed
     """Deterministic build fingerprint (no wall-clock / randomness)."""
     canonical = f"{dataset}|{revision}|{key_modality}|{value_type}|{embedder}|{build_seed}|{n_entries}"
     return hashlib.sha1(canonical.encode("utf-8")).hexdigest()[:16]
+
+
+def content_hash_of(values_path, keys_path, from_item_ids, code_git_sha: str) -> str:
+    """Content-addressed fingerprint over the ACTUAL PERSISTED BYTES of a source (2026-07-12, RI
+    item 8) -- unlike ``build_hash`` (metadata only: dataset/embedder/seed/n_entries as strings),
+    this hashes ``values.jsonl``'s and ``keys.npy``'s real bytes plus the sorted ``from_item_ids``
+    (order-independent -- two builds over the same rows in a different row order still hash equal)
+    plus the code git sha that produced them, so it changes whenever the actual content would,
+    even if every metadata field happens to coincide (e.g. a re-embed after a bugfix with the same
+    build_seed/n_entries). ``values_path``/``keys_path`` accept ``str`` or ``pathlib.Path``.
+    """
+    from pathlib import Path as _Path
+
+    h = hashlib.sha256()
+    h.update(_Path(values_path).read_bytes())
+    h.update(_Path(keys_path).read_bytes())
+    for fid in sorted(str(x) for x in from_item_ids if x is not None):
+        h.update(fid.encode("utf-8"))
+    h.update((code_git_sha or "").encode("utf-8"))
+    return h.hexdigest()
+
+
+def git_sha_of(repo_root) -> str:
+    """Best-effort ``git rev-parse HEAD`` of ``repo_root`` (str/Path) -- the "code git sha" input
+    to ``content_hash_of``. Never raises: returns an ``"UNKNOWN (...)"`` placeholder string on any
+    failure (e.g. no git installed, not a repo) so a content_hash can still be computed in a
+    degraded environment rather than blocking a build.
+    """
+    import subprocess
+
+    try:
+        return subprocess.check_output(
+            ["git", "rev-parse", "HEAD"], cwd=str(repo_root), text=True
+        ).strip()
+    except Exception as exc:  # pragma: no cover - environment dependent
+        return f"UNKNOWN ({exc})"
 
 
 def entry_id(source: str, key_ref: str, value: str) -> str:

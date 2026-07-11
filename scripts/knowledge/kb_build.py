@@ -57,11 +57,27 @@ def build_source(
     force_persist: bool = False,
     pool_split: str | None = None,
     aux_audit: bool = False,
+    supersede: bool = False,
 ) -> dict:
     """Build a persisted speech-keyed knowledge source. Returns the SourceManifest as a dict.
 
     Raises ``kb_schema.KBLeakageError`` if the value-side audit's final verdict is ``LEAKAGE`` and
     ``force_persist`` is not set (see module docstring: the enforcement gate).
+
+    Raises ``kb_schema.KBSourceExistsError`` (2026-07-12, RI item 8) if ``source`` already has a
+    persisted build (an existing ``manifest.json``) and ``supersede`` is not set -- this function no
+    longer silently overwrites an existing source in place (forensic finding 续15: "KB build_hash
+    不含内容+原位覆盖"). Pass ``supersede=True`` to ARCHIVE (never delete) the existing build under
+    ``<kb_root>/archive/<source>__superseded_<UTC-timestamp>/`` and proceed with a fresh build at
+    the same ``source`` name; the new manifest's ``predecessor`` field records the archived path
+    and the predecessor's own ``content_hash``. The other, non-destructive way to avoid this gate
+    entirely is to build under a NEW, distinctly-versioned ``source`` name (e.g. ``f"{source}__v2"``)
+    instead of reusing one that already exists.
+
+    Every successful build now stamps ``manifest.content_hash`` (2026-07-12, RI item 8) --
+    ``kb_schema.content_hash_of``: sha256 over the persisted ``values.jsonl``/``keys.npy`` bytes,
+    the sorted ``from_item_id``s, and this repo's current git sha -- a content fingerprint that
+    changes whenever the actual persisted bytes would, unlike ``build_hash`` (pure metadata).
 
     ``pool_split`` (2026-07-11, ticket #25 P1a) is stored in the manifest verbatim -- see
     ``kb_schema.SourceManifest``'s docstring for why this moved OUT of the source name.
@@ -78,19 +94,54 @@ def build_source(
     non-precomputed subset is ever sent to ``kb_embed.embed_audio``/``embed_text``, batched
     together as before.
     """
+    import shutil
+    from datetime import datetime, timezone
+    from pathlib import Path
+
     import numpy as np
 
     import kb_embed
     from kb_audit import audit_texts, scrub_golds
     from kb_schema import (
         KBLeakageError,
+        KBSourceExistsError,
         KnowledgeValue,
         SourceManifest,
         build_hash,
+        content_hash_of,
         entry_id,
+        git_sha_of,
+        kb_root,
         leakage_verdict,
         source_dir,
     )
+
+    # --- refuse-overwrite gate (2026-07-12, RI item 8) -- checked BEFORE anything is embedded/
+    # written, so a refusal never does wasted embedding work first ---
+    predecessor_record = None
+    existing_dir = source_dir(source)
+    if (existing_dir / "manifest.json").exists():
+        if not supersede:
+            raise KBSourceExistsError(
+                f"kb_build.build_source({source!r}): a build already exists at {existing_dir} "
+                "(manifest.json present) -- refusing to overwrite it in place. Either build under "
+                f"a NEW, distinctly-versioned source name (e.g. {source!r} + '__v2'), or pass "
+                "supersede=True to archive (never delete) the existing build and record it as this "
+                "build's predecessor."
+            )
+        old_manifest = json.load(open(existing_dir / "manifest.json", encoding="utf-8"))
+        archived_dir = kb_root() / "archive" / f"{source}__superseded_{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}"
+        archived_dir.parent.mkdir(parents=True, exist_ok=True)
+        shutil.move(str(existing_dir), str(archived_dir))
+        predecessor_record = {
+            "source": source,
+            "content_hash": old_manifest.get("content_hash"),
+            "build_hash": old_manifest.get("build_hash"),
+            "archived_path": str(archived_dir),
+            "superseded_at": datetime.now(timezone.utc).isoformat(),
+        }
+        print(f"  [kb_build] {source}: superseded existing build -> archived to {archived_dir} "
+              "(never deleted)", flush=True)
 
     # --- collect keys + values (dedup by (key_ref, value)) ---
     seen, key_refs, values, from_ids, grains, precomputed = set(), [], [], [], [], []
@@ -223,6 +274,11 @@ def build_source(
             )
             fh.write(kv.to_json() + "\n")
 
+    # --- content_hash (2026-07-12, RI item 8): fingerprint the ACTUAL PERSISTED BYTES, not just
+    # metadata -- computed AFTER values.jsonl/keys.npy are on disk, over those real files. ---
+    code_git_sha = git_sha_of(Path(__file__).resolve().parents[2])  # W1 repo root
+    c_hash = content_hash_of(d / "values.jsonl", d / "keys.npy", from_ids, code_git_sha)
+
     manifest = SourceManifest(
         source=source,
         dataset=dataset,
@@ -240,12 +296,15 @@ def build_source(
         forced=forced,
         embedder_token=embedder_token,
         pool_split=pool_split,
+        content_hash=c_hash,
+        predecessor=predecessor_record,
     )
     json.dump(manifest.to_dict(), open(d / "manifest.json", "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     print(
         f"  [kb_build] {source}: key={key_modality} value={value_type} n={index.n} "
         f"embedder={ename} token={embedder_token} index={index.backend} hash={manifest.build_hash} "
-        f"audit={verdict if verdict else 'n/a'}{' FORCED' if forced else ''}",
+        f"content_hash={c_hash[:16]} audit={verdict if verdict else 'n/a'}{' FORCED' if forced else ''}"
+        f"{' SUPERSEDES-PRIOR' if predecessor_record else ''}",
         flush=True,
     )
     return manifest.to_dict()

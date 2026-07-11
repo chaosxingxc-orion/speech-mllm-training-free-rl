@@ -140,6 +140,177 @@ def plan_squtr_mini_corpus(subset: str = "fiqa", noise_level: str = "clean", n: 
     }
 
 
+# subset -> GLAP NLLB-style source_lang code (squtr.SUBSETS' own "en"/"zh" tags, mapped to GLAP's
+# tokenizer's language codes -- see modeling_glap.py's LANG table; "zho_Hans" = simplified Chinese,
+# matching every zh squtr subset's actual script).
+_SQUTR_SUBSET_GLAP_LANG = {"en": "eng_Latn", "zh": "zho_Hans"}
+
+# Embedders this function can actually BUILD with, CPU-only, right now (2026-07-12, RI item 9):
+# glap (native encode_text) and omni-embed-nemotron (encode_document over {"text": ...}) -- see
+# kb_embed.py's _glap_embed_text / _omni_embed_document_text. Every other candidate in
+# CONTENT_KEY_EMBEDDERS is either GPU-server-gated (lco-3b/lco-7b/qwen3-omni-own -- recorded
+# "pending-GPU-window") or has no text-embedding path wired at all in this repo currently
+# (sense/meralion-se2/clap -- recorded "ARM-BLOCKED-cross-modal"); see build_squtr_corpus_source's
+# docstring for the full per-embedder gating logic.
+SQUTR_CORPUS_TEXT_CPU_EMBEDDERS = {"glap", "omni-embed-nemotron"}
+
+
+def build_squtr_corpus_source(embedder: str, subset: str = "fiqa", noise_level: str = "clean",
+                                n: int | None = 40, n_distractors: int = 200, seed: int = 20260705,
+                                eval_golds: list[str] | None = None, note: str = "",
+                                supersede: bool = False) -> dict:
+    """REAL (not plan-only) corpus-side KB build for squtr's qrels documents (2026-07-12, RI
+    mechanical remediation item 9).
+
+    Fixes forensic finding 续15 P0-1: the earlier squtr "knowledge-passage" KB build's VALUE field
+    was actually the FiQA QUERY's own text (an OBJECT-MISMATCH / wrong-field bug — see
+    ``docs/claim_ledger.yaml`` entry ``C-PHASEA``), not the retrieved corpus document; the same bug
+    class hit vocalbench-knowledge (its value was likewise the question's own text; "gold" building
+    was globally scrubbed empty). This function fetches the ACTUAL qrels-linked corpus documents
+    (``loaders/squtr.load_squtr_retrieval`` -> ``build_mini_corpus``: gold docs referenced by qrels
+    + seeded sampled distractors) and uses THEIR OWN text as both the KEY and the VALUE — no query
+    text anywhere in the persisted source.
+
+    ## Key-modality decision (documented, per task requirement)
+
+    squtr's corpus documents ship as TEXT ONLY (``corpus.jsonl``: ``{_id, title, text}``) — there
+    is NO audio for a corpus document, only for QUERIES. So this source is **TEXT-KEYED**
+    (``key_modality='text'``), unlike every other squtr/kb_batch_build source in this repo (all of
+    which are audio-keyed, built via ``build_one``). This has a real retrieval-time consequence,
+    stated here rather than left implicit:
+
+      - For an OMNI-FAMILY asymmetric bi-encoder (``encode_query``/``encode_document`` — e.g.
+        ``omni-embed-nemotron``, and the GPU-server ``lco-3b``/``lco-7b``/``qwen3-omni-own`` once
+        buildable): the QUERY side stays AUDIO (squtr queries are audio-only), embedded via
+        ``encode_query``, landing in the SAME cosine space as this source's TEXT-keyed
+        ``encode_document`` keys — retrieval against this source is genuinely **CROSS-MODAL**
+        (audio query vs text key). (Query-side wiring in ``kb_retrieve._query_embedder`` for this
+        specific cross-modal case is NOT yet implemented — a known follow-up, out of this ticket's
+        scope; see that module's docstring.)
+      - For an ASR-CASCADE arm (query audio -> ASR transcript -> text), the query becomes TEXT (the
+        ASR hypothesis), so retrieval against this text-keyed source is **TEXT-TEXT**, not
+        cross-modal — a fair same-modality comparison against the omni-family cross-modal arms.
+      - An embedder with NO text-embedding path at all (``kb_embed.can_embed_text`` is ``False``)
+        CANNOT key this source; such an ``embedder`` value returns ``{"status":
+        "ARM-BLOCKED-cross-modal", ...}`` below rather than raising or silently skipping — the
+        blocked arm is a recorded outcome, not an omission. An embedder that COULD embed text but
+        needs an unavailable GPU server (``kb_embed.EMBEDDERS[embedder]["needs_server"]``) instead
+        returns ``{"status": "pending-GPU-window", ...}`` — a distinct, non-permanent status.
+
+    ## Gold-scrub (Information-Boundary Guard)
+
+    squtr's OWN qrels carry no literal "answer" text field (they are IR relevance judgments —
+    ``(query-id, corpus-id, score)`` — not a QA answer span), so the P0-1 bug this function replaces
+    was an OBJECT-MISMATCH bug (wrong field used as the value), not an eval-gold leak in the
+    T7/M3 sense. This function nonetheless exercises the SAME ``kb_build.build_source``
+    ``audit_golds``/``scrub=True`` pipeline every other source in this repo goes through, as a
+    matter of consistent Information-Boundary discipline (an unaudited source is never treated as
+    admissible elsewhere in this codebase, and this build is not an exception): pass
+    ``eval_golds`` — the actual gold ANSWER strings of whatever downstream QA eval task will
+    consume this corpus KB (e.g. heysquad/SQuAD-zh answer spans, if this corpus backs a QA gate
+    like ``t7_rag_gate_probe.py``'s design) — to gold-scrub the VALUES against them (qrels-positive
+    docs CAN by construction literally contain the answer text to their linked query, since FiQA-style
+    queries are themselves questions). For pure-IR retrieval use (the Stage-1 default), leave
+    ``eval_golds`` as ``None``/empty, which still runs the audit (0 golds -> trivially CLEAN)
+    rather than skipping it outright. Scrub stats are ALWAYS recorded in the returned dict's
+    ``gold_scrub_stats``, even when 0 golds were checked.
+
+    Returns one of:
+      ``{"status": "built", "manifest": <SourceManifest dict>, "n_gold_docs": ..., "n_corpus_docs":
+      ..., "gold_scrub_stats": {...}}``
+      ``{"status": "ARM-BLOCKED-cross-modal", "embedder": ..., "reason": ...}``
+      ``{"status": "pending-GPU-window", "embedder": ..., "reason": ...}``
+    """
+    import kb_embed
+
+    meta = kb_embed.EMBEDDERS.get(embedder, {})
+    if meta.get("needs_server"):
+        return {
+            "status": "pending-GPU-window",
+            "embedder": embedder, "subset": subset, "noise_level": noise_level,
+            "reason": (
+                f"{embedder!r} needs a resident llama-server ({meta.get('server_env')}) -- not "
+                "attempted this session (GPU held by other work per CLAUDE.md). Build once a "
+                "GPU/server window is available; kb_embed.embed_text does not yet have a text-only "
+                "code path for the llama-server embedders either (only audio input is wired in "
+                "_llama_server_embed) -- that would need its own follow-up even with a server up."
+            ),
+        }
+    if not kb_embed.can_embed_text(embedder):
+        return {
+            "status": "ARM-BLOCKED-cross-modal",
+            "embedder": embedder, "subset": subset, "noise_level": noise_level,
+            "reason": (
+                f"{embedder!r} has no text-embedding path wired in kb_embed.embed_text -- cannot "
+                "key a TEXT corpus with it (squtr corpus documents ship as text only, no audio -- "
+                "see this function's key-modality docstring section). Recorded, not silently "
+                "skipped."
+            ),
+        }
+
+    import kb_build
+    import squtr
+
+    retrieval = squtr.load_squtr_retrieval(subset=subset, noise_level=noise_level, n=n, seed=seed,
+                                            n_distractors=n_distractors)
+    corpus_sample = retrieval["corpus_sample"]
+    qrels = retrieval["qrels"]
+    gold_docids = {docid for _, docid, _ in qrels}
+
+    doc_texts = [f"{d.get('title', '')} {d.get('text', '')}".strip() for d in corpus_sample]
+    records = []
+    for doc, text in zip(corpus_sample, doc_texts):
+        records.append({
+            "key_text": text,
+            "value": text,
+            "from_item_id": f"squtr-{subset}-{noise_level}|corpus|{doc['_id']}",
+        })
+
+    # GLAP needs an explicit source_lang (it does not auto-detect); nemotron's encode_document does
+    # not take one. Precompute GLAP's keys here (so the correct source_lang is used) and pass them
+    # through as `precomputed_key` -- kb_build.build_source then skips its own embedding step
+    # entirely and uses `embedder` as the manifest's ename/token verbatim (see its "every row
+    # arrived precomputed" branch).
+    if embedder == "glap":
+        lang = _SQUTR_SUBSET_GLAP_LANG.get(squtr.SUBSETS.get(subset, "en"), "eng_Latn")
+        _, precomp, _fitted = kb_embed.embed_text(doc_texts, embedder="glap", source_lang=lang)
+        for r, vec in zip(records, precomp):
+            r["precomputed_key"] = vec
+
+    audit_golds = list(eval_golds) if eval_golds else []
+    source = f"squtr-{subset}-{noise_level}__corpus__{embedder}__text-keyed"
+    manifest = kb_build.build_source(
+        source, f"squtr-{subset}-{noise_level}-corpus", revision=None, records=records,
+        key_modality="text", value_type="text-fact", embedder=embedder,
+        audit_golds=audit_golds, scrub=True, pool_split="test", supersede=supersede,
+        note=note or (
+            f"kb_batch_build.build_squtr_corpus_source (RI item 9, 2026-07-12): squtr {subset}/"
+            f"{noise_level} TEXT-keyed corpus (fixes 续15 P0-1 object-mismatch -- values are the "
+            "qrels-linked corpus documents themselves, NOT query text). "
+            f"n_gold_docs={len(gold_docids)} n_corpus_docs={len(corpus_sample)}."
+        ),
+    )
+
+    audit = manifest.get("leakage_audit", {}) or {}
+    post = audit.get("post_scrub", audit)
+    return {
+        "status": "built",
+        "manifest": manifest,
+        "n_gold_docs": len(gold_docids),
+        "n_corpus_docs": len(corpus_sample),
+        "n_distractor_docs": len(corpus_sample) - len(gold_docids & {d["_id"] for d in corpus_sample}),
+        "gold_scrub_stats": {
+            "n_eval_golds_checked": len(audit_golds),
+            "pre_scrub_verdict": audit.get("verdict"),
+            "pre_scrub_answer_overlap_rate": audit.get("answer_overlap_rate"),
+            "pre_scrub_n_golds_leaked": audit.get("n_golds_leaked"),
+            "post_scrub_verdict": post.get("verdict"),
+            "post_scrub_answer_overlap_rate": post.get("answer_overlap_rate"),
+            "post_scrub_n_golds_leaked": post.get("n_golds_leaked"),
+        },
+    }
+
+
 # ---- real build path (not exercised by --plan; used once a config is actually selected) --------
 
 def _gold_string(gold) -> str:
