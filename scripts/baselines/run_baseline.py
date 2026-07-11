@@ -310,7 +310,13 @@ def _legacy_rows(dataset_key: str, n: int, seed) -> list[dict]:
         rows.append({
             "wav": it["wav"], "gold": it["gold"],
             "meta": {"dataset": dataset_key, "item_id": item_id, "split": "legacy",
-                     "task": it["task"], "instr": it["instr"], "opts": it.get("opts")},
+                     "task": it["task"], "instr": it["instr"], "opts": it.get("opts"),
+                     # 2026-07-11 (ticket #26, group-split design doc §1.3/§4.1): carries through
+                     # p2_baselines' own per-item "group_key" (only mmau-mini populates it today,
+                     # see that module's LOADERS comment for why the other 6 legacy keys don't) --
+                     # None for every dataset that doesn't set it, which group_key.py treats as
+                     # the honest G-NONE fallback, same as any other ungrouped item.
+                     "group_key": it.get("group_key")},
         })
         ids.append(item_id)
     freeze_ids(f"baselines-{dataset_key}", ids, dataset=dataset_key, seed=int(seed),
@@ -515,6 +521,64 @@ def _load_rows_disjoint(dataset_key: str, split: str) -> list[dict]:
 
 
 # ---------------------------------------------------------------------------------------------
+# locked-group-slice support (2026-07-11, ticket #26 task 5 -- PREP ONLY, see
+# scripts/baselines/run_locked_rerun.sh's "DO NOT RUN" instruction: this code path is written and
+# reviewable but not invoked by this ticket). Reads the group-aware LOCKED_HOLDOUT manifests
+# ``scripts/baselines/locked_split.py`` writes -- the fresh, never-informed-a-decision
+# ``LOCKED_TEST_SEED`` draw (design doc §2), NOT ``redraw.py``'s disjoint manifest (which reuses
+# the already-decision-informing ``TEST_SEED`` and is therefore permanently non-locked, see
+# ``_repro/redraw_manifest.NONLOCKED.md``). Gated behind --slice locked-group /
+# slice_mode="locked-group" below; --slice seeded/disjoint (existing) are unchanged.
+# ---------------------------------------------------------------------------------------------
+
+def _locked_manifest_ids(dataset_key: str, split: str) -> list[str]:
+    """Read ``_repro/LOCKED_HOLDOUT/<dataset_key>.json``'s ``test_ids``/``dev_ids`` via
+    ``locked_split.load_locked_test``/``load_locked_dev``. Lazy, function-local import (NOT at
+    module top) -- ``locked_split.py`` itself does ``import run_baseline as rb``, so importing it
+    at THIS module's top level would be a circular import; deferring to call time (after both
+    modules are already registered in ``sys.modules``) resolves the cycle, same lazy-import
+    discipline this repo already applies to heavy deps."""
+    import locked_split
+
+    return locked_split.load_locked_test(dataset_key) if split == "test" else locked_split.load_locked_dev(dataset_key)
+
+
+def _load_rows_locked(dataset_key: str, split: str) -> list[dict]:
+    """Load ``dataset_key``/``split`` rows from the LOCKED_HOLDOUT manifest rather than a fresh
+    DEV_SEED/TEST_SEED draw or ``redraw.py``'s (permanently non-locked) disjoint manifest. Mirrors
+    ``_load_rows_disjoint``'s full-pool-refetch-then-restrict pattern exactly (same
+    ``POOL_RECONSTRUCTION_SEED``, same ``_suppress_loader_snapshot_writes`` guard) -- the ids
+    themselves come from ``locked_split.py``'s group-aware draw instead of the plain
+    ``draw_disjoint``.
+
+    **Access-control note (design doc §2.3):** reading ``test_ids`` here is legitimate ONLY for
+    the final confirmatory scoring pass that produces a reported number -- never for arm
+    selection, prompt search, threshold tuning, N*-budget choice, or reward-model calibration (see
+    ``_repro/LOCKED_HOLDOUT/README.md``). This function itself does not enforce that (process
+    convention + append-only ``ACCESS_LOG.md``, not a mechanical gate, per the owner's chosen
+    "no encryption" tradeoff) -- the caller is responsible for only invoking ``--slice
+    locked-group`` from a genuine confirmatory pass.
+
+    Raises if any locked id is missing from a fresh pool refetch (pool drift since
+    ``locked_split.py`` froze the manifest), same discipline as ``_load_rows_disjoint``.
+    """
+    frozen_ids = _locked_manifest_ids(dataset_key, split)
+    frozen_set = set(frozen_ids)
+    with _suppress_loader_snapshot_writes():
+        rows = _load_rows(dataset_key, split, n=None, seed=POOL_RECONSTRUCTION_SEED,
+                          restrict_ids=frozen_set)
+    by_id = {r["meta"]["item_id"]: r for r in rows}
+    missing = [i for i in frozen_ids if i not in by_id]
+    if missing:
+        raise RuntimeError(
+            f"{dataset_key}/{split}: {len(missing)}/{len(frozen_ids)} locked id(s) from "
+            f"LOCKED_HOLDOUT/{dataset_key}.json not found in a fresh full-pool refetch (first few: "
+            f"{missing[:5]}) -- pool drift since locked_split.py froze this manifest?"
+        )
+    return [by_id[i] for i in frozen_ids]
+
+
+# ---------------------------------------------------------------------------------------------
 # bootstrap
 # ---------------------------------------------------------------------------------------------
 
@@ -581,7 +645,10 @@ def run_one(dataset_key: str, backbone: str, split: str, n: int | None, parallel
     ``scripts/baselines/redraw.py`` produced (see ``_load_rows_disjoint``) -- ``n`` is then IGNORED
     (any caller-supplied override is meaningless once the slice is frozen) and the cell's actual
     row count comes from the manifest itself (may be < DEV_N/TEST_N for a small-pool dataset that
-    hit ``draw_disjoint``'s proportional-shortfall path).
+    hit ``draw_disjoint``'s proportional-shortfall path). ``"locked-group"`` (2026-07-11, ticket #26
+    task 5 -- PREP ONLY, see ``scripts/baselines/run_locked_rerun.sh``) loads the group-aware
+    ``LOCKED_HOLDOUT`` manifest instead (see ``_load_rows_locked``) -- same "``n`` is ignored,
+    frozen manifest count wins" contract as ``"disjoint"``.
 
     ``parallel`` (2026-07-10, wave-3 batched-inference task brief item 1): default 1 reproduces the
     ORIGINAL sequential ``for`` loop byte-for-byte (every wave-1/wave-2 caller, unaffected). ``>1``
@@ -607,11 +674,15 @@ def run_one(dataset_key: str, backbone: str, split: str, n: int | None, parallel
         n = len(rows)  # frozen manifest's actual count (may be < DEV_N/TEST_N, see draw_disjoint
         # shortfall handling) overrides any caller-supplied --n, which would be meaningless once
         # the slice is already frozen.
+    elif slice_mode == "locked-group":
+        rows = _load_rows_locked(dataset_key, split)
+        n = len(rows)  # same "frozen manifest count wins" contract as slice_mode="disjoint"
     elif slice_mode == "seeded":
         n = n if n is not None else (DEV_N if split == "dev" else TEST_N)
         rows = _load_rows(dataset_key, split, n, seed)
     else:
-        raise ValueError(f"run_one: unknown slice_mode {slice_mode!r} (expected 'seeded' or 'disjoint')")
+        raise ValueError(
+            f"run_one: unknown slice_mode {slice_mode!r} (expected 'seeded', 'disjoint', or 'locked-group')")
 
     kt = templates.k_type_of(dataset_key) if dataset_key not in templates.LEGACY_DATASETS else "K8/K6 (legacy)"
 
@@ -653,6 +724,8 @@ def run_one(dataset_key: str, backbone: str, split: str, n: int | None, parallel
 
     if slice_mode == "disjoint":
         snapshot_ref = f"SPEECHRL_KB_DIR/snapshots/{_disjoint_manifest_name(dataset_key, split)}/sample_manifest.json"
+    elif slice_mode == "locked-group":
+        snapshot_ref = f"_repro/LOCKED_HOLDOUT/{dataset_key}.json"
     else:
         snapshot_ref = f"SPEECHRL_KB_DIR/snapshots/baselines-{dataset_key}/sample_manifest.json" \
             if dataset_key in templates.LEGACY_DATASETS else \
@@ -690,9 +763,10 @@ def run_one(dataset_key: str, backbone: str, split: str, n: int | None, parallel
             "SPEECHRL_DATA_DIR=/mnt/e/chao_workspace/exploring-l4-intelligence/speechrl-data "
             "SPEECHRL_KB_DIR=/mnt/e/speechrl-knowledge python scripts/baselines/run_baseline.py "
             f"--dataset {dataset_key} --backbone {backbone} --split {split}"
-            + (f" --n {n}" if slice_mode != "disjoint" else "")
+            + (f" --n {n}" if slice_mode == "seeded" else "")
             + (f" --parallel {parallel}" if parallel != 1 else "")
             + (" --slice disjoint" if slice_mode == "disjoint" else "")
+            + (" --slice locked-group" if slice_mode == "locked-group" else "")
         ),
         "elapsed_s": round(time.time() - t0, 1),
     }
@@ -759,6 +833,20 @@ def _disjoint_n_preview(dk: str, split: str) -> str:
         return f"<no disjoint manifest: {type(e).__name__}>"
 
 
+def _locked_n_preview(dk: str, split: str) -> str:
+    """CPU-metadata-only preview of a LOCKED_HOLDOUT manifest's actual row count -- reads
+    ``locked_split.load_locked_test``/``load_locked_dev`` (a plain JSON read) ONLY, mirroring
+    ``_disjoint_n_preview``'s zero-model/zero-heavy-IO discipline (2026-07-11, ticket #26 task 5
+    prep)."""
+    try:
+        import locked_split
+
+        ids = locked_split.load_locked_test(dk) if split == "test" else locked_split.load_locked_dev(dk)
+        return str(len(ids))
+    except Exception as e:  # noqa: BLE001 -- dry-run must never crash on a not-yet-locked dataset
+        return f"<no locked manifest: {type(e).__name__}>"
+
+
 def dry_run(datasets: list[str], backbones: list[str], splits: list[str],
             slice_mode: str = "seeded") -> None:
     print(f"=== Stage-1 Step-1 baseline grid: {len(datasets)} datasets x {len(backbones)} backbones "
@@ -773,6 +861,8 @@ def dry_run(datasets: list[str], backbones: list[str], splits: list[str],
             preview = f"<template error: {type(e).__name__}: {e}>"
         if slice_mode == "disjoint":
             n_dev, n_test = _disjoint_n_preview(dk, "dev"), _disjoint_n_preview(dk, "test")
+        elif slice_mode == "locked-group":
+            n_dev, n_test = _locked_n_preview(dk, "dev"), _locked_n_preview(dk, "test")
         else:
             n_dev, n_test = DEV_N, TEST_N
         print(f"{dk:45s} [{kt:>4s}]  dev(n={n_dev}) test(n={n_test})  backbones={','.join(backbones)}")
@@ -806,9 +896,12 @@ def main() -> None:
     # is the ORIGINAL DEV_SEED/TEST_SEED-independent-draw behavior, byte-for-byte unchanged for
     # every wave-1/wave-2/Phase-A caller that never passes --slice. "disjoint" loads the frozen,
     # genuinely-disjoint slice scripts/baselines/redraw.py produced -- see run_one's docstring.
-    ap.add_argument("--slice", dest="slice_mode", default="seeded", choices=["seeded", "disjoint"],
-                     help="'seeded' (default, unchanged) or 'disjoint' (frozen redraw.py manifest, "
-                          "see that module + run_one's docstring)")
+    ap.add_argument("--slice", dest="slice_mode", default="seeded",
+                     choices=["seeded", "disjoint", "locked-group"],
+                     help="'seeded' (default, unchanged), 'disjoint' (frozen redraw.py manifest -- "
+                          "permanently non-locked, see _repro/redraw_manifest.NONLOCKED.md), or "
+                          "'locked-group' (frozen scripts/baselines/locked_split.py LOCKED_HOLDOUT "
+                          "manifest, ticket #26 task 5 -- PREP ONLY, see run_locked_rerun.sh)")
     args = ap.parse_args()
 
     datasets = _all_dataset_keys() if args.dataset == "ALL" else [args.dataset]

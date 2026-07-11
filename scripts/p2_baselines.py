@@ -109,7 +109,12 @@ def load_mmau(rng):
     fs = sorted((DS / "mmau-mini/data").glob("test_mini*.parquet"))
     rows = []
     for f in fs:
-        rows += pq.read_table(f, columns=["question", "choices", "answer", "audio"]).to_pylist()
+        # 2026-07-11 (ticket #26, group-split design doc §1.3/§4.1 K8 row): "audio_id" added --
+        # the upstream MMAU clip id (many questions CAN share one clip in the full MMAU corpus;
+        # on this test_mini mirror it happens to be 1:1 with rows -- see group_key.py's comment
+        # on this dataset key for the honest caveat). Grouping/provenance only, carried through
+        # as "group_key" below, never a task label.
+        rows += pq.read_table(f, columns=["question", "choices", "answer", "audio", "audio_id"]).to_pylist()
     seen, uniq = set(), []
     for r in rows:
         k = (r["question"], tuple(r["choices"]))
@@ -121,7 +126,7 @@ def load_mmau(rng):
         if gt:
             out.append({"wav": _wav_from_bytes(r["audio"]["bytes"], f"mmau_{int(j)}"),
                         "instr": _mcq_instr(r["question"], r["choices"]), "gold": gt[0],
-                        "opts": list(r["choices"]), "task": "mcq"})
+                        "opts": list(r["choices"]), "task": "mcq", "group_key": r["audio_id"]})
     return out
 
 
@@ -228,6 +233,29 @@ def load_bba(rng):
     return out
 
 
+# 2026-07-11 (ticket #26, group-split design doc §1.3/§4.1's "p2_baselines.py (legacy) |
+# source-family id" row): only ``mmau-mini`` got a real ``group_key`` (audio_id, above) -- the
+# other 6 legacy keys were checked against the ON-DISK schema this session (not guessed) and
+# left G-NONE deliberately, per that section's own "as feasible" escape hatch:
+#   - OpenbookQA-zh (uro-bench/OpenbookQA-zh parquet): columns are only
+#     {id, source_wav, source_text, target_text} -- no "fact"/passage id exists in this mirror at
+#     all (the design doc's suggested field isn't actually present upstream here).
+#   - SQuAD-zh (uro-bench/SQuAD-zh parquet): same 4-column shape, no passage title/id field.
+#   - spoken-squad (spoken-squad parquet): columns are {context, instruction, answer} -- "context"
+#     here IS the audio-bytes column (not passage text, unlike heysquad's same-named field), so
+#     there is no separate passage/title id to hash.
+#   - minds14-zh (minds14/zh-CN parquet): columns are {path, audio, transcription,
+#     english_transcription, intent_class, lang_id} -- no speaker id.
+#   - big-bench-audio (metadata.jsonl): DOES have a "category" field (4 values, 250 rows each --
+#     formal_fallacies/navigate/object_counting/web_of_lies), and vocalbench-zh (per-topic
+#     parquets) DOES have a "Source" field (also ~4 values, up to hundreds of rows each) -- both
+#     checked and REJECTED as the group unit, not merely overlooked: ``draw_disjoint_grouped``
+#     never splits a group, so a single ~250-item group vastly exceeds n_test=60 and would
+#     silently balloon that one dataset's locked test/dev manifest to hundreds of items instead
+#     of the ~60/40 convention (design doc §2.2 step 5's "oversized_group" case, taken to its
+#     honest conclusion: too coarse to use, not just "wide-CI caveat" coarse like esd/csemotions'
+#     10-speaker case). Left G-NONE (item-level fallback, flagged) rather than wiring in a group
+#     that would wreck the split-size contract.
 LOADERS = {"mmau-mini": load_mmau, "OpenbookQA-zh": load_openbookqa_zh,
            "vocalbench-zh": load_vocalbench_zh, "SQuAD-zh": load_squad_zh,
            "spoken-squad": load_spoken_squad, "minds14-zh": load_minds14_zh,

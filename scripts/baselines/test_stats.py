@@ -110,6 +110,9 @@ def test_paired_cluster_delta_ci_recovers_true_delta():
     lo, hi = result["delta_ci"]
     assert lo < result["delta_mean"] < hi
     assert lo > 0, "true delta is strongly positive -- CI should exclude 0"
+    # 2026-07-11 (ticket #26 summarizer wiring): "pvalue" is additive on paired_cluster_delta_ci's
+    # returned dict -- a strongly positive, CI-excludes-0 delta should have a small p-value.
+    assert 0.0 <= result["pvalue"] < 0.05
 
 
 def test_bootstrap_pvalue_symmetric_and_bounded():
@@ -310,6 +313,27 @@ def test_draw_disjoint_grouped_fallback_item_level_when_group_key_fn_always_none
     assert set(result["test_ids"]) & set(result["dev_ids"]) == set()
     assert result["n_test"] == 12
     assert result["n_dev"] == 8
+    assert result["degenerate_single_group"] is None  # plain G-NONE, not the degenerate case
+
+
+def test_draw_disjoint_grouped_degenerate_single_group_falls_back_item_level():
+    # 2026-07-11 (ticket #26 manifest generation): a dataset whose ONE real group spans the whole
+    # pool (found empirically on the voiceassistant-* grid keys -- per-category dataset keys make
+    # category1/category2 constant) -- a group-disjoint split is UNDEFINED there (the greedy fill
+    # would swallow the pool into test and leave dev EMPTY). Must degrade to item-level fallback,
+    # flagged, with the degenerate group id recorded -- NOT an empty dev.
+    items = [_row(f"item{i}", meta_extra={"cat": "listening/general"}) for i in range(30)]
+
+    def group_key_fn(item):
+        return item["meta"]["cat"]  # constant across the whole pool
+
+    result = draw_disjoint_grouped(items, group_key_fn, n_test=12, n_dev=8, seed=1)
+    assert result["fallback_item_level"] is True
+    assert result["degenerate_single_group"] == "listening/general"
+    assert result["n_groups_total"] == 1  # the REAL, pre-fallback group count, never cosmetic
+    assert result["n_test"] == 12
+    assert result["n_dev"] == 8, "dev must NOT be empty -- that was the bug this handling fixes"
+    assert set(result["test_ids"]) & set(result["dev_ids"]) == set()
 
 
 # ---------------------------------------------------------------------------------------------
@@ -384,9 +408,20 @@ def test_group_key_of_speech_massive_scenario():
     assert group_key_of("speech-massive-fr-FR-slot", slot_item) == "weather_query"
 
 
-def test_group_key_of_speech_massive_attr_needs_loader_edit():
-    # K5 attribute probe: MUST NOT fall back to scenario grouping (see group_key.py's TODO) --
-    # speaker_id isn't exposed yet, so this MUST be None, not a guessed scenario group.
+def test_group_key_of_speech_massive_attr_resolves_speaker_id():
+    # 2026-07-11 (ticket #26): speech_massive.py's _COLUMNS now exposes speaker_id -- the K5
+    # attribute probe (label IS speaker_sex/age) must group by speaker, NEVER by scenario (a
+    # scenario-grouped split would still let the SAME speaker's sex/age answer appear on both
+    # sides via a different utterance). Two items, same speaker, different scenario -> same group.
+    item_a = _row("de-DE/validation/12@0-0-3", meta_extra={"scenario_str": "alarm_set", "speaker_id": "spk042"})
+    item_b = _row("de-DE/validation/13@0-0-4", meta_extra={"scenario_str": "weather_query", "speaker_id": "spk042"})
+    assert group_key_of("speech-massive-de-DE-attr", item_a) == "spk042"
+    assert group_key_of("speech-massive-de-DE-attr", item_a) == group_key_of("speech-massive-de-DE-attr", item_b)
+
+
+def test_group_key_of_speech_massive_attr_missing_speaker_id_is_none_not_scenario():
+    # An item (e.g. an ARCHIVED pre-loader-edit cell) that lacks speaker_id entirely MUST NOT
+    # silently fall back to scenario grouping -- honest None, never a guessed group.
     item = _row("de-DE/validation/12@0-0-3", meta_extra={"scenario_str": "alarm_set"})
     assert group_key_of("speech-massive-de-DE-attr", item) is None
 
@@ -423,14 +458,58 @@ def test_group_key_of_vocalbench_knowledge_and_multiround():
     assert group_key_of("vocalbench-multi-round", multi) == "travel"
 
 
-def test_group_key_of_g_source_returns_none_not_a_guess():
-    # audio2tool + speech-massive-*-attr: G-SOURCE, no loader edit made by this ticket -> None.
+def test_group_key_of_audio2tool_resolves_query_idx():
+    # 2026-07-11 (ticket #26): audio2tool.py now sets meta["query_idx"] -- one query rendered by
+    # MANY speakers shares a query_idx. Stringified group id (source jsonl's query_idx is an int).
+    item_a = _row("tier1_direct|00042", meta_extra={"tool_name": "set_alarm", "query_idx": 77})
+    item_b = _row("tier1_direct|00099", meta_extra={"tool_name": "set_alarm", "query_idx": 77})
+    assert group_key_of("audio2tool", item_a) == "77"
+    assert group_key_of("audio2tool", item_a) == group_key_of("audio2tool", item_b)
+
+
+def test_group_key_of_audio2tool_missing_query_idx_is_none():
+    # An item without query_idx (e.g. an archived pre-loader-edit cell) -> honest None.
     a2t = _row("tier1_direct|00042", meta_extra={"tool_name": "set_alarm", "domain": "productivity"})
     assert group_key_of("audio2tool", a2t) is None
-    legacy = _row("SQuAD-zh#7")
-    assert group_key_of("SQuAD-zh", legacy) is None
+
+
+def test_group_key_of_air_bench_aqa_resolves_clip_id():
+    # 2026-07-11 (ticket #26): air_bench_foundation.py now sets meta["clip_id"] = the resolved
+    # on-disk filename stem -- multiple QA pairs sharing one audio clip must land on the same side.
+    item_a = _row("Sound_AQA:clothoaqa:14934", meta_extra={"task_name": "Sound_AQA", "clip_id": "clip001"})
+    item_b = _row("Sound_AQA:clothoaqa:14999", meta_extra={"task_name": "Sound_AQA", "clip_id": "clip001"})
+    assert group_key_of("air-bench-foundation-sound-aqa-clothoaqa", item_a) == "clip001"
+    assert (group_key_of("air-bench-foundation-sound-aqa-clothoaqa", item_a)
+            == group_key_of("air-bench-foundation-sound-aqa-clothoaqa", item_b))
+    music_aqa = _row("Music_AQA:music_avqa:5", meta_extra={"clip_id": "clipXYZ"})
+    assert group_key_of("air-bench-foundation-music-aqa", music_aqa) == "clipXYZ"
+
+
+def test_group_key_of_air_bench_aqa_missing_clip_id_is_none():
     aqa = _row("Sound_AQA:clothoaqa:14934", meta_extra={"task_name": "Sound_AQA"})
     assert group_key_of("air-bench-foundation-sound-aqa-clothoaqa", aqa) is None
+
+
+def test_group_key_of_mmau_mini_resolves_group_key():
+    # 2026-07-11 (ticket #26): p2_baselines.load_mmau now sets it["group_key"] = the upstream
+    # MMAU audio_id, carried through run_baseline._legacy_rows into meta["group_key"].
+    item_a = _row("mmau-mini#3", meta_extra={"group_key": "./test-mini-audios/abc123.wav"})
+    item_b = _row("mmau-mini#4", meta_extra={"group_key": "./test-mini-audios/abc123.wav"})
+    assert group_key_of("mmau-mini", item_a) == "./test-mini-audios/abc123.wav"
+    assert group_key_of("mmau-mini", item_a) == group_key_of("mmau-mini", item_b)
+
+
+def test_group_key_of_remaining_legacy_g_none_datasets():
+    # 2026-07-11 (ticket #26): the 6 legacy p2_baselines dataset keys checked this session and
+    # deliberately left G-NONE (no source-family field in this corpus mirror, or the only
+    # available field -- category/Source -- is too coarse for draw_disjoint_grouped's
+    # whole-group-never-split rule) -- see group_key.py's comment for the per-key evidence.
+    assert group_key_of("SQuAD-zh", _row("SQuAD-zh#7")) is None
+    assert group_key_of("spoken-squad", _row("spoken-squad#3")) is None
+    assert group_key_of("OpenbookQA-zh", _row("OpenbookQA-zh#1")) is None
+    assert group_key_of("vocalbench-zh", _row("vocalbench-zh#2", meta_extra={"group_key": "WebQA"})) is None
+    assert group_key_of("big-bench-audio", _row("big-bench-audio#0", meta_extra={"group_key": "navigate"})) is None
+    assert group_key_of("minds14-zh", _row("minds14-zh#5")) is None
 
 
 def test_group_key_of_g_none_returns_none():

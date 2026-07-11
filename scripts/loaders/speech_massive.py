@@ -29,6 +29,10 @@ gold = {"intent_str": str, "annot_utt": str (slot-bracketed utterance, e.g.
         "speaker_sex/age = 附赠说话人属性金标, 多语 SID 副测"), not requested by the primary SLU
         task but free in the source rows.
 
+meta also carries "speaker_id" (2026-07-11, ticket #26 group-split design doc §1.3/§4.1) —
+grouping/provenance only, never a task label: lets scripts/loaders/group_key.py split the K5
+"-attr" (speaker-attribute) probe speaker-DISJOINT instead of falling back to item-level.
+
 Efficiency note: each row embeds a full decoded wav (~150-400 KB) and shards run ~400 MB/9-shard
 locale, so this loader reads parquet **row-group metadata only** (free: no data decode) to build
 a global row index, then decodes just the row GROUPS (~100 rows each here) that intersect the
@@ -63,7 +67,15 @@ LOCALES = ["ar-SA", "de-DE", "es-ES", "fr-FR", "hu-HU", "ko-KR", "nl-NL", "pl-PL
            "ru-RU", "tr-TR", "vi-VN"]  # the 12 per-locale dirs under datasets/speech-massive/ (excludes "all")
 _SPLIT_PREFIX = {"validation": "validation", "train": "train", "train_115": "train_115"}
 _COLUMNS = ["id", "locale", "partition", "scenario_str", "intent_idx", "intent_str", "utt",
-            "annot_utt", "tokens", "labels", "audio", "speaker_sex", "speaker_age"]
+            "annot_utt", "tokens", "labels", "audio", "speaker_sex", "speaker_age",
+            # 2026-07-11 (ticket #26, group-split design doc §1.3/§4.1 K5 row): speaker_id was
+            # exposed upstream but not read here -- a K5 speaker-ATTRIBUTE probe (speech-massive-
+            # <locale>-attr) must split speaker-DISJOINT (the label IS speaker_sex/age, so any
+            # same-speaker leakage across dev/test would let the model "cheat" via a different
+            # utterance of the SAME speaker). Added to meta (not gold -- it's a grouping/provenance
+            # id, not a task label) so scripts/loaders/group_key.py's "-attr" branch can resolve a
+            # real speaker-disjoint group instead of falling back to item-level.
+            "speaker_id"]
 
 
 def _shard_files(locale: str, split: str) -> list:
@@ -143,6 +155,7 @@ def load_speech_massive(locale: str, split: str = "validation", n: int | None = 
                 "split": split,
                 "scenario_str": rec["scenario_str"],
                 "utt": rec["utt"],
+                "speaker_id": rec["speaker_id"],  # 2026-07-11 ticket #26, see _COLUMNS comment above
             },
         })
         sampled_ids.append(item_id)

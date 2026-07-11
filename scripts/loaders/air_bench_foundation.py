@@ -192,8 +192,18 @@ def _load_foundation_task(
         if extra:
             gold["extra"] = extra
         item_id = f"{task_name}:{dataset_name}:{r['uniq_id']}"
+        # 2026-07-11 (ticket #26, group-split design doc §1.3/§4.1): clip_id = the resolved
+        # on-disk filename stem -- the SAME key already used above to resolve `wav_path` by stem
+        # (module docstring's "Metadata path is NOT always trustworthy" note), not re-derived.
+        # Multiple QA pairs can share one audio clip for the 3 *_AQA tasks (Sound_AQA/avqa,
+        # Sound_AQA/clothoaqa, Music_AQA/music_avqa -- design doc §1.3 K8 row); grouping/
+        # provenance only, never a task label. The CLASSIFICATION subsets (clip==item, 1:1) get
+        # this field too for free, but it's a no-op for them (see group_key.py's G_NONE_DATASETS
+        # comment on "clip == item already").
+        clip_id = Path(r["path"]).stem
         meta = {"dataset": registry_name, "item_id": item_id, "split": split,
-                "task_name": task_name, "dataset_name": dataset_name, "question": r["question"]}
+                "task_name": task_name, "dataset_name": dataset_name, "question": r["question"],
+                "clip_id": clip_id}
         out.append({"wav": str(wav_path), "gold": gold, "meta": meta})
         ids.append(item_id)
 

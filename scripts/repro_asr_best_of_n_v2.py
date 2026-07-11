@@ -134,7 +134,11 @@ RANDOM_SELECT_SEED = int(os.environ.get("BON2_RANDOM_SEED", "424242"))
 BOOT_SEED = int(os.environ.get("BON2_BOOT_SEED", "42"))
 Ns = [n for n in (1, 2, 4, 8) if n <= POOL]
 SELECTOR_NAMES = ["oracle", "mbr", "random", "length", "logprob"]
-OUT = DATA / "_repro" / f"asr_bon_v2_{CONDITION}.json"
+# 2026-07-11 (hardening chain, ticket: GPU-hardening/second-noise-realization): allow overriding the
+# output path via BON2_OUT so a second noise realization (or any other reproduction rerun) can never
+# clobber a previously-verified artifact at the default path. Default is UNCHANGED (same hardcoded
+# path every prior caller relied on) when BON2_OUT is unset.
+OUT = Path(os.environ["BON2_OUT"]) if os.environ.get("BON2_OUT") else DATA / "_repro" / f"asr_bon_v2_{CONDITION}.json"
 PARTIAL = OUT.with_suffix(".partial.jsonl")  # utterance-level checkpoint (see main); deleted on success
 N_GEN_RETRIES = 0  # count of single-retry recoveries (see gen_with_retry); recorded in provenance
 # Per-request HTTP timeouts (2026-07-11 stall fix): the first full run livelocked inside llama-server
@@ -213,7 +217,15 @@ def materialize_wavs(cohort: list[dict], data_dir: Path, split: str, condition: 
     NOISE_SEED-derived rng (independent of COHORT_SEED)."""
     import soundfile as sf
 
-    wav_dir = data_dir / "_repro" / f"asr_bon_v2_{split}_{condition}_wavs"
+    # 2026-07-11 (hardening chain, second-noise-realization fix): the wav cache was keyed only by
+    # utterance id, so a rerun with a DIFFERENT NOISE_SEED would silently hit the `wp.exists()`
+    # short-circuit below and REUSE the previous realization's cached noisy wavs -- i.e. not a new
+    # noise draw at all. Key the snr5 cache dir by the noise seed so each noise realization
+    # materializes its own wavs. `clean` is noise-free and keeps its original directory name.
+    # The original (noise1, NOISE_SEED=20260712) run predates this suffix; its wavs remain in the
+    # unsuffixed `..._snr5_wavs` directory and are bit-identically regenerable from its seed.
+    ns_suffix = f"_ns{noise_seed}" if condition == "snr5" else ""
+    wav_dir = data_dir / "_repro" / f"asr_bon_v2_{split}_{condition}{ns_suffix}_wavs"
     wav_dir.mkdir(parents=True, exist_ok=True)
     paths = []
     for u in cohort:

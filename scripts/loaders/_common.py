@@ -270,11 +270,13 @@ def draw_disjoint(
 # ---------------------------------------------------------------------------------------------
 # 2026-07-11 group-split + cluster-bootstrap redesign (ticket #26, QUESTION-INDEPENDENT machinery
 # only -- design doc wiki/2026-07-11-group-split-statistics-design.md §2.2). Added BESIDE
-# ``draw_disjoint`` above (kept unchanged, for backward replay of the non-locked cells) --
-# ``draw_disjoint_grouped`` is NOT wired into any runner yet: no caller in this repo invokes it,
-# the locked-test-seed / access-controlled manifest machinery the design doc sketches (§2.1/§2.3,
-# ``locked_split.py``, ``_repro/LOCKED_HOLDOUT/``) does NOT exist, and no rerun has happened --
-# those are owner-gated steps (design doc §5's five open questions), not this ticket's scope.
+# ``draw_disjoint`` above (kept unchanged, for backward replay of the non-locked cells).
+# Status update (2026-07-11, ticket #26 implementation): ``draw_disjoint_grouped`` is now called
+# for real by ``scripts/baselines/locked_split.py`` (owner-approved defaults: LOCKED_TEST_SEED=
+# 611741209, qwen3-only rerun scope -- see that module) to generate the group-disjoint
+# LOCKED_HOLDOUT manifests. The actual GROUP-DISJOINT RERUN (regenerating scored cells against
+# those manifests) remains a separate, owner-gated step (design doc §5) -- this function's own
+# CALLERS have grown, but its algorithm/contract below is unchanged.
 # ---------------------------------------------------------------------------------------------
 
 def draw_disjoint_grouped(
@@ -322,9 +324,13 @@ def draw_disjoint_grouped(
         {"test_ids", "dev_ids": list[str], "test_groups", "dev_groups": list[str],
          "n_groups_total": int, "n_test", "n_dev": int (actual drawn counts),
          "group_disjoint_verified": bool, "shortfall": dict | None,
-         "oversized_group": str | None, "fallback_item_level": bool} -- the last key is True iff
-        EVERY item's ``group_key_fn`` returned None (a G-NONE dataset), i.e. every "group" is a
-        singleton and this call is equivalent to a plain item-level ``draw_disjoint``.
+         "oversized_group": str | None, "fallback_item_level": bool,
+         "degenerate_single_group": str | None} -- ``fallback_item_level`` is True iff EVERY
+        item's ``group_key_fn`` returned None (a G-NONE dataset) OR the real grouping was ONE
+        single group spanning the whole pool (2026-07-11 degenerate-single-group handling, see the
+        inline comment: a whole-pool group makes a group-disjoint split undefined -- dev would be
+        empty -- and is §1.4-equivalent to "no group finer than the whole dataset");
+        ``degenerate_single_group`` records which group forced that second case (else None).
     """
     import numpy as np
 
@@ -345,6 +351,21 @@ def draw_disjoint_grouped(
         groups.setdefault(gid, []).append(iid)
     group_ids = sorted(groups.keys())
     n_groups_total = len(group_ids)
+
+    # 2026-07-11 (ticket #26 manifest generation -- found empirically on the voiceassistant-* grid
+    # keys, whose per-category dataset keys make category1/category2 CONSTANT across the pool): if
+    # every item shares ONE group, a group-disjoint dev/test split is UNDEFINED -- the greedy fill
+    # would swallow the whole pool into test and leave dev EMPTY. A group at the whole-dataset
+    # grain carries zero splitting information, which is exactly design doc §1.4's "no group at
+    # any grain finer than the whole dataset" (G-NONE) definition -- so degrade to the same honest
+    # item-level singleton fallback (flagged via ``fallback_item_level`` in the return dict), while
+    # keeping the degenerate group id visible via ``degenerate_single_group`` AND reporting the
+    # REAL, pre-fallback ``n_groups_total`` (1), never the cosmetic post-fallback singleton count.
+    degenerate_single_group = group_ids[0] if any_real_group and n_groups_total == 1 else None
+    if degenerate_single_group is not None:
+        any_real_group = False
+        groups = {iid: [iid] for iid in group_of}
+        group_ids = sorted(groups.keys())
 
     def _greedy_fill(candidate_group_ids: list, target_n: int) -> tuple:
         """Whole-groups-only greedy fill: returns (chosen_group_ids, chosen_item_ids)."""
@@ -392,4 +413,8 @@ def draw_disjoint_grouped(
         "shortfall": shortfall,
         "oversized_group": oversized_group,
         "fallback_item_level": not any_real_group,
+        # 2026-07-11 (ticket #26): non-None iff the pool's REAL grouping was one single group
+        # covering every item (see the degenerate-single-group comment above) -- the fallback to
+        # item-level singletons was forced, and this records WHICH group was degenerate.
+        "degenerate_single_group": degenerate_single_group,
     }

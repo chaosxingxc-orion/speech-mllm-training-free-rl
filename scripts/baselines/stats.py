@@ -2,14 +2,17 @@
 (ticket #26, QUESTION-INDEPENDENT machinery only).
 
 Design doc: wiki/2026-07-11-group-split-statistics-design.md §3 (Task 3) — every function here
-implements one piece of that section, cited in its own docstring. Status: **NOT WIRED IN** —
-``run_baseline.run_one`` still calls its own ``paired_bootstrap`` (item-level i.i.d.) and
-``summarize_wave1.py`` is untouched; wiring either of those to this module is explicitly an
-owner-gated step (design doc §5, five open questions — rerun scope / coarse-SER / legacy-loader
-edits / access-control / locked-seed sign-off), not this ticket's scope. This module also
-deliberately does NOT import or reference the design doc's proposed ``LOCKED_TEST_SEED`` /
-``locked_split.py`` — no locked-holdout machinery exists yet; every default seed below is a plain,
-caller-overridable ``0``.
+implements one piece of that section, cited in its own docstring. Status (2026-07-11 update,
+ticket #26 implementation): ``run_baseline.run_one`` still calls its own item-level
+``paired_bootstrap`` for the single-arm aggregate block (unchanged — that's the per-cell CI every
+existing wave-1/2 consumer expects); this module is now wired into
+``scripts/baselines/summarize_locked.py`` (a NEW v2 summarizer, alongside the untouched
+``summarize_wave1.py``) for the paired qwen3-vs-meralion cluster-bootstrap Δ + Holm-within-family
+view, and into ``scripts/baselines/locked_split.py`` (which calls ``_common.draw_disjoint_grouped``,
+not this module directly, but shares its design-doc lineage). Every default seed below stays a
+plain, caller-overridable ``0`` — ``locked_split.py`` owns the actual ``LOCKED_TEST_SEED`` constant
+and passes its own seed explicitly to any of these functions it calls; this module itself still
+does not hardcode or import that constant.
 
 Pure numpy, no scipy/statsmodels (preserves the lazy-import + dependency-light discipline,
 CLAUDE.md) — every heavy import (``numpy``) stays inside the function body, not at module top.
@@ -170,20 +173,28 @@ def paired_cluster_delta_ci(scores_a: Sequence, scores_b: Sequence, groups: Sequ
     scored ``None``).
 
     Returns:
-        {"delta_ci": [lo, hi] | None, "delta_mean": float | None, "n_clusters": int,
-         "n_items": int, "bootstrap_unit": "cluster" | "item", "caveat": str | None}
+        {"delta_ci": [lo, hi] | None, "delta_mean": float | None, "pvalue": float | None,
+         "n_clusters": int, "n_items": int, "bootstrap_unit": "cluster" | "item",
+         "caveat": str | None}
+
+    ``pvalue`` (added 2026-07-11, ticket #26 summarizer wiring -- design doc §3.2's "compute a
+    per-comparison bootstrap p-value" input) is ``bootstrap_pvalue(deltas)`` over this SAME call's
+    resample replicates -- exposed here so a caller building a family of comparisons for
+    ``holm_bonferroni`` doesn't need to reach into the private ``_paired_cluster_bootstrap_deltas``
+    itself; purely additive, does not change any existing key's meaning.
     """
     import numpy as np
 
     deltas, point, n_clusters, n_items, unit = _paired_cluster_bootstrap_deltas(
         scores_a, scores_b, groups, nboot, seed)
     if point is None:
-        return {"delta_ci": None, "delta_mean": None, "n_clusters": 0, "n_items": 0,
+        return {"delta_ci": None, "delta_mean": None, "pvalue": None, "n_clusters": 0, "n_items": 0,
                 "bootstrap_unit": "cluster", "caveat": "no paired-scored items"}
     lo, hi = np.quantile(deltas, [alpha / 2, 1 - alpha / 2])
     caveat = None if unit == "cluster" else _FALLBACK_CAVEAT
     return {"delta_ci": [round(float(lo), 4), round(float(hi), 4)],
-            "delta_mean": round(point, 4), "n_clusters": n_clusters, "n_items": n_items,
+            "delta_mean": round(point, 4), "pvalue": bootstrap_pvalue(deltas),
+            "n_clusters": n_clusters, "n_items": n_items,
             "bootstrap_unit": unit, "caveat": caveat}
 
 

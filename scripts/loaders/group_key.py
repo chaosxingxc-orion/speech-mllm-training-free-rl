@@ -3,20 +3,24 @@ QUESTION-INDEPENDENT machinery only).
 
 Design doc: wiki/2026-07-11-group-split-statistics-design.md §1.3 (per-dataset inventory) + §2.5
 (dispatch sketch). This is the single place the design's G-FIELD/G-ID classifications become code.
-Status: **NOT WIRED IN** — nothing calls this yet except ``_common.draw_disjoint_grouped`` (also
-new, also unwired) and ``run_baseline._run_item`` (persists ``group_id`` per_item, for future
-analyses — the actual group-disjoint REDRAW/rerun is owner-gated, design doc §5).
+Status (2026-07-11 update, ticket #26 implementation): ``_common.draw_disjoint_grouped`` and
+``locked_split.py`` now call this for real (the group-disjoint LOCKED_HOLDOUT manifest
+generation); ``run_baseline._run_item`` also persists ``group_id`` per_item. The owner-gated
+GROUP-DISJOINT RERUN itself (actually regenerating scored cells) is still a separate step
+(design doc §5) from manifest generation.
 
 Contract: ``group_key_of(dataset_key, item) -> str | None``.
   - ``item`` is a loader ``Row`` (``{"wav", "gold", "meta"}``, see scripts/loaders/README.md) — a
     REAL loaded row, or a synthetic test double shaped the same way (only ``gold``/``meta`` are
     ever read; ``wav`` is never touched).
   - Returns a group id (str) for every G-FIELD / G-ID dataset in the design doc's inventory
-    (~30 keys, §4.1: "covered with zero loader edits").
-  - Returns ``None`` for G-SOURCE datasets (the grouping field exists in the raw corpus but no
-    current loader exposes it) — each such branch below carries a TODO comment naming the EXACT
-    loader meta-field addition that would resolve it (owner question, design doc §5 q3; loaders
-    are NOT edited by this ticket).
+    (~30 keys, §4.1: "covered with zero loader edits") PLUS the 4 formerly-G-SOURCE dataset
+    families whose loader meta-field addition landed this session (speech-massive ``-attr``'s
+    speaker_id, the 3 air-bench-foundation ``*_AQA`` tasks' clip_id, audio2tool's query_idx,
+    mmau-mini's audio_id — see each branch below).
+  - Returns ``None`` for the STILL-unresolved G-SOURCE datasets (``G_SOURCE_DATASETS`` below —
+    the grouping field either doesn't exist in this corpus mirror, or is too coarse to use; see
+    the legacy branch's comment for the per-key evidence).
   - Returns ``None`` for G-NONE datasets (no grouping unit exists at any grain finer than the
     whole dataset — design doc §1.4) and for anything not explicitly classified below.
 
@@ -63,15 +67,16 @@ G_NONE_DATASETS = frozenset({
     "air-bench-foundation-speech-grounding",  # env-blocked, never produced a real cell
 })
 
-# ---- G-SOURCE datasets (design doc §1.3/§4.1): field exists upstream, no loader exposes it yet.
-# Listed for documentation/test purposes; the actual None-returning branches (with their per-field
-# TODOs) live in group_key_of below, kept close to the code they'd eventually replace.
+# ---- G-SOURCE datasets that remain UNRESOLVED (design doc §1.3/§4.1): the grouping field either
+# does not exist in this corpus mirror, or exists but is too coarse to use under
+# ``draw_disjoint_grouped``'s whole-group-never-split rule (design doc §2.2 step 5's
+# "oversized_group" case) -- see group_key_of's legacy branch below and p2_baselines.py's LOADERS
+# comment for the per-key evidence. 2026-07-11 (ticket #26): six of the original thirteen G-SOURCE
+# keys moved OUT of this set into real dispatch below once their loader meta-field landed
+# (speech-massive-*-attr's speaker_id, the 3 air-bench-foundation *_AQA tasks' clip_id,
+# audio2tool's query_idx, mmau-mini's audio_id) -- this set is now exactly what's left unresolved.
 G_SOURCE_DATASETS = frozenset({
-    "speech-massive-de-DE-attr", "speech-massive-fr-FR-attr",
-    "air-bench-foundation-sound-aqa-avqa", "air-bench-foundation-sound-aqa-clothoaqa",
-    "air-bench-foundation-music-aqa",
-    "audio2tool",
-    "SQuAD-zh", "spoken-squad", "mmau-mini", "OpenbookQA-zh", "vocalbench-zh",
+    "SQuAD-zh", "spoken-squad", "OpenbookQA-zh", "vocalbench-zh",
     "big-bench-audio", "minds14-zh",
 })
 
@@ -124,11 +129,10 @@ def group_key_of(dataset_key: str, item: dict) -> str | None:
         # K5 speaker-ATTRIBUTE probe: the label IS speaker_sex/speaker_age, so the split MUST be
         # speaker-disjoint, never scenario-disjoint (scenario grouping would still let the SAME
         # speaker's sex/age answer appear on both dev and test, via a different scenario/utterance
-        # from the same speaker) -- design doc §1.3 K5 row. speech_massive.py's _COLUMNS does not
-        # expose speaker_id today (see §4.1 table: "speech_massive.py | speaker_id (add to
-        # _COLUMNS + meta) | ... enables speaker grouping"). TODO once that loader edit lands:
-        # `return meta.get("speaker_id")`. Until then: None (honest item-level fallback).
-        return None
+        # from the same speaker) -- design doc §1.3 K5 row. 2026-07-11 (ticket #26): resolved --
+        # speech_massive.py's _COLUMNS now exposes speaker_id (design doc §4.1 table's loader
+        # edit landed), so this is real speaker-disjoint grouping, not a guess.
+        return meta.get("speaker_id")
     if dataset_key.startswith("speech-massive"):
         # K6/K7 (intent/slot) scenario grouping -- already resolvable without a loader edit (design
         # doc §4.1: "scenario grouping already works without this [speaker_id add]").
@@ -146,27 +150,42 @@ def group_key_of(dataset_key: str, item: dict) -> str | None:
         ids = meta.get("instruction_id_list")
         return _stable_hash(",".join(sorted(ids))) if ids else None
 
-    # ---- G-SOURCE: field exists upstream, no current loader exposes it -- explicit TODOs below,
-    # never a guessed/derived value. See G_SOURCE_DATASETS above for the full list. ----
+    # ---- resolved G-SOURCE (2026-07-11, ticket #26): loader meta-field additions landed this
+    # session -- real dispatch, no longer a TODO. ----
     if dataset_key in ("air-bench-foundation-sound-aqa-avqa", "air-bench-foundation-sound-aqa-clothoaqa",
                        "air-bench-foundation-music-aqa"):
-        # TODO: air_bench_foundation.py needs meta["clip_id"] = Path(row["path"]).stem (design doc
-        # §4.1 table) -- these 3 AQA tasks have multiple QA pairs sharing one audio clip. The other
-        # air-bench-foundation-* CLASSIFICATION subsets need no such fix (clip == item already, see
-        # G_NONE_DATASETS above).
-        return None
+        # air_bench_foundation.py now sets meta["clip_id"] = Path(row["path"]).stem (design doc
+        # §4.1 table, landed) -- these 3 AQA tasks have multiple QA pairs sharing one audio clip.
+        # The other air-bench-foundation-* CLASSIFICATION subsets need no such fix (clip == item
+        # already, see G_NONE_DATASETS above); they also get clip_id populated but it's a no-op
+        # there since it always equals a singleton.
+        return meta.get("clip_id")
     if dataset_key == "audio2tool":
-        # TODO: audio2tool.py needs meta["query_idx"] (the source jsonl has it; the loader today
-        # exposes only tool_name/domain/functions/instruction/query_text) -- one query rendered by
-        # MANY speakers shares a query_idx (design doc §1.3 K10 row / §4.1 table).
-        return None
-    if dataset_key in ("SQuAD-zh", "spoken-squad", "mmau-mini", "OpenbookQA-zh", "vocalbench-zh",
+        # audio2tool.py now sets meta["query_idx"] (design doc §1.3 K10 row / §4.1 table, landed)
+        # -- one query rendered by MANY speakers shares a query_idx. Stringified for a stable
+        # group-id type (source jsonl's query_idx is an int).
+        qi = meta.get("query_idx")
+        return str(qi) if qi is not None else None
+    if dataset_key == "mmau-mini":
+        # scripts/p2_baselines.py's load_mmau now sets it["group_key"] = the upstream MMAU
+        # audio_id (design doc §4.1 table, landed) -- carried through run_baseline._legacy_rows
+        # into meta["group_key"]. On the CURRENT test_mini mirror this is empirically 1:1 with
+        # items (no clip is shared by >1 question here -- verified this session), so this
+        # currently degenerates to item-level in practice, same as the air-bench classification
+        # "clip == item" case -- but it's a REAL field, not a guess, and future-proofs a fuller
+        # MMAU pool where clips do repeat.
+        return meta.get("group_key")
+    if dataset_key in ("SQuAD-zh", "spoken-squad", "OpenbookQA-zh", "vocalbench-zh",
                        "big-bench-audio", "minds14-zh"):
-        # TODO: these 7 are scripts/p2_baselines.py-native LEGACY_DATASETS (positional item_ids --
-        # run_baseline._legacy_rows synthesizes "{dataset_key}#{i}") -- none expose a source-family
-        # id (SQuAD `title`, mmau `audio_id`, OpenBookQA `fact`, BBA `scenario`, minds14 speaker) in
-        # meta/gold today (design doc §1.3 last K8 row / §4.1 table: "p2_baselines.py (legacy) |
-        # source-family id | ... legacy loaders, larger edit").
+        # These 6 remaining scripts/p2_baselines.py-native LEGACY_DATASETS (positional item_ids --
+        # run_baseline._legacy_rows synthesizes "{dataset_key}#{i}") were checked against the
+        # on-disk schema this session (ticket #26) and deliberately left G-NONE -- see
+        # p2_baselines.py's LOADERS comment for the per-key evidence (either no source-family
+        # field exists in this corpus mirror at all, e.g. SQuAD-zh/OpenbookQA-zh/spoken-squad/
+        # minds14-zh, or the only available field -- big-bench-audio's "category", vocalbench-zh's
+        # "Source" -- is too coarse [~4 values, up to hundreds of rows each] to use under
+        # draw_disjoint_grouped's whole-group-never-split rule without blowing the 60/40 split-size
+        # convention). Honest item-level fallback, not an oversight.
         return None
 
     # ---- G-NONE (design doc §1.4) + anything not explicitly classified above: no group exists at

@@ -70,7 +70,8 @@ def load_audio2tool(
 
     Row shape: ``wav`` = path under ``public/<tier>_.../query_XXXXX/`` (resolved absolute);
     ``gold`` = ``{"expected_tool_call", "extracted_params", "additional_tool_calls"}``;
-    ``meta`` = ``{"dataset", "item_id", "split", "tier", "tool_name", "domain", "functions"}``.
+    ``meta`` = ``{"dataset", "item_id", "split", "tier", "tool_name", "domain", "functions",
+    "query_idx"}`` (the last added 2026-07-11, ticket #26 -- grouping/provenance only).
     """
     import json
 
@@ -101,6 +102,11 @@ def load_audio2tool(
                 "tool_name": it.get("tool_name"), "domain": it.get("domain"),
                 "functions": it.get("functions"), "instruction": it.get("instruction"),
                 "query_text": it.get("query"),
+                # 2026-07-11 (ticket #26, group-split design doc §1.3/§4.1 K10 row): one query
+                # (query_idx) is rendered by MANY speakers -- grouping/provenance only, never a
+                # task label. Source jsonl already carries this per item (see module docstring's
+                # item schema); previously not surfaced into meta at all.
+                "query_idx": it.get("query_idx"),
             },
         })
 
