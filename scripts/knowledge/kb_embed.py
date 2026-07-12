@@ -614,6 +614,57 @@ def _omni_embed_document_text(texts, device: str = "cpu"):
     return f"omni-embed-nemotron:{OMNI_EMBED_DIRNAME}", _l2(np.asarray(embs, dtype="float32"))
 
 
+def _omni_embed_query_audio(wav_paths, device: str = "cpu"):
+    """omni-embed QUERY-side embedder, AUDIO input (2026-07-13, kb_retrieve cross-modal routing
+    fix -- M1 engineering-base item 2). The SAME ``encode_query`` tower ``_omni_embed_query`` uses
+    for TEXT queries, fed ``{"audio": ...}`` dicts instead: the model's official multimodal input
+    contract accepts audio/text/video dicts on ``encode_document`` (already exercised both ways —
+    see ``_omni_embed``/``_omni_embed_document_text``); per that same API's documented symmetry,
+    ``encode_query`` accepts the identical dict shapes. This lets an AUDIO query land in the exact
+    query-tower space a TEXT-keyed source built via ``_omni_embed_document_text`` (registry token
+    ``omni-embed-nemotron``) was persisted against — the cross-modal bridge
+    ``kb_retrieve.retrieve_cross_modal_audio`` needs.
+
+    NOT independently verified live this session (loading + running the ~4.7B model is a
+    multi-minute CPU cold start — see ``scripts/knowledge/README.md``); if the installed
+    checkpoint's ``encode_query`` rejects a raw ``{"audio": ...}`` dict, this raises the underlying
+    error directly rather than masking it — treat as an open verification item (documented in
+    ``kb_retrieve.CROSS_MODAL_AUDIO_QUERY_STATUS``'s docstring), not a silent guess.
+    """
+    import numpy as np
+
+    m = _omni_model(device)
+    docs = [{"audio": p} for p in wav_paths]
+    embs = m.encode_query(docs, convert_to_numpy=True, normalize_embeddings=True)
+    return f"omni-embed-nemotron:{OMNI_EMBED_DIRNAME}", _l2(np.asarray(embs, dtype="float32"))
+
+
+def embed_query_crossmodal_audio(wav_paths, embedder: str, device: str = "cpu"):
+    """AUDIO query embedded into a TEXT-keyed source's key space (2026-07-13, kb_retrieve
+    cross-modal routing fix — M1 engineering-base item 2). The mirror-image of ``embed_text``'s
+    existing cross-modal bridge (``embed_text(embedder='omni-embed')``: TEXT query -> AUDIO-keyed
+    KB) but for the OTHER direction: AUDIO query -> TEXT-keyed KB (the gap
+    ``kb_retrieve.py``'s 2026-07-12 docstring flagged as a known follow-up).
+
+    Only the embedders ``kb_retrieve.CROSS_MODAL_AUDIO_QUERY_STATUS`` marks ``"supported"`` are
+    dispatchable here — callers should consult that table (via
+    ``kb_retrieve.retrieve_cross_modal_audio``, which does) rather than call this directly with an
+    arbitrary token. Returns ``(name, matrix)`` — same shape as ``embed_audio``/``embed_text``.
+    """
+    if embedder == "glap":
+        # GLAP is a JOINT audio-text space (like CLAP) -- _glap_embed (audio) and _glap_embed_text
+        # already land in the SAME 1024-d cosine space (see _glap_embed_text's docstring), so the
+        # plain AUDIO-key embedder IS the cross-modal query embedder here, unchanged.
+        return _glap_embed(list(wav_paths), device=device)
+    if embedder == "omni-embed-nemotron":
+        return _omni_embed_query_audio(wav_paths, device=device)
+    raise ValueError(
+        f"kb_embed.embed_query_crossmodal_audio: {embedder!r} has no audio-query-into-text-key "
+        "bridge wired (expected 'glap' or 'omni-embed-nemotron') -- see "
+        "kb_retrieve.CROSS_MODAL_AUDIO_QUERY_STATUS for the full per-embedder status."
+    )
+
+
 def _glap_embed_text(texts, source_lang: str = "eng_Latn", device: str = "cpu"):
     """GLAP's native ``encode_text`` — GLAP (mispeech/GLAP) is a JOINT audio-text model (like CLAP),
     not audio-only: its ``GlapModel.encode_text(text, source_lang=...)`` (see

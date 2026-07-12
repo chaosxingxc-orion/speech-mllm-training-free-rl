@@ -684,6 +684,247 @@ def build_one(embedder: str, dataset_loader_key: str, pool_split: str, value_spe
     )
 
 
+# ---------------------------------------------------------------------------------------------
+# pseudo-question key synthesis (2026-07-13, M1 engineering-base item 3; owner directive 续21-A①
+# "生成桥接匹配几何": doc2query-style offline key synthesis + query-time HyDE, S1 split into S1a
+# same-distribution frozen matching / S1b generation-bridge-vs-trained-retriever). ``key_form=
+# 'pseudo-question'``: for each evidence VALUE, generate k pseudo-questions a user might ask to
+# retrieve it (doc2query), embed EACH question as its OWN key row pointing back at the SAME value
+# (q2q matching geometry -- many keys, one value) -- as opposed to ``key_form='direct'``
+# (``build_one``'s existing behavior: one audio-embedding key per row).
+#
+# **Black-box contract** (Decision-Log 续18, 2026-07-12: "系统接口契约唯一 = 音频/文本进、文本出、
+# 多次采样" -- no white-box hook): pseudo-question generation is a plain TEXT-IN/TEXT-OUT call
+# against the frozen core's resident llama-server (``run_baseline.BACKBONES``), reusing that
+# module's server/env resolution but NOT its audio-attaching ``gen_llamacpp`` (there is no audio
+# here -- the model is asked to read a TEXT passage and write TEXT questions).
+# ---------------------------------------------------------------------------------------------
+
+KEY_FORMS = ("direct", "pseudo-question")
+
+PSEUDO_QUESTION_K_DEFAULT = 3
+# Brand-new, never-reused-elsewhere seed constant for this generation path (mirrors this repo's
+# date-coded seed convention -- SLICE_SEED=20260705, NOISE_SEED=20260712, ... -- distinct from all
+# of them so a pseudo-question build can never be confused with an unrelated draw).
+PSEUDO_QUESTION_SEED_DEFAULT = 20260713
+
+PSEUDO_QUESTION_PROMPT_TEMPLATE = (
+    "You are generating short SEARCH QUERIES a user might type to find the passage below. Read "
+    "the passage, then output exactly {k} distinct, concise questions (one per line, no numbering "
+    "or bullets) that this passage directly answers. Do not answer the questions, only write them.\n\n"
+    "Passage:\n{passage}\n\nQuestions:"
+)
+
+
+def _parse_pseudo_questions(raw_text: str, k: int) -> list[str]:
+    """Best-effort parse of the model's raw generation into <=k question strings: split on
+    newlines, strip common enumeration prefixes ("1.", "-", "*", "Q:"), drop empties, dedupe
+    (order-preserving), truncate to k. Never pads/fabricates a short output -- if the model
+    returns fewer than k parseable lines, that shortfall is recorded (n_generated < k), never
+    silently backfilled with duplicates."""
+    import re
+
+    out, seen = [], set()
+    for line in raw_text.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        line = re.sub(r"^\s*(?:[-*•]|\d+[.):]|Q\d*[:.])\s*", "", line).strip()
+        if not line or line in seen:
+            continue
+        seen.add(line)
+        out.append(line)
+        if len(out) >= k:
+            break
+    return out
+
+
+def _llama_server_generate_text(base_url: str, prompt: str, seed: int, temperature: float = 0.7,
+                                  max_tokens: int = 200, timeout: int = 300) -> str:
+    """Plain TEXT-IN/TEXT-OUT call against a resident llama-server's OpenAI-compatible
+    ``/v1/chat/completions`` endpoint -- the SAME endpoint ``run_baseline.gen_llamacpp`` posts to,
+    minus the ``input_audio`` content block (there is no audio for a doc2query generation call).
+    """
+    import json as _json
+    import urllib.request
+
+    payload = {"messages": [{"role": "user", "content": prompt}],
+               "max_tokens": max_tokens, "seed": seed, "temperature": temperature}
+    req = urllib.request.Request(base_url + "/v1/chat/completions", data=_json.dumps(payload).encode(),
+                                  headers={"Content-Type": "application/json"})
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return _json.loads(r.read().decode())["choices"][0]["message"]["content"].strip()
+
+
+def _default_generate_fn(backbone: str):
+    """The REAL generate callable: resolves ``backbone``'s resident llama-server URL via
+    ``run_baseline.BACKBONES`` (never hardcodes a port) and posts through
+    ``_llama_server_generate_text``. Lazy -- only imported/invoked when pseudo-question synthesis
+    actually runs for real (never at module import time, and never by the fake-model test, which
+    injects its own ``generate_fn``)."""
+    def _gen(prompt: str, seed: int, temperature: float = 0.7, max_tokens: int = 200) -> str:
+        import run_baseline as rb  # scripts/baselines/run_baseline.py
+
+        cfg = rb.BACKBONES[backbone]
+        base_url = os.environ.get(cfg["server_env"], cfg["default_url"])
+        return _llama_server_generate_text(base_url, prompt, seed, temperature, max_tokens)
+    return _gen
+
+
+def synthesize_pseudo_question_keys(
+    evidence_records: list[dict], k: int = PSEUDO_QUESTION_K_DEFAULT,
+    backbone: str = "qwen3-omni-30b-gguf", seed: int = PSEUDO_QUESTION_SEED_DEFAULT,
+    generate_fn=None, temperature: float = 0.7,
+) -> tuple[list[dict], dict]:
+    """For each ``{"value": <evidence text>, "from_item_id": ...}`` in ``evidence_records``,
+    generate up to ``k`` pseudo-questions via ``generate_fn`` (defaults to the real
+    ``_default_generate_fn(backbone)`` -- a fake/test caller injects its own ``generate_fn(prompt,
+    seed, temperature=..., max_tokens=...) -> str`` instead, the ONE seam this function depends on,
+    matching the black-box text-in/text-out contract exactly so a fake stands in for the real
+    server with zero other code path differences).
+
+    Per-value generation seed = ``seed + value_index`` (deterministic, distinct per value, no two
+    values share a generation call). Returns ``(pseudo_question_records, provenance)`` where the
+    first element is a flat list of ``{"key_text": <question>, "value": <SAME evidence value>,
+    "from_item_id": f"{parent_id}|pq{i}"}`` rows ready for ``kb_build.build_source(key_modality=
+    'text', ...)``, and ``provenance`` carries the exact prompt template, k, backbone, seed, and
+    (2026-07-13) the per-value generated question TEXTS themselves -- everything a manifest note
+    needs to make this build's generation step fully auditable.
+    """
+    gen = generate_fn or _default_generate_fn(backbone)
+    out: list[dict] = []
+    per_value_questions: list[dict] = []
+    for vi, rec in enumerate(evidence_records):
+        value_text = rec["value"]
+        parent_id = rec.get("from_item_id")
+        value_seed = seed + vi
+        prompt = PSEUDO_QUESTION_PROMPT_TEMPLATE.format(k=k, passage=value_text)
+        raw = gen(prompt, value_seed, temperature=temperature)
+        questions = _parse_pseudo_questions(raw, k)
+        per_value_questions.append({
+            "from_item_id": parent_id, "generation_seed": value_seed,
+            "n_generated": len(questions), "questions": questions,
+        })
+        for qi, q in enumerate(questions):
+            out.append({
+                "key_text": q,
+                "value": value_text,
+                "from_item_id": f"{parent_id}|pq{qi}",
+            })
+    provenance = {
+        "k_requested": k, "backbone": backbone, "seed_base": seed, "temperature": temperature,
+        "prompt_template": PSEUDO_QUESTION_PROMPT_TEMPLATE,
+        "generation_contract": ("black-box text-in/text-out (Decision-Log 续18) -- offline, "
+                                 "build-time only; per-value seed = seed_base + value_index"),
+        "n_values": len(evidence_records), "n_synthesized_keys": len(out),
+        "per_value_questions": per_value_questions,
+    }
+    return out, provenance
+
+
+def build_pseudo_question_source(
+    dataset_loader_key: str, text_embedder: str = "auto", pool_split: str = "dev",
+    value_spec: str = "text", k: int = PSEUDO_QUESTION_K_DEFAULT,
+    backbone: str = "qwen3-omni-30b-gguf", seed: int = PSEUDO_QUESTION_SEED_DEFAULT,
+    n: int | None = None, generate_fn=None, note: str = "",
+    eval_manifest: list[str] | None = None, supersede: bool = False,
+) -> dict:
+    """``key_form='pseudo-question'`` build: loader rows -> evidence VALUES (reusing
+    ``_extract_value``/``_gold_string``, same as ``build_one``) -> ``synthesize_pseudo_question_
+    keys`` -> TEXT-embed each synthesized question (``text_embedder``, default ``'auto'`` = cheap
+    CPU MiniLM/TF-IDF -- pseudo-question keys are TEXT, so this never needs a heavy audio
+    embedder) -> ``kb_build.build_source(key_modality='text', ...)``, gated by the SAME CLEAN
+    leakage-verdict enforcement every other ``kb_build`` caller goes through.
+
+    Source name: ``f"{dataset_loader_key}__{text_embedder}__pseudo-question-k{k}__{value_type}"``
+    -- deliberately NOT one of ``build_one``'s 4-field ``(dataset, embedder, key_org, value_org)``
+    names (``"pseudo-question-k{k}"`` is not a ``KEY_ORGS`` token), so it can never collide with an
+    existing ``build_one`` source. This is a NEW, additive capability (this build function, plus
+    ``KEY_FORMS`` for documentation) -- it does NOT touch ``KEY_ORGS``/``VALUE_ORGS`` or
+    ``run_mock.py``'s Phase-A grid; wiring a pseudo-question arm into that grid is a separate,
+    owner-gated follow-up, not attempted here (task brief: "no bulk builds yet").
+
+    Provenance (task brief: "generation prompt + seeds in manifest"): the manifest's
+    ``created_note`` embeds the exact prompt template, ``k``, ``backbone``, ``seed_base``, and a
+    per-value log of {from_item_id, generation_seed, n_generated, questions} -- everything needed
+    to audit exactly what was generated and with which seed, without re-running the generation.
+    ``content_hash`` (kb_schema, RI item 8) already covers the synthesized keys' VALUES bytes as
+    persisted in ``values.jsonl`` (each pseudo-question row's ``value`` = the parent evidence
+    text) and, per this task's schema addition, each row's raw key TEXT itself
+    (``KnowledgeValue.key_text_ref`` — see ``kb_schema.py``), so the synthesized keys are covered
+    by the SAME content-addressed fingerprint every other source gets, not a bespoke one.
+    """
+    import kb_build
+    import kb_embed
+
+    if not kb_embed.can_embed_text(text_embedder):
+        raise ValueError(
+            f"kb_batch_build.build_pseudo_question_source: text_embedder={text_embedder!r} has no "
+            f"text-embedding path wired (kb_embed.can_embed_text) -- pseudo-question KEYS are text, "
+            "so this must be one of kb_embed.TEXT_KEY_CAPABLE."
+        )
+    registry = _registry()
+    if dataset_loader_key not in registry.LOADERS:
+        raise KeyError(
+            f"kb_batch_build.build_pseudo_question_source: {dataset_loader_key!r} not in "
+            f"registry.LOADERS ({len(registry.LOADERS)} registered)."
+        )
+
+    rows = registry.LOADERS[dataset_loader_key](split=pool_split, n=n, seed=seed)
+    evidence_records = []
+    audit_golds = []
+    for r in rows:
+        evidence_records.append({
+            "value": _extract_value(r, value_spec),
+            "from_item_id": r.get("meta", {}).get("item_id"),
+        })
+        audit_golds.append(_gold_string(r.get("gold")))
+    # audit_golds is per EVIDENCE row above; the actual persisted records (one per synthesized
+    # question, k-per-evidence-row) repeat each evidence row's gold k times below so the audit
+    # checks every persisted VALUE against its own row's gold, not a length-mismatched list.
+    pq_records, generation_provenance = synthesize_pseudo_question_keys(
+        evidence_records, k=k, backbone=backbone, seed=seed, generate_fn=generate_fn,
+    )
+    n_by_evidence_idx = [pq["n_generated"] for pq in generation_provenance["per_value_questions"]]
+    pq_audit_golds = [g for g, n_gen in zip(audit_golds, n_by_evidence_idx) for _ in range(n_gen)]
+
+    if eval_manifest is not None:
+        source_ids = {rec["from_item_id"] for rec in evidence_records if rec["from_item_id"] is not None}
+        overlap = source_ids & set(eval_manifest)
+        if overlap:
+            raise ValueError(
+                f"kb_batch_build.build_pseudo_question_source: {len(overlap)} item id(s) appear in "
+                f"BOTH the KB build pool and eval_manifest (first few: {sorted(overlap)[:5]}) -- "
+                "refusing to build a source that could hand a retrieval-time model its own eval "
+                "item back as 'knowledge'."
+            )
+
+    from kb_schema import VALUE_TYPES
+
+    value_type = value_spec if value_spec in VALUE_TYPES else "text-fact"
+    source = f"{dataset_loader_key}__{text_embedder}__pseudo-question-k{k}__{value_type}"
+    note_full = note or (
+        f"kb_batch_build.build_pseudo_question_source (续21-A① q2q keys, M1 item 3, 2026-07-13): "
+        f"{dataset_loader_key}/{pool_split} -- {generation_provenance['n_values']} evidence values "
+        f"x k={k} pseudo-questions/value (frozen core={backbone!r}, black-box generate mode, "
+        f"seed_base={seed}) = {generation_provenance['n_synthesized_keys']} synthesized q2q keys. "
+        f"prompt_template={PSEUDO_QUESTION_PROMPT_TEMPLATE!r}. "
+        f"per_value_questions={json.dumps(generation_provenance['per_value_questions'], ensure_ascii=False)}"
+    )
+    manifest = kb_build.build_source(
+        source, dataset_loader_key, revision=None, records=pq_records,
+        key_modality="text", value_type=value_type, embedder=text_embedder,
+        audit_golds=pq_audit_golds, scrub=True, pool_split=pool_split, supersede=supersede,
+        note=note_full,
+    )
+    return {
+        "status": "built", "manifest": manifest,
+        "n_evidence_values": generation_provenance["n_values"],
+        "n_synthesized_keys": generation_provenance["n_synthesized_keys"],
+        "generation_provenance": generation_provenance,
+    }
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--plan", action="store_true", help="print the build matrix; build nothing")
@@ -697,6 +938,12 @@ def main() -> int:
     ap.add_argument("--value-org", default="knowledge-passage", choices=VALUE_ORGS)
     ap.add_argument("--n", type=int, default=None)
     ap.add_argument("--seed", type=int, default=20260705)
+    ap.add_argument("--key-form", default="direct", choices=KEY_FORMS,
+                    help="'pseudo-question' builds via build_pseudo_question_source instead of "
+                         "build_one -- --embedder is then read as the TEXT embedder for the "
+                         "synthesized question keys, and --key-org/--value-org are ignored")
+    ap.add_argument("--pq-k", type=int, default=PSEUDO_QUESTION_K_DEFAULT)
+    ap.add_argument("--pq-backbone", default="qwen3-omni-30b-gguf")
     args = ap.parse_args()
 
     if args.plan or not (args.embedder and args.dataset):
@@ -704,6 +951,15 @@ def main() -> int:
         if args.squtr_preview:
             print("\n=== squtr mini-corpus preview (PLAN ONLY -- nothing built) ===")
             print(json.dumps(plan_squtr_mini_corpus(), indent=2, ensure_ascii=False))
+        return 0
+
+    if args.key_form == "pseudo-question":
+        result = build_pseudo_question_source(
+            args.dataset, text_embedder=args.embedder, pool_split=args.split,
+            value_spec=args.value_spec, k=args.pq_k, backbone=args.pq_backbone,
+            seed=args.seed, n=args.n,
+        )
+        print(json.dumps(result, indent=2, ensure_ascii=False))
         return 0
 
     manifest = build_one(args.embedder, args.dataset, args.split, args.value_spec,

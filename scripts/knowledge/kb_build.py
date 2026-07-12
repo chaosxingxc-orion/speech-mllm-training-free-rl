@@ -259,6 +259,7 @@ def build_source(
                 value_type=value_type,
                 value=val,
                 key_audio_ref=kref if key_modality == "audio" else None,
+                key_text_ref=kref if key_modality == "text" else None,
                 provenance={
                     "dataset": dataset,
                     "revision": revision,

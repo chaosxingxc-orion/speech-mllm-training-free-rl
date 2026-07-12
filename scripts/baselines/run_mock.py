@@ -650,16 +650,6 @@ def apply_retrieval_kind(hits: list[dict], rcfg: RetrievalConfig, *, source_obj:
 # backbone).
 # ---------------------------------------------------------------------------------------------
 
-_GRAIN_MARKERS = {
-    "transcript": "[content]", "translation": "[content]", "labels": "[label]",
-    "intent": "[intent]", "answer": "[answer]", "text-fact": "[fact]", "other-modal": "[ref]",
-}
-
-
-def _grain_marker(value_type: str | None) -> str:
-    return _GRAIN_MARKERS.get(value_type or "", "[ref]")
-
-
 def _apply_relevance_edge_reorder(hits: list[dict]) -> list[dict]:
     """Deterministic, FIXED reordering rule (lost-in-the-middle mitigation): interleave
     sim-descending hits so the two strongest sit at the delivered list's two EDGES and the
@@ -685,15 +675,23 @@ def _flat_prompt(passages: list[str], base_instruction: str) -> str:
     return f"Reference material (retrieved, may or may not be relevant):\n{block}\n\n{base_instruction}"
 
 
-def _structured_ref_prompt(passages: list[str], grains: list[str], base_instruction: str) -> str:
-    if not passages:
-        return base_instruction
-    lines = [f"{_grain_marker(g)} {p}" for g, p in zip(grains, passages)]
-    block = "\n".join(lines)
-    return (
-        "Reference material (retrieved, structured by grain; may or may not be relevant):\n"
-        f"{block}\n\n{base_instruction}"
-    )
+def _structured_ref_prompt(hits: list[dict], base_instruction: str) -> str:
+    """delivery='structured-ref': renders via ``knowledge_card.render_cards_block`` (2026-07-13,
+    M1 engineering-base item 5 -- owner ruling 续21-A③, "使用段收敛为规范": ONE versioned
+    knowledge-card schema, not an ad hoc per-mode format). Replaces the old bare
+    ``"[grain] passage text"`` line format (no provenance, no relevance signal, no usage
+    directive) with a schema-versioned card per hit: content + source-tag (source/key_modality/
+    value_type/grain) + relevance-signal (sim + rank + a FIXED similarity band) + a FIXED (never
+    adaptive) usage-directive derived from that band -- see ``knowledge_card.py``'s module
+    docstring for the full field contract. ``hits`` is the ALREADY-ORDERED (post relevance-edge-
+    reorder if applicable) list ``render_delivery`` computes -- this function does not re-sort.
+    """
+    knowledge_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "knowledge")
+    if knowledge_dir not in sys.path:
+        sys.path.insert(0, knowledge_dir)
+    import knowledge_card  # lazy; scripts/knowledge
+
+    return knowledge_card.render_cards_block(hits, base_instruction)
 
 
 def _two_turn_messages(passages: list[str], base_instruction: str) -> list[dict]:
@@ -774,12 +772,11 @@ def render_delivery(cfg: MockConfig, hits: list[dict], base_instruction: str):
     delivery = cfg.delivery
     ordered = _apply_relevance_edge_reorder(hits) if delivery == "relevance-edge-reorder" else hits
     passages = [h["value"].value for h in ordered]
-    grains = [h["value"].value_type for h in ordered]
 
     if delivery in ("flat", "relevance-edge-reorder"):
         return _flat_prompt(passages, base_instruction)
     if delivery == "structured-ref":
-        return _structured_ref_prompt(passages, grains, base_instruction)
+        return _structured_ref_prompt(ordered, base_instruction)
     if delivery == "two-turn-tool":
         return _two_turn_messages(passages, base_instruction)
     if delivery == "system-prompt":

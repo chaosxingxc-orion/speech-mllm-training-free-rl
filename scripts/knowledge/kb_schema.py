@@ -57,6 +57,34 @@ class KBLeakageError(RuntimeError):
     """
 
 
+class KBCrossModalBlockedError(RuntimeError):
+    """Raised by ``kb_retrieve``'s cross-modal AUDIO-query-into-TEXT-keyed-source bridge
+    (2026-07-13, M1 engineering-base item 2: the "known follow-up" ``kb_retrieve.py``'s own
+    docstring flagged on 2026-07-12 -- an audio query against a TEXT-keyed source built by
+    ``kb_batch_build.build_squtr_corpus_source`` had no wired routing at all). Carries ``.status``,
+    one of:
+
+    ``"ARM-BLOCKED-cross-modal"`` — the source's embedder has no audio-query path into its
+    text-key space at all (permanent, not a GPU-availability question — e.g. ``clap``,
+    ``wavlm-*``, ``eres2netv2``, ``campplus``, ``emotion2vec-*``, ``dasheng``, ``clsp``, ``sense``,
+    ``sensevoice-small``: none of these expose a text tower / cross-modal query encoder).
+
+    ``"pending-GPU-window"`` — the embedder COULD support this (asymmetric query encoder that also
+    accepts audio input) but needs a resident llama-server that is not up this session
+    (``lco-3b``/``lco-7b``/``qwen3-omni-own``) — temporary, matching the SAME status vocabulary
+    ``kb_batch_build.build_squtr_corpus_source`` already returns at BUILD time for the identical
+    embedders.
+
+    Mirrors ``KBLeakageError``/``KBSourceExistsError``'s role: a clean, specific, catchable signal
+    instead of a bare ``ValueError``/``RuntimeError``, so a caller (or a test) can branch on
+    ``.status`` rather than string-parse the message.
+    """
+
+    def __init__(self, message: str, status: str):
+        super().__init__(message)
+        self.status = status
+
+
 class KBSourceExistsError(RuntimeError):
     """Raised by ``kb_build.build_source`` (2026-07-12, RI item 8) when ``source`` already has a
     persisted build (an existing ``manifest.json`` under its ``source_dir``) and the caller did not
@@ -91,6 +119,17 @@ class KnowledgeValue:
     (a few-shot demonstration item), or ``None`` (untagged — the default, preserves prior behavior;
     NOT the same as ``'knowledge'`` — callers that need a grain-aware split must treat ``None`` as
     "not yet classified", not silently treat it as knowledge-grain).
+
+    ``key_text_ref`` (2026-07-13, M1 engineering-base item 2/3) — the TEXT-key counterpart of
+    ``key_audio_ref``: the raw text string whose embedding is this row's KEY, for a
+    ``key_modality=='text'`` row (``None`` for an audio-keyed row). Before this field, a
+    text-keyed source's ``values.jsonl`` recorded the EMBEDDING (via ``keys.npy``) but never the
+    raw key text itself — no way to audit "what text produced this key" for any text-keyed source
+    (legacy TF-IDF/MiniLM passage pools, ``kb_batch_build.build_squtr_corpus_source``'s corpus-doc
+    keys, or the new pseudo-question keys, ``kb_batch_build.build_pseudo_question_source``) without
+    re-deriving it from the value or provenance. ``None`` for every row persisted before this field
+    existed (``from_json``'s dataclass-default backward-compatibility, same as every other Step-2
+    additive field).
     """
 
     row: int  # aligns to keys.npy row and the ANN index id
@@ -106,6 +145,7 @@ class KnowledgeValue:
     start_s: float | None = None  # child key span start (s) within the parent utterance's audio
     end_s: float | None = None  # child key span end (s) within the parent utterance's audio
     grain: str | None = None  # one of VALUE_GRAINS, or None (untagged)
+    key_text_ref: str | None = None  # the raw TEXT whose embedding is this row's key (text-keyed only)
 
     def to_json(self) -> str:
         return json.dumps(asdict(self), ensure_ascii=False)

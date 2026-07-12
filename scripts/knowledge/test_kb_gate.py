@@ -86,6 +86,26 @@ def _records(wavdir: str, n: int = 6) -> list[dict]:
     return recs
 
 
+def _text_records(n: int = 5, dim: int = 16, seed: int = 0) -> list[dict]:
+    """TEXT-keyed records with PRECOMPUTED keys (no real glap/omni-embed-nemotron model needed --
+    kb_build.build_source never calls kb_embed when every row already carries a precomputed_key,
+    see its own docstring) -- backs the cross-modal-routing gate cases (2026-07-13, M1 item 2)."""
+    import numpy as np
+
+    rng = np.random.RandomState(seed)
+    recs = []
+    for i in range(n):
+        vec = rng.randn(dim).astype("float32")
+        vec = vec / np.linalg.norm(vec)
+        recs.append({
+            "key_text": f"pseudo-question {i}: what is fact {i}?",
+            "value": f"evidence passage {i} (no gold overlap)",
+            "from_item_id": f"doc{i}",
+            "precomputed_key": vec,
+        })
+    return recs
+
+
 def check(label: str, cond: bool, results: dict) -> None:
     status = "PASS" if cond else "FAIL"
     print(f"  [{status}] {label}", flush=True)
@@ -395,6 +415,161 @@ def main() -> int:
         )
         check("content_hash changes when a value is edited (same ids/order otherwise)",
               m_hash_changed["content_hash"] != m_hash_unchanged["content_hash"], results)
+
+        # ---- case 9 (2026-07-13, M1 item 2): cross-modal AUDIO-query -> TEXT-keyed routing ----
+        import numpy as np
+
+        import kb_embed
+        from kb_schema import KBCrossModalBlockedError
+
+        # 9a: a TEXT-keyed source built with embedder_token='glap' used to make load_source raise
+        # "unknown embedder" immediately (the SAME-MODALITY text-query path was never wired for the
+        # omni-family tokens) -- now it loads cleanly.
+        m_glap_text = kb_build.build_source(
+            "gate_crossmodal_glap", "synthetic", None, _text_records(n=6, dim=16, seed=1),
+            key_modality="text", value_type="text-fact", embedder="glap",
+            audit_golds=[], scrub=True, note="gate-test cross-modal routing (glap text-keyed)",
+        )
+        check("text-keyed source with embedder_token='glap' has embedder_token stamped",
+              m_glap_text.get("embedder_token") == "glap", results)
+        src_glap = kbr.load_source("gate_crossmodal_glap")
+        check("load_source no longer raises 'unknown embedder' for a glap TEXT-keyed source",
+              src_glap is not None and src_glap["index"].n == 6, results)
+
+        # 9b: same-modality TEXT query against that source, via load_source's default embed_query
+        # -- monkeypatch kb_embed.embed_text (no real GLAP model needed offline) to prove the
+        # ROUTING (query_token='glap' resolved correctly) rather than the real embedding math.
+        _orig_embed_text = kb_embed.embed_text
+        fake_dim = 16
+
+        def _fake_embed_text(texts, embedder="auto", **kw):
+            rng = np.random.RandomState(hash((embedder, tuple(texts))) % (2**31))
+            vecs = rng.randn(len(texts), fake_dim).astype("float32")
+            vecs = vecs / np.linalg.norm(vecs, axis=1, keepdims=True)
+            return f"fake:{embedder}", vecs, None
+
+        kb_embed.embed_text = _fake_embed_text
+        try:
+            q_vec = src_glap["embed_query"](["what is fact 0?"])
+        finally:
+            kb_embed.embed_text = _orig_embed_text
+        check("same-modality text query against a glap text-keyed source routes via embed_text('glap')",
+              np.asarray(q_vec).shape == (1, fake_dim), results)
+
+        # 9c: omni-embed-nemotron's SAME-MODALITY query token must resolve to 'omni-embed' (the
+        # QUERY tower), NOT 'omni-embed-nemotron' (the DOCUMENT tower it was built with) --
+        # verified by inspecting which `embedder=` arg reaches the monkeypatched embed_text.
+        m_nemo_text = kb_build.build_source(
+            "gate_crossmodal_nemo", "synthetic", None, _text_records(n=4, dim=16, seed=2),
+            key_modality="text", value_type="text-fact", embedder="omni-embed-nemotron",
+            audit_golds=[], scrub=True, note="gate-test cross-modal routing (nemotron text-keyed)",
+        )
+        src_nemo = kbr.load_source("gate_crossmodal_nemo")
+        seen_embedder_arg = []
+
+        def _spy_embed_text(texts, embedder="auto", **kw):
+            seen_embedder_arg.append(embedder)
+            return _fake_embed_text(texts, embedder=embedder, **kw)
+
+        kb_embed.embed_text = _spy_embed_text
+        try:
+            src_nemo["embed_query"](["a text query"])
+        finally:
+            kb_embed.embed_text = _orig_embed_text
+        check("nemotron text-keyed source's SAME-MODALITY query resolves to the QUERY tower "
+              "('omni-embed'), not the document token it was built with",
+              seen_embedder_arg == ["omni-embed"], results)
+
+        # 9d: cross-modal AUDIO query -> TEXT-keyed source, for a SUPPORTED token (glap) --
+        # monkeypatch kb_embed.embed_query_crossmodal_audio (no real model needed offline) and
+        # verify retrieve_cross_modal_audio's dim-check + sim-ranked output shape.
+        _orig_crossmodal = kb_embed.embed_query_crossmodal_audio
+
+        def _fake_crossmodal(wav_paths, embedder, **kw):
+            rng = np.random.RandomState(hash((embedder, tuple(wav_paths))) % (2**31))
+            vecs = rng.randn(len(wav_paths), fake_dim).astype("float32")
+            vecs = vecs / np.linalg.norm(vecs, axis=1, keepdims=True)
+            return f"fake-crossmodal:{embedder}", vecs
+
+        kb_embed.embed_query_crossmodal_audio = _fake_crossmodal
+        try:
+            hits = kbr.retrieve_cross_modal_audio(src_glap, ["fake_query.wav"], topk=3)
+        finally:
+            kb_embed.embed_query_crossmodal_audio = _orig_crossmodal
+        check("retrieve_cross_modal_audio (supported token) returns topk sim-ranked hits",
+              len(hits) == 1 and len(hits[0]) == 3
+              and hits[0][0]["sim"] >= hits[0][1]["sim"] >= hits[0][2]["sim"], results)
+
+        # 9e: status table sanity -- glap/nemotron 'supported', lco-3b 'pending-GPU-window', an
+        # unlisted token 'ARM-BLOCKED-cross-modal'.
+        check("cross_modal_audio_query_status: glap == 'supported'",
+              kbr.cross_modal_audio_query_status(src_glap["manifest"]) == "supported", results)
+        check("cross_modal_audio_query_status: omni-embed-nemotron == 'supported'",
+              kbr.cross_modal_audio_query_status(src_nemo["manifest"]) == "supported", results)
+
+        # 9f: UNSUPPORTED (permanently ARM-BLOCKED) embedder -- e.g. a text-keyed source built with
+        # a token that has no text tower / cross-modal query path at all (clsp — real audio-only
+        # embedder token, never registered in CROSS_MODAL_AUDIO_QUERY_STATUS).
+        m_blocked = kb_build.build_source(
+            "gate_crossmodal_blocked", "synthetic", None, _text_records(n=3, dim=16, seed=3),
+            key_modality="text", value_type="text-fact", embedder="clsp",
+            audit_golds=[], scrub=True, note="gate-test cross-modal routing (ARM-BLOCKED token)",
+        )
+        src_blocked = kbr.load_source("gate_crossmodal_blocked")
+        raised_blocked = None
+        try:
+            kbr.retrieve_cross_modal_audio(src_blocked, ["fake_query.wav"], topk=1)
+        except KBCrossModalBlockedError as e:
+            raised_blocked = e
+        check("retrieve_cross_modal_audio raises KBCrossModalBlockedError for an ARM-BLOCKED token",
+              raised_blocked is not None and raised_blocked.status == "ARM-BLOCKED-cross-modal",
+              results)
+
+        # 9g: PENDING-GPU-WINDOW embedder (lco-3b) -- distinct status from ARM-BLOCKED.
+        m_pending = kb_build.build_source(
+            "gate_crossmodal_pending", "synthetic", None, _text_records(n=3, dim=16, seed=4),
+            key_modality="text", value_type="text-fact", embedder="lco-3b",
+            audit_golds=[], scrub=True, note="gate-test cross-modal routing (pending-GPU-window token)",
+        )
+        src_pending = kbr.load_source("gate_crossmodal_pending")
+        raised_pending = None
+        try:
+            kbr.retrieve_cross_modal_audio(src_pending, ["fake_query.wav"], topk=1)
+        except KBCrossModalBlockedError as e:
+            raised_pending = e
+        check("retrieve_cross_modal_audio raises KBCrossModalBlockedError('pending-GPU-window') for lco-3b",
+              raised_pending is not None and raised_pending.status == "pending-GPU-window", results)
+
+        # 9h: wrong-direction guard -- retrieve_cross_modal_audio against an AUDIO-keyed source
+        # must raise a plain ValueError (not KBCrossModalBlockedError), since that direction is
+        # already served by retrieve()'s default embed_query.
+        raised_wrong_dir = False
+        try:
+            kbr.retrieve_cross_modal_audio(src_token, ["fake_query.wav"], topk=1)  # src_token: audio-keyed (case 5)
+        except ValueError:
+            raised_wrong_dir = True
+        check("retrieve_cross_modal_audio raises plain ValueError against an audio-keyed source",
+              raised_wrong_dir, results)
+
+        # 9i: key_text_ref provenance (2026-07-13, M1 item 2/3 schema addition) -- persisted
+        # text-keyed rows now carry the raw key text; a pre-existing (no key_text_ref) JSON line
+        # still loads with the documented None default.
+        persisted_glap = load_values("gate_crossmodal_glap")
+        check("text-keyed build stamps key_text_ref == the raw key text for every row",
+              all(v.key_text_ref == f"pseudo-question {i}: what is fact {i}?"
+                  for i, v in enumerate(persisted_glap)),
+              results)
+        old_line_no_key_text_ref = json.dumps({
+            "row": 0, "kid": "src:old2", "source": "src", "key_modality": "text",
+            "value_type": "text-fact", "value": "legacy text-keyed row",
+            "provenance": {"dataset": "d", "revision": None, "build_seed": 0, "from_item_id": "i2",
+                           "leakage_checked": True},
+        })
+        from kb_schema import KnowledgeValue
+
+        kv_no_key_text_ref = KnowledgeValue.from_json(old_line_no_key_text_ref)
+        check("pre-existing (no key_text_ref) JSON line loads with key_text_ref=None",
+              kv_no_key_text_ref.key_text_ref is None, results)
 
     all_pass = all(results.values())
     print("\n=== KB GATE TEST ===")
