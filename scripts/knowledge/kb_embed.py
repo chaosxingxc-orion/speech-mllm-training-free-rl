@@ -726,6 +726,37 @@ _SERVER_ENV_TOKEN = {
 }
 
 
+def embedder_revision_of(embedder: str) -> str | None:
+    """Best-effort "model name + checkpoint path/revision string" for ``embedder`` (2026-07-13,
+    ticket #37 item 6: ``manifest.embedder_revision``). Never raises -- returns ``None`` when
+    nothing is knowable offline (e.g. a server-based embedder whose exact served checkpoint isn't
+    queryable without a live server, or a token this repo doesn't recognize at all).
+
+    For a local on-disk snapshot (``MODEL_DIRNAMES``), the string is ``"<token>@<resolved dir>"``
+    -- the resolved directory IS the checkpoint's identity for a pinned local snapshot (matches
+    ``docs/datasets.lock.json``'s own pinned-revision convention: the directory only ever holds
+    ONE revision at a time in this repo's data layout). For the two Hub-fetched
+    legacy tiers (``clap``/``omni-embed``/``omni-embed-nemotron``), the string names the fixed
+    upstream repo id this codebase hardcodes. For a GPU-server embedder, the string names the
+    server env var (NOT a specific checkpoint hash -- the actual served revision is only knowable
+    by querying the live server's ``/props``, out of scope for this offline helper).
+    """
+    if embedder in MODEL_DIRNAMES:
+        try:
+            d = _model_dir(embedder)
+        except FileNotFoundError:
+            return None
+        return f"{embedder}@{d}"
+    if embedder == "clap":
+        return f"clap@{CLAP_MODEL}"
+    if embedder in ("omni-embed", "omni-embed-nemotron"):
+        return f"{embedder}@{OMNI_EMBED_DIRNAME}"
+    meta = EMBEDDERS.get(embedder)
+    if meta and meta.get("needs_server"):
+        return f"{embedder}@server:{meta.get('server_env')}"
+    return None
+
+
 def infer_embedder_token(ename: str) -> str | None:
     """Best-effort recovery of a registry TOKEN from a descriptive ``ename`` (e.g. ``"glap:GLAP"``
     -> ``"glap"``). Used ONLY as a fallback for manifests built before ``embedder_token`` existed

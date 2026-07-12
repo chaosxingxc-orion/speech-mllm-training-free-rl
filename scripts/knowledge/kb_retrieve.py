@@ -28,20 +28,57 @@ from __future__ import annotations
 import pickle
 
 # ---------------------------------------------------------------------------------------------
-# cross-modal AUDIO-query -> TEXT-keyed-source routing table (2026-07-13, M1 item 2). Maps a
-# source's manifest.embedder_token to whether an AUDIO query can be embedded into that TEXT-keyed
-# source's key space, mirroring the status vocabulary kb_batch_build.build_squtr_corpus_source
-# already uses at BUILD time for the identical embedders (the analogous decision at QUERY time):
-#   "supported"           -- kb_embed.embed_query_crossmodal_audio has a real path for this token.
-#   "pending-GPU-window"   -- the embedder's audio-query tower needs a resident llama-server not up
-#                              this session (temporary — matches build-time's same status).
+# cross-modal AUDIO-query -> TEXT-keyed-source routing table (2026-07-13, M1 item 2; STATUS
+# DOWNGRADED 2026-07-13, ticket #37 item 4). Maps a source's manifest.embedder_token to whether an
+# AUDIO query can be embedded into that TEXT-keyed source's key space, mirroring the status
+# vocabulary kb_batch_build.build_squtr_corpus_source already uses at BUILD time for the identical
+# embedders (the analogous decision at QUERY time):
+#   "supported"                  -- LIVE-VERIFIED: a real model load + real wav query + real
+#                                     text-corpus embedding has been run end to end for this token
+#                                     and produced sane (dim-matching, non-NaN, sim-ranked) output.
+#                                     NOT the same as "the code path exists" -- see below.
+#   "pending-live-verification"   -- the code path EXISTS and is architecturally plausible (a
+#                                     documented joint/asymmetric space -- see kb_embed's own
+#                                     per-function docstrings) but has NEVER been exercised against
+#                                     a real model+real query+real corpus this session or any prior
+#                                     one. Treated identically to "pending-GPU-window" by
+#                                     ``retrieve_cross_modal_audio`` below (raises
+#                                     ``KBCrossModalBlockedError``) -- an unverified code path is
+#                                     NOT an admissible "supported" claim, exactly the same
+#                                     Information-Boundary discipline this repo applies to KB
+#                                     leakage/cross-modal query routing elsewhere (never claim
+#                                     "verified" without an actual measurement).
+#   "pending-GPU-window"          -- the embedder's audio-query tower needs a resident llama-server
+#                                     not up this session (temporary — matches build-time's same
+#                                     status). Orthogonal to "pending-live-verification": even once
+#                                     the GPU window opens, THIS status alone does not promote the
+#                                     entry to "supported" -- a live-verification run must still
+#                                     happen and pass (see ``live_verify_crossmodal.py``).
 #   "ARM-BLOCKED-cross-modal" (the default for any token NOT listed here) -- no text tower / no
 #                              audio-query path exists for this embedder at all (permanent).
+#
+# 2026-07-13 downgrade rationale (ticket #37 item 4): this table previously marked BOTH 'glap' and
+# 'omni-embed-nemotron' "supported". Auditing kb_embed.py's own docstrings/comments (the only
+# record of what has actually been run) found NEITHER claim substantiated:
+#   - 'omni-embed-nemotron': kb_embed._omni_embed_query_audio's own docstring says outright "NOT
+#     independently verified live this session" -- the ONLY thing verified is that
+#     encode_document accepts {"text":...}/{"audio":...} SEPARATELY (two different, individually-
+#     exercised calls); encode_QUERY accepting {"audio":...} (what a cross-modal audio query
+#     actually needs) was inferred "per that same API's documented symmetry", never run.
+#   - 'glap': kb_embed._glap_embed's docstring carries NO verification claim at all (just "Official
+#     API: ..."). The ONLY thing ever verified (per _glap_embed_text's docstring, "verified
+#     2026-07-12, RI item 9") is that GLAP's TEXT tower lands in the same 1024-d space as its AUDIO
+#     tower ARCHITECTURALLY (an NLLB-family tokenizer + SonarTextEncoder + text_proj head "precisely
+#     for this") -- an inference about model architecture, not a live retrieval-correctness run
+#     (real audio query -> real text corpus -> correct top-k). No cross-modal AUDIO query against a
+#     TEXT-keyed corpus has ever actually been executed for glap either.
+# Both are therefore downgraded to "pending-live-verification" until ``live_verify_crossmodal.py``
+# (below) is actually run on a GPU window and passes every one of its checks -- see that script's
+# own docstring for the exact upgrade gate and the manual status-table edit to make afterwards.
 # ---------------------------------------------------------------------------------------------
 CROSS_MODAL_AUDIO_QUERY_STATUS: dict[str, str] = {
-    "glap": "supported",                 # joint audio-text space (_glap_embed / _glap_embed_text)
-    "omni-embed-nemotron": "supported",  # asymmetric encode_query accepts {"audio": ...} too (see
-                                          # kb_embed._omni_embed_query_audio's docstring caveat)
+    "glap": "pending-live-verification",                 # see downgrade rationale above
+    "omni-embed-nemotron": "pending-live-verification",  # see downgrade rationale above
     "lco-3b": "pending-GPU-window",
     "lco-7b": "pending-GPU-window",
     "qwen3-omni-own": "pending-GPU-window",
@@ -266,14 +303,28 @@ def retrieve_cross_modal_audio(source_obj: dict, audio_query_paths: list[str], t
     token = manifest.embedder_token or kb_embed.infer_embedder_token(manifest.embedder)
     status = cross_modal_audio_query_status(manifest)
     if status != "supported":
+        _STATUS_EXPLANATIONS = {
+            "ARM-BLOCKED-cross-modal": (
+                "No text tower / audio-query path exists for this embedder at all (permanent)."
+            ),
+            "pending-GPU-window": (
+                "This embedder's audio-query tower needs a resident llama-server not up this "
+                "session (temporary -- retry once the GPU server is serving)."
+            ),
+            "pending-live-verification": (
+                "This embedder's cross-modal audio-query path EXISTS and is architecturally "
+                "plausible, but has never been exercised end to end against a real model/query/"
+                "corpus (2026-07-13, ticket #37 item 4 downgrade -- see this module's "
+                "CROSS_MODAL_AUDIO_QUERY_STATUS docstring for the specific unverified claim this "
+                "closes). Run scripts/knowledge/live_verify_crossmodal.py on a GPU window; if every "
+                "check passes, promote this token's status to 'supported' (that script prints the "
+                "exact table edit to make)."
+            ),
+        }
         raise KBCrossModalBlockedError(
             f"kb_retrieve.retrieve_cross_modal_audio: source {manifest.source!r} "
             f"(embedder_token={token!r}) cannot embed an audio query into its text-key space -- "
-            f"status={status!r}. "
-            + ("No text tower / audio-query path exists for this embedder at all (permanent)."
-               if status == "ARM-BLOCKED-cross-modal" else
-               "This embedder's audio-query tower needs a resident llama-server not up this "
-               "session (temporary -- retry once the GPU server is serving)."),
+            f"status={status!r}. " + _STATUS_EXPLANATIONS.get(status, "Unknown status."),
             status,
         )
 

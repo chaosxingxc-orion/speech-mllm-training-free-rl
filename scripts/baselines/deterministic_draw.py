@@ -55,6 +55,19 @@ trusting the argument).
    byte-identical manifest (``json.dumps(..., sort_keys=True)``), proven by
    ``test_deterministic_draw.py``.
 
+## Confirmatory hygiene (2026-07-13, ticket #37 item 7 -- cheap correctness guards, NOT a custody
+## ceremony; the owner explicitly rejected re-adding lockdown/beacon-style ritual)
+
+  (a) ``--seed``/``seed=`` override is a HARD ERROR when ``draw_type='confirmatory'`` (still
+      allowed, with a printed warning, for the other two draw types) — see ``deterministic_draw``'s
+      own docstring.
+  (b) ``write_manifest`` refuses to overwrite an existing manifest file unless
+      ``force_supersede=True`` (CLI: ``--force-supersede``), in which case the old file is renamed
+      to ``<name>.superseded.<UTC-timestamp>.json`` (never deleted) before the fresh one is written.
+  (c) every ``write_manifest`` call appends one JSON line (draw_type, seed used, pool_sha256,
+      ids_sha256, UTC timestamp, command) to the append-only ``_repro/draws/draw_log.jsonl`` log
+      (see ``_append_draw_log``).
+
 ## Usage
 
     # library
@@ -80,6 +93,7 @@ import json
 import os
 import shlex
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 HERE = os.path.dirname(os.path.abspath(__file__))            # scripts/baselines
@@ -87,6 +101,8 @@ sys.path.insert(0, HERE)
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 OUT_DIR = REPO_ROOT / "_repro" / "deterministic_draws"
+DRAW_LOG_DIR = REPO_ROOT / "_repro" / "draws"          # ticket #37 item 7c: append-only draw log
+DRAW_LOG_FILENAME = "draw_log.jsonl"
 
 # ---------------------------------------------------------------------------------------------
 # distinct fixed-seed namespaces — one per draw type (续21-B①: "each a distinct fixed seed
@@ -176,9 +192,33 @@ def deterministic_draw(
     Raises ``ValueError`` for an unknown ``draw_type``, an empty resolved pool, or a resolved pool
     with duplicate ids (a draw over a pool with dupes is not well-defined — mirrors
     ``redraw.full_pool_ids``'s own duplicate guard).
+
+    2026-07-13 (ticket #37 item 7a, confirmatory hygiene): an explicit ``seed`` override is a HARD
+    ERROR when ``draw_type='confirmatory'`` — the confirmatory draw is the one type where an
+    overridden seed could look like cherry-picking after the fact (draw, look, redraw with a
+    different seed if the first one was unfavorable), so it must ALWAYS use its fixed namespace
+    constant, no exceptions. The other two draw types still accept an explicit override (debug/test
+    only) — allowed exactly as before, now with a printed warning making the override visible in
+    the run log too, not just in this docstring/the CLI help text.
     """
     if draw_type not in DRAW_TYPES:
         raise ValueError(f"deterministic_draw: draw_type={draw_type!r} not in {DRAW_TYPES}")
+    if seed is not None and draw_type == "confirmatory":
+        raise ValueError(
+            "deterministic_draw: --seed/seed= override is NOT allowed for draw_type='confirmatory' "
+            "(ticket #37 item 7a) -- the confirmatory draw must ALWAYS use its fixed seed namespace "
+            f"({DRAW_TYPE_SEEDS['confirmatory']}); overriding it is exactly the cherry-picking "
+            "pattern commit-before-selection exists to prevent. Omit seed for a confirmatory draw. "
+            "The other draw types (eligibility-split / exploration-dev) still accept an explicit "
+            "override for debug/test purposes."
+        )
+    if seed is not None:
+        print(
+            f"  [deterministic_draw] WARNING: overriding draw_type={draw_type!r}'s fixed seed "
+            f"namespace ({DRAW_TYPE_SEEDS[draw_type]}) with seed={seed} -- debug/test only; a real "
+            "pre-registered draw should NEVER do this.",
+            flush=True,
+        )
 
     import numpy as np
 
@@ -247,17 +287,72 @@ def deterministic_draw(
     return manifest
 
 
-def write_manifest(manifest: dict, out_dir: Path | None = None) -> Path:
+def _append_draw_log(manifest: dict, log_dir: Path | None = None) -> Path:
+    """Ticket #37 item 7c: append ONE JSON line per draw to an append-only log — never rewritten,
+    never truncated, one line per call. Recorded fields: draw_type, seed USED (the effective seed,
+    post any override), pool_sha256, ids_sha256, a UTC timestamp, and the exact command (when the
+    caller supplied one, e.g. the CLI's ``sys.argv`` reconstruction) — enough to independently
+    audit every draw ever persisted through this module without re-deriving anything from the
+    manifest file itself (which a caller could, in principle, later inspect/edit; the log is a
+    separate, append-only trail)."""
+    d = log_dir if log_dir is not None else DRAW_LOG_DIR
+    d.mkdir(parents=True, exist_ok=True)
+    p = d / DRAW_LOG_FILENAME
+    entry = {
+        "utc_timestamp": datetime.now(timezone.utc).isoformat(),
+        "dataset_key": manifest["dataset_key"],
+        "draw_type": manifest["draw_type"],
+        "seed": manifest["seed"],
+        "pool_sha256": manifest["pool_sha256"],
+        "ids_sha256": manifest["ids_sha256"],
+        "command": manifest.get("command"),
+    }
+    with open(p, "a", encoding="utf-8") as fh:
+        fh.write(json.dumps(entry, ensure_ascii=False, sort_keys=True) + "\n")
+    return p
+
+
+def write_manifest(manifest: dict, out_dir: Path | None = None, force_supersede: bool = False,
+                    log_dir: Path | None = None) -> Path:
     """Persist ``manifest`` (byte-identical for byte-identical inputs — ``sort_keys=True``) at
     ``<out_dir>/<dataset_key>__<draw_type>.json`` (default ``out_dir``:
-    ``_repro/deterministic_draws/``). Overwrites in place (this module has no "existing build"
-    concept to guard, unlike ``kb_build.build_source`` — the commit-before-selection discipline is
-    the actual guard here, per the module docstring: a re-drawn/overwritten manifest is visible in
-    git history)."""
+    ``_repro/deterministic_draws/``), then append one line to the draw log (see
+    ``_append_draw_log``).
+
+    2026-07-13 (ticket #37 item 7b, confirmatory hygiene): REFUSES to overwrite an existing
+    manifest file in place — raises ``FileExistsError`` unless ``force_supersede=True``, in which
+    case the OLD file is renamed (never deleted) to
+    ``<dataset_key>__<draw_type>.superseded.<UTC-timestamp>.json`` before the fresh manifest is
+    written at the original path (append-only: both the old and the new manifest remain on disk).
+    Before this fix, a re-drawn/re-written manifest silently clobbered the prior file with no
+    on-disk trace of what was there before — the commit-before-selection discipline (module
+    docstring) relies on git history for that, but a LOCAL uncommitted overwrite (or a script bug)
+    could still silently destroy a not-yet-committed manifest with no recovery path; this makes
+    that failure mode impossible without an explicit, named opt-in.
+
+    ``log_dir`` overrides the append-only draw-log directory (default ``_repro/draws/``) — tests
+    pass a tmp dir here (mirroring ``out_dir``) so running the test suite never writes into this
+    repo's real ``_repro/draws/draw_log.jsonl``.
+    """
     d = out_dir or OUT_DIR
     d.mkdir(parents=True, exist_ok=True)
     p = d / f"{manifest['dataset_key']}__{manifest['draw_type']}.json"
+    if p.exists():
+        if not force_supersede:
+            raise FileExistsError(
+                f"deterministic_draw.write_manifest: {p} already exists -- refusing to overwrite a "
+                "draw manifest in place (ticket #37 item 7b). Pass force_supersede=True (CLI: "
+                "--force-supersede) to rename the existing file to "
+                f"'{p.stem}.superseded.<UTC-timestamp>.json' (append-only, never deleted) and write "
+                "the fresh manifest at the original path."
+            )
+        ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+        superseded_path = d / f"{manifest['dataset_key']}__{manifest['draw_type']}.superseded.{ts}.json"
+        p.rename(superseded_path)
+        print(f"  [deterministic_draw] force_supersede=True: renamed existing {p} -> "
+              f"{superseded_path} (never deleted)", flush=True)
     p.write_text(json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
+    _append_draw_log(manifest, log_dir=log_dir)
     return p
 
 
@@ -285,7 +380,8 @@ def main() -> None:
     ap.add_argument("--n", type=int, required=True)
     ap.add_argument("--seed", type=int, default=None,
                      help="override this draw-type's fixed seed namespace (debug/test only -- a "
-                          "real pre-registered draw should NEVER override the namespace default)")
+                          "real pre-registered draw should NEVER override the namespace default). "
+                          "HARD ERROR (ValueError) if --draw-type=confirmatory (ticket #37 item 7a).")
     ap.add_argument("--pool-ids-file", default=None, help="JSON file: a list of ids, or {'ids': [...]}")
     ap.add_argument("--pool-id-field", default=None, help="if --pool-ids-file is a list-of-dict, the id field name")
     ap.add_argument("--pool-dataset-key", default=None,
@@ -295,6 +391,11 @@ def main() -> None:
                           "(repeatable -- e.g. pass the eligibility-split manifest when drawing "
                           "exploration-dev, and both prior manifests when drawing confirmatory)")
     ap.add_argument("--out-dir", default=None)
+    ap.add_argument("--force-supersede", action="store_true",
+                     help="ticket #37 item 7b: allow overwriting an existing manifest at this "
+                          "(dataset_key, draw_type) path -- the existing file is renamed to "
+                          "'<name>.superseded.<UTC-timestamp>.json' (never deleted), never silently "
+                          "clobbered. Without this flag, write_manifest refuses (FileExistsError).")
     ap.add_argument("--dry-run", action="store_true", help="compute + print; write nothing")
     args = ap.parse_args()
 
@@ -312,7 +413,7 @@ def main() -> None:
         print(json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True))
         return
     out_dir = Path(args.out_dir) if args.out_dir else None
-    p = write_manifest(manifest, out_dir=out_dir)
+    p = write_manifest(manifest, out_dir=out_dir, force_supersede=args.force_supersede)
     print(f"wrote {p} (n_drawn={manifest['n_drawn']} seed={manifest['seed']} "
           f"ids_sha256={manifest['ids_sha256'][:16]}...)")
 

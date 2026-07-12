@@ -220,6 +220,42 @@ class SourceManifest:
     # "superseded_at": ...} if this build superseded (via --supersede, archived not deleted) an
     # earlier build under the SAME source name; None for a source that never superseded anything.
 
+    # 2026-07-13 (ticket #37 item 6) -- provenance extension. All additive/defaulted so every
+    # pre-existing manifest.json on disk still loads unmodified via SourceManifest(**d); NONE of
+    # these are backfilled onto an existing manifest in place (append-only store -- see
+    # scripts/knowledge/backfill_provenance.py's SIDECAR approach instead).
+    code_git_sha: str | None = None  # git rev-parse HEAD of the W1 repo AT BUILD TIME -- this was
+    # previously only folded INTO content_hash's input (never itself a visible, inspectable field
+    # on the manifest); None for a source built before this field existed.
+    code_git_dirty: bool | None = None  # True iff `git status --porcelain` was non-empty at build
+    # time (uncommitted local changes were present when this source was built) -- None for a source
+    # built before this field existed (git-dirty state was never captured pre-2026-07-13) OR when
+    # the git query itself failed (see kb_schema.git_dirty_of's degrade-to-None contract).
+    embedder_revision: str | None = None  # model name + checkpoint path/revision string, where
+    # knowable (e.g. kb_embed._model_dir's resolved local snapshot directory, or a fixed HF repo id
+    # for a Hub-fetched embedder) -- see kb_embed.embedder_revision_of. None when unresolvable
+    # (e.g. every row arrived precomputed, so no embedder was actually invoked this build) or for a
+    # source built before this field existed.
+    normalization: str | None = None  # e.g. "l2" -- every embedder this repo uses L2-normalizes its
+    # output vectors (see kb_embed's shared `_l2` helper) so this is "l2" for every build produced
+    # by kb_build.build_source since this field's introduction; explicit rather than assumed, per
+    # RI item 6's "make normalization inspectable" ask. None for a source built before this field
+    # existed.
+    index_backend_params: dict = field(default_factory=dict)  # the ACTUAL parameters
+    # kb_index.VectorIndex.build used to construct `index_backend` (e.g. {"requested_index_type":
+    # "auto", "hnsw_m": 32 | None, "metric": "inner-product (cosine, since keys are L2-normalized)"})
+    # -- as opposed to `index_backend` above, which only records the RESULTING backend string
+    # ("faiss-flat-ip" | "faiss-hnsw-ip" | "numpy-flat"), not what was actually requested/configured.
+    # Empty dict (the dataclass default) for a source built before this field existed.
+    content_hash_schema_version: int | None = None  # which CONTENT_HASH_SCHEMA_VERSION formula (see
+    # `content_hash_of` below) produced THIS manifest's `content_hash` -- None for a source built
+    # before content_hash existed at all (RI item 8, pre-2026-07-12); 1 for a source built between
+    # item 8 and this item 6 change (the ORIGINAL content_hash_of formula: values.jsonl + keys.npy
+    # bytes + sorted from_item_ids + code_git_sha ONLY); >=2 once the formula folds in more inputs
+    # (embedder identity / normalization / index_backend params -- see CONTENT_HASH_SCHEMA_VERSION's
+    # own comment). A v1 hash is NEVER silently reinterpreted as if it were computed under a later
+    # schema version's (richer) input set.
+
     def to_dict(self) -> dict:
         return asdict(self)
 
@@ -230,7 +266,25 @@ def build_hash(dataset, revision, key_modality, value_type, embedder, build_seed
     return hashlib.sha1(canonical.encode("utf-8")).hexdigest()[:16]
 
 
-def content_hash_of(values_path, keys_path, from_item_ids, code_git_sha: str) -> str:
+# 2026-07-13 (ticket #37 item 6): the ORIGINAL content_hash_of formula (values.jsonl + keys.npy
+# bytes + sorted from_item_ids + code_git_sha) is schema version 1. Version 2 ADDITIONALLY folds
+# in the embedder's identity (registry token + resolved revision/checkpoint string) and the
+# normalization / index-backend parameters, so two builds that differ ONLY in e.g. a swapped
+# embedder checkpoint revision or a different index-backend configuration (identical
+# values.jsonl/keys.npy bytes otherwise -- a genuinely possible drift, e.g. a stale re-embed
+# against an updated model snapshot that happens to produce numerically-close vectors) are no
+# longer indistinguishable by content_hash alone. Bump this constant (never mutate the v1/v2
+# formula bodies in place) whenever the hash's input set changes again -- a manifest's OWN
+# `content_hash_schema_version` field records which formula produced ITS `content_hash`, so old
+# hashes are never silently reinterpreted under a newer (different-input) formula.
+CONTENT_HASH_SCHEMA_VERSION = 2
+
+
+def content_hash_of(values_path, keys_path, from_item_ids, code_git_sha: str, *,
+                     embedder_token: str | None = None, embedder_revision: str | None = None,
+                     normalization: str | None = None, index_backend: str | None = None,
+                     index_backend_params: dict | None = None,
+                     schema_version: int = CONTENT_HASH_SCHEMA_VERSION) -> str:
     """Content-addressed fingerprint over the ACTUAL PERSISTED BYTES of a source (2026-07-12, RI
     item 8) -- unlike ``build_hash`` (metadata only: dataset/embedder/seed/n_entries as strings),
     this hashes ``values.jsonl``'s and ``keys.npy``'s real bytes plus the sorted ``from_item_ids``
@@ -238,6 +292,13 @@ def content_hash_of(values_path, keys_path, from_item_ids, code_git_sha: str) ->
     plus the code git sha that produced them, so it changes whenever the actual content would,
     even if every metadata field happens to coincide (e.g. a re-embed after a bugfix with the same
     build_seed/n_entries). ``values_path``/``keys_path`` accept ``str`` or ``pathlib.Path``.
+
+    2026-07-13 (ticket #37 item 6): ``schema_version>=2`` (the default,
+    ``CONTENT_HASH_SCHEMA_VERSION``) ALSO folds in ``embedder_token``/``embedder_revision``/
+    ``normalization``/``index_backend``/``index_backend_params`` — pass ``schema_version=1`` to
+    recompute the ORIGINAL (pre-item-6) formula exactly, e.g. for an apples-to-apples comparison
+    against a manifest built before this extension (see
+    ``scripts/knowledge/backfill_provenance.py``, which does exactly this).
     """
     from pathlib import Path as _Path
 
@@ -247,6 +308,13 @@ def content_hash_of(values_path, keys_path, from_item_ids, code_git_sha: str) ->
     for fid in sorted(str(x) for x in from_item_ids if x is not None):
         h.update(fid.encode("utf-8"))
     h.update((code_git_sha or "").encode("utf-8"))
+    if schema_version >= 2:
+        h.update(f"|schema_version={schema_version}".encode("utf-8"))
+        h.update(f"|embedder_token={embedder_token or ''}".encode("utf-8"))
+        h.update(f"|embedder_revision={embedder_revision or ''}".encode("utf-8"))
+        h.update(f"|normalization={normalization or ''}".encode("utf-8"))
+        h.update(f"|index_backend={index_backend or ''}".encode("utf-8"))
+        h.update(json.dumps(index_backend_params or {}, sort_keys=True).encode("utf-8"))
     return h.hexdigest()
 
 
@@ -264,6 +332,23 @@ def git_sha_of(repo_root) -> str:
         ).strip()
     except Exception as exc:  # pragma: no cover - environment dependent
         return f"UNKNOWN ({exc})"
+
+
+def git_dirty_of(repo_root) -> bool | None:
+    """Best-effort ``git status --porcelain`` truthiness of ``repo_root`` (str/Path) -- 2026-07-13,
+    ticket #37 item 6 (``manifest.code_git_dirty``). ``True`` iff there is ANY uncommitted change
+    (staged or not) at build time, ``False`` iff the tree is clean, ``None`` on any failure (mirrors
+    ``git_sha_of``'s degrade-never-raise contract, so a code_git_dirty query can never block a
+    build)."""
+    import subprocess
+
+    try:
+        out = subprocess.check_output(
+            ["git", "status", "--porcelain"], cwd=str(repo_root), text=True
+        )
+        return bool(out.strip())
+    except Exception:  # pragma: no cover - environment dependent
+        return None
 
 
 def entry_id(source: str, key_ref: str, value: str) -> str:

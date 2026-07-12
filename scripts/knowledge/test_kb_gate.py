@@ -480,9 +480,12 @@ def main() -> int:
               "('omni-embed'), not the document token it was built with",
               seen_embedder_arg == ["omni-embed"], results)
 
-        # 9d: cross-modal AUDIO query -> TEXT-keyed source, for a SUPPORTED token (glap) --
-        # monkeypatch kb_embed.embed_query_crossmodal_audio (no real model needed offline) and
-        # verify retrieve_cross_modal_audio's dim-check + sim-ranked output shape.
+        # 9d (2026-07-13, ticket #37 item 4 STATUS DOWNGRADE): glap/omni-embed-nemotron are no
+        # longer 'supported' -- neither cross-modal audio-query path was ever LIVE-verified (see
+        # kb_retrieve.CROSS_MODAL_AUDIO_QUERY_STATUS's own downgrade-rationale comment). Both now
+        # raise KBCrossModalBlockedError(status='pending-live-verification'), treated the SAME as
+        # 'pending-GPU-window' by retrieve_cross_modal_audio -- an unverified code path is not an
+        # admissible "supported" claim.
         _orig_crossmodal = kb_embed.embed_query_crossmodal_audio
 
         def _fake_crossmodal(wav_paths, embedder, **kw):
@@ -491,21 +494,50 @@ def main() -> int:
             vecs = vecs / np.linalg.norm(vecs, axis=1, keepdims=True)
             return f"fake-crossmodal:{embedder}", vecs
 
+        raised_glap_pending = None
+        try:
+            kbr.retrieve_cross_modal_audio(src_glap, ["fake_query.wav"], topk=3)
+        except KBCrossModalBlockedError as e:
+            raised_glap_pending = e
+        check("retrieve_cross_modal_audio raises KBCrossModalBlockedError('pending-live-verification') for glap",
+              raised_glap_pending is not None and raised_glap_pending.status == "pending-live-verification",
+              results)
+
+        raised_nemo_pending = None
+        try:
+            kbr.retrieve_cross_modal_audio(src_nemo, ["fake_query.wav"], topk=3)
+        except KBCrossModalBlockedError as e:
+            raised_nemo_pending = e
+        check("retrieve_cross_modal_audio raises KBCrossModalBlockedError('pending-live-verification') for omni-embed-nemotron",
+              raised_nemo_pending is not None and raised_nemo_pending.status == "pending-live-verification",
+              results)
+
+        # 9d-ii: the UNDERLYING mechanics (dim-check + sim-ranked output) still work once a token IS
+        # promoted -- simulate post-live-verification promotion by monkeypatching
+        # CROSS_MODAL_AUDIO_QUERY_STATUS (never done for real without actually running
+        # live_verify_crossmodal.py; this only proves the plumbing, not that glap IS verified).
+        _orig_status_table = dict(kbr.CROSS_MODAL_AUDIO_QUERY_STATUS)
+        kbr.CROSS_MODAL_AUDIO_QUERY_STATUS["glap"] = "supported"
         kb_embed.embed_query_crossmodal_audio = _fake_crossmodal
         try:
             hits = kbr.retrieve_cross_modal_audio(src_glap, ["fake_query.wav"], topk=3)
         finally:
             kb_embed.embed_query_crossmodal_audio = _orig_crossmodal
-        check("retrieve_cross_modal_audio (supported token) returns topk sim-ranked hits",
+            kbr.CROSS_MODAL_AUDIO_QUERY_STATUS.clear()
+            kbr.CROSS_MODAL_AUDIO_QUERY_STATUS.update(_orig_status_table)
+        check("retrieve_cross_modal_audio (once promoted to 'supported') returns topk sim-ranked hits",
               len(hits) == 1 and len(hits[0]) == 3
               and hits[0][0]["sim"] >= hits[0][1]["sim"] >= hits[0][2]["sim"], results)
+        check("promoting glap in the test was reverted -- status table restored to 'pending-live-verification'",
+              kbr.CROSS_MODAL_AUDIO_QUERY_STATUS["glap"] == "pending-live-verification", results)
 
-        # 9e: status table sanity -- glap/nemotron 'supported', lco-3b 'pending-GPU-window', an
-        # unlisted token 'ARM-BLOCKED-cross-modal'.
-        check("cross_modal_audio_query_status: glap == 'supported'",
-              kbr.cross_modal_audio_query_status(src_glap["manifest"]) == "supported", results)
-        check("cross_modal_audio_query_status: omni-embed-nemotron == 'supported'",
-              kbr.cross_modal_audio_query_status(src_nemo["manifest"]) == "supported", results)
+        # 9e: status table sanity -- glap/nemotron 'pending-live-verification' (2026-07-13 downgrade,
+        # ticket #37 item 4 -- NOT 'supported'), lco-3b 'pending-GPU-window', an unlisted token
+        # 'ARM-BLOCKED-cross-modal'.
+        check("cross_modal_audio_query_status: glap == 'pending-live-verification'",
+              kbr.cross_modal_audio_query_status(src_glap["manifest"]) == "pending-live-verification", results)
+        check("cross_modal_audio_query_status: omni-embed-nemotron == 'pending-live-verification'",
+              kbr.cross_modal_audio_query_status(src_nemo["manifest"]) == "pending-live-verification", results)
 
         # 9f: UNSUPPORTED (permanently ARM-BLOCKED) embedder -- e.g. a text-keyed source built with
         # a token that has no text tower / cross-modal query path at all (clsp — real audio-only
@@ -570,6 +602,120 @@ def main() -> int:
         kv_no_key_text_ref = KnowledgeValue.from_json(old_line_no_key_text_ref)
         check("pre-existing (no key_text_ref) JSON line loads with key_text_ref=None",
               kv_no_key_text_ref.key_text_ref is None, results)
+
+        # ---- case 10 (2026-07-13, ticket #37 item 6): manifest provenance extension ----
+        m_prov = kb_build.build_source(
+            "gate_provenance", "synthetic", None, _records(wavdir, n=3),
+            key_modality="audio", value_type="text-fact", embedder="logmel-stats",
+            audit_golds=[], scrub=True, note="gate-test provenance extension (ticket #37 item 6)",
+        )
+        from kb_schema import CONTENT_HASH_SCHEMA_VERSION
+
+        check("manifest.code_git_sha is a non-empty string",
+              isinstance(m_prov.get("code_git_sha"), str) and bool(m_prov["code_git_sha"]), results)
+        check("manifest.code_git_dirty is bool or None (never missing the KEY itself)",
+              "code_git_dirty" in m_prov and (m_prov["code_git_dirty"] is None or isinstance(m_prov["code_git_dirty"], bool)),
+              results)
+        check("manifest.normalization == 'l2'", m_prov.get("normalization") == "l2", results)
+        check("manifest.index_backend_params is a non-empty dict with a 'metric' key",
+              isinstance(m_prov.get("index_backend_params"), dict) and "metric" in m_prov["index_backend_params"],
+              results)
+        check("manifest.content_hash_schema_version == CONTENT_HASH_SCHEMA_VERSION",
+              m_prov.get("content_hash_schema_version") == CONTENT_HASH_SCHEMA_VERSION, results)
+        # embedder_revision key is always PRESENT (may be None for an embedder with no resolvable
+        # revision, e.g. this test's own 'logmel-stats' PoC key -- not in kb_embed.MODEL_DIRNAMES).
+        check("manifest.embedder_revision key present (None is a valid value for logmel-stats)",
+              "embedder_revision" in m_prov, results)
+
+        # a real MODEL_DIRNAMES-backed embedder (glap) DOES resolve a non-None embedder_revision --
+        # via precomputed_key rows so this never needs the real glap model on disk.
+        import numpy as np
+
+        dim = 8
+        glap_recs = []
+        for i in range(3):
+            vec = np.random.RandomState(50 + i).randn(dim).astype("float32")
+            vec = vec / np.linalg.norm(vec)
+            glap_recs.append({
+                "key_audio_ref": f"synthetic:glap:{i}.wav", "value": f"glap-provenance value {i}",
+                "from_item_id": f"glap-item-{i}", "precomputed_key": vec,
+            })
+        import kb_embed
+
+        _orig_model_dir = kb_embed._model_dir
+        kb_embed._model_dir = lambda name: f"/fake/model/dir/{name}"  # avoid needing a real snapshot on disk
+        try:
+            m_glap_prov = kb_build.build_source(
+                "gate_provenance_glap", "synthetic", None, glap_recs,
+                key_modality="audio", value_type="text-fact", embedder="glap",
+                audit_golds=[], scrub=True, note="gate-test provenance embedder_revision (glap)",
+            )
+        finally:
+            kb_embed._model_dir = _orig_model_dir
+        check("manifest.embedder_revision resolves a non-None string for a MODEL_DIRNAMES embedder (glap)",
+              isinstance(m_glap_prov.get("embedder_revision"), str) and "glap@" in m_glap_prov["embedder_revision"],
+              results)
+
+        # ---- case 11 (ticket #37 item 6): backfill_provenance sidecar (never touches manifest.json) ----
+        import backfill_provenance as bp
+
+        # an OLD-STYLE source dir (as if built before this manifest-provenance extension existed) --
+        # its manifest.json simply omits every new field (SourceManifest's own dataclass defaults
+        # fill them in as None/empty on load, exactly like any other pre-existing manifest).
+        old_source = "gate_backfill_old_style"
+        old_dir = kb_root() / "knowledge_base" / old_source
+        old_dir.mkdir(parents=True, exist_ok=True)
+        old_recs = _records(wavdir, n=3)
+        m_old = kb_build.build_source(
+            old_source, "synthetic", None, old_recs,
+            key_modality="audio", value_type="text-fact", embedder="logmel-stats",
+            audit_golds=[], scrub=True, note="gate-test backfill (simulated pre-item-6 source)",
+        )
+        # simulate "pre-item-6" by stripping the new fields out of the persisted manifest.json (the
+        # backfill script must not assume they are present).
+        old_manifest_path = old_dir / "manifest.json"
+        old_manifest_dict = json.loads(old_manifest_path.read_text(encoding="utf-8"))
+        for k in ("code_git_sha", "code_git_dirty", "embedder_revision", "normalization",
+                  "index_backend_params", "content_hash_schema_version"):
+            old_manifest_dict.pop(k, None)
+        old_manifest_path.write_text(json.dumps(old_manifest_dict, indent=2, ensure_ascii=False), encoding="utf-8")
+
+        pre_backfill_manifest_bytes = old_manifest_path.read_bytes()
+        backfill_result = bp.backfill_one(old_source)
+        check("backfill_one reports status='backfilled' with a computable content hash",
+              backfill_result["status"] == "backfilled" and backfill_result["has_computable_content_hash"] is True,
+              results)
+        check("backfill_one NEVER touches the existing manifest.json (byte-identical after backfill)",
+              old_manifest_path.read_bytes() == pre_backfill_manifest_bytes, results)
+        sidecar_path = old_dir / "provenance.sidecar.json"
+        check("backfill_one writes a provenance.sidecar.json next to manifest.json",
+              sidecar_path.exists(), results)
+        sidecar = json.loads(sidecar_path.read_text(encoding="utf-8"))
+        check("sidecar.backfilled is True and content_hash_recomputed_v1_now is set",
+              sidecar.get("backfilled") is True and sidecar.get("content_hash_recomputed_v1_now"),
+              results)
+        check("sidecar.normalization_assumed == 'l2'", sidecar.get("normalization_assumed") == "l2", results)
+
+        # re-running backfill_one on an already-sidecar'd source is a no-op (skipped), never
+        # overwrites the sidecar either.
+        pre_rerun_sidecar_bytes = sidecar_path.read_bytes()
+        rerun_result = bp.backfill_one(old_source)
+        check("backfill_one skips a source that already has a sidecar",
+              rerun_result["status"] == "skipped-sidecar-exists", results)
+        check("re-running backfill_one never rewrites an existing sidecar",
+              sidecar_path.read_bytes() == pre_rerun_sidecar_bytes, results)
+
+        # --dry-run: reports would-backfill, writes NOTHING.
+        dry_source = "gate_backfill_dry_run"
+        kb_build.build_source(
+            dry_source, "synthetic", None, _records(wavdir, n=2),
+            key_modality="audio", value_type="text-fact", embedder="logmel-stats",
+            audit_golds=[], scrub=True, note="gate-test backfill --dry-run",
+        )
+        dry_result = bp.backfill_one(dry_source, dry_run=True)
+        check("backfill_one(dry_run=True) reports 'would-backfill'", dry_result["status"] == "would-backfill", results)
+        check("backfill_one(dry_run=True) writes NO sidecar file",
+              not (kb_root() / "knowledge_base" / dry_source / "provenance.sidecar.json").exists(), results)
 
     all_pass = all(results.values())
     print("\n=== KB GATE TEST ===")

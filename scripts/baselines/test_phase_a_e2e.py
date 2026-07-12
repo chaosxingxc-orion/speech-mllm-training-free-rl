@@ -541,6 +541,124 @@ def test_e2e_control_arms(results: dict) -> None:
         print(f"  [{status}] {name:30s}{extra}")
 
 
+# ---------------------------------------------------------------------------------------------
+# test l (2026-07-13, ticket #37 item 3): run_mock.source_name_for's squtr corpus-side routing +
+# archive_legacy_squtr_sources's archive-never-delete mechanism. Fully offline -- a tiny FAKE
+# corpus-side source (precomputed keys, no real embedder) is built under the EXACT naming
+# convention build_squtr_corpus_source uses, never touching squtr's real (multi-GB) zip.
+# ---------------------------------------------------------------------------------------------
+
+def test_source_name_for_squtr_corpus_routing(results: dict) -> None:
+    import numpy as np
+
+    import archive_legacy_squtr_sources as arch
+    import kb_build
+    import kb_retrieve
+    import run_mock as rm
+    from kb_schema import KBCrossModalBlockedError  # noqa: F401 (import-availability smoke only)
+
+    cfg = rm.MockConfig(
+        embedder="glap", key_org="single-utt", value_org="knowledge-passage",
+        retrieval=rm.RetrievalConfig(), query_construction="audio-direct", delivery="flat",
+    )
+
+    # 1. no corpus source built yet for THIS embedder -> legacy 4-field name (unchanged behavior)
+    legacy_name_before = rm.source_name_for("squtr", cfg)
+    results["source_name_for('squtr', cfg): legacy 4-field name when no corpus source exists"] = (
+        legacy_name_before == "squtr__glap__single-utt__knowledge-passage"
+    )
+
+    # 2. build a tiny FAKE corpus-side source under build_squtr_corpus_source's exact naming
+    #    convention (squtr-fiqa-clean__corpus__<embedder>__text-keyed) -- precomputed keys, no real
+    #    embedding/model/GPU.
+    dim = 8
+    corpus_name = "squtr-fiqa-clean__corpus__glap__text-keyed"
+    corpus_recs = []
+    for i in range(3):
+        vec = np.random.RandomState(i).randn(dim).astype("float32")
+        vec = vec / np.linalg.norm(vec)
+        corpus_recs.append({
+            "key_text": f"corpus doc {i} text", "value": f"corpus doc {i} text",
+            "from_item_id": f"squtr-fiqa-clean|corpus|doc{i}", "precomputed_key": vec,
+        })
+    kb_build.build_source(
+        corpus_name, "squtr-fiqa-clean-corpus", revision=None, records=corpus_recs,
+        key_modality="text", value_type="text-fact", embedder="glap",
+        audit_golds=[], scrub=True, pool_split="test",
+        note="test fixture (ticket #37 item 3) -- fake squtr corpus-side source",
+    )
+
+    routed_name = rm.source_name_for("squtr", cfg)
+    results["source_name_for('squtr', cfg): routes to the corpus-side source once it exists"] = (
+        routed_name == corpus_name
+    )
+
+    # 3. dry_run_mock's own zero-KB-calls contract: probe_corpus=False keeps the legacy name even
+    #    though the corpus source now exists.
+    no_probe_name = rm.source_name_for("squtr", cfg, probe_corpus=False)
+    results["source_name_for(..., probe_corpus=False) never routes (dry-run's zero-KB-calls contract)"] = (
+        no_probe_name == "squtr__glap__single-utt__knowledge-passage"
+    )
+
+    # 4. a DIFFERENT dataset with no documented corpus alternative is completely unaffected.
+    other_name = rm.source_name_for("fake_e2e", rm.REF_CONFIG)
+    results["source_name_for(non-squtr dataset) unaffected by the routing table"] = (
+        other_name == f"fake_e2e__{rm.REF_CONFIG.embedder}__{rm.REF_CONFIG.key_org}__{rm.REF_CONFIG.value_org}"
+    )
+
+    # 5. archive a legacy (fake) source and verify consuming it by its old name now raises.
+    legacy_name = "squtr__glap__single-utt__knowledge-passage"
+    legacy_recs = []
+    for i in range(3):
+        vec = np.random.RandomState(10 + i).randn(dim).astype("float32")
+        vec = vec / np.linalg.norm(vec)
+        legacy_recs.append({
+            "key_audio_ref": f"synthetic:legacy:{i}.wav", "value": f"FiQA query text {i}?",
+            "from_item_id": f"fiqa|clean|{i}", "precomputed_key": vec,
+        })
+    kb_build.build_source(
+        legacy_name, "squtr", revision=None, records=legacy_recs,
+        key_modality="audio", value_type="text-fact", embedder="glap",
+        audit_golds=[], scrub=True, pool_split="test",
+        note="test fixture (ticket #37 item 3) -- fake LEGACY query-valued squtr source",
+    )
+    arch_result = arch.archive_source(legacy_name)
+    results["archive_legacy_squtr_sources.archive_source archives (moves, never deletes)"] = (
+        arch_result["status"] == "archived"
+        and os.path.isfile(os.path.join(arch_result["archived_path"], "values.jsonl"))
+        and os.path.isfile(os.path.join(arch_result["archived_path"], "SUPERSEDED_NOTE.json"))
+    )
+
+    raised_after_archive = False
+    try:
+        kb_retrieve.load_source(legacy_name)
+    except FileNotFoundError:
+        raised_after_archive = True
+    results["consuming an archived legacy source by its old name raises FileNotFoundError"] = raised_after_archive
+
+    # 6. archiving is idempotent / honest about "nothing there" the second time (no crash).
+    rearchive_result = arch.archive_source(legacy_name)
+    results["re-archiving an already-archived source reports skipped-no-manifest (never crashes)"] = (
+        rearchive_result["status"] == "skipped-no-manifest"
+    )
+
+    # 7. find_legacy_squtr_sources: excludes '__corpus__' sources, includes only 'squtr__' prefixed
+    #    ones -- exercised against THIS test's own tmp KB store (corpus_name was built above and
+    #    must never appear; legacy_name was already archived and moved away, so it won't appear
+    #    either -- build one more, unarchived, legacy-shaped source to prove the positive case).
+    legacy_name_2 = "squtr__glap__single-utt__memory-instance"
+    kb_build.build_source(
+        legacy_name_2, "squtr", revision=None, records=legacy_recs,
+        key_modality="audio", value_type="text-fact", embedder="glap",
+        audit_golds=[], scrub=True, pool_split="test",
+        note="test fixture (ticket #37 item 3) -- second fake LEGACY source",
+    )
+    found = arch.find_legacy_squtr_sources()
+    results["find_legacy_squtr_sources includes an unarchived legacy source, excludes '__corpus__'"] = (
+        legacy_name_2 in found and corpus_name not in found
+    )
+
+
 def main() -> int:
     _ensure_tmp_kb_dir()
     print(f"[test_phase_a_e2e] SPEECHRL_KB_DIR={os.environ['SPEECHRL_KB_DIR']} (tmp -- never the real KB)")
@@ -549,6 +667,7 @@ def main() -> int:
     test_e2e_all_arms(results)
     test_cpu_live_logmel_stats_smoke(results)
     test_e2e_control_arms(results)
+    test_source_name_for_squtr_corpus_routing(results)
 
     print("\n=== PHASE-A E2E TEST ===")
     for k, v in results.items():

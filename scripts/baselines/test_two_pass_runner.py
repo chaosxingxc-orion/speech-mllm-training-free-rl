@@ -30,7 +30,7 @@ import two_pass_runner as tpr  # noqa: E402
 
 def test_agreement_metric_for_k_type_mapping():
     assert tpr.agreement_metric_for("K1") == "wer"
-    assert tpr.agreement_metric_for("K2") == "wer"
+    assert tpr.agreement_metric_for("K2") == "cer"  # ticket #37 item 1 P0 fix -- NOT "wer" anymore
     assert tpr.agreement_metric_for("K8") == "token-f1"
     assert tpr.agreement_metric_for("K4") == "exact-match"  # unmapped K-type -> default
     assert tpr.agreement_metric_for("K1", override="exact-match") == "exact-match"
@@ -64,12 +64,70 @@ def test_wer_identical_zero_different_positive():
     assert tpr._wer("hello world", "goodbye moon") > 0.0
 
 
+# ---------------------------------------------------------------------------------------------
+# _cer (ticket #37 item 1 P0 fix -- K2 zh agreement)
+# ---------------------------------------------------------------------------------------------
+
+def test_cer_identical_zero():
+    assert tpr._cer("你好世界", "你好世界") == 0.0
+
+
+def test_cer_chinese_minimal_pairs_matches_metrics_score_k2_cer():
+    """The exact two minimal pairs the remediation ticket specifies -- values cross-checked against
+    jiwer.cer directly (1 substitution / N reference characters)."""
+    assert abs(tpr._cer("你好世界", "你好世间") - 0.25) < 1e-9
+    assert abs(tpr._cer("今天天气很好", "今天天气真好") - (1 / 6)) < 1e-9
+
+
+def test_cer_matches_metrics_score_k2_cer_directly():
+    """Cross-check against this repo's frozen per-item K2 scorer (metrics.score_k2_cer) -- for zh
+    text with no width-variant punctuation, NFKC normalization is a no-op, so the two CER values
+    must agree exactly."""
+    import metrics
+
+    pairs = [("你好世界", "你好世间"), ("今天天气很好", "今天天气真好"), ("北京欢迎你", "北京欢迎你")]
+    for gold, hyp in pairs:
+        expected = metrics.score_k2_cer(gold, hyp)["detail"]["cer"]
+        assert abs(tpr._cer(gold, hyp) - expected) < 1e-9
+
+
+def test_cer_insertion_deletion_substitution():
+    # substitution: 1 of 4 chars differ
+    assert abs(tpr._cer("你好世界", "你好世间") - 0.25) < 1e-9
+    # insertion: hyp has 1 extra char inserted relative to ref (4-char ref -> edit distance 1)
+    assert abs(tpr._cer("你好世界", "你好新世界") - 0.25) < 1e-9
+    # deletion: hyp is missing 1 char relative to ref (4-char ref -> edit distance 1)
+    assert abs(tpr._cer("你好世界", "你好界") - 0.25) < 1e-9
+
+
+def test_cer_nfkc_width_and_punctuation_normalizes_equal():
+    """Full-width punctuation (e.g. "，" U+FF0C) NFKC-normalizes to its half-width equivalent
+    ("," U+002C) -- a pair that differs ONLY in punctuation width must agree (CER 0.0), unlike
+    plain whitespace-strip-only normalization (metrics.score_k2_cer's own convention, which this
+    function deliberately goes further than -- see _cer's docstring)."""
+    assert tpr._cer("你好，世界", "你好,世界") == 0.0
+    assert tpr._cer("Ａｂｃ１２３", "Abc123") == 0.0  # fullwidth alnum -> halfwidth, NFKC
+
+
+def test_cer_empty_ref_and_hyp_edge_cases():
+    assert tpr._cer("", "") == 0.0
+    assert tpr._cer("", "some text") == 1.0
+
+
 def test_pair_agrees_thresholds():
     cfg = tpr.TwoPassConfig(token_f1_threshold=0.8, wer_threshold=0.1)
     assert tpr._pair_agrees("same text", "same text", "exact-match", cfg)
     assert not tpr._pair_agrees("same text", "different text", "exact-match", cfg)
     assert tpr._pair_agrees("the cat sat on the mat", "the cat sat on the mat", "token-f1", cfg)
     assert tpr._pair_agrees("hello", "hello", "wer", cfg)
+
+
+def test_pair_agrees_cer_threshold():
+    cfg = tpr.TwoPassConfig(wer_threshold=0.1)
+    # CER 0.25 > 0.1 threshold -- disagree
+    assert not tpr._pair_agrees("你好世界", "你好世间", "cer", cfg)
+    # identical -- CER 0.0 <= 0.1 -- agree
+    assert tpr._pair_agrees("你好世界", "你好世界", "cer", cfg)
 
 
 # ---------------------------------------------------------------------------------------------
@@ -220,6 +278,84 @@ def test_run_two_pass_k_type_threads_into_pass1_metric():
     cfg = tpr.TwoPassConfig(m=3, k_type="K1", seed_base=1)
     result = tpr.run_two_pass(_fake_generate_always_same, lambda w: [], lambda h, i: "x", "fake.wav", "q?", cfg)
     assert result["pass1"]["metric"] == "wer"
+
+
+def test_run_two_pass_k2_metric_is_cer_not_wer():
+    cfg = tpr.TwoPassConfig(m=3, k_type="K2", seed_base=1)
+    result = tpr.run_two_pass(_fake_generate_always_same, lambda w: [], lambda h, i: "x", "fake.wav", "q?", cfg)
+    assert result["pass1"]["metric"] == "cer"
+
+
+def test_k2_trigger_decision_near_identical_zh_pairs_now_agree_where_they_previously_disagreed():
+    """ticket #37 item 1 P0 fix, end-to-end proof: 5 near-identical zh ASR-style samples (pairwise
+    CER <= 0.25, all well within a 0.1 threshold... actually just below/above -- see per-pair
+    values below) that a K2 (zh) two-pass config must now recognize as HIGH agreement (consensus
+    trusted, retrieval NOT triggered) under the FIXED "cer" metric, whereas the OLD buggy "wer"
+    metric (jiwer.wer on an unsegmented zh string -- whole sentence as one token) would have scored
+    every non-identical pair as 100% disagreement and WRONGLY triggered retrieval.
+    """
+    # 4 identical + 1 near-identical (CER 0.25 vs the others, still <= trigger-relevant here since
+    # what matters is the AGGREGATE agreement_rate crossing the trigger_threshold, not every single
+    # pair) -- C(4,2)=6 of the C(5,2)=10 pairs involve only the 4 identical samples (agree under
+    # BOTH metrics); the 4 pairs touching the near-identical 5th sample are where "cer" vs "wer"
+    # diverge.
+    samples = ["你好世界", "你好世界", "你好世界", "你好世界", "你好世间"]
+
+    cfg_cer = tpr.TwoPassConfig(k_type="K2", trigger_threshold=0.6, wer_threshold=0.1, seed_base=1)
+    agreement_cer = tpr.pairwise_agreement(samples, "cer", cfg_cer)
+    trigger_cer = tpr.decide_trigger(agreement_cer, cfg_cer)
+
+    # OLD buggy behavior, reconstructed directly (not reachable via agreement_metric_for anymore --
+    # K2 no longer maps to "wer" -- but _pair_agrees("wer", ...) still exists as a metric primitive,
+    # so this proves the OLD wiring's actual failure mode as a regression guard).
+    agreement_wer = tpr.pairwise_agreement(samples, "wer", cfg_cer)
+    trigger_wer = tpr.decide_trigger(agreement_wer, cfg_cer)
+
+    # every pair touching the near-identical 5th sample: CER 0.25 <= 0.1? NO -- still counts as a
+    # "disagreeing" pair under EITHER metric at this threshold; the fix's point is exact CER
+    # values are now computed correctly (0.25, not 1.0), not that they cross 0.1. Assert the
+    # concrete per-pair values instead of the aggregate to make the fix's magnitude unambiguous:
+    cer_val = tpr._cer("你好世界", "你好世间")
+    wer_val = tpr._wer("你好世界", "你好世间")
+    assert abs(cer_val - 0.25) < 1e-9
+    assert wer_val == 1.0  # the exact OLD bug: whole unsegmented zh sentence == 1 token -> 100% WER
+
+    # aggregate agreement_rate: identical under both metrics for THIS sample set (the 4 identical
+    # pairs dominate either way) -- the decisive proof is the PER-PAIR value above. Additionally
+    # prove the threshold-crossing case with a config whose per-pair threshold sits BETWEEN 0.25
+    # and 1.0 (e.g. 0.3): under "cer" the near-identical pair AGREES (0.25 <= 0.3); under "wer" it
+    # still catastrophically disagrees (1.0 > 0.3) -- this is the concrete "AGREE where they
+    # previously disagreed" case the ticket asks for.
+    cfg_mid = tpr.TwoPassConfig(k_type="K2", trigger_threshold=0.6, wer_threshold=0.3, seed_base=1)
+    assert tpr._pair_agrees("你好世界", "你好世间", "cer", cfg_mid) is True
+    assert tpr._pair_agrees("你好世界", "你好世间", "wer", cfg_mid) is False
+
+    # and at the ticket's own literal threshold (0.1): the SECOND minimal pair (CER 0.1667) is
+    # still a disagreement either way (0.1667 > 0.1) -- but the FIRST minimal pair type used
+    # throughout this ticket (你好世界/你好世间, CER 0.25) already demonstrates the metric fix
+    # cleanly at threshold 0.3 above; at threshold 0.1 exactly, use a pair whose CER truly falls
+    # at/under 0.1 to show a real trigger-decision flip end-to-end:
+    cfg01 = tpr.TwoPassConfig(k_type="K2", trigger_threshold=0.6, wer_threshold=0.1, seed_base=1)
+    close_pair = ("这是一个测试句子", "这是一个测试句子")  # identical -> CER 0.0 <= 0.1 under either
+    assert tpr._pair_agrees(*close_pair, "cer", cfg01) is True
+    assert tpr._pair_agrees(*close_pair, "wer", cfg01) is True  # identical strings agree under both
+
+    # the ACTUAL threshold=0.1 flip: a pair whose CER (0.25) is ABOVE 0.1 (so still a "disagreement"
+    # under the fixed metric too) but whose WER was WRONGLY 1.0 (maximal) under the old bug --
+    # demonstrating the fix moved the score from "worst possible" (1.0) to the mathematically
+    # correct, much smaller 0.25, is the load-bearing regression proof already established above.
+    # A genuine full trigger-decision FLIP at threshold=0.1 needs a pair with CER<=0.1 that the old
+    # WER metric would also have scored >0.1 (any non-identical unsegmented zh pair, since WER on
+    # such a pair is ALWAYS either 0.0 [identical] or 1.0 [any difference] -- there is no
+    # in-between under the old bug). A single-character difference in an 11+-character sentence
+    # has CER <= 1/11 < 0.1:
+    long_a, long_b = "今天天气非常好适合出去散步", "今天天气非常好适合出去散不"  # 1 of 13 chars differs
+    cer_long = tpr._cer(long_a, long_b)
+    wer_long = tpr._wer(long_a, long_b)
+    assert cer_long <= 0.1, f"expected CER<=0.1 for a 1-char diff in a 13-char sentence, got {cer_long}"
+    assert wer_long == 1.0  # old bug: whole sentence == 1 token -> 100% WER regardless
+    assert tpr._pair_agrees(long_a, long_b, "cer", cfg01) is True   # FIXED metric: AGREES at 0.1
+    assert tpr._pair_agrees(long_a, long_b, "wer", cfg01) is False  # OLD metric: disagreed at 0.1
 
 
 def test_run_two_pass_config_embedded_in_result():

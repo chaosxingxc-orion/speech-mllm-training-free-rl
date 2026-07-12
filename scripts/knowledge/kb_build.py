@@ -103,6 +103,7 @@ def build_source(
     import kb_embed
     from kb_audit import audit_texts, scrub_golds
     from kb_schema import (
+        CONTENT_HASH_SCHEMA_VERSION,
         KBLeakageError,
         KBSourceExistsError,
         KnowledgeValue,
@@ -110,6 +111,7 @@ def build_source(
         build_hash,
         content_hash_of,
         entry_id,
+        git_dirty_of,
         git_sha_of,
         kb_root,
         leakage_verdict,
@@ -241,6 +243,20 @@ def build_source(
             keys[i] = pv
     embedder_token = kb_embed.resolve_embedder_token(embedder, ename)
     index = VectorIndex.build(keys)
+    # 2026-07-13 (ticket #37 item 6): the ACTUAL construction params VectorIndex.build used --
+    # kb_build never overrides its defaults today (always called as VectorIndex.build(keys), no
+    # index_type/hnsw_m override), so "requested_index_type" is always "auto" for now; recorded
+    # explicitly (not hardcoded elsewhere) so a future caller that DOES pass an override only needs
+    # to update this one call site, and so index.backend's resulting string is never the ONLY
+    # record of how the index was actually built.
+    index_backend_params = {
+        "requested_index_type": "auto",
+        "hnsw_m": 32 if index.backend == "faiss-hnsw-ip" else None,
+        "metric": "inner-product (cosine, since keys are L2-normalized)",
+    }
+    normalization = "l2"  # every kb_embed embedder L2-normalizes its output (see kb_embed._l2) --
+    # explicit rather than assumed, see kb_schema.SourceManifest.normalization's docstring.
+    embedder_revision = kb_embed.embedder_revision_of(embedder_token) if embedder_token else None
 
     d = source_dir(source)
     d.mkdir(parents=True, exist_ok=True)
@@ -275,10 +291,19 @@ def build_source(
             )
             fh.write(kv.to_json() + "\n")
 
-    # --- content_hash (2026-07-12, RI item 8): fingerprint the ACTUAL PERSISTED BYTES, not just
-    # metadata -- computed AFTER values.jsonl/keys.npy are on disk, over those real files. ---
-    code_git_sha = git_sha_of(Path(__file__).resolve().parents[2])  # W1 repo root
-    c_hash = content_hash_of(d / "values.jsonl", d / "keys.npy", from_ids, code_git_sha)
+    # --- content_hash (2026-07-12, RI item 8; extended 2026-07-13, ticket #37 item 6): fingerprint
+    # the ACTUAL PERSISTED BYTES + embedder identity + normalization + index-backend params, not
+    # just values/keys/from_item_ids/git-sha -- computed AFTER values.jsonl/keys.npy are on disk,
+    # over those real files. ---
+    repo_root = Path(__file__).resolve().parents[2]  # W1 repo root
+    code_git_sha = git_sha_of(repo_root)
+    code_git_dirty = git_dirty_of(repo_root)
+    c_hash = content_hash_of(
+        d / "values.jsonl", d / "keys.npy", from_ids, code_git_sha,
+        embedder_token=embedder_token, embedder_revision=embedder_revision,
+        normalization=normalization, index_backend=index.backend,
+        index_backend_params=index_backend_params,
+    )
 
     manifest = SourceManifest(
         source=source,
@@ -299,6 +324,12 @@ def build_source(
         pool_split=pool_split,
         content_hash=c_hash,
         predecessor=predecessor_record,
+        code_git_sha=code_git_sha,
+        code_git_dirty=code_git_dirty,
+        embedder_revision=embedder_revision,
+        normalization=normalization,
+        index_backend_params=index_backend_params,
+        content_hash_schema_version=CONTENT_HASH_SCHEMA_VERSION,
     )
     json.dump(manifest.to_dict(), open(d / "manifest.json", "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     print(

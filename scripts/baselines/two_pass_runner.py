@@ -8,7 +8,9 @@ by design — a genuinely adaptive, self-consistency-gated two-pass controller:
   **Pass 1** — draw ``m`` stochastic samples (default ``m=5``, ``T=0.7``) from the frozen core with
   NO retrieval augmentation at all, and compute their PAIRWISE AGREEMENT with a K-type-appropriate
   metric (exact-match for closed/MCQ K-types, token-F1>=0.8 for free-text QA, WER<=0.1 for
-  ASR/echo content K-types). Low agreement is read as "the model is internally uncertain about
+  English ASR/echo content (K1), CER<=0.1 for Chinese ASR/echo content (K2) — see the 2026-07-13
+  ticket #37 item 1 fix below: K2 used to route through ``_wer`` too, which is wrong for
+  unsegmented Chinese). Low agreement is read as "the model is internally uncertain about
   this item" — the trigger signal.
 
   **Trigger decision** — if the agreement rate falls BELOW ``cfg.trigger_threshold``, retrieval is
@@ -36,14 +38,25 @@ from dataclasses import asdict, dataclass, field
 
 # ---------------------------------------------------------------------------------------------
 # K-type -> agreement metric (per task brief: "exact-match / token-F1>=0.8 / WER<=0.1 as
-# specified"). Mirrors metrics.py's K-type scorer wiring (score_k1_wer/score_k2_cer = content ASR/
-# echo -> WER; score_k8_qa = free-text QA -> token-F1; every other, closed-label K-type -> EM).
+# specified"). Mirrors metrics.py's K-type scorer wiring (score_k1_wer -> WER; score_k2_cer -> CER;
+# score_k8_qa = free-text QA -> token-F1; every other, closed-label K-type -> EM).
+#
+# 2026-07-13 (ticket #37 item 1, P0 fix): K2 (ASR/echo content, ZH) used to be mapped to "wer",
+# which called ``_wer`` -> ``jiwer.wer`` on an UNSEGMENTED Chinese string. Chinese has no
+# whitespace word boundaries, so jiwer.wer treats the WHOLE sentence as ONE token --
+# ``_wer('你好世界', '你好世间')`` (differs in exactly 1 of 4 characters) returned ``1.0`` (100%
+# "disagreement"), the worst possible score for a near-identical pair. This is the SAME bug class
+# ``metrics.py``'s own module docstring already fixed for the per-item K2 scorer
+# (``score_k2_cer`` uses ``jiwer.cer``, never ``jiwer.wer``, for exactly this reason) -- this
+# module had drifted out of sync with that fix. K2 now maps to "cer" (see ``_cer`` below,
+# consistent with ``metrics.score_k2_cer``: NFKC-normalize, strip whitespace, ``jiwer.cer``).
 # ---------------------------------------------------------------------------------------------
-AGREEMENT_METRICS = ("exact-match", "token-f1", "wer")
+AGREEMENT_METRICS = ("exact-match", "token-f1", "wer", "cer")
 
 K_TYPE_AGREEMENT_METRIC: dict[str, str] = {
-    "K1": "wer",         # ASR content (en)
-    "K2": "wer",          # ASR/echo content (zh CER-style, jiwer.wer still applies char-wise below)
+    "K1": "wer",          # ASR content (en) -- word-segmented, jiwer.wer is correct here
+    "K2": "cer",          # ASR/echo content (zh) -- char-level CER via jiwer.cer, NOT jiwer.wer
+                            # (whole-sentence-as-one-token bug on unsegmented zh) -- see _cer below.
     "K8": "token-f1",      # free-text QA
 }
 DEFAULT_AGREEMENT_METRIC = "exact-match"  # every other (closed-label/MCQ) K-type
@@ -112,6 +125,41 @@ def _wer(a: str, b: str) -> float:
     return float(jiwer.wer(ref, hyp))
 
 
+def _cer(a: str, b: str) -> float:
+    """Chinese-appropriate agreement primitive for K2 (ASR/echo content, zh) -- 2026-07-13, ticket
+    #37 item 1 P0 fix. Character error rate via ``jiwer.cer`` on an NFKC-normalized,
+    whitespace-stripped string: consistent with ``scripts/baselines/metrics.py:score_k2_cer`` (this
+    repo's frozen K2 per-item scorer), plus an ADDED NFKC-normalization pass (metrics.score_k2_cer
+    itself only strips whitespace) so full-width/half-width punctuation and digit variants (common
+    in zh ASR output, e.g. "，" vs ",") don't spuriously disagree -- NFKC maps compatibility
+    fullwidth-forms characters to their standard-width equivalents (e.g. U+FF0C -> U+002C), unlike
+    the plain `_norm` helper above (which ALSO drops punctuation entirely via its alnum/space-only
+    filter -- too aggressive for CER, which should still count a genuine punctuation-character
+    edit as an error).
+
+    NEVER route K2 through ``_wer``/``jiwer.wer`` on an unsegmented zh string -- Chinese has no
+    whitespace word boundaries, so the whole sentence counts as ONE token and
+    ``_wer('你好世界', '你好世间')`` (1 of 4 characters differ) would return ``1.0`` (100%
+    "disagreement") instead of the correct ``0.25`` CER. This was exactly the P0 bug this function
+    replaces (K_TYPE_AGREEMENT_METRIC used to map K2 -> "wer").
+    """
+    import unicodedata
+
+    import jiwer  # lazy
+
+    def _prep(s: str) -> str:
+        s = unicodedata.normalize("NFKC", str(s))
+        return "".join(s.split())  # strip ALL whitespace, keep every other character (matches
+                                     # metrics.score_k2_cer's "".join(str(gold).split()) convention)
+
+    ref, hyp = _prep(a), _prep(b)
+    if not ref and not hyp:
+        return 0.0
+    if not ref:
+        return 1.0
+    return float(jiwer.cer(ref, hyp))
+
+
 def _pair_agrees(a: str, b: str, metric: str, cfg: TwoPassConfig) -> bool:
     if metric == "exact-match":
         return _norm(a) == _norm(b)
@@ -119,6 +167,11 @@ def _pair_agrees(a: str, b: str, metric: str, cfg: TwoPassConfig) -> bool:
         return _token_f1(a, b) >= cfg.token_f1_threshold
     if metric == "wer":
         return _wer(a, b) <= cfg.wer_threshold
+    if metric == "cer":
+        return _cer(a, b) <= cfg.wer_threshold  # reuses the same error-rate threshold field as
+                                                    # "wer" (both are "fraction of edits" agreement
+                                                    # thresholds; a distinct cer_threshold config
+                                                    # field was judged unnecessary duplication).
     raise ValueError(f"_pair_agrees: unknown metric {metric!r} (expected one of {AGREEMENT_METRICS})")
 
 

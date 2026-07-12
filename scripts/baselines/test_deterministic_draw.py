@@ -84,14 +84,17 @@ def test_same_inputs_byte_identical_manifest():
 
 def test_same_inputs_byte_identical_manifest_on_disk():
     """Same as above, but through write_manifest -- proves the PERSISTED file bytes match, not
-    just the in-memory dict (guards against any non-deterministic key ordering at json.dump time)."""
+    just the in-memory dict (guards against any non-deterministic key ordering at json.dump time).
+
+    Passes a tmp ``log_dir`` (mirroring ``out_dir``) so this NEVER appends to the real repo's
+    ``_repro/draws/draw_log.jsonl`` (ticket #37 item 7c's append-only log) -- test isolation."""
     pool = _synthetic_pool(120)
     spec = {"kind": "explicit_ids", "ids": pool}
     with tempfile.TemporaryDirectory() as td1, tempfile.TemporaryDirectory() as td2:
         m1 = dd.deterministic_draw("ds-b", spec, n=15, draw_type="confirmatory")
         m2 = dd.deterministic_draw("ds-b", spec, n=15, draw_type="confirmatory")
-        p1 = dd.write_manifest(m1, out_dir=Path(td1))
-        p2 = dd.write_manifest(m2, out_dir=Path(td2))
+        p1 = dd.write_manifest(m1, out_dir=Path(td1), log_dir=Path(td1))
+        p2 = dd.write_manifest(m2, out_dir=Path(td2), log_dir=Path(td2))
         assert p1.read_bytes() == p2.read_bytes()
 
 
@@ -214,10 +217,95 @@ def test_write_manifest_roundtrip():
     spec = {"kind": "explicit_ids", "ids": pool}
     m = dd.deterministic_draw("ds-l", spec, n=10, draw_type="exploration-dev", command="python foo.py")
     with tempfile.TemporaryDirectory() as td:
-        p = dd.write_manifest(m, out_dir=Path(td))
+        p = dd.write_manifest(m, out_dir=Path(td), log_dir=Path(td))
         assert p.exists()
         loaded = dd.load_manifest("ds-l", "exploration-dev", out_dir=Path(td))
         assert loaded == m
+
+
+# ---------------------------------------------------------------------------------------------
+# ticket #37 item 7: confirmatory hygiene (seed hard-error / refuse-overwrite / append-only log)
+# ---------------------------------------------------------------------------------------------
+
+def test_seed_override_confirmatory_hard_error():
+    pool = _synthetic_pool(60)
+    spec = {"kind": "explicit_ids", "ids": pool}
+    raised = False
+    try:
+        dd.deterministic_draw("ds-m", spec, n=10, draw_type="confirmatory", seed=999)
+    except ValueError:
+        raised = True
+    assert raised
+
+
+def test_seed_override_still_allowed_for_non_confirmatory_types():
+    """Existing behavior (test_seed_override_changes_the_draw) covers eligibility-split; this adds
+    exploration-dev for symmetry -- both non-confirmatory types must still accept an override."""
+    pool = _synthetic_pool(60)
+    spec = {"kind": "explicit_ids", "ids": pool}
+    m_default = dd.deterministic_draw("ds-n", spec, n=10, draw_type="exploration-dev")
+    m_override = dd.deterministic_draw("ds-n", spec, n=10, draw_type="exploration-dev", seed=777)
+    assert m_override["seed"] == 777
+    assert m_default["ids"] != m_override["ids"]
+
+
+def test_write_manifest_refuses_overwrite_without_force_supersede():
+    pool = _synthetic_pool(40)
+    spec = {"kind": "explicit_ids", "ids": pool}
+    m1 = dd.deterministic_draw("ds-o", spec, n=8, draw_type="eligibility-split")
+    with tempfile.TemporaryDirectory() as td:
+        p1 = dd.write_manifest(m1, out_dir=Path(td), log_dir=Path(td))
+        original_bytes = p1.read_bytes()
+        raised = False
+        try:
+            dd.write_manifest(m1, out_dir=Path(td), log_dir=Path(td))
+        except FileExistsError:
+            raised = True
+        assert raised
+        assert p1.read_bytes() == original_bytes  # untouched by the refused re-write
+
+
+def test_write_manifest_force_supersede_renames_old_and_writes_new():
+    pool = _synthetic_pool(80)
+    spec = {"kind": "explicit_ids", "ids": pool}
+    m1 = dd.deterministic_draw("ds-p", spec, n=10, draw_type="eligibility-split")
+    m2 = dd.deterministic_draw("ds-p", spec, n=20, draw_type="eligibility-split")  # different n -> different content
+    with tempfile.TemporaryDirectory() as td:
+        d = Path(td)
+        p1 = dd.write_manifest(m1, out_dir=d, log_dir=d)
+        v1_bytes = p1.read_bytes()
+        p2 = dd.write_manifest(m2, out_dir=d, force_supersede=True, log_dir=d)
+        assert p2 == p1  # same path, fresh content
+        assert json.loads(p2.read_text(encoding="utf-8"))["n_drawn"] == 20
+
+        superseded = [f for f in os.listdir(td) if ".superseded." in f]
+        assert len(superseded) == 1
+        superseded_path = d / superseded[0]
+        assert superseded_path.read_bytes() == v1_bytes  # old content preserved byte-for-byte
+        assert json.loads(superseded_path.read_text(encoding="utf-8"))["n_drawn"] == 10
+
+
+def test_draw_log_appends_one_jsonl_line_per_write_manifest_call():
+    pool = _synthetic_pool(30)
+    spec = {"kind": "explicit_ids", "ids": pool}
+    m1 = dd.deterministic_draw("ds-q", spec, n=5, draw_type="eligibility-split", command="python x.py")
+    m2 = dd.deterministic_draw("ds-q2", spec, n=6, draw_type="exploration-dev", command="python y.py")
+    with tempfile.TemporaryDirectory() as td, tempfile.TemporaryDirectory() as log_td:
+        d, ld = Path(td), Path(log_td)
+        dd.write_manifest(m1, out_dir=d, log_dir=ld)
+        dd.write_manifest(m2, out_dir=d, log_dir=ld)
+        log_path = ld / dd.DRAW_LOG_FILENAME
+        assert log_path.exists()
+        lines = [json.loads(l) for l in log_path.read_text(encoding="utf-8").splitlines() if l.strip()]
+        assert len(lines) == 2
+        for entry, m in zip(lines, (m1, m2)):
+            assert entry["dataset_key"] == m["dataset_key"]
+            assert entry["draw_type"] == m["draw_type"]
+            assert entry["seed"] == m["seed"]
+            assert entry["pool_sha256"] == m["pool_sha256"]
+            assert entry["ids_sha256"] == m["ids_sha256"]
+            assert entry["command"] == m["command"]
+            assert "utc_timestamp" in entry and entry["utc_timestamp"]
 
 
 # ---------------------------------------------------------------------------------------------

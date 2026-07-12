@@ -315,7 +315,33 @@ def validate_mock_config(cfg: MockConfig) -> None:
 # source naming (PROVISIONAL -- see module docstring)
 # ---------------------------------------------------------------------------------------------
 
-def source_name_for(dataset_key: str, cfg: MockConfig) -> str:
+# 2026-07-13 (ticket #37 item 3 P0 fix): datasets with a documented CORPUS-SIDE alternative that
+# ``source_name_for`` should PREFER over the legacy 4-field name, once that alternative actually
+# exists on disk. squtr's legacy 4-field sources (``squtr__<embedder>__<key_org>__<value_org>``)
+# were built with VALUES = the FiQA QUERY's own text (the P0-1 wrong-object bug --
+# ``kb_batch_build.build_squtr_corpus_source``'s module docstring has the full history); that
+# function's corpus-side replacement (``squtr-fiqa-clean__corpus__<embedder>__text-keyed``, 310
+# qrels-linked evidence docs) is the one squtr retrieval should actually query. Map:
+# dataset_key -> a function(cfg) -> the CANDIDATE corpus-side source name for this cfg's embedder
+# (existence is probed separately -- see ``_corpus_source_exists``/``source_name_for``).
+CORPUS_SOURCE_NAME_FOR: dict = {
+    "squtr": lambda cfg: f"squtr-fiqa-clean__corpus__{cfg.embedder}__text-keyed",
+}
+
+
+def _corpus_source_exists(name: str) -> bool:
+    """Cheap filesystem probe (``kb_schema.source_dir``'s manifest.json) -- lazy import, only ever
+    called from ``source_name_for`` when ``dataset_key`` has a CANDIDATE corpus-side alternative
+    listed in ``CORPUS_SOURCE_NAME_FOR`` (never unconditionally), so a dataset with no such
+    alternative pays zero extra cost and ``dry_run_mock``'s own 'zero KB calls' contract is
+    preserved for those (see ``source_name_for``'s ``probe_corpus`` argument)."""
+    _kb_path_ready()
+    from kb_schema import source_dir
+
+    return (source_dir(name) / "manifest.json").exists()
+
+
+def source_name_for(dataset_key: str, cfg: MockConfig, probe_corpus: bool = True) -> str:
     """Source-naming convention -- 2026-07-11 (ticket #25 P1a) UNIFIED with
     ``scripts/knowledge/kb_batch_build.build_one``, which now builds ``kb_build.build_source``
     sources under this EXACT name (see its docstring): one PHYSICAL source per
@@ -329,7 +355,22 @@ def source_name_for(dataset_key: str, cfg: MockConfig) -> str:
     the OLD 3-field ``<dataset>__<embedder>__<pool_split>`` convention, pre-ticket-#25). Mirrors this
     repo's existing double-underscore convention (``run_baseline.write_result``'s
     ``<dataset>__<backbone>__<split>.json``, ``gpu_session.sh``'s per-model-key pidfiles).
+
+    2026-07-13 (ticket #37 item 3): if ``dataset_key`` has a documented corpus-side alternative
+    (``CORPUS_SOURCE_NAME_FOR``) AND ``probe_corpus`` is True AND that corpus source actually
+    exists on disk, THAT name is returned instead of the legacy 4-field name -- the legacy squtr
+    ``squtr__<embedder>__<key_org>__<value_org>`` sources' VALUES are the FiQA query text itself
+    (P0-1 wrong-object bug) and have been marked superseded (archived, never deleted) via
+    ``scripts/knowledge/archive_legacy_squtr_sources.py``. ``probe_corpus=False`` (used by
+    ``dry_run_mock``) skips the filesystem probe entirely and always returns the legacy 4-field
+    name -- preserving ``dry_run_mock``'s documented "ZERO model/KB/GPU calls" contract even for a
+    dataset that DOES have a corpus-side alternative on disk.
     """
+    corpus_fn = CORPUS_SOURCE_NAME_FOR.get(dataset_key)
+    if corpus_fn is not None and probe_corpus:
+        corpus_name = corpus_fn(cfg)
+        if _corpus_source_exists(corpus_name):
+            return corpus_name
     return f"{dataset_key}__{cfg.embedder}__{cfg.key_org}__{cfg.value_org}"
 
 
@@ -1295,7 +1336,8 @@ def dry_run_mock(dataset_key: str, cfg: MockConfig, split: str = "dev") -> None:
     validate_mock_config(cfg)
 
     kt = "legacy" if dataset_key in templates.LEGACY_DATASETS else templates.k_type_of(dataset_key)
-    source = source_name_for(dataset_key, cfg)
+    source = source_name_for(dataset_key, cfg, probe_corpus=False)  # zero-KB-calls contract (see
+                                                                       # source_name_for's docstring)
     row = rb._synthetic_row(dataset_key)
     base_instr = templates.build_instruction(dataset_key, row)
 

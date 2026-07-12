@@ -822,27 +822,79 @@ def synthesize_pseudo_question_keys(
     return out, provenance
 
 
+# 2026-07-13 (ticket #37 item 5): embedders with a documented (or plausibly future) AUDIO-QUERY
+# path into a TEXT-keyed index -- mirrors kb_retrieve.CROSS_MODAL_AUDIO_QUERY_STATUS's key set
+# exactly (that table's "supported"/"pending-live-verification"/"pending-GPU-window" statuses are
+# ALL for these tokens). 'auto' (MiniLM->TF-IDF) and every other kb_embed.TEXT_KEY_CAPABLE token
+# are TEXT-ONLY -- no audio-query bridge exists (or is even planned) for them at all, so a
+# pseudo-question q2q index built with one of them can NEVER be reached by an audio-query arm (the
+# index gets built, but is unreachable cross-modally -- exactly the silent trap this item closes).
+AUDIO_QUERY_CAPABLE_TEXT_EMBEDDERS = {"glap", "omni-embed-nemotron", "lco-3b", "lco-7b", "qwen3-omni-own"}
+
+
 def build_pseudo_question_source(
-    dataset_loader_key: str, text_embedder: str = "auto", pool_split: str = "dev",
-    value_spec: str = "text", k: int = PSEUDO_QUESTION_K_DEFAULT,
+    *,
+    corpus_records: list[dict] | None = None,
+    corpus_source: str | None = None,
+    dataset_label: str | None = None,
+    text_embedder: str = "auto",
+    k: int = PSEUDO_QUESTION_K_DEFAULT,
     backbone: str = "qwen3-omni-30b-gguf", seed: int = PSEUDO_QUESTION_SEED_DEFAULT,
     n: int | None = None, generate_fn=None, note: str = "",
+    eval_golds: list[str] | None = None,
     eval_manifest: list[str] | None = None, supersede: bool = False,
+    value_type: str | None = None, pool_split: str = "dev",
+    allow_text_only_query: bool = False, query_paths: list[str] | None = None,
+    **_removed_kwargs,
 ) -> dict:
-    """``key_form='pseudo-question'`` build: loader rows -> evidence VALUES (reusing
-    ``_extract_value``/``_gold_string``, same as ``build_one``) -> ``synthesize_pseudo_question_
-    keys`` -> TEXT-embed each synthesized question (``text_embedder``, default ``'auto'`` = cheap
-    CPU MiniLM/TF-IDF -- pseudo-question keys are TEXT, so this never needs a heavy audio
-    embedder) -> ``kb_build.build_source(key_modality='text', ...)``, gated by the SAME CLEAN
+    """``key_form='pseudo-question'`` build: CORPUS-DOCUMENT evidence VALUES ->
+    ``synthesize_pseudo_question_keys`` -> TEXT-embed each synthesized question (``text_embedder``)
+    -> ``kb_build.build_source(key_modality='text', ...)``, gated by the SAME CLEAN
     leakage-verdict enforcement every other ``kb_build`` caller goes through.
 
-    Source name: ``f"{dataset_loader_key}__{text_embedder}__pseudo-question-k{k}__{value_type}"``
-    -- deliberately NOT one of ``build_one``'s 4-field ``(dataset, embedder, key_org, value_org)``
-    names (``"pseudo-question-k{k}"`` is not a ``KEY_ORGS`` token), so it can never collide with an
-    existing ``build_one`` source. This is a NEW, additive capability (this build function, plus
-    ``KEY_FORMS`` for documentation) -- it does NOT touch ``KEY_ORGS``/``VALUE_ORGS`` or
-    ``run_mock.py``'s Phase-A grid; wiring a pseudo-question arm into that grid is a separate,
-    owner-gated follow-up, not attempted here (task brief: "no bulk builds yet").
+    ## Input: corpus-manifest-only (2026-07-13, ticket #37 item 2 P0 fix)
+
+    The OLD ``dataset_loader_key=`` path (pulling rows straight from
+    ``scripts/loaders/registry.py``'s generic ``LOADERS`` table) has been REMOVED — it repeated the
+    P0-1 wrong-object bug: for a REAL eval dataset (e.g. squtr) ``row['meta']['text']`` is the
+    EVALUATION QUERY/transcript, not a corpus document, so a pseudo-question build synthesized from
+    it would generate doc2query keys whose "document" is actually someone's query (see
+    ``build_squtr_corpus_source``'s own module docstring for the earlier incarnation of this same
+    bug class). Pass EXACTLY ONE of:
+
+      ``corpus_records`` — a list of PRE-AUDITED, in-memory corpus-document records, each
+      ``{"value": <evidence text>, "from_item_id": <id>}`` — the SAME shape
+      ``build_squtr_corpus_source`` builds internally (evidence docs from qrels, i.e. the CORPUS
+      side of a retrieval dataset, never a query).
+
+      ``corpus_source`` — the NAME of an EXISTING persisted, text-keyed, CLEAN KB source (e.g. one
+      built by ``build_squtr_corpus_source``) whose VALUES are corpus documents; this function
+      loads it via ``kb_schema.load_values`` and uses each row's ``.value``/
+      ``.provenance['from_item_id']`` as the evidence record. Raises ``ValueError`` if the
+      referenced source is audio-keyed or its ``leakage_audit`` verdict is not CLEAN.
+
+    Passing the old ``dataset_loader_key``/``value_spec`` (or any other unrecognized keyword) is a
+    HARD TypeError with a pointer to the two arguments above — never silently misinterpreted.
+
+    ## No silent 'auto' embedder (2026-07-13, ticket #37 item 5 P0 fix)
+
+    ``text_embedder`` must be one of ``AUDIO_QUERY_CAPABLE_TEXT_EMBEDDERS`` (``glap`` /
+    ``omni-embed-nemotron`` / ``lco-3b`` / ``lco-7b`` / ``qwen3-omni-own`` — mirrors
+    ``kb_retrieve.CROSS_MODAL_AUDIO_QUERY_STATUS``'s key set) UNLESS the caller passes
+    ``allow_text_only_query=True`` — an explicit escape hatch for a build that is intentionally
+    text-query-only (e.g. an ASR-cascade arm, or a same-modality text-text comparison). ``'auto'``
+    (MiniLM -> TF-IDF) in particular is a HARD ERROR without the escape hatch: neither tier has ANY
+    audio-query bridge, so a q2q index built with it is constructed but UNREACHABLE by an
+    audio-query arm — silently wasted work that looks like a working retrieval arm until someone
+    actually tries to query it with audio. The escape-hatch's intentional restriction is recorded
+    in the manifest's ``created_note`` as ``query_paths=['text']`` (vs. ``['audio', 'text']`` for
+    an audio-query-capable build) — see the note-assembly code below.
+
+    Source name: ``f"{dataset_label}__{text_embedder}__pseudo-question-k{k}__{value_type}"`` --
+    deliberately NOT one of ``build_one``'s 4-field ``(dataset, embedder, key_org, value_org)``
+    names, so it can never collide with an existing ``build_one`` source. ``dataset_label``
+    defaults to ``corpus_source`` (when given) or ``"corpus_records"`` (when not) — pass it
+    explicitly for a more descriptive source name.
 
     Provenance (task brief: "generation prompt + seeds in manifest"): the manifest's
     ``created_note`` embeds the exact prompt template, ``k``, ``backbone``, ``seed_base``, and a
@@ -854,6 +906,18 @@ def build_pseudo_question_source(
     (``KnowledgeValue.key_text_ref`` — see ``kb_schema.py``), so the synthesized keys are covered
     by the SAME content-addressed fingerprint every other source gets, not a bespoke one.
     """
+    if _removed_kwargs:
+        bad = sorted(_removed_kwargs)
+        raise TypeError(
+            f"kb_batch_build.build_pseudo_question_source: unexpected argument(s) {bad} -- if you "
+            "meant 'dataset_loader_key'/'value_spec' (the OLD generic scripts/loaders/registry.py "
+            "pull), that path was REMOVED (2026-07-13, ticket #37 item 2): for a REAL eval dataset "
+            "(e.g. squtr) row['meta']['text'] is the EVALUATION QUERY, not a corpus document -- the "
+            "exact P0-1 wrong-object bug this removal closes. Pass corpus_records=[{'value':..., "
+            "'from_item_id':...}, ...] (pre-audited corpus documents) or corpus_source=<a persisted "
+            "corpus-side KB source name> instead."
+        )
+
     import kb_build
     import kb_embed
 
@@ -863,31 +927,85 @@ def build_pseudo_question_source(
             f"text-embedding path wired (kb_embed.can_embed_text) -- pseudo-question KEYS are text, "
             "so this must be one of kb_embed.TEXT_KEY_CAPABLE."
         )
-    registry = _registry()
-    if dataset_loader_key not in registry.LOADERS:
-        raise KeyError(
-            f"kb_batch_build.build_pseudo_question_source: {dataset_loader_key!r} not in "
-            f"registry.LOADERS ({len(registry.LOADERS)} registered)."
+    if text_embedder not in AUDIO_QUERY_CAPABLE_TEXT_EMBEDDERS and not allow_text_only_query:
+        raise ValueError(
+            f"kb_batch_build.build_pseudo_question_source: text_embedder={text_embedder!r} has no "
+            f"audio-query bridge (not in AUDIO_QUERY_CAPABLE_TEXT_EMBEDDERS="
+            f"{sorted(AUDIO_QUERY_CAPABLE_TEXT_EMBEDDERS)}) -- ticket #37 item 5. A pseudo-question "
+            "q2q index built with it can be searched by a TEXT query only ('auto' in particular "
+            "silently falls back MiniLM->TF-IDF, neither of which any audio query can search at "
+            "all) -- an audio-query arm could never reach it, even though the index builds "
+            "successfully and looks like a working retrieval arm. Pass an embedder from that set "
+            "for an audio-query-capable build, or explicitly opt into a text-only-query build via "
+            "allow_text_only_query=True (records query_paths=['text'] in the manifest note, making "
+            "the restriction an intentional, auditable choice rather than a silent trap)."
+        )
+    if (corpus_records is None) == (corpus_source is None):
+        raise ValueError(
+            "kb_batch_build.build_pseudo_question_source: pass EXACTLY ONE of corpus_records= "
+            "(pre-audited in-memory corpus-document records) or corpus_source= (an existing "
+            "persisted, text-keyed, CLEAN corpus-side KB source name) -- never both, never neither."
         )
 
-    rows = registry.LOADERS[dataset_loader_key](split=pool_split, n=n, seed=seed)
-    evidence_records = []
-    audit_golds = []
-    for r in rows:
-        evidence_records.append({
-            "value": _extract_value(r, value_spec),
-            "from_item_id": r.get("meta", {}).get("item_id"),
-        })
-        audit_golds.append(_gold_string(r.get("gold")))
-    # audit_golds is per EVIDENCE row above; the actual persisted records (one per synthesized
-    # question, k-per-evidence-row) repeat each evidence row's gold k times below so the audit
-    # checks every persisted VALUE against its own row's gold, not a length-mismatched list.
-    pq_records, generation_provenance = synthesize_pseudo_question_keys(
-        evidence_records, k=k, backbone=backbone, seed=seed, generate_fn=generate_fn,
-    )
-    n_by_evidence_idx = [pq["n_generated"] for pq in generation_provenance["per_value_questions"]]
-    pq_audit_golds = [g for g, n_gen in zip(audit_golds, n_by_evidence_idx) for _ in range(n_gen)]
+    if corpus_source is not None:
+        from kb_schema import leakage_verdict, load_manifest, load_values
 
+        src_manifest = load_manifest(corpus_source)
+        if src_manifest.key_modality != "text":
+            raise ValueError(
+                f"kb_batch_build.build_pseudo_question_source: corpus_source={corpus_source!r} is "
+                f"not text-keyed (key_modality={src_manifest.key_modality!r}) -- a pseudo-question "
+                "build synthesizes TEXT questions over CORPUS DOCUMENT text, so the seed source "
+                "must be a text-keyed corpus-side source (e.g. built by "
+                "kb_batch_build.build_squtr_corpus_source)."
+            )
+        verdict = leakage_verdict(src_manifest.leakage_audit)
+        if verdict != "CLEAN":
+            raise ValueError(
+                f"kb_batch_build.build_pseudo_question_source: corpus_source={corpus_source!r} "
+                f"leakage_audit verdict={verdict!r} (not CLEAN) -- refusing to seed a pseudo-"
+                "question build from an unaudited/leaking corpus source."
+            )
+        src_values = load_values(corpus_source)
+        if n is not None:
+            src_values = src_values[:n]
+        evidence_records = [
+            {"value": v.value, "from_item_id": v.provenance.get("from_item_id")}
+            for v in src_values
+        ]
+        resolved_dataset_label = dataset_label or src_manifest.dataset
+        resolved_value_type = value_type or src_manifest.value_type
+    else:
+        evidence_records = list(corpus_records)
+        if not evidence_records:
+            raise ValueError("kb_batch_build.build_pseudo_question_source: corpus_records is empty")
+        for i, r in enumerate(evidence_records):
+            if "value" not in r:
+                raise ValueError(
+                    f"kb_batch_build.build_pseudo_question_source: corpus_records[{i}] missing "
+                    "'value' -- expected {'value': <evidence text>, 'from_item_id': <id>} rows "
+                    "(the same shape build_squtr_corpus_source produces)."
+                )
+        if n is not None:
+            evidence_records = evidence_records[:n]
+        resolved_dataset_label = dataset_label or "corpus_records"
+        resolved_value_type = value_type or "text-fact"
+
+    # audit_golds: corpus documents carry no per-row QA gold of their own by contract (only
+    # value/from_item_id -- see build_squtr_corpus_source's "squtr's OWN qrels carry no literal
+    # answer text field" note for why this is a real, not an oversight); a caller with a REAL
+    # downstream QA gold to scrub the synthesized values against passes eval_golds= explicitly
+    # (1:1 with evidence_records, '' where not applicable) -- mirrors build_squtr_corpus_source's
+    # own eval_golds parameter. The audit still always runs (0 non-empty golds -> trivially CLEAN).
+    golds_in = list(eval_golds) if eval_golds else ["" for _ in evidence_records]
+    if len(golds_in) != len(evidence_records):
+        raise ValueError(
+            f"kb_batch_build.build_pseudo_question_source: eval_golds has {len(golds_in)} entries "
+            f"but there are {len(evidence_records)} evidence records -- must be 1:1 (pass '' for an "
+            "evidence record with no applicable gold)."
+        )
+
+    # ---- P3g: machine-verified source/eval disjointness (unchanged behavior/semantics) ----
     if eval_manifest is not None:
         source_ids = {rec["from_item_id"] for rec in evidence_records if rec["from_item_id"] is not None}
         overlap = source_ids & set(eval_manifest)
@@ -899,21 +1017,31 @@ def build_pseudo_question_source(
                 "item back as 'knowledge'."
             )
 
+    pq_records, generation_provenance = synthesize_pseudo_question_keys(
+        evidence_records, k=k, backbone=backbone, seed=seed, generate_fn=generate_fn,
+    )
+    n_by_evidence_idx = [pq["n_generated"] for pq in generation_provenance["per_value_questions"]]
+    pq_audit_golds = [g for g, n_gen in zip(golds_in, n_by_evidence_idx) for _ in range(n_gen)]
+
     from kb_schema import VALUE_TYPES
 
-    value_type = value_spec if value_spec in VALUE_TYPES else "text-fact"
-    source = f"{dataset_loader_key}__{text_embedder}__pseudo-question-k{k}__{value_type}"
+    final_value_type = resolved_value_type if resolved_value_type in VALUE_TYPES else "text-fact"
+    resolved_query_paths = ["text"] if allow_text_only_query else ["audio", "text"]
+    source = f"{resolved_dataset_label}__{text_embedder}__pseudo-question-k{k}__{final_value_type}"
     note_full = note or (
-        f"kb_batch_build.build_pseudo_question_source (续21-A① q2q keys, M1 item 3, 2026-07-13): "
-        f"{dataset_loader_key}/{pool_split} -- {generation_provenance['n_values']} evidence values "
-        f"x k={k} pseudo-questions/value (frozen core={backbone!r}, black-box generate mode, "
-        f"seed_base={seed}) = {generation_provenance['n_synthesized_keys']} synthesized q2q keys. "
+        f"kb_batch_build.build_pseudo_question_source (续21-A① q2q keys, ticket #37 item 2/5 fix, "
+        f"2026-07-13): seeded from corpus_source={corpus_source!r} "
+        f"(corpus_records_n={len(evidence_records) if corpus_source is None else None}) -- "
+        f"{generation_provenance['n_values']} evidence values x k={k} pseudo-questions/value "
+        f"(frozen core={backbone!r}, black-box generate mode, seed_base={seed}) = "
+        f"{generation_provenance['n_synthesized_keys']} synthesized q2q keys. "
+        f"query_paths={resolved_query_paths!r} (allow_text_only_query={allow_text_only_query!r}). "
         f"prompt_template={PSEUDO_QUESTION_PROMPT_TEMPLATE!r}. "
         f"per_value_questions={json.dumps(generation_provenance['per_value_questions'], ensure_ascii=False)}"
     )
     manifest = kb_build.build_source(
-        source, dataset_loader_key, revision=None, records=pq_records,
-        key_modality="text", value_type=value_type, embedder=text_embedder,
+        source, resolved_dataset_label, revision=None, records=pq_records,
+        key_modality="text", value_type=final_value_type, embedder=text_embedder,
         audit_golds=pq_audit_golds, scrub=True, pool_split=pool_split, supersede=supersede,
         note=note_full,
     )
@@ -922,6 +1050,8 @@ def build_pseudo_question_source(
         "n_evidence_values": generation_provenance["n_values"],
         "n_synthesized_keys": generation_provenance["n_synthesized_keys"],
         "generation_provenance": generation_provenance,
+        "corpus_source": corpus_source,
+        "query_paths": resolved_query_paths,
     }
 
 
@@ -941,25 +1071,45 @@ def main() -> int:
     ap.add_argument("--key-form", default="direct", choices=KEY_FORMS,
                     help="'pseudo-question' builds via build_pseudo_question_source instead of "
                          "build_one -- --embedder is then read as the TEXT embedder for the "
-                         "synthesized question keys, and --key-org/--value-org are ignored")
+                         "synthesized question keys, and --key-org/--value-org/--dataset are "
+                         "ignored (use --corpus-source instead -- ticket #37 item 2 removed the "
+                         "old --dataset generic-loader path for this build type)")
+    ap.add_argument("--corpus-source", default=None,
+                    help="an EXISTING persisted, text-keyed, CLEAN corpus-side KB source (e.g. "
+                         "built by kb_batch_build.build_squtr_corpus_source) to seed pseudo-"
+                         "question generation from -- REQUIRED for --key-form pseudo-question")
     ap.add_argument("--pq-k", type=int, default=PSEUDO_QUESTION_K_DEFAULT)
     ap.add_argument("--pq-backbone", default="qwen3-omni-30b-gguf")
+    ap.add_argument("--allow-text-only-query", action="store_true",
+                     help="ticket #37 item 5 escape hatch: allow --embedder to be a text-only "
+                          "(no audio-query bridge) embedder for a pseudo-question build, e.g. "
+                          "'auto' -- otherwise a HARD ERROR")
     args = ap.parse_args()
+
+    if args.key_form == "pseudo-question":
+        if args.plan or not (args.embedder and args.corpus_source):
+            print_plan()
+            if args.squtr_preview:
+                print("\n=== squtr mini-corpus preview (PLAN ONLY -- nothing built) ===")
+                print(json.dumps(plan_squtr_mini_corpus(), indent=2, ensure_ascii=False))
+            if not args.plan:
+                print("\n--key-form pseudo-question requires --embedder and --corpus-source "
+                      "(the old --dataset generic-loader path was removed, ticket #37 item 2) -- "
+                      "nothing built.")
+            return 0
+        result = build_pseudo_question_source(
+            corpus_source=args.corpus_source, text_embedder=args.embedder, pool_split=args.split,
+            k=args.pq_k, backbone=args.pq_backbone, seed=args.seed, n=args.n,
+            allow_text_only_query=args.allow_text_only_query,
+        )
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+        return 0
 
     if args.plan or not (args.embedder and args.dataset):
         print_plan()
         if args.squtr_preview:
             print("\n=== squtr mini-corpus preview (PLAN ONLY -- nothing built) ===")
             print(json.dumps(plan_squtr_mini_corpus(), indent=2, ensure_ascii=False))
-        return 0
-
-    if args.key_form == "pseudo-question":
-        result = build_pseudo_question_source(
-            args.dataset, text_embedder=args.embedder, pool_split=args.split,
-            value_spec=args.value_spec, k=args.pq_k, backbone=args.pq_backbone,
-            seed=args.seed, n=args.n,
-        )
-        print(json.dumps(result, indent=2, ensure_ascii=False))
         return 0
 
     manifest = build_one(args.embedder, args.dataset, args.split, args.value_spec,
