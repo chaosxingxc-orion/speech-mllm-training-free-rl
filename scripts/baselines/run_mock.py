@@ -315,17 +315,25 @@ def validate_mock_config(cfg: MockConfig) -> None:
 # source naming (PROVISIONAL -- see module docstring)
 # ---------------------------------------------------------------------------------------------
 
-# 2026-07-13 (ticket #37 item 3 P0 fix): datasets with a documented CORPUS-SIDE alternative that
-# ``source_name_for`` should PREFER over the legacy 4-field name, once that alternative actually
-# exists on disk. squtr's legacy 4-field sources (``squtr__<embedder>__<key_org>__<value_org>``)
+# 2026-07-13 (ticket #37 item 3 P0 fix; repointed to the FULL corpus 2026-07-13 ticket #38 item 3):
+# datasets with a documented CORPUS-SIDE alternative that ``source_name_for`` should PREFER over the
+# legacy 4-field name. squtr's legacy 4-field sources (``squtr__<embedder>__<key_org>__<value_org>``)
 # were built with VALUES = the FiQA QUERY's own text (the P0-1 wrong-object bug --
-# ``kb_batch_build.build_squtr_corpus_source``'s module docstring has the full history); that
-# function's corpus-side replacement (``squtr-fiqa-clean__corpus__<embedder>__text-keyed``, 310
-# qrels-linked evidence docs) is the one squtr retrieval should actually query. Map:
-# dataset_key -> a function(cfg) -> the CANDIDATE corpus-side source name for this cfg's embedder
-# (existence is probed separately -- see ``_corpus_source_exists``/``source_name_for``).
+# ``kb_batch_build.build_squtr_corpus_source``'s module docstring has the full history).
+#
+# This table now points at the FULL-corpus build name (``squtr-fiqa-full__corpus__<embedder>__
+# text-keyed`` -- ``kb_batch_build.build_squtr_corpus_source(corpus_mode='full')``'s naming
+# convention), NOT the old ``squtr-fiqa-clean__corpus__*`` qrels-mini sources -- those two are
+# PERMANENTLY reclassified as "qrels-conditioned DEV smoke only" (ticket #38 items 1/2/6, F'-3) and
+# are no longer an evaluation-independent corpus a real cell should query. The full-corpus build is
+# a SEPARATE SCHEDULED RUN (not done as part of this ticket -- see
+# ``scripts/knowledge/build_full_corpus.sh``), so until that run completes, no real (non-dry-run)
+# squtr cell can find a corpus-side manifest on disk -- ``source_name_for`` now FAILS CLOSED in that
+# case (ticket #38 item 3) rather than silently falling back to the legacy query-valued name.
+# Map: dataset_key -> a function(cfg) -> the CANDIDATE corpus-side source name for this cfg's
+# embedder (existence is probed separately -- see ``_corpus_source_exists``/``source_name_for``).
 CORPUS_SOURCE_NAME_FOR: dict = {
-    "squtr": lambda cfg: f"squtr-fiqa-clean__corpus__{cfg.embedder}__text-keyed",
+    "squtr": lambda cfg: f"squtr-fiqa-full__corpus__{cfg.embedder}__text-keyed",
 }
 
 
@@ -365,12 +373,38 @@ def source_name_for(dataset_key: str, cfg: MockConfig, probe_corpus: bool = True
     ``dry_run_mock``) skips the filesystem probe entirely and always returns the legacy 4-field
     name -- preserving ``dry_run_mock``'s documented "ZERO model/KB/GPU calls" contract even for a
     dataset that DOES have a corpus-side alternative on disk.
+
+    2026-07-13 (ticket #38 item 3, RUN_MOCK FAIL-CLOSED): when ``probe_corpus=True`` (i.e. a REAL,
+    non-dry-run cell) AND ``dataset_key`` has a documented corpus-side alternative BUT that source's
+    manifest is NOT found on disk, this now RAISES ``RuntimeError`` -- a hard, named P0 object
+    error -- instead of silently falling back to the legacy 4-field (query-valued) name. Before this
+    fix, a real cell whose full-corpus build hadn't been run yet would silently retrieve against the
+    P0-1 wrong-object legacy source (VALUES = the query's own text, see
+    ``kb_batch_build.build_squtr_corpus_source``'s module docstring for the full P0-1 history) --
+    exactly the object-mismatch failure mode ticket #37 item 3 already fixed once for the
+    `probe_corpus and exists` case; this closes the remaining `probe_corpus and NOT exists` gap.
+    ``probe_corpus=False`` (``dry_run_mock``'s own zero-KB-calls contract, and any other plumbing/
+    smoke-test caller that explicitly asks not to touch the filesystem) is UNCHANGED and may still
+    fall back to the legacy name with no error -- see ``dry_run_mock``'s own docstring, which already
+    documents this as a preview-only path, never a real retrieval.
     """
     corpus_fn = CORPUS_SOURCE_NAME_FOR.get(dataset_key)
     if corpus_fn is not None and probe_corpus:
         corpus_name = corpus_fn(cfg)
         if _corpus_source_exists(corpus_name):
             return corpus_name
+        raise RuntimeError(
+            f"source_name_for({dataset_key!r}, ...): P0 OBJECT ERROR -- no corpus-side KB source "
+            f"manifest found at {corpus_name!r}. Refusing to fall back to the legacy 4-field name "
+            f"({dataset_key}__{cfg.embedder}__{cfg.key_org}__{cfg.value_org}) for a REAL "
+            "(non-dry-run) cell: that legacy source's VALUES are the FiQA QUERY's own text, not a "
+            "retrieved corpus document -- the exact P0-1 wrong-object bug documented in "
+            "kb_batch_build.build_squtr_corpus_source's module docstring (see also Decision-Log "
+            "续26, F'-3). Build the full-corpus source first "
+            "(scripts/knowledge/build_full_corpus.sh) -- this is a separate, scheduled run, not "
+            "done automatically here. Pass probe_corpus=False (dry_run_mock's own contract) only "
+            "for a plumbing/preview call that never actually retrieves."
+        )
     return f"{dataset_key}__{cfg.embedder}__{cfg.key_org}__{cfg.value_org}"
 
 
@@ -1184,13 +1218,23 @@ def run_one_mock(dataset_key: str, cfg: MockConfig, split: str, n: int | None) -
     kt = templates.k_type_of(dataset_key) if dataset_key not in templates.LEGACY_DATASETS else "K8/K6 (legacy)"
 
     control = cfg.control
-    source = source_name_for(dataset_key, cfg)
     # 2026-07-12: only the exploratory pipeline and 'control-random-retrieval' (draws from "the
     # SAME source", per its own definition) need a real built KB source open -- 'control-no-
     # retrieval'/'control-oracle-retrieval'/'control-gold-transcript' never touch the built KB at
     # all (dataset-native qrels/context or the row's own gold instead), so a control-arm cell can
     # run before that dataset's KB source even exists.
     needs_kb_source = control is None or control == "control-random-retrieval"
+    # 2026-07-13 (ticket #38 item 3): source_name_for's fail-closed hard error (a missing
+    # corpus-side manifest for a dataset with a documented corpus-side alternative, e.g. squtr) must
+    # only fire when this cell will ACTUALLY load/query that source. The 3 controls that never touch
+    # the built KB (no-retrieval/oracle-retrieval/gold-transcript) only use `source` as a NOMINAL
+    # provenance label (see apply_control -> _oracle_retrieval_hits/_gold_transcript_hits, which
+    # stamp it into a KnowledgeValue.kid/source string, never open it as a real KB) -- resolve it
+    # with probe_corpus=False for those (same zero-probe semantics dry_run_mock already uses),
+    # so a control-arm cell can still run before/without that dataset's real corpus build existing.
+    source = source_name_for(dataset_key, cfg) if needs_kb_source else source_name_for(
+        dataset_key, cfg, probe_corpus=False,
+    )
     source_obj = _load_kb_source(source) if needs_kb_source else None
     candidate_k = _candidate_pool_k(cfg.retrieval)
 

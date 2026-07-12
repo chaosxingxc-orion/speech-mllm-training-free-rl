@@ -200,6 +200,24 @@ def load_squtr(
     return out
 
 
+def load_full_corpus(subset: str = "fiqa") -> list[dict]:
+    """Every document in ``subset``'s ``corpus.jsonl`` (2026-07-13, ticket #38 item 1/F'-3
+    remediation: the OFFICIAL full corpus -- 57,638 docs for fiqa, see module docstring's counts
+    table), sorted by ``_id`` (canonical, deterministic order -- same convention as
+    ``load_squtr``/``load_squtr_retrieval``'s own ``sorted(..., key=lambda q: q["_id"])``).
+
+    Reads ONLY the ``corpus.jsonl`` zip member -- NEVER ``queries*.jsonl`` or ``qrels/test.jsonl``.
+    This is a hard, load-bearing invariant, not an incidental optimization: a 'full' corpus-mode
+    KB build (``kb_batch_build.build_squtr_corpus_source(corpus_mode='full')``) must index the
+    corpus INDEPENDENTLY of which queries/qrels exist, so that scoring (which reads qrels
+    elsewhere, at eval time) can never leak into which documents get indexed -- see that
+    function's own docstring for the query-independence rationale (F'-3, Decision-Log 续26).
+    """
+    with zipfile.ZipFile(_zip_path()) as zf:
+        corpus = _read_jsonl_member(zf, f"{_subset_prefix(subset)}/corpus.jsonl")
+    return sorted(corpus, key=lambda d: d["_id"])
+
+
 def build_mini_corpus(qrels: list[tuple], corpus: list[dict], n_distractors: int, seed: int) -> list[dict]:
     """Deterministic mini-corpus = gold docs referenced by ``qrels`` + sampled distractors.
 

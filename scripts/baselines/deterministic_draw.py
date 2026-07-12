@@ -120,7 +120,20 @@ DRAW_TYPE_SEEDS: dict[str, int] = {
     "confirmatory": 721_003_303,
 }
 
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2  # bumped 2026-07-13 (ticket #38 item 4): group-aware confirmatory draw fields
+                     # (group_manifest_provided/sampling_algorithm/group_ids_drawn/
+                     # per_group_counts/disjointness_proof) are purely ADDITIVE -- a v1 manifest
+                     # (schema_version==1 or missing) never had these keys at all, never
+                     # reinterpreted as if it did.
+
+# 2026-07-13 (ticket #38 item 4 -- group-aware confirmatory draw, Decision-Log 续26): 'confirmatory'
+# HARD-REQUIRES both a group manifest (item_id -> group_key, reusing scripts/loaders/group_key.py's
+# classification logic -- see deterministic_draw's own docstring) and an exposure-exclusion index
+# (a list of PRIOR deterministic_draw manifest file paths, auto-loaded and unioned) -- missing
+# either is a fail-closed hard error. 'eligibility-split'/'exploration-dev' may still draw
+# item-level (group_manifest=None) -- optional but RECOMMENDED (a printed warning, not an error).
+GROUP_REQUIRED_DRAW_TYPES = ("confirmatory",)
+GROUP_RECOMMENDED_DRAW_TYPES = ("eligibility-split", "exploration-dev")
 
 
 # ---------------------------------------------------------------------------------------------
@@ -171,6 +184,21 @@ def _sha256_of_ids(ids: list[str]) -> str:
     return h.hexdigest()
 
 
+def _load_exclusion_manifest_ids(paths: list[str]) -> dict[str, set]:
+    """The exposure-exclusion index (ticket #38 item 4b): ``paths`` -- a list of PRIOR
+    ``deterministic_draw`` manifest file paths -- each auto-loaded and its ``"ids"`` read into its
+    OWN set (keyed by the path string, kept separate so ``disjointness_proof`` can report a
+    per-path intersection size, not just one opaque combined count). Raises the plain
+    ``FileNotFoundError``/``KeyError`` a caller would get from a bad path/malformed file — never
+    silently skips an unreadable exclusion manifest (that would be a silent leak in the very
+    guard this mechanism exists to provide)."""
+    out: dict[str, set] = {}
+    for p in paths:
+        data = json.loads(Path(p).read_text(encoding="utf-8"))
+        out[str(p)] = {str(i) for i in data["ids"]}
+    return out
+
+
 # ---------------------------------------------------------------------------------------------
 # the draw itself
 # ---------------------------------------------------------------------------------------------
@@ -183,11 +211,14 @@ def deterministic_draw(
     seed: int | None = None,
     exclusion_lists: list[list[str]] | None = None,
     command: str | None = None,
+    group_manifest: dict[str, str] | None = None,
+    exclusion_manifest_paths: list[str] | None = None,
 ) -> dict:
     """Pure function (no filesystem writes): resolve the pool, canonically sort it, exclude any
-    ids in ``exclusion_lists``, permute with a PCG64 RNG seeded by ``seed`` (default: this
-    ``draw_type``'s fixed namespace constant), take the first ``n`` — and return the full manifest
-    dict (NOT yet written to disk; see ``write_manifest``).
+    ids in ``exclusion_lists``/``exclusion_manifest_paths``, permute with a PCG64 RNG seeded by
+    ``seed`` (default: this ``draw_type``'s fixed namespace constant), take the first ``n`` (or,
+    when ``group_manifest`` is given, whole GROUPS until ``n`` items are reached — see below) —
+    and return the full manifest dict (NOT yet written to disk; see ``write_manifest``).
 
     Raises ``ValueError`` for an unknown ``draw_type``, an empty resolved pool, or a resolved pool
     with duplicate ids (a draw over a pool with dupes is not well-defined — mirrors
@@ -200,6 +231,42 @@ def deterministic_draw(
     constant, no exceptions. The other two draw types still accept an explicit override (debug/test
     only) — allowed exactly as before, now with a printed warning making the override visible in
     the run log too, not just in this docstring/the CLI help text.
+
+    ## Group-aware confirmatory draw (2026-07-13, ticket #38 item 4)
+
+    ``group_manifest`` — a ``{item_id: group_key}`` mapping (the caller typically builds this via
+    ``functools.partial(scripts.loaders.group_key.group_key_of, dataset_key)`` applied over its own
+    loaded rows, mirroring ``scripts/loaders/_common.py``'s ``draw_disjoint_grouped`` convention —
+    this module deliberately does NOT call ``group_key_of`` itself, since ``pool_spec`` only
+    resolves a bare id list, never full Row objects with ``meta``). An id missing from the mapping
+    falls back to its OWN id as a singleton group (mirrors ``group_key_of``'s own "``None`` ->
+    item-level fallback" contract, applied here to a plain dict instead of a callable).
+
+    ``exclusion_manifest_paths`` — a list of PRIOR ``deterministic_draw`` manifest FILE PATHS
+    (typically the eligibility-split and/or exploration-dev manifests already written via
+    ``write_manifest``); each is auto-loaded and its ``"ids"`` UNIONED into the exclusion set (see
+    ``_load_exclusion_manifest_ids``) — a strictly PATH-based sibling of the existing
+    ``exclusion_lists`` (already-resolved, in-memory id lists — kept, unchanged, for
+    library callers/tests that already have the ids on hand and don't need the path-based
+    auto-load or the per-path ``disjointness_proof`` this new parameter also produces).
+
+    ``draw_type='confirmatory'`` HARD-REQUIRES BOTH of the above (``ValueError`` if either is
+    missing/empty) — a confirmatory draw is exactly the one place an ungrouped item-level draw (two
+    correlated items of the same speaker/session/source-family landing on opposite sides of a prior
+    draw vs. this one) or a missing exposure-exclusion check would silently reintroduce the very
+    contamination this module's whole "pairwise disjoint by construction" design exists to prevent.
+    ``'eligibility-split'``/``'exploration-dev'`` may still omit ``group_manifest`` (a plain
+    item-level draw) — RECOMMENDED, not required: a printed warning, never an error.
+
+    When ``group_manifest`` is given, sampling permutes GROUPS instead of items: sort this pool's
+    group ids (canonical, like the item-id sort above), permute with the SAME PCG64 RNG/seed
+    namespace, then greedily accept WHOLE groups (never splitting one) until the drawn item count
+    reaches ``n`` — mirrring ``scripts/loaders/_common.py``'s ``draw_disjoint_grouped`` greedy-fill
+    algorithm, adapted here to a single target ``n`` (that function draws a disjoint test+dev PAIR;
+    this module draws one slice at a time, chained via ``exclusion_lists``/
+    ``exclusion_manifest_paths`` instead). This can OVERSHOOT ``n`` by the last group's size (never
+    splits it) — recorded honestly via ``shortfall`` exactly like the item-level pool-too-small
+    case, distinguished by ``shortfall.reason``.
     """
     if draw_type not in DRAW_TYPES:
         raise ValueError(f"deterministic_draw: draw_type={draw_type!r} not in {DRAW_TYPES}")
@@ -217,6 +284,33 @@ def deterministic_draw(
             f"  [deterministic_draw] WARNING: overriding draw_type={draw_type!r}'s fixed seed "
             f"namespace ({DRAW_TYPE_SEEDS[draw_type]}) with seed={seed} -- debug/test only; a real "
             "pre-registered draw should NEVER do this.",
+            flush=True,
+        )
+
+    # ---- ticket #38 item 4: group-aware confirmatory fail-closed gate ----
+    if draw_type in GROUP_REQUIRED_DRAW_TYPES:
+        missing = []
+        if group_manifest is None:
+            missing.append("group_manifest")
+        if not exclusion_manifest_paths:
+            missing.append("exclusion_manifest_paths")
+        if missing:
+            raise ValueError(
+                f"deterministic_draw: draw_type={draw_type!r} REQUIRES both group_manifest (an "
+                "item_id -> group_key mapping, reusing scripts/loaders/group_key.py's "
+                "classification logic) and exclusion_manifest_paths (a non-empty list of prior "
+                f"deterministic_draw manifest file paths) -- missing: {missing} (ticket #38 item 4, "
+                "fail-closed). An ungrouped or exposure-unchecked confirmatory draw could silently "
+                "reintroduce cross-side contamination or replay-exposed ids; both are HARD "
+                "requirements for this draw_type, no escape hatch."
+            )
+    elif draw_type in GROUP_RECOMMENDED_DRAW_TYPES and group_manifest is None:
+        print(
+            f"  [deterministic_draw] WARNING: draw_type={draw_type!r} has no group_manifest -- "
+            "drawing at ITEM level (correlated items of the same group, e.g. speaker/session/"
+            "source-family, may land split across this draw vs. a later one). Optional but "
+            "RECOMMENDED for this draw_type (ticket #38 item 4) -- only 'confirmatory' hard-requires "
+            "it.",
             flush=True,
         )
 
@@ -239,6 +333,11 @@ def deterministic_draw(
     excluded: set[str] = set()
     for lst in exclusion_lists or []:
         excluded.update(str(i) for i in lst)
+    # ticket #38 item 4b: the exposure-exclusion index -- prior manifest FILE PATHS, auto-loaded and
+    # unioned (kept per-path too, for the disjointness_proof block below).
+    exclusion_manifest_ids_by_path = _load_exclusion_manifest_ids(exclusion_manifest_paths or [])
+    for ids in exclusion_manifest_ids_by_path.values():
+        excluded.update(ids)
     remaining = [i for i in sorted_pool if i not in excluded]  # filter preserves sorted order
     if not remaining:
         raise ValueError(
@@ -254,10 +353,68 @@ def deterministic_draw(
 
     rng = np.random.default_rng(eff_seed)  # PCG64 (numpy's default bit generator)
     n_requested = n
-    n_eff = min(n, len(remaining))
-    perm = rng.permutation(len(remaining))
-    drawn_idx = perm[:n_eff]
-    drawn_ids = [remaining[int(i)] for i in drawn_idx]
+
+    # ---- sampling: group-permutation greedy-fill (group_manifest given) or the original
+    # item-level permutation (group_manifest is None -- UNCHANGED code path, byte-identical to
+    # every pre-ticket-#38 draw with no group_manifest). ----
+    group_sampling_used = group_manifest is not None
+    group_ids_drawn: list[str] | None = None
+    per_group_counts: dict[str, int] | None = None
+    n_groups_total_in_pool: int | None = None
+
+    if group_sampling_used:
+        # group_of restricted to `remaining` (the POST-exclusion pool) only -- an excluded id's
+        # group membership is irrelevant to what's still eligible to draw from. Missing from
+        # group_manifest -> singleton fallback (its own id), mirroring group_key_of's own
+        # "None -> item-level fallback" contract (module docstring).
+        groups: dict[str, list[str]] = {}
+        for iid in remaining:  # `remaining` preserves sorted order -> each groups[gid] list does too
+            gid = group_manifest.get(iid, iid)
+            groups.setdefault(gid, []).append(iid)
+        group_ids_sorted = sorted(groups.keys())
+        n_groups_total_in_pool = len(group_ids_sorted)
+
+        perm = rng.permutation(len(group_ids_sorted))
+        chosen_groups: list[str] = []
+        drawn_ids: list[str] = []
+        for gi in perm:
+            if len(drawn_ids) >= n:
+                break  # never split a group -- stop BEFORE adding the next one once n is reached
+            gid = group_ids_sorted[int(gi)]
+            chosen_groups.append(gid)
+            drawn_ids.extend(groups[gid])
+        group_ids_drawn = chosen_groups
+        per_group_counts = {gid: len(groups[gid]) for gid in chosen_groups}
+        n_eff = len(drawn_ids)
+    else:
+        n_eff = min(n, len(remaining))
+        perm = rng.permutation(len(remaining))
+        drawn_idx = perm[:n_eff]
+        drawn_ids = [remaining[int(i)] for i in drawn_idx]
+
+    shortfall = None
+    if n_eff != n_requested:
+        shortfall = {
+            "requested": n_requested, "drawn": n_eff, "pool_size_after_exclusion": len(remaining),
+            "reason": (
+                "group-mode: whole-group indivisibility caused an overshoot/undershoot relative to "
+                "n_requested -- a group is NEVER split (ticket #38 item 4)" if group_sampling_used
+                else "pool smaller than n_requested after exclusion"
+            ),
+        }
+
+    # ---- disjointness_proof (ticket #38 item 4): machine-verify (not just trust-by-construction)
+    # that this draw's ids do not overlap ANY of the exclusion_manifest_paths -- always computed
+    # (empty/vacuously-True when no paths were given), not confirmatory-only. ----
+    drawn_ids_set = set(drawn_ids)
+    intersection_sizes = {
+        path: len(drawn_ids_set & ids) for path, ids in exclusion_manifest_ids_by_path.items()
+    }
+    disjointness_proof = {
+        "exclusion_manifest_paths": list(exclusion_manifest_paths or []),
+        "intersection_sizes": intersection_sizes,
+        "all_zero": all(v == 0 for v in intersection_sizes.values()),
+    }
 
     manifest = {
         "schema_version": SCHEMA_VERSION,
@@ -266,9 +423,7 @@ def deterministic_draw(
         "pool_spec": pool_spec,
         "n_requested": n_requested,
         "n_drawn": n_eff,
-        "shortfall": None if n_eff == n_requested else {
-            "requested": n_requested, "drawn": n_eff, "pool_size_after_exclusion": len(remaining),
-        },
+        "shortfall": shortfall,
         "seed": int(eff_seed),
         "seed_source": seed_source,
         "draw_type_seed_namespace": DRAW_TYPE_SEEDS[draw_type],
@@ -283,6 +438,17 @@ def deterministic_draw(
         "ids": drawn_ids,
         "ids_sha256": _sha256_of_ids(drawn_ids),
         "command": command,
+        # ---- ticket #38 item 4: group-aware confirmatory draw fields (all additive; None/empty
+        # when group_manifest was not given -- see SCHEMA_VERSION's own comment) ----
+        "group_manifest_provided": group_sampling_used,
+        "sampling_algorithm": (
+            "group-permutation-greedy-fill (never splits a group)" if group_sampling_used
+            else "item-level-permutation"
+        ),
+        "n_groups_total_in_pool": n_groups_total_in_pool,
+        "group_ids_drawn": group_ids_drawn,
+        "per_group_counts": per_group_counts,
+        "disjointness_proof": disjointness_proof,
     }
     return manifest
 
@@ -389,7 +555,15 @@ def main() -> None:
     ap.add_argument("--exclude-manifest", action="append", default=[],
                      help="path to a prior deterministic_draw manifest whose 'ids' are excluded "
                           "(repeatable -- e.g. pass the eligibility-split manifest when drawing "
-                          "exploration-dev, and both prior manifests when drawing confirmatory)")
+                          "exploration-dev, and both prior manifests when drawing confirmatory). "
+                          "2026-07-13 (ticket #38 item 4): this is now ALSO the exposure-exclusion "
+                          "index deterministic_draw's own disjointness_proof machine-verifies -- "
+                          "REQUIRED (non-empty) for --draw-type confirmatory.")
+    ap.add_argument("--group-manifest-file", default=None,
+                     help="ticket #38 item 4: path to a JSON {item_id: group_key} mapping (e.g. "
+                          "built via scripts/loaders/group_key.py's group_key_of over the caller's "
+                          "own loaded rows) -- REQUIRED for --draw-type confirmatory, optional but "
+                          "recommended for eligibility-split/exploration-dev.")
     ap.add_argument("--out-dir", default=None)
     ap.add_argument("--force-supersede", action="store_true",
                      help="ticket #37 item 7b: allow overwriting an existing manifest at this "
@@ -400,14 +574,16 @@ def main() -> None:
     args = ap.parse_args()
 
     pool_spec = _cli_pool_spec(args)
-    exclusion_lists = []
-    for p in args.exclude_manifest:
-        exclusion_lists.append(json.loads(Path(p).read_text(encoding="utf-8"))["ids"])
+    group_manifest = None
+    if args.group_manifest_file:
+        group_manifest = json.loads(Path(args.group_manifest_file).read_text(encoding="utf-8"))
 
     command = "python " + shlex.join(sys.argv)
     manifest = deterministic_draw(
         dataset_key=args.dataset_key, pool_spec=pool_spec, n=args.n, draw_type=args.draw_type,
-        seed=args.seed, exclusion_lists=exclusion_lists or None, command=command,
+        seed=args.seed, command=command,
+        exclusion_manifest_paths=args.exclude_manifest or None,
+        group_manifest=group_manifest,
     )
     if args.dry_run:
         print(json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True))

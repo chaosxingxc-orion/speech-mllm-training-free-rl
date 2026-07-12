@@ -112,8 +112,10 @@ def check(label: str, cond: bool, results: dict) -> None:
     results[label] = bool(cond)
 
 
-def main() -> int:
-    # --- tmp KB root: NEVER the real E:/speechrl-knowledge default ---
+def _ensure_tmp_kb_dir() -> str:
+    """tmp KB root: NEVER the real E:/speechrl-knowledge default. Factored out (2026-07-13, ticket
+    #38 V1-1 fix — mirrors ``scripts/baselines/test_phase_a_e2e.py``'s own ``_ensure_tmp_kb_dir``)
+    so both the pytest-native entry and ``main()`` call the SAME guard rather than duplicating it."""
     kb_dir = os.environ.get("SPEECHRL_KB_DIR")
     if not kb_dir:
         kb_dir = tempfile.mkdtemp(prefix="kb_gate_test_")
@@ -123,13 +125,21 @@ def main() -> int:
         "Point this at a tmp dir."
     )
     os.environ["SPEECHRL_KB_DIR"] = kb_dir
-    print(f"[test_kb_gate] SPEECHRL_KB_DIR={kb_dir} (tmp — never the real KB)", flush=True)
+    return kb_dir
 
+
+def _check_kb_gate(results: dict) -> None:
+    """All ~57 KB leakage-gate / cross-modal-routing checks (cases 1-11), unchanged logic —
+    extracted verbatim out of the old monolithic ``main()`` (2026-07-13, ticket #38 V1-1 fix) so a
+    zero-argument pytest ``test_*()`` wrapper can call it: this is the SAME
+    ``_check_*(results: dict)`` + zero-arg ``test_*()`` pattern ``test_phase_a_e2e.py`` already
+    established for exactly this failure mode (see ``docs/TESTING.md``'s "History" section) —
+    previously this whole file had ZERO top-level ``def test_*`` functions and was invisible to
+    ``PYTHONPATH=src pytest -q`` (0 collected, no error/warning either), runnable only via
+    ``python -u scripts/knowledge/test_kb_gate.py``."""
     import kb_build
     import kb_retrieve
     from kb_schema import KBLeakageError, list_sources, load_values
-
-    results: dict[str, bool] = {}
 
     with tempfile.TemporaryDirectory(prefix="kb_gate_wav_") as wavdir:
         records = _records(wavdir)
@@ -716,6 +726,34 @@ def main() -> int:
         check("backfill_one(dry_run=True) reports 'would-backfill'", dry_result["status"] == "would-backfill", results)
         check("backfill_one(dry_run=True) writes NO sidecar file",
               not (kb_root() / "knowledge_base" / dry_source / "provenance.sidecar.json").exists(), results)
+
+
+# ---------------------------------------------------------------------------------------------
+# pytest-native entry point (2026-07-13, ticket #38 V1-1 fix): a plain, zero-argument ``test_*()``
+# so ``PYTHONPATH=src pytest -q`` actually collects this file's ~57 checks (previously 0 collected
+# -- see ``_check_kb_gate``'s docstring). Mirrors ``test_phase_a_e2e.py``'s established pattern
+# exactly: builds its own local ``results`` dict, delegates to ``_check_kb_gate`` (unchanged
+# logic), then collapses to ONE assert so pytest's failure message names every failing check.
+# ``_ensure_tmp_kb_dir()`` is called here too (not just in ``main()``) since pytest may invoke this
+# independently of the ``__main__`` entry -- the function's own guard-assert stays the hard
+# backstop against ever touching the real persistent KB store.
+# ---------------------------------------------------------------------------------------------
+
+def test_kb_gate_all_cases() -> None:
+    kb_dir = _ensure_tmp_kb_dir()
+    print(f"[test_kb_gate] SPEECHRL_KB_DIR={kb_dir} (tmp — never the real KB)", flush=True)
+    results: dict[str, bool] = {}
+    _check_kb_gate(results)
+    failed = [k for k, v in results.items() if not v]
+    assert not failed, f"failed checks: {failed}"
+
+
+def main() -> int:
+    kb_dir = _ensure_tmp_kb_dir()
+    print(f"[test_kb_gate] SPEECHRL_KB_DIR={kb_dir} (tmp — never the real KB)", flush=True)
+
+    results: dict[str, bool] = {}
+    _check_kb_gate(results)
 
     all_pass = all(results.values())
     print("\n=== KB GATE TEST ===")

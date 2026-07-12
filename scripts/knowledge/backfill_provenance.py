@@ -41,6 +41,31 @@ no eval/confirmatory-data consumption.
 Run (real store):
     python -u scripts/knowledge/backfill_provenance.py
     python -u scripts/knowledge/backfill_provenance.py --dry-run     # report only, write nothing
+
+## Amend mode (2026-07-13, ticket #38 item 6)
+
+``--amend`` writes a SECOND, SEPARATE sidecar — ``provenance.sidecar.v2.json`` — next to
+``manifest.json``, for every real KB source, classifying it into exactly one of two buckets. This
+is a bare "amend + note" operation: it NEVER touches ``manifest.json`` (append-only store, same
+discipline as ``kb_build.build_source``'s refuse-overwrite gate) and NEVER touches the pre-existing
+``provenance.sidecar.json`` (v1, written by the default mode above) — only a brand-new v2 file is
+added, or the source is skipped if a v2 sidecar already exists for it.
+
+  - ``"qrels-conditioned-DEV-smoke"`` — for the squtr corpus-side sources built under the LEGACY
+    ``'qrels-mini'`` mode (``kb_batch_build.build_squtr_corpus_source``'s pre-ticket-#38 default,
+    now an explicit opt-in) — named ``squtr-fiqa-clean__corpus__<embedder>__text-keyed`` (the two
+    real ones on this store: glap + omni-embed-nemotron, 310 qrels-linked evidence docs each).
+    Cites the doctoral review finding F'-3 (Decision-Log 续26: "squtr 确证检索语料重建为官方全语
+    料...310 库永久降为 qrels-conditioned DEV smoke") — these sources are gold-linked docs +
+    sampled distractors CONDITIONED on the qrels/eval slice, NOT evaluation-independent, and must
+    never be mistaken for a confirmatory-grade corpus.
+  - ``"legacy/incomplete-provenance"`` — every OTHER real KB source (built before ticket #37 item
+    6's provenance extension landed, or otherwise missing the fuller provenance fields) — an
+    honest, distinctly-named bucket, never silently merged with the squtr classification above.
+
+Run (real store):
+    python -u scripts/knowledge/backfill_provenance.py --amend
+    python -u scripts/knowledge/backfill_provenance.py --amend --dry-run   # report only, write nothing
 """
 from __future__ import annotations
 
@@ -114,14 +139,115 @@ def backfill_one(source: str, dry_run: bool = False) -> dict:
     }
 
 
+# ---------------------------------------------------------------------------------------------
+# amend mode (2026-07-13, ticket #38 item 6) -- see module docstring's "Amend mode" section.
+# ---------------------------------------------------------------------------------------------
+
+AMEND_SCHEMA_VERSION = 2
+
+# Prefix identifying the squtr corpus-side sources built under the LEGACY 'qrels-mini' mode
+# (kb_batch_build.build_squtr_corpus_source's pre-ticket-#38 default) -- the two real ones on this
+# store (glap / omni-embed-nemotron) both match this exact prefix; a prefix match (not a hardcoded
+# 2-name list) so this correctly classifies any future qrels-mini build under the SAME legacy
+# naming convention too, not just the two known today.
+QRELS_MINI_LEGACY_SOURCE_PREFIX = "squtr-fiqa-clean__corpus__"
+
+CLASSIFICATION_QRELS_MINI = "qrels-conditioned-DEV-smoke"
+CLASSIFICATION_LEGACY_INCOMPLETE = "legacy/incomplete-provenance"
+
+
+def classification_for(source: str) -> str:
+    """The exact two-bucket classification ticket #38 item 6 asks for -- prefix-matched, not a
+    hardcoded source-name list (see ``QRELS_MINI_LEGACY_SOURCE_PREFIX``'s own comment)."""
+    if source.startswith(QRELS_MINI_LEGACY_SOURCE_PREFIX):
+        return CLASSIFICATION_QRELS_MINI
+    return CLASSIFICATION_LEGACY_INCOMPLETE
+
+
+def _classification_reason(classification: str) -> str:
+    if classification == CLASSIFICATION_QRELS_MINI:
+        return (
+            "qrels-conditioned corpus-side KB build (kb_batch_build.build_squtr_corpus_source's "
+            "LEGACY 'qrels-mini' mode, the pre-ticket-#38 default) -- gold-linked docs + sampled "
+            "distractors CONDITIONED on the qrels/eval slice, NOT evaluation-independent. Cites "
+            "doctoral review finding F'-3 (Decision-Log 续26: \"squtr 确证检索语料重建为官方全语料"
+            "...310 库永久降为 qrels-conditioned DEV smoke\") -- permanently reclassified, never "
+            "to be used as a confirmatory-grade / evaluation-independent corpus."
+        )
+    return (
+        "pre-ticket-#37-item-6 (or otherwise incomplete) KB source build -- provenance fields "
+        "(code_git_sha/code_git_dirty/embedder_revision/normalization/index_backend_params/"
+        "content_hash_schema_version) were never fully captured at build time; see this source's "
+        "v1 provenance.sidecar.json (default backfill mode above) for the best-effort "
+        "recomputation. Classified 'legacy/incomplete-provenance' as a distinct, honest bucket "
+        "from the squtr qrels-conditioned-DEV-smoke sources above -- never conflated with them."
+    )
+
+
+def amend_one(source: str, dry_run: bool = False) -> dict:
+    """Write ONE ``provenance.sidecar.v2.json`` for ``source`` -- NEVER touches ``manifest.json``
+    or the (possibly already-present) v1 ``provenance.sidecar.json``. Skips (no write, no error) a
+    source with no ``manifest.json`` at all, or one that already has a v2 sidecar (append-only:
+    this script never overwrites its own prior output either)."""
+    from kb_schema import source_dir
+
+    d = source_dir(source)
+    manifest_path = d / "manifest.json"
+    if not manifest_path.exists():
+        return {"source": source, "status": "skipped-no-manifest", "classification": None}
+    v2_path = d / "provenance.sidecar.v2.json"
+    if v2_path.exists():
+        return {"source": source, "status": "skipped-v2-sidecar-exists", "classification": None}
+
+    classification = classification_for(source)
+    sidecar = {
+        "source": source,
+        "amend_schema_version": AMEND_SCHEMA_VERSION,
+        "classification": classification,
+        "classification_reason": _classification_reason(classification),
+        "amended_date": datetime.now(timezone.utc).isoformat(),
+        "amended_by": "scripts/knowledge/backfill_provenance.py --amend (ticket #38 item 6)",
+    }
+    if not dry_run:
+        v2_path.write_text(json.dumps(sidecar, indent=2, ensure_ascii=False), encoding="utf-8")
+    return {
+        "source": source, "status": "would-amend" if dry_run else "amended",
+        "classification": classification,
+    }
+
+
 def main() -> int:
     from kb_schema import list_sources
 
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--dry-run", action="store_true", help="report only; write no sidecar files")
+    ap.add_argument("--amend", action="store_true",
+                     help="ticket #38 item 6: write provenance.sidecar.v2.json (classification "
+                          "only -- 'qrels-conditioned-DEV-smoke' | 'legacy/incomplete-provenance') "
+                          "instead of the default v1 content_hash/git-sha/embedder-revision "
+                          "backfill above. Never touches manifest.json or the v1 sidecar.")
     args = ap.parse_args()
 
     sources = list_sources()
+
+    if args.amend:
+        results = [amend_one(s, dry_run=args.dry_run) for s in sources]
+        print(json.dumps(results, indent=2, ensure_ascii=False))
+        n_total = len(sources)
+        n_qrels_mini = sum(1 for r in results if r["classification"] == CLASSIFICATION_QRELS_MINI)
+        n_legacy = sum(1 for r in results if r["classification"] == CLASSIFICATION_LEGACY_INCOMPLETE)
+        n_skipped_v2 = sum(1 for r in results if r["status"] == "skipped-v2-sidecar-exists")
+        n_skipped_no_manifest = sum(1 for r in results if r["status"] == "skipped-no-manifest")
+        print(
+            f"\n[backfill_provenance --amend] {n_total} source(s) total; {n_qrels_mini} classified "
+            f"{CLASSIFICATION_QRELS_MINI!r}; {n_legacy} classified "
+            f"{CLASSIFICATION_LEGACY_INCOMPLETE!r}; {n_skipped_v2} already had a v2 sidecar "
+            f"(skipped); {n_skipped_no_manifest} had no manifest.json (skipped) -- "
+            f"{'DRY-RUN, nothing written' if args.dry_run else 'v2 sidecars written for the rest'}",
+            flush=True,
+        )
+        return 0
+
     results = [backfill_one(s, dry_run=args.dry_run) for s in sources]
     print(json.dumps(results, indent=2, ensure_ascii=False))
 

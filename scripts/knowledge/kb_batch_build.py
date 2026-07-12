@@ -155,12 +155,121 @@ _SQUTR_SUBSET_GLAP_LANG = {"en": "eng_Latn", "zh": "zho_Hans"}
 SQUTR_CORPUS_TEXT_CPU_EMBEDDERS = {"glap", "omni-embed-nemotron"}
 
 
+# ---------------------------------------------------------------------------------------------
+# corpus_mode (2026-07-13, ticket #38 item 1 -- F'-3 remediation, Decision-Log 续26): 'full' (the
+# DEFAULT) indexes EVERY document in the official corpus.jsonl (squtr.load_full_corpus -- 57,638
+# docs for fiqa) WITHOUT ever importing/reading qrels (scoring reads qrels elsewhere, at eval time
+# -- see squtr.load_full_corpus's own docstring for why this is a hard invariant, not an
+# optimization). 'qrels-mini' is the LEGACY behavior this function used to be the only mode of
+# (gold-linked docs + sampled distractors, CONDITIONED on the qrels/eval slice) -- kept as an
+# explicit opt-in for DEV smoke only, never the default, and always manifest-marked as such (see
+# QRELS_MINI_CREATED_NOTE_PREFIX below).
+# ---------------------------------------------------------------------------------------------
+CORPUS_MODES = ("full", "qrels-mini")
+
+QRELS_MINI_CREATED_NOTE_PREFIX = "qrels-conditioned DEV smoke only — NOT evaluation-independent"
+
+
+# ---------------------------------------------------------------------------------------------
+# five-axis corpus-source audit (2026-07-13, ticket #38 item 2 -- F'-3 remediation): replaces the
+# single CLEAN/SUSPECT/LEAKAGE verdict for a CORPUS-TYPE KB source build with five independently-
+# checked axes, since a single verdict conflated several genuinely distinct questions. See each
+# axis's own inline comment in ``corpus_five_axis_audit`` for exactly what it checks.
+# ---------------------------------------------------------------------------------------------
+CORPUS_AUDIT_AXES = (
+    "object_correct", "query_independent_corpus", "label_independent_build",
+    "answer_presence_expected", "provenance_complete",
+)
+
+# The manifest fields ticket #25 P1c (embedder_token/pool_split) and ticket #37 item 6
+# (code_git_sha/build_hash) added -- "provenance_complete" checks these are all actually populated,
+# never assumed present just because the code path CAN set them.
+_PROVENANCE_REQUIRED_FIELDS = ("content_hash", "code_git_sha", "embedder_token", "pool_split", "build_hash")
+
+
+def _provenance_complete(manifest: dict) -> bool:
+    return all(manifest.get(f) not in (None, "") for f in _PROVENANCE_REQUIRED_FIELDS)
+
+
+def _overall_corpus_audit_verdict(axes: dict) -> str:
+    """Combine the five per-axis verdicts into one ``overall`` string. NEVER 'CLEAN' if any axis is
+    'FAIL' or 'NOT_EVALUATED' (ticket #38 item 2's hard rule) -- 'CLEAN' requires all five PASS."""
+    failing = sorted(k for k in CORPUS_AUDIT_AXES if axes.get(k) == "FAIL")
+    not_evaluated = sorted(k for k in CORPUS_AUDIT_AXES if axes.get(k) == "NOT_EVALUATED")
+    if failing:
+        return f"FAIL({','.join(failing)})"
+    if not_evaluated:
+        return f"PASS-with-NOT_EVALUATED({','.join(not_evaluated)})"
+    return "CLEAN"
+
+
+def corpus_five_axis_audit(*, object_correct: bool, corpus_mode: str, label_independent_build: bool,
+                            n_eval_golds_checked: int, post_scrub_verdict: str | None,
+                            manifest: dict) -> dict:
+    """The five-axis audit dict for a corpus-type KB source build (ticket #38 item 2). Returns
+    ``{"object_correct", "query_independent_corpus", "label_independent_build",
+    "answer_presence_expected", "provenance_complete", "overall"}`` -- each of the first five is one
+    of ``"PASS"``/``"FAIL"``/``"NOT_EVALUATED"``; ``overall`` is the combined verdict (see
+    ``_overall_corpus_audit_verdict``).
+
+      - ``object_correct`` -- is the persisted VALUE actually the corpus document's own text (never
+        the query's, the P0-1 bug class this function's module docstring documents)? Passed in by
+        the caller, which knows exactly what it assembled the record from.
+      - ``query_independent_corpus`` -- does corpus CONSTRUCTION (which documents get indexed at
+        all) depend on which queries/qrels exist? Derived straight from ``corpus_mode``: 'full'
+        indexes every document unconditionally (PASS); 'qrels-mini' samples gold-linked docs +
+        distractors CONDITIONED on the qrels/eval slice (FAIL).
+      - ``label_independent_build`` -- was any gold ANSWER label used to DECIDE which documents are
+        included (as opposed to only auditing/scrubbing VALUES post-hoc, which never changes which
+        docs are in the corpus)? Passed in by the caller.
+      - ``answer_presence_expected`` -- the value-side leakage-scrub axis. ``n_eval_golds_checked
+        == 0`` -> ``NOT_EVALUATED`` (ticket #38 item 2 P0 fix: 0 golds checked used to report the
+        SAME 'CLEAN' verdict as a genuinely-audited 0-leak build — indistinguishable from "nothing
+        was checked" — NEVER 'CLEAN' again). Otherwise PASS iff the post-scrub leakage_audit
+        verdict is 'CLEAN'.
+      - ``provenance_complete`` -- see ``_provenance_complete``.
+    """
+    axes = {
+        "object_correct": "PASS" if object_correct else "FAIL",
+        "query_independent_corpus": "PASS" if corpus_mode == "full" else "FAIL",
+        "label_independent_build": "PASS" if label_independent_build else "FAIL",
+        "answer_presence_expected": (
+            "NOT_EVALUATED" if n_eval_golds_checked == 0
+            else ("PASS" if post_scrub_verdict == "CLEAN" else "FAIL")
+        ),
+        "provenance_complete": "PASS" if _provenance_complete(manifest) else "FAIL",
+    }
+    axes["overall"] = _overall_corpus_audit_verdict(axes)
+    return axes
+
+
 def build_squtr_corpus_source(embedder: str, subset: str = "fiqa", noise_level: str = "clean",
                                 n: int | None = 40, n_distractors: int = 200, seed: int = 20260705,
                                 eval_golds: list[str] | None = None, note: str = "",
-                                supersede: bool = False) -> dict:
-    """REAL (not plan-only) corpus-side KB build for squtr's qrels documents (2026-07-12, RI
-    mechanical remediation item 9).
+                                supersede: bool = False, corpus_mode: str = "full",
+                                precomputed_keys: dict[str, object] | None = None) -> dict:
+    """REAL (not plan-only) corpus-side KB build for squtr's evidence documents (2026-07-12, RI
+    mechanical remediation item 9; corpus_mode/five-axis-audit added 2026-07-13, ticket #38 items
+    1/2 -- F'-3 remediation, Decision-Log 续26).
+
+    ``corpus_mode`` (default ``'full'``, ticket #38 item 1): see ``CORPUS_MODES``'s module comment.
+    ``'full'`` calls ``squtr.load_full_corpus(subset)`` -- EVERY document in the official
+    ``corpus.jsonl``, qrels/queries NEVER read on this code path. ``'qrels-mini'`` is the LEGACY
+    behavior (gold-linked docs + ``n_distractors`` sampled distractors via
+    ``squtr.load_squtr_retrieval``/``build_mini_corpus``) -- an explicit opt-in for DEV smoke only;
+    its manifest's ``created_note`` is ALWAYS prefixed with
+    ``QRELS_MINI_CREATED_NOTE_PREFIX`` ("qrels-conditioned DEV smoke only — NOT
+    evaluation-independent"), so nobody downstream can mistake it for an evaluation-independent
+    corpus build. ``noise_level``/``n``/``n_distractors`` are ONLY consulted in ``'qrels-mini'``
+    mode (a 'full' corpus has no noise-level concept -- corpus documents are query-independent by
+    construction; those args are silently ignored in 'full' mode, not an oversight).
+
+    ``precomputed_keys`` (ticket #38 item 1): an optional ``{doc_id: vector}`` mapping -- lets the
+    resumable batch-checkpointed launcher (``scripts/knowledge/build_full_corpus.sh`` /
+    ``build_full_corpus.embed_full_corpus_checkpointed``) hand already-embedded vectors back in
+    here so this function never re-embeds work the launcher already did (the SAME
+    ``precomputed_key`` per-record mechanism ``kb_build.build_source`` already supports -- see its
+    docstring). Raises ``ValueError`` if any corpus doc id is missing from the mapping.
 
     Fixes forensic finding 续15 P0-1: the earlier squtr "knowledge-passage" KB build's VALUE field
     was actually the FiQA QUERY's own text (an OBJECT-MISMATCH / wrong-field bug — see
@@ -216,18 +325,25 @@ def build_squtr_corpus_source(embedder: str, subset: str = "fiqa", noise_level: 
     ``gold_scrub_stats``, even when 0 golds were checked.
 
     Returns one of:
-      ``{"status": "built", "manifest": <SourceManifest dict>, "n_gold_docs": ..., "n_corpus_docs":
-      ..., "gold_scrub_stats": {...}}``
+      ``{"status": "built", "manifest": <SourceManifest dict>, "corpus_mode": ..., "n_gold_docs":
+      ..., "n_corpus_docs": ..., "gold_scrub_stats": {...}, "five_axis_audit": {...}}``
       ``{"status": "ARM-BLOCKED-cross-modal", "embedder": ..., "reason": ...}``
       ``{"status": "pending-GPU-window", "embedder": ..., "reason": ...}``
     """
     import kb_embed
+
+    if corpus_mode not in CORPUS_MODES:
+        raise ValueError(
+            f"kb_batch_build.build_squtr_corpus_source: corpus_mode={corpus_mode!r} not in "
+            f"{CORPUS_MODES}"
+        )
 
     meta = kb_embed.EMBEDDERS.get(embedder, {})
     if meta.get("needs_server"):
         return {
             "status": "pending-GPU-window",
             "embedder": embedder, "subset": subset, "noise_level": noise_level,
+            "corpus_mode": corpus_mode,
             "reason": (
                 f"{embedder!r} needs a resident llama-server ({meta.get('server_env')}) -- not "
                 "attempted this session (GPU held by other work per CLAUDE.md). Build once a "
@@ -240,6 +356,7 @@ def build_squtr_corpus_source(embedder: str, subset: str = "fiqa", noise_level: 
         return {
             "status": "ARM-BLOCKED-cross-modal",
             "embedder": embedder, "subset": subset, "noise_level": noise_level,
+            "corpus_mode": corpus_mode,
             "reason": (
                 f"{embedder!r} has no text-embedding path wired in kb_embed.embed_text -- cannot "
                 "key a TEXT corpus with it (squtr corpus documents ship as text only, no audio -- "
@@ -251,11 +368,23 @@ def build_squtr_corpus_source(embedder: str, subset: str = "fiqa", noise_level: 
     import kb_build
     import squtr
 
-    retrieval = squtr.load_squtr_retrieval(subset=subset, noise_level=noise_level, n=n, seed=seed,
-                                            n_distractors=n_distractors)
-    corpus_sample = retrieval["corpus_sample"]
-    qrels = retrieval["qrels"]
-    gold_docids = {docid for _, docid, _ in qrels}
+    n_gold_docs: int | None
+    n_distractor_docs: int | None
+    if corpus_mode == "full":
+        # 2026-07-13 (ticket #38 item 1): squtr.load_full_corpus NEVER touches
+        # queries*.jsonl/qrels/test.jsonl -- corpus construction is unconditional on the eval slice.
+        corpus_sample = squtr.load_full_corpus(subset)
+        gold_docids = None       # deliberately never computed -- qrels untouched on this path
+        n_gold_docs = None
+        n_distractor_docs = None
+    else:  # 'qrels-mini' (legacy, explicit opt-in)
+        retrieval = squtr.load_squtr_retrieval(subset=subset, noise_level=noise_level, n=n, seed=seed,
+                                                n_distractors=n_distractors)
+        corpus_sample = retrieval["corpus_sample"]
+        qrels = retrieval["qrels"]
+        gold_docids = {docid for _, docid, _ in qrels}
+        n_gold_docs = len(gold_docids)
+        n_distractor_docs = len(corpus_sample) - len(gold_docids & {d["_id"] for d in corpus_sample})
 
     doc_texts = [f"{d.get('title', '')} {d.get('text', '')}".strip() for d in corpus_sample]
     records = []
@@ -266,39 +395,84 @@ def build_squtr_corpus_source(embedder: str, subset: str = "fiqa", noise_level: 
             "from_item_id": f"squtr-{subset}-{noise_level}|corpus|{doc['_id']}",
         })
 
-    # GLAP needs an explicit source_lang (it does not auto-detect); nemotron's encode_document does
-    # not take one. Precompute GLAP's keys here (so the correct source_lang is used) and pass them
-    # through as `precomputed_key` -- kb_build.build_source then skips its own embedding step
-    # entirely and uses `embedder` as the manifest's ename/token verbatim (see its "every row
-    # arrived precomputed" branch).
-    if embedder == "glap":
+    # precomputed_keys (2026-07-13, ticket #38 item 1): the checkpointed full-corpus launcher
+    # (build_full_corpus.py) embeds OUTSIDE this function, in resumable batches, and hands the
+    # finished vectors back in keyed by doc _id -- skip embedding here entirely when supplied.
+    if precomputed_keys is not None:
+        missing = [d["_id"] for d in corpus_sample if d["_id"] not in precomputed_keys]
+        if missing:
+            raise ValueError(
+                f"kb_batch_build.build_squtr_corpus_source: precomputed_keys is missing "
+                f"{len(missing)} corpus doc id(s) (first few: {missing[:5]}) out of "
+                f"{len(corpus_sample)} total -- every corpus doc must have a precomputed vector."
+            )
+        for r, doc in zip(records, corpus_sample):
+            r["precomputed_key"] = precomputed_keys[doc["_id"]]
+    elif embedder == "glap":
+        # GLAP needs an explicit source_lang (it does not auto-detect); nemotron's encode_document
+        # does not take one. Precompute GLAP's keys here (so the correct source_lang is used) and
+        # pass them through as `precomputed_key` -- kb_build.build_source then skips its own
+        # embedding step entirely and uses `embedder` as the manifest's ename/token verbatim.
         lang = _SQUTR_SUBSET_GLAP_LANG.get(squtr.SUBSETS.get(subset, "en"), "eng_Latn")
         _, precomp, _fitted = kb_embed.embed_text(doc_texts, embedder="glap", source_lang=lang)
         for r, vec in zip(records, precomp):
             r["precomputed_key"] = vec
 
     audit_golds = list(eval_golds) if eval_golds else []
-    source = f"squtr-{subset}-{noise_level}__corpus__{embedder}__text-keyed"
+    n_corpus_docs = len(corpus_sample)
+    if corpus_mode == "full":
+        source = f"squtr-{subset}-full__corpus__{embedder}__text-keyed"
+        dataset_label = f"squtr-{subset}-full-corpus"
+        note_body = note or (
+            f"kb_batch_build.build_squtr_corpus_source (ticket #38 item 1, 2026-07-13): squtr "
+            f"{subset} FULL TEXT-keyed corpus -- every document in the official corpus.jsonl, "
+            "qrels/queries NEVER read on this code path (see squtr.load_full_corpus). "
+            f"corpus_mode=full n_corpus_docs={n_corpus_docs}."
+        )
+        final_note = note_body
+    else:
+        source = f"squtr-{subset}-{noise_level}__corpus__{embedder}__text-keyed"
+        dataset_label = f"squtr-{subset}-{noise_level}-corpus"
+        note_body = note or (
+            f"kb_batch_build.build_squtr_corpus_source (RI item 9, 2026-07-12; corpus_mode="
+            f"qrels-mini re-flagged 2026-07-13 ticket #38 item 1): squtr {subset}/{noise_level} "
+            "TEXT-keyed corpus (fixes 续15 P0-1 object-mismatch -- values are the qrels-linked "
+            "corpus documents themselves, NOT query text). "
+            f"corpus_mode=qrels-mini n_gold_docs={n_gold_docs} n_corpus_docs={n_corpus_docs}."
+        )
+        final_note = f"{QRELS_MINI_CREATED_NOTE_PREFIX}. {note_body}"
+
     manifest = kb_build.build_source(
-        source, f"squtr-{subset}-{noise_level}-corpus", revision=None, records=records,
+        source, dataset_label, revision=None, records=records,
         key_modality="text", value_type="text-fact", embedder=embedder,
         audit_golds=audit_golds, scrub=True, pool_split="test", supersede=supersede,
-        note=note or (
-            f"kb_batch_build.build_squtr_corpus_source (RI item 9, 2026-07-12): squtr {subset}/"
-            f"{noise_level} TEXT-keyed corpus (fixes 续15 P0-1 object-mismatch -- values are the "
-            "qrels-linked corpus documents themselves, NOT query text). "
-            f"n_gold_docs={len(gold_docids)} n_corpus_docs={len(corpus_sample)}."
-        ),
+        note=final_note,
     )
 
     audit = manifest.get("leakage_audit", {}) or {}
     post = audit.get("post_scrub", audit)
+
+    five_axis = corpus_five_axis_audit(
+        # object_correct: records are built directly from corpus_sample's own title/text fields
+        # above -- structurally never the query text (the P0-1 bug class this function replaces).
+        object_correct=True,
+        corpus_mode=corpus_mode,
+        # label_independent_build: eval_golds is used ONLY to scrub VALUES post-hoc (kb_build.
+        # build_source's audit_golds/scrub) -- it never decides which documents are included, in
+        # EITHER corpus_mode.
+        label_independent_build=True,
+        n_eval_golds_checked=len(audit_golds),
+        post_scrub_verdict=post.get("verdict"),
+        manifest=manifest,
+    )
+
     return {
         "status": "built",
         "manifest": manifest,
-        "n_gold_docs": len(gold_docids),
-        "n_corpus_docs": len(corpus_sample),
-        "n_distractor_docs": len(corpus_sample) - len(gold_docids & {d["_id"] for d in corpus_sample}),
+        "corpus_mode": corpus_mode,
+        "n_gold_docs": n_gold_docs,
+        "n_corpus_docs": n_corpus_docs,
+        "n_distractor_docs": n_distractor_docs,
         "gold_scrub_stats": {
             "n_eval_golds_checked": len(audit_golds),
             "pre_scrub_verdict": audit.get("verdict"),
@@ -308,6 +482,7 @@ def build_squtr_corpus_source(embedder: str, subset: str = "fiqa", noise_level: 
             "post_scrub_answer_overlap_rate": post.get("answer_overlap_rate"),
             "post_scrub_n_golds_leaked": post.get("n_golds_leaked"),
         },
+        "five_axis_audit": five_axis,
     }
 
 

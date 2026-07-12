@@ -134,7 +134,7 @@ def fake_generate_mock(cfg, wav_path, payload, seed: int = 0) -> str:
 # test i: fake-model E2E over ALL 35 Phase-A arms x 1 tiny synthetic dataset.
 # ---------------------------------------------------------------------------------------------
 
-def test_e2e_all_arms(results: dict) -> None:
+def _check_e2e_all_arms(results: dict) -> None:
     import dataclasses
 
     import kb_batch_build as kbb
@@ -146,6 +146,13 @@ def test_e2e_all_arms(results: dict) -> None:
     import templates
 
     # --- monkeypatches: fake embedder, fake generator, no GPU-session check ---
+    # (2026-07-13, ticket #38 V1-1 follow-up fix: these overwrite kb_embed's own module-level
+    # embed_audio/embed_text, which -- once test_kb_gate.py became pytest-collectible -- leaked
+    # into whichever test ran next in the SAME process, since kb_embed is a singleton module
+    # shared across every test file in one pytest session. Restored in the `finally` below,
+    # alongside rm.REF_CONFIG, so this function is a true monkeypatch, not a permanent mutation.)
+    orig_embed_audio = kb_embed.embed_audio
+    orig_embed_text = kb_embed.embed_text
     kb_embed.embed_audio = fake_embed_audio
     kb_embed.embed_text = fake_embed_text
     rm.generate_mock = fake_generate_mock
@@ -268,6 +275,8 @@ def test_e2e_all_arms(results: dict) -> None:
 
     finally:
         rm.REF_CONFIG = orig_ref_config
+        kb_embed.embed_audio = orig_embed_audio
+        kb_embed.embed_text = orig_embed_text
 
 
 # ---------------------------------------------------------------------------------------------
@@ -275,7 +284,7 @@ def test_e2e_all_arms(results: dict) -> None:
 # 2 arms, with a stub generator (still no GPU/network -- logmel-stats is pure librosa/numpy).
 # ---------------------------------------------------------------------------------------------
 
-def test_cpu_live_logmel_stats_smoke(results: dict) -> None:
+def _check_cpu_live_logmel_stats_smoke(results: dict) -> None:
     import kb_batch_build as kbb
     import kb_embed
     import registry
@@ -383,7 +392,7 @@ def _fake_squtr_corpus_text(subset: str, docids: list) -> dict:
 # embedder/generator/no-GPU-check monkeypatches that function already installed.
 # ---------------------------------------------------------------------------------------------
 
-def test_e2e_control_arms(results: dict) -> None:
+def _check_e2e_control_arms(results: dict) -> None:
     import dataclasses
 
     import kb_batch_build as kbb
@@ -548,7 +557,7 @@ def test_e2e_control_arms(results: dict) -> None:
 # convention build_squtr_corpus_source uses, never touching squtr's real (multi-GB) zip.
 # ---------------------------------------------------------------------------------------------
 
-def test_source_name_for_squtr_corpus_routing(results: dict) -> None:
+def _check_source_name_for_squtr_corpus_routing(results: dict) -> None:
     import numpy as np
 
     import archive_legacy_squtr_sources as arch
@@ -562,17 +571,29 @@ def test_source_name_for_squtr_corpus_routing(results: dict) -> None:
         retrieval=rm.RetrievalConfig(), query_construction="audio-direct", delivery="flat",
     )
 
-    # 1. no corpus source built yet for THIS embedder -> legacy 4-field name (unchanged behavior)
-    legacy_name_before = rm.source_name_for("squtr", cfg)
-    results["source_name_for('squtr', cfg): legacy 4-field name when no corpus source exists"] = (
-        legacy_name_before == "squtr__glap__single-utt__knowledge-passage"
+    # 1. no corpus source built yet for THIS embedder -> HARD ERROR (ticket #38 item 3 FAIL-CLOSED;
+    #    supersedes the old "blesses the legacy-name fallback" behavior).
+    raised_missing_corpus = False
+    try:
+        rm.source_name_for("squtr", cfg)
+    except RuntimeError as e:
+        raised_missing_corpus = "P0 OBJECT ERROR" in str(e)
+    results["source_name_for('squtr', cfg): raises P0 object error when no corpus source exists"] = (
+        raised_missing_corpus
     )
 
-    # 2. build a tiny FAKE corpus-side source under build_squtr_corpus_source's exact naming
-    #    convention (squtr-fiqa-clean__corpus__<embedder>__text-keyed) -- precomputed keys, no real
-    #    embedding/model/GPU.
+    # 1b. probe_corpus=False (dry_run_mock's own zero-KB-calls contract) is UNCHANGED -- still
+    #     falls back to the legacy name with no error, even before any corpus source exists.
+    no_probe_name_before = rm.source_name_for("squtr", cfg, probe_corpus=False)
+    results["source_name_for(..., probe_corpus=False) still falls back with no error pre-build"] = (
+        no_probe_name_before == "squtr__glap__single-utt__knowledge-passage"
+    )
+
+    # 2. build a tiny FAKE corpus-side source under build_squtr_corpus_source's exact 'full'-mode
+    #    naming convention (squtr-fiqa-full__corpus__<embedder>__text-keyed) -- precomputed keys, no
+    #    real embedding/model/GPU.
     dim = 8
-    corpus_name = "squtr-fiqa-clean__corpus__glap__text-keyed"
+    corpus_name = "squtr-fiqa-full__corpus__glap__text-keyed"
     corpus_recs = []
     for i in range(3):
         vec = np.random.RandomState(i).randn(dim).astype("float32")
@@ -659,15 +680,60 @@ def test_source_name_for_squtr_corpus_routing(results: dict) -> None:
     )
 
 
+# ---------------------------------------------------------------------------------------------
+# pytest-native entry points (2026-07-13, ticket #38 item 5 -- P0 fix): plain pytest test_*()
+# functions take ZERO arguments (pytest treats any positional parameter as a fixture request --
+# ``results: dict`` broke collection with "fixture 'results' not found" for all 4 checks above,
+# see docs/TESTING.md). Each wrapper builds its OWN local ``results`` dict, delegates to the
+# corresponding ``_check_*`` implementation (unchanged logic, still a rich per-check dict so the
+# __main__ script entry below keeps its detailed PASS/FAIL-per-line report), then collapses it to
+# ONE assert -- pytest's failure message lists every failing check by name. ``_ensure_tmp_kb_dir``
+# is called in EVERY wrapper (not just once in main()) since pytest may invoke these independently
+# of the __main__ entry -- this must never fall through to the real persistent KB store; the
+# function's own guard-assert (``"speechrl-knowledge" not in resolved``) stays the hard backstop.
+# ---------------------------------------------------------------------------------------------
+
+def test_e2e_all_arms() -> None:
+    _ensure_tmp_kb_dir()
+    results: dict[str, bool] = {}
+    _check_e2e_all_arms(results)
+    failed = [k for k, v in results.items() if not v]
+    assert not failed, f"failed checks: {failed}"
+
+
+def test_cpu_live_logmel_stats_smoke() -> None:
+    _ensure_tmp_kb_dir()
+    results: dict[str, bool] = {}
+    _check_cpu_live_logmel_stats_smoke(results)
+    failed = [k for k, v in results.items() if not v]
+    assert not failed, f"failed checks: {failed}"
+
+
+def test_e2e_control_arms() -> None:
+    _ensure_tmp_kb_dir()
+    results: dict[str, bool] = {}
+    _check_e2e_control_arms(results)
+    failed = [k for k, v in results.items() if not v]
+    assert not failed, f"failed checks: {failed}"
+
+
+def test_source_name_for_squtr_corpus_routing() -> None:
+    _ensure_tmp_kb_dir()
+    results: dict[str, bool] = {}
+    _check_source_name_for_squtr_corpus_routing(results)
+    failed = [k for k, v in results.items() if not v]
+    assert not failed, f"failed checks: {failed}"
+
+
 def main() -> int:
     _ensure_tmp_kb_dir()
     print(f"[test_phase_a_e2e] SPEECHRL_KB_DIR={os.environ['SPEECHRL_KB_DIR']} (tmp -- never the real KB)")
 
     results: dict[str, bool] = {}
-    test_e2e_all_arms(results)
-    test_cpu_live_logmel_stats_smoke(results)
-    test_e2e_control_arms(results)
-    test_source_name_for_squtr_corpus_routing(results)
+    _check_e2e_all_arms(results)
+    _check_cpu_live_logmel_stats_smoke(results)
+    _check_e2e_control_arms(results)
+    _check_source_name_for_squtr_corpus_routing(results)
 
     print("\n=== PHASE-A E2E TEST ===")
     for k, v in results.items():
