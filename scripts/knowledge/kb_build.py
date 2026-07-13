@@ -26,6 +26,19 @@ stamps the manifest ``forced=True`` so a leaking, force-built source is never mi
 admissible one. ``SUSPECT`` and unaudited (``audit_golds=None``) builds are NOT gated — only a
 confirmed ``LEAKAGE`` verdict blocks persistence.
 
+2026-07-13 (ticket #38 item 2, F-7 remediation): ``enforce_leakage_gate=False`` (default ``True`` —
+every pre-existing caller is unaffected) is a SEPARATE, DESCRIPTIVE-ONLY escape hatch from
+``force_persist`` — it exists for a caller building a legitimate OPEN CORPUS (e.g.
+``kb_batch_build.build_squtr_corpus_source``), where a value containing an eval gold's literal text
+is EXPECTED and CORRECT (an open evidence corpus naturally contains the answers to real questions
+about it — that is not leakage, see that function's module docstring), not a defect to gate on. With
+``enforce_leakage_gate=False`` the audit still RUNS and is still stamped on the manifest (so a
+descriptive overlap report stays available) but a ``LEAKAGE``/``SUSPECT`` verdict never raises and
+never requires ``force_persist``; unlike ``force_persist=True`` this does NOT stamp
+``manifest.forced=True`` (nothing was overridden — there was no gate to override for this call site
+by design), it stamps ``manifest.leakage_gate_enforced=False`` instead, so a reader of the manifest
+can always tell whether THIS build's audit was a hard gate or a descriptive-only report.
+
 2026-07-11 (ticket #25): ``build_source`` now also (P1a) accepts ``pool_split`` (stored in the
 manifest, no longer baked into the source name — see ``kb_schema.SourceManifest``), (P1c) stamps
 ``manifest.embedder_token`` (the registry token ``kb_retrieve`` must reuse for query-side
@@ -58,6 +71,7 @@ def build_source(
     pool_split: str | None = None,
     aux_audit: bool = False,
     supersede: bool = False,
+    enforce_leakage_gate: bool = True,
 ) -> dict:
     """Build a persisted speech-keyed knowledge source. Returns the SourceManifest as a dict.
 
@@ -183,9 +197,12 @@ def build_source(
         leakage_ok = audit.get("post_scrub", audit).get("verdict") == "CLEAN"
 
     # --- enforcement gate: refuse to PERSIST a confirmed-LEAKAGE source (Information-Boundary Guard) ---
+    # 2026-07-13 (ticket #38 item 2, F-7): enforce_leakage_gate=False skips this entire gate (no
+    # raise possible, ever) for a call site whose audit is DESCRIPTIVE-ONLY by design (an open
+    # corpus, where gold-text presence is expected) -- see this function's module docstring.
     verdict = leakage_verdict(audit)
     forced = False
-    if verdict == "LEAKAGE":
+    if verdict == "LEAKAGE" and enforce_leakage_gate:
         if not force_persist:
             raise KBLeakageError(
                 f"kb_build.build_source({source!r}): refusing to persist — leakage_audit verdict="
@@ -320,6 +337,7 @@ def build_source(
         leakage_audit=audit,
         created_note=note,
         forced=forced,
+        leakage_gate_enforced=enforce_leakage_gate,
         embedder_token=embedder_token,
         pool_split=pool_split,
         content_hash=c_hash,

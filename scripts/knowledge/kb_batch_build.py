@@ -171,14 +171,17 @@ QRELS_MINI_CREATED_NOTE_PREFIX = "qrels-conditioned DEV smoke only — NOT evalu
 
 
 # ---------------------------------------------------------------------------------------------
-# five-axis corpus-source audit (2026-07-13, ticket #38 item 2 -- F'-3 remediation): replaces the
-# single CLEAN/SUSPECT/LEAKAGE verdict for a CORPUS-TYPE KB source build with five independently-
-# checked axes, since a single verdict conflated several genuinely distinct questions. See each
-# axis's own inline comment in ``corpus_five_axis_audit`` for exactly what it checks.
+# corpus-source audit axes (2026-07-13, ticket #38 item 2 -- F'-3 remediation; item 2 of the
+# 2026-07-13 v4.2 doctoral review's remediation list ADDED a 6th axis, no_injected_gold_context --
+# the tuple/function/dict-key names below deliberately keep their original "five" naming for
+# call-site stability rather than a renaming churn; see corpus_five_axis_audit's own docstring for
+# what each of the now-SIX axes checks). Replaces the single CLEAN/SUSPECT/LEAKAGE verdict for a
+# CORPUS-TYPE KB source build, since a single verdict conflated several genuinely distinct
+# questions.
 # ---------------------------------------------------------------------------------------------
 CORPUS_AUDIT_AXES = (
     "object_correct", "query_independent_corpus", "label_independent_build",
-    "answer_presence_expected", "provenance_complete",
+    "answer_presence_expected", "no_injected_gold_context", "provenance_complete",
 )
 
 # The manifest fields ticket #25 P1c (embedder_token/pool_split) and ticket #37 item 6
@@ -204,43 +207,110 @@ def _overall_corpus_audit_verdict(axes: dict) -> str:
 
 
 def corpus_five_axis_audit(*, object_correct: bool, corpus_mode: str, label_independent_build: bool,
-                            n_eval_golds_checked: int, post_scrub_verdict: str | None,
+                            n_eval_golds_checked: int, answer_overlap_rate: float | None,
+                            injected_gold_context_detected: bool,
+                            corpus_lock_verification: dict | None,
                             manifest: dict) -> dict:
-    """The five-axis audit dict for a corpus-type KB source build (ticket #38 item 2). Returns
-    ``{"object_correct", "query_independent_corpus", "label_independent_build",
-    "answer_presence_expected", "provenance_complete", "overall"}`` -- each of the first five is one
-    of ``"PASS"``/``"FAIL"``/``"NOT_EVALUATED"``; ``overall`` is the combined verdict (see
-    ``_overall_corpus_audit_verdict``).
+    """The (now SIX -- see ``CORPUS_AUDIT_AXES``'s own comment on the naming-stability decision)
+    axis audit dict for a corpus-type KB source build. Returns one dict entry per
+    ``CORPUS_AUDIT_AXES`` name plus ``overall`` (the combined verdict, see
+    ``_overall_corpus_audit_verdict``); every axis except ``answer_presence_expected`` is one of
+    ``"PASS"``/``"FAIL"``/``"NOT_EVALUATED"``.
 
       - ``object_correct`` -- is the persisted VALUE actually the corpus document's own text (never
         the query's, the P0-1 bug class this function's module docstring documents)? Passed in by
         the caller, which knows exactly what it assembled the record from.
-      - ``query_independent_corpus`` -- does corpus CONSTRUCTION (which documents get indexed at
-        all) depend on which queries/qrels exist? Derived straight from ``corpus_mode``: 'full'
-        indexes every document unconditionally (PASS); 'qrels-mini' samples gold-linked docs +
-        distractors CONDITIONED on the qrels/eval slice (FAIL).
+      - ``query_independent_corpus`` -- (2026-07-13, ticket #38 item 1, F-6 remediation) does corpus
+        CONSTRUCTION (which documents get indexed at all) depend on which queries/qrels exist? NO
+        LONGER derived from the ``corpus_mode`` STRING alone (the v4.2 doctoral review's exact
+        finding: "``query_independent_corpus = PASS iff corpus_mode == 'full'``" self-certifies from
+        a mode string, not evidence -- an incomplete/altered/wrong corpus.jsonl could still pass).
+        PASS now requires BOTH ``corpus_mode == 'full'`` AND
+        ``corpus_lock_verification['verified'] is True`` -- the ACTUAL corpus this build embedded
+        was checked byte-for-byte / doc-count / doc-id-order / normalized-content against the pinned
+        ``docs/corpus.lock.json`` (see ``corpus_lock.verify_corpus_lock``, fail-closed). FAIL if the
+        lock verification itself failed (missing lock file, doc-count mismatch, hash mismatch, ...)
+        -- the ``corpus_lock_verification`` dict's own ``mismatches`` list carries the reason.
+        ``corpus_mode == 'qrels-mini'`` is NEVER query-independent by construction (unchanged --
+        gold-linked docs + distractors are CONDITIONED on the qrels/eval slice) -- FAIL regardless
+        of ``corpus_lock_verification``.
       - ``label_independent_build`` -- was any gold ANSWER label used to DECIDE which documents are
-        included (as opposed to only auditing/scrubbing VALUES post-hoc, which never changes which
-        docs are in the corpus)? Passed in by the caller.
-      - ``answer_presence_expected`` -- the value-side leakage-scrub axis. ``n_eval_golds_checked
-        == 0`` -> ``NOT_EVALUATED`` (ticket #38 item 2 P0 fix: 0 golds checked used to report the
-        SAME 'CLEAN' verdict as a genuinely-audited 0-leak build — indistinguishable from "nothing
-        was checked" — NEVER 'CLEAN' again). Otherwise PASS iff the post-scrub leakage_audit
-        verdict is 'CLEAN'.
+        included (as opposed to only auditing VALUES, which never changes which docs are in the
+        corpus)? Passed in by the caller.
+      - ``answer_presence_expected`` -- (2026-07-13, ticket #38 item 2, F-7 remediation) NO LONGER a
+        pass/fail derived from a post-SCRUB verdict -- open-corpus builds no longer scrub legal
+        answer spans AT ALL (see ``build_squtr_corpus_source``'s docstring: a real evidence corpus
+        naturally containing the literal answer to a real question about it is EXPECTED and
+        CORRECT, not a leak). Purely DESCRIPTIVE now, one of three values (never gates ``overall``
+        except via the unchanged ``NOT_EVALUATED`` rule): ``"NOT_EVALUATED"`` when
+        ``n_eval_golds_checked == 0`` (unchanged: 0 golds checked is NOT the same as "checked and
+        found clean"); else ``"PRESENT"`` (``answer_overlap_rate > 0`` -- some provided gold's
+        literal text occurs somewhere in this corpus) or ``"ABSENT"`` (``answer_overlap_rate == 0``)
+        -- both describe the corpus, neither is ever a defect.
+      - ``no_injected_gold_context`` -- (2026-07-13, ticket #38 item 2, F-7 remediation) the ONE
+        axis that CAN still hard-FAIL on gold-answer presence: PASS unless the caller detected a
+        PER-ITEM, dataset-AUTHORED "gold-context" document (constructed specifically FOR one eval
+        item, as opposed to an organically shared official corpus document indexed independent of
+        any single query) that contains that SAME item's own gold answer -- a real
+        information-boundary leak, structurally distinct from ``answer_presence_expected``'s
+        expected/benign natural overlap. ``build_squtr_corpus_source`` always passes
+        ``injected_gold_context_detected=False`` (structurally not applicable to it -- see that
+        function's docstring); this axis exists as general, independently-testable infrastructure
+        for any future builder that DOES construct per-item context (see
+        ``test_kb_gate.py``'s positive/negative golden tests for the mechanism itself).
       - ``provenance_complete`` -- see ``_provenance_complete``.
     """
+    if corpus_mode == "full":
+        clv = corpus_lock_verification or {}
+        query_independent_corpus = "PASS" if clv.get("verified") else "FAIL"
+    else:
+        query_independent_corpus = "FAIL"
+
+    if n_eval_golds_checked == 0:
+        answer_presence_expected = "NOT_EVALUATED"
+    else:
+        answer_presence_expected = "PRESENT" if (answer_overlap_rate or 0) > 0 else "ABSENT"
+
     axes = {
         "object_correct": "PASS" if object_correct else "FAIL",
-        "query_independent_corpus": "PASS" if corpus_mode == "full" else "FAIL",
+        "query_independent_corpus": query_independent_corpus,
         "label_independent_build": "PASS" if label_independent_build else "FAIL",
-        "answer_presence_expected": (
-            "NOT_EVALUATED" if n_eval_golds_checked == 0
-            else ("PASS" if post_scrub_verdict == "CLEAN" else "FAIL")
-        ),
+        "answer_presence_expected": answer_presence_expected,
+        "no_injected_gold_context": "FAIL" if injected_gold_context_detected else "PASS",
         "provenance_complete": "PASS" if _provenance_complete(manifest) else "FAIL",
     }
     axes["overall"] = _overall_corpus_audit_verdict(axes)
     return axes
+
+
+def _corpus_lock_verification(subset: str, corpus_mode: str, corpus_sample: list[dict]) -> dict:
+    """F-6 (2026-07-13): the EVIDENCE behind ``query_independent_corpus`` -- never derived from the
+    ``corpus_mode`` string alone. 'full' mode: verify ``corpus_sample`` (the docs this build
+    actually just fetched/embedded) against the pinned umbrella ``docs/corpus.lock.json`` via
+    ``corpus_lock.verify_corpus_lock`` (non-raising here — a lock-verification failure becomes a
+    reported ``FAIL`` axis, not an unrecoverable exception; the UNCONDITIONAL refusal-to-persist for
+    a wrong doc_count is the separate hard assert in ``build_squtr_corpus_source``, checked before
+    this function is even called). 'qrels-mini' is NEVER query-independent by construction (see
+    ``CORPUS_MODES``' module comment) -- lock verification is not even attempted for it.
+    """
+    if corpus_mode != "full":
+        return {"attempted": False, "verified": False, "reason": "corpus_mode != 'full'"}
+
+    import corpus_lock
+
+    if subset not in corpus_lock.UPSTREAM_SOURCE:
+        return {
+            "attempted": False, "verified": False,
+            "reason": f"no corpus_lock.UPSTREAM_SOURCE entry for subset={subset!r} -- lock "
+                      "verification not possible for this subset yet.",
+        }
+    lock_path = corpus_lock.default_lock_path()
+    result = corpus_lock.verify_corpus_lock(
+        str(lock_path), subset, corpus_docs=corpus_sample, raise_on_mismatch=False,
+    )
+    result["attempted"] = True
+    result["lock_path"] = str(lock_path)
+    return result
 
 
 def build_squtr_corpus_source(embedder: str, subset: str = "fiqa", noise_level: str = "clean",
@@ -306,27 +376,45 @@ def build_squtr_corpus_source(embedder: str, subset: str = "fiqa", noise_level: 
         needs an unavailable GPU server (``kb_embed.EMBEDDERS[embedder]["needs_server"]``) instead
         returns ``{"status": "pending-GPU-window", ...}`` — a distinct, non-permanent status.
 
-    ## Gold-scrub (Information-Boundary Guard)
+    ## Answer-presence audit (Information-Boundary Guard) -- open-corpus values are NEVER scrubbed
 
-    squtr's OWN qrels carry no literal "answer" text field (they are IR relevance judgments —
-    ``(query-id, corpus-id, score)`` — not a QA answer span), so the P0-1 bug this function replaces
-    was an OBJECT-MISMATCH bug (wrong field used as the value), not an eval-gold leak in the
-    T7/M3 sense. This function nonetheless exercises the SAME ``kb_build.build_source``
-    ``audit_golds``/``scrub=True`` pipeline every other source in this repo goes through, as a
-    matter of consistent Information-Boundary discipline (an unaudited source is never treated as
-    admissible elsewhere in this codebase, and this build is not an exception): pass
-    ``eval_golds`` — the actual gold ANSWER strings of whatever downstream QA eval task will
-    consume this corpus KB (e.g. heysquad/SQuAD-zh answer spans, if this corpus backs a QA gate
-    like ``t7_rag_gate_probe.py``'s design) — to gold-scrub the VALUES against them (qrels-positive
-    docs CAN by construction literally contain the answer text to their linked query, since FiQA-style
-    queries are themselves questions). For pure-IR retrieval use (the Stage-1 default), leave
-    ``eval_golds`` as ``None``/empty, which still runs the audit (0 golds -> trivially CLEAN)
-    rather than skipping it outright. Scrub stats are ALWAYS recorded in the returned dict's
-    ``gold_scrub_stats``, even when 0 golds were checked.
+    2026-07-13 (ticket #38 item 2, F-7 remediation -- v4.2 doctoral review §3 F-7: the prior
+    version of this section instructed scrubbing legal answer spans out of an OPEN corpus, which is
+    exactly backwards for a query-independent evidence corpus). squtr's OWN qrels carry no literal
+    "answer" text field (they are IR relevance judgments — ``(query-id, corpus-id, score)`` — not a
+    QA answer span), so the P0-1 bug this function replaces was an OBJECT-MISMATCH bug (wrong field
+    used as the value), not an eval-gold leak in the T7/M3 sense. A REAL open evidence corpus
+    (``corpus_mode='full'``: literally every document in the official ``corpus.jsonl``) naturally,
+    CORRECTLY contains the literal text of the answer to real questions about it — that is exactly
+    what an evidence corpus is FOR, not a leak. Leakage in the T7/M3 sense is when TEST
+    qrels/answers DECIDE what goes into the corpus/index/prompt/candidates (see
+    ``corpus_five_axis_audit``'s ``label_independent_build``/``query_independent_corpus`` axes,
+    which DO gate on that) — NOT when a legitimately-included document happens to contain an answer
+    span.
+
+    Consequently this function calls ``kb_build.build_source`` with ``scrub=False`` (values are
+    persisted EXACTLY as fetched from the corpus, never mutated) and ``enforce_leakage_gate=False``
+    (a ``LEAKAGE``/``SUSPECT`` verdict — expected and common for a real evidence corpus against real
+    question golds — never raises and never requires ``force_persist``). The audit still ALWAYS
+    RUNS when ``eval_golds`` is non-empty (``audit_golds is not None`` in
+    ``kb_build.build_source``'s own contract) and is stamped on the manifest for inspection; pass
+    ``eval_golds`` — the actual gold ANSWER strings of whatever downstream QA eval task will consume
+    this corpus KB — to get a real, non-empty overlap report; leave it ``None``/empty (the Stage-1
+    default for pure-IR retrieval use) for a trivial 0-golds-checked report. Either way the result is
+    PURELY DESCRIPTIVE — see ``corpus_five_axis_audit``'s ``answer_presence_expected`` axis and the
+    returned dict's ``answer_overlap_stats`` below, ALWAYS recorded even when 0 golds were checked.
+
+    A genuinely PER-ITEM, dataset-AUTHORED "gold-context" document (constructed specifically FOR one
+    eval item, unlike squtr's shared/official corpus docs) is a DIFFERENT, still hard-FAILing check
+    — see ``corpus_five_axis_audit``'s ``no_injected_gold_context`` axis (this function always
+    passes ``injected_gold_context_detected=False``: structurally not applicable here, since squtr
+    corpus documents are addressed by their own official ``_id`` and shared across many
+    queries/items via qrels, never authored per query).
 
     Returns one of:
       ``{"status": "built", "manifest": <SourceManifest dict>, "corpus_mode": ..., "n_gold_docs":
-      ..., "n_corpus_docs": ..., "gold_scrub_stats": {...}, "five_axis_audit": {...}}``
+      ..., "n_corpus_docs": ..., "answer_overlap_stats": {...}, "five_axis_audit": {...},
+      "corpus_lock_verification": {...}}``
       ``{"status": "ARM-BLOCKED-cross-modal", "embedder": ..., "reason": ...}``
       ``{"status": "pending-GPU-window", "embedder": ..., "reason": ...}``
     """
@@ -377,6 +465,34 @@ def build_squtr_corpus_source(embedder: str, subset: str = "fiqa", noise_level: 
         gold_docids = None       # deliberately never computed -- qrels untouched on this path
         n_gold_docs = None
         n_distractor_docs = None
+
+        # --- F-6 (2026-07-13, v4.2 doctoral review item 1): HARD, pre-persist invariant -- an
+        # incomplete or miscounted corpus must NEVER be persisted as a 'full' (query-independent)
+        # source, regardless of what any caller's precomputed_keys mapping happens to cover. This
+        # is a DEFENSE-IN-DEPTH check independent of build_full_corpus.py's own completeness
+        # assertions (that launcher's `missing` check already refuses an incomplete CHECKPOINT --
+        # this checks the CORPUS ITSELF, in case corpus_sample ever came back short/long for any
+        # other reason: a loader bug, a corrupted/truncated local zip, a wrong subset, ...). ---
+        import corpus_lock
+
+        expected_doc_count = corpus_lock.EXPECTED_DOC_COUNT.get(subset)
+        if expected_doc_count is not None and len(corpus_sample) != expected_doc_count:
+            raise ValueError(
+                f"kb_batch_build.build_squtr_corpus_source: corpus_mode='full' but "
+                f"len(corpus_sample)={len(corpus_sample)} != "
+                f"corpus_lock.EXPECTED_DOC_COUNT[{subset!r}]={expected_doc_count} -- refusing to "
+                "persist an incomplete/miscounted corpus as a full (query-independent) source "
+                "(F-6 remediation: 'incomplete checkpoint must never persist as a full source')."
+            )
+        if precomputed_keys is not None and expected_doc_count is not None:
+            n_embedded = len({d["_id"] for d in corpus_sample} & set(precomputed_keys))
+            if n_embedded != expected_doc_count:
+                raise ValueError(
+                    f"kb_batch_build.build_squtr_corpus_source: corpus_mode='full' but the "
+                    f"embedded doc count (precomputed_keys covering corpus_sample)={n_embedded} != "
+                    f"corpus_lock.EXPECTED_DOC_COUNT[{subset!r}]={expected_doc_count} -- refusing "
+                    "to persist an incomplete embedding checkpoint as a full source."
+                )
     else:  # 'qrels-mini' (legacy, explicit opt-in)
         retrieval = squtr.load_squtr_retrieval(subset=subset, noise_level=noise_level, n=n, seed=seed,
                                                 n_distractors=n_distractors)
@@ -442,27 +558,42 @@ def build_squtr_corpus_source(embedder: str, subset: str = "fiqa", noise_level: 
         )
         final_note = f"{QRELS_MINI_CREATED_NOTE_PREFIX}. {note_body}"
 
+    # F-7 (2026-07-13, ticket #38 item 2): scrub=False -- open-corpus values are NEVER scrubbed
+    # (see this function's "Answer-presence audit" docstring section). enforce_leakage_gate=False
+    # -- a LEAKAGE/SUSPECT verdict (expected/common for a real evidence corpus against real
+    # question golds) never raises and never requires force_persist; the audit still runs and is
+    # still stamped on the manifest (leakage_gate_enforced=False records that this was a
+    # descriptive-only audit, not a hard gate -- see kb_build.build_source's docstring).
     manifest = kb_build.build_source(
         source, dataset_label, revision=None, records=records,
         key_modality="text", value_type="text-fact", embedder=embedder,
-        audit_golds=audit_golds, scrub=True, pool_split="test", supersede=supersede,
+        audit_golds=audit_golds, scrub=False, enforce_leakage_gate=False,
+        pool_split="test", supersede=supersede,
         note=final_note,
     )
 
     audit = manifest.get("leakage_audit", {}) or {}
-    post = audit.get("post_scrub", audit)
+
+    # F-6 (2026-07-13, item 1): the EVIDENCE query_independent_corpus derives from -- computed from
+    # corpus_sample (the docs THIS build actually just fetched), never from the corpus_mode string.
+    corpus_lock_verification = _corpus_lock_verification(subset, corpus_mode, corpus_sample)
 
     five_axis = corpus_five_axis_audit(
         # object_correct: records are built directly from corpus_sample's own title/text fields
         # above -- structurally never the query text (the P0-1 bug class this function replaces).
         object_correct=True,
         corpus_mode=corpus_mode,
-        # label_independent_build: eval_golds is used ONLY to scrub VALUES post-hoc (kb_build.
-        # build_source's audit_golds/scrub) -- it never decides which documents are included, in
-        # EITHER corpus_mode.
+        # label_independent_build: eval_golds is used ONLY for the DESCRIPTIVE overlap audit
+        # (never scrubbed, never gates persistence) -- it never decides which documents are
+        # included, in EITHER corpus_mode.
         label_independent_build=True,
         n_eval_golds_checked=len(audit_golds),
-        post_scrub_verdict=post.get("verdict"),
+        answer_overlap_rate=audit.get("answer_overlap_rate"),
+        # squtr corpus documents are shared/official (addressed by their own corpus _id, indexed
+        # independent of any one query via qrels) -- structurally never a per-item authored
+        # "gold-context" doc; see this function's docstring.
+        injected_gold_context_detected=False,
+        corpus_lock_verification=corpus_lock_verification,
         manifest=manifest,
     )
 
@@ -473,15 +604,16 @@ def build_squtr_corpus_source(embedder: str, subset: str = "fiqa", noise_level: 
         "n_gold_docs": n_gold_docs,
         "n_corpus_docs": n_corpus_docs,
         "n_distractor_docs": n_distractor_docs,
-        "gold_scrub_stats": {
+        "answer_overlap_stats": {
             "n_eval_golds_checked": len(audit_golds),
-            "pre_scrub_verdict": audit.get("verdict"),
-            "pre_scrub_answer_overlap_rate": audit.get("answer_overlap_rate"),
-            "pre_scrub_n_golds_leaked": audit.get("n_golds_leaked"),
-            "post_scrub_verdict": post.get("verdict"),
-            "post_scrub_answer_overlap_rate": post.get("answer_overlap_rate"),
-            "post_scrub_n_golds_leaked": post.get("n_golds_leaked"),
+            "verdict": audit.get("verdict"),
+            "answer_overlap_rate": audit.get("answer_overlap_rate"),
+            "n_golds_present": audit.get("n_golds_leaked"),
+            "note": ("DESCRIPTIVE ONLY (F-7 remediation, 2026-07-13) -- open-corpus values are "
+                     "NEVER scrubbed; natural answer-text presence in a real evidence corpus is "
+                     "expected, not a leak. See five_axis_audit['answer_presence_expected']."),
         },
+        "corpus_lock_verification": corpus_lock_verification,
         "five_axis_audit": five_axis,
     }
 

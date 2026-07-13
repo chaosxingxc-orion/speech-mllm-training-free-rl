@@ -204,6 +204,15 @@ class SourceManifest:
     leakage_audit: dict = field(default_factory=dict)
     created_note: str = ""
     forced: bool = False  # True iff persisted despite a LEAKAGE verdict via force_persist=True
+    # 2026-07-13 (ticket #38 item 2, F-7 remediation): True (the default -- every pre-existing
+    # manifest.json on disk loads with this default via SourceManifest(**d), matching the actual
+    # gate that was ALWAYS enforced before this field existed) iff kb_build.build_source's LEAKAGE
+    # enforcement gate applied to THIS build; False iff the caller passed
+    # enforce_leakage_gate=False (a legitimate open-corpus build, e.g.
+    # kb_batch_build.build_squtr_corpus_source -- gold-text presence is EXPECTED there, not a
+    # defect) -- lets a manifest reader always tell whether leakage_audit was a hard gate or a
+    # purely descriptive report for this specific build.
+    leakage_gate_enforced: bool = True
     embedder_token: str | None = None  # registry token for query-time re-embedding (see docstring)
     pool_split: str | None = None  # loader split this source's records were drawn from
     # 2026-07-12 (RI mechanical remediation item 8; forensic finding 续15: "KB build_hash 不含内容
