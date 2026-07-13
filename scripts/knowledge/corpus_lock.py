@@ -33,11 +33,16 @@ whole call).
 Usage:
     # one-time (or re-run whenever the upstream corpus is refreshed), against the REAL corpus:
     python scripts/knowledge/corpus_lock.py --generate --subset fiqa \\
-        --out ../../../docs/corpus.lock.json          # umbrella docs/, NOT this repo's docs/
+        --out ../../docs/corpus.lock.json          # umbrella docs/, NOT this repo's docs/
 
     # verification (real corpus, real lock file):
     python scripts/knowledge/corpus_lock.py --verify --subset fiqa \\
-        --lock ../../../docs/corpus.lock.json
+        --lock ../../docs/corpus.lock.json
+
+(Relative paths above are resolved from THIS repo's root -- W1 sits at
+``<umbrella>/projects/speech-mllm-training-free-rl``, so the umbrella ``docs/`` is two levels up,
+not three; the previous ``../../../docs`` example resolved outside the umbrella entirely.
+Omitting ``--out``/``--lock`` uses ``default_lock_path()``, which is CWD-independent and correct.)
 
 Lazy-import discipline (CLAUDE.md): ``squtr``/``zipfile`` stay inside functions so
 ``import corpus_lock`` stays light and this module's dataclasses/constants are always importable
