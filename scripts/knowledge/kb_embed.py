@@ -178,6 +178,33 @@ def _model_dir(name: str) -> str:
     return d
 
 
+# ---------------------------------------------------------------------------------------------
+# Per-process model cache (2026-07-13, performance fix for scripts/knowledge/build_full_corpus.py):
+# a batch-checkpointed full-corpus embed calls `embed_text`/`embed_audio` once per doc-batch
+# (default 500 docs, ~116 batches for fiqa's 57,638-doc corpus) -- before this cache, every one of
+# those calls re-did `AutoModel.from_pretrained(...)` from scratch (multi-second-to-minute weight
+# load each time), which the live log showed as a 'Loading weights 552/552' line between EVERY
+# checkpoint. Keyed on (loader_name, device) so CPU and CUDA instances of the same model can
+# coexist in-process (never expected to happen in one run, but harmless if it does). Holds a
+# reference to the loaded model/tower object for the lifetime of the process -- intended for
+# long-running batch jobs (build_full_corpus.py), not for short-lived single-call scripts, though
+# it is harmless there too (one extra model held in memory until process exit). Never cleared
+# automatically; call `_MODEL_CACHE.clear()` (e.g. in a test's teardown) if a test needs a fresh
+# load between calls.
+# ---------------------------------------------------------------------------------------------
+
+_MODEL_CACHE: dict[tuple, object] = {}
+
+
+def _cached_model(cache_key: tuple, loader_fn):
+    """Returns the cached object for ``cache_key``, loading it via ``loader_fn()`` (no-arg
+    callable) and storing it on first use. ``loader_fn`` is only ever invoked once per distinct
+    ``cache_key`` for the lifetime of the process."""
+    if cache_key not in _MODEL_CACHE:
+        _MODEL_CACHE[cache_key] = loader_fn()
+    return _MODEL_CACHE[cache_key]
+
+
 def _reset_meta_pe_caches(model) -> int:
     """Workaround for a real transformers-v5 fast-init bug hit by 2 of our trust_remote_code
     checkpoints (MERaLiON-SpeechEncoder-2's ``ConformerRelPositionalEmbedding``; CLSP's
@@ -204,6 +231,25 @@ def _reset_meta_pe_caches(model) -> int:
     return n
 
 
+def _glap_model(device: str = "cpu"):
+    """Cached GLAP ``AutoModel`` (trust_remote_code) for ``device`` -- loaded once per (loader,
+    device) pair via ``_cached_model`` and reused by both ``_glap_embed`` (audio) and
+    ``_glap_embed_text`` (text), since both are methods (``encode_audio``/``encode_text``) on the
+    SAME model instance. This is the fix for the 'reloaded every batch' bug diagnosed in
+    build_full_corpus.py's live log (a fresh ``from_pretrained`` + meta-pe-cache-reset on every
+    500-doc text batch, ~116 reloads over a full fiqa corpus run).
+    """
+    import torch  # noqa: F401  (kept for parity/clarity; .to(device) below needs no direct torch use)
+    from transformers import AutoModel
+
+    def _load():
+        m = AutoModel.from_pretrained(_model_dir("glap"), trust_remote_code=True).to(device).eval()
+        _reset_meta_pe_caches(m)
+        return m
+
+    return _cached_model(("glap", device), _load)
+
+
 def _glap_embed(wav_paths, device: str = "cpu"):
     """GLAP (mispeech/GLAP, Apache) -- content key candidate (zh+en+sound), 1024-d.
     Official API: ``AutoModel(trust_remote_code=True).encode_audio(raw_waveform_tensor)``.
@@ -211,10 +257,8 @@ def _glap_embed(wav_paths, device: str = "cpu"):
     import librosa
     import numpy as np
     import torch
-    from transformers import AutoModel
 
-    model = AutoModel.from_pretrained(_model_dir("glap"), trust_remote_code=True).to(device).eval()
-    _reset_meta_pe_caches(model)
+    model = _glap_model(device)
     embs = []
     for p in wav_paths:
         y, _ = librosa.load(p, sr=16000, mono=True)
@@ -551,19 +595,22 @@ def _clap_embed(wav_paths):
 
 
 def _omni_model(device: str):
-    """Lazily load the omni-embed SentenceTransformer (official asymmetric API).
+    """Lazily load the omni-embed SentenceTransformer (official asymmetric API), process-cached
+    per ``device`` via ``_cached_model`` (2026-07-13, build_full_corpus.py performance fix —
+    previously reloaded from scratch on every call, same bug class as GLAP's; see ``_glap_model``).
 
     ``trust_remote_code=True`` is REQUIRED — the checkpoint ships custom modeling code
-    (``modeling_nv_omni_embed.py``, ``NVOmniEmbedModel``). Not cached across calls: callers that embed
-    many batches should hold the returned model themselves; kb_build/kb_retrieve each call this once
-    per process-lifetime op, which is acceptable at Stage-1 corpus sizes.
+    (``modeling_nv_omni_embed.py``, ``NVOmniEmbedModel``).
     """
-    from sentence_transformers import SentenceTransformer
+    def _load():
+        from sentence_transformers import SentenceTransformer
 
-    model_dir = os.path.join(os.environ.get("SPEECHRL_DATA_DIR", ""), "models", OMNI_EMBED_DIRNAME)
-    if not os.path.isdir(model_dir):
-        raise FileNotFoundError(f"omni-embed model not found at {model_dir}")
-    return SentenceTransformer(model_dir, trust_remote_code=True, device=device)
+        model_dir = os.path.join(os.environ.get("SPEECHRL_DATA_DIR", ""), "models", OMNI_EMBED_DIRNAME)
+        if not os.path.isdir(model_dir):
+            raise FileNotFoundError(f"omni-embed model not found at {model_dir}")
+        return SentenceTransformer(model_dir, trust_remote_code=True, device=device)
+
+    return _cached_model(("omni-embed", device), _load)
 
 
 def _omni_embed(wav_paths, device: str = "cpu"):
@@ -605,12 +652,20 @@ def _omni_embed_document_text(texts, device: str = "cpu"):
     this is the DOCUMENT/key side, matching the token ``_LOADER_FNS['omni-embed-nemotron']`` already
     uses for the audio-key path, so a manifest's ``embedder_token`` is the same string regardless of
     whether the KEY happened to be audio or text.
+
+    ``batch_size=TEXT_EMBED_SUBBATCH_SIZE`` (64) is passed explicitly to ``encode_document`` — the
+    underlying ``sentence-transformers`` ``.encode()`` already sub-batches internally (default 32),
+    but a caller-supplied checkpoint-sized batch (e.g. build_full_corpus.py's 500-doc default)
+    should not rely on that library default silently; pinning it here keeps the effective compute
+    batch shape consistent with GLAP's text path (see ``_glap_embed_text``).
     """
     import numpy as np
 
     m = _omni_model(device)
     docs = [{"text": t} for t in texts]
-    embs = m.encode_document(docs, convert_to_numpy=True, normalize_embeddings=True)
+    embs = m.encode_document(
+        docs, batch_size=TEXT_EMBED_SUBBATCH_SIZE, convert_to_numpy=True, normalize_embeddings=True
+    )
     return f"omni-embed-nemotron:{OMNI_EMBED_DIRNAME}", _l2(np.asarray(embs, dtype="float32"))
 
 
@@ -665,6 +720,11 @@ def embed_query_crossmodal_audio(wav_paths, embedder: str, device: str = "cpu"):
     )
 
 
+TEXT_EMBED_SUBBATCH_SIZE = 64  # see _glap_embed_text docstring: bounds one encode_text()/encode_document()
+                                # forward pass so a large checkpoint-batch (e.g. build_full_corpus.py's
+                                # 500-doc default) doesn't become one giant padded compute batch.
+
+
 def _glap_embed_text(texts, source_lang: str = "eng_Latn", device: str = "cpu"):
     """GLAP's native ``encode_text`` — GLAP (mispeech/GLAP) is a JOINT audio-text model (like CLAP),
     not audio-only: its ``GlapModel.encode_text(text, source_lang=...)`` (see
@@ -676,15 +736,33 @@ def _glap_embed_text(texts, source_lang: str = "eng_Latn", device: str = "cpu"):
     GLAP does NOT auto-detect it. Backs ``kb_batch_build.build_squtr_corpus_source``'s TEXT-KEYED
     corpus-document build for the ``'glap'`` embedder arm. Reachable via
     ``embed_text(embedder='glap', source_lang=...)``.
+
+    ``encode_text`` (see ``modeling_glap.py``) IS already batched — it pads every text in the call
+    to the longest one and runs ONE transformer forward pass over the whole list, never a
+    per-item loop — but a caller (e.g. build_full_corpus.py) may pass a large checkpoint-sized
+    batch (500 docs by default) in one call, and padding-to-longest over that many docs risks a
+    large CPU memory/compute spike for long documents. This function sub-batches the call into
+    chunks of ``GLAP_TEXT_SUBBATCH_SIZE`` (64) — still using the model's own native batched API
+    per chunk (not a per-item loop) — and concatenates the results, so the checkpoint batch size
+    (a resume/checkpoint-cadence concern) is decoupled from the compute batch shape (a
+    memory/latency concern). The loaded model itself is process-cached (``_glap_model``) across
+    calls/chunks/batches.
     """
     import numpy as np
     import torch
-    from transformers import AutoModel
 
-    model = AutoModel.from_pretrained(_model_dir("glap"), trust_remote_code=True).to(device).eval()
+    model = _glap_model(device)
+    texts = list(texts)
+    chunks = []
     with torch.no_grad():
-        e = model.encode_text(list(texts), source_lang=source_lang)
-    return "glap:GLAP", _l2(e.cpu().numpy().astype("float32"))
+        if not texts:
+            # preserve the model's own (0, dim) empty-batch shape rather than guessing a dim.
+            chunks.append(model.encode_text([], source_lang=source_lang).cpu().numpy())
+        for i in range(0, len(texts), TEXT_EMBED_SUBBATCH_SIZE):
+            sub = texts[i : i + TEXT_EMBED_SUBBATCH_SIZE]
+            chunks.append(model.encode_text(sub, source_lang=source_lang).cpu().numpy())
+    e = np.concatenate(chunks, axis=0)
+    return "glap:GLAP", _l2(e.astype("float32"))
 
 
 # Embedders with a genuine TEXT-embedding path wired into `embed_text` (2026-07-12, RI item 9) --

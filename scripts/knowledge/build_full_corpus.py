@@ -96,19 +96,49 @@ def embed_full_corpus_checkpointed(
     source_lang: str = "eng_Latn",
     corpus_override: list[dict] | None = None,
     progress: bool = True,
+    device: str = "cpu",
+    max_batches: int | None = None,
 ) -> dict:
     """Embeds every document in ``subset``'s full corpus (``squtr.load_full_corpus`` — qrels/
     queries NEVER read, same query-independence invariant as ``kb_batch_build.
     build_squtr_corpus_source(corpus_mode='full')``), resuming from any existing checkpoint,
     checkpointing every ``batch_size`` NEWLY-embedded docs (default 500 per ticket #38 item 1).
 
+    ``device`` (2026-07-13, performance fix): ``'cpu'`` (default, safe for unattended runs) or
+    ``'cuda'`` — passed straight through to ``kb_embed.embed_text``. ``'cuda'`` RAISES immediately
+    (before any embedding work) if ``torch.cuda.is_available()`` is False, rather than silently
+    running on CPU or failing deep inside a batch. The model itself is loaded ONCE per (embedder,
+    device) and cached across every batch of this run (``kb_embed._MODEL_CACHE`` via
+    ``_glap_model``/``_omni_model``) — previously every batch reloaded the model from scratch.
+
+    ``max_batches`` (DEBUG ONLY, e.g. for a throwaway-checkpoint smoke test): stop after embedding
+    at most this many NEW batches, leaving the checkpoint (and this call's return value) partial.
+    When set, the usual "every corpus doc must be embedded by the end of this call" completeness
+    check is skipped and only the docs actually embedded (old checkpoint + this run's batches) are
+    returned — never use this for a real production run; ``main()`` refuses to persist a source
+    from a ``--max-batches``-truncated run (requires ``--embed-only`` together with it).
+
     ``corpus_override`` (test-only hook): inject a small fake corpus list (``[{"_id":..., "title":
     ..., "text": ...}, ...]``) instead of loading squtr's real multi-GB zip — lets a test exercise
     the resume/checkpoint logic without the real dataset on disk.
 
-    Returns ``{doc_id: np.ndarray}`` covering EVERY doc in the corpus (old + newly embedded).
+    Returns ``{doc_id: np.ndarray}`` covering EVERY doc in the corpus (old + newly embedded) —
+    unless ``max_batches`` truncated the run, in which case it covers only what has been embedded
+    so far (old checkpoint + this run's completed batches).
     """
     import kb_embed
+
+    if device == "cuda":
+        import torch
+
+        if not torch.cuda.is_available():
+            raise RuntimeError(
+                "embed_full_corpus_checkpointed: --device cuda requested but "
+                "torch.cuda.is_available() is False in this environment/venv — falling back "
+                "silently would defeat the point of asking for cuda. Use --device cpu, or check "
+                "the active venv has a CUDA-enabled torch build and the GPU is visible "
+                "(CUDA_VISIBLE_DEVICES)."
+            )
 
     if corpus_override is not None:
         corpus = corpus_override
@@ -127,19 +157,29 @@ def embed_full_corpus_checkpointed(
 
     if progress:
         print(
-            f"[build_full_corpus] embedder={embedder!r} subset={subset!r}: "
+            f"[build_full_corpus] embedder={embedder!r} subset={subset!r} device={device!r}: "
             f"{len(corpus)} total docs, {len(done)} already checkpointed (resumed), "
             f"{len(todo)} remaining",
             flush=True,
         )
 
+    n_batches_run = 0
     for start in range(0, len(todo), batch_size):
+        if max_batches is not None and n_batches_run >= max_batches:
+            if progress:
+                print(
+                    f"[build_full_corpus] --max-batches={max_batches} reached — stopping early "
+                    "(DEBUG mode; checkpoint is partial)",
+                    flush=True,
+                )
+            break
         batch = todo[start:start + batch_size]
         texts = [f"{d.get('title', '')} {d.get('text', '')}".strip() for d in batch]
-        _, vecs, _ = kb_embed.embed_text(texts, embedder=embedder, source_lang=source_lang)
+        _, vecs, _ = kb_embed.embed_text(texts, embedder=embedder, source_lang=source_lang, device=device)
         for d, v in zip(batch, vecs):
             done[d["_id"]] = v
         save_checkpoint(path, done)
+        n_batches_run += 1
         if progress:
             print(
                 f"[build_full_corpus] checkpointed {len(done)}/{len(corpus)} docs "
@@ -149,6 +189,14 @@ def embed_full_corpus_checkpointed(
 
     missing = [d["_id"] for d in corpus if d["_id"] not in done]
     if missing:
+        if max_batches is not None:
+            if progress:
+                print(
+                    f"[build_full_corpus] --max-batches debug stop: {len(missing)}/{len(corpus)} "
+                    "corpus docs not yet embedded (expected — this was a truncated debug run)",
+                    flush=True,
+                )
+            return dict(done)
         raise RuntimeError(
             f"embed_full_corpus_checkpointed: {len(missing)} corpus doc id(s) still missing after "
             f"a full pass (first few: {missing[:5]}) — this should be unreachable; investigate "
@@ -171,6 +219,14 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--batch-size", type=int, default=DEFAULT_BATCH_SIZE)
     ap.add_argument("--checkpoint-dir", default=None)
     ap.add_argument("--source-lang", default="eng_Latn", help="only consulted for --embedder glap")
+    ap.add_argument("--device", choices=("cpu", "cuda"), default="cpu",
+                     help="default cpu (safe for unattended runs); pass cuda only when the GPU is "
+                          "confirmed free (CLAUDE.md) — raises immediately if torch.cuda.is_available() "
+                          "is False rather than silently running on CPU")
+    ap.add_argument("--max-batches", type=int, default=None,
+                     help="DEBUG ONLY: stop after embedding at most N new batches, leaving the "
+                          "checkpoint partial. Requires --embed-only (refuses to persist a source "
+                          "from a truncated run). Never use for a real production run.")
     ap.add_argument("--embed-only", action="store_true",
                      help="stop after the checkpoint is complete; do NOT call build_squtr_corpus_source "
                           "(useful to pre-warm the checkpoint separately from the store write)")
@@ -179,13 +235,20 @@ def main(argv: list[str] | None = None) -> int:
                           "existing same-name source rather than refuse-overwrite")
     args = ap.parse_args(argv)
 
+    if args.max_batches is not None and not args.embed_only:
+        ap.error("--max-batches requires --embed-only (refuses to persist a source built from a "
+                  "deliberately truncated debug run)")
+
     keys = embed_full_corpus_checkpointed(
         args.embedder, subset=args.subset, batch_size=args.batch_size,
         checkpoint_dir=args.checkpoint_dir, source_lang=args.source_lang,
+        device=args.device, max_batches=args.max_batches,
     )
 
     if args.embed_only:
-        print(f"[build_full_corpus] --embed-only: checkpoint complete ({len(keys)} docs), "
+        status = (f"partial — --max-batches={args.max_batches}" if args.max_batches is not None
+                  else "complete")
+        print(f"[build_full_corpus] --embed-only: checkpoint has {len(keys)} docs ({status}), "
               "skipping build_squtr_corpus_source persist.", flush=True)
         return 0
 
